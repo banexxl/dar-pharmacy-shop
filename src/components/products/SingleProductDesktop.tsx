@@ -30,11 +30,11 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   <FavoriteIcon />
                                         </ProductFavButton>
                                         {(showOptions || isScreenToMedium) && (
-                                                  <ProductAddToCart show={showOptions} variant="contained">
+                                                  <ProductAddToCart show={showOptions.toString()} variant="contained">
                                                             Add to cart
                                                   </ProductAddToCart>
                                         )}
-                                        <ProductActionsWrapper show={showOptions || isScreenToMedium}>
+                                        <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
                                                   <Stack direction={isScreenToMedium ? "row" : "column"}>
                                                             <ProductActionButton>
                                                                       <Tooltip placement="left" title="share this product">
