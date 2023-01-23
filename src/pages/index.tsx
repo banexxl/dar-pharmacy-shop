@@ -10,10 +10,14 @@ import Footer from "../components/footer";
 import AppDrawer from "../components/navbar/drawer";
 import Promotions from "../components/promotions";
 import SearchBox from "../components/search"
+import productsServices from '@/services/product.services';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home(props: any) {
+
+          const { products } = props
+
           return (
                     <ThemeProvider theme={theme}>
                               <Container
@@ -32,7 +36,7 @@ export default function Home() {
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <Typography variant="h4">Naši proizvodi</Typography>
                                                             </Box>
-                                                            <Products />
+                                                            <Products data={products} />
                                                             <Footer />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
@@ -40,4 +44,25 @@ export default function Home() {
                               </Container>
                     </ThemeProvider>
           )
+}
+
+
+export async function getStaticProps() {
+
+          const dbData: any = await productsServices().getProducts().then((data: any) => {
+                    return data
+          })
+
+          //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
+          //redirect: {
+          //           destination: "/nodata"
+          // }  mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
+          //revalidate bi trebao da ponovo odradi getstaticprops logiku
+
+          return {
+                    props: {
+                              products: JSON.parse(JSON.stringify(dbData))
+                    },
+                    revalidate: 10,
+          }
 }
