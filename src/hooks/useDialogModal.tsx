@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 export default function useDialogModal(Component: any) {
 
@@ -18,7 +18,6 @@ export default function useDialogModal(Component: any) {
 
 
           const DialogComponent: any = useCallback(({ ...props }) => {
-
 
                     if (!open) {
                               return null

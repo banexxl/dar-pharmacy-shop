@@ -11,8 +11,7 @@ import React from "react";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
-          const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] =
-                    useDialogModal(ProductDetails);
+          const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails)
 
           const [showOptions, setShowOptions] = useState(false);
 

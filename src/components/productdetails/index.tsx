@@ -30,6 +30,8 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
 }));
 
 export default function ProductDetail({ open, onClose, product }: any) {
+          console.log("aaaaaaaa");
+
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
           return (
