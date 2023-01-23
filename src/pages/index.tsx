@@ -1,18 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
-import Navbar from "../pages/navbar";
+import Navbar from "../components/navbar";
 import { ThemeProvider } from "@mui/system";
 import theme from "../styles/theme";
-import Banner from "../pages/banner";
-import Products from "../pages/products";
+import Banner from "../components/banner";
+import Products from "../components/products";
 import { UIProvider } from "../context/ui";
-import Footer from "../pages/footer";
-import AppDrawer from "../pages/navbar/drawer";
-import Promotions from "../pages/promotions";
-import SearchBox from "../pages/search"
+import Footer from "../components/footer";
+import AppDrawer from "../components/navbar/drawer";
+import Promotions from "../components/promotions";
+import SearchBox from "../components/search"
 
 const inter = Inter({ subsets: ['latin'] })
 

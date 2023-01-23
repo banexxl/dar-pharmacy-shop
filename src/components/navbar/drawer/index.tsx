@@ -7,8 +7,8 @@ import { Colors } from "../../../styles/theme"
 import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
 import WishList from "../../wishlist"
-import Cart from "../../cart"
-import LoginRegister from "../../login"
+import Cart from "../../../pages/cart"
+import LoginRegister from "../../../pages/cart"
 
 const MiddleDivider = styled((props) => (
           <Divider variant="middle" {...props} />
