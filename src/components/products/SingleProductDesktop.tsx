@@ -21,6 +21,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           const handleMouseLeave = () => {
                     setShowOptions(false);
           };
+
           return (
                     <>
                               <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -40,7 +41,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                                                 <ShareIcon color="primary" />
                                                                       </Tooltip>
                                                             </ProductActionButton>
-                                                            <ProductActionButton onClick={() => showProductDetailDialog}>
+                                                            <ProductActionButton onClick={() => showProductDetailDialog()}>
                                                                       <Tooltip placement="left" title="Full view">
                                                                                 <FitScreenIcon color="primary" />
                                                                       </Tooltip>

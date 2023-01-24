@@ -30,7 +30,6 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
 }));
 
 export default function ProductDetail({ open, onClose, product }: any) {
-          console.log("aaaaaaaa");
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
@@ -51,7 +50,7 @@ export default function ProductDetail({ open, onClose, product }: any) {
                                                   alignItems="center"
                                                   justifyContent={"space-between"}
                                         >
-                                                  Product title
+                                                  {product.name}
                                                   <IconButton onClick={onClose}>
                                                             <CloseIcon />
                                                   </IconButton>
@@ -60,18 +59,27 @@ export default function ProductDetail({ open, onClose, product }: any) {
                               <DialogContent>
                                         <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                                                   <Product sx={{ mr: 4 }}>
-                                                            <ProductImage src={product.image} />
+                                                            <ProductImage src={product.imageURL} />
                                                   </Product>
                                                   <ProductDetailInfoWrapper>
-                                                            <Typography >SKU: 123</Typography>
-                                                            <Typography >Availability: 5 in stock</Typography>
+                                                            <Typography >SKU: ?</Typography>
+                                                            <Typography >Availability: {product.availableStock} in stock</Typography>
                                                             <Typography sx={{ lineHeight: 2 }} variant="h4">
                                                                       {product.name}
                                                             </Typography>
-                                                            <Typography >
-                                                                      {product.description}
-                                                                      {product.description}
-                                                                      {product.description}
+                                                            <Typography variant="h5">
+                                                                      Opis:
+                                                            </Typography>
+                                                            {product.description}
+                                                            <Typography variant="h5">
+                                                                      Instrukcije:
+                                                            </Typography>
+                                                            {product.instructions}
+                                                            <Typography variant="h5">
+                                                                      Napomena:
+                                                            </Typography>
+                                                            {product.warning}
+                                                            <Typography>
                                                             </Typography>
                                                             <Box
                                                                       sx={{ mt: 4 }}

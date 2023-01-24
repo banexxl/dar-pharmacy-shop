@@ -11,14 +11,11 @@ import LoginRegister from '../../pages/login/index'
 
 export default function Actions({ isScreenToMedium }: any) {
 
-          const [WishListDialog, showWishListDialog, closeWishListDialog] =
-                    useDialogModal(WishList)
+          const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
 
-          const [CartDialog, showCartDialog, closeCartDialog] =
-                    useDialogModal(Cart)
+          const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
 
-          const [LoginDialog, showLoginDialog, closeLoginDialog] =
-                    useDialogModal(LoginRegister)
+          const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
 
 
 

@@ -36,7 +36,7 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
                                                                                 <ShareIcon color="primary" />
                                                                       </Tooltip>
                                                             </ProductActionButton>
-                                                            <ProductActionButton onClick={() => showProductDetailDialog}>
+                                                            <ProductActionButton onClick={() => showProductDetailDialog()}>
                                                                       <Tooltip placement="left" title="Full view">
                                                                                 <FitScreenIcon color="primary" />
                                                                       </Tooltip>
