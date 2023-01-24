@@ -5,9 +5,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Colors } from "../../styles/theme";
 import useDialogModal from "../../hooks/useDialogModal";
-import Cart from '../../pages/cart/index'
+import Cart from '../cart/index'
 import WishList from "../wishlist/index";
-import LoginRegister from '../../pages/login/index'
+import LoginRegister from '../login/index'
 
 export default function Actions({ isScreenToMedium }: any) {
 

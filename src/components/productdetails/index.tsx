@@ -56,6 +56,7 @@ export default function ProductDetail({ open, onClose, product }: any) {
                                                   </IconButton>
                                         </Box>
                               </DialogTitle>
+
                               <DialogContent>
                                         <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                                                   <Product sx={{ mr: 4 }}>

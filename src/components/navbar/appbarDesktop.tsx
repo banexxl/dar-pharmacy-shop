@@ -3,7 +3,7 @@ import { AppbarContainer, AppbarHeader, MyList } from "../../styles/appbar"
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { useUIContext } from "../../context/ui";
-import CartDialog from '../../pages/cart'
+import CartDialog from '../cart'
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 

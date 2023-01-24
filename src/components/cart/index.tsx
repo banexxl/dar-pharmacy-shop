@@ -11,12 +11,13 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import Counter from "../productdetails/counter";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
 }
 
-const WishListWrapper = styled(Box)(({ theme }: any) => ({
+const CartWrapper = styled(Box)(({ theme }: any) => ({
           display: "flex",
           padding: theme.spacing(4),
 }));
@@ -28,11 +29,9 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
           lineHeight: 1.5,
 }));
 
-export default function WhishList({ open, onClose, product }: any) {
-
+export default function Cart({ open, onClose, product }: any) {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
-
           return (
                     <Dialog
                               TransitionComponent={SlideTransition}
@@ -49,45 +48,27 @@ export default function WhishList({ open, onClose, product }: any) {
                                                   alignItems="center"
                                                   justifyContent={"space-between"}
                                         >
-                                                  Omiljeni proizvodi
+                                                  Proizvodi u korpi
                                                   <IconButton onClick={onClose}>
                                                             <CloseIcon />
                                                   </IconButton>
                                         </Box>
                               </DialogTitle>
                               <DialogContent>
-                                        <WishListWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-                                                  <Product sx={{ mr: 4, width: { xs: '150px', sm: '200px', md: '250px', lg: '400px' } }}>
+                                        <CartWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
+                                                  <Product sx={{ mr: 4 }}>
                                                             <ProductImage />
                                                   </Product>
                                                   <ProductDetailInfoWrapper>
+                                                            <Typography>SKU: 123</Typography>
+                                                            <Typography>Availability: 5 in stock</Typography>
                                                             <Typography sx={{ lineHeight: 2 }} variant="h4">
                                                                       Product name
                                                             </Typography>
-                                                            <Typography>
-                                                                      Description
-                                                            </Typography>
-                                                            <Typography>
-                                                                      Price
-                                                            </Typography>
-                                                            <Box
-                                                                      sx={{ mt: 4 }}
-                                                                      display="flex"
-                                                                      alignItems="center"
-                                                                      justifyContent="space-between"
-                                                            >
-                                                                      <Button variant="contained">Add to Cart</Button>
-                                                            </Box>
-                                                            <Box
-                                                                      display="flex"
-                                                                      alignItems="center"
-                                                                      sx={{ mt: 4, color: Colors.light }}
-                                                            >
-                                                                      <FavoriteIcon sx={{ mr: 2 }} />
-                                                                      Wishlist
-                                                            </Box>
+
+                                                            <Counter></Counter>
                                                   </ProductDetailInfoWrapper>
-                                        </WishListWrapper>
+                                        </CartWrapper>
                               </DialogContent>
                     </Dialog>
           );
