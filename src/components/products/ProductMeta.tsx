@@ -8,7 +8,7 @@ export default function ProductMeta({ product, isScreenToMedium }: any) {
                                         {product.name}
                               </Typography>
                               <Typography variant={isScreenToMedium ? "caption" : "body1"}>
-                                        ${product.price}
+                                        RSD: {product.price}
                               </Typography>
                     </ProductMetaWrapper>
           );

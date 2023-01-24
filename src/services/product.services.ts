@@ -1,9 +1,10 @@
+import { limit } from "@/components/productdetails/counter/limiter"
 import { MongoClient } from "mongodb"
 import { DB } from '../interfaces/db'
 
 const productsServices = () => {
 
-          const getProducts = async () => {
+          const getProductForHomePage = async () => {
 
                     const client: any = await MongoClient.connect(process.env.REACT_APP_DB_CONNECT!)
 
@@ -21,7 +22,7 @@ const productsServices = () => {
           }
 
           return {
-                    getProducts,
+                    getProductForHomePage,
           }
 }
 
