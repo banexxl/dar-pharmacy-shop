@@ -16,6 +16,7 @@ export const Colors = {
           border: "#DDDFE1",
           inverse: "#2F3D4A",
           shaft: "#333",
+          link: '#1e88e5',
           ///////////////
           // Grays
           ///////////////
@@ -78,25 +79,17 @@ const theme = createTheme({
                                         }
                               }
                     },
-                    // MyShopButton: {
-                    //           // styleOverrides: {
-                    //           //           root: {
-                    //           //                     color: Colors.white,
-                    //           //           },
-                    //           //           primary: {
-                    //           //                     background: Colors.primary,
-                    //           //                     "&:hover": {
-                    //           //                               background: lighten(0.05, Colors.primary),
-                    //           //                     },
-                    //           //           },
-                    //           //           secondary: {
-                    //           //                     background: `${Colors.secondary}`,
-                    //           //                     "&:hover": {
-                    //           //                               background: lighten(0.05, Colors.primary),
-                    //           //                     },
-                    //           //           },
-                    //           // },
-                    // },
+                    MuiButtonBase: {
+                              styleOverrides: {
+                                        root: {
+                                                  color: Colors.white,
+                                                  background: `${Colors.primary}`,
+                                                  "&:hover": {
+                                                            background: lighten(0.05, Colors.secondary),
+                                                  },
+                                        },
+                              },
+                    },
           },
 });
 

@@ -13,7 +13,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                     <AppbarContainer>
                               <AppbarHeader variant="h4">Apoteka Dar</AppbarHeader>
                               <MyList type="row">
-                                        <ListItemButton sx={{ maxWidth: '200px' }} onClick={() => setShowSearchBox(true)}>
+                                        <ListItemButton sx={{ maxWidth: '200px', mr: '100px' }} onClick={() => setShowSearchBox(true)}>
                                                   <ListItemIcon>
                                                             <SearchIcon />
                                                   </ListItemIcon>

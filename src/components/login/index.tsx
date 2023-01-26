@@ -1,39 +1,25 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, TextField, } from "@mui/material";
-import { useRef } from "react";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, TextField, } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
-import styled from "@emotion/styled";
-import { ProductAddToCart, Product, ProductImage } from "../../styles/product";
-import { BannerShopButton } from "../../styles/banner";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { padding } from "polished";
+import { LoginButton, SwitchLoginRegisterButton } from "@/styles/login";
+import { useState } from "react";
+
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
 }
-
-const LoginWrapper = styled(Box)(({ theme }: any) => ({
-          display: "flex",
-          padding: theme.spacing(4),
-})) as typeof Box
-
-const ProductDetailInfoWrapper = styled(Box)(() => ({
-          display: "flex",
-          flexDirection: "column",
-          maxWidth: 500,
-          lineHeight: 1.5,
-}));
 
 export default function LoginRegister({ open, onClose, product }: any) {
 
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+
+          const [isSignUp, setIsSignUp] = useState(false)
+
+
 
 
           return (
@@ -58,22 +44,43 @@ export default function LoginRegister({ open, onClose, product }: any) {
                                                   </IconButton>
                                         </Box>
                               </DialogTitle>
+
                               <DialogContent>
                                         <Box sx={{
-                                                  ml: '50%', mt: '10%',
+                                                  ml: '50%', mt: '10%', borderRadius: '20px',
                                                   transform: 'translateX(-50%)',
                                                   display: 'flex', flexDirection: 'column',
                                                   width: { xs: '200px', sm: '250px', md: '400px', xl: '600px' },
-                                                  alignItems: 'center', justifyContent: 'center', borderRadius: '5x',
+                                                  height: { xs: '200px', sm: '250px', md: '400px', xl: '500px' },
+                                                  alignItems: 'center', justifyContent: 'center',
                                                   boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
                                         }}>
-                                                  <Typography>
-                                                            Prijava
+                                                  <Typography variant='h3' sx={{ textAlign: 'center', margin: '20px 20px' }}>
+                                                            {
+                                                                      isSignUp ? 'Registruj se' : 'Prijavi se'
+                                                            }
                                                   </Typography>
-                                                  <TextField sx={{ pb: '20px' }}></TextField>
-                                                  <TextField sx={{ pb: '20px' }}></TextField>
-                                                  <TextField sx={{ pb: '20px' }}></TextField>
-                                                  <Button>Prijava</Button>
+
+                                                  {
+                                                            isSignUp ?
+                                                                      <TextField type='text' placeholder="ime i prezime" sx={{ pb: '20px' }}></TextField>
+                                                                      :
+                                                                      null
+                                                  }
+
+                                                  <TextField type='email' placeholder="email" sx={{ pb: '20px' }}></TextField>
+                                                  <TextField type='password' placeholder="password" sx={{ pb: '20px' }}></TextField>
+                                                  {
+                                                            isSignUp ? <LoginButton sx={{ mb: '20px' }}>Registruj se</LoginButton>
+                                                                      : <LoginButton sx={{ mb: '20px' }}>Prijavi se</LoginButton>
+                                                  }
+
+                                                  {
+                                                            isSignUp ? <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Prijavi se</SwitchLoginRegisterButton> :
+                                                                      <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Registruj se</SwitchLoginRegisterButton>
+
+                                                  }
+
                                         </Box>
                               </DialogContent>
                     </Dialog >
