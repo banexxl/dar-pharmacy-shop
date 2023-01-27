@@ -27,7 +27,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                               <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                                         <ProductImage src={product.imageURL} />
                                         <ProductFavButton isfav={0}>
-                                                  <FavoriteIcon />
+                                                  <Tooltip placement="left" title="Add to wishlist">
+                                                            <FavoriteIcon />
+                                                  </Tooltip>
                                         </ProductFavButton>
                                         {(showOptions || isScreenToMedium) && (
                                                   <ProductAddToCart show={showOptions.toString()} variant="contained">

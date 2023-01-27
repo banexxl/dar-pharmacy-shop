@@ -5,14 +5,16 @@ import { MessageText, PromotionsContainer } from "../../styles/promotions";
 import { Colors } from "../../styles/theme";
 
 const messages = [
-          "20% off on your first order!",
-          "Summer sale starts now, visit any store.",
-          "Please like and subscribe :)",
+          "20% na prvu porudžbinu!",
+          "Nalazimo se u Kragujevcu",
+          "Pretplatite se na naše vesti i akcije!",
 ];
 export default function Promotions() {
+
           const containerRef = useRef();
           const [show, setShow] = useState(true);
           const [messageIndex, setMessageIndex] = useState(0);
+
           useEffect(() => {
                     setTimeout(() => {
                               setShow(false);
@@ -35,7 +37,7 @@ export default function Promotions() {
           }, [])
 
           return (
-                    <PromotionsContainer ref={containerRef} overflow="hidden">
+                    <PromotionsContainer ref={containerRef} overflow="hidden" sx={{ height: '20px' }}>
                               <Slide
                                         direction={show ? "left" : "right"}
                                         in={show}

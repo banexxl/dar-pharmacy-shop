@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Grid, List, ListItemText, Typography, Button, Stack, Container } from "@mui/material";
+import { Grid, List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon } from "@mui/material";
 import { Box } from "@mui/system";
 import { Colors } from "../../styles/theme";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -7,8 +7,21 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { SubscribeTf, FooterTitle } from "../../styles/footer";
 import SendIcon from "@mui/icons-material/Send";
+import { ExpandLess } from "@mui/icons-material";
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import Collapse from '@mui/material/Collapse';
+import StarBorder from '@mui/icons-material/StarBorder';
+import { useState } from "react";
 
 export default function Footer() {
+
+          const [open, setOpen] = useState(true);
+
+          const handleClick = () => {
+                    setOpen(!open);
+          };
+
           return (
                     <Box
                               sx={{
@@ -20,14 +33,25 @@ export default function Footer() {
                                         fontSize: { xs: '12px', md: '14px' }
                               }}
                     >
-                              <Grid container spacing={2} justifyContent="center">
-                                        <Grid item md={6} lg={4}>
-                                                  <FooterTitle variant="body1">About us</FooterTitle>
-                                                  <Typography variant="caption">
-                                                            Lorem ipsum dolor sit amet cons adipisicing elit sed do eiusm tempor
-                                                            incididunt ut labor et dolore magna aliqua. Ut enim ad minim veniam,
-                                                            quis nostrud.
-                                                  </Typography>
+                              <Grid container spacing={1} justifyContent="center">
+                                        <ListItemButton onClick={handleClick}>
+                                                  <ListItemIcon>
+                                                            <InboxIcon />
+                                                  </ListItemIcon>
+                                                  <ListItemText primary="Inbox" />
+                                                  {open ? <ExpandLess /> : <ExpandMore />}
+                                        </ListItemButton>
+                                        <Collapse in={open} timeout="auto" unmountOnExit>
+                                                  <List component="div" disablePadding>
+                                                            <ListItemButton sx={{ pl: 4 }}>
+                                                                      <ListItemIcon>
+                                                                                <StarBorder />
+                                                                      </ListItemIcon>
+                                                                      <ListItemText primary="Starred" />
+                                                            </ListItemButton>
+                                                  </List>
+                                        </Collapse>
+                                        <Grid item md={2} lg={2}>
                                                   <Box
                                                             sx={{
                                                                       mt: 4,
@@ -38,6 +62,31 @@ export default function Footer() {
                                                             <TwitterIcon sx={{ mr: 1 }} />
                                                             <InstagramIcon />
                                                   </Box>
+                                        </Grid>
+                                        <Grid item md={6} lg={2}>
+                                                  <FooterTitle variant="body1">information</FooterTitle>
+                                                  <List>
+                                                            <ListItemText>
+                                                                      <Typography lineHeight={2} variant="caption">
+                                                                                About Us
+                                                                      </Typography>
+                                                            </ListItemText>
+                                                            <ListItemText>
+                                                                      <Typography lineHeight={2} variant="caption">
+                                                                                Order Tracking
+                                                                      </Typography>
+                                                            </ListItemText>
+                                                            <ListItemText>
+                                                                      <Typography lineHeight={2} variant="caption">
+                                                                                Privacy &amp; Policy
+                                                                      </Typography>
+                                                            </ListItemText>
+                                                            <ListItemText>
+                                                                      <Typography lineHeight={2} variant="caption">
+                                                                                Terms &amp; Conditions
+                                                                      </Typography>
+                                                            </ListItemText>
+                                                  </List>
                                         </Grid>
                                         <Grid item md={6} lg={2}>
                                                   <FooterTitle variant="body1">information</FooterTitle>
