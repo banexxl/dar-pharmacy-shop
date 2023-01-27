@@ -16,7 +16,6 @@ const productsServices = () => {
                               return { message: error.message }
                     }
                     finally {
-                              console.log("finallize");
                               await client.close();
                     }
           }

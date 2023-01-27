@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { LoginButton, SwitchLoginRegisterButton } from "@/styles/login";
 import { useState } from "react";
+import { textInputs } from "polished";
 
 
 function SlideTransition(props: any) {
@@ -17,9 +18,25 @@ export default function LoginRegister({ open, onClose, product }: any) {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
 
+          const [inputInfo, setInputInfo] = useState({
+                    name: '',
+                    email: '',
+                    password: ''
+          })
           const [isSignUp, setIsSignUp] = useState(false)
 
+          const handleChange = (e: any) => {
+                    //da ne izgubimo info prilikom switcha sa login na register i obratno
+                    setInputInfo((prevState) => ({
+                              ...prevState,
+                              [e.target.name]: e.target.value
+                    }))
+          }
 
+          const handleSubmit = (e: any) => {
+                    e.preventDefault()
+                    console.log(inputInfo)
+          }
 
 
           return (
@@ -63,16 +80,16 @@ export default function LoginRegister({ open, onClose, product }: any) {
 
                                                   {
                                                             isSignUp ?
-                                                                      <TextField type='text' placeholder="ime i prezime" sx={{ pb: '20px' }}></TextField>
+                                                                      <TextField value={inputInfo.name} name="name" type='text' placeholder="ime i prezime" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)}></TextField>
                                                                       :
                                                                       null
                                                   }
 
-                                                  <TextField type='email' placeholder="email" sx={{ pb: '20px' }}></TextField>
-                                                  <TextField type='password' placeholder="password" sx={{ pb: '20px' }}></TextField>
+                                                  <TextField value={inputInfo.email} name="email" type='email' placeholder="email" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
+                                                  <TextField value={inputInfo.password} name="password" type='password' placeholder="password" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
                                                   {
-                                                            isSignUp ? <LoginButton sx={{ mb: '20px' }}>Registruj se</LoginButton>
-                                                                      : <LoginButton sx={{ mb: '20px' }}>Prijavi se</LoginButton>
+                                                            isSignUp ? <LoginButton onClick={(e) => handleSubmit(e)} sx={{ mb: '20px' }}>Registruj se</LoginButton>
+                                                                      : <LoginButton onClick={(e) => handleSubmit(e)} sx={{ mb: '20px' }}>Prijavi se</LoginButton>
                                                   }
 
                                                   {
