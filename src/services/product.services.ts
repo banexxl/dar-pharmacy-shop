@@ -6,7 +6,7 @@ const productsServices = () => {
 
           const getProductForHomePage = async () => {
 
-                    const client: any = await MongoClient.connect(process.env.REACT_APP_DB_CONNECT!)
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
                     try {
                               const db = client.db('DAR_DB')
