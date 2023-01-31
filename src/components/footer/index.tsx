@@ -34,7 +34,7 @@ export default function Footer() {
                               }}
                     >
                               <Grid container spacing={1} justifyContent="center">
-                                        <ListItemButton onClick={handleClick}>
+                                        {/* <ListItemButton onClick={handleClick}>
                                                   <ListItemIcon>
                                                             <InboxIcon />
                                                   </ListItemIcon>
@@ -50,7 +50,8 @@ export default function Footer() {
                                                                       <ListItemText primary="Starred" />
                                                             </ListItemButton>
                                                   </List>
-                                        </Collapse>
+                                        </Collapse> */}
+
                                         <Grid item md={2} lg={2}>
                                                   <Box
                                                             sx={{

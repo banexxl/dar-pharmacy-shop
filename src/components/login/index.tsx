@@ -1,13 +1,14 @@
 import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, TextField, } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Colors } from "../../styles/theme";
+import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { LoginButton, SwitchLoginRegisterButton } from "@/styles/login";
+import GoogleButton from 'react-google-button'
 import { useState } from "react";
-import { textInputs } from "polished";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { sign } from "crypto";
+import Image from 'next/image'
+
 
 
 function SlideTransition(props: any) {
@@ -36,17 +37,51 @@ export default function LoginRegister({ open, onClose }: any) {
                     }))
           }
 
-          const handleSubmit = (e: any) => {
-                    e.preventDefault()
-                    signIn()
-          }
-
 
           if (session) {
-                    return <>
-                              zdravo {session.user?.name}
-                              <button onClick={() => signOut()}>Logout</button>
-                    </>
+                    return (
+                              <Dialog
+                                        TransitionComponent={SlideTransition}
+                                        open={open}
+                                        fullScreen
+                              >
+                                        <DialogTitle
+                                                  sx={{
+                                                            background: Colors.secondary,
+                                                  }}
+                                        >
+                                                  <Box
+                                                            display="flex"
+                                                            alignItems="center"
+                                                            justifyContent={"space-between"}
+                                                  >
+                                                            Prijava
+                                                            <IconButton onClick={onClose}>
+                                                                      <CloseIcon />
+                                                            </IconButton>
+                                                  </Box>
+                                        </DialogTitle>
+
+                                        <DialogContent>
+                                                  <Box sx={{
+                                                            ml: '50%', mt: '10%', borderRadius: '20px',
+                                                            transform: 'translateX(-50%)',
+                                                            display: 'flex', flexDirection: 'column',
+                                                            width: { xs: '200px', sm: '250px', md: '400px', xl: '600px' },
+                                                            height: { xs: '200px', sm: '250px', md: '400px', xl: '500px' },
+                                                            alignItems: 'center', justifyContent: 'center',
+                                                            boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
+                                                  }}>
+                                                            <Typography>
+                                                                      {session.user?.name}
+
+                                                            </Typography>
+                                                            <Image src={session.user?.image} height={200} width={100} alt='image'></Image>
+                                                            <Button onClick={() => signOut()}>Logout</Button>
+                                                  </Box>
+                                        </DialogContent>
+                              </Dialog >
+                    )
           } else {
                     return (
                               <Dialog
@@ -97,8 +132,8 @@ export default function LoginRegister({ open, onClose }: any) {
                                                             <TextField value={inputInfo.email} name="email" type='email' placeholder="email" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
                                                             <TextField value={inputInfo.password} name="password" type='password' placeholder="password" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
                                                             {
-                                                                      isSignUp ? <LoginButton onClick={(e) => handleSubmit(e)} sx={{ mb: '20px' }}>Registruj se</LoginButton>
-                                                                                : <LoginButton onClick={(e) => handleSubmit(e)} sx={{ mb: '20px' }}>Prijavi se</LoginButton>
+                                                                      isSignUp ? <LoginButton sx={{ mb: '20px' }}>Registruj se</LoginButton>
+                                                                                : <LoginButton sx={{ mb: '20px' }}>Prijavi se</LoginButton>
                                                             }
 
                                                             {
@@ -106,10 +141,18 @@ export default function LoginRegister({ open, onClose }: any) {
                                                                                 <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Registruj se</SwitchLoginRegisterButton>
 
                                                             }
-
+                                                            <GoogleButton
+                                                                      onClick={() => signIn()}
+                                                            />
                                                   </Box>
+
                                         </DialogContent>
                               </Dialog >
                     );
           }
+}
+
+const getStaticProps = () => {
+          console.log('sdsd');
+
 }
