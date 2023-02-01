@@ -19,6 +19,7 @@ export default function Products(props: any) {
                               ) : (
                                         <SingleProductDesktop product={product} isScreenToMedium={isScreenToMedium} />
                               )}
+
                     </Grid>
           ));
           return (
