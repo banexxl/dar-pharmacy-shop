@@ -1,7 +1,8 @@
+import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
 
           providers: [
                     GoogleProvider({
@@ -10,7 +11,10 @@ export const authOptions = {
                     })
           ],
           callbacks: {
-
+                    async jwt({ token }) {
+                              token.userRole = "admin"
+                              return token
+                    },
           },
           secret: process.env.JWT_SECRET
 }
