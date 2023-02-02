@@ -76,7 +76,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                                                       {session.user?.name}
 
                                                             </Typography>
-                                                            <Image src={session.user?.image} height={200} width={100} alt='image'></Image>
+                                                            <Image src={session.user?.image!} height={200} width={100} alt='image'></Image>
                                                             <Button onClick={() => signOut()}>Logout</Button>
                                                   </Box>
                                         </DialogContent>

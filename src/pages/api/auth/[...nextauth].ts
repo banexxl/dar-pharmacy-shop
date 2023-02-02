@@ -1,6 +1,8 @@
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
+import EmailProvider from 'next-auth/providers/email'
+import dotenv from 'dotenv'
 
 export const authOptions: NextAuthOptions = {
 
@@ -8,7 +10,12 @@ export const authOptions: NextAuthOptions = {
                     GoogleProvider({
                               clientId: process.env.GOOGLE_CLIENT_ID!,
                               clientSecret: process.env.GOOGLE_CLIENT_SECRET!
-                    })
+                    }),
+                    // Passwordless / email sign in
+                    EmailProvider({
+                              server: process.env.MAIL_SERVER,
+                              from: 'Apoteka DAR <no-reply@apoteka-dar.com>'
+                    }),
           ],
           callbacks: {
                     async jwt({ token }) {
@@ -16,7 +23,7 @@ export const authOptions: NextAuthOptions = {
                               return token
                     },
           },
-          secret: process.env.JWT_SECRET
+          secret: dotenv.config().parsed!.JWT_SECRET
 }
 
 export default NextAuth(authOptions)

@@ -3,10 +3,8 @@ import { authOptions } from "../auth/[...nextauth]"
 
 import type { NextApiRequest, NextApiResponse } from "next"
 
-export default async function handler(
-          req: NextApiRequest,
-          res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
           const session = await getServerSession(req, res, authOptions)
 
           if (session) {
