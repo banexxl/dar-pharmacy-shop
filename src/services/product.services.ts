@@ -1,6 +1,4 @@
-import { limit } from "@/components/productdetails/counter/limiter"
 import { MongoClient } from "mongodb"
-import { DB } from '../interfaces/db'
 
 const productsServices = () => {
 

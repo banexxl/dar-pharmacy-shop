@@ -3,9 +3,12 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from 'next-auth/providers/email'
 import dotenv from 'dotenv'
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../services/usersdb-connect";
 
 export const authOptions: NextAuthOptions = {
 
+          adapter: MongoDBAdapter(clientPromise),
           providers: [
                     GoogleProvider({
                               clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -13,8 +16,15 @@ export const authOptions: NextAuthOptions = {
                     }),
                     // Passwordless / email sign in
                     EmailProvider({
-                              server: process.env.MAIL_SERVER,
-                              from: 'Apoteka DAR <no-reply@apoteka-dar.com>'
+                              server: {
+                                        host: process.env.EMAIL_SERVER_HOST,
+                                        port: process.env.EMAIL_SERVER_PORT,
+                                        auth: {
+                                                  user: process.env.EMAIL_SERVER_USER,
+                                                  pass: process.env.EMAIL_SERVER_PASSWORD,
+                                        },
+                              },
+                              from: process.env.EMAIL_FROM,
                     }),
           ],
           callbacks: {
@@ -23,7 +33,7 @@ export const authOptions: NextAuthOptions = {
                               return token
                     },
           },
-          secret: dotenv.config().parsed!.JWT_SECRET
+          secret: process.env.JWT_SECRET
 }
 
 export default NextAuth(authOptions)

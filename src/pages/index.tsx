@@ -11,6 +11,7 @@ import AppDrawer from "../components/navbar/drawer";
 import Promotions from "../components/promotions";
 import SearchBox from "../components/search"
 import productsServices from '@/services/product.services';
+import dotenv from 'dotenv'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,6 +49,10 @@ export default function Home(props: any) {
 
 
 export async function getStaticProps() {
+
+
+
+
 
           const dbData: any = await productsServices().getProductForHomePage().then((data: any) => {
                     return data
