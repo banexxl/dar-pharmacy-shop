@@ -3,11 +3,7 @@ import { useRef } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
-import { ProductAddToCart, Product, ProductImage } from "../../styles/product";
-import { BannerShopButton } from "../../styles/banner";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { ProductAddToCart, Product, ProductImage } from "../../styles/product"
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";

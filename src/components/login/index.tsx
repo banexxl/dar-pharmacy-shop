@@ -142,6 +142,7 @@ export default function LoginRegister({ open, onClose }: any) {
 
                                                             }
                                                             <GoogleButton
+                                                                      style={{ borderRadius: '10px', backgroundColor: Colors.primary }}
                                                                       onClick={() => signIn()}
                                                             />
                                                   </Box>
@@ -150,9 +151,4 @@ export default function LoginRegister({ open, onClose }: any) {
                               </Dialog >
                     );
           }
-}
-
-const getStaticProps = () => {
-          console.log('sdsd');
-
 }

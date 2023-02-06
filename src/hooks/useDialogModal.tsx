@@ -12,11 +12,6 @@ export default function useDialogModal(Component: any) {
                     setOpen(true);
           }, []);
 
-          interface DialogProps {
-                    product: any
-          }
-
-
           const DialogComponent: any = useCallback(({ ...props }) => {
 
                     if (!open) {
