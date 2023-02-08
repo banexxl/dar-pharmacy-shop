@@ -83,72 +83,73 @@ export default function LoginRegister({ open, onClose }: any) {
                               </Dialog >
                     )
           } else {
-                    return (
-                              <Dialog
-                                        TransitionComponent={SlideTransition}
-                                        open={open}
-                                        fullScreen
-                              >
-                                        <DialogTitle
-                                                  sx={{
-                                                            background: Colors.secondary,
-                                                  }}
-                                        >
-                                                  <Box
-                                                            display="flex"
-                                                            alignItems="center"
-                                                            justifyContent={"space-between"}
-                                                  >
-                                                            Prijava
-                                                            <IconButton onClick={onClose}>
-                                                                      <CloseIcon />
-                                                            </IconButton>
-                                                  </Box>
-                                        </DialogTitle>
 
-                                        <DialogContent>
-                                                  <Box sx={{
-                                                            ml: '50%', mt: '10%', borderRadius: '20px',
-                                                            transform: 'translateX(-50%)',
-                                                            display: 'flex', flexDirection: 'column',
-                                                            width: { xs: '200px', sm: '250px', md: '400px', xl: '600px' },
-                                                            height: { xs: '200px', sm: '250px', md: '400px', xl: '500px' },
-                                                            alignItems: 'center', justifyContent: 'center',
-                                                            boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
-                                                  }}>
-                                                            <Typography variant='h3' sx={{ textAlign: 'center', margin: '20px 20px' }}>
-                                                                      {
-                                                                                isSignUp ? 'Registruj se' : 'Prijavi se'
-                                                                      }
-                                                            </Typography>
+                    // <Dialog
+                    //           TransitionComponent={SlideTransition}
+                    //           open={open}
+                    //           fullScreen
+                    // >
+                    //           <DialogTitle
+                    //                     sx={{
+                    //                               background: Colors.secondary,
+                    //                     }}
+                    //           >
+                    //                     <Box
+                    //                               display="flex"
+                    //                               alignItems="center"
+                    //                               justifyContent={"space-between"}
+                    //                     >
+                    //                               Prijava
+                    //                               <IconButton onClick={onClose}>
+                    //                                         <CloseIcon />
+                    //                               </IconButton>
+                    //                     </Box>
+                    //           </DialogTitle>
 
-                                                            {
-                                                                      isSignUp ?
-                                                                                <TextField value={inputInfo.name} name="name" type='text' placeholder="ime i prezime" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)}></TextField>
-                                                                                :
-                                                                                null
-                                                            }
+                    //           <DialogContent>
+                    //                     <Box sx={{
+                    //                               ml: '50%', mt: '10%', borderRadius: '20px',
+                    //                               transform: 'translateX(-50%)',
+                    //                               display: 'flex', flexDirection: 'column',
+                    //                               width: { xs: '200px', sm: '250px', md: '400px', xl: '600px' },
+                    //                               height: { xs: '200px', sm: '250px', md: '400px', xl: '500px' },
+                    //                               alignItems: 'center', justifyContent: 'center',
+                    //                               boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
+                    //                     }}>
+                    //                               <Typography variant='h3' sx={{ textAlign: 'center', margin: '20px 20px' }}>
+                    //                                         {
+                    //                                                   isSignUp ? 'Registruj se' : 'Prijavi se'
+                    //                                         }
+                    //                               </Typography>
 
-                                                            <TextField value={inputInfo.email} name="email" type='email' placeholder="email" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
-                                                            <TextField value={inputInfo.password} name="password" type='password' placeholder="password" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
-                                                            {
-                                                                      isSignUp ? <LoginButton sx={{ mb: '20px' }}>Registruj se</LoginButton>
-                                                                                : <LoginButton sx={{ mb: '20px' }}>Prijavi se</LoginButton>
-                                                            }
+                    //                               {
+                    //                                         isSignUp ?
+                    //                                                   <TextField value={inputInfo.name} name="name" type='text' placeholder="ime i prezime" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)}></TextField>
+                    //                                                   :
+                    //                                                   null
+                    //                               }
 
-                                                            {
-                                                                      isSignUp ? <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Prijavi se</SwitchLoginRegisterButton> :
-                                                                                <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Registruj se</SwitchLoginRegisterButton>
+                    //                               <TextField value={inputInfo.email} name="email" type='email' placeholder="email" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
+                    //                               <TextField value={inputInfo.password} name="password" type='password' placeholder="password" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
+                    //                               {
+                    //                                         isSignUp ? <LoginButton sx={{ mb: '20px' }}>Registruj se</LoginButton>
+                    //                                                   : <LoginButton sx={{ mb: '20px' }}>Prijavi se</LoginButton>
+                    //                               }
 
-                                                            }
-                                                            <GoogleButton
-                                                                      style={{ borderRadius: '10px', backgroundColor: Colors.primary }}
-                                                                      onClick={() => signIn()}
-                                                            />
-                                                  </Box>
+                    //                               {
+                    //                                         isSignUp ? <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Prijavi se</SwitchLoginRegisterButton> :
+                    //                                                   <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Registruj se</SwitchLoginRegisterButton>
 
-                                        </DialogContent>
-                              </Dialog >
-                    );
+                    //                               }
+                    //                               <GoogleButton
+                    //                                         style={{ borderRadius: '10px', backgroundColor: Colors.primary }}
+                    //                                         onClick={() => signIn()}
+                    //                               />
+                    //                     </Box>
+
+                    //           </DialogContent>
+                    // </Dialog >
+                    signIn()
+
           }
 }
