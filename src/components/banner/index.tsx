@@ -1,5 +1,6 @@
 import { Button, Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
+import Link from "next/link";
 import { BannerContainer, BannerContent, BannerDescription, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
 
 export default function Banner() {
@@ -22,8 +23,11 @@ export default function Banner() {
                                                   Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u našu kvalitet i uslugu. Hvala što ste nas odabrali!
                                         </BannerDescription>
 
-                                        <BannerShopButton color="primary">Proizvodi</BannerShopButton>
+                                        <BannerShopButton color="primary" >
+                                                  <Link href="/products">Proizvodi</Link>
+                                        </BannerShopButton>
+
                               </BannerContent>
-                    </BannerContainer>
+                    </BannerContainer >
           )
 }

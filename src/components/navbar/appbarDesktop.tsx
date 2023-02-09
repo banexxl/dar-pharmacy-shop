@@ -3,7 +3,7 @@ import { AppbarContainer, AppbarHeader, MyList } from "../../styles/appbar"
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { useUIContext } from "../../context/ui";
-import CartDialog from '../cart'
+import Link from "next/link";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
@@ -11,7 +11,11 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
 
           return (
                     <AppbarContainer>
-                              <AppbarHeader variant="h4">Apoteka Dar</AppbarHeader>
+                              <AppbarHeader variant="h4">
+                                        <Link href="/">
+                                                  Apoteka Dar
+                                        </Link>
+                              </AppbarHeader>
                               <MyList type="row">
                                         <ListItemButton sx={{ maxWidth: '200px', mr: '100px' }} onClick={() => setShowSearchBox(true)}>
                                                   <ListItemIcon>

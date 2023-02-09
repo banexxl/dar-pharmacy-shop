@@ -1,16 +1,17 @@
 import { Inter } from '@next/font/google'
 import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
-import Navbar from "../components/navbar";
+import Navbar from "../../components/navbar";
 import { ThemeProvider } from "@mui/system";
-import theme from "../styles/theme";
-import Banner from "../components/banner";
-import Products from "../components/products";
-import { UIProvider } from "../context/ui";
-import Footer from "../components/footer";
-import AppDrawer from "../components/navbar/drawer";
-import Promotions from "../components/promotions";
-import SearchBox from "../components/search"
+import theme from "../../styles/theme";
+import Banner from "../../components/banner";
+import Products from "../../components/products";
+import { UIProvider } from "../../context/ui";
+import Footer from "../../components/footer";
+import AppDrawer from "../../components/navbar/drawer";
+import Promotions from "../../components/promotions";
+import SearchBox from "../../components/search"
 import productsServices from '@/services/product.services'
+import Toolbar from '@/components/toolbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,13 +31,8 @@ export default function Home(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <Navbar />
-                                                            <Banner />
-                                                            <Promotions />
+                                                            <Toolbar />
                                                             <SearchBox />
-                                                            <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-                                                                      <Typography variant="h4">Deo asortimana</Typography>
-                                                            </Box>
-                                                            <Products data={products} />
                                                             <Footer />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
