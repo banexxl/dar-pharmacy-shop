@@ -4,7 +4,6 @@ import Menu, { MenuProps } from '@mui/material/Menu';
 import { Box } from "@mui/system"
 import { Colors } from "../theme"
 
-
 export const ToolbarContainer = styled(Box)(({ theme }: any) => ({
           position: 'relative',
           backgroundColor: Colors.secondary,
@@ -26,7 +25,12 @@ export const ToolbarItems = styled(Container)(({ theme }: any) => ({
 }))
 
 export const MenuButton = styled(Button)(({ theme }: any) => ({
-          backgroundColor: Colors.secondary
+          backgroundColor: Colors.secondary,
+          "&:hover": {
+                    backgroundColor: Colors.dark,
+                    color: Colors.light
+          },
+          marginRight: '20px'
 }))
 
 
