@@ -7,6 +7,7 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta";
+import { useShoppingCart } from "@/context/cart";
 
 export default function SingleProduct({ product, isScreenToMedium }: any) {
 
@@ -21,6 +22,15 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
           const handleMouseLeave = () => {
                     setShowOptions(false);
           };
+
+          const cart = useShoppingCart()
+
+          const handleAddToCart = (e: any) => {
+
+                    cart.increaseCartQuantity(e)
+
+          }
+
           return (
                     <>
                               <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -44,7 +54,7 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
                                                   </Stack>
                                         </ProductActionsWrapper>
                               </Product>
-                              <ProductAddToCart variant="contained">Add to cart</ProductAddToCart>
+                              <ProductAddToCart variant="contained" onClick={(e: any) => handleAddToCart(product.id)}>Add to cart</ProductAddToCart>
                               <ProductDetailDialog product={product} />
                     </>
           );

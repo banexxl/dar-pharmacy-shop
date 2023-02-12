@@ -7,13 +7,21 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta";
-import React from "react";
+import { useShoppingCart } from '../../context/cart'
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
           const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails)
 
           const [showOptions, setShowOptions] = useState(false);
+
+          const cart = useShoppingCart()
+
+          const handleAddToCart = (e: any) => {
+
+                    cart.increaseCartQuantity(e)
+
+          }
 
           const handleMouseEnter = () => {
                     setShowOptions(true);
@@ -32,7 +40,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   </Tooltip>
                                         </ProductFavButton>
                                         {(showOptions || isScreenToMedium) && (
-                                                  <ProductAddToCart show={showOptions.toString()} variant="contained">
+                                                  <ProductAddToCart show={showOptions.toString()} variant="contained" onClick={(e: any) => handleAddToCart(product._id)}>
                                                             Add to cart
                                                   </ProductAddToCart>
                                         )}
