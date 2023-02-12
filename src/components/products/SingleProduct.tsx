@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, ProductMetaWrapper, } from "../../styles/product";
 import { Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";

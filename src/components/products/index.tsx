@@ -3,8 +3,6 @@ import SingleProduct from "./SingleProduct";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
-import { useEffect, useState } from "react"
-import productsServices from "@/services/product.services";
 
 
 export default function Products(props: any) {

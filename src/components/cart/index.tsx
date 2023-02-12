@@ -1,37 +1,27 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, } from "@mui/material";
-import { useRef } from "react";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
-import { ProductAddToCart, Product, ProductImage } from "../../styles/product";
-import { BannerShopButton } from "../../styles/banner";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Product, ProductImage } from "../../styles/product";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Counter from "../productdetails/counter";
+import { CartWrapper, ProductDetailInfoWrapper } from "@/styles/cart";
+import { useShoppingCart } from "@/context/cart";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
 }
 
-const CartWrapper = styled(Box)(({ theme }: any) => ({
-          display: "flex",
-          padding: theme.spacing(4),
-}));
-
-const ProductDetailInfoWrapper = styled(Box)(() => ({
-          display: "flex",
-          flexDirection: "column",
-          maxWidth: 500,
-          lineHeight: 1.5,
-}));
-
-export default function Cart({ open, onClose, product }: any) {
+export default function Cart({ open, onClose }: any) {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+
+          const cart = useShoppingCart()
+
+          console.log(cart.cartItems);
+
+
           return (
                     <Dialog
                               TransitionComponent={SlideTransition}
@@ -56,18 +46,23 @@ export default function Cart({ open, onClose, product }: any) {
                               </DialogTitle>
                               <DialogContent>
                                         <CartWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-                                                  <Product sx={{ mr: 4 }}>
-                                                            <ProductImage />
-                                                  </Product>
-                                                  <ProductDetailInfoWrapper>
-                                                            <Typography>SKU: 123</Typography>
-                                                            <Typography>Availability: 5 in stock</Typography>
-                                                            <Typography sx={{ lineHeight: 2 }} variant="h4">
-                                                                      Product name
-                                                            </Typography>
+                                                  {
+                                                            cart.cartItems ?
+                                                                      cart.cartItems.map((product: any) => {
+                                                                                <Product id={product.id} sx={{ mr: 4 }}>
+                                                                                          <ProductImage src={product.imageURL} />
+                                                                                          <ProductDetailInfoWrapper>
+                                                                                                    <Typography sx={{ lineHeight: 2 }} variant="h4">
+                                                                                                              {product.id}
+                                                                                                    </Typography>
+                                                                                                    <Counter></Counter>
+                                                                                          </ProductDetailInfoWrapper>
+                                                                                </Product>
+                                                                      })
+                                                                      :
+                                                                      null
+                                                  }
 
-                                                            <Counter></Counter>
-                                                  </ProductDetailInfoWrapper>
                                         </CartWrapper>
                               </DialogContent>
                     </Dialog>

@@ -7,7 +7,7 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta";
-import { useShoppingCart } from '../../context/cart'
+import { useShoppingCart } from "@/context/cart";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
