@@ -7,7 +7,8 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta";
-import { useShoppingCart } from "@/context/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, increment } from "../../store/cartSlice";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
@@ -15,13 +16,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
 
           const [showOptions, setShowOptions] = useState(false);
 
-          const cart = useShoppingCart()
-
-          const handleAddToCart = (e: any) => {
-
-                    cart.increaseCartQuantity(e)
-
-          }
+          const dispatch = useDispatch();
 
           const handleMouseEnter = () => {
                     setShowOptions(true);
@@ -40,7 +35,11 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   </Tooltip>
                                         </ProductFavButton>
                                         {(showOptions || isScreenToMedium) && (
-                                                  <ProductAddToCart show={showOptions.toString()} variant="contained" onClick={(e: any) => handleAddToCart(product._id)}>
+                                                  <ProductAddToCart show={showOptions.toString()} variant="contained" onClick={() => {
+                                                            console.log(product._id);
+
+                                                            dispatch(addToCart(product._id))
+                                                  }}>
                                                             Add to cart
                                                   </ProductAddToCart>
                                         )}

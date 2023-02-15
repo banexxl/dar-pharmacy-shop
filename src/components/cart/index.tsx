@@ -6,20 +6,26 @@ import { Product, ProductImage } from "../../styles/product";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Counter from "../productdetails/counter";
-import { CartWrapper, ProductDetailInfoWrapper } from "@/styles/cart";
-import { useShoppingCart } from "@/context/cart";
+import { CartWrapper, ProductDetailInfoWrapper } from "@/styles/cart"
+import { useDispatch, useSelector } from "react-redux";
+import ICartItem from "@/interfaces/cart";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
 }
 
-export default function Cart({ open, onClose }: any) {
-          const theme = useTheme();
-          const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+interface ICartProps extends ICartItem {
+          open: boolean
+          onClose: () => void
+}
 
-          const cart = useShoppingCart()
+export default function Cart({ open, onClose, id, name, price, quantity, imageURL }: ICartProps) {
 
-          console.log(cart.cartItems);
+          const theme = useTheme()
+          const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+
+          const cart = useSelector((state: any) => state.cart)
+          console.log('cartttt ', cart)
 
 
           return (
@@ -46,23 +52,16 @@ export default function Cart({ open, onClose }: any) {
                               </DialogTitle>
                               <DialogContent>
                                         <CartWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-                                                  {
-                                                            cart.cartItems ?
-                                                                      cart.cartItems.map((product: any) => {
-                                                                                <Product id={product.id} sx={{ mr: 4 }}>
-                                                                                          <ProductImage src={product.imageURL} />
-                                                                                          <ProductDetailInfoWrapper>
-                                                                                                    <Typography sx={{ lineHeight: 2 }} variant="h4">
-                                                                                                              {product.id}
-                                                                                                    </Typography>
-                                                                                                    <Counter></Counter>
-                                                                                          </ProductDetailInfoWrapper>
-                                                                                </Product>
-                                                                      })
-                                                                      :
-                                                                      null
-                                                  }
-
+                                                  <Product id={id} sx={{ mr: 4 }}>
+                                                            <ProductImage src={imageURL} />
+                                                            <ProductDetailInfoWrapper>
+                                                                      <Typography sx={{ lineHeight: 2 }} variant="h4">
+                                                                                {name}
+                                                                                {price}x{quantity}
+                                                                      </Typography>
+                                                                      <Counter />
+                                                            </ProductDetailInfoWrapper>
+                                                  </Product>
                                         </CartWrapper>
                               </DialogContent>
                     </Dialog>
