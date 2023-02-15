@@ -7,13 +7,13 @@ const cartSlice = createSlice({
           initialState,
           reducers: {
                     addToCart(state, { payload }) {
-                              const { id } = payload;
+                              const { _id } = payload;
 
-                              const find = state.find((item: any) => item.id === id);
+                              const find = state.find((item: any) => item.id === _id);
                               //provera da li item postoji u korpi
                               if (find) {
                                         return state.map((item: any) =>
-                                                  item.id === id
+                                                  item.id === _id
                                                             ? {
                                                                       ...item,
                                                                       quantity: item.quantity + 1
@@ -28,10 +28,6 @@ const cartSlice = createSlice({
                               }
                     },
                     increment(state, { payload }) {
-
-                              console.log('usao u inkrement')
-                              console.log('state je: ', state)
-                              console.log('payload je: ', payload)
 
                               return state.map((item: any) =>
                                         item.id === payload
