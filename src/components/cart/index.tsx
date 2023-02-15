@@ -9,7 +9,6 @@ import Counter from "../productdetails/counter";
 import { CartWrapper, ProductDetailInfoWrapper } from "@/styles/cart"
 import { useDispatch, useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
-import IProduct from "@/interfaces/product";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -25,7 +24,7 @@ export default function Cart({ open, onClose }: ICartProps) {
           const theme = useTheme()
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
-          const cart = useSelector((state: any) => state.cart)
+          const cart: ICartItem[] = useSelector((state: any) => state.cart)
           console.log('cart: ', cart);
 
           return (
@@ -53,9 +52,9 @@ export default function Cart({ open, onClose }: ICartProps) {
                               <DialogContent>
                                         <CartWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                                                   {
-                                                            cart ?
-                                                                      cart.map((product: IProduct) => {
-                                                                                < Product id={product._id} sx={{ mr: 4 }}>
+                                                            cart.map((product: ICartItem) => {
+                                                                      return (
+                                                                                <Product key={product._id} sx={{ mr: 4 }}>
                                                                                           <ProductImage src={product.imageURL} />
                                                                                           <ProductDetailInfoWrapper>
                                                                                                     <Typography sx={{ lineHeight: 2 }} variant="h4">
@@ -65,8 +64,8 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                                                     <Counter />
                                                                                           </ProductDetailInfoWrapper>
                                                                                 </Product>
-                                                                      })
-                                                                      : null
+                                                                      )
+                                                            })
                                                   }
                                         </CartWrapper>
                               </DialogContent>
