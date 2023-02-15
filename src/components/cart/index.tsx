@@ -9,6 +9,7 @@ import Counter from "../productdetails/counter";
 import { CartWrapper, ProductDetailInfoWrapper } from "@/styles/cart"
 import { useDispatch, useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
+import IProduct from "@/interfaces/product";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -19,14 +20,13 @@ interface ICartProps extends ICartItem {
           onClose: () => void
 }
 
-export default function Cart({ open, onClose, id, name, price, quantity, imageURL }: ICartProps) {
+export default function Cart({ open, onClose }: ICartProps) {
 
           const theme = useTheme()
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
           const cart = useSelector((state: any) => state.cart)
-          console.log('cartttt ', cart)
-
+          console.log('cart: ', cart);
 
           return (
                     <Dialog
@@ -52,18 +52,24 @@ export default function Cart({ open, onClose, id, name, price, quantity, imageUR
                               </DialogTitle>
                               <DialogContent>
                                         <CartWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-                                                  <Product id={id} sx={{ mr: 4 }}>
-                                                            <ProductImage src={imageURL} />
-                                                            <ProductDetailInfoWrapper>
-                                                                      <Typography sx={{ lineHeight: 2 }} variant="h4">
-                                                                                {name}
-                                                                                {price}x{quantity}
-                                                                      </Typography>
-                                                                      <Counter />
-                                                            </ProductDetailInfoWrapper>
-                                                  </Product>
+                                                  {
+                                                            cart ?
+                                                                      cart.map((product: IProduct) => {
+                                                                                < Product id={product._id} sx={{ mr: 4 }}>
+                                                                                          <ProductImage src={product.imageURL} />
+                                                                                          <ProductDetailInfoWrapper>
+                                                                                                    <Typography sx={{ lineHeight: 2 }} variant="h4">
+                                                                                                              {product.name}
+                                                                                                              {product.price}x{product.quantity}
+                                                                                                    </Typography>
+                                                                                                    <Counter />
+                                                                                          </ProductDetailInfoWrapper>
+                                                                                </Product>
+                                                                      })
+                                                                      : null
+                                                  }
                                         </CartWrapper>
                               </DialogContent>
-                    </Dialog>
+                    </Dialog >
           );
 }
