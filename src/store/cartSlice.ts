@@ -13,18 +13,18 @@ const cartSlice = createSlice({
                               const find = state.find((item: ICartItem) => item._id === _id);
                               //provera da li item postoji u korpi
                               if (find) {
-                                        return state.map((item: any) =>
-                                                  item.id === _id
+                                        return state.map((item: ICartItem) =>
+                                                  item._id === _id
                                                             ? {
                                                                       ...item,
-                                                                      quantity: item.quantity + 1
+                                                                      count: item.count + 1
                                                             }
                                                             : item
                                         );
                               } else {
                                         state.push({
                                                   ...payload,
-                                                  quantity: 1
+                                                  count: 1
                                         });
                               }
                     },
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
                                         item._id === payload
                                                   ? {
                                                             ...item,
-                                                            quantity: item.quantity + 1
+                                                            count: item.count + 1
                                                   }
                                                   : item
                               );
@@ -44,18 +44,18 @@ const cartSlice = createSlice({
                                         item._id === payload
                                                   ? {
                                                             ...item,
-                                                            quantity: item.quantity - 1
+                                                            count: item.count - 1
                                                   }
                                                   : item
                               );
                     },
-                    removeAllSingleItems(state, action) {
+                    removeAllSingleItems(state, { payload }) {
                               return state.map((item: ICartItem) =>
-                                        item._id === action.payload
+                                        item._id === payload
                                                   ? {
                                                             ...item,
-                                                            price: 0,
-                                                            quantity: 0,
+                                                            price: [0],
+                                                            count: 0,
                                                   }
                                                   : item
                               );

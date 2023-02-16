@@ -7,6 +7,7 @@ import { limit } from "./limiter";
 import { Colors } from "../../../styles/theme";
 
 export default function ProductCounter() {
+
           const clampV = limit(1, 50);
           const [value, setValue] = useState(1);
 
@@ -15,7 +16,7 @@ export default function ProductCounter() {
                               <IconButton
                                         sx={{
                                                   borderRadius: 0,
-                                                  background: `${ Colors.secondary }`,
+                                                  background: `${Colors.secondary}`,
                                         }}
                                         onClick={() => setValue(clampV(value - 1))}
                               >
@@ -24,7 +25,7 @@ export default function ProductCounter() {
                               <Typography
                                         variant="h6"
                                         sx={{
-                                                  border: `1px solid ${ Colors.secondary }`,
+                                                  border: `1px solid ${Colors.secondary}`,
                                                   p: 2,
                                         }}
                               >
@@ -33,7 +34,7 @@ export default function ProductCounter() {
                               <IconButton
                                         sx={{
                                                   borderRadius: 0,
-                                                  background: `${ Colors.secondary }`,
+                                                  background: `${Colors.secondary}`,
                                         }}
                                         onClick={() => setValue(clampV(value + 1))}
                               >

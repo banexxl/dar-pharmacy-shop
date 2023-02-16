@@ -1,7 +1,5 @@
-export default interface ICartItem {
-          _id: number;
-          name: string;
-          price: number;
-          imageURL: string;
-          quantity: number;
+import IProduct from "./product";
+
+export default interface ICartItem extends IProduct {
+          count: number;
 }
