@@ -9,6 +9,6 @@ export default interface IProduct {
           quantity: string[];
           warning: string;
           imageURL: string;
-          price: number[];
+          price: string[];
 }
 
