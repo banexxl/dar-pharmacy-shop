@@ -101,7 +101,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                                           <StyledTableCell>
                                                                                                     <Counter />
                                                                                           </StyledTableCell>
-                                                                                          <StyledTableCell align="left">{setCartItemPrice(index, quantityIndex)}</StyledTableCell>
+                                                                                          <StyledTableCell align="left" defaultValue={cartItem.price[0]}></StyledTableCell>
 
                                                                                           <StyledTableCell align="left">total</StyledTableCell>
                                                                                 </StyledTableRow>
