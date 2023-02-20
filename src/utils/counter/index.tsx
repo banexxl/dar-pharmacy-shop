@@ -3,9 +3,7 @@ import { FC } from "react";
 import { Box } from "@mui/system";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from "@mui/icons-material/Remove";
-import { useState } from "react";
-import { limit } from "./limiter";
-import { Colors } from "../../../styles/theme";
+import { Colors } from "../../styles/theme";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "@/store/cartSlice";
 
@@ -16,7 +14,6 @@ interface ICounterProps {
 
 const ProductCounter: FC<ICounterProps> = ({ id, count }) => {
 
-          const clampV = limit(1, 50);
           const dispatch = useDispatch()
 
           return (

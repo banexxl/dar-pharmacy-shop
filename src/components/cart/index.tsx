@@ -3,7 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import Counter from "../productdetails/counter";
+import Counter from "../../utils/counter";
 import { CartProductImage, CartWrapper, CartProductDetailInfoWrapper, CartProduct, StyledTableCell, StyledTableRow } from "@/styles/cart"
 import { useDispatch, useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
@@ -80,8 +80,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                                                     <Counter id={cartItem._id} count={cartItem.count} />
                                                                                           </StyledTableCell>
                                                                                           <StyledTableCell align="left">{cartItem.price} rsd</StyledTableCell>
-
-                                                                                          <StyledTableCell align="left">{cartItem.price * cartItem.count}</StyledTableCell>
+                                                                                          <StyledTableCell align="left">{cartItem.price * cartItem.count} rsd</StyledTableCell>
                                                                                 </StyledTableRow>
                                                                       ))}
                                                             </TableBody>

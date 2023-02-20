@@ -1,35 +1,31 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, } from "@mui/material";
-import { useRef } from "react";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
 import { ProductAddToCart, Product, ProductImage } from "../../styles/product";
 import { BannerShopButton } from "../../styles/banner";
-import ProductCounter from "./counter";
+import ProductCounter from "../../utils/counter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/productdetails";
+import { FC } from "react";
+import ICartItem from "@/interfaces/cart";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
 }
 
-const ProductDetailWrapper = styled(Box)(({ theme }: any) => ({
-          display: "flex",
-          padding: theme.spacing(4),
-}))
+interface IProductDetailProps {
+          open: boolean,
+          onClose: () => void,
+          product: ICartItem
+}
 
-const ProductDetailInfoWrapper = styled(Box)(() => ({
-          display: "flex",
-          flexDirection: "column",
-          maxWidth: 500,
-          lineHeight: 1.5,
-}));
-
-export default function ProductDetail({ open, onClose, product }: any) {
+const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
@@ -88,7 +84,7 @@ export default function ProductDetail({ open, onClose, product }: any) {
                                                                       alignItems="center"
                                                                       justifyContent="space-between"
                                                             >
-                                                                      <ProductCounter />
+                                                                      <ProductCounter id={product._id} count={product.count} />
                                                                       <Button variant="contained">Add to Cart</Button>
                                                             </Box>
                                                             <Box
@@ -115,3 +111,5 @@ export default function ProductDetail({ open, onClose, product }: any) {
                     </Dialog>
           );
 }
+
+export default ProductDetail
