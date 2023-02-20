@@ -54,7 +54,7 @@ const cartSlice = createSlice({
                                         item._id === payload
                                                   ? {
                                                             ...item,
-                                                            price: ["0"],
+                                                            price: 0,
                                                             count: 0,
                                                   }
                                                   : item

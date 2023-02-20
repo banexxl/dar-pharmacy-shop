@@ -6,9 +6,9 @@ export default interface IProduct {
           availableStock: number;
           ingredients: string;
           instructions: string;
-          quantity: string[];
+          quantity: string;
           warning: string;
           imageURL: string;
-          price: string[];
+          price: number;
 }
 

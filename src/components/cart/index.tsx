@@ -18,20 +18,16 @@ function SlideTransition(props: any) {
 interface ICartProps extends ICartItem {
           open: boolean
           onClose: () => void
+          addSingleHandler: (id: number) => void
+          removeSingleHandler: (id: number) => void
 }
 
 export default function Cart({ open, onClose }: ICartProps) {
 
           const theme = useTheme()
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-          const [quantityIndex, setQuantityIndex] = useState<number>(0)
 
           const cart: ICartItem[] = useSelector((state: any) => state.cart)
-
-          const setCartItemPrice = (index: number, priceIndex: number): string => {
-                    const selectedPrice = cart[index].price[priceIndex]
-                    return selectedPrice
-          }
 
           return (
                     <Dialog
@@ -70,40 +66,22 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                       </TableRow>
                                                             </TableHead>
                                                             <TableBody>
-                                                                      {cart.map((cartItem: ICartItem, index: number) => (
+                                                                      {cart.map((cartItem: ICartItem) => (
                                                                                 <StyledTableRow key={cartItem._id}>
                                                                                           <StyledTableCell component="th" scope="row">
                                                                                                     <CartProductImage src={cartItem.imageURL} />
                                                                                           </StyledTableCell>
                                                                                           <StyledTableCell align="left">{cartItem.name}</StyledTableCell>
                                                                                           <StyledTableCell>
-                                                                                                    <FormControl fullWidth>
-                                                                                                              <InputLabel id="demo-simple-select-label">Pakovanje</InputLabel>
-                                                                                                              <Select
-                                                                                                                        key={cartItem._id}
-                                                                                                                        labelId="demo-simple-select-label"
-                                                                                                                        id="demo-simple-select"
-                                                                                                                        defaultValue={cartItem.quantity[0]}
-                                                                                                                        label="Pakovanje"
-                                                                                                                        onChange={() => setQuantityIndex(index)}
-                                                                                                              >
-                                                                                                                        {
-                                                                                                                                  cartItem.quantity.map((item: string, index: number) => {
-                                                                                                                                            return (
-                                                                                                                                                      <MenuItem key={index} value={item}>{cartItem.quantity[index]}</MenuItem>
-                                                                                                                                            )
-                                                                                                                                  })
-                                                                                                                        }
-                                                                                                              </Select>
-                                                                                                    </FormControl>
+                                                                                                    {cartItem.quantity}
                                                                                           </StyledTableCell>
                                                                                           <StyledTableCell align="left">{cartItem._id.toString().slice(-8).toUpperCase()}</StyledTableCell>
                                                                                           <StyledTableCell>
-                                                                                                    <Counter />
+                                                                                                    <Counter id={cartItem._id} count={cartItem.count} />
                                                                                           </StyledTableCell>
-                                                                                          <StyledTableCell align="left" defaultValue={cartItem.price[0]}></StyledTableCell>
+                                                                                          <StyledTableCell align="left">{cartItem.price} rsd</StyledTableCell>
 
-                                                                                          <StyledTableCell align="left">total</StyledTableCell>
+                                                                                          <StyledTableCell align="left">{cartItem.price * cartItem.count}</StyledTableCell>
                                                                                 </StyledTableRow>
                                                                       ))}
                                                             </TableBody>

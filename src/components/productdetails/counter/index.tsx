@@ -1,24 +1,32 @@
 import { IconButton, Typography } from "@mui/material";
+import { FC } from "react";
 import { Box } from "@mui/system";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
 import { limit } from "./limiter";
 import { Colors } from "../../../styles/theme";
+import { useDispatch } from "react-redux";
+import { decrement, increment } from "@/store/cartSlice";
 
-export default function ProductCounter() {
+interface ICounterProps {
+          id: string;
+          count: number;
+}
+
+const ProductCounter: FC<ICounterProps> = ({ id, count }) => {
 
           const clampV = limit(1, 50);
-          const [value, setValue] = useState(1);
+          const dispatch = useDispatch()
 
           return (
-                    <Box display="flex">
+                    <Box display="flex" >
                               <IconButton
                                         sx={{
                                                   borderRadius: 0,
                                                   background: `${Colors.secondary}`,
                                         }}
-                                        onClick={() => setValue(clampV(value - 1))}
+                                        onClick={() => dispatch(decrement(id))}
                               >
                                         <RemoveIcon />
                               </IconButton>
@@ -29,17 +37,19 @@ export default function ProductCounter() {
                                                   p: 2,
                                         }}
                               >
-                                        {value}
+                                        {count}
                               </Typography>
                               <IconButton
                                         sx={{
                                                   borderRadius: 0,
                                                   background: `${Colors.secondary}`,
                                         }}
-                                        onClick={() => setValue(clampV(value + 1))}
+                                        onClick={() => dispatch(increment(id))}
                               >
                                         <AddIcon />
                               </IconButton>
                     </Box>
           );
 }
+
+export default ProductCounter
