@@ -22,7 +22,7 @@ const CartItem = (props: ICartItem) => {
                                         </Counter>
                               </StyledTableCell>
                               <StyledTableCell align="left">{props.price} rsd</StyledTableCell>
-                              <StyledTableCell align="left">{props.count < 1 ? props.price : props.count * props.price} rsd</StyledTableCell>
+                              <StyledTableCell align="left">{props.count * props.price} rsd</StyledTableCell>
                     </StyledTableRow >
           )
 }

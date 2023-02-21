@@ -84,7 +84,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       alignItems="center"
                                                                       justifyContent="space-between"
                                                             >
-                                                                      <ProductCounter id={product._id} count={product.count} />
                                                                       <Button variant="contained">Add to Cart</Button>
                                                             </Box>
                                                             <Box

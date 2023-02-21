@@ -50,7 +50,10 @@ export default function Cart({ open, onClose }: ICartProps) {
                               </DialogTitle>
                               <DialogContent>
                                         <CartWrapper component={Paper}>
-                                                  <Table aria-label="customized table">
+                                                  <Table aria-label="customized table"
+                                                            sx={{
+
+                                                            }}>
                                                             <TableHead>
                                                                       <TableRow>
                                                                                 <StyledTableCell>Slika</StyledTableCell>
