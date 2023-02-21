@@ -3,9 +3,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import Counter from "../../utils/counter";
 import { CartWrapper, StyledTableCell, StyledTableHead, StyledTableRow } from "@/styles/cart"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
 import CartItem from "./components/cartItem";
 import CartTotals from "./components/cartTotals";
@@ -49,6 +48,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   </IconButton>
                                         </Box>
                               </DialogTitle>
+
                               <DialogContent sx={{ display: 'flex' }}>
                                         <CartWrapper component={Paper}>
                                                   <Table aria-label="customized table"
@@ -75,7 +75,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                             </TableBody>
                                                   </Table>
                                         </CartWrapper>
-                                        <CartTotals />
+                                        <CartTotals onClose={onClose} />
                               </DialogContent>
                     </Dialog >
           );

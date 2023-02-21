@@ -1,19 +1,27 @@
+import { useUIContext } from '@/context/ui'
+import useDialogModal from '@/hooks/useDialogModal'
+import ICartItem from '@/interfaces/cart'
 import { cartTotalPriceSelector } from '@/store/selectors'
-import { Button } from '@mui/material'
+import { Button, Slide } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import Cart from '..'
 
-function CartTotals() {
+interface ICartTotalsProps {
+          onClose: () => void
+}
+
+function CartTotals({ onClose }: ICartTotalsProps) {
 
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
 
           return (
                     <div>
-                              Cart totals: {parseFloat(totalItemPrice).toFixed(2)}
-                              <Button sx={{ color: 'white' }}>
+                              Ukupno sa PDV-om: {parseFloat(totalItemPrice).toFixed(2)} RSD
+                              <Button sx={{ color: 'white' }} onClick={onClose}>
                                         <Link href='/checkout'>
-                                                  Kupi
+                                                  Na stranicu za plaćanje
                                         </Link>
                               </Button>
                     </div>

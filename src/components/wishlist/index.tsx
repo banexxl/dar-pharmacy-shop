@@ -24,7 +24,7 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
           lineHeight: 1.5,
 }));
 
-export default function WhishList({ open, onClose, product }: any) {
+export default function WishList({ open, onClose, product }: any) {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
