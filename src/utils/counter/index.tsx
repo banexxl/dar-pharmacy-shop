@@ -27,6 +27,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                                                   background: `${Colors.secondary}`,
                                         }}
                                         onClick={() => dispatch(decrement(_id))}
+                                        disabled={count <= 1 ? true : false}
                               >
                                         <RemoveIcon />
                               </IconButton>
@@ -37,7 +38,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                                                   p: 2,
                                         }}
                               >
-                                        {count}
+                                        {count < 1 ? 1 : count}
                               </Typography>
                               <IconButton
                                         sx={{
@@ -45,6 +46,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                                                   background: `${Colors.secondary}`,
                                         }}
                                         onClick={() => dispatch(increment(_id))}
+                                        disabled={count >= 100 ? true : false}
                               >
                                         <AddIcon />
                               </IconButton>

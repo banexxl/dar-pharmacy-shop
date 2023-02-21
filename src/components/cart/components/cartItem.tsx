@@ -1,13 +1,10 @@
 import ICartItem from '@/interfaces/cart'
 import { CartProductImage, StyledTableCell, StyledTableRow } from '@/styles/cart'
 import Counter from '@/utils/counter'
-import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react'
 
 
 const CartItem = (props: ICartItem) => {
-
-          const dispatch = useDispatch()
 
           return (
                     <StyledTableRow key={props._id}>
@@ -25,7 +22,7 @@ const CartItem = (props: ICartItem) => {
                                         </Counter>
                               </StyledTableCell>
                               <StyledTableCell align="left">{props.price} rsd</StyledTableCell>
-                              <StyledTableCell align="left">{props.count * props.price} rsd</StyledTableCell>
+                              <StyledTableCell align="left">{props.count < 1 ? props.price : props.count * props.price} rsd</StyledTableCell>
                     </StyledTableRow >
           )
 }
