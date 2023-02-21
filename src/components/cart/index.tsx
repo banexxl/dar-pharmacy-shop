@@ -4,7 +4,7 @@ import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Counter from "../../utils/counter";
-import { CartProductImage, CartWrapper, CartProductDetailInfoWrapper, CartProduct, StyledTableCell, StyledTableRow } from "@/styles/cart"
+import { CartWrapper, StyledTableCell, StyledTableHead, StyledTableRow } from "@/styles/cart"
 import { useDispatch, useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
 import CartItem from "./components/cartItem";
@@ -48,14 +48,12 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   </IconButton>
                                         </Box>
                               </DialogTitle>
-                              <DialogContent>
+                              <DialogContent sx={{ display: 'flex' }}>
                                         <CartWrapper component={Paper}>
                                                   <Table aria-label="customized table"
-                                                            sx={{
-
-                                                            }}>
-                                                            <TableHead>
-                                                                      <TableRow>
+                                                  >
+                                                            <StyledTableHead>
+                                                                      <StyledTableRow>
                                                                                 <StyledTableCell>Slika</StyledTableCell>
                                                                                 <StyledTableCell align="left">Naziv</StyledTableCell>
                                                                                 <StyledTableCell align="left">Pakovanje</StyledTableCell>
@@ -63,8 +61,8 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                                 <StyledTableCell align="left">Kolicina</StyledTableCell>
                                                                                 <StyledTableCell align="left">Cena</StyledTableCell>
                                                                                 <StyledTableCell align="left">Ukupno</StyledTableCell>
-                                                                      </TableRow>
-                                                            </TableHead>
+                                                                      </StyledTableRow>
+                                                            </StyledTableHead>
                                                             <TableBody>
                                                                       {cart.map((cartItem: ICartItem) => (
                                                                                 <CartItem key={cartItem._id} count={cartItem.count} _id={cartItem._id}
@@ -76,6 +74,9 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                             </TableBody>
                                                   </Table>
                                         </CartWrapper>
+                                        <Typography>
+                                                  dssdsdsds
+                                        </Typography>
                               </DialogContent>
                     </Dialog >
           );
