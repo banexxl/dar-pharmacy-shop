@@ -7,9 +7,7 @@ import Counter from "../../utils/counter";
 import { CartProductImage, CartWrapper, CartProductDetailInfoWrapper, CartProduct, StyledTableCell, StyledTableRow } from "@/styles/cart"
 import { useDispatch, useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
-import { ChangeEvent, ChangeEventHandler, MouseEventHandler, ReactEventHandler, useState } from "react";
-import { KeyObject } from "crypto";
-import { Key } from "@mui/icons-material";
+import CartItem from "./components/cartItem";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -26,7 +24,6 @@ export default function Cart({ open, onClose }: ICartProps) {
 
           const theme = useTheme()
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-
           const cart: ICartItem[] = useSelector((state: any) => state.cart)
 
           return (
@@ -67,21 +64,11 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                             </TableHead>
                                                             <TableBody>
                                                                       {cart.map((cartItem: ICartItem) => (
-                                                                                <StyledTableRow key={cartItem._id}>
-                                                                                          <StyledTableCell component="th" scope="row">
-                                                                                                    <CartProductImage src={cartItem.imageURL} />
-                                                                                          </StyledTableCell>
-                                                                                          <StyledTableCell align="left">{cartItem.name}</StyledTableCell>
-                                                                                          <StyledTableCell>
-                                                                                                    {cartItem.quantity}
-                                                                                          </StyledTableCell>
-                                                                                          <StyledTableCell align="left">{cartItem._id.toString().slice(-8).toUpperCase()}</StyledTableCell>
-                                                                                          <StyledTableCell>
-                                                                                                    <Counter id={cartItem._id} count={cartItem.count} />
-                                                                                          </StyledTableCell>
-                                                                                          <StyledTableCell align="left">{cartItem.price} rsd</StyledTableCell>
-                                                                                          <StyledTableCell align="left">{cartItem.price * cartItem.count} rsd</StyledTableCell>
-                                                                                </StyledTableRow>
+                                                                                <CartItem key={cartItem._id} count={cartItem.count} _id={cartItem._id}
+                                                                                          name={cartItem.name} description={cartItem.description} category={cartItem.category}
+                                                                                          availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
+                                                                                          instructions={cartItem.instructions} quantity={cartItem.quantity}
+                                                                                          warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} />
                                                                       ))}
                                                             </TableBody>
                                                   </Table>

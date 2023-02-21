@@ -6,13 +6,16 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { Colors } from "../../styles/theme";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "@/store/cartSlice";
+import ICartItem from "@/interfaces/cart";
 
-interface ICounterProps {
-          id: string;
+
+interface IProps {
+          _id: string;
           count: number;
+          children: React.ReactNode
 }
 
-const ProductCounter: FC<ICounterProps> = ({ id, count }) => {
+const ProductCounter: FC<IProps> = ({ _id, count }) => {
 
           const dispatch = useDispatch()
 
@@ -23,7 +26,7 @@ const ProductCounter: FC<ICounterProps> = ({ id, count }) => {
                                                   borderRadius: 0,
                                                   background: `${Colors.secondary}`,
                                         }}
-                                        onClick={() => dispatch(decrement(id))}
+                                        onClick={() => dispatch(decrement(_id))}
                               >
                                         <RemoveIcon />
                               </IconButton>
@@ -41,7 +44,7 @@ const ProductCounter: FC<ICounterProps> = ({ id, count }) => {
                                                   borderRadius: 0,
                                                   background: `${Colors.secondary}`,
                                         }}
-                                        onClick={() => dispatch(increment(id))}
+                                        onClick={() => dispatch(increment(_id))}
                               >
                                         <AddIcon />
                               </IconButton>
