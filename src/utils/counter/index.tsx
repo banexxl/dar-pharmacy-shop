@@ -39,7 +39,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                                                   p: 2,
                                         }}
                               >
-                                        {count < 1 ? 1 : count}
+                                        {count <= 1 ? 1 : count}
                               </Typography>
                               <IconButton
                                         sx={{

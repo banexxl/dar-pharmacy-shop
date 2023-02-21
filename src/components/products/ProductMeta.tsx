@@ -12,7 +12,9 @@ export default function ProductMeta({ product, isScreenToMedium }: any) {
                               </Typography>
                               <Typography variant={isScreenToMedium ? "caption" : "body1"}>
                                         RSD: {product.price}
-                                        <Divider />
+                              </Typography>
+                              -----------------
+                              <Typography variant={isScreenToMedium ? "caption" : "body1"}>
                                         Pakovanje: {product.quantity}
                               </Typography>
                     </ProductMetaWrapper>

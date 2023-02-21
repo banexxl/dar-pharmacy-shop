@@ -4,7 +4,7 @@ import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
 import { ProductAddToCart, Product, ProductImage } from "../../styles/product";
 import { BannerShopButton } from "../../styles/banner";
-import ProductCounter from "../../utils/counter";
+import Counter from "../../utils/counter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
