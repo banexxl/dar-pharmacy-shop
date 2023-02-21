@@ -8,6 +8,7 @@ import { CartWrapper, StyledTableCell, StyledTableHead, StyledTableRow } from "@
 import { useDispatch, useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart";
 import CartItem from "./components/cartItem";
+import CartTotals from "./components/cartTotals";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -74,9 +75,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                             </TableBody>
                                                   </Table>
                                         </CartWrapper>
-                                        <Typography>
-                                                  dssdsdsds
-                                        </Typography>
+                                        <CartTotals />
                               </DialogContent>
                     </Dialog >
           );

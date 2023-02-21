@@ -27,7 +27,6 @@ export const CartProductImage = styled("img")(({ src, theme }: any) => ({
           src: `url(${src})`,
           width: '100px',
           height: '100px',
-          background: Colors.light_gray,
 }));
 
 export const CartProductActionButton = styled(IconButton)(() => ({

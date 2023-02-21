@@ -23,7 +23,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                     <Box display="flex" >
                               <IconButton
                                         sx={{
-                                                  borderRadius: 0,
+                                                  borderRadius: '10px',
                                                   background: `${Colors.secondary}`,
                                         }}
                                         onClick={() => dispatch(decrement(_id))}
@@ -35,6 +35,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                                         variant="h6"
                                         sx={{
                                                   border: `1px solid ${Colors.secondary}`,
+                                                  borderRadius: '10px',
                                                   p: 2,
                                         }}
                               >
@@ -42,7 +43,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                               </Typography>
                               <IconButton
                                         sx={{
-                                                  borderRadius: 0,
+                                                  borderRadius: '10px',
                                                   background: `${Colors.secondary}`,
                                         }}
                                         onClick={() => dispatch(increment(_id))}

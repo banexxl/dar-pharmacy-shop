@@ -1,3 +1,4 @@
+import ICartItem from "@/interfaces/cart";
 import { createSelector } from "@reduxjs/toolkit"
 
 const cartSelector = (state: any) => state.cart
@@ -8,7 +9,8 @@ export const cartTotalSelector = createSelector([cartSelector], (cart: any) =>
 );
 
 export const cartTotalPriceSelector = createSelector([cartSelector], (cart: any) =>
-          cart.reduce((total: number, item: any) => (total += parseFloat(item.price) * item.quantity), 0)
+          cart.reduce((total: number, item: ICartItem) =>
+                    (total += item.price * item.count), 0)
 );
 
 export const wishListItemsSelector = createSelector([wishListSelector], (wishList: any) =>
