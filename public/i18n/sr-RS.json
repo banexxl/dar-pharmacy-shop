@@ -1,0 +1,50 @@
+{
+  "checkout": {
+    "delivery": "Dostava",
+    "payment": "Plaćanje",
+    "confirmation": "Potvrda",
+    "shippingAddress": "Adresa za dostavu",
+    "billingAddress": "Adresa za plaćanje",
+    "continue": "Nastavi",
+    "previous": "Nazad",
+    "clear": "Očisti sva polja",
+    "sameAsShipping": "Adresa za plaćanje je ista kao adresa za dostavu",
+    "shippingMethod": {
+      "title": "Način dostave",
+      "free": "Besplatno (samo za porudžbine preko 3000 RSD)",
+      "express": "Ekspres (u roku od 3 dana)",
+      "nextDay": "Danas za sutra (proveriti sa nama prethodno)"
+    },
+    "customerInfo": "Korisnički podaci",
+    "creditCard": "Kreditna kartica"
+  },
+  "signup": {
+    "email": "Email",
+    "password": "Šifra",
+    "confirmPassword": "Potvrda šifre",
+    "guestCheckout": "Kao gost"
+  },
+  "address": {
+    "firstName": "Ime",
+    "lastName": "Prezime",
+    "addressLine1": "Adresa",
+    "city": "Grad",
+    "provinceState": "Oblast",
+    "country": "Država",
+    "zipPostalCode": "Poštanski broj"
+  },
+  "creditCard": {
+    "cardNumber": "Broj kreditne kartice",
+    "expiryDate": "Datim isteka",
+    "securityCode": "Sigurnosni kod (trocifreni broj sa poleđine kartice)"
+  },
+  "errorMessages": {
+    "required": "{{- fieldName}} je obavezno",
+    "tooLong": "Maksimalna dužina je {{max}}",
+    "tooShort": "Minimalna dužina je {{min}}",
+    "email": "Nevalidan email",
+    "password": "Mora da sadrži minimum osam karaktera, bar jedno veliko i malo slovo, bar jedan broj i sprecijalni karakter",
+    "confirmPassword": "Šifre se moraju poklapati",
+    "invalidFormat": "Nevalidan format"
+  }
+}

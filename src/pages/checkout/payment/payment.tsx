@@ -14,7 +14,7 @@ import { useHistory } from 'react-router-dom';
 
 import { AppRoutePath } from '../../../../routes/app-route-path';
 import { CheckoutRoutePath } from '../../routes/checkout-route-path';
-import { AddressForm } from '../address/address-form';
+import { AddressForm } from '../address';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 import { CreditCard } from '../credit-card/credit-card';
 
@@ -37,6 +37,8 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
           clearPaymentForm,
 }) => {
           const { t } = useTranslation();
+          console.log(t);
+
           const history = useHistory();
           const goBack = () => {
                     history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);
