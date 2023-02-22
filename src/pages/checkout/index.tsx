@@ -1,18 +1,16 @@
-import CheckoutForm from '@/components/checkout'
-import Footer from '@/components/footer'
-import Navbar from '@/components/navbar'
-import AppDrawer from '@/components/navbar/drawer'
-import SearchBox from '@/components/search'
-import { UIProvider } from '@/context/ui'
-import theme from '@/styles/theme'
-import { ThemeProvider } from '@emotion/react'
-import { Container, Stack } from '@mui/material'
-import { NextPage } from 'next'
-import React from 'react'
+import { AddressForm } from '@/components/checkout/address/address-form';
+import Delivery from '@/components/checkout/delivery/delivery';
+import AppDrawer from '@/components/navbar/drawer';
+import SearchBox from '@/components/search';
+import { UIProvider } from '@/context/ui';
+import theme from '@/styles/theme';
+import { Box, Container, Paper, Stack, ThemeProvider } from '@mui/material';
+import React, { useEffect } from 'react';
 
-const Checkout: NextPage = () => {
-
+const Checkout = () => {
           return (
+
+
                     <ThemeProvider theme={theme}>
                               <Container
                                         disableGutters
@@ -23,14 +21,15 @@ const Checkout: NextPage = () => {
                               >
                                         <Stack>
                                                   <UIProvider>
+                                                            <AddressForm formName='form' ></AddressForm>
+                                                            <Delivery></Delivery>
                                                             <SearchBox />
-                                                            <CheckoutForm />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </ThemeProvider>
+                    </ThemeProvider >
           )
-}
+};
 
 export default Checkout
