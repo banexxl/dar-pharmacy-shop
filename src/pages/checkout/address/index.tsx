@@ -7,6 +7,8 @@ import { Field, FormikErrors, FormikTouched } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AddressFormValues } from './address-form-values.interface';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 export interface AddressFormProps {
           formName: string;
@@ -14,9 +16,9 @@ export interface AddressFormProps {
           touched?: FormikTouched<AddressFormValues>;
 }
 
-const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address', errors, touched, }) => {
+const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address', errors, touched, }, _props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-          const { t } = useTranslation();
+          const { t } = useTranslation('common');
 
           return (
                     <ThemeProvider theme={theme}>
@@ -121,4 +123,11 @@ const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address'
           );
 };
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+          props: {
+                    ...(await serverSideTranslations('sr', ['common'])),
+          },
+})
 export default AddressForm
+
+
