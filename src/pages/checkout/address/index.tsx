@@ -22,6 +22,12 @@ const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address'
           const router = useRouter()
           const { t } = useTranslation('common')
 
+          console.log(t);
+
+          console.log(_props);
+
+
+
           const onToggleLanguageClick = (newLocale: string) => {
                     const { pathname, asPath, query } = router
                     router.push({ pathname, query }, asPath, { locale: newLocale })
@@ -131,12 +137,16 @@ const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address'
 
           );
 };
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-          props: {
-                    ...(await serverSideTranslations('sr', ['common'])),
-          },
-})
+export async function getStaticProps({ locale }: any) {
+          return {
+                    props: {
+                              ...(await serverSideTranslations(locale, [
+                                        'common',
+                              ])),
+                              // Will be passed to the page component as props
+                    },
+          }
+}
 export default AddressForm
 
 

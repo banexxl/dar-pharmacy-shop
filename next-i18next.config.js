@@ -2,8 +2,8 @@ module.exports = {
           // https://www.i18next.com/overview/configuration-options#logging
           debug: process.env.NODE_ENV === 'development',
           i18n: {
-                    defaultLocale: 'sr',
-                    locales: ['en', 'sr'],
+                    defaultLocale: 'sr-RS',
+                    locales: ['en-US', 'sr-RS'],
           },
           /** To avoid issues when deploying to some paas (vercel...) */
           localePath:
@@ -12,7 +12,7 @@ module.exports = {
                               : '/locales',
 
           reloadOnPrerender: process.env.NODE_ENV === 'development',
-          react: { useSuspense: false }
+          react: { useSuspense: false },
 
           /**
            * @link https://github.com/i18next/next-i18next#6-advanced-configuration
@@ -20,5 +20,4 @@ module.exports = {
           // saveMissing: false,
           // strictMode: true,
           // serializeConfig: false,
-          // react: { useSuspense: false }
 }

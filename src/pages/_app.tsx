@@ -6,8 +6,9 @@ import { Provider } from 'react-redux'
 import store from '../store/index'
 import { Suspense } from 'react'
 import { CircularProgress } from '@mui/material'
+import { appWithTranslation } from 'next-i18next'
 
-export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) {
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
           return (
                     <SessionProvider session={session}>
                               <Suspense fallback={<CircularProgress />}>
@@ -18,3 +19,5 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
                     </SessionProvider>
           )
 }
+
+export default appWithTranslation(App)
