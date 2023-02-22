@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { AddressFormValues } from './address-form-values.interface';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useRouter } from 'next/router';
 
 export interface AddressFormProps {
           formName: string;
@@ -18,7 +19,15 @@ export interface AddressFormProps {
 
 const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address', errors, touched, }, _props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-          const { t } = useTranslation('common');
+          const router = useRouter()
+          const { t } = useTranslation('common')
+
+          const onToggleLanguageClick = (newLocale: string) => {
+                    const { pathname, asPath, query } = router
+                    router.push({ pathname, query }, asPath, { locale: newLocale })
+          }
+
+          const changeTo = router.locale === 'en' ? 'de' : 'en'
 
           return (
                     <ThemeProvider theme={theme}>

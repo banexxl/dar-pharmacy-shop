@@ -26,7 +26,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                               </Button>
 
                               <Button sx={{ color: 'white' }} onClick={onClose}>
-                                        <Link href='/checkout'>
+                                        <Link href='/checkout/address'>
                                                   Plati kao gost
                                         </Link>
                               </Button>
