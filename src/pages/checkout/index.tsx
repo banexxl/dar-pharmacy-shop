@@ -7,9 +7,10 @@ import { UIProvider } from '@/context/ui'
 import theme from '@/styles/theme'
 import { ThemeProvider } from '@emotion/react'
 import { Container, Stack } from '@mui/material'
+import { NextPage } from 'next'
 import React from 'react'
 
-function Checkout() {
+const Checkout: NextPage = () => {
 
           return (
                     <ThemeProvider theme={theme}>
@@ -22,10 +23,8 @@ function Checkout() {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Navbar />
                                                             <SearchBox />
                                                             <CheckoutForm />
-                                                            <Footer />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>

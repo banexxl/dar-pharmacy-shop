@@ -1,3 +1,5 @@
+import Footer from "@/components/footer";
+import NavBar from "@/components/navbar";
 import { createContext, useContext, useState } from "react";
 
 
@@ -16,5 +18,11 @@ export const UIProvider = ({ children }: any) => {
                     showSearchBox, setShowSearchBox,
           };
 
-          return <UIContext.Provider value={value}>{children}</UIContext.Provider>
+          return (
+                    <UIContext.Provider value={value}>
+                              <NavBar />
+                              {children}
+                              <Footer />
+                    </UIContext.Provider>
+          )
 }

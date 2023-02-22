@@ -29,15 +29,13 @@ export default function Home(props: any) {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Navbar />
                                                             <Banner />
                                                             <Promotions />
-                                                            <SearchBox />
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <Typography variant="h4">Deo asortimana</Typography>
                                                             </Box>
                                                             <Products data={products} />
-                                                            <Footer />
+                                                            <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
