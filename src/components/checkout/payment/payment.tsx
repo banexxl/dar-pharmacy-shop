@@ -13,8 +13,8 @@ import AddressForm from '../address/address-form';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 import { CreditCard } from '../credit-card/credit-card';
 
-import { PaymentFormValues } from './payment-form-values.interface';
-import { paymentFormSchema } from './payment-form.schema';
+import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
+import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import {
           mapDispatchToProps,
           mapStateToProps,
@@ -32,8 +32,6 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
           clearPaymentForm,
 }) => {
           const { t } = useTranslation();
-          console.log(t);
-
           // const history = useHistory();
           // const goBack = () => {
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);

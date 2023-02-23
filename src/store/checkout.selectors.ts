@@ -1,8 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { RootState } from '../store/root-state.interface';
-import { DeliveryFormValues } from '../components/checkout/delivery/delivery-form-values.interface';
-import { PaymentFormValues } from '../components/checkout/payment/payment-form-values.interface';
+import { DeliveryFormValues } from '../interfaces/checkout/delivery-form-values.interface';
+import { PaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
 
 import { CheckoutState } from './checkout-state.interface';
 

@@ -4,7 +4,7 @@ import { RootState } from '../../../store/root-state.interface';
 import { checkoutSelectors } from '../../../store/checkout.selectors';
 import { checkoutSlice } from '../../../store/checkout.slice';
 
-import { PaymentFormValues } from './payment-form-values.interface';
+import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 
 const mapStateToProps = (state: RootState) => {
           return {

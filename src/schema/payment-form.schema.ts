@@ -1,8 +1,8 @@
 import { TFunction } from 'i18next';
 import { boolean, object } from 'yup';
 
-import { addressFormSchema } from '../address/address-form.schema';
-import { creditCardSchema } from '../credit-card/credit-card-form.schema';
+import { addressFormSchema } from './address-form.schema';
+import { creditCardSchema } from './credit-card-form.schema';
 
 export const paymentFormSchema = (t: TFunction) =>
           object().shape({

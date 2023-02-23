@@ -4,7 +4,7 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import InputMask from 'react-input-mask';
 
-import { CreditCardFormValues } from './credit-card-form-values.interface';
+import { CreditCardFormValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
 
 export interface CreditCardProps {
           formName?: string;

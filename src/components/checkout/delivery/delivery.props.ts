@@ -4,7 +4,7 @@ import { RootState } from '../../../store/root-state.interface'
 import { checkoutSelectors } from '../../../store/checkout.selectors';
 import { checkoutSlice } from '../../../store/checkout.slice';
 
-import { DeliveryFormValues } from './delivery-form-values.interface';
+import { DeliveryFormValues } from '../../../interfaces/checkout/delivery-form-values.interface';
 
 const mapStateToProps = (state: RootState) => {
           return {

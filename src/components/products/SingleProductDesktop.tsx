@@ -8,7 +8,7 @@ import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/cartSlice";
+import { addToCart } from "../../store/cart-slice";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
