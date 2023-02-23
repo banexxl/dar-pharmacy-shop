@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { AddressForm } from '../address';
+import { AddressForm } from '../address/address-form';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 import { SignupForm } from '../signup/signup-form';
 

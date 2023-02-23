@@ -29,7 +29,7 @@
     "lastName": "Prezime",
     "addressLine1": "Adresa",
     "city": "Grad",
-    "provinceState": "Oblast",
+    "provinceState": "Region",
     "country": "Država",
     "zipPostalCode": "Poštanski broj"
   },

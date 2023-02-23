@@ -14,7 +14,7 @@ import { useHistory } from 'react-router-dom';
 
 import { AppRoutePath } from '../../../../routes/app-route-path';
 import { CheckoutRoutePath } from '../../routes/checkout-route-path';
-import { AddressForm } from '../address';
+import { AddressForm } from '../address/address-form';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 import { CreditCard } from '../credit-card/credit-card';
 
