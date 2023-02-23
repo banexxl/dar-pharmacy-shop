@@ -1,15 +1,9 @@
-import AppDrawer from '@/components/navbar/drawer';
-import SearchBox from '@/components/search';
-import { UIProvider } from '@/context/ui';
 import theme from '@/styles/theme';
 import { Container, Grid, Stack, TextField, ThemeProvider } from '@mui/material';
-import { Field, FormikErrors, FormikTouched } from 'formik';
+import { FormikErrors, FormikTouched } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AddressFormValues } from '../../../interfaces/checkout/address-form-values.interface';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { useRouter } from 'next/router';
 
 export interface AddressFormProps {
           formName: string

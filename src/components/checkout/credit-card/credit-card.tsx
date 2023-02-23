@@ -57,7 +57,6 @@ export const CreditCard: FunctionComponent<CreditCardProps> = ({ formName = 'cre
                                         </TextField>
                               </Grid>
                               <Grid item xs={12} sm={6}>
-
                                         <TextField
                                                   label={t('creditCard.securityCode')}
                                                   variant="outlined"

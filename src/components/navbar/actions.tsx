@@ -1,4 +1,4 @@
-import { Divider, ListItemButton, ListItemIcon } from "@mui/material";
+import { Divider, FormControl, InputLabel, ListItemButton, ListItemIcon, MenuItem, Select } from "@mui/material";
 import { ActionIconsContainerDesktop, ActionIconsContainerMobile, MyList } from "../../styles/appbar";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -8,6 +8,7 @@ import useDialogModal from "../../hooks/useDialogModal";
 import Cart from '../cart/index'
 import WishList from "../wishlist/index";
 import LoginRegister from '../login/index'
+import { Language } from "@mui/icons-material";
 
 export default function Actions({ isScreenToMedium }: any) {
 
@@ -16,8 +17,6 @@ export default function Actions({ isScreenToMedium }: any) {
           const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
 
           const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
-
-
 
           const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
@@ -75,11 +74,19 @@ export default function Actions({ isScreenToMedium }: any) {
                                                   </ListItemIcon>
                                         </ListItemButton>
                                         <Divider orientation="vertical" flexItem />
+                                        <Select
+                                                  placeholder="Language"
+                                                  IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
+                                                  sx={{ width: 75, alignItems: 'center' }}
+                                        >
+                                                  <MenuItem value="porsche">english</MenuItem>
+                                                  <MenuItem value="lexus">serbian</MenuItem>
+                                        </Select>
 
                               </MyList>
                               <WishListDialog />
                               <CartDialog />
                               <LoginDialog />
-                    </Component>
+                    </Component >
           );
 }
