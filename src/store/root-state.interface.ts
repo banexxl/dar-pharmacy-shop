@@ -1,4 +1,4 @@
-import { CheckoutState } from '../pages/checkout/store/checkout-state.interface';
+import { CheckoutState } from '../store/checkout-state.interface';
 
 export interface RootState {
           checkout: CheckoutState;

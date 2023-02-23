@@ -19,17 +19,7 @@ export interface AddressFormProps {
 
 const AddressForm: FunctionComponent<AddressFormProps> = ({ formName = 'address', errors, touched }) => {
 
-          const router = useRouter()
           const { t } = useTranslation('common')
-
-
-
-          const onToggleLanguageClick = (newLocale: string) => {
-                    const { pathname, asPath, query } = router
-                    router.push({ pathname, query }, asPath, { locale: newLocale })
-          }
-
-          const changeTo = router.locale === 'en' ? 'sr' : 'en'
 
           return (
                     <ThemeProvider theme={theme}>

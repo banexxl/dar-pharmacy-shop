@@ -1,11 +1,11 @@
-import { RootState } from '../../../../store/root-state.interface';
-import { checkoutSelectors } from '../../store/checkout.selectors';
+import { RootState } from '../../../store/root-state.interface';
+import { checkoutSelectors } from '../../../store/checkout.selectors';
 
 const mapStateToProps = (state: RootState) => {
-  return {
-    deliveryForm: checkoutSelectors.getDeliveryForm(state),
-    paymentForm: checkoutSelectors.getPaymentForm(state),
-  };
+          return {
+                    deliveryForm: checkoutSelectors.getDeliveryForm(state),
+                    paymentForm: checkoutSelectors.getPaymentForm(state),
+          };
 };
 
 type mapStateToPropsType = ReturnType<typeof mapStateToProps>;

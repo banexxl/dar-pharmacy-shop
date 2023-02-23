@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ClearAll from '@mui/icons-material/ClearAll';
@@ -10,11 +8,8 @@ import { CheckboxWithLabel } from 'formik-mui';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
-import { AppRoutePath } from '../../../../routes/app-route-path';
-import { CheckoutRoutePath } from '../../routes/checkout-route-path';
-import { AddressForm } from '../address/address-form';
+import AddressForm from '../address/address-form';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 import { CreditCard } from '../credit-card/credit-card';
 
@@ -39,14 +34,14 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
           const { t } = useTranslation();
           console.log(t);
 
-          const history = useHistory();
-          const goBack = () => {
-                    history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);
-          };
-          const submitForm = (values: PaymentFormValues) => {
-                    submitPaymentForm(values);
-                    history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
-          };
+          // const history = useHistory();
+          // const goBack = () => {
+          //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);
+          // };
+          // const submitForm = (values: PaymentFormValues) => {
+          //           submitPaymentForm(values);
+          //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
+          // };
 
           return (
                     <>
@@ -54,7 +49,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
                               <Formik
                                         validationSchema={paymentFormSchema(t)}
                                         initialValues={paymentForm}
-                                        onSubmit={submitForm}
+                                        onSubmit={() => console.log("aaaa")}
                               >
                                         {({ errors, touched, values, handleChange, setFieldTouched }) => (
                                                   <Form>
@@ -111,7 +106,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
                                                                                 color="secondary"
                                                                                 endIcon={<ArrowBackIcon />}
                                                                                 size="large"
-                                                                                onClick={goBack}
+                                                                                onClick={() => console.log("aaaa")}
                                                                       >
                                                                                 {t('checkout.previous')}
                                                                       </Button>

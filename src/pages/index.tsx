@@ -13,6 +13,12 @@ export default function Home(props: any) {
 
           const { products } = props
 
+          // const onToggleLanguageClick = (newLocale: string) => {
+          //           const { pathname, asPath, query } = router
+          //           router.push({ pathname, query }, asPath, { locale: newLocale })
+          // }
+          // const changeTo = router.locale === 'en' ? 'sr' : 'en'
+
           return (
                     <ThemeProvider theme={theme}>
                               <Container

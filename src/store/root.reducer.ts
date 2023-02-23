@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { checkoutSlice } from '../pages/checkout/store/checkout.slice';
+import { checkoutSlice } from '../store/checkout.slice';
 
 import { RootState } from './root-state.interface';
 

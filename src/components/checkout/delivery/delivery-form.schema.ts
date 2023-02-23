@@ -2,7 +2,6 @@ import { TFunction } from 'i18next';
 import { mixed, object } from 'yup';
 
 import { addressFormSchema } from '../address/address-form.schema';
-import { signupFormSchema } from '../signup/signup-form.schema';
 
 import { ShippingMethod } from './components/shipping-method.enum';
 
@@ -12,5 +11,4 @@ export const deliveryFormSchema = (t: TFunction) =>
                     shippingMethod: mixed<ShippingMethod>().oneOf(
                               Object.values(ShippingMethod) as ShippingMethod[]
                     ),
-                    signup: signupFormSchema(t),
           });

@@ -6,9 +6,8 @@ import { Form, Formik } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { AddressForm } from '../address/address-form';
+import AddressForm from '../address/address-form';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
-import { SignupForm } from '../signup/signup-form';
 
 import { ShippingMethod } from './components/shipping-method';
 import { DeliveryFormValues } from './delivery-form-values.interface';
@@ -69,12 +68,6 @@ const Delivery: FunctionComponent<DeliveryFormProps> = ({ deliveryForm, submitDe
                                                                       <Typography variant="h5" component="legend" gutterBottom>
                                                                                 {t('checkout.customerInfo')}
                                                                       </Typography>
-                                                                      {/* <SignupForm
-                                                                                formName="signup"
-                                                                                errors={errors.signup}
-                                                                                touched={touched.signup}
-                                                                                values={values.signup}
-                                                                      /> */}
                                                             </DeliveryFormControl>
                                                             <Box textAlign="right" mt={2}>
                                                                       <Button
