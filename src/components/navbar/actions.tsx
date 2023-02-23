@@ -9,6 +9,8 @@ import Cart from '../cart/index'
 import WishList from "../wishlist/index";
 import LoginRegister from '../login/index'
 import { Language } from "@mui/icons-material";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Actions({ isScreenToMedium }: any) {
 
@@ -19,6 +21,9 @@ export default function Actions({ isScreenToMedium }: any) {
           const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
 
           const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
+
+          const router = useRouter()
+
 
           return (
                     <Component>
@@ -79,8 +84,16 @@ export default function Actions({ isScreenToMedium }: any) {
                                                   IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
                                                   sx={{ width: 75, alignItems: 'center' }}
                                         >
-                                                  <MenuItem value="porsche">english</MenuItem>
-                                                  <MenuItem value="lexus">serbian</MenuItem>
+                                                  <MenuItem>
+                                                            <Link href={`en-US/{router.pathname}`}>
+                                                                      english
+                                                            </Link>
+                                                  </MenuItem>
+                                                  <MenuItem>
+                                                            <Link href={`sr-RS/{router.pathname}`}>
+                                                                      serbian
+                                                            </Link>
+                                                  </MenuItem>
                                         </Select>
 
                               </MyList>
