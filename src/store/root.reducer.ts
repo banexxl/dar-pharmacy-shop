@@ -5,5 +5,5 @@ import { checkoutSlice } from '../pages/checkout/store/checkout.slice';
 import { RootState } from './root-state.interface';
 
 export const rootReducer = combineReducers<RootState>({
-  checkout: checkoutSlice.reducer,
+          checkout: checkoutSlice.reducer,
 });

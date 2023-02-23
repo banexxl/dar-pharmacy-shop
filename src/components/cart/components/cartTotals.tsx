@@ -20,13 +20,13 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                     <div>
                               Ukupno sa PDV-om: {parseFloat(totalItemPrice).toFixed(2)} RSD
                               <Button sx={{ color: 'white' }} onClick={onClose}>
-                                        <Link href='/checkout/address'>
+                                        <Link href='/checkout'>
                                                   Uloguj se i plati
                                         </Link>
                               </Button>
 
                               <Button sx={{ color: 'white' }} onClick={onClose}>
-                                        <Link href='/checkout/address'>
+                                        <Link href='/checkout'>
                                                   Plati kao gost
                                         </Link>
                               </Button>
