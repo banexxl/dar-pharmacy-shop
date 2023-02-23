@@ -28,6 +28,7 @@
     "firstName": "Ime",
     "lastName": "Prezime",
     "addressLine1": "Adresa",
+    "addressLine2": "Adresa",
     "city": "Grad",
     "provinceState": "Region",
     "country": "Država",

@@ -1,9 +1,12 @@
 import AddressForm from '@/components/checkout/address/address-form'
+import { CreditCard } from '@/components/checkout/credit-card/credit-card'
+import Delivery from '@/components/checkout/delivery/delivery'
 import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 import AppDrawer from '@/components/navbar/drawer'
 import SearchBox from '@/components/search'
 import { UIProvider } from '@/context/ui'
+import { CreditCardFormValues } from '@/interfaces/checkout/credit-card-form-values.interface'
 import theme from '@/styles/theme'
 import { ThemeProvider } from '@emotion/react'
 import { Container, Stack, Toolbar } from '@mui/material'
@@ -11,6 +14,11 @@ import { InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
+const cardValues: CreditCardFormValues = {
+          cardNumber: '1111-1111-1111-1111',
+          expiryDate: '12/23',
+          securityCode: '233'
+}
 const Checkout = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           return (
@@ -25,6 +33,8 @@ const Checkout = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                         <Stack>
                                                   <UIProvider>
                                                             <AddressForm formName='addressform'></AddressForm>
+                                                            <CreditCard formName='creditcard' values={cardValues} handleChange={() => console.log("aaaa")} />
+                                                            <Delivery></Delivery>
                                                             <Toolbar />
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
