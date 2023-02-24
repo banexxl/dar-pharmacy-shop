@@ -20,7 +20,7 @@ const cardValues: CreditCardFormValues = {
           securityCode: '233'
 }
 
-const Checkout = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           return (
                     <ThemeProvider theme={theme}>

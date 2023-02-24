@@ -77,18 +77,24 @@ export default function Actions({ isScreenToMedium }: any) {
                                                   </ListItemIcon>
                                         </ListItemButton>
                                         <Divider orientation="vertical" flexItem />
-                                        <Select
-                                                  placeholder="Language"
-                                                  IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
-                                                  sx={{ width: 75, alignItems: 'center' }}
+                                        <ListItemButton
+                                                  sx={{
+                                                            justifyContent: "center",
+                                                  }}
                                         >
-                                                  <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'en-US' }) }}>
-                                                            en
-                                                  </MenuItem>
-                                                  <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'sr-RS' }) }}>
-                                                            sr
-                                                  </MenuItem>
-                                        </Select>
+                                                  <Select
+                                                            placeholder="Language"
+                                                            IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
+                                                            sx={{ width: 75, height: 24, alignItems: 'center' }}
+                                                  >
+                                                            <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'en-US' }) }}>
+                                                                      en
+                                                            </MenuItem>
+                                                            <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'sr-RS' }) }}>
+                                                                      sr
+                                                            </MenuItem>
+                                                  </Select>
+                                        </ListItemButton>
 
                               </MyList>
                               <WishListDialog />

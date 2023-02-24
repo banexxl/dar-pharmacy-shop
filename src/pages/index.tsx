@@ -9,14 +9,20 @@ import Promotions from "../components/promotions";
 import SearchBox from "../components/search"
 import productsServices from '@/services/product.services'
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { InferGetStaticPropsType } from "next/types";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
-export default function Home(props: any, _props: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home(props: any) {
 
           const { products } = props
+          const { t } = useTranslation()
 
           return (
                     <ThemeProvider theme={theme}>
+                              <Head>
+                                        <title>{t('homepage.title')}</title>
+                                        <meta name="Apoteka DAR" content="initial-scale=1.0, width=device-width" />
+                              </Head>
                               <Container
                                         disableGutters
                                         maxWidth="xl"
@@ -57,10 +63,11 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(dbData)),
-                              ...(await serverSideTranslations(locale, [
+                              ...(serverSideTranslations(locale, [
                                         'common',
                               ])),
                     },
                     revalidate: 10,
           }
 }
+
