@@ -1,4 +1,4 @@
-import { Divider, FormControl, InputLabel, ListItemButton, ListItemIcon, MenuItem, Select } from "@mui/material";
+import { Divider, ListItemButton, ListItemIcon, MenuItem, Select } from "@mui/material";
 import { ActionIconsContainerDesktop, ActionIconsContainerMobile, MyList } from "../../styles/appbar";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -9,7 +9,6 @@ import Cart from '../cart/index'
 import WishList from "../wishlist/index";
 import LoginRegister from '../login/index'
 import { Language } from "@mui/icons-material";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Actions({ isScreenToMedium }: any) {
@@ -23,7 +22,6 @@ export default function Actions({ isScreenToMedium }: any) {
           const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
           const router = useRouter()
-
 
           return (
                     <Component>
@@ -84,15 +82,11 @@ export default function Actions({ isScreenToMedium }: any) {
                                                   IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
                                                   sx={{ width: 75, alignItems: 'center' }}
                                         >
-                                                  <MenuItem>
-                                                            <Link href={`en-US/{router.pathname}`}>
-                                                                      english
-                                                            </Link>
+                                                  <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'en-US' }) }}>
+                                                            en
                                                   </MenuItem>
-                                                  <MenuItem>
-                                                            <Link href={`sr-RS/{router.pathname}`}>
-                                                                      serbian
-                                                            </Link>
+                                                  <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'sr-RS' }) }}>
+                                                            sr
                                                   </MenuItem>
                                         </Select>
 
