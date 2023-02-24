@@ -8,16 +8,12 @@ import AppDrawer from "../components/navbar/drawer";
 import Promotions from "../components/promotions";
 import SearchBox from "../components/search"
 import productsServices from '@/services/product.services'
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { InferGetStaticPropsType } from "next/types";
 
-export default function Home(props: any) {
+export default function Home(props: any, _props: InferGetStaticPropsType<typeof getStaticProps>) {
 
           const { products } = props
-
-          // const onToggleLanguageClick = (newLocale: string) => {
-          //           const { pathname, asPath, query } = router
-          //           router.push({ pathname, query }, asPath, { locale: newLocale })
-          // }
-          // const changeTo = router.locale === 'en' ? 'sr' : 'en'
 
           return (
                     <ThemeProvider theme={theme}>
@@ -46,7 +42,7 @@ export default function Home(props: any) {
 }
 
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: any) {
 
           const dbData: any = await productsServices().getProductForHomePage().then((data: any) => {
                     return data
@@ -60,7 +56,10 @@ export async function getStaticProps() {
 
           return {
                     props: {
-                              products: JSON.parse(JSON.stringify(dbData))
+                              products: JSON.parse(JSON.stringify(dbData)),
+                              ...(await serverSideTranslations(locale, [
+                                        'common',
+                              ])),
                     },
                     revalidate: 10,
           }

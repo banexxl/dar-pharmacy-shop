@@ -47,5 +47,8 @@
     "password": "Mora da sadrži minimum osam karaktera, bar jedno veliko i malo slovo, bar jedan broj i sprecijalni karakter",
     "confirmPassword": "Šifre se moraju poklapati",
     "invalidFormat": "Nevalidan format"
+  },
+  "homepage":{
+          "title": "Apoteka DAR"
   }
 }

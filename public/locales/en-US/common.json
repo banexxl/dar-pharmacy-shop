@@ -47,5 +47,8 @@
     "password": "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     "confirmPassword": "Confirm password must match",
     "invalidFormat": "Invalid Format"
+  },
+  "homepage":{
+          "title": "DAR Pharmacy"
   }
 }

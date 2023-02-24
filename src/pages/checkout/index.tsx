@@ -19,6 +19,7 @@ const cardValues: CreditCardFormValues = {
           expiryDate: '12/23',
           securityCode: '233'
 }
+
 const Checkout = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           return (

@@ -4,16 +4,19 @@ import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { useUIContext } from "../../context/ui";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
           const { setShowSearchBox } = useUIContext()
 
+          const { t } = useTranslation('common')
+
           return (
                     <AppbarContainer>
                               <AppbarHeader variant="h4">
                                         <Link href="/">
-                                                  Apoteka Dar
+                                                  {t('homepage.title')}
                                         </Link>
                               </AppbarHeader>
                               <MyList type="row">
