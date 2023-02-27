@@ -1,6 +1,6 @@
-import { AddressFormValues } from '../../../interfaces/checkout/user-form-values.interface';
+import { UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 
-export const initialAddressFormValues: AddressFormValues = {
+export const initialUserFormValues: UserFormValues = {
           firstName: '',
           lastName: '',
           addressLine1: '',
@@ -10,4 +10,5 @@ export const initialAddressFormValues: AddressFormValues = {
           provinceState: '',
           country: '',
           zipPostalCode: '',
+          email: ''
 };

@@ -1,17 +1,17 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { RootState } from '../store/root-state.interface';
-import { DeliveryFormValues } from '../interfaces/checkout/delivery-form-values.interface';
 import { PaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
 
 import { CheckoutState } from './checkout-state.interface';
+import { UserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 
 const getCheckoutState = (state: RootState): CheckoutState => state.checkout;
 
-const getDeliveryForm = createSelector(
+const getUserData = createSelector(
           getCheckoutState,
-          (checkoutState: CheckoutState): DeliveryFormValues =>
-                    checkoutState?.deliveryForm
+          (checkoutState: CheckoutState): UserFormValues =>
+                    checkoutState?.userForm
 );
 
 const getPaymentForm = createSelector(
@@ -22,6 +22,6 @@ const getPaymentForm = createSelector(
 
 export const checkoutSelectors = {
           getCheckoutState,
-          getDeliveryForm,
+          getUserData,
           getPaymentForm,
 };

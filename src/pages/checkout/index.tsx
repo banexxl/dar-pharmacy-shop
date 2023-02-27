@@ -1,5 +1,4 @@
 import AddressForm from '@/components/checkout/address/address-form'
-import Delivery from '@/components/checkout/delivery/delivery'
 import { UIProvider } from '@/context/ui'
 import theme, { Colors } from '@/styles/theme'
 import { ThemeProvider } from '@emotion/react'
@@ -47,9 +46,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <AddressForm formName={'addressform'} />
 
                                                                       </Box>
-                                                            </TabPanel>
-                                                            <TabPanel value={value} index={1}>
-                                                                      <Delivery />
                                                             </TabPanel>
                                                             <TabPanel value={value} index={2}>
                                                                       {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {

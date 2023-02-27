@@ -1,11 +1,11 @@
 import theme, { Colors } from '@/styles/theme';
-import { Box, Container, FormControlLabel, Grid, Stack, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Container, FormControlLabel, Grid, Stack, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Formik, FormikErrors, FormikTouched } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
-import { userFormSchema } from '@/schema/address-form.schema';
-import { initialAddressFormValues } from './address-form-values.initial';
+import { userFormSchema } from '@/schema/user-form.schema';
+import { initialUserFormValues } from './address-form-values.initial';
 import { CheckoutNextPrevButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -34,7 +34,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                         <Formik
                                                   enableReinitialize={true}
                                                   validationSchema={userFormSchema(t)}
-                                                  initialValues={initialAddressFormValues}
+                                                  initialValues={initialUserFormValues}
                                                   onSubmit={submitForm}
                                         >
                                                   <Stack>
@@ -124,7 +124,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                                           label={<Typography sx={{
                                                                                                     fontFamily: 'inherit', color: Colors.secondary
                                                                                           }}>{t('checkout.shouldcreateaccount')}</Typography>} />
-                                                                                <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => console.log("kliknuo sam")}>
+                                                                                <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => submitForm()}>
                                                                                           {t('checkout.nextbutton')}
                                                                                 </CheckoutNextPrevButton>
                                                                       </Grid>

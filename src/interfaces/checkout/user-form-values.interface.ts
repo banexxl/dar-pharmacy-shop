@@ -10,7 +10,7 @@ export interface UserFormValues {
           provinceState: string;
           country: string;
           zipPostalCode: string;
-          email: string;
+          email?: string;
 }
 
 export interface UserFormProps {

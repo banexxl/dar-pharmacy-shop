@@ -1,7 +1,7 @@
-import { DeliveryFormValues } from '../interfaces/checkout/delivery-form-values.interface';
+import { UserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 import { PaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
 
 export interface CheckoutState {
-          deliveryForm: DeliveryFormValues;
+          userForm: UserFormValues;
           paymentForm: PaymentFormValues;
 }
