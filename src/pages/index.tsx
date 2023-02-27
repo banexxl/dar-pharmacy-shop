@@ -10,12 +10,14 @@ import SearchBox from "../components/search"
 import productsServices from '@/services/product.services'
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
+
 
 export default function Home(props: any) {
 
           const { products } = props
-          const { t } = useTranslation()
+          const { t } = useTranslation('common')
+
 
           return (
                     <ThemeProvider theme={theme}>
@@ -64,11 +66,10 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(dbData)),
-                              ...(await serverSideTranslations(locale, [
+                              ...(await serverSideTranslations(locale ?? 'sr-RS', [
                                         'common',
                               ])),
                     },
-                    revalidate: 10,
           }
 }
 
