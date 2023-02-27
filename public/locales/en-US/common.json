@@ -1,5 +1,8 @@
 {
   "checkout": {
+          "shouldcreateaccount": "Create account",
+          "nextbutton": "Next",
+          "previousbutton": "Previous",
           "user-info": "User info",
           "title": "Checkout",
           "delivery": "Delivery",

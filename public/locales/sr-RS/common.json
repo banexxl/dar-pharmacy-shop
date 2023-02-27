@@ -1,5 +1,8 @@
 {
   "checkout": {
+          "shouldcreateaccount": "Kreiraj nalog",
+          "nextbutton": "Sledeće",
+          "previousbutton": "Nazad",
           "user-info": "Podaci naručioca",
           "title": "Narudžbenica",
           "delivery": "Dostava",

@@ -1,22 +1,19 @@
 import AddressForm from '@/components/checkout/address/address-form'
-import Confirmation from '@/components/checkout/confirmation/confirmation'
 import { CreditCard } from '@/components/checkout/credit-card/credit-card'
 import Delivery from '@/components/checkout/delivery/delivery'
-import Payment from '@/components/checkout/payment/payment'
-import Footer from '@/components/footer'
-import Navbar from '@/components/navbar'
-import AppDrawer from '@/components/navbar/drawer'
-import SearchBox from '@/components/search'
 import { UIProvider } from '@/context/ui'
 import { CreditCardFormValues } from '@/interfaces/checkout/credit-card-form-values.interface'
+import { CheckoutNextPrevButton, ShouldCreateAccountCheckBox } from '@/styles/checkout'
 import theme, { Colors } from '@/styles/theme'
 import { ThemeProvider } from '@emotion/react'
-import { Box, Container, Stack, Tab, Tabs, Toolbar, Typography } from '@mui/material'
+import { Box, Container, FormControlLabel, Stack, Tab, Tabs, Toolbar, Typography } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Head from 'next/head'
 import React from 'react'
+
 
 const cardValues: CreditCardFormValues = {
           cardNumber: '1111-1111-1111-1111',
@@ -88,7 +85,18 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                       </Tabs>
                                                             </Box>
                                                             <TabPanel value={value} index={0}>
-                                                                      <AddressForm formName={'addressform'} />
+                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                                                                                <AddressForm formName={'addressform'} />
+                                                                                <Box>
+                                                                                          <FormControlLabel control={<ShouldCreateAccountCheckBox defaultChecked />}
+                                                                                                    label={<Typography sx={{
+                                                                                                              fontFamily: 'inherit', color: Colors.secondary
+                                                                                                    }}>{t('checkout.shouldcreateaccount')}</Typography>} />
+                                                                                          <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => console.log("kliknuo sam")}>
+                                                                                                    {t('checkout.nextbutton')}
+                                                                                          </CheckoutNextPrevButton>
+                                                                                </Box>
+                                                                      </Box>
                                                             </TabPanel>
                                                             <TabPanel value={value} index={1}>
                                                                       <Delivery />
@@ -102,7 +110,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </ThemeProvider>
+                    </ThemeProvider >
           )
 }
 
