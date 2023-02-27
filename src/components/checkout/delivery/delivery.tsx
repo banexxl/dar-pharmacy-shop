@@ -4,7 +4,7 @@ import { Box, Button, FormControl, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Form, Formik } from 'formik';
 import React, { FunctionComponent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 import AddressForm from '../address/address-form';
 import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';

@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import { Field, Form, Formik } from 'formik';
 import { CheckboxWithLabel } from 'formik-mui';
 import React, { FunctionComponent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 
 import AddressForm from '../address/address-form';

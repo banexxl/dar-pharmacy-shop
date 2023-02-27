@@ -2,7 +2,7 @@ import { FormControlLabel, Radio } from '@mui/material';
 import { Field } from 'formik';
 import { RadioGroup } from 'formik-mui';
 import React, { FunctionComponent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { ShippingMethod as ShippingMethodEnum } from './shipping-method.enum';
 

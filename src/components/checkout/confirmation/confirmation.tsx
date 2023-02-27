@@ -1,6 +1,6 @@
 import { Typography, Divider } from '@mui/material';
 import React, { FunctionComponent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 
 import { AddressFormValues } from '../../../interfaces/checkout/address-form-values.interface';

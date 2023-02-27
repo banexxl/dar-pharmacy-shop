@@ -23,8 +23,6 @@ export default function Home(props: any) {
                     <ThemeProvider theme={theme}>
                               <Head>
                                         <title>{t('homepage.title')}</title>
-                                        <meta name="Apoteka DAR" content="initial-scale=1.0, width=device-width" />
-                                        <link rel="shortcut icon" href="/public/logos/dar_icon_only.ico" />
                               </Head>
                               <Container
                                         disableGutters

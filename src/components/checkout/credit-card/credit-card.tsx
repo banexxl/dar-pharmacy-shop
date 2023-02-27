@@ -1,7 +1,7 @@
 import { Grid, TextField } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
 import React, { ChangeEvent, FunctionComponent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import InputMask from 'react-input-mask';
 
 import { CreditCardFormValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
