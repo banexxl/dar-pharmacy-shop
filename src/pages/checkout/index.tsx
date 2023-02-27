@@ -1,6 +1,8 @@
 import AddressForm from '@/components/checkout/address/address-form'
 import { CreditCard } from '@/components/checkout/credit-card/credit-card'
 import Delivery from '@/components/checkout/delivery/delivery'
+import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 import AppDrawer from '@/components/navbar/drawer'
 import SearchBox from '@/components/search'
 import { UIProvider } from '@/context/ui'

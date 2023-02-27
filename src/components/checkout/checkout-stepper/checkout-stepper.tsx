@@ -6,7 +6,6 @@ import { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const CheckoutStepper: FunctionComponent = () => {
-
           const { t } = useTranslation();
           const [activeStep, setActiveStep] = useState<number>(0);
 
