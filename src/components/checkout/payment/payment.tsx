@@ -9,7 +9,7 @@ import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 
-import AddressForm from '../address/address-form';
+import AddressForm from '../userinfo/userinfo-form';
 import { CreditCard } from '../credit-card/credit-card';
 
 import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';

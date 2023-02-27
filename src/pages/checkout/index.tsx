@@ -1,4 +1,4 @@
-import AddressForm from '@/components/checkout/address/address-form'
+import AddressForm from '@/components/checkout/userinfo/userinfo-form'
 import { UIProvider } from '@/context/ui'
 import theme, { Colors } from '@/styles/theme'
 import { ThemeProvider } from '@emotion/react'

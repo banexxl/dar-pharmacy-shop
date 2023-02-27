@@ -5,7 +5,7 @@ import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
-import { initialUserFormValues } from './address-form-values.initial';
+import { initialUserFormValues } from './userinfo-form-values.initial';
 import { CheckoutNextPrevButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -120,7 +120,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                                 />
                                                                       </Grid>
                                                                       <Grid item xs={12} sm={6}>
-                                                                                <FormControlLabel control={<ShouldCreateAccountCheckBox defaultChecked onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
+                                                                                <FormControlLabel control={<ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
                                                                                           label={<Typography sx={{
                                                                                                     fontFamily: 'inherit', color: Colors.secondary
                                                                                           }}>{t('checkout.shouldcreateaccount')}</Typography>} />
