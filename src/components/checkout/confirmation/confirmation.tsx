@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 
 import { AddressFormValues } from '../../../interfaces/checkout/address-form-values.interface';
-import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 
 import { ConfirmationProps, mapStateToProps } from './confirmation.props';
 
@@ -33,7 +32,7 @@ const Confirmation: FunctionComponent<ConfirmationProps> = ({
           const { t } = useTranslation();
           return (
                     <>
-                              <CheckoutStepper />
+
                               <Typography variant="h3" gutterBottom>
                                         {t('checkout.delivery')}
                               </Typography>

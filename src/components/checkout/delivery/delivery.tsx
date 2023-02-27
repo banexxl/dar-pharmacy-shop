@@ -7,7 +7,6 @@ import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 import AddressForm from '../address/address-form';
-import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 
 import { ShippingMethod } from './components/shipping-method';
 import { DeliveryFormValues } from '../../../interfaces/checkout/delivery-form-values.interface';
@@ -28,7 +27,7 @@ const Delivery: FunctionComponent<DeliveryFormProps> = ({ deliveryForm, submitDe
 
           return (
                     <>
-                              <CheckoutStepper />
+
                               <Formik
                                         enableReinitialize={true}
                                         validationSchema={deliveryFormSchema(t)}

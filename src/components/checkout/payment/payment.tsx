@@ -10,7 +10,6 @@ import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 
 import AddressForm from '../address/address-form';
-import { CheckoutStepper } from '../checkout-stepper/checkout-stepper';
 import { CreditCard } from '../credit-card/credit-card';
 
 import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
@@ -43,7 +42,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
 
           return (
                     <>
-                              <CheckoutStepper />
+
                               <Formik
                                         validationSchema={paymentFormSchema(t)}
                                         initialValues={paymentForm}

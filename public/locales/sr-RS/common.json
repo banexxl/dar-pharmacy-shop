@@ -1,20 +1,21 @@
 {
   "checkout": {
-    "title": "Narudžbenica",
-    "delivery": "Dostava",
-    "payment": "Plaćanje",
-    "confirmation": "Potvrda",
-    "shippingAddress": "Adresa za dostavu",
-    "billingAddress": "Adresa za plaćanje",
-    "continue": "Nastavi",
-    "previous": "Nazad",
-    "clear": "Očisti sva polja",
-    "sameAsShipping": "Adresa za plaćanje je ista kao adresa za dostavu",
-    "shippingMethod": {
-      "title": "Način dostave",
-      "free": "Besplatno (samo za porudžbine preko 3000 RSD)",
-      "express": "Ekspres (u roku od 3 dana)",
-      "nextDay": "Danas za sutra (proveriti sa nama prethodno)"
+          "user-info": "Podaci naručioca",
+          "title": "Narudžbenica",
+          "delivery": "Dostava",
+          "payment": "Plaćanje",
+          "confirmation": "Potvrda",
+          "shippingAddress": "Adresa za dostavu",
+          "billingAddress": "Adresa za plaćanje",
+          "continue": "Nastavi",
+          "previous": "Nazad",
+          "clear": "Očisti sva polja",
+          "sameAsShipping": "Adresa za plaćanje je ista kao adresa za dostavu",
+          "shippingMethod": {
+          "title": "Način dostave",
+          "free": "Besplatno (samo za porudžbine preko 3000 RSD)",
+          "express": "Ekspres (u roku od 3 dana)",
+          "nextDay": "Danas za sutra (proveriti sa nama prethodno)"
     },
     "customerInfo": "Korisnički podaci",
     "creditCard": "Kreditna kartica"
