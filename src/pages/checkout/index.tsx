@@ -11,7 +11,9 @@ import theme from '@/styles/theme'
 import { ThemeProvider } from '@emotion/react'
 import { Container, Stack, Toolbar } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import React from 'react'
 
 const cardValues: CreditCardFormValues = {
@@ -22,8 +24,13 @@ const cardValues: CreditCardFormValues = {
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
+          const { t } = useTranslation('common')
+
           return (
                     <ThemeProvider theme={theme}>
+                              <Head>
+                                        <title>{t('checkout.title')}</title>
+                              </Head>
                               <Container
                                         disableGutters
                                         maxWidth="xl"

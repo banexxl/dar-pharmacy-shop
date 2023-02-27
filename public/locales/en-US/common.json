@@ -1,5 +1,6 @@
 {
   "checkout": {
+    "title": "Checkout",
     "delivery": "Delivery",
     "payment": "Payment",
     "confirmation": "Confirmation",

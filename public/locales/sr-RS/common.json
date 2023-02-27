@@ -1,5 +1,6 @@
 {
   "checkout": {
+    "title": "Narudžbenica",
     "delivery": "Dostava",
     "payment": "Plaćanje",
     "confirmation": "Potvrda",
