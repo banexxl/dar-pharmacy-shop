@@ -33,6 +33,7 @@
     "firstName": "Ime",
     "lastName": "Prezime",
     "addressLine1": "Adresa",
+    "phonenumber": "Broj mobilnog telefona",
     "addressLine2": "Adresa",
     "city": "Grad",
     "provinceState": "Region",

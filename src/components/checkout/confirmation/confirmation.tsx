@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 
-import { AddressFormValues } from '../../../interfaces/checkout/address-form-values.interface';
+import { AddressFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 
 import { ConfirmationProps, mapStateToProps } from './confirmation.props';
 

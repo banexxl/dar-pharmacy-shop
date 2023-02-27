@@ -33,6 +33,7 @@
     "firstName": "First Name",
     "lastName": "Last Name",
     "addressLine1": "Address Line 1",
+    "phonenumber": "Mobile phone number",
     "addressLine2": "Address Line 2",
     "city": "City",
     "provinceState": "Province/State",

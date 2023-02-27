@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { object, string } from 'yup';
 
-export const addressFormSchema = (t: any) => {
+export const userFormSchema = (t: any) => {
           return object().shape({
                     firstName: string()
                               .required(
@@ -18,6 +18,7 @@ export const addressFormSchema = (t: any) => {
                                         t('errorMessages.required', { fieldName: t('address.addressLine1') })
                               )
                               .max(200, t('errorMessages.tooLong', { max: 200 })),
+                    phoneNumber: string().required(t('errorMessages.required', { max: 15 })),
                     addressLine2: string().notRequired(),
                     city: string()
                               .required(
@@ -40,5 +41,6 @@ export const addressFormSchema = (t: any) => {
                               )
                               .min(5, t('errorMessages.tooShort', { min: 5 }))
                               .max(7, t('errorMessages.tooLong', { max: 7 })),
+                    email: string().required().email()
           });
 };
