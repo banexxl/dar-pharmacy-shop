@@ -1,6 +1,6 @@
 import theme, { Colors } from '@/styles/theme';
 import { Container, FormControlLabel, Grid, Stack, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Formik, FormikErrors, FormikTouched } from 'formik';
+import { Form, Formik, FormikErrors, FormikTouched, useFormik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
@@ -10,17 +10,41 @@ import { CheckoutNextPrevButton, ShouldCreateAccountCheckBox } from '@/styles/ch
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', errors, touched }) => {
+const AddressForm: FunctionComponent<UserFormProps> = () => {
 
           const { t } = useTranslation('common')
           const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
-          const submitForm = () => {
-                    console.log("aaaaaaa");
-          }
 
           const onShouldCreateAccount = (currentState: boolean) => {
                     setShouldCreateAccount(currentState)
           }
+
+
+          const onSubmit = () => {
+                    console.log("Form submitted");
+          }
+
+          const {
+                    values,
+                    errors,
+                    touched,
+                    isSubmitting,
+                    handleBlur,
+                    handleChange,
+                    handleSubmit,
+          }: any = useFormik({
+                    initialValues: {
+                              firstName: "",
+                              lastName: "",
+                              streeAddress: "",
+                              city: "",
+                              zipCode: "",
+                              phone: "",
+                              email: "",
+                    },
+                    validationSchema: userFormSchema(t),
+                    onSubmit,
+          });
 
           return (
                     <ThemeProvider theme={theme}>
@@ -32,17 +56,19 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                         }}
                               >
                                         <Formik
-                                                  enableReinitialize={true}
-                                                  validationSchema={userFormSchema(t)}
                                                   initialValues={initialUserFormValues}
-                                                  onSubmit={submitForm}
+                                                  validationSchema={userFormSchema(t)}
+                                                  onSubmit={values => {
+                                                            // same shape as initial values
+                                                            console.log(values);
+                                                  }}
                                         >
-                                                  <Stack>
+                                                  <Form>
                                                             <Grid container spacing={2}>
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.firstName')}
-                                                                                          name={`${formName}.firstName`}
+                                                                                          name={'firstname'}
                                                                                           variant="outlined"
                                                                                           error={touched?.firstName && !!errors?.firstName}
                                                                                           helperText={touched?.firstName && errors?.firstName}
@@ -52,7 +78,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.lastName')}
-                                                                                          name={`${formName}.lastName`}
+                                                                                          name={'lastName'}
                                                                                           variant="outlined"
                                                                                           error={touched?.lastName && !!errors?.lastName}
                                                                                           helperText={touched?.lastName && errors?.lastName}
@@ -62,7 +88,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.phonenumber')}
-                                                                                          name={`${formName}.phonenumber`}
+                                                                                          name={'phonenumber'}
                                                                                           variant="outlined"
                                                                                           error={touched?.phonenumber && !!errors?.phonenumber}
                                                                                           helperText={touched?.phonenumber && !!errors?.phonenumber}
@@ -72,7 +98,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.addressLine1')}
-                                                                                          name={`${formName}.addressLine1`}
+                                                                                          name={'addressLine1'}
                                                                                           variant="outlined"
                                                                                           error={touched?.addressLine1 && !!errors?.addressLine1}
                                                                                           helperText={touched?.addressLine1 && !!errors?.addressLine1}
@@ -82,7 +108,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.city')}
-                                                                                          name={`${formName}.city`}
+                                                                                          name={'city'}
                                                                                           variant="outlined"
                                                                                           error={touched?.city && !!errors?.city}
                                                                                           helperText={touched?.city && errors?.city}
@@ -92,7 +118,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.provinceState')}
-                                                                                          name={`${formName}.provinceState`}
+                                                                                          name={'provinceState'}
                                                                                           variant="outlined"
                                                                                           error={touched?.provinceState && !!errors?.provinceState}
                                                                                           helperText={touched?.provinceState && errors?.provinceState}
@@ -102,7 +128,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.country')}
-                                                                                          name={`${formName}.country`}
+                                                                                          name={'country'}
                                                                                           variant="outlined"
                                                                                           error={touched?.country && !!errors?.country}
                                                                                           helperText={touched?.country && errors?.country}
@@ -112,7 +138,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
                                                                                           label={t('address.zipPostalCode')}
-                                                                                          name={`${formName}.zipPostalCode`}
+                                                                                          name={'zipPostalCode'}
                                                                                           variant="outlined"
                                                                                           error={touched?.zipPostalCode && !!errors?.zipPostalCode}
                                                                                           helperText={touched?.zipPostalCode && errors?.zipPostalCode}
@@ -120,11 +146,12 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                                 />
                                                                       </Grid>
                                                                       <Grid item xs={12} sm={6}>
-                                                                                <FormControlLabel control={<ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
+                                                                                <FormControlLabel control={
+                                                                                          <ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
                                                                                           label={<Typography sx={{
                                                                                                     fontFamily: 'inherit', color: Colors.secondary
                                                                                           }}>{t('checkout.shouldcreateaccount')}</Typography>} />
-                                                                                <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => submitForm()}>
+                                                                                <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => handleSubmit()}>
                                                                                           {t('checkout.nextbutton')}
                                                                                 </CheckoutNextPrevButton>
                                                                       </Grid>
@@ -143,7 +170,7 @@ const AddressForm: FunctionComponent<UserFormProps> = ({ formName = 'user', erro
                                                                                           : null
                                                                       }
                                                             </Grid>
-                                                  </Stack>
+                                                  </Form>
                                         </Formik>
                               </Container>
                     </ThemeProvider>
