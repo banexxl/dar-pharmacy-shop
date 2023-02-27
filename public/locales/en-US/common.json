@@ -32,9 +32,8 @@
   "address": {
     "firstName": "First Name",
     "lastName": "Last Name",
-    "addressLine1": "Street address",
-    "phonenumber": "Mobile phone number",
-    "addressLine2": "Address Line 2",
+    "streetAddress": "Street address",
+    "phoneNumber": "Mobile phone number",
     "city": "City",
     "provinceState": "Province/State",
     "country": "Country",

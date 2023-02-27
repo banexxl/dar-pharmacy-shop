@@ -3,11 +3,10 @@ import { FormikErrors, FormikTouched } from "formik";
 export interface UserFormValues {
           firstName: string;
           lastName: string;
-          addressLine1: string;
-          phonenumber: string;
-          addressLine2?: string;
+          streetAddress: string;
+          phoneNumber: string;
           city: string;
-          provinceState: string;
+          provinceState?: string;
           country: string;
           zipPostalCode: string;
           email?: string;

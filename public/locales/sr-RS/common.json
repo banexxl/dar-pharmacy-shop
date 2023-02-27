@@ -32,9 +32,8 @@
   "address": {
     "firstName": "Ime",
     "lastName": "Prezime",
-    "addressLine1": "Adresa",
-    "phonenumber": "Broj mobilnog telefona",
-    "addressLine2": "Adresa",
+    "streetAddress": "Adresa",
+    "phoneNumber": "Broj mobilnog telefona",
     "city": "Grad",
     "provinceState": "Region",
     "country": "Država",

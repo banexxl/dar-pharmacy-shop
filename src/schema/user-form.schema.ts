@@ -13,22 +13,19 @@ export const userFormSchema = (t: any) => {
                                         t('errorMessages.required', { fieldName: t('address.lastName') })
                               )
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
-                    addressLine1: string()
+                    streetAddress: string()
                               .required(
-                                        t('errorMessages.required', { fieldName: t('address.addressLine1') })
+                                        t('errorMessages.required', { fieldName: t('address.streetAddress') })
                               )
-                              .max(200, t('errorMessages.tooLong', { max: 200 })),
+                              .max(200, t('errorMessages.tooLong', { max: 100 })),
                     phoneNumber: string().required(t('errorMessages.required', { max: 15 })),
-                    addressLine2: string().notRequired(),
                     city: string()
                               .required(
-                                        t('errorMessages.required', { fieldName: t('address.addressLine2') })
+                                        t('errorMessages.required', { fieldName: t('address.city') })
                               )
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
                     provinceState: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.provinceState') })
-                              )
+                              .notRequired()
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
                     country: string()
                               .required(

@@ -3,9 +3,8 @@ import { UserFormValues } from '../../../interfaces/checkout/user-form-values.in
 export const initialUserFormValues: UserFormValues = {
           firstName: '',
           lastName: '',
-          addressLine1: '',
-          phonenumber: '',
-          addressLine2: '',
+          streetAddress: '',
+          phoneNumber: '',
           city: '',
           provinceState: '',
           country: '',

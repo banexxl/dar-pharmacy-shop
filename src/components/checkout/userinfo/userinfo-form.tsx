@@ -1,6 +1,6 @@
 import theme, { Colors } from '@/styles/theme';
-import { Container, FormControlLabel, Grid, Stack, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Form, Formik, FormikErrors, FormikTouched, useFormik } from 'formik';
+import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Form, Formik, useFormik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
@@ -33,18 +33,11 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                     handleChange,
                     handleSubmit,
           }: any = useFormik({
-                    initialValues: {
-                              firstName: "",
-                              lastName: "",
-                              streeAddress: "",
-                              city: "",
-                              zipCode: "",
-                              phone: "",
-                              email: "",
-                    },
+                    initialValues: initialUserFormValues,
                     validationSchema: userFormSchema(t),
                     onSubmit,
           });
+
 
           return (
                     <ThemeProvider theme={theme}>
@@ -70,8 +63,8 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                                                           label={t('address.firstName')}
                                                                                           name={'firstname'}
                                                                                           variant="outlined"
-                                                                                          error={touched?.firstName && !!errors?.firstName}
-                                                                                          helperText={touched?.firstName && errors?.firstName}
+                                                                                          error={touched.firstName && Boolean(errors.firstName)}
+                                                                                          helperText={touched.firstName && errors.firstName}
                                                                                           fullWidth
                                                                                 />
                                                                       </Grid>
@@ -87,21 +80,21 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                                       </Grid>
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
-                                                                                          label={t('address.phonenumber')}
+                                                                                          label={t('address.phoneNumber')}
                                                                                           name={'phonenumber'}
                                                                                           variant="outlined"
-                                                                                          error={touched?.phonenumber && !!errors?.phonenumber}
-                                                                                          helperText={touched?.phonenumber && !!errors?.phonenumber}
+                                                                                          error={touched?.phoneNumber && !!errors?.phoneNumber}
+                                                                                          helperText={touched?.phoneNumber && !!errors?.phoneNumber}
                                                                                           fullWidth
                                                                                 />
                                                                       </Grid>
                                                                       <Grid item xs={12} sm={6}>
                                                                                 <TextField
-                                                                                          label={t('address.addressLine1')}
-                                                                                          name={'addressLine1'}
+                                                                                          label={t('address.streetAddress')}
+                                                                                          name={'streetAddress'}
                                                                                           variant="outlined"
-                                                                                          error={touched?.addressLine1 && !!errors?.addressLine1}
-                                                                                          helperText={touched?.addressLine1 && !!errors?.addressLine1}
+                                                                                          error={touched?.streetAddress && !!errors?.streetAddress}
+                                                                                          helperText={touched?.streetAddress && !!errors?.streetAddress}
                                                                                           fullWidth
                                                                                 />
                                                                       </Grid>
