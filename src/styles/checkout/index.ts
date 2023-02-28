@@ -7,6 +7,11 @@ export const CheckoutNextPrevButton = styled(Button)(() => ({
           margin: 4,
 }))
 
+export const ClearFormButton = styled(Button)(() => ({
+          background: Colors.secondary,
+          margin: 4,
+}))
+
 export const ShouldCreateAccountCheckBox = styled(Checkbox)(() => ({
           color: Colors.primary,
           backgroundColor: Colors.light_gray

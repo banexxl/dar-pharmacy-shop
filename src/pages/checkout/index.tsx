@@ -44,7 +44,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                             <TabPanel value={value} index={0}>
                                                                       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
                                                                                 <AddressForm formName={'addressform'} />
-
                                                                       </Box>
                                                             </TabPanel>
                                                             <TabPanel value={value} index={2}>

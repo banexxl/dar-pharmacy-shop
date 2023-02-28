@@ -1,5 +1,6 @@
 {
   "checkout": {
+          "clearform": "Clear form",
           "shouldcreateaccount": "Create account",
           "nextbutton": "Next",
           "previousbutton": "Previous",

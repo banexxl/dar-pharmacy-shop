@@ -1,5 +1,6 @@
 {
   "checkout": {
+          "clearform": "Obriši sve",
           "shouldcreateaccount": "Kreiraj nalog",
           "nextbutton": "Sledeće",
           "previousbutton": "Nazad",

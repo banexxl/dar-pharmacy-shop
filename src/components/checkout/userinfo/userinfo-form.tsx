@@ -1,13 +1,13 @@
 import theme, { Colors } from '@/styles/theme';
 import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Form, Formik, useFormik } from 'formik';
+import { Form, Formik, FormikHelpers, FormikValues, useFormik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import { initialUserFormValues } from './userinfo-form-values.initial';
-import { CheckoutNextPrevButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
-
+import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
+import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const AddressForm: FunctionComponent<UserFormProps> = () => {
@@ -24,24 +24,11 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                     console.log("Form submitted");
           }
 
-          const {
-                    values,
-                    errors,
-                    touched,
-                    isSubmitting,
-                    handleBlur,
-                    handleChange,
-                    handleSubmit,
-          }: any = useFormik({
-                    initialValues: initialUserFormValues,
-                    validationSchema: userFormSchema(t),
-                    onSubmit: onSubmitHandler,
-          });
-
-          console.log("values", values);
-          console.log('errors', errors);
-
-
+          // const formik: any = useFormik({
+          //           initialValues: initialUserFormValues,
+          //           validationSchema: userFormSchema(t),
+          //           onSubmit: onSubmitHandler,
+          // });
 
 
           return (
@@ -53,123 +40,146 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                   background: "#fff",
                                         }}
                               >
-                                        <Grid container spacing={2}>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      label={t('address.firstName')}
-                                                                      name={'address.firstName'}
-                                                                      variant="outlined"
-                                                                      onChange={handleChange('firstName')}
-                                                                      error={touched.firstName && !!errors.firstName}
-                                                                      helperText={touched.firstName && errors.firstName}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('lastName')}
-                                                                      label={t('address.lastName')}
-                                                                      name={'lastName'}
-                                                                      variant="outlined"
-                                                                      error={touched?.lastName && !!errors?.lastName}
-                                                                      helperText={touched?.lastName && errors?.lastName}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('phoneNumber')}
-                                                                      label={t('address.phoneNumber')}
-                                                                      name={'phoneNumber'}
-                                                                      variant="outlined"
-                                                                      error={touched?.phoneNumber && !!errors?.phoneNumber}
-                                                                      helperText={touched?.phoneNumber && !!errors?.phoneNumber}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('streetAddress')}
-                                                                      label={t('address.streetAddress')}
-                                                                      name={'streetAddress'}
-                                                                      variant="outlined"
-                                                                      error={touched?.streetAddress && !!errors?.streetAddress}
-                                                                      helperText={touched?.streetAddress && !!errors?.streetAddress}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('city')}
-                                                                      label={t('address.city')}
-                                                                      name={'city'}
-                                                                      variant="outlined"
-                                                                      error={touched?.city && !!errors?.city}
-                                                                      helperText={touched?.city && errors?.city}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('provinceState')}
-                                                                      label={t('address.provinceState')}
-                                                                      name={'provinceState'}
-                                                                      variant="outlined"
-                                                                      error={touched?.provinceState && !!errors?.provinceState}
-                                                                      helperText={touched?.provinceState && errors?.provinceState}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('country')}
-                                                                      label={t('address.country')}
-                                                                      name={'country'}
-                                                                      variant="outlined"
-                                                                      error={touched?.country && !!errors?.country}
-                                                                      helperText={touched?.country && errors?.country}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <TextField
-                                                                      onChange={handleChange('zipPostalCode')}
-                                                                      label={t('address.zipPostalCode')}
-                                                                      name={'zipPostalCode'}
-                                                                      variant="outlined"
-                                                                      error={touched?.zipPostalCode && !!errors?.zipPostalCode}
-                                                                      helperText={touched?.zipPostalCode && errors?.zipPostalCode}
-                                                                      fullWidth
-                                                            />
-                                                  </Grid>
-                                                  <Grid item xs={12} sm={6}>
-                                                            <FormControlLabel control={
-                                                                      <ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
-                                                                      label={<Typography sx={{
-                                                                                fontFamily: 'inherit', color: Colors.secondary
-                                                                      }}>{t('checkout.shouldcreateaccount')}</Typography>} />
-                                                            <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => handleSubmit()}>
-                                                                      {t('checkout.nextbutton')}
-                                                            </CheckoutNextPrevButton>
-                                                  </Grid>
+                                        <Formik initialValues={initialUserFormValues} onSubmit={() => onSubmitHandler()} validationSchema={userFormSchema(t)} reset>
                                                   {
-                                                            shouldCreateAccount ?
-                                                                      <Grid item xs={12} sm={6}>
-                                                                                <TextField
-                                                                                          onChange={handleChange('email')}
-                                                                                          label={t('signup.email')}
-                                                                                          name={'email'}
-                                                                                          variant="outlined"
-                                                                                          error={touched?.email && !!errors?.email}
-                                                                                          helperText={touched?.email && errors?.email}
-                                                                                          fullWidth
-                                                                                />
+                                                            formik => (
+                                                                      <Grid container spacing={2}>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.firstName}
+                                                                                                    label={t('address.firstName')}
+                                                                                                    name={'address.firstName'}
+                                                                                                    variant="outlined"
+                                                                                                    onChange={formik.handleChange('firstName')}
+                                                                                                    error={formik.touched.firstName && !!formik.errors.firstName}
+                                                                                                    helperText={formik.touched.firstName && formik.errors.firstName}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.lastName}
+                                                                                                    onChange={formik.handleChange('lastName')}
+                                                                                                    label={t('address.lastName')}
+                                                                                                    name={'lastName'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.lastName && !!formik.errors?.lastName}
+                                                                                                    helperText={formik.touched?.lastName && formik.errors?.lastName}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.phoneNumber}
+                                                                                                    onChange={formik.handleChange('phoneNumber')}
+                                                                                                    label={t('address.phoneNumber')}
+                                                                                                    name={'phoneNumber'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
+                                                                                                    helperText={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.streetAddress}
+                                                                                                    onChange={formik.handleChange('streetAddress')}
+                                                                                                    label={t('address.streetAddress')}
+                                                                                                    name={'streetAddress'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.streetAddress && !!formik.errors?.streetAddress}
+                                                                                                    helperText={formik.touched?.streetAddress && !!formik.errors?.streetAddress}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.city}
+                                                                                                    onChange={formik.handleChange('city')}
+                                                                                                    label={t('address.city')}
+                                                                                                    name={'city'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.city && !!formik.errors?.city}
+                                                                                                    helperText={formik.touched?.city && formik.errors?.city}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.provinceState}
+                                                                                                    onChange={formik.handleChange('provinceState')}
+                                                                                                    label={t('address.provinceState')}
+                                                                                                    name={'provinceState'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.provinceState && !!formik.errors?.provinceState}
+                                                                                                    helperText={formik.touched?.provinceState && formik.errors?.provinceState}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.country}
+                                                                                                    onChange={formik.handleChange('country')}
+                                                                                                    label={t('address.country')}
+                                                                                                    name={'country'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.country && !!formik.errors?.country}
+                                                                                                    helperText={formik.touched?.country && formik.errors?.country}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <TextField
+                                                                                                    value={formik.values.zipPostalCode}
+                                                                                                    onChange={formik.handleChange('zipPostalCode')}
+                                                                                                    label={t('address.zipPostalCode')}
+                                                                                                    name={'zipPostalCode'}
+                                                                                                    variant="outlined"
+                                                                                                    error={formik.touched?.zipPostalCode && !!formik.errors?.zipPostalCode}
+                                                                                                    helperText={formik.touched?.zipPostalCode && formik.errors?.zipPostalCode}
+                                                                                                    fullWidth
+                                                                                          />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <FormControlLabel control={
+                                                                                                    <ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
+                                                                                                    label={<Typography sx={{
+                                                                                                              fontFamily: 'inherit', color: Colors.secondary
+                                                                                                    }}>{t('checkout.shouldcreateaccount')}</Typography>} />
+                                                                                          <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}>
+                                                                                                    {t('checkout.clearform')}
+                                                                                          </ClearFormButton>
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }}
+                                                                                                    endIcon={<NavigateNextIcon />}
+                                                                                                    onClick={() => formik.handleSubmit()}
+                                                                                                    disabled={Object.keys(formik.errors).length >= 0 ? true : false}
+                                                                                          >
+                                                                                                    {t('checkout.nextbutton')}
+                                                                                          </CheckoutNextPrevButton>
+                                                                                </Grid>
+                                                                                {
+                                                                                          shouldCreateAccount ?
+                                                                                                    <Grid item xs={12} sm={6}>
+                                                                                                              <TextField
+                                                                                                                        value={formik.values.email}
+                                                                                                                        onChange={formik.handleChange('email')}
+                                                                                                                        label={t('signup.email')}
+                                                                                                                        name={'email'}
+                                                                                                                        variant="outlined"
+                                                                                                                        error={formik.touched?.email && !!formik.errors?.email}
+                                                                                                                        helperText={formik.touched?.email && formik.errors?.email}
+                                                                                                                        fullWidth
+                                                                                                              />
+                                                                                                    </Grid>
+                                                                                                    : null
+                                                                                }
                                                                       </Grid>
-                                                                      : null
+                                                            )
                                                   }
-                                        </Grid>
+                                        </Formik>
+
                               </Container>
-                    </ThemeProvider>
+                    </ThemeProvider >
 
           );
 };
