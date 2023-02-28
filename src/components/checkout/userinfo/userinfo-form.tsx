@@ -1,6 +1,6 @@
 import theme, { Colors } from '@/styles/theme';
 import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Form, Formik, FormikHelpers, FormikValues, useFormik } from 'formik';
+import { Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
@@ -144,7 +144,6 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                                                           <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }}
                                                                                                     endIcon={<NavigateNextIcon />}
                                                                                                     onClick={() => formik.handleSubmit()}
-                                                                                                    disabled={!!formik.errors}
                                                                                           >
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>

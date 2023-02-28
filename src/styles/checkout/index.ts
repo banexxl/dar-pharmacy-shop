@@ -13,6 +13,6 @@ export const ClearFormButton = styled(Button)(() => ({
 }))
 
 export const ShouldCreateAccountCheckBox = styled(Checkbox)(() => ({
-          color: Colors.primary,
+          color: Colors.secondary,
           backgroundColor: Colors.light_gray
 }))

@@ -10,6 +10,8 @@ import React, { useState } from 'react'
 import TabPanel from '@/styles/checkout/tabpanel'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
+import Payment from '@/components/checkout/payment/payment'
+import { CreditCard } from '@mui/icons-material'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -43,8 +45,8 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                             <Box sx={{ borderBottom: 3, borderColor: Colors.secondary }}>
                                                                       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                                                                 <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
                                                                       </Tabs>
                                                             </Box>
                                                             <TabPanel value={value} index={0}>
@@ -52,7 +54,8 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <AddressForm formName={'addressform'} />
                                                                       </Box>
                                                             </TabPanel>
-                                                            <TabPanel value={value} index={2}>
+                                                            <TabPanel value={value} index={1}>
+                                                                      <Payment />
                                                                       {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
                                                                                 throw new Error('Function not implemented.')
                                                                       }} /> */}
