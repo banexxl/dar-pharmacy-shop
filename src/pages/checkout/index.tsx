@@ -1,7 +1,6 @@
 import AddressForm from '@/components/checkout/userinfo/userinfo-form'
 import { UIProvider } from '@/context/ui'
 import theme, { Colors } from '@/styles/theme'
-import { ThemeProvider } from '@emotion/react'
 import { Box, Container, Stack, Tab, Tabs } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -9,6 +8,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import React, { useState } from 'react'
 import TabPanel from '@/styles/checkout/tabpanel'
+import dynamic from 'next/dynamic'
+import LoadingWheel from '../../components/loading/loading'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -20,8 +21,13 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     setValue(newValue);
           };
 
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel />,
+          })
+
+
           return (
-                    <ThemeProvider theme={theme}>
+                    <DynamicThemeProvider theme={theme}>
                               <Head>
                                         <title>{t('checkout.title')}</title>
                               </Head>
@@ -55,7 +61,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </ThemeProvider >
+                    </DynamicThemeProvider >
           )
 }
 

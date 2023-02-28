@@ -11,6 +11,8 @@ import productsServices from '@/services/product.services'
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+
 
 
 export default function Home(props: any) {
@@ -19,8 +21,14 @@ export default function Home(props: any) {
           const { t } = useTranslation('common')
 
 
+          //this way next js does not try to render theme provider on server (no hydration error : )
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <>Loading...</>,
+          })
+
+
           return (
-                    <ThemeProvider theme={theme}>
+                    <DynamicThemeProvider theme={theme}>
                               <Head>
                                         <title>{t('homepage.title')}</title>
                               </Head>
@@ -44,7 +52,7 @@ export default function Home(props: any) {
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </ThemeProvider>
+                    </DynamicThemeProvider>
           )
 }
 

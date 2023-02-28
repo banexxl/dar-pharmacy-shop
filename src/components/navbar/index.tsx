@@ -3,6 +3,7 @@ import { useMediaQuery } from "@mui/material";
 import AppbarDesktop from "./appbarDesktop";
 import AppbarMobile from "./appbarMobile";
 
+
 export default function NavBar() {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'));

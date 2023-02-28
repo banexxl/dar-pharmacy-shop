@@ -19,17 +19,9 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                     setShouldCreateAccount(currentState)
           }
 
-
           const onSubmitHandler = () => {
                     console.log("Form submitted");
           }
-
-          // const formik: any = useFormik({
-          //           initialValues: initialUserFormValues,
-          //           validationSchema: userFormSchema(t),
-          //           onSubmit: onSubmitHandler,
-          // });
-
 
           return (
                     <ThemeProvider theme={theme}>
@@ -152,7 +144,7 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                                                           <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }}
                                                                                                     endIcon={<NavigateNextIcon />}
                                                                                                     onClick={() => formik.handleSubmit()}
-                                                                                                    disabled={Object.keys(formik.errors).length >= 0 ? true : false}
+                                                                                                    disabled={!!formik.errors}
                                                                                           >
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
