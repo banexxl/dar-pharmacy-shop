@@ -34,24 +34,6 @@ export default function Footer() {
                               }}
                     >
                               <Grid container spacing={1} justifyContent="center">
-                                        {/* <ListItemButton onClick={handleClick}>
-                                                  <ListItemIcon>
-                                                            <InboxIcon />
-                                                  </ListItemIcon>
-                                                  <ListItemText primary="Inbox" />
-                                                  {open ? <ExpandLess /> : <ExpandMore />}
-                                        </ListItemButton>
-                                        <Collapse in={open} timeout="auto" unmountOnExit>
-                                                  <List component="div" disablePadding>
-                                                            <ListItemButton sx={{ pl: 4 }}>
-                                                                      <ListItemIcon>
-                                                                                <StarBorder />
-                                                                      </ListItemIcon>
-                                                                      <ListItemText primary="Starred" />
-                                                            </ListItemButton>
-                                                  </List>
-                                        </Collapse> */}
-
                                         <Grid item md={2} lg={2}>
                                                   <Box
                                                             sx={{
@@ -63,31 +45,6 @@ export default function Footer() {
                                                             <TwitterIcon sx={{ mr: 1 }} />
                                                             <InstagramIcon />
                                                   </Box>
-                                        </Grid>
-                                        <Grid item md={6} lg={2}>
-                                                  <FooterTitle variant="body1">information</FooterTitle>
-                                                  <List>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                About Us
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                Order Tracking
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                Privacy &amp; Policy
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                Terms &amp; Conditions
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                  </List>
                                         </Grid>
                                         <Grid item md={6} lg={2}>
                                                   <FooterTitle variant="body1">information</FooterTitle>
