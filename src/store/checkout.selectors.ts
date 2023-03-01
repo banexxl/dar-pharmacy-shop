@@ -4,13 +4,13 @@ import { RootState } from '../store/root-state.interface';
 import { PaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
 
 import { CheckoutState } from './checkout-state.interface';
-import { UserFormValues } from '@/interfaces/checkout/user-form-values.interface';
+import { IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 
 const getCheckoutState = (state: RootState): CheckoutState => state.checkout;
 
 const getUserData = createSelector(
           getCheckoutState,
-          (checkoutState: CheckoutState): UserFormValues =>
+          (checkoutState: CheckoutState): IUserFormValues =>
                     checkoutState?.userForm
 );
 

@@ -1,6 +1,6 @@
-import { UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
+import { IUserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 
-export const initialUserFormValues: UserFormValues = {
+export const initialUserFormValues: IUserFormValues = {
           firstName: '',
           lastName: '',
           streetAddress: '',

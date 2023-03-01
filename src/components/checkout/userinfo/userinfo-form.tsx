@@ -3,7 +3,7 @@ import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography
 import { Form, Formik, FormikHelpers, FormikValues, useFormik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { UserFormProps, UserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
+import { IUserFormProps, IUserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import { initialUserFormValues } from './userinfo-form-values.initial';
 import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import EmailAddon from './email-addon';
 
-const AddressForm: FunctionComponent<UserFormProps> = () => {
+const AddressForm: FunctionComponent<IUserFormProps> = () => {
 
           const { t } = useTranslation('common')
 
@@ -147,10 +147,8 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                             )
                                                   }
                                         </Formik>
-
                               </Container>
                     </ThemeProvider >
-
           );
 };
 

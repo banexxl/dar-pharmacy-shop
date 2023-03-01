@@ -1,6 +1,6 @@
 import { FormikErrors, FormikTouched } from "formik";
 
-export interface UserFormValues {
+export interface IUserFormValues {
           firstName: string;
           lastName: string;
           streetAddress: string;
@@ -12,9 +12,9 @@ export interface UserFormValues {
           email?: string;
 }
 
-export interface UserFormProps {
+export interface IUserFormProps {
           formName: string
-          errors?: FormikErrors<UserFormValues>
-          touched?: FormikTouched<UserFormValues>
+          errors?: FormikErrors<IUserFormValues>
+          touched?: FormikTouched<IUserFormValues>
 }
 
