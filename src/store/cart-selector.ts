@@ -1,4 +1,4 @@
-import ICartItem from "@/interfaces/cart";
+import ICartItem from "@/interfaces/cart/cart.interface";
 import { createSelector } from "@reduxjs/toolkit"
 
 const cartSelector = (state: any) => state.cart

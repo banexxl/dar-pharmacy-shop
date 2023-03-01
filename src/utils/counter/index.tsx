@@ -6,7 +6,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { Colors } from "../../styles/theme";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "@/store/cart-slice";
-import ICartItem from "@/interfaces/cart";
+import ICartItem from "@/interfaces/cart/cart.interface";
 
 
 interface IProps {

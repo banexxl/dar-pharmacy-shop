@@ -1,6 +1,6 @@
 import { useUIContext } from '@/context/ui'
 import useDialogModal from '@/hooks/useDialogModal'
-import ICartItem from '@/interfaces/cart'
+import ICartItem from '@/interfaces/cart/cart.interface'
 import { cartTotalPriceSelector } from '@/store/cart-selector'
 import { Button, Slide } from '@mui/material'
 import Link from 'next/link'
