@@ -42,7 +42,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                             <Button
                                                                       type="reset"
                                                                       variant="contained"
-                                                                      endIcon={<ClearAll />}
+                                                                      endIcon={<DeleteIcon />}
                                                                       size="large"
                                                                       onClick={clearPaymentForm}
                                                             >
