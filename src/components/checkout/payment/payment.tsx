@@ -10,12 +10,12 @@ import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 import AddressForm from '../userinfo/userinfo-form';
 import { CreditCard } from '../credit-card/credit-card';
-import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
+
+import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
-import { PaymentFormControl, PaymentInfoAddressInfoCheckbox } from '@/styles/checkout/payment';
-import { initialPaymentFormValues } from './payment-form-values.initial';
 
+const PaymentFormControl = styled(FormControl)(({ theme }) => ({ display: 'block', marginTop: theme.spacing(2), }));
 
 export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
 
@@ -25,7 +25,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
           // const goBack = () => {
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);
           // };
-          // const submitForm = (values: PaymentFormValues) => {
+          // const submitForm = (values: IPaymentFormValues) => {
           //           submitPaymentForm(values);
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
           // };
@@ -33,7 +33,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
           return (
                     <Formik
                               validationSchema={paymentFormSchema(t)}
-                              initialValues={initialPaymentFormValues}
+                              initialValues={paymentForm}
                               onSubmit={() => console.log("aaaa")}
                     >
                               {({ errors, touched, values, handleChange, setFieldTouched }) => (
@@ -42,7 +42,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                             <Button
                                                                       type="reset"
                                                                       variant="contained"
-                                                                      endIcon={<DeleteIcon />}
+                                                                      endIcon={<ClearAll />}
                                                                       size="large"
                                                                       onClick={clearPaymentForm}
                                                             >
@@ -54,7 +54,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       {t('checkout.billingAddress')}
                                                             </Typography>
                                                             <Field
-                                                                      component={PaymentInfoAddressInfoCheckbox}
+                                                                      component={CheckboxWithLabel}
                                                                       type="checkbox"
                                                                       name="sameAsShipping"
                                                                       Label={{ label: t('checkout.sameAsShipping') }}

@@ -4,13 +4,13 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import InputMask from 'react-input-mask';
 
-import { CreditCardFormValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
+import { ICreditCardFormValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
 
 export interface CreditCardProps {
           formName?: string;
-          errors?: FormikErrors<CreditCardFormValues>;
-          touched?: FormikTouched<CreditCardFormValues>;
-          values: CreditCardFormValues;
+          errors?: FormikErrors<ICreditCardFormValues>;
+          touched?: FormikTouched<ICreditCardFormValues>;
+          values: ICreditCardFormValues;
           handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 

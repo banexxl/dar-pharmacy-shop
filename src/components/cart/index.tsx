@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { CartWrapper, StyledTableCell, StyledTableHead, StyledTableRow } from "@/styles/cart"
 import { useSelector } from "react-redux";
-import ICartItem from "@/interfaces/cart";
+import ICartItem from "@/interfaces/cart/cart.interface";
 import CartItem from "./components/cartItem";
 import CartTotals from "./components/cartTotals";
 

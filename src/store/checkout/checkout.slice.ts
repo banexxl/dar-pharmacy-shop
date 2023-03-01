@@ -1,6 +1,6 @@
-import { PaymentFormValues } from '@/interfaces/checkout/payment-form-values.interface';
+import { IPaymentFormValues } from '@/interfaces/checkout/payment-form-values.interface';
+import { IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserFormValues } from '../interfaces/checkout/user-form-values.interface';
 
 import { CheckoutState } from './checkout-state.interface';
 import { initialCheckoutState } from './checkout-state.intial';
@@ -11,7 +11,7 @@ export const checkoutSlice = createSlice({
           reducers: {
                     submitDeliveryForm(
                               state: CheckoutState,
-                              action: PayloadAction<UserFormValues>
+                              action: PayloadAction<IUserFormValues>
                     ) {
                               state.userForm = action.payload;
                     },
@@ -20,7 +20,7 @@ export const checkoutSlice = createSlice({
                     },
                     submitPaymentForm(
                               state: CheckoutState,
-                              action: PayloadAction<PaymentFormValues>
+                              action: PayloadAction<IPaymentFormValues>
                     ) {
                               state.paymentForm = action.payload;
                     },

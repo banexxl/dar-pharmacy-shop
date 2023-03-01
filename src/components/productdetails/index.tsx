@@ -13,7 +13,7 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/productdetails";
 import { FC } from "react";
-import ICartItem from "@/interfaces/cart";
+import ICartItem from "@/interfaces/cart/cart.interface";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;

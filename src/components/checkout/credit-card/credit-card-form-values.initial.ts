@@ -1,6 +1,6 @@
-import { CreditCardFormValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
+import { ICreditCardFormValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
 
-export const initialCreditCardValues: CreditCardFormValues = {
+export const initialCreditCardValues: ICreditCardFormValues = {
           cardNumber: '',
           expiryDate: '',
           securityCode: '',
