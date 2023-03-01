@@ -1,5 +1,5 @@
 import { TFunction } from 'i18next';
-import { object, string } from 'yup';
+import { boolean, object, string } from 'yup';
 
 export const userFormSchema = (t: any) => {
           return object().shape({
@@ -38,6 +38,7 @@ export const userFormSchema = (t: any) => {
                               )
                               .min(5, t('errorMessages.tooShort', { min: 5 }))
                               .max(7, t('errorMessages.tooLong', { max: 7 })),
-                    email: string().required().email()
+                    email: string().required().email(),
+                    sameAsShipping: boolean()
           });
 };

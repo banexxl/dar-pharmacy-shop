@@ -10,12 +10,11 @@ import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 import AddressForm from '../userinfo/userinfo-form';
 import { CreditCard } from '../credit-card/credit-card';
-
 import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
-
-const PaymentFormControl = styled(FormControl)(({ theme }) => ({ display: 'block', marginTop: theme.spacing(2), }));
+import { PaymentFormControl } from '@/styles/checkout/payment';
+import { initialPaymentFormValues } from './payment-form-values.initial';
 
 export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
 
@@ -33,7 +32,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
           return (
                     <Formik
                               validationSchema={paymentFormSchema(t)}
-                              initialValues={paymentForm}
+                              initialValues={initialPaymentFormValues}
                               onSubmit={() => console.log("aaaa")}
                     >
                               {({ errors, touched, values, handleChange, setFieldTouched }) => (
