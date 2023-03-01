@@ -5,8 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Colors } from "../../styles/theme";
 import { useDispatch } from "react-redux";
-import { decrement, increment } from "@/store/cart-slice";
-import ICartItem from "@/interfaces/cart/cart.interface";
+import { decrement, increment } from "@/store/cart/cart-slice";
 
 
 interface IProps {

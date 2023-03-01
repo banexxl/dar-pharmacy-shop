@@ -1,6 +1,6 @@
+import { IPaymentFormValues } from '@/interfaces/checkout/payment-form-values.interface';
 import { IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
 
 import { CheckoutState } from './checkout-state.interface';
 import { initialCheckoutState } from './checkout-state.intial';

@@ -1,8 +1,7 @@
+import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
+import { checkoutSlice } from '@/store/checkout/checkout.slice';
+import { RootState } from '@/store/checkout/root-state.interface';
 import { Dispatch } from '@reduxjs/toolkit';
-
-import { RootState } from '../../../store/root-state.interface';
-import { checkoutSelectors } from '../../../store/checkout.selectors';
-import { checkoutSlice } from '../../../store/checkout.slice';
 
 import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 
