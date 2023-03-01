@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import AddressForm from '../userinfo/userinfo-form';
 import { CreditCard } from '../credit-card/credit-card';
 
-import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
+import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import {
           mapDispatchToProps,
@@ -35,7 +35,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({
           // const goBack = () => {
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);
           // };
-          // const submitForm = (values: PaymentFormValues) => {
+          // const submitForm = (values: IPaymentFormValues) => {
           //           submitPaymentForm(values);
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
           // };

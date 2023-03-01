@@ -4,7 +4,7 @@ import { RootState } from '../../../store/root-state.interface';
 import { checkoutSelectors } from '../../../store/checkout.selectors';
 import { checkoutSlice } from '../../../store/checkout.slice';
 
-import { PaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
+import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 
 const mapStateToProps = (state: RootState) => {
           return {
@@ -14,7 +14,7 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
           return {
-                    submitPaymentForm(formValues: PaymentFormValues) {
+                    submitPaymentForm(formValues: IPaymentFormValues) {
                               dispatch(checkoutSlice.actions.submitPaymentForm(formValues));
                     },
                     clearPaymentForm() {

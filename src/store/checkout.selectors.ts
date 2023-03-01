@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { RootState } from '../store/root-state.interface';
-import { PaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
+import { IPaymentFormValues } from '../interfaces/checkout/payment-form-values.interface';
 
 import { CheckoutState } from './checkout-state.interface';
 import { IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
@@ -16,7 +16,7 @@ const getUserData = createSelector(
 
 const getPaymentForm = createSelector(
           getCheckoutState,
-          (checkoutState: CheckoutState): PaymentFormValues =>
+          (checkoutState: CheckoutState): IPaymentFormValues =>
                     checkoutState?.paymentForm
 );
 

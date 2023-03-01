@@ -1,8 +1,8 @@
 import { IUserFormValues } from './user-form-values.interface';
-import { CreditCardFormValues } from './credit-card-form-values.interface';
+import { ICreditCardFormValues } from './credit-card-form-values.interface';
 
-export interface PaymentFormValues {
+export interface IPaymentFormValues {
           sameAsShipping: boolean;
           billingAddress: IUserFormValues;
-          creditCard: CreditCardFormValues;
+          creditCard: ICreditCardFormValues;
 }
