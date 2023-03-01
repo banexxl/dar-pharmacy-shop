@@ -12,6 +12,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import LoadingWheel from "@/components/loading/loading";
 
 
 
@@ -23,7 +25,7 @@ export default function Home(props: any) {
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <>Loading...</>,
+                    loading: () => <LoadingWheel />,
           })
 
 
@@ -46,7 +48,9 @@ export default function Home(props: any) {
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <Typography variant="h4">Deo asortimana</Typography>
                                                             </Box>
-                                                            <Products data={products} />
+                                                            <Suspense fallback={<LoadingWheel />}>
+                                                                      <Products data={products} />
+                                                            </Suspense>
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
