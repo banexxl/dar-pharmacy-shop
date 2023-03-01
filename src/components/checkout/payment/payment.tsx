@@ -15,6 +15,7 @@ import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
 import { PaymentFormControl } from '@/styles/checkout/payment';
 import { initialPaymentFormValues } from './payment-form-values.initial';
+import UserInfoForm from '../userinfo/userinfo-form';
 
 export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
 
@@ -59,7 +60,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       Label={{ label: t('checkout.sameAsShipping') }}
                                                             />
                                                             {!values.sameAsShipping && (
-                                                                      <AddressForm
+                                                                      <UserInfoForm
                                                                                 formName="billingAddress"
                                                                                 errors={errors.billingAddress}
                                                                                 touched={touched.billingAddress}

@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import EmailAddon from './email-addon';
 
-const AddressForm: FunctionComponent<IUserFormProps> = () => {
+const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
 
           const { t } = useTranslation('common')
 
@@ -151,6 +151,6 @@ const AddressForm: FunctionComponent<IUserFormProps> = () => {
           );
 };
 
-export default AddressForm
+export default UserInfoForm
 
 
