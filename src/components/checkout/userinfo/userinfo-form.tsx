@@ -9,15 +9,11 @@ import { initialUserFormValues } from './userinfo-form-values.initial';
 import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import EmailAddon from './email-addon';
 
 const AddressForm: FunctionComponent<UserFormProps> = () => {
 
           const { t } = useTranslation('common')
-          const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
-
-          const onShouldCreateAccount = (currentState: boolean) => {
-                    setShouldCreateAccount(currentState)
-          }
 
           const onSubmitHandler = () => {
                     console.log("Form submitted");
@@ -133,11 +129,9 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                                                           />
                                                                                 </Grid>
                                                                                 <Grid item xs={12} sm={6}>
-                                                                                          <FormControlLabel control={
-                                                                                                    <ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
-                                                                                                    label={<Typography sx={{
-                                                                                                              fontFamily: 'inherit', color: Colors.secondary
-                                                                                                    }}>{t('checkout.shouldcreateaccount')}</Typography>} />
+                                                                                          <EmailAddon />
+                                                                                </Grid>
+                                                                                <Grid item xs={12} sm={6}>
                                                                                           <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}>
                                                                                                     {t('checkout.clearform')}
                                                                                           </ClearFormButton>
@@ -149,22 +143,6 @@ const AddressForm: FunctionComponent<UserFormProps> = () => {
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>
-                                                                                {
-                                                                                          shouldCreateAccount ?
-                                                                                                    <Grid item xs={12} sm={6}>
-                                                                                                              <TextField
-                                                                                                                        value={formik.values.email}
-                                                                                                                        onChange={formik.handleChange('email')}
-                                                                                                                        label={t('signup.email')}
-                                                                                                                        name={'email'}
-                                                                                                                        variant="outlined"
-                                                                                                                        error={formik.touched?.email && !!formik.errors?.email}
-                                                                                                                        helperText={formik.touched?.email && formik.errors?.email}
-                                                                                                                        fullWidth
-                                                                                                              />
-                                                                                                    </Grid>
-                                                                                                    : null
-                                                                                }
                                                                       </Grid>
                                                             )
                                                   }
