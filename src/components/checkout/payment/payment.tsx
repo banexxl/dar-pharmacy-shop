@@ -12,7 +12,8 @@ import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './paymen
 import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from '@/styles/checkout/payment';
 import { initialPaymentFormValues } from './payment-form-values.initial';
 import UserInfoForm from '../userinfo/userinfo-form';
-import { RadioGroup } from 'formik-mui';
+import RadioGroup from '@mui/material/RadioGroup';
+import { Colors } from '@/styles/theme';
 
 export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
 
@@ -53,10 +54,16 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       />
                                                             )}
 
-                                                            <Typography>{t('checkout.card-payment')}</Typography>
-                                                            <Field type="radio" name="car-payment" value="card-patyment" />
-                                                            <Typography>{t('checkout.card-payment')}</Typography>
-                                                            <Field type="radio" name="car-payment" value="card-patyment" />
+                                                            <FormLabel id="demo-radio-buttons-group-label">{t('checkout.payment-options')}</FormLabel>
+                                                            <RadioGroup
+                                                                      aria-labelledby="demo-radio-buttons-group-label"
+                                                                      defaultValue="female"
+                                                                      name="radio-buttons-group"
+                                                                      row
+                                                            >
+                                                                      <FormControlLabel defaultChecked value="female" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.card-payment')} />
+                                                                      <FormControlLabel value="male" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.on-delivery')} />
+                                                            </RadioGroup>
 
                                                             <Typography variant="h5" component="legend" gutterBottom>
                                                                       {t('checkout.creditCard')}
