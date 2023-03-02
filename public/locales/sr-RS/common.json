@@ -1,5 +1,6 @@
 {
   "checkout": {
+         "payment-options": "Način plaćanja",
           "payment-info": "Informacije o plaćanju",
           "clearform": "Obriši sve",
           "shouldcreateaccount": "Kreiraj nalog",

@@ -1,19 +1,15 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Button, FormControl, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Button, Checkbox, FormControl, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import { CheckboxWithLabel } from 'formik-mui';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
-import AddressForm from '../userinfo/userinfo-form';
 import { CreditCard } from '../credit-card/credit-card';
 import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
-import { isBillingAndShippingCheckbox, PaymentFormControl } from '@/styles/checkout/payment';
+import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from '@/styles/checkout/payment';
 import { initialPaymentFormValues } from './payment-form-values.initial';
 import UserInfoForm from '../userinfo/userinfo-form';
 
@@ -57,6 +53,11 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                             )}
                                                   </PaymentFormControl>
                                                   <PaymentFormControl>
+                                                            <Field
+                                                                      component={paymentOptions}
+                                                                      name="pazmentOptions"
+                                                                      Label={{ label: t('checkout.payment-options') }}
+                                                            />
                                                             <Typography variant="h5" component="legend" gutterBottom>
                                                                       {t('checkout.creditCard')}
                                                             </Typography>
@@ -78,7 +79,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       type="button"
                                                                       variant="contained"
                                                                       color="secondary"
-                                                                      endIcon={<ArrowBackIcon />}
+                                                                      startIcon={<ArrowBackIcon />}
                                                                       size="large"
                                                                       onClick={() => console.log("aaaa")}
                                                             >
@@ -87,7 +88,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                             <Button
                                                                       type="submit"
                                                                       variant="contained"
-                                                                      color="primary"
+                                                                      color="secondary"
                                                                       endIcon={<ArrowRightIcon />}
                                                                       size="large"
                                                             >
