@@ -51,10 +51,8 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                       </Tabs>
                                                             </Box>
                                                             <TabPanel value={value} index={0}>
-                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-                                                                                <Grid item xs={6} sm={6} justifyContent='flex-start'>
-                                                                                          <EmailAddon />
-                                                                                </Grid>
+                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                                                <EmailAddon />
                                                                                 <AddressForm formName={'addressform'} />
                                                                       </Box>
                                                             </TabPanel>

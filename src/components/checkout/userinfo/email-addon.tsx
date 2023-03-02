@@ -39,7 +39,6 @@ function EmailAddon() {
                                                                                           variant="outlined"
                                                                                           error={formik.touched?.email && !!formik.errors?.email}
                                                                                           helperText={formik.touched?.email && formik.errors?.email}
-                                                                                          fullWidth
                                                                                 />
                                                                                 : null
                                                             }
