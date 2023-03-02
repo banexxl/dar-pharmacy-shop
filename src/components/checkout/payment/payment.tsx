@@ -1,6 +1,6 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { Box, Button, Checkbox, FormControl, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
@@ -12,6 +12,7 @@ import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './paymen
 import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from '@/styles/checkout/payment';
 import { initialPaymentFormValues } from './payment-form-values.initial';
 import UserInfoForm from '../userinfo/userinfo-form';
+import { RadioGroup } from 'formik-mui';
 
 export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
 
@@ -51,13 +52,12 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                                 touched={touched.billingAddress}
                                                                       />
                                                             )}
-                                                  </PaymentFormControl>
-                                                  <PaymentFormControl>
-                                                            <Field
-                                                                      component={paymentOptions}
-                                                                      name="pazmentOptions"
-                                                                      Label={{ label: t('checkout.payment-options') }}
-                                                            />
+
+                                                            <Typography>{t('checkout.card-payment')}</Typography>
+                                                            <Field type="radio" name="car-payment" value="card-patyment" />
+                                                            <Typography>{t('checkout.card-payment')}</Typography>
+                                                            <Field type="radio" name="car-payment" value="card-patyment" />
+
                                                             <Typography variant="h5" component="legend" gutterBottom>
                                                                       {t('checkout.creditCard')}
                                                             </Typography>

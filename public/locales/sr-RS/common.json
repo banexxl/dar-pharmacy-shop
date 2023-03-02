@@ -1,5 +1,7 @@
 {
   "checkout": {
+          "on-delivery-payment": "Plaćanje pouzećem",
+          "card-payment": "Kartično plaćanje",
          "payment-options": "Način plaćanja",
           "payment-info": "Informacije o plaćanju",
           "clearform": "Obriši sve",

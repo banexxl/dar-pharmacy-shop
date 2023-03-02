@@ -1,5 +1,7 @@
 {
   "checkout": {
+          "on-delivery-payment": "On delivery payment",
+          "card-payment": "Card payment",
          "payment-options": "Payment options",
           "payment-info": "Payment info",
           "clearform": "Clear form",
