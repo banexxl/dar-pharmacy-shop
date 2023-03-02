@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 import { IUserFormProps, IUserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import { initialUserFormValues } from './userinfo-form-values.initial';
-import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout';
+import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import EmailAddon from './email-addon';
@@ -127,9 +127,6 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                                     helperText={formik.touched?.zipPostalCode && formik.errors?.zipPostalCode}
                                                                                                     fullWidth
                                                                                           />
-                                                                                </Grid>
-                                                                                <Grid item xs={12} sm={6}>
-                                                                                          <EmailAddon />
                                                                                 </Grid>
                                                                                 <Grid item xs={12} sm={6}>
                                                                                           <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}>

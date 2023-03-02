@@ -1,5 +1,5 @@
 import { userFormSchema } from '@/schema/user-form.schema'
-import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout'
+import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo'
 import { Colors } from '@/styles/theme'
 import { Box, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import { Formik } from 'formik'

@@ -12,3 +12,8 @@ export const PaymentInfoAddressInfoCheckbox = styled(CheckboxWithLabel)(({ theme
           color: Colors.secondary,
           backgroundColor: Colors.light_gray
 }))
+
+export const isBillingAndShippingCheckbox = styled(CheckboxWithLabel)(() => ({
+          color: Colors.secondary,
+          backgroundColor: Colors.light_gray
+}))

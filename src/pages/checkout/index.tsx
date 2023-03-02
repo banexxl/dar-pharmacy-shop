@@ -1,7 +1,7 @@
 import AddressForm from '@/components/checkout/userinfo/userinfo-form'
 import { UIProvider } from '@/context/ui'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Stack, Tab, Tabs } from '@mui/material'
+import { Box, Container, Grid, Stack, Tab, Tabs } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import Payment from '@/components/checkout/payment/payment'
 import { CreditCard } from '@mui/icons-material'
+import EmailAddon from '@/components/checkout/userinfo/email-addon'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -51,6 +52,9 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                             </Box>
                                                             <TabPanel value={value} index={0}>
                                                                       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                                                                                <Grid item xs={6} sm={6} justifyContent='flex-start'>
+                                                                                          <EmailAddon />
+                                                                                </Grid>
                                                                                 <AddressForm formName={'addressform'} />
                                                                       </Box>
                                                             </TabPanel>

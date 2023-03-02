@@ -13,7 +13,7 @@ import { CreditCard } from '../credit-card/credit-card';
 import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
-import { PaymentFormControl } from '@/styles/checkout/payment';
+import { isBillingAndShippingCheckbox, PaymentFormControl } from '@/styles/checkout/payment';
 import { initialPaymentFormValues } from './payment-form-values.initial';
 import UserInfoForm from '../userinfo/userinfo-form';
 
@@ -39,22 +39,11 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                               {({ errors, touched, values, handleChange, setFieldTouched }) => (
                                         <Form>
                                                   <PaymentFormControl>
-                                                            <Button
-                                                                      type="reset"
-                                                                      variant="contained"
-                                                                      endIcon={<DeleteIcon />}
-                                                                      size="large"
-                                                                      onClick={clearPaymentForm}
-                                                            >
-                                                                      {t('checkout.clear')}
-                                                            </Button>
-                                                  </PaymentFormControl>
-                                                  <PaymentFormControl>
                                                             <Typography variant="h5" component="legend" gutterBottom>
                                                                       {t('checkout.billingAddress')}
                                                             </Typography>
                                                             <Field
-                                                                      component={CheckboxWithLabel}
+                                                                      component={isBillingAndShippingCheckbox}
                                                                       type="checkbox"
                                                                       name="sameAsShipping"
                                                                       Label={{ label: t('checkout.sameAsShipping') }}
