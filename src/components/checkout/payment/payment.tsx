@@ -2,7 +2,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
 import { CreditCard } from '../credit-card/credit-card';
@@ -18,6 +18,7 @@ import { Colors } from '@/styles/theme';
 export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
 
           const { t } = useTranslation();
+          const [isCardPayment, setIsCardPayment] = useState(true)
 
           // const history = useHistory();
           // const goBack = () => {
@@ -27,6 +28,9 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
           //           submitPaymentForm(values);
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
           // };
+
+          console.log(isCardPayment);
+
 
           return (
                     <Formik
@@ -54,27 +58,34 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       />
                                                             )}
 
-                                                            <FormLabel id="demo-radio-buttons-group-label">{t('checkout.payment-options')}</FormLabel>
+                                                            <Typography variant="h5" component="legend" gutterBottom>
+                                                                      {t('checkout.payment-options')}
+                                                            </Typography>
                                                             <RadioGroup
-                                                                      aria-labelledby="demo-radio-buttons-group-label"
-                                                                      defaultValue="female"
-                                                                      name="radio-buttons-group"
+                                                                      name="CardPayment"
                                                                       row
+                                                                      onChange={() => setIsCardPayment(!isCardPayment)}
                                                             >
-                                                                      <FormControlLabel defaultChecked value="female" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.card-payment')} />
-                                                                      <FormControlLabel value="male" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.on-delivery')} />
+                                                                      <FormControlLabel defaultChecked value="card-payment" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.card-payment')} />
+                                                                      <FormControlLabel value="on-delivery-payment" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.on-delivery-payment')} />
                                                             </RadioGroup>
 
-                                                            <Typography variant="h5" component="legend" gutterBottom>
-                                                                      {t('checkout.creditCard')}
-                                                            </Typography>
-                                                            <CreditCard
-                                                                      formName="creditCard"
-                                                                      errors={errors.creditCard}
-                                                                      touched={touched.creditCard}
-                                                                      values={values.creditCard}
-                                                                      handleChange={handleChange}
-                                                            />
+                                                            {
+                                                                      isCardPayment ?
+                                                                                <Typography variant="h5" component="legend" gutterBottom>
+                                                                                          {t('checkout.creditCard')}
+                                                                                          <CreditCard
+                                                                                                    formName="creditCard"
+                                                                                                    errors={errors.creditCard}
+                                                                                                    touched={touched.creditCard}
+                                                                                                    values={values.creditCard}
+                                                                                                    handleChange={handleChange}
+                                                                                          />
+                                                                                </Typography>
+                                                                                :
+                                                                                null
+
+                                                            }
                                                   </PaymentFormControl>
                                                   <Box
                                                             textAlign="right"
