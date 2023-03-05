@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import Payment from '@/components/checkout/payment/payment'
 import { CreditCard } from '@mui/icons-material'
-import EmailAddon from '@/components/checkout/userinfo/email-addon'
+import Confirmation from '@/components/checkout/confirmation/confirmation'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -52,7 +52,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                             </Box>
                                                             <TabPanel value={value} index={0}>
                                                                       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                                                <EmailAddon />
                                                                                 <AddressForm formName={'addressform'} />
                                                                       </Box>
                                                             </TabPanel>
@@ -62,7 +61,11 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 throw new Error('Function not implemented.')
                                                                       }} /> */}
                                                             </TabPanel>
-
+                                                            <TabPanel value={value} index={2}>
+                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                                                <Confirmation />
+                                                                      </Box>
+                                                            </TabPanel>
                                                   </UIProvider>
                                         </Stack>
                               </Container>

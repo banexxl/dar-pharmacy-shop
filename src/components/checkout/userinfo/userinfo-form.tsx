@@ -1,19 +1,22 @@
-import theme from '@/styles/theme';
-import { Container, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
+import theme, { Colors } from '@/styles/theme';
+import { Box, Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Formik } from 'formik';
-import React, { FunctionComponent } from 'react';
+import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { IUserFormProps } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import { initialUserFormValues } from './userinfo-form-values.initial';
-import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo';
+import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import EmailAddon from './email-addon';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
 
           const { t } = useTranslation('common')
+          const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
+          const onShouldCreateAccount = (currentState: boolean) => {
+                    setShouldCreateAccount(currentState)
+          }
 
           const onSubmitHandler = () => {
                     console.log("Form submitted");
@@ -139,7 +142,29 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>
+                                                                                <Grid item xs={12} sm={6}>
+                                                                                          <FormControlLabel control={
+                                                                                                    <ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
+                                                                                                    label={<Typography sx={{
+                                                                                                              fontFamily: 'inherit', color: Colors.secondary
+                                                                                                    }}>{t('checkout.shouldcreateaccount')}</Typography>} />
+                                                                                          {
+                                                                                                    shouldCreateAccount ?
+                                                                                                              <TextField
+                                                                                                                        value={formik.values.email}
+                                                                                                                        onChange={formik.handleChange('email')}
+                                                                                                                        label={t('signup.email')}
+                                                                                                                        name={'email'}
+                                                                                                                        variant="outlined"
+                                                                                                                        error={formik.touched?.email && !!formik.errors?.email}
+                                                                                                                        helperText={formik.touched?.email && formik.errors?.email}
+                                                                                                                        fullWidth
+                                                                                                              />
+                                                                                                              : null
+                                                                                          }
+                                                                                </Grid>
                                                                       </Grid>
+
                                                             )
                                                   }
                                         </Formik>
