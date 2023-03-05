@@ -5,7 +5,7 @@ import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { connect } from 'react-redux';
-import { CreditCard } from '../credit-card/credit-card';
+import { CreditCard } from './credit-card/credit-card';
 import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
@@ -66,8 +66,8 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       row
                                                                       onChange={() => setIsCardPayment(!isCardPayment)}
                                                             >
-                                                                      <FormControlLabel defaultChecked value="card-payment" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.card-payment')} />
-                                                                      <FormControlLabel value="on-delivery-payment" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.on-delivery-payment')} />
+                                                                      <FormControlLabel checked={isCardPayment} value="card-payment" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.card-payment')} />
+                                                                      <FormControlLabel checked={!isCardPayment} value="on-delivery-payment" control={<Radio sx={{ bgcolor: Colors.light_gray }} />} label={t('checkout.on-delivery-payment')} />
                                                             </RadioGroup>
 
                                                             {

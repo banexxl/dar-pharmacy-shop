@@ -35,8 +35,8 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                 <Grid item xs={12} sm={6}>
                                                                                           <TextField
                                                                                                     value={formik.values.firstName}
-                                                                                                    label={t('address.firstName')}
-                                                                                                    name={'address.firstName'}
+                                                                                                    label={t('userinfo.firstName')}
+                                                                                                    name={'firstName'}
                                                                                                     variant="outlined"
                                                                                                     onChange={formik.handleChange('firstName')}
                                                                                                     error={formik.touched.firstName && !!formik.errors.firstName}
@@ -48,7 +48,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.lastName}
                                                                                                     onChange={formik.handleChange('lastName')}
-                                                                                                    label={t('address.lastName')}
+                                                                                                    label={t('userinfo.lastName')}
                                                                                                     name={'lastName'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.lastName && !!formik.errors?.lastName}
@@ -60,7 +60,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.phoneNumber}
                                                                                                     onChange={formik.handleChange('phoneNumber')}
-                                                                                                    label={t('address.phoneNumber')}
+                                                                                                    label={t('userinfo.phoneNumber')}
                                                                                                     name={'phoneNumber'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
@@ -72,7 +72,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.streetAddress}
                                                                                                     onChange={formik.handleChange('streetAddress')}
-                                                                                                    label={t('address.streetAddress')}
+                                                                                                    label={t('userinfo.streetAddress')}
                                                                                                     name={'streetAddress'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.streetAddress && !!formik.errors?.streetAddress}
@@ -84,7 +84,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.city}
                                                                                                     onChange={formik.handleChange('city')}
-                                                                                                    label={t('address.city')}
+                                                                                                    label={t('userinfo.city')}
                                                                                                     name={'city'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.city && !!formik.errors?.city}
@@ -96,7 +96,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.provinceState}
                                                                                                     onChange={formik.handleChange('provinceState')}
-                                                                                                    label={t('address.provinceState')}
+                                                                                                    label={t('userinfo.provinceState')}
                                                                                                     name={'provinceState'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.provinceState && !!formik.errors?.provinceState}
@@ -108,7 +108,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.country}
                                                                                                     onChange={formik.handleChange('country')}
-                                                                                                    label={t('address.country')}
+                                                                                                    label={t('userinfo.country')}
                                                                                                     name={'country'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.country && !!formik.errors?.country}
@@ -120,7 +120,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                           <TextField
                                                                                                     value={formik.values.zipPostalCode}
                                                                                                     onChange={formik.handleChange('zipPostalCode')}
-                                                                                                    label={t('address.zipPostalCode')}
+                                                                                                    label={t('userinfo.zipPostalCode')}
                                                                                                     name={'zipPostalCode'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.zipPostalCode && !!formik.errors?.zipPostalCode}

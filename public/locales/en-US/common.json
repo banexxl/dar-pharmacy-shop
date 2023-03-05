@@ -34,7 +34,7 @@
     "confirmPassword": "Confirm Password",
     "guestCheckout": "Guest Checkout"
   },
-  "address": {
+  "userinfo": {
     "firstName": "First Name",
     "lastName": "Last Name",
     "streetAddress": "Street address",
@@ -42,7 +42,8 @@
     "city": "City",
     "provinceState": "Province/State",
     "country": "Country",
-    "zipPostalCode": "Zip/Postal Code"
+    "zipPostalCode": "Zip/Postal Code",
+    "email": "Email"
   },
   "creditCard": {
     "cardNumber": "Card Number",

@@ -4,41 +4,40 @@ import { boolean, object, string } from 'yup';
 export const userFormSchema = (t: any) => {
           return object().shape({
                     firstName: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.firstName') })
-                              )
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.firstName') }))
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
+
                     lastName: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.lastName') })
-                              )
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.lastName') }))
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
+
                     streetAddress: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.streetAddress') })
-                              )
-                              .max(200, t('errorMessages.tooLong', { max: 100 })),
-                    phoneNumber: string().required(t('errorMessages.required', { max: 15 })),
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.streetAddress') }))
+                              .max(100, t('errorMessages.tooLong', { max: 100 })),
+
+                    phoneNumber: string()
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.phoneNumber') }))
+                              .max(100, t('errorMessages.tooLong', { max: 100 })),
+
                     city: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.city') })
-                              )
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.city') }))
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
+
                     provinceState: string()
                               .notRequired()
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
+
                     country: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.country') })
-                              )
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.country') }))
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
+
                     zipPostalCode: string()
-                              .required(
-                                        t('errorMessages.required', { fieldName: t('address.zipPostalCode') })
-                              )
+                              .required(t('errorMessages.required', { fieldName: t('userinfo.zipPostalCode') }))
                               .min(5, t('errorMessages.tooShort', { min: 5 }))
                               .max(7, t('errorMessages.tooLong', { max: 7 })),
-                    email: string().required().email(),
-                    sameAsShipping: boolean()
+
+                    email: string().
+                              required(t('errorMessages.required', { fieldName: t('userinfo.email') }))
+                              .email(t('errorMessages.email', { fieldName: t('userinfo.email') })),
           });
 };

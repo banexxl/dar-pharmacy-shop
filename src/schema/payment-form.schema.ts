@@ -7,9 +7,6 @@ import { creditCardSchema } from './credit-card-form.schema';
 export const paymentFormSchema = (t: TFunction) =>
           object().shape({
                     sameAsShipping: boolean(),
-                    // billingAddress: object().when('sameAsShipping', {
-                    //           is: (sameAsShipping: boolean) => !sameAsShipping,
-                    //           then: addressFormSchema(t),
-                    // }),
+                    billingAddress: userFormSchema(t),
                     creditCard: creditCardSchema(t),
           });

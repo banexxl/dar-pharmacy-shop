@@ -31,31 +31,34 @@ export default function Home(props: any) {
 
           return (
                     <DynamicThemeProvider theme={theme}>
+
                               <Head>
                                         <title>{t('homepage.title')}</title>
                               </Head>
-                              <Container
-                                        disableGutters
-                                        maxWidth="xl"
-                                        sx={{
-                                                  background: "#fff",
-                                        }}
-                              >
-                                        <Stack>
-                                                  <UIProvider>
-                                                            <Banner />
-                                                            <Promotions />
-                                                            <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-                                                                      <Typography variant="h4">Deo asortimana</Typography>
-                                                            </Box>
-                                                            <Suspense fallback={<LoadingWheel />}>
+                              <Suspense fallback={<LoadingWheel />}>
+                                        <Container
+                                                  disableGutters
+                                                  maxWidth="xl"
+                                                  sx={{
+                                                            background: "#fff",
+                                                  }}
+                                        >
+                                                  <Stack>
+                                                            <UIProvider>
+                                                                      <Banner />
+                                                                      <Promotions />
+                                                                      <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
+                                                                                <Typography variant="h4">Deo asortimana</Typography>
+                                                                      </Box>
+
                                                                       <Products data={products} />
-                                                            </Suspense>
-                                                            <SearchBox />
-                                                            <AppDrawer isScreenToMedium={false} />
-                                                  </UIProvider>
-                                        </Stack>
-                              </Container>
+
+                                                                      <SearchBox />
+                                                                      <AppDrawer isScreenToMedium={false} />
+                                                            </UIProvider>
+                                                  </Stack>
+                                        </Container>
+                              </Suspense>
                     </DynamicThemeProvider>
           )
 }

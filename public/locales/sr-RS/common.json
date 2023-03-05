@@ -34,7 +34,7 @@
     "confirmPassword": "Potvrda šifre",
     "guestCheckout": "Kao gost"
   },
-  "address": {
+  "userinfo": {
     "firstName": "Ime",
     "lastName": "Prezime",
     "streetAddress": "Adresa",
@@ -42,7 +42,8 @@
     "city": "Grad",
     "provinceState": "Region",
     "country": "Država",
-    "zipPostalCode": "Poštanski broj"
+    "zipPostalCode": "Poštanski broj",
+    "email": "Email"
   },
   "creditCard": {
     "cardNumber": "Broj kreditne kartice",
