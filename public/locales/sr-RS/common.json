@@ -51,7 +51,7 @@
     "securityCode": "Sigurnosni kod (trocifreni broj sa poleđine kartice)"
   },
   "errorMessages": {
-    "required": "{{- fieldName}} je obavezno",
+    "required": "Polje '{{- fieldName}}' je obavezno",
     "tooLong": "Maksimalna dužina je {{max}}",
     "tooShort": "Minimalna dužina je {{min}}",
     "email": "Nevalidan email",

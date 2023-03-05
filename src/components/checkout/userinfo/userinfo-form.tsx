@@ -1,12 +1,12 @@
-import theme, { Colors } from '@/styles/theme';
-import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
+import theme from '@/styles/theme';
+import { Container, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Formik } from 'formik';
-import React, { ChangeEvent, FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
-import { IUserFormProps, IUserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
+import { IUserFormProps } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import { initialUserFormValues } from './userinfo-form-values.initial';
-import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
+import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import EmailAddon from './email-addon';
@@ -64,7 +64,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                                     name={'phoneNumber'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
-                                                                                                    helperText={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
+                                                                                                    helperText={formik.touched?.phoneNumber && formik.errors?.phoneNumber}
                                                                                                     fullWidth
                                                                                           />
                                                                                 </Grid>
@@ -76,7 +76,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                                                                     name={'streetAddress'}
                                                                                                     variant="outlined"
                                                                                                     error={formik.touched?.streetAddress && !!formik.errors?.streetAddress}
-                                                                                                    helperText={formik.touched?.streetAddress && !!formik.errors?.streetAddress}
+                                                                                                    helperText={formik.touched?.streetAddress && formik.errors?.streetAddress}
                                                                                                     fullWidth
                                                                                           />
                                                                                 </Grid>
