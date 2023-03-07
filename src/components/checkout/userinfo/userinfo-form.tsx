@@ -3,24 +3,33 @@ import { Box, Container, FormControlLabel, Grid, TextField, ThemeProvider, Typog
 import { Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { IUserFormProps } from '../../../interfaces/checkout/user-form-values.interface';
+import { IUserFormProps, IUserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import { initialUserFormValues } from './userinfo-form-values.initial';
 import { CheckoutNextPrevButton, ClearFormButton, ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { checkoutSlice } from '@/store/checkout/checkout.slice'
+import { ICheckoutState } from '@/store/checkout/checkout-state.interface';
+import { useSelector } from 'react-redux';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
 
           const { t } = useTranslation('common')
           const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
+          const checkout = checkoutSlice
+          const checkoutState: ICheckoutState = useSelector((state: any) => state.cart)
+
           const onShouldCreateAccount = (currentState: boolean) => {
                     setShouldCreateAccount(currentState)
           }
 
-          const onSubmitHandler = () => {
-                    console.log("Form submitted");
+          const onSubmitForm = (values: IUserFormValues) => {
+                    checkout.actions.submitUserForm(values)
           }
+
+          console.log(checkoutState.paymentForm);
+
 
           return (
                     <ThemeProvider theme={theme}>
@@ -31,7 +40,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                                                   background: "#fff",
                                         }}
                               >
-                                        <Formik initialValues={initialUserFormValues} onSubmit={() => onSubmitHandler()} validationSchema={userFormSchema(t)} reset>
+                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserFormValues) => onSubmitForm(values)} validationSchema={userFormSchema(t)} reset>
                                                   {
                                                             formik => (
                                                                       <Grid container spacing={2}>

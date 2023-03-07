@@ -1,6 +1,6 @@
-import { CheckoutState } from "./checkout-state.interface";
+import { ICheckoutState } from "./checkout-state.interface";
 
 
-export interface RootState {
-          checkout: CheckoutState;
+export interface IRootState {
+          checkout: ICheckoutState;
 }
