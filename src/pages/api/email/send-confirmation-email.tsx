@@ -12,16 +12,12 @@ const generateEmailContent = (data: IEmailToFields) => {
 
 const ConfirmationEmailHandler = async (req: any, res: any) => {
 
-          console.log('usao u api send handler');
-
-
           if (req.method === "POST") {
 
                     const data: IEmailToFields = req.body;
-                    console.log("post", data);
 
                     if (!data || !data.name || !data.email || !data.subject || !data.message) {
-                              return res.status(400).send({ message: "Bad request" });
+                              return res.status(400).send({ message: "Bad request, data missing" });
                     }
 
                     try {
@@ -35,9 +31,10 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                               return res.status(200).json({ success: true });
 
                     } catch (err: any) {
-                              console.log(err);
-                              return res.status(400).json({ message: err.message });
+                              console.log("error je: ", err);
+                              return res.status(400).json({ message: err });
                     }
+
           }
 };
 export default ConfirmationEmailHandler;
