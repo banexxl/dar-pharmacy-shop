@@ -12,6 +12,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { checkoutSlice } from '@/store/checkout/checkout.slice'
 import { ICheckoutState } from '@/store/checkout/checkout-state.interface';
 import { useSelector } from 'react-redux';
+import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
 
@@ -28,8 +29,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = () => {
                     checkout.actions.submitUserForm(values)
           }
 
-          console.log(checkoutState.paymentForm);
-
+          console.log("checkoutState.userForm", checkoutState.userForm);
 
           return (
                     <ThemeProvider theme={theme}>

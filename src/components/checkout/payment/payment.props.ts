@@ -1,11 +1,11 @@
 import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
 import { checkoutSlice } from '@/store/checkout/checkout.slice';
-import { RootState } from '@/store/checkout/root-state.interface';
+import { IRootState } from '@/store/checkout/root-state.interface';
 import { Dispatch } from '@reduxjs/toolkit';
 
 import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = (state: IRootState) => {
           return {
                     paymentForm: checkoutSelectors.getPaymentForm(state),
           };

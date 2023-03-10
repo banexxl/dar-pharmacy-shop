@@ -6,17 +6,9 @@ import { IPaymentFormValues } from '@/interfaces/checkout/payment-form-values.in
 
 const getCheckoutState = (state: IRootState): ICheckoutState => state.checkout;
 
-const getUserData = createSelector(
-          getCheckoutState,
-          (checkoutState: ICheckoutState): IUserFormValues =>
-                    checkoutState?.userForm
-);
+const getUserData = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IUserFormValues => checkoutState?.userForm)
 
-const getPaymentForm = createSelector(
-          getCheckoutState,
-          (checkoutState: ICheckoutState): IPaymentFormValues =>
-                    checkoutState?.paymentForm
-);
+const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentFormValues => checkoutState?.paymentForm)
 
 export const checkoutSelectors = {
           getCheckoutState,

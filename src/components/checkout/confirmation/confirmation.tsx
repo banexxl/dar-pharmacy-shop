@@ -1,9 +1,9 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
+import { sendForm } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart-selector'
 import { CartWrapper, StyledTableCell, StyledTableHead, StyledTableRow } from '@/styles/cart'
 import { Button, Paper, Table, TableBody } from '@mui/material'
-import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -38,10 +38,9 @@ function Confirmation() {
                                         </TableBody>
                               </Table>
                               Ukupno sa PDV-om: {parseFloat(totalItemPrice).toFixed(2)} RSD
-                              <Button sx={{ color: 'white' }} >
-                                        <Link href='/checkout'>
-                                                  Na placanje
-                                        </Link>
+                              <Button sx={{ color: 'white' }}
+                                        onClick={() => sendForm({ email: 'damjanovic.branislav@gmail.com', subject: 'neki subject', name: 'banexxl', title: 'title', message: 'message' })}>
+                                        Na placanje
                               </Button>
                     </CartWrapper>
           )

@@ -29,7 +29,7 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
           //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
           // };
 
-          console.log(isCardPayment);
+          console.log("isCardPayment", isCardPayment);
 
 
           return (
@@ -53,8 +53,8 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                             {!values.sameAsShipping && (
                                                                       <UserInfoForm
                                                                                 formName="billingAddress"
-                                                                                errors={errors.billingAddress}
-                                                                                touched={touched.billingAddress}
+                                                                      // errors={errors.billingAddress}
+                                                                      // touched={touched.billingAddress}
                                                                       />
                                                             )}
 
