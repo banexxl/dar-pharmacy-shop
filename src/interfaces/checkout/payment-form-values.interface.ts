@@ -1,8 +1,13 @@
-import { IUserFormValues } from './user-form-values.interface';
-import { ICreditCardFormValues } from './credit-card-form-values.interface';
+import { initialUserFormValues, IUserFormValues } from './user-form-values.interface';
 
 export interface IPaymentFormValues {
+          tabIndex: number;
           sameAsShipping: boolean;
           billingAddress?: IUserFormValues;
-          creditCard: ICreditCardFormValues;
 }
+
+export const initialPaymentFormValues: IPaymentFormValues = {
+          tabIndex: 1,
+          sameAsShipping: false,
+          billingAddress: initialUserFormValues,
+};

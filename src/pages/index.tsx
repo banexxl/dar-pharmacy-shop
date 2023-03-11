@@ -38,7 +38,7 @@ export default function Home(props: any) {
                               <Suspense fallback={<LoadingWheel />}>
                                         <Container
                                                   disableGutters
-                                                  maxWidth="xl"
+                                                  maxWidth="lg"
                                                   sx={{
                                                             background: "#fff",
                                                   }}

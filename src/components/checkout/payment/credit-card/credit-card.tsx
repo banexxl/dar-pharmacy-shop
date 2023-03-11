@@ -4,23 +4,15 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import InputMask from 'react-input-mask';
 
-import { ICreditCardFormValues } from '../../../../interfaces/checkout/credit-card-form-values.interface';
+import { ICreditCardFormValues, ICreditCardProps } from '../../../../interfaces/checkout/credit-card-form-values.interface';
 
-export interface CreditCardProps {
-          formName?: string;
-          errors?: FormikErrors<ICreditCardFormValues>;
-          touched?: FormikTouched<ICreditCardFormValues>;
-          values: ICreditCardFormValues;
-          handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
-
-export const CreditCard: FunctionComponent<CreditCardProps> = ({ formName = 'creditCard', errors, touched, values, handleChange, }) => {
+export const CreditCard: FunctionComponent<ICreditCardProps> = (props: ICreditCardProps) => {
 
           const { t } = useTranslation();
 
           return (
                     <Grid container spacing={2}>
-                              <Grid item xs={12} sm={12}>
+                              {/* <Grid item xs={12} sm={12}>
 
                                         <TextField
                                                   label={t('creditCard.cardNumber')}
@@ -71,7 +63,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = ({ formName = 'cre
                                                             onChange={handleChange}
                                                   />
                                         </TextField>
-                              </Grid>
+                              </Grid> */}
                     </Grid>
           );
 };

@@ -12,7 +12,20 @@ export interface IUserFormValues {
           email?: string;
 }
 
+export const initialUserFormValues: IUserFormValues = {
+          firstName: '',
+          lastName: '',
+          streetAddress: '',
+          phoneNumber: '',
+          city: '',
+          provinceState: '',
+          country: '',
+          zipPostalCode: '',
+          email: ''
+};
+
 export interface IUserFormProps {
+          tabIndex?: number
           formName: string
           errors?: FormikErrors<IUserFormValues>
           touched?: FormikTouched<IUserFormValues>

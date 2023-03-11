@@ -1,36 +1,21 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { Box, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, Typography } from '@mui/material';
+import { Box, Button, FormControlLabel, Radio, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { connect } from 'react-redux';
 import { CreditCard } from './credit-card/credit-card';
-import { IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
+import { initialPaymentFormValues, IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
-import { mapDispatchToProps, mapStateToProps, PaymentFormProps, } from './payment.props';
 import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from '@/styles/checkout/payment';
-import { initialPaymentFormValues } from './payment-form-values.initial';
 import UserInfoForm from '../userinfo/userinfo-form';
 import RadioGroup from '@mui/material/RadioGroup';
 import { Colors } from '@/styles/theme';
 
-export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, submitPaymentForm, clearPaymentForm, }) => {
+export const Payment: FunctionComponent<IPaymentFormValues> = (props: IPaymentFormValues) => {
 
           const { t } = useTranslation();
           const [isCardPayment, setIsCardPayment] = useState(true)
-
-          // const history = useHistory();
-          // const goBack = () => {
-          //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Delivery);
-          // };
-          // const submitForm = (values: IPaymentFormValues) => {
-          //           submitPaymentForm(values);
-          //           history.push(AppRoutePath.Checkout + CheckoutRoutePath.Confirmation);
-          // };
-
-          console.log("isCardPayment", isCardPayment);
-
 
           return (
                     <Formik
@@ -50,13 +35,8 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       name="sameAsShipping"
                                                                       Label={{ label: t('checkout.sameAsShipping') }}
                                                             />
-                                                            {!values.sameAsShipping && (
-                                                                      <UserInfoForm
-                                                                                formName="billingAddress"
-                                                                      // errors={errors.billingAddress}
-                                                                      // touched={touched.billingAddress}
-                                                                      />
-                                                            )}
+
+                                                            {!values.sameAsShipping && (<UserInfoForm formName="billingAddress" />)}
 
                                                             <Typography variant="h5" component="legend" gutterBottom>
                                                                       {t('checkout.payment-options')}
@@ -74,13 +54,12 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
                                                                       isCardPayment ?
                                                                                 <Typography variant="h5" component="legend" gutterBottom>
                                                                                           {t('checkout.creditCard')}
-                                                                                          <CreditCard
+                                                                                          {/* <CreditCard
                                                                                                     formName="creditCard"
-                                                                                                    errors={errors.creditCard}
-                                                                                                    touched={touched.creditCard}
-                                                                                                    values={values.creditCard}
-                                                                                                    handleChange={handleChange}
-                                                                                          />
+                                                                                                    values={undefined}
+                                                                                                    handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
+                                                                                                              throw new Error('Function not implemented.');
+                                                                                                    }} /> */}
                                                                                 </Typography>
                                                                                 :
                                                                                 null
@@ -119,4 +98,4 @@ export const Payment: FunctionComponent<PaymentFormProps> = ({ paymentForm, subm
           );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Payment);
+export default Payment

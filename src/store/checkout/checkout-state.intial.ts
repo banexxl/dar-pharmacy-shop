@@ -1,7 +1,6 @@
 
-import { initialPaymentFormValues } from '@/components/checkout/payment/payment-form-values.initial';
-import { initialUserFormValues } from '@/components/checkout/userinfo/userinfo-form-values.initial';
-
+import { initialPaymentFormValues } from '@/interfaces/checkout/payment-form-values.interface';
+import { initialUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 import { ICheckoutState } from './checkout-state.interface';
 
 export const initialCheckoutState: ICheckoutState = {

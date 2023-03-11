@@ -23,7 +23,7 @@ export default function Home(props: any) {
                     <ThemeProvider theme={theme}>
                               <Container
                                         disableGutters
-                                        maxWidth="xl"
+                                        maxWidth="lg"
                                         sx={{
                                                   background: "#fff",
                                         }}

@@ -13,6 +13,9 @@ import LoadingWheel from '../../components/loading/loading'
 import Payment from '@/components/checkout/payment/payment'
 import { CreditCard } from '@mui/icons-material'
 import Confirmation from '@/components/checkout/confirmation/confirmation'
+import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
+import DeleteIcon from '@mui/icons-material/Delete';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -36,7 +39,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                               </Head>
                               <Container
                                         disableGutters
-                                        maxWidth="xl"
+                                        maxWidth="lg"
                                         sx={{
                                                   background: "#fff",
                                         }}
@@ -49,23 +52,33 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
                                                                                 <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
                                                                       </Tabs>
-                                                            </Box>
-                                                            <TabPanel value={value} index={0}>
-                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                                                <AddressForm formName={'addressform'} />
-                                                                      </Box>
-                                                            </TabPanel>
-                                                            <TabPanel value={value} index={1}>
-                                                                      <Payment />
-                                                                      {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
+
+                                                                      <TabPanel value={value} index={0}>
+                                                                                <AddressForm formName={'addressform'} tabIndex={0} />
+                                                                      </TabPanel>
+                                                                      <TabPanel value={value} index={1}>
+                                                                                <Payment sameAsShipping={false} tabIndex={1} />
+                                                                                {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
                                                                                 throw new Error('Function not implemented.')
                                                                       }} /> */}
-                                                            </TabPanel>
-                                                            <TabPanel value={value} index={2}>
-                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                                      </TabPanel>
+                                                                      <TabPanel value={value} index={2}>
                                                                                 <Confirmation />
-                                                                      </Box>
-                                                            </TabPanel>
+                                                                      </TabPanel>
+                                                                      <Grid item xs={12} sm={6}>
+                                                                                <ClearFormButton endIcon={<DeleteIcon />} type='reset'
+                                                                                // onClick={() => formik.handleReset()}
+                                                                                >
+                                                                                          {t('checkout.clearform')}
+                                                                                </ClearFormButton>
+                                                                                <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }}
+                                                                                          endIcon={<NavigateNextIcon />}
+                                                                                // onClick={() => formik.handleSubmit()}
+                                                                                >
+                                                                                          {t('checkout.nextbutton')}
+                                                                                </CheckoutNextPrevButton>
+                                                                      </Grid>
+                                                            </Box>
                                                   </UIProvider>
                                         </Stack>
                               </Container>
