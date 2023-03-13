@@ -1,7 +1,7 @@
 import AddressForm from '@/components/checkout/userinfo/userinfo-form'
-import { UIProvider } from '@/context/ui'
+import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Grid, Stack, Tab, Tabs } from '@mui/material'
+import { Box, Container, Stack, Tab, Tabs } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -11,11 +11,8 @@ import TabPanel from '@/styles/checkout/tabpanel'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import Payment from '@/components/checkout/payment/payment'
-import { CreditCard } from '@mui/icons-material'
 import Confirmation from '@/components/checkout/confirmation/confirmation'
-import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
-import DeleteIcon from '@mui/icons-material/Delete';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import CheckoutProvider, { useCheckoutContext } from '@/context/checkout/checkout.context'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -27,6 +24,8 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     setValue(newValue);
           };
 
+          const { tabIndex, setTabIndex } = useCheckoutContext()
+          console.log("tabindex checkout stranici", tabIndex);
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel />,
           })
@@ -46,39 +45,27 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Box sx={{ borderBottom: 3, borderColor: Colors.secondary }}>
-                                                                      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                                                                <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
-                                                                      </Tabs>
-
-                                                                      <TabPanel value={value} index={0}>
-                                                                                <AddressForm formName={'addressform'} tabIndex={0} />
-                                                                      </TabPanel>
-                                                                      <TabPanel value={value} index={1}>
-                                                                                <Payment sameAsShipping={false} tabIndex={1} />
-                                                                                {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
-                                                                                throw new Error('Function not implemented.')
-                                                                      }} /> */}
-                                                                      </TabPanel>
-                                                                      <TabPanel value={value} index={2}>
-                                                                                <Confirmation />
-                                                                      </TabPanel>
-                                                                      <Grid item xs={12} sm={6}>
-                                                                                <ClearFormButton endIcon={<DeleteIcon />} type='reset'
-                                                                                // onClick={() => formik.handleReset()}
-                                                                                >
-                                                                                          {t('checkout.clearform')}
-                                                                                </ClearFormButton>
-                                                                                <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }}
-                                                                                          endIcon={<NavigateNextIcon />}
-                                                                                // onClick={() => formik.handleSubmit()}
-                                                                                >
-                                                                                          {t('checkout.nextbutton')}
-                                                                                </CheckoutNextPrevButton>
-                                                                      </Grid>
-                                                            </Box>
+                                                            <CheckoutProvider>
+                                                                      <Box sx={{ borderBottom: 3, borderColor: Colors.secondary }}>
+                                                                                <Tabs value={value} onChange={handleChange}>
+                                                                                          <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                          <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                          <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                </Tabs>
+                                                                                <TabPanel value={value} index={0}>
+                                                                                          <AddressForm formName={'addressform'} tabIndex={tabIndex} />
+                                                                                </TabPanel>
+                                                                                <TabPanel value={value} index={1}>
+                                                                                          <Payment sameAsShipping={false} tabIndex={tabIndex + 1} />
+                                                                                          {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
+                                                                                          throw new Error('Function not implemented.')
+                                                                                }} /> */}
+                                                                                </TabPanel>
+                                                                                <TabPanel value={value} index={tabIndex + 2}>
+                                                                                          <Confirmation />
+                                                                                </TabPanel>
+                                                                      </Box>
+                                                            </CheckoutProvider>
                                                   </UIProvider>
                                         </Stack>
                               </Container>

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/system";
 import theme from "../../styles/theme";
 import Banner from "../../components/banner";
 import Products from "../../components/products";
-import { UIProvider } from "../../context/ui";
+import { UIProvider } from "../../context/ui/ui.context";
 import Footer from "../../components/footer";
 import AppDrawer from "../../components/navbar/drawer";
 import Promotions from "../../components/promotions";

@@ -3,7 +3,7 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../../styles/theme";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useUIContext } from "../../context/ui";
+import { useUIContext } from "../../context/ui/ui.context";
 
 const SearchBoxContainer = styled(Box)(() => ({
           position: "absolute",

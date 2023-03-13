@@ -11,7 +11,6 @@ export const sendForm = async (data: IEmailToFields) => {
                               'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                     },
           }).then((res) => {
-                    console.log(res);
                     if (!res.ok) throw new Error("Failed to send message");
                     return res.json();
           });

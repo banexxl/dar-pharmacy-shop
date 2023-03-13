@@ -1,4 +1,4 @@
-import { useUIContext } from '@/context/ui'
+import { useUIContext } from '@/context/ui/ui.context'
 import useDialogModal from '@/hooks/useDialogModal'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { cartTotalPriceSelector } from '@/store/cart/cart-selector'

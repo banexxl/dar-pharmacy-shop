@@ -2,7 +2,7 @@ import { Box, Divider, List, ListItemButton, ListItemIcon, ListItemText, Stack, 
 import { AppbarContainer, AppbarHeader, MyList } from "../../styles/appbar"
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
-import { useUIContext } from "../../context/ui";
+import { useUIContext } from "../../context/ui/ui.context";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
