@@ -52,16 +52,16 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                           <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
                                                                                           <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
                                                                                 </Tabs>
-                                                                                <TabPanel value={value} index={0}>
-                                                                                          <AddressForm formName={'addressform'} tabIndex={tabIndex} />
+                                                                                <TabPanel value={value} index={tabIndex} >
+                                                                                          <AddressForm formName={'addressform'} />
                                                                                 </TabPanel>
-                                                                                <TabPanel value={value} index={1}>
-                                                                                          <Payment sameAsShipping={false} tabIndex={tabIndex + 1} />
+                                                                                <TabPanel value={value} index={tabIndex + 1} >
+                                                                                          <Payment sameAsShipping={false} />
                                                                                           {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
                                                                                           throw new Error('Function not implemented.')
                                                                                 }} /> */}
                                                                                 </TabPanel>
-                                                                                <TabPanel value={value} index={tabIndex + 2}>
+                                                                                <TabPanel value={value} index={tabIndex + 2} >
                                                                                           <Confirmation />
                                                                                 </TabPanel>
                                                                       </Box>
