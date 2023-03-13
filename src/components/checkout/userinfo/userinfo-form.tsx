@@ -13,7 +13,6 @@ import { ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import CheckoutProvider, { useCheckoutContext } from '@/context/checkout/checkout.context';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
 
@@ -21,7 +20,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
           const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
           const checkout = checkoutSlice
           const checkoutState: ICheckoutState = useSelector((state: any) => state.cart)
-          const { tabIndex, setTabIndex } = useCheckoutContext()
+
           const onShouldCreateAccount = (currentState: boolean) => {
                     setShouldCreateAccount(currentState)
           }
@@ -168,9 +167,11 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
                                                                                           <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
                                                                                                     {t('checkout.clearform')}
                                                                                           </ClearFormButton>
-                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => { formik.handleSubmit(); setTabIndex(1) }}>
+
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => formik.handleSubmit()}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
+
                                                                                 </Grid>
                                                                       </Grid>
                                                             )
