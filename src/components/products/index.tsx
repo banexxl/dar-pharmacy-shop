@@ -3,12 +3,18 @@ import SingleProduct from "./SingleProduct";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
+import ICartItem from "@/interfaces/cart/cart.interface";
+import { useSelector } from "react-redux";
 
 
 export default function Products(props: any) {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+
+          const cart: ICartItem[] = useSelector((state: any) => state.cart)
+
+          console.log(cart);
 
           const renderProducts = props.data?.map((product: any) => (
                     <Grid item key={product._id} xs={2} sm={4} md={4} display="flex" flexDirection={'column'} alignItems="center">

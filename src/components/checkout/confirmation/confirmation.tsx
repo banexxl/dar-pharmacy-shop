@@ -39,7 +39,7 @@ function Confirmation() {
                               </Table>
                               Ukupno sa PDV-om: {parseFloat(totalItemPrice).toFixed(2)} RSD
                               <Button sx={{ color: 'white' }}
-                                        onClick={() => sendForm({ email: 'damjanovic.branislav@gmail.com', subject: 'Potvrda porudzbine', name: 'banexxl', title: 'title', message: 'majaidrugari@gmail.com' })}>
+                                        onClick={() => sendForm({ email: 'damjanovic.branislav@gmail.com', subject: 'Potvrda porudzbine', name: 'Nesta', title: 'majaidrugari@gmail.com', message: 'majaidrugari@gmail.com' })}>
                                         Na placanje
                               </Button>
                     </CartWrapper>

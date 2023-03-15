@@ -12,7 +12,6 @@ import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import Payment from '@/components/checkout/payment/payment'
 import Confirmation from '@/components/checkout/confirmation/confirmation'
-import { CheckoutProvider, useCheckoutContext } from '@/context/checkout/checkout.context'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -29,18 +28,18 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const steps = ["Shipping address", "Payment details", "Review your order"];
 
-          function getStepContent(step: number) {
-                    switch (step) {
-                              case 0:
-                                        return <AddressForm formName={'addressform'} />;
-                              case 1:
-                                        return <Payment sameAsShipping={false} />;
-                              case 2:
-                                        return <Confirmation />;
-                              default:
-                                        throw new Error("Unknown step");
-                    }
-          }
+          // function getStepContent(step: number) {
+          //           switch (step) {
+          //                     case 0:
+          //                               return <AddressForm formName={'addressform'} />;
+          //                     case 1:
+          //                               return <Payment sameAsShipping={false} />;
+          //                     case 2:
+          //                               return <Confirmation />;
+          //                     default:
+          //                               throw new Error("Unknown step");
+          //           }
+          // }
 
           const handleNext = () => {
                     setTabIndex(tabIndex + 1)
@@ -53,7 +52,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           const handleReset = () => {
                     setTabIndex(0)
           };
-
 
           return (
                     <DynamicThemeProvider theme={theme}>
