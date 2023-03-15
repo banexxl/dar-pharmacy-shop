@@ -63,35 +63,8 @@ export const Payment: FunctionComponent<IPaymentFormValues> = (props: IPaymentFo
                                                                                 </Typography>
                                                                                 :
                                                                                 null
-
                                                             }
                                                   </PaymentFormControl>
-                                                  <Box
-                                                            textAlign="right"
-                                                            display="flex"
-                                                            justifyContent="space-between"
-                                                            mt={2}
-                                                  >
-                                                            <Button
-                                                                      type="button"
-                                                                      variant="contained"
-                                                                      color="secondary"
-                                                                      startIcon={<ArrowBackIcon />}
-                                                                      size="large"
-                                                                      onClick={() => console.log("aaaa")}
-                                                            >
-                                                                      {t('checkout.previous')}
-                                                            </Button>
-                                                            <Button
-                                                                      type="submit"
-                                                                      variant="contained"
-                                                                      color="secondary"
-                                                                      endIcon={<ArrowRightIcon />}
-                                                                      size="large"
-                                                            >
-                                                                      {t('checkout.continue')}
-                                                            </Button>
-                                                  </Box>
                                         </Form>
                               )}
                     </Formik>

@@ -6,7 +6,7 @@ import { transporter } from '../../../services/email/email-config'
 const generateEmailContent = (data: IEmailToFields) => {
 
           return (
-                    <EmailConfirmPurchase email={data.email} subject={data.subject} />
+                    <EmailConfirmPurchase email={data.email} subject={data.subject} message={data.message} name={data.name} title={data.title} />
           )
 };
 

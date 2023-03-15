@@ -12,7 +12,6 @@ import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
 import { ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
 
@@ -167,11 +166,6 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
                                                                                           <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
                                                                                                     {t('checkout.clearform')}
                                                                                           </ClearFormButton>
-
-                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => formik.handleSubmit()}>
-                                                                                                    {t('checkout.nextbutton')}
-                                                                                          </CheckoutNextPrevButton>
-
                                                                                 </Grid>
                                                                       </Grid>
                                                             )
