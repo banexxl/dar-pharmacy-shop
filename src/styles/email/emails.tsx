@@ -21,7 +21,13 @@ export const EmailTitle = styled(Typography)(({ theme }) => ({
           marginBottom: theme.spacing(2),
 })) as typeof Typography
 
-export const EmailCartList = styled(Typography)(({ theme }) => ({
+export const EmailCartList = styled(Box)(({ theme }) => ({
+          padding: 0,
+          listStyle: 'none',
+          marginBottom: theme.spacing(2),
+})) as typeof Box
+
+export const EmailCartListItem = styled(Typography)(({ theme }) => ({
           padding: 0,
           listStyle: 'none',
           marginBottom: theme.spacing(2),

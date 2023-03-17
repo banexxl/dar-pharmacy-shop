@@ -1,14 +1,12 @@
 import ICartItem from '@/interfaces/cart/cart.interface';
 import { IEmailToFields } from '@/interfaces/email/email-to-fields.interface';
-import { Typography } from '@mui/material';
-import { EmailBold, EmailButton, EmailCartList, EmailContainer, EmailText, EmailTitle, RootContainer } from '../../styles/email/emails'
+import { Box, ListItem, ListItemText, Typography } from '@mui/material';
+import { EmailBold, EmailButton, EmailCartList, EmailCartListItem, EmailContainer, EmailText, EmailTitle, RootContainer } from '../../styles/email/emails'
+import EmailProductList from './email-product-list';
 
 function EmailConfirmPurchase(props: IEmailToFields) {
 
           const { email, subject, name, message, title, cart } = props
-
-          console.log("cart itemi  u komponenti", cart);
-
 
           return (
                     <RootContainer>
@@ -17,38 +15,44 @@ function EmailConfirmPurchase(props: IEmailToFields) {
                                                   Thank You for Your Purchase!
                                         </EmailTitle>
                                         <EmailTitle>
-                                                  Dear [Customer Name],
+                                                  Dear {name},
                                         </EmailTitle>
                                         <EmailText variant="body1" gutterBottom>
-                                                  We are pleased to confirm your recent purchase on [Date] from our online store. Your order details are as follows:
+                                                  We are pleased to confirm your recent purchase on datum neki from our online store. Your order details are as follows:
                                         </EmailText>
                                         <EmailCartList >
-                                                  {/* <ListItem>
+                                                  <EmailCartListItem>
                                                             <ListItemText primary="Order Number:" secondary="[Order Number]" />
-                                                  </ListItem>
-                                                  <ListItem>
-                                                            <ListItemText primary="Items:" />
-                                                            <List className={classes.list}>
-                                                                      <ListItem className={classes.listItem}>
-                                                                                <ListItemText primary="[Item 1]" />
-                                                                      </ListItem>
-                                                                      <ListItem className={classes.listItem}>
-                                                                                <ListItemText primary="[Item 2]" />
-                                                                      </ListItem>
-                                                                      <ListItem className={classes.listItem}>
-                                                                                <ListItemText primary="..." />
-                                                                      </ListItem>
-                                                            </List>
-                                                  </ListItem>
-                                                  <ListItem>
+                                                  </EmailCartListItem>
+                                                  <EmailProductList cartItems={cart}>
+                                                            {
+                                                                      cart.map((cartItem: ICartItem) => {
+                                                                                <div>
+                                                                                          <Typography>
+                                                                                                    {cartItem.name}
+                                                                                          </Typography>
+                                                                                          <Typography>
+                                                                                                    {cartItem.price}
+                                                                                          </Typography>
+                                                                                          <Typography>
+                                                                                                    {cartItem.quantity}
+                                                                                          </Typography>
+                                                                                          <Typography>
+                                                                                                    {cartItem.imageURL}
+                                                                                          </Typography>
+                                                                                </div>
+                                                                      })
+                                                            }
+                                                  </EmailProductList>
+                                                  <EmailCartListItem>
                                                             <ListItemText primary="Shipping Address:" secondary="[Shipping Address]" />
-                                                  </ListItem>
-                                                  <ListItem>
+                                                  </EmailCartListItem>
+                                                  <EmailCartListItem>
                                                             <ListItemText primary="Payment Method:" secondary="[Payment Method]" />
-                                                  </ListItem>
-                                                  <ListItem>
+                                                  </EmailCartListItem>
+                                                  <EmailCartListItem>
                                                             <ListItemText primary="Total Cost:" secondary="[Total Cost]" />
-                                                  </ListItem> */}
+                                                  </EmailCartListItem>
                                         </EmailCartList>
                                         <Typography variant="body1" gutterBottom>
                                                   If you have any questions or concerns regarding your order, please feel free to contact us at [Customer Service Email] or by phone at [Customer Service Phone Number].
@@ -60,7 +64,7 @@ function EmailConfirmPurchase(props: IEmailToFields) {
                                                   Shop More
                                         </EmailButton>
                               </EmailContainer>
-                    </RootContainer>
+                    </RootContainer >
           );
 }
 
