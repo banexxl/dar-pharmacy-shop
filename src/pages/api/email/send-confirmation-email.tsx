@@ -4,9 +4,10 @@ import { cartTotalPriceSelector } from '@/store/cart/cart-selector';
 import { Colors } from '@/styles/theme';
 import { useSelector } from 'react-redux';
 import { transporter } from '../../../services/email/email-config'
-import ReactDOMServer from 'react-dom/server';
 
 const ConfirmationEmailHandler = async (req: any, res: any) => {
+
+          const totalItemPrice: any = useSelector(cartTotalPriceSelector)
 
           if (req.method === "POST") {
 
@@ -25,9 +26,9 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                               <head>
                                         <meta charset="UTF-8">
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <title>Postovani potrosacu</title>
                                         <style>
                                                   .container {
+                                                            font-family: 'Red Hat Display', sans-serif;
                                                             display: flex;
                                                             background-color: ${Colors.secondary};
                                                             border-radius: 15px;
@@ -92,13 +93,13 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                                   <table class="list">
                                                             <tr class="list-item">
                                                                       <td>
-                                                                                <h1>Your Email Heading Here</h1>
+                                                                                <h1>Vaša porudžbenica je primljena!</h1>
                                                                       </td>
                                                             </tr>
 
                                                             <tr class="list-item">
                                                                       <td>
-                                                                                <p>Your email content here.</p>
+                                                                                <p>Proizvodi koje ste poručili su:</p>
                                                                       </td>
                                                             </tr>
 
@@ -108,6 +109,10 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
 
                                                             <tr class="list-item">
                                                                       ${quantity}
+                                                            </tr>
+
+                                                            <tr class="list-item">
+                                                                      ${totalItemPrice}
                                                             </tr>
 
                                                             <tr class="list-item">

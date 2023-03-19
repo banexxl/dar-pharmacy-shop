@@ -7,6 +7,8 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta"
+import { addToCart } from "@/store/cart/cart-slice";
+import { useDispatch } from "react-redux";
 
 export default function SingleProduct({ product, isScreenToMedium }: any) {
 
@@ -14,6 +16,8 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
                     useDialogModal(ProductDetails);
 
           const [showOptions, setShowOptions] = useState(false);
+
+          const dispatch = useDispatch();
 
           const handleMouseEnter = () => {
                     setShowOptions(true);
@@ -45,7 +49,7 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
                                                   </Stack>
                                         </ProductActionsWrapper>
                               </Product>
-                              <ProductAddToCart variant="contained">Add to cart</ProductAddToCart>
+                              <ProductAddToCart variant="contained" onClick={() => dispatch(addToCart(product))}>Add to cart</ProductAddToCart>
                               <ProductDetailDialog product={product} />
                     </>
           );
