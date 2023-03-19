@@ -49,7 +49,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                         </Box>
                               </DialogTitle>
 
-                              <DialogContent sx={{ display: 'flex' }}>
+                              <DialogContent sx={{ display: 'flex', flexDirection: { md: 'row', xs: 'column' } }}>
                                         <CartWrapper component={Paper}>
                                                   <Table aria-label="customized table"
                                                   >

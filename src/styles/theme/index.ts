@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, Theme } from "@mui/material/styles";
 import { darken, lighten } from "polished";
 
 export const DrawerWidth = 250;
@@ -31,7 +31,7 @@ export const Colors = {
           black: "#000",
 };
 
-const theme = createTheme({
+const theme: Theme = createTheme({
           palette: {
                     primary: {
                               main: Colors.primary,

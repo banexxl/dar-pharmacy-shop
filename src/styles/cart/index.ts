@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import { Box, IconButton, TableCell, tableCellClasses, TableHead, TableRow } from "@mui/material";
+import styled from "@mui/styled-engine";
+import { Box, IconButton, TableCell, tableCellClasses, TableHead, TableRow, Typography } from "@mui/material";
 import { Colors } from "../theme";
 
-export const CartWrapper = styled(Box)(({ theme }: any) => ({
+export const CartWrapper = styled(Box)((theme: any) => ({
           gap: '20px',
           display: "flex",
           flexDirection: 'column',
@@ -16,7 +16,7 @@ export const CartProductDetailInfoWrapper = styled(Box)(() => ({
           width: '1000px'
 }));
 
-export const CartProduct = styled(Box)(({ theme }: any) => ({
+export const CartProduct = styled(Box)((theme: any) => ({
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
@@ -34,7 +34,7 @@ export const CartProductActionButton = styled(IconButton)(() => ({
           margin: 4,
 }))
 
-export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+export const StyledTableCell = styled(TableCell)((theme: any) => ({
           [`&.${tableCellClasses.head}`]: {
                     backgroundColor: Colors.secondary,
                     color: Colors.white,
@@ -44,7 +44,7 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
           },
 }));
 
-export const StyledTableRow = styled(TableRow)(({ theme }) => ({
+export const StyledTableRow = styled(TableRow)((theme: any) => ({
           '&:nth-of-type(odd)': {
                     backgroundColor: Colors.dove_gray,
           },
@@ -52,10 +52,14 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
           '&:last-child td, &:last-child th': {
                     border: 0,
           },
-}));
+}))
 
-export const StyledTableHead = styled(TableHead)(({ theme }) => ({
-
-          backgroundColor: Colors.secondary
-
-}));
+export const StyledTableHead = styled(TableHead)((theme: any) => ({
+          [theme.breakpoints.down("xs")]: {
+                    display: 'none'
+          },
+          [theme.breakpoints.down("sm")]: {
+                    flexDirection: "column",
+                    alignItems: "center",
+          }
+}))
