@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
-import { useTranslation } from "next-i18next/dist/types";
+import { useTranslation } from "next-i18next";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
