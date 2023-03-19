@@ -24,16 +24,18 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                         <title>Postovani potrosacu</title>
                                         <style>
                                                   .container {
-                                                            max-width: 800px;
-			                              margin: 0 auto;
+                                                            display: flex;
                                                             background-color: ${Colors.secondary};
-                                                            border-radius: 10px;
-                                                            justify-content: center;
-                                                            align-items: center;
+                                                            border-radius: 15px;
+                                                            width: 800px;
+                                                            margin: 0 auto;
                                                   }
                                                  .list {
-                                                            padding: 0;
-                                                            max-width: 400px;
+                                                            background-color: #f7e5e5;
+                                                            border-radius: 15px;
+                                                            width: 600px;
+			                              margin: 0 auto;
+                                                            align-items: center;
                                                   }
 
                                                   /* List element */
@@ -83,13 +85,31 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                               </head>
                               <body>
                                         <div class="container">
-                                                  <h1>Your Email Heading Here</h1>
-                                                  <p>Your email content here.</p>
-                                                  <p>You can use <a href="https://www.w3schools.com/html/html_entities.asp" target="_blank">HTML entities</a> for special characters like © or ™.</p>
-                                                  <a href="#" class="button">Button Text Here</a>
-                                                  <div>
-                                                            <ul class='list'>${data.cart.map((cartItem: ICartItem) => <li className='list-item' key={cartItem._id}> {cartItem.name} </li>)}</ul>
-                                                  </div>
+                                                  <table class="list">
+                                                 
+                                                  <tr class="list">
+                                                            <td>
+                                                                      <h1>Your Email Heading Here</h1>
+                                                            </td>
+                                                  </tr>
+
+                                                  <tr>
+                                                            <td>
+                                                                      <p>Your email content here.</p>
+                                                            </td>
+                                                  </tr>
+
+                                                  <tr>
+                                                            <td>
+                                                                      <p>You can use <a href="https://www.w3schools.com/html/html_entities.asp" target="_blank">HTML entities</a> for special characters like © or ™.</p>
+                                                                      <a href="#" class="button">Button Text Here</a>
+                                                            </td>
+                                                  </tr>
+                                                  
+                                                  <tr>
+                                                            ${data.cart.map((cartItem: ICartItem) => <td className='list-item' key={cartItem._id}> {cartItem.name} </td>)}
+                                                  </tr>
+                                                   </table>
                                         </div>
                               </body>
                               </html>
