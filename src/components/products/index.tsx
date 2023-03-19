@@ -14,8 +14,6 @@ export default function Products(props: any) {
 
           const cart: ICartItem[] = useSelector((state: any) => state.cart)
 
-          console.log(cart);
-
           const renderProducts = props.data?.map((product: any) => (
                     <Grid item key={product._id} xs={2} sm={4} md={4} display="flex" flexDirection={'column'} alignItems="center">
                               {isScreenToMedium ? (

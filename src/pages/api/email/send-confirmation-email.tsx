@@ -1,8 +1,7 @@
-import EmailConfirmPurchase from '@/components/email/confirmed-purchase';
 import ICartItem from '@/interfaces/cart/cart.interface';
 import { IEmailToFields } from '@/interfaces/email/email-to-fields.interface';
 import { cartTotalPriceSelector } from '@/store/cart/cart-selector';
-import ReactDOMServer from "react-dom/server"
+import { Colors } from '@/styles/theme';
 import { useSelector } from 'react-redux';
 import { transporter } from '../../../services/email/email-config'
 
@@ -12,21 +11,99 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
 
                     const data: IEmailToFields = req.body;
 
-                    console.log("data u apiju: ", data);
-
-
                     if (!data || !data.name || !data.email || !data.subject || !data.message || !data.cart) {
                               return res.status(400).send({ message: "Bad request, data missing" });
                     }
+
+                    const html =
+                              `
+                              <html>
+                              <head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <title>Postovani potrosacu</title>
+                                        <style>
+                                                  .container {
+                                                            max-width: 800px;
+			                              margin: 0 auto;
+                                                            background-color: ${Colors.secondary};
+                                                            border-radius: 10px;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                  }
+                                                 .list {
+                                                            padding: 0;
+                                                            max-width: 400px;
+                                                  }
+
+                                                  /* List element */
+                                                  .list-item {
+                                                  display: flex;
+                                                  align-items: center;
+                                                  padding: 12px 0;
+                                                  box-sizing: border-box;
+                                                  }
+
+
+                                                  /* Element counter */
+                                                  .list-item::before {
+                                                  font-size: 1.5rem;
+                                                  text-align: right;
+                                                  font-weight: bold;
+                                                  min-width: 50px;
+                                                  padding-right: 12px;
+                                                  align-self: flex-start;
+                                                  background-image: linear-gradient(to bottom, aquamarine, orangered);
+                                                  background-attachment: fixed;
+                                                  
+                                                  }
+
+
+                                                  /* Element separation */
+                                                  .list-item + .list-item {
+                                                  border-top: 1px solid rgba(255,255,255,0.2);
+                                                  }
+
+                                                  .button {
+                                                  display: inline-block;
+                                                  padding: 12px 20px;
+                                                  background-color: #007bff;
+                                                  color: #fff;
+                                                  font-size: 16px;
+                                                  text-align: center;
+                                                  text-decoration: none;
+                                                  border-radius: 4px;
+                                                  border: none;
+                                                  cursor: pointer;
+                                        }
+                                        .button:hover {
+                                                  background-color: #0069d9;
+                                        }
+                                        </style>
+                              </head>
+                              <body>
+                                        <div class="container">
+                                                  <h1>Your Email Heading Here</h1>
+                                                  <p>Your email content here.</p>
+                                                  <p>You can use <a href="https://www.w3schools.com/html/html_entities.asp" target="_blank">HTML entities</a> for special characters like © or ™.</p>
+                                                  <a href="#" class="button">Button Text Here</a>
+                                                  <div>
+                                                            <ul class='list'>${data.cart.map((cartItem: ICartItem) => <li className='list-item' key={cartItem._id}> {cartItem.name} </li>)}</ul>
+                                                  </div>
+                                        </div>
+                              </body>
+                              </html>
+                              `
 
                     try {
                               await transporter.sendMail({
                                         from: process.env.EMAIL_SERVER_USER,
                                         to: data.email,
                                         subject: data.subject,
-                                        html: ReactDOMServer.renderToString(<EmailConfirmPurchase email={data.email} subject={data.subject} message={data.message} name={data.name} title={data.title} cart={data.cart} />)
+                                        html
 
                               });
+
 
                               return res.status(200).json({ success: true });
 

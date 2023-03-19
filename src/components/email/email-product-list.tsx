@@ -1,7 +1,6 @@
-import { ICart } from '@/interfaces/cart/cart.interface'
 import React from 'react'
 
-function EmailProductList(props: any) {
+const EmailProductList = (props: any) => {
           return (
                     <>
                               {props.children}
