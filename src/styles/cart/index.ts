@@ -2,7 +2,7 @@ import styled from "@mui/styled-engine";
 import { Box, IconButton, TableCell, tableCellClasses, TableHead, TableRow, Typography } from "@mui/material";
 import { Colors } from "../theme";
 
-export const CartWrapper = styled(Box)((theme: any) => ({
+export const CartWrapper = styled(Box)(({ theme }: any) => ({
           gap: '20px',
           display: "flex",
           flexDirection: 'column',
@@ -16,7 +16,7 @@ export const CartProductDetailInfoWrapper = styled(Box)(() => ({
           width: '1000px'
 }));
 
-export const CartProduct = styled(Box)((theme: any) => ({
+export const CartProduct = styled(Box)(({ theme }: any) => ({
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
@@ -25,8 +25,15 @@ export const CartProduct = styled(Box)((theme: any) => ({
 
 export const CartProductImage = styled("img")(({ src, theme }: any) => ({
           src: `url(${src})`,
-          width: '100px',
-          height: '100px',
+          [theme.breakpoints.down("sm")]: {
+                    width: '100px',
+                    height: '100px',
+          },
+          [theme.breakpoints.down("xs")]: {
+                    width: '50px',
+                    height: '50px',
+          },
+
 }));
 
 export const CartProductActionButton = styled(IconButton)(() => ({
@@ -34,7 +41,7 @@ export const CartProductActionButton = styled(IconButton)(() => ({
           margin: 4,
 }))
 
-export const StyledTableCell = styled(TableCell)((theme: any) => ({
+export const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
           [`&.${tableCellClasses.head}`]: {
                     backgroundColor: Colors.secondary,
                     color: Colors.white,
@@ -44,7 +51,7 @@ export const StyledTableCell = styled(TableCell)((theme: any) => ({
           },
 }));
 
-export const StyledTableRow = styled(TableRow)((theme: any) => ({
+export const StyledTableRow = styled(TableRow)(({ theme }: any) => ({
           '&:nth-of-type(odd)': {
                     backgroundColor: Colors.dove_gray,
           },
@@ -54,9 +61,10 @@ export const StyledTableRow = styled(TableRow)((theme: any) => ({
           },
 }))
 
-export const StyledTableHead = styled(TableHead)((theme: any) => ({
+export const StyledTableHead = styled(TableHead)(({ theme }: any) => ({
           [theme.breakpoints.down("xs")]: {
-                    display: 'none'
+                    display: 'none',
+                    backgroundColor: Colors.primary
           },
           [theme.breakpoints.down("sm")]: {
                     flexDirection: "column",
