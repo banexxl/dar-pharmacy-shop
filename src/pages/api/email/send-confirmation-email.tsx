@@ -4,6 +4,7 @@ import { cartTotalPriceSelector } from '@/store/cart/cart-selector';
 import { Colors } from '@/styles/theme';
 import { useSelector } from 'react-redux';
 import { transporter } from '../../../services/email/email-config'
+import ReactDOMServer from 'react-dom/server';
 
 const ConfirmationEmailHandler = async (req: any, res: any) => {
 
@@ -14,6 +15,9 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                     if (!data || !data.name || !data.email || !data.subject || !data.message || !data.cart) {
                               return res.status(400).send({ message: "Bad request, data missing" });
                     }
+
+                    const names = data.cart.map((cartItem: ICartItem) => cartItem.name)
+                    const quantity = data.cart.map((cartItem: ICartItem) => cartItem.quantity)
 
                     const html =
                               `
@@ -86,30 +90,35 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                               <body>
                                         <div class="container">
                                                   <table class="list">
-                                                 
-                                                  <tr class="list">
-                                                            <td>
-                                                                      <h1>Your Email Heading Here</h1>
-                                                            </td>
-                                                  </tr>
+                                                            <tr class="list-item">
+                                                                      <td>
+                                                                                <h1>Your Email Heading Here</h1>
+                                                                      </td>
+                                                            </tr>
 
-                                                  <tr>
-                                                            <td>
-                                                                      <p>Your email content here.</p>
-                                                            </td>
-                                                  </tr>
+                                                            <tr class="list-item">
+                                                                      <td>
+                                                                                <p>Your email content here.</p>
+                                                                      </td>
+                                                            </tr>
 
-                                                  <tr>
-                                                            <td>
-                                                                      <p>You can use <a href="https://www.w3schools.com/html/html_entities.asp" target="_blank">HTML entities</a> for special characters like © or ™.</p>
-                                                                      <a href="#" class="button">Button Text Here</a>
-                                                            </td>
-                                                  </tr>
-                                                  
-                                                  <tr>
-                                                            ${data.cart.map((cartItem: ICartItem) => <td className='list-item' key={cartItem._id}> {cartItem.name} </td>)}
-                                                  </tr>
-                                                   </table>
+                                                            <tr class="list-item">
+                                                                      ${names}
+                                                            </tr>
+
+                                                            <tr class="list-item">
+                                                                      ${quantity}
+                                                            </tr>
+
+                                                            <tr class="list-item">
+                                                                      <td>
+                                                                                <p>You can use <a href="https://www.w3schools.com/html/html_entities.asp" target="_blank">HTML entities</a> for special characters like © or ™.</p>
+                                                                                <a href="#" class="button">Button Text Here</a>
+                                                                      </td>
+                                                            </tr>
+                                                            
+                                                            
+                                                  </table>
                                         </div>
                               </body>
                               </html>
