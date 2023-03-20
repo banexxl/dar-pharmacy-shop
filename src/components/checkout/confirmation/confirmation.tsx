@@ -2,7 +2,7 @@ import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { sendForm } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart-selector'
-import { CartWrapper, StyledTableCell, StyledTableHead, StyledTableRow } from '@/styles/cart'
+import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow } from '@/styles/cart'
 import { Button, Paper, Table, TableBody } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -16,17 +16,17 @@ function Confirmation() {
                     <CartWrapper component={Paper}>
                               <Table aria-label="customized table"
                               >
-                                        <StyledTableHead>
-                                                  <StyledTableRow>
-                                                            <StyledTableCell>Slika</StyledTableCell>
-                                                            <StyledTableCell align="left">Naziv</StyledTableCell>
-                                                            <StyledTableCell align="left">Pakovanje</StyledTableCell>
-                                                            <StyledTableCell align="left">Sifra</StyledTableCell>
-                                                            <StyledTableCell align="left">Kolicina</StyledTableCell>
-                                                            <StyledTableCell align="left">Cena</StyledTableCell>
-                                                            <StyledTableCell align="left">Ukupno</StyledTableCell>
-                                                  </StyledTableRow>
-                                        </StyledTableHead>
+                                        <StyledHeader>
+                                                  <StyledProductRow>
+                                                            <StyledProductCell>Slika</StyledProductCell>
+                                                            <StyledProductCell align="left">Naziv</StyledProductCell>
+                                                            <StyledProductCell align="left">Pakovanje</StyledProductCell>
+                                                            <StyledProductCell align="left">Sifra</StyledProductCell>
+                                                            <StyledProductCell align="left">Kolicina</StyledProductCell>
+                                                            <StyledProductCell align="left">Cena</StyledProductCell>
+                                                            <StyledProductCell align="left">Ukupno</StyledProductCell>
+                                                  </StyledProductRow>
+                                        </StyledHeader>
                                         <TableBody>
                                                   {cart.map((cartItem: ICartItem) => (
                                                             <CartItem key={cartItem._id} count={cartItem.count} _id={cartItem._id}

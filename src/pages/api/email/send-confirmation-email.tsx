@@ -7,8 +7,6 @@ import { transporter } from '../../../services/email/email-config'
 
 const ConfirmationEmailHandler = async (req: any, res: any) => {
 
-          const totalItemPrice: any = useSelector(cartTotalPriceSelector)
-
           if (req.method === "POST") {
 
                     const data: IEmailToFields = req.body;
@@ -18,6 +16,7 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                     }
 
                     const names = data.cart.map((cartItem: ICartItem) => cartItem.name)
+
                     const quantity = data.cart.map((cartItem: ICartItem) => cartItem.quantity)
 
                     const html =
@@ -28,13 +27,15 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                         <style>
                                                   .container {
-                                                            font-family: 'Red Hat Display', sans-serif;
-                                                            display: flex;
+                                                            font-family: cursive, sans-serif;
+                                                            display: grid;
                                                             background-color: ${Colors.secondary};
                                                             border-radius: 15px;
                                                             width: 800px;
                                                             margin: 0 auto;
+                                                            gap: 20px;
                                                   }
+
                                                  .list {
                                                             background-color: #f7e5e5;
                                                             border-radius: 15px;
@@ -43,87 +44,84 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                                             align-items: center;
                                                   }
 
-                                                  /* List element */
                                                   .list-item {
-                                                  display: flex;
-                                                  align-items: center;
-                                                  padding: 12px 0;
-                                                  box-sizing: border-box;
+                                                            display: flex;
+                                                            align-items: center;
+                                                            padding: 12px 0;
+                                                            box-sizing: border-box;
                                                   }
 
-
-                                                  /* Element counter */
                                                   .list-item::before {
-                                                  font-size: 1.5rem;
-                                                  text-align: right;
-                                                  font-weight: bold;
-                                                  min-width: 50px;
-                                                  padding-right: 12px;
-                                                  align-self: flex-start;
-                                                  background-image: linear-gradient(to bottom, aquamarine, orangered);
-                                                  background-attachment: fixed;
-                                                  
+                                                            font-size: 1.5rem;
+                                                            text-align: right;
+                                                            font-weight: bold;
+                                                            min-width: 50px;
+                                                            padding-right: 12px;
+                                                            align-self: flex-start;
+                                                            background-image: linear-gradient(to bottom, aquamarine, orangered);
+                                                            background-attachment: fixed;
                                                   }
 
-
-                                                  /* Element separation */
                                                   .list-item + .list-item {
-                                                  border-top: 1px solid rgba(255,255,255,0.2);
+                                                            border-top: 1px solid rgba(255,255,255,0.2);
                                                   }
 
                                                   .button {
-                                                  display: inline-block;
-                                                  padding: 12px 20px;
-                                                  background-color: #007bff;
-                                                  color: #fff;
-                                                  font-size: 16px;
-                                                  text-align: center;
-                                                  text-decoration: none;
-                                                  border-radius: 4px;
-                                                  border: none;
-                                                  cursor: pointer;
-                                        }
-                                        .button:hover {
-                                                  background-color: #0069d9;
-                                        }
+                                                            padding: 8px 8px;
+                                                            max-width: 150px;
+                                                            background-color: ${Colors.primary};
+                                                            font-size: 16px;
+                                                            text-align: center;
+                                                            text-decoration: none;
+                                                            border-radius: 4px;
+                                                            border: none;
+                                                            cursor: pointer;
+                                                            margin: 20px auto;
+                                                  }
+
+                                                  .button:hover {
+                                                            background-color: ${Colors.dove_gray};
+                                                  }
+                                                  .message{
+                                                            text-align: center
+                                                  }
+                                                  h1 {
+                                                            text-align: center
+                                                  }
+
                                         </style>
                               </head>
                               <body>
                                         <div class="container">
-                                                  <table class="list">
-                                                            <tr class="list-item">
-                                                                      <td>
-                                                                                <h1>Vaša porudžbenica je primljena!</h1>
-                                                                      </td>
-                                                            </tr>
+                                                  <h1>Vaša porudžbenica je primljena!</h1>
+                                                  <br>&nbsp;&nbsp;&nbsp;Poštovana/i ${data.name}, 
+                                                            <br>
+                                                                      <p class="message">
+                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu nedavnu kupovinu. <br>
+                                                                                <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em> <br>
+                                                                                <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje 
+                                                                                proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
+                                                                                <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku</strong> 
+                                                                                <br>Radujemo se što ćemo vam i u budućnosti služiti. <br>
+                                                                                <br>Srdačni pozdravi,
+                                                                                <br><strong>DAR apoteka tim</strong>
+                                                                      </p>
+                                                            <table class="list">
+                                                                      <tr >
+                                                                                <td>
+                                                                                          <strong>Proizvodi koje ste poručili su:</strong>
+                                                                                </td>
+                                                                      </tr>
 
-                                                            <tr class="list-item">
-                                                                      <td>
-                                                                                <p>Proizvodi koje ste poručili su:</p>
-                                                                      </td>
-                                                            </tr>
+                                                                      <tr class="list-item">
+                                                                                ${names}
+                                                                      </tr>
 
-                                                            <tr class="list-item">
-                                                                      ${names}
-                                                            </tr>
-
-                                                            <tr class="list-item">
-                                                                      ${quantity}
-                                                            </tr>
-
-                                                            <tr class="list-item">
-                                                                      ${totalItemPrice}
-                                                            </tr>
-
-                                                            <tr class="list-item">
-                                                                      <td>
-                                                                                <p>You can use <a href="https://www.w3schools.com/html/html_entities.asp" target="_blank">HTML entities</a> for special characters like © or ™.</p>
-                                                                                <a href="#" class="button">Button Text Here</a>
-                                                                      </td>
-                                                            </tr>
-                                                            
-                                                            
-                                                  </table>
+                                                                      <tr class="list-item">
+                                                                                ${quantity}
+                                                                      </tr>         
+                                                            </table>
+                                                  <a href="apoteka-dar.rs" class="button">Apoteka DAR</a>
                                         </div>
                               </body>
                               </html>
