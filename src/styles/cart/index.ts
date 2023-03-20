@@ -20,18 +20,25 @@ export const CartProduct = styled(Box)(({ theme }: any) => ({
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
-
 }))
 
 export const CartProductImage = styled("img")(({ src, theme }: any) => ({
           src: `url(${src})`,
-          [theme.breakpoints.down("sm")]: {
+          [theme.breakpoints.up("xl")]: {
                     width: '100px',
                     height: '100px',
           },
-          [theme.breakpoints.down("xs")]: {
-                    width: '50px',
-                    height: '50px',
+          [theme.breakpoints.up("lg")]: {
+                    width: '100px',
+                    height: '100px',
+          },
+          [theme.breakpoints.up("sm")]: {
+                    width: '100px',
+                    height: '100px',
+          },
+          [theme.breakpoints.up("xs")]: {
+                    width: '100px',
+                    height: '100px',
           },
 
 }));
@@ -41,7 +48,24 @@ export const CartProductActionButton = styled(IconButton)(() => ({
           margin: 4,
 }))
 
-export const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
+export const StyledHeaderCell = styled(TableCell)(({ theme }: any) => ({
+          display: 'flex',
+          flexDirection: 'column'
+}));
+
+export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
+          [theme.breakpoints.up("xs")]: {
+                    display: 'none',
+                    color: 'white'
+          },
+          [theme.breakpoints.up("sm")]: {
+                    display: 'flex',
+                    alignItems: "center",
+                    backgroundColor: Colors.secondary
+          }
+}))
+
+export const StyledProductCell = styled(TableCell)(({ theme }: any) => ({
           [`&.${tableCellClasses.head}`]: {
                     backgroundColor: Colors.secondary,
                     color: Colors.white,
@@ -49,9 +73,16 @@ export const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
           [`&.${tableCellClasses.body}`]: {
                     fontSize: 14,
           },
+          [theme.breakpoints.up("xs")]: {
+                    padding: '2px'
+          },
+          [theme.breakpoints.down("sm")]: {
+                    flexDirection: "column",
+                    alignItems: "center",
+          }
 }));
 
-export const StyledTableRow = styled(TableRow)(({ theme }: any) => ({
+export const StyledProductRow = styled(TableRow)(({ theme }: any) => ({
           '&:nth-of-type(odd)': {
                     backgroundColor: Colors.dove_gray,
           },
@@ -59,12 +90,8 @@ export const StyledTableRow = styled(TableRow)(({ theme }: any) => ({
           '&:last-child td, &:last-child th': {
                     border: 0,
           },
-}))
-
-export const StyledTableHead = styled(TableHead)(({ theme }: any) => ({
-          [theme.breakpoints.down("xs")]: {
-                    display: 'none',
-                    backgroundColor: Colors.primary
+          [theme.breakpoints.up("xs")]: {
+                    display: 'flex',
           },
           [theme.breakpoints.down("sm")]: {
                     flexDirection: "column",

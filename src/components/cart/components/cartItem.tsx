@@ -1,5 +1,5 @@
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { CartProductImage, StyledTableCell, StyledTableRow } from '@/styles/cart'
+import { CartProductImage, StyledProductCell, StyledProductRow } from '@/styles/cart'
 import Counter from '@/utils/counter'
 import React from 'react'
 
@@ -7,31 +7,31 @@ import React from 'react'
 const CartItem = (props: ICartItem) => {
 
           return (
-                    <StyledTableRow key={props._id}>
-                              <StyledTableCell component="th" scope="row">
+                    <StyledProductRow key={props._id}>
+                              <StyledProductCell component="th" scope="row">
                                         <CartProductImage src={props.imageURL} />
-                              </StyledTableCell>
-                              <StyledTableCell align="left">
+                              </StyledProductCell>
+                              <StyledProductCell align="left">
                                         {props.name}
-                              </StyledTableCell>
-                              <StyledTableCell>
+                              </StyledProductCell>
+                              <StyledProductCell>
                                         {props.quantity}
-                              </StyledTableCell>
-                              <StyledTableCell align="left">
+                              </StyledProductCell>
+                              <StyledProductCell align="left">
                                         {props._id.toString().slice(-8).toUpperCase()}
-                              </StyledTableCell>
-                              <StyledTableCell>
+                              </StyledProductCell>
+                              <StyledProductCell>
                                         <Counter _id={props._id} count={props.count}>
                                                   {props.count}
                                         </Counter>
-                              </StyledTableCell>
-                              <StyledTableCell align="left">
+                              </StyledProductCell>
+                              <StyledProductCell align="left">
                                         {props.price} rsd
-                              </StyledTableCell>
-                              <StyledTableCell align="left">
+                              </StyledProductCell>
+                              <StyledProductCell align="left">
                                         {props.count * props.price} rsd
-                              </StyledTableCell>
-                    </StyledTableRow >
+                              </StyledProductCell>
+                    </StyledProductRow >
           )
 }
 
