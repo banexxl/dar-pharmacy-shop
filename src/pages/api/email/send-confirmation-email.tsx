@@ -27,20 +27,21 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                         <style>
                                                   .container {
-                                                            font-family: cursive, sans-serif;
+                                                            font-family: monospace, sans-serif;
                                                             display: grid;
                                                             background-color: ${Colors.secondary};
                                                             border-radius: 15px;
-                                                            width: 800px;
+                                                            width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
+                                                            overflow-wrap: break-word;
                                                   }
 
                                                  .list {
                                                             background-color: #f7e5e5;
                                                             border-radius: 15px;
-                                                            width: 600px;
-			                              margin: 0 auto;
+                                                            width: 380px;
+			                              margin: 5px;
                                                             align-items: center;
                                                   }
 
@@ -83,10 +84,14 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                                             background-color: ${Colors.dove_gray};
                                                   }
                                                   .message{
-                                                            text-align: center
+                                                            text-align: center;
+                                                            width: 380px;
+                                                            margin-right: 5px;
                                                   }
                                                   h1 {
-                                                            text-align: center
+                                                            text-align: center;
+                                                            width: 380px;
+                                                            overflow-wrap: break-word;
                                                   }
 
                                         </style>
@@ -107,19 +112,15 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                                                                 <br><strong>DAR apoteka tim</strong>
                                                                       </p>
                                                             <table class="list">
-                                                                      <tr >
-                                                                                <td>
-                                                                                          <strong>Proizvodi koje ste poručili su:</strong>
-                                                                                </td>
+
+                                                                      <tr class="list-item">
+                                                                                <strong>Vaši proizvodi u korpi su:</strong>
                                                                       </tr>
 
                                                                       <tr class="list-item">
                                                                                 ${names}
-                                                                      </tr>
+                                                                      </tr>  
 
-                                                                      <tr class="list-item">
-                                                                                ${quantity}
-                                                                      </tr>         
                                                             </table>
                                                   <a href="apoteka-dar.rs" class="button">Apoteka DAR</a>
                                         </div>

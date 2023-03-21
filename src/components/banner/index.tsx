@@ -9,7 +9,7 @@ export default function Banner() {
 
           return (
                     <BannerContainer >
-                              <BannerImage src="/images/banner/banner.png" />
+                              <BannerImage src="/Logos/ailogo.png" />
                               <BannerContent>
                                         <Typography variant="h6">Apoteka DAR</Typography>
 
