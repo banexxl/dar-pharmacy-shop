@@ -9,14 +9,16 @@ import { checkoutSlice } from '@/store/checkout/checkout.slice'
 import { ICheckoutState } from '@/store/checkout/checkout-state.interface';
 import { useSelector } from 'react-redux';
 import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
+const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
           const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
+          const [tabIndex, setTabIndex] = useState(0)
           const checkout = checkoutSlice
           const checkoutState: ICheckoutState = useSelector((state: any) => state.cart)
 
@@ -27,6 +29,15 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
           const onSubmitForm = (values: IUserFormValues) => {
                     checkout.actions.submitUserForm(values)
           }
+
+          const handleNext = () => {
+                    tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
+          };
+
+          const handleReset = () => {
+                    setTabIndex(0)
+          };
+
 
           return (
                     <ThemeProvider theme={theme}>
@@ -167,6 +178,9 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: any) => {
                                                                                                     {t('checkout.clearform')}
                                                                                           </ClearFormButton>
                                                                                 </Grid>
+                                                                                <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => handleNext()}>
+                                                                                          {t('checkout.nextbutton')}
+                                                                                </CheckoutNextPrevButton>
                                                                       </Grid>
                                                             )
                                                   }

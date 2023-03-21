@@ -4,18 +4,30 @@ import { Box, Button, FormControlLabel, Radio, Typography } from '@mui/material'
 import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { CreditCard } from './credit-card/credit-card';
-import { initialPaymentFormValues, IPaymentFormValues } from '../../../interfaces/checkout/payment-form-values.interface';
+import { CreditCard } from './credit-card/credit-card-form';
+import { initialPaymentFormValues, IPaymentFormProps } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from '@/styles/checkout/payment';
 import UserInfoForm from '../userinfo/userinfo-form';
 import RadioGroup from '@mui/material/RadioGroup';
 import { Colors } from '@/styles/theme';
 
-export const Payment: FunctionComponent<IPaymentFormValues> = (props: IPaymentFormValues) => {
+export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFormProps) => {
 
           const { t } = useTranslation();
           const [isCardPayment, setIsCardPayment] = useState(true)
+          const [tabIndex, setTabIndex] = useState(1)
+
+          const handleNext = () => {
+                    tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
+          };
+
+          const handleBack = () => {
+                    tabIndex === 1 || tabIndex === 2 ? props.setTab?.(tabIndex - 1) : null
+          };
 
           return (
                     <Formik
@@ -65,6 +77,12 @@ export const Payment: FunctionComponent<IPaymentFormValues> = (props: IPaymentFo
                                                                                 null
                                                             }
                                                   </PaymentFormControl>
+                                                  <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => handleNext()}>
+                                                            {t('checkout.nextbutton')}
+                                                  </CheckoutNextPrevButton>
+                                                  <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                                            {t('checkout.previousbutton')}
+                                                  </CheckoutNextPrevButton>
                                         </Form>
                               )}
                     </Formik>

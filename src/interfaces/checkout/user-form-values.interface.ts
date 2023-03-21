@@ -26,6 +26,7 @@ export const initialUserFormValues: IUserFormValues = {
 
 export interface IUserFormProps {
           tabIndex?: number
+          setTab?: (tabIndex: number) => number
           formName: string
           errors?: FormikErrors<IUserFormValues>
           touched?: FormikTouched<IUserFormValues>

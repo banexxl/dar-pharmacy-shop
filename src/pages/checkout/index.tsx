@@ -1,4 +1,4 @@
-import AddressForm from '@/components/checkout/userinfo/userinfo-form'
+import UserInfoForm from '@/components/checkout/userinfo/userinfo-form'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, Container, Stack, Step, StepLabel, Stepper, Tab, Tabs } from '@mui/material'
@@ -10,16 +10,25 @@ import React, { useEffect, useState } from 'react'
 import TabPanel from '@/styles/checkout/tabpanel'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
-import Payment from '@/components/checkout/payment/payment'
-import Confirmation from '@/components/checkout/confirmation/confirmation'
-import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import Payment from '@/components/checkout/payment/payment-form'
+import Confirmation from '@/components/checkout/confirmation/confirmation-form'
+import { useSelector } from 'react-redux'
+import { checkoutSelectors } from '@/store/checkout/checkout.selectors'
+
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
           const [tabIndex, setTabIndex] = useState(0)
+          const userData = useSelector(checkoutSelectors.getUserData)
+          console.log('userData', userData);
+
+          const setTab = (tabIndex: number) => {
+                    setTabIndex(tabIndex)
+                    return 0
+          }
+
+          console.log("tab index na glavnoj stranici: ", tabIndex);
 
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -27,31 +36,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           })
 
           const steps = ["Shipping address", "Payment details", "Review your order"];
-
-          // function getStepContent(step: number) {
-          //           switch (step) {
-          //                     case 0:
-          //                               return <AddressForm formName={'addressform'} />;
-          //                     case 1:
-          //                               return <Payment sameAsShipping={false} />;
-          //                     case 2:
-          //                               return <Confirmation />;
-          //                     default:
-          //                               throw new Error("Unknown step");
-          //           }
-          // }
-
-          const handleNext = () => {
-                    setTabIndex(tabIndex + 1)
-          };
-
-          const handleBack = () => {
-                    setTabIndex(tabIndex - 1)
-          };
-
-          const handleReset = () => {
-                    setTabIndex(0)
-          };
 
           return (
                     <DynamicThemeProvider theme={theme}>
@@ -81,23 +65,17 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
                                                                       </Tabs>
                                                                       <TabPanel value={tabIndex} index={0}>
-                                                                                <AddressForm formName={'addressform'} />
+                                                                                <UserInfoForm formName={'userinfo'} setTab={setTab} />
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={1} >
-                                                                                <Payment sameAsShipping={false} />
+                                                                                <Payment sameAsShipping={false} setTab={setTab} />
                                                                                 {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
                                                                                           throw new Error('Function not implemented.')
                                                                                 }} /> */}
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={2} >
-                                                                                <Confirmation />
+                                                                                <Confirmation setTab={setTab} />
                                                                       </TabPanel>
-                                                                      <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} onClick={() => handleNext()}>
-                                                                                {t('checkout.nextbutton')}
-                                                                      </CheckoutNextPrevButton>
-                                                                      <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                                                                {t('checkout.previousbutton')}
-                                                                      </CheckoutNextPrevButton>
                                                             </Box>
 
                                                   </UIProvider>
