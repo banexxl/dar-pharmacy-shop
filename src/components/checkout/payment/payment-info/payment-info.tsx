@@ -1,43 +1,23 @@
+import { initialUserFormValues, IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
+import { userFormSchema } from '@/schema/user-form.schema';
 import theme, { Colors } from '@/styles/theme';
 import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Formik } from 'formik';
-import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { initialUserFormValues, IUserFormProps, IUserFormValues } from '../../../interfaces/checkout/user-form-values.interface';
-import { userFormSchema } from '@/schema/user-form.schema';
-import { checkoutSlice } from '@/store/checkout/checkout.slice'
-import { ICheckoutState } from '@/store/checkout/checkout-state.interface';
-import { useSelector } from 'react-redux';
-import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
+import React, { ChangeEvent } from 'react'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
-import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
+import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
+import { checkoutSlice } from '@/store/checkout/checkout.slice';
 
-const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
+const PaymentInfo = () => {
 
           const { t } = useTranslation('common')
-          const [shouldCreateAccount, setShouldCreateAccount] = useState(false)
-          const [tabIndex, setTabIndex] = useState(0)
           const checkout = checkoutSlice
-          const checkoutState: ICheckoutState = useSelector((state: any) => state.cart)
-
-          const onShouldCreateAccount = (currentState: boolean) => {
-                    setShouldCreateAccount(currentState)
-          }
 
           const onSubmitForm = (values: IUserFormValues) => {
                     checkout.actions.submitUserForm(values)
           }
-
-          const handleNext = () => {
-                    tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
-          };
-
-          const handleReset = () => {
-                    setTabIndex(0)
-          };
-
 
           return (
                     <ThemeProvider theme={theme}>
@@ -152,35 +132,11 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     fullWidth
                                                                                           />
                                                                                 </Grid>
-
-                                                                                <Grid item xs={12} sm={6}>
-                                                                                          <FormControlLabel control={
-                                                                                                    <ShouldCreateAccountCheckBox onChange={(e: ChangeEvent<HTMLInputElement>) => { onShouldCreateAccount(e.target.checked) }} />}
-                                                                                                    label={<Typography sx={{
-                                                                                                              fontFamily: 'inherit', color: Colors.secondary
-                                                                                                    }}>{t('checkout.shouldcreateaccount')}</Typography>} />
-                                                                                          {
-                                                                                                    shouldCreateAccount ?
-                                                                                                              <TextField
-                                                                                                                        value={formik.values.email}
-                                                                                                                        onChange={formik.handleChange('email')}
-                                                                                                                        label={t('signup.email')}
-                                                                                                                        name={'email'}
-                                                                                                                        variant="outlined"
-                                                                                                                        error={formik.touched?.email && !!formik.errors?.email}
-                                                                                                                        helperText={formik.touched?.email && formik.errors?.email}
-                                                                                                              />
-                                                                                                              : null
-                                                                                          }
-                                                                                </Grid>
                                                                                 <Grid item xs={12} sm={6}>
                                                                                           <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
                                                                                                     {t('checkout.clearform')}
                                                                                           </ClearFormButton>
                                                                                 </Grid>
-                                                                                <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={< NavigateNextIcon />} onClick={() => handleNext()}>
-                                                                                          {t('checkout.nextbutton')}
-                                                                                </CheckoutNextPrevButton>
                                                                       </Grid>
                                                             )
                                                   }
@@ -189,8 +145,6 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                               </Container>
                     </ThemeProvider >
           );
-};
+}
 
-export default UserInfoForm
-
-
+export default PaymentInfo

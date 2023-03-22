@@ -11,9 +11,9 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from '@/styles/checkout/payment';
-import UserInfoForm from '../userinfo/userinfo-form';
 import RadioGroup from '@mui/material/RadioGroup';
 import { Colors } from '@/styles/theme';
+import PaymentInfo from './payment-info/payment-info';
 
 export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFormProps) => {
 
@@ -48,7 +48,7 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                                       Label={{ label: t('checkout.sameAsShipping') }}
                                                             />
 
-                                                            {!values.sameAsShipping && (<UserInfoForm formName="billingAddress" />)}
+                                                            {!values.sameAsShipping && (<PaymentInfo />)}
 
                                                             <Typography variant="h5" component="legend" gutterBottom>
                                                                       {t('checkout.payment-options')}
