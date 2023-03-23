@@ -7,7 +7,7 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../productdetails";
 import ProductMeta from "./ProductMeta"
-import { addToCart } from "@/store/cart/cart-slice";
+import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch } from "react-redux";
 
 export default function SingleProduct({ product, isScreenToMedium }: any) {

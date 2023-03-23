@@ -1,14 +1,11 @@
 import theme, { Colors } from '@/styles/theme';
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { IEmailForm, initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
+import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema, userEmailSchema } from '@/schema/user-form.schema';
 import { checkoutSlice } from '@/store/checkout/checkout.slice'
-import { ICheckoutState } from '@/store/checkout/checkout-state.interface';
-import { useSelector } from 'react-redux';
-import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { ShouldCreateAccountButton } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
@@ -17,16 +14,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
-          const [tabIndex, setTabIndex] = useState(0)
+          let tabIndex: number = 0
           const [openEmailForm, setOpenEmailForm] = useState(false);
-          const checkout = checkoutSlice
-          const checkoutState: ICheckoutState = useSelector((state: any) => state.cart)
 
-          const onSubmitForm = (values: IUserForm) => {
 
-                    checkout.actions.submitUserForm(values)
+          const handleSubmit = (values: IUserForm) => {
+
+                    checkoutSlice.actions.submitUserForm(values)
 
                     tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
+
           }
 
           const onSubmitEmailForm = (email: any) => {
@@ -46,10 +43,10 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                         }}
                               >
 
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => onSubmitForm(values)} validationSchema={userFormSchema(t)} reset>
+                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)} reset>
                                                   {
                                                             formik => (
-                                                                      <form onSubmit={formik.handleSubmit}>
+                                                                      <Form>
                                                                                 <Grid container spacing={2}>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
@@ -156,14 +153,14 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     </CheckoutNextPrevButton>
                                                                                           </Grid>
                                                                                 </Grid>
-                                                                      </form>
+                                                                      </Form>
                                                             )
                                                   }
                                         </Formik>
                                         <Formik initialValues={initialEmailFormValues} onSubmit={(e: any) => console.log(e)} validationSchema={userEmailSchema(t)} reset>
                                                   {
                                                             formik => (
-                                                                      <form onSubmit={formik.handleSubmit}>
+                                                                      <Form onSubmit={formik.handleSubmit}>
                                                                                 <Grid item xs={12} sm={6}>
                                                                                           <ShouldCreateAccountButton onClick={() => setOpenEmailForm(true)} >
                                                                                                     {<Typography sx={{
@@ -198,7 +195,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     </DialogActions>
                                                                                           </Dialog>
                                                                                 </Grid>
-                                                                      </form>
+                                                                      </Form>
                                                             )
                                                   }
                                         </Formik>
@@ -208,5 +205,4 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
 };
 
 export default UserInfoForm
-
 

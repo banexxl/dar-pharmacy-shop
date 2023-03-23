@@ -14,22 +14,22 @@ import Payment from '@/components/checkout/payment/payment-form'
 import Confirmation from '@/components/checkout/confirmation/confirmation-form'
 import { useSelector } from 'react-redux'
 import { checkoutSelectors } from '@/store/checkout/checkout.selectors'
+import { ICheckoutState } from '@/store/checkout/checkout-state.interface'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
           const [tabIndex, setTabIndex] = useState(0)
-          const userData = useSelector(checkoutSelectors.getUserData)
-          console.log('userData', userData);
+          const userData = useSelector(checkoutSelectors.getUserForm)
+
+          console.log("userData na checkout page-u je: ", userData);
+
 
           const setTab = (tabIndex: number) => {
                     setTabIndex(tabIndex)
                     return 0
           }
-
-          console.log("tab index na glavnoj stranici: ", tabIndex);
-
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel />,

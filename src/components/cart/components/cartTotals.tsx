@@ -1,7 +1,7 @@
 import { useUIContext } from '@/context/ui/ui.context'
 import useDialogModal from '@/hooks/useDialogModal'
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { cartTotalPriceSelector } from '@/store/cart/cart-selector'
+import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import { Box, Button, Slide, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'

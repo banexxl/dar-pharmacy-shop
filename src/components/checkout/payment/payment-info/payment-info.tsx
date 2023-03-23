@@ -9,14 +9,17 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import { checkoutSlice } from '@/store/checkout/checkout.slice';
+import { ICheckoutState } from '@/store/checkout/checkout-state.interface';
+import { useSelector } from 'react-redux';
+import { initialPaymentFormValues, IPaymentForm } from '@/interfaces/checkout/payment-form-values.interface';
 
 const PaymentInfo = () => {
 
           const { t } = useTranslation('common')
-          const checkout = checkoutSlice
 
-          const onSubmitForm = (values: IUserForm) => {
-                    checkout.actions.submitUserForm(values)
+          const onSubmitForm = (values: IPaymentForm) => {
+                    console.log("aaa");
+
           }
 
           return (
@@ -32,7 +35,7 @@ const PaymentInfo = () => {
                                         }}
                               >
 
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => onSubmitForm(values)} validationSchema={userFormSchema(t)} reset>
+                                        <Formik initialValues={initialPaymentFormValues} onSubmit={(values: IPaymentForm) => onSubmitForm(values)} validationSchema={userFormSchema(t)} reset>
                                                   {
                                                             formik => (
                                                                       <Grid container spacing={2}>

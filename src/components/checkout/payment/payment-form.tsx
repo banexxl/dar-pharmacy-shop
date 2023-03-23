@@ -14,6 +14,9 @@ import { isBillingAndShippingCheckbox, PaymentFormControl, paymentOptions } from
 import RadioGroup from '@mui/material/RadioGroup';
 import { Colors } from '@/styles/theme';
 import PaymentInfo from './payment-info/payment-info';
+import { checkoutSlice } from '@/store/checkout/checkout.slice';
+import { useSelector } from 'react-redux';
+import { checkoutSelectors } from '@/store/checkout/checkout.selectors';
 
 export const Payment: FunctionComponent<IPaymentForm> = (props: IPaymentForm) => {
 

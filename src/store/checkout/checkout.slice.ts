@@ -10,6 +10,15 @@ export const checkoutSlice = createSlice({
           initialState: initialCheckoutState,
           reducers: {
                     submitUserForm(state: ICheckoutState, action: PayloadAction<IUserForm>) {
+
+                              console.log("usao u submit user form");
+
+                              console.log("state je: ", state);
+
+                              console.log("payload action je:", action);
+
+
+
                               state.userForm = action.payload;
                     },
                     clearUserForm(state: ICheckoutState) {

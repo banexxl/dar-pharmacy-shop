@@ -1,21 +1,21 @@
 import { FormikErrors, FormikTouched } from "formik";
 import { ChangeEvent } from "react";
 
-export interface ICreditCardFormValues {
+export interface ICreditCard {
           cardNumber: string;
           expiryDate: string;
           securityCode: string;
 }
 
-export interface ICreditCardProps {
+export interface ICreditCardForm {
           formName?: string;
-          errors?: FormikErrors<ICreditCardFormValues>;
-          touched?: FormikTouched<ICreditCardFormValues>;
-          values: ICreditCardFormValues;
+          errors?: FormikErrors<ICreditCard>;
+          touched?: FormikTouched<ICreditCard>;
+          values: ICreditCard;
           handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const initialCreditCardValues: ICreditCardFormValues = {
+export const initialCreditCardValues: ICreditCard = {
           cardNumber: '',
           expiryDate: '',
           securityCode: '',

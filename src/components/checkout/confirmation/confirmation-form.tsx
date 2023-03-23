@@ -1,7 +1,7 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { sendForm } from '@/services/email/send-email'
-import { cartTotalPriceSelector } from '@/store/cart/cart-selector'
+import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow } from '@/styles/cart'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
 import { Button, Paper, Table, TableBody } from '@mui/material'
