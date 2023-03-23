@@ -12,7 +12,7 @@ export const ClearFormButton = styled(Button)(() => ({
           margin: 10,
 }))
 
-export const ShouldCreateAccountCheckBox = styled(Checkbox)(() => ({
+export const ShouldCreateAccountButton = styled(Button)(() => ({
           color: Colors.secondary,
           backgroundColor: Colors.light_gray
 }))

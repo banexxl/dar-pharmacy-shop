@@ -1,7 +1,7 @@
-import { IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
-import { IPaymentFormValues } from '../../interfaces/checkout/payment-form-values.interface';
+import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
+import { IPaymentForm } from '../../interfaces/checkout/payment-form-values.interface';
 
 export interface ICheckoutState {
-          userForm: IUserFormValues;
-          paymentForm: IPaymentFormValues;
+          userForm: IUserForm;
+          paymentForm: IPaymentForm;
 }

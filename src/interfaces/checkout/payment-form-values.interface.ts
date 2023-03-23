@@ -1,12 +1,12 @@
-import { initialUserFormValues, IUserFormValues } from './user-form-values.interface';
+import { initialUserFormValues, IUserForm } from './user-form-values.interface';
 
-export interface IPaymentFormProps {
+export interface IPaymentForm {
           setTab?: (tabIndex: number) => number
           sameAsShipping: boolean;
-          billingAddress?: IUserFormValues;
+          billingAddress?: IUserForm;
 }
 
-export const initialPaymentFormValues: IPaymentFormProps = {
+export const initialPaymentFormValues: IPaymentForm = {
           sameAsShipping: false,
           billingAddress: initialUserFormValues,
 };

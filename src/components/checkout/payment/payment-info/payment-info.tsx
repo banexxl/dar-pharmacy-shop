@@ -1,4 +1,4 @@
-import { initialUserFormValues, IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
+import { initialUserFormValues, IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schema/user-form.schema';
 import theme, { Colors } from '@/styles/theme';
 import { Container, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
@@ -15,7 +15,7 @@ const PaymentInfo = () => {
           const { t } = useTranslation('common')
           const checkout = checkoutSlice
 
-          const onSubmitForm = (values: IUserFormValues) => {
+          const onSubmitForm = (values: IUserForm) => {
                     checkout.actions.submitUserForm(values)
           }
 
@@ -32,7 +32,7 @@ const PaymentInfo = () => {
                                         }}
                               >
 
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserFormValues) => onSubmitForm(values)} validationSchema={userFormSchema(t)} reset>
+                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => onSubmitForm(values)} validationSchema={userFormSchema(t)} reset>
                                                   {
                                                             formik => (
                                                                       <Grid container spacing={2}>

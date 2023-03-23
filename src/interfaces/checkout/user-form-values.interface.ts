@@ -1,6 +1,6 @@
 import { FormikErrors, FormikTouched } from "formik";
 
-export interface IUserFormValues {
+export interface IUserForm {
           firstName: string;
           lastName: string;
           streetAddress: string;
@@ -9,10 +9,13 @@ export interface IUserFormValues {
           provinceState?: string;
           country: string;
           zipPostalCode: string;
-          email?: string;
 }
 
-export const initialUserFormValues: IUserFormValues = {
+export interface IEmailForm {
+          email: string
+}
+
+export const initialUserFormValues: IUserForm = {
           firstName: '',
           lastName: '',
           streetAddress: '',
@@ -21,6 +24,9 @@ export const initialUserFormValues: IUserFormValues = {
           provinceState: '',
           country: '',
           zipPostalCode: '',
+};
+
+export const initialEmailFormValues: IEmailForm = {
           email: ''
 };
 
@@ -28,7 +34,7 @@ export interface IUserFormProps {
           tabIndex?: number
           setTab?: (tabIndex: number) => number
           formName: string
-          errors?: FormikErrors<IUserFormValues>
-          touched?: FormikTouched<IUserFormValues>
+          errors?: FormikErrors<IUserForm>
+          touched?: FormikTouched<IUserForm>
 }
 

@@ -1,14 +1,14 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { ICheckoutState } from './checkout-state.interface';
-import { IUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
+import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { IRootState } from './root-state.interface';
-import { IPaymentFormValues } from '@/interfaces/checkout/payment-form-values.interface';
+import { IPaymentForm } from '@/interfaces/checkout/payment-form-values.interface';
 
 const getCheckoutState = (state: IRootState): ICheckoutState => state.checkout;
 
-const getUserData = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IUserFormValues => checkoutState?.userForm)
+const getUserData = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IUserForm => checkoutState?.userForm)
 
-const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentFormValues => checkoutState?.paymentForm)
+const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentForm => checkoutState?.paymentForm)
 
 export const checkoutSelectors = {
           getCheckoutState,

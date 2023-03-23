@@ -5,7 +5,7 @@ import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { CreditCard } from './credit-card/credit-card-form';
-import { initialPaymentFormValues, IPaymentFormProps } from '../../../interfaces/checkout/payment-form-values.interface';
+import { initialPaymentFormValues, IPaymentForm } from '../../../interfaces/checkout/payment-form-values.interface';
 import { paymentFormSchema } from '../../../schema/payment-form.schema';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
@@ -15,7 +15,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import { Colors } from '@/styles/theme';
 import PaymentInfo from './payment-info/payment-info';
 
-export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFormProps) => {
+export const Payment: FunctionComponent<IPaymentForm> = (props: IPaymentForm) => {
 
           const { t } = useTranslation();
           const [isCardPayment, setIsCardPayment] = useState(true)
