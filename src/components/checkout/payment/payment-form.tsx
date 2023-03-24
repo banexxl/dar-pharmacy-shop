@@ -31,21 +31,20 @@ export const Payment: FunctionComponent<IPaymentForm> = (props: IPaymentForm) =>
 
           return (
                     <Formik validationSchema={paymentFormSchema(t)} initialValues={initialPaymentFormValues} onSubmit={(values: IPaymentForm) => handleNext(values)}>
-                              {formik => (
-                                        <PaymentFormControl>
-                                                  <Typography variant="h5" component="legend" gutterBottom>
-                                                            {t('checkout.billingAddress')}
-                                                  </Typography>
-                                                  <Field
-                                                            component={isBillingAndShippingCheckbox}
-                                                            type="checkbox"
-                                                            name="sameAsShipping"
-                                                            Label={{ label: t('checkout.sameAsShipping') }}
-                                                  />
+                              {
+                                        formik => (
+                                                  <Form>
+                                                            <Typography variant="h5" component="legend" gutterBottom>
+                                                                      {t('checkout.billingAddress')}
+                                                            </Typography>
+                                                            <Field
+                                                                      component={isBillingAndShippingCheckbox}
+                                                                      type="checkbox"
+                                                                      name="sameAsShipping"
+                                                                      Label={{ label: t('checkout.sameAsShipping') }}
+                                                            />
 
-                                                  {!formik.values.sameAsShipping && (
-
-                                                            <Form>
+                                                            {!formik.values.sameAsShipping && (
                                                                       <Grid container spacing={2}>
                                                                                 <Grid item xs={12} sm={6}>
                                                                                           <TextField
@@ -155,12 +154,11 @@ export const Payment: FunctionComponent<IPaymentForm> = (props: IPaymentForm) =>
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>
                                                                       </Grid>
-                                                            </Form>
+                                                            )}
+                                                  </Form>
 
-                                                  )}
-                                        </PaymentFormControl>
-
-                              )}
+                                        )
+                              }
                     </Formik>
           );
 };
