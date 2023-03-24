@@ -4,9 +4,9 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 import { useTranslation } from 'next-i18next';
 import InputMask from 'react-input-mask';
 
-import { ICreditCardFormValues, ICreditCardProps } from '../../../../interfaces/checkout/credit-card-form-values.interface';
+import { ICreditCardForm, ICreditCard } from '../../../../interfaces/checkout/credit-card-form-values.interface';
 
-export const CreditCard: FunctionComponent<ICreditCardProps> = (props: ICreditCardProps) => {
+export const CreditCard: FunctionComponent<ICreditCard> = (props: ICreditCard) => {
 
           const { t } = useTranslation();
 
