@@ -5,22 +5,23 @@ import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema, userEmailSchema } from '@/schema/user-form.schema';
-import { checkoutSlice } from '@/store/checkout/checkout.slice'
+import { submitUserForm } from '@/store/checkout/checkout.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { ShouldCreateAccountButton } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useDispatch } from 'react-redux';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
           let tabIndex: number = 0
           const [openEmailForm, setOpenEmailForm] = useState(false);
-
+          const dispatch = useDispatch()
 
           const handleSubmit = (values: IUserForm) => {
 
-                    checkoutSlice.actions.submitUserForm(values)
+                    dispatch(submitUserForm(values))
 
                     tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
 
