@@ -21,9 +21,9 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
           const [tabIndex, setTabIndex] = useState(0)
-          const userData = useSelector(checkoutSelectors.getUserForm)
+          const userData = useSelector(checkoutSelectors.getCheckoutState)
 
-          console.log("userData na checkout page-u je: ", userData);
+          console.log("userData na checkout page-u je: ", userData.userForm);
 
 
           const setTab = (tabIndex: number) => {

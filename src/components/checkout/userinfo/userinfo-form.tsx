@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
-          let tabIndex: number = 0
+          const tabIndex: number = 0
           const [openEmailForm, setOpenEmailForm] = useState(false);
           const dispatch = useDispatch()
 

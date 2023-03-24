@@ -4,7 +4,7 @@ import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { IPaymentForm } from '@/interfaces/checkout/payment-form-values.interface';
 import { ICreditCard } from '@/interfaces/checkout/credit-card-form-values.interface';
 
-const getCheckoutState = (state: ICheckoutState) => state;
+const getCheckoutState = (state: ICheckoutState): ICheckoutState => state;
 
 const getUserForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IUserForm => checkoutState?.userForm)
 
