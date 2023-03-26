@@ -24,7 +24,7 @@ export default function Cart({ open, onClose }: ICartProps) {
 
           const theme = useTheme()
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-          const cart: ICartItem[] = useSelector((state: any) => state.cart)
+          const cart: ICartItem[] = useSelector((state: any) => state.cartState)
 
           return (
                     <Dialog

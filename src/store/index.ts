@@ -6,9 +6,9 @@ import wishListReducer from './wishlist/wishlist.slice'
 const store = configureStore({
 
           reducer: {
-                    cart: cartSliceReducer,
-                    wishList: wishListReducer,
-                    checkout: checkoutSliceReducer,
+                    cartState: cartSliceReducer,
+                    wishListState: wishListReducer,
+                    checkoutState: checkoutSliceReducer,
           },
           middleware: (getDefaultMiddleware) =>
                     getDefaultMiddleware({

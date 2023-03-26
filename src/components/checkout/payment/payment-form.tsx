@@ -18,10 +18,12 @@ export const Payment: FunctionComponent<IPaymentForm> = (props: IPaymentForm) =>
           const tabIndex: number = 1
           const dispatch = useDispatch()
 
-          const handleNext = (values: IPaymentForm) => {
+          const handleSubmit = (values: IPaymentForm) => {
+
                     console.log("usao u handle next, vrednosti su: ", values);
 
                     dispatch(submitPaymentForm(values))
+
                     tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
           };
 
@@ -30,7 +32,7 @@ export const Payment: FunctionComponent<IPaymentForm> = (props: IPaymentForm) =>
           };
 
           return (
-                    <Formik validationSchema={paymentFormSchema(t)} initialValues={initialPaymentFormValues} onSubmit={(values: IPaymentForm) => handleNext(values)}>
+                    <Formik validationSchema={paymentFormSchema(t)} onSubmit={(values: IPaymentForm) => handleSubmit(values)} initialValues={initialPaymentFormValues} >
                               {
                                         formik => (
                                                   <Form>

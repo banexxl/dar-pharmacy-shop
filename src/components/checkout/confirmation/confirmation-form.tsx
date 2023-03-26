@@ -14,7 +14,7 @@ import { useTranslation } from 'next-i18next'
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
           const { t } = useTranslation('common')
-          const cart: ICartItem[] = useSelector((state: any) => state.cart)
+          const cart: ICartItem[] = useSelector((state: any) => state.cartState)
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
           const [tabIndex, setTabIndex] = useState(2)
 
