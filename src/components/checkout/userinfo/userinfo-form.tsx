@@ -1,6 +1,6 @@
 import theme, { Colors } from '@/styles/theme';
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
@@ -11,6 +11,8 @@ import { ShouldCreateAccountButton } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
+import dynamic from 'next/dynamic';
+import LoadingWheel from '@/components/loading/loading';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
@@ -31,11 +33,15 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     console.log(email);
           }
 
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel />,
+          })
+
           return (
-                    <ThemeProvider theme={theme}>
+                    <DynamicThemeProvider theme={theme}>
                               <Container
                                         disableGutters
-                                        maxWidth="xl"
+                                        maxWidth="md"
                                         sx={{
                                                   background: "#fff",
                                                   display: 'flex',
@@ -44,10 +50,13 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                         }}
                               >
 
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)} reset>
+                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)}>
                                                   {
                                                             formik => (
                                                                       <Form>
+                                                                                <Typography variant="h5" component="legend" gutterBottom>
+                                                                                          {t('checkout.user-info')}
+                                                                                </Typography>
                                                                                 <Grid container spacing={2}>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
@@ -201,7 +210,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                   }
                                         </Formik>
                               </Container>
-                    </ThemeProvider >
+                    </DynamicThemeProvider >
           );
 };
 

@@ -8,4 +8,5 @@ export const initialCheckoutState: ICheckoutState = {
           userForm: initialUserFormValues,
           paymentForm: initialPaymentFormValues,
           creditCardForm: initialCreditCardValues,
+          checkoutState: undefined
 };

@@ -23,9 +23,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           const [tabIndex, setTabIndex] = useState(0)
           const userData = useSelector(checkoutSelectors.getCheckoutState)
 
-          console.log("userData na checkout page-u je: ", userData.checkoutState.userForm);
-
-
           const setTab = (tabIndex: number) => {
                     setTabIndex(tabIndex)
                     return 0
@@ -68,7 +65,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <UserInfoForm formName={'userinfo'} setTab={setTab} />
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={1} >
-                                                                                <Payment sameAsShipping={false} setTab={setTab} />
+                                                                                <Payment sameAsShipping={false} setTab={setTab} formName={'paymentInfo'} />
                                                                                 {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
                                                                                           throw new Error('Function not implemented.')
                                                                                 }} /> */}

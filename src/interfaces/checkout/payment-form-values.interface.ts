@@ -1,7 +1,6 @@
-import { initialUserFormValues, IUserForm } from './user-form-values.interface';
+import { FormikErrors, FormikTouched } from "formik";
 
 export interface IPaymentForm {
-          setTab?: (tabIndex: number) => number
           sameAsShipping: boolean;
           firstName?: string;
           lastName?: string;
@@ -24,3 +23,12 @@ export const initialPaymentFormValues: IPaymentForm = {
           country: '',
           zipPostalCode: '',
 };
+
+export interface IPaymentFormProps {
+          sameAsShipping: boolean
+          tabIndex?: number
+          setTab?: (tabIndex: number) => number
+          formName: string
+          errors?: FormikErrors<IPaymentForm>
+          touched?: FormikTouched<IPaymentForm>
+}
