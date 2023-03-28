@@ -10,7 +10,8 @@ export const AppbarContainer = styled(Box)(() => ({
           marginTop: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '2px 8px'
+          padding: '2px 8px',
+          position: 'relative'
 })) as typeof Box
 
 export const AppbarHeader = styled(Typography)(() => ({

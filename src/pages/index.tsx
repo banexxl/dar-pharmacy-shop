@@ -12,9 +12,35 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import LoadingWheel from "@/components/loading/loading";
+import img1 from '../../public/images/backgrounds/dar1.png'
+import img2 from '../../public/images/backgrounds/dar2.png'
+import img3 from '../../public/images/backgrounds/dar3.png'
+import img4 from '../../public/images/backgrounds/dar4.png'
+import img5 from '../../public/images/backgrounds/dar5.png'
+import img6 from '../../public/images/backgrounds/dar6.png'
+import img7 from '../../public/images/backgrounds/dar7.png'
+import img8 from '../../public/images/backgrounds/dar8.png'
+import Image from "next/image";
 
+
+
+
+const backgroundImageUrls = [
+          img1,
+          img2,
+          img3,
+          img4,
+          img5,
+          img6,
+          img7,
+          img8,
+];
+
+const getRandomImageUrl = () => {
+          return backgroundImageUrls[Math.floor(Math.random() * backgroundImageUrls.length)];
+};
 
 
 export default function Home(props: any) {
@@ -28,10 +54,18 @@ export default function Home(props: any) {
                     loading: () => <LoadingWheel />,
           })
 
+          const [backgroundImageUrl, setBackgroundImageUrl] = useState(img1);
+
+          useEffect(() => {
+                    setBackgroundImageUrl(getRandomImageUrl());
+          }, []);
+
 
           return (
                     <DynamicThemeProvider theme={theme}>
-
+                              <Image src={backgroundImageUrl} width={2000} height={3000}
+                                        style={{ position: 'absolute', zIndex: -1000, }}
+                                        alt="img" />
                               <Head>
                                         <title>{t('homepage.title')}</title>
                               </Head>
@@ -41,6 +75,7 @@ export default function Home(props: any) {
                                                   maxWidth="lg"
                                                   sx={{
                                                             background: "#fff",
+                                                            opacity: '.85'
                                                   }}
                                         >
                                                   <Stack>
