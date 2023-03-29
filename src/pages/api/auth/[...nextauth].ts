@@ -32,6 +32,15 @@ export const authOptions: NextAuthOptions = {
                               token.userRole = "admin"
                               return token
                     },
+                    async signIn({ user, account, profile, email, credentials }) {
+                              return true
+                    },
+                    async redirect({ url, baseUrl }) {
+                              return baseUrl
+                    },
+                    async session({ session, user, token }) {
+                              return session
+                    },
           },
           secret: process.env.JWT_SECRET
 }
