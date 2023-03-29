@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Colors } from "../theme";
+import img1 from '../../../public/images/backgrounds/dar1.png'
 
 export const BannerContainer = styled(Box)(({ theme }) => ({
           display: "flex",
@@ -18,12 +19,13 @@ export const BannerContainer = styled(Box)(({ theme }) => ({
           // backgroundPosition: "center",
 })) as typeof Box;
 
-export const BannerContent = styled(Box)(() => ({
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          maxWidth: 420,
-          padding: "30px",
+export const BannerContent = styled(Box)(({ theme }) => ({
+          width: '40%',
+          backgroundImage: `url("/images/backgrounds/dar7.png")`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          textAlign: 'center',
+          boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
 })) as typeof Box
 
 export const BannerImage = styled("img")(({ src, theme }) => ({
@@ -31,7 +33,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
           // backgroundImage: `url(${src})`,
           // backgroundRepeat: "no-repeat",
           // backgroundPosition: "center",
-          width: "500px",
+          width: "40%",
           [theme.breakpoints.down("md")]: {
                     width: "350px",
           },
@@ -50,18 +52,6 @@ export const BannerTitle = styled(Typography)(({ theme }) => ({
           }
 })) as typeof Typography
 
-export const BannerDescription = styled(Typography)(({ theme }) => ({
-          lineHeight: 1.25,
-          letterSpacing: 1.25,
-          marginBottom: "3em",
-          fontVariant: 'historical-forms',
-          [theme.breakpoints.down("md")]: {
-                    lineHeight: 1.15,
-                    letterSpacing: 1.15,
-                    marginBottom: "1.5em",
-          },
-})) as typeof Typography
-
 export const BannerShopButton = styled(Button, {
           // Configure which props should be forwarded on DOM
           shouldForwardProp: (prop) => prop !== "color",
@@ -78,7 +68,12 @@ export const BannerShopButton = styled(Button, {
           color: Colors.white,
           fontWeight: "bold",
           fontSize: "16px",
+          width: '200px',
           [theme.breakpoints.down("sm")]: {
+                    padding: "10px 0px",
+                    fontSize: "14px",
+          },
+          [theme.breakpoints.down("xl")]: {
                     padding: "10px 0px",
                     fontSize: "14px",
           },
