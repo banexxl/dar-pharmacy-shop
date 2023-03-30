@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
           providers: [
                     GoogleProvider({
                               clientId: process.env.GOOGLE_CLIENT_ID!,
-                              clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+                              clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
                     }),
                     // Passwordless / email sign in
                     EmailProvider({
@@ -33,7 +33,16 @@ export const authOptions: NextAuthOptions = {
                               return token
                     },
                     async signIn({ user, account, profile, email, credentials }) {
-                              return true
+                              console.log("user", user);
+                              console.log("account", account);
+                              console.log("profile", profile);
+                              console.log("email", email);
+                              console.log("credentials", credentials);
+
+                              return account?.provider === "google" ?
+                                        profile?.email && profile.email.endsWith("@gmail.com") ? true : false
+                                        : true
+
                     },
                     async redirect({ url, baseUrl }) {
                               return baseUrl
