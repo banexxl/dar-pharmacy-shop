@@ -73,12 +73,12 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                       INFORMACIJE O PLAĆANJU: kao što su broj tekućeg računa, zahtevi za nadoknadu štete, plaćanje obaveza iz ugovora
                                                                       Svrha obrade podataka/ pravni osnov:
 
-                                                                      Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem www.apotekajankovic.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke, kako bismo Vam isporučili robu na željenu adresu;
+                                                                      Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem www.apotekadar.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke, kako bismo Vam isporučili robu na željenu adresu;
                                                                       Izvršavanje zahteva - rešavanje reklamacija, primedbi: nastojimo da ih rešimo na odgovoarajući način u skladu sa Zakonom. Kako bismo imali dovoljno informacija da sprovedemo ovaj postupak i donesemo pravilnu odluku, kao i da dostavimo povratnu informaciju u vezi reklamacije – potrebno je da prikupljamo određene podatke o Vama. Takođe, ukoliko želite povraćaj novca biće neophodno da se popuni propisani formular-takozvani NI obrazac, u koji se unosi vaš jmbg, jer tako nalažu važeći propisi.
                                                                       Ugovaranje – da bismo zaključili ugovor potrebno je da proverimo da li je lice sa kojim stupamo u ugovorni odnos za to ovlašćeno. Isti je slučaj sa izvršenjem pojedinih ugovornih odredbi od strane lica koja su za to određena. Ponekad je potrebno da proverimo identitet ovih lica, kako bismo bili sigurni da postupamo na ispravan način. Ove aktivnosti preduzimamo za potrebe postupanja po osnovu ugovora koji smo sklopili sa Vama da bismo ispunili zakonske obaveze.
                                                                       Obaveštenje o ponudama – ako ste se prijavili da povremeno dobijate obaveštenja o akcijama i drugim pogodnostima, tom prilikom ste nam podelili neke vase podatke koje možemo koristiti za slanje ovih obaveštenja – dok Vi to želite.
                                                                       Preduzimamo mere bezbednosti – kao što su CCTV kamere i imamo pristup bezbednosnim podacima o našim kancelarijskim prostorijama da bismo bili sigurni da su naši saradnici, kupci posetioci i imovina zaštićeni.
-                                                                      Apotekarska ustanova “Janković" vrši obradu određenih podataka o ličnosti za koje se smatra da su osetljive prirode iz razloga izvršavanja obaveza koje imamo na način i u meri u kojoj to propisuje zakon:
+                                                                      Apotekarska ustanova “dar" vrši obradu određenih podataka o ličnosti za koje se smatra da su osetljive prirode iz razloga izvršavanja obaveza koje imamo na način i u meri u kojoj to propisuje zakon:
 
                                                                       Podaci o vašem zdravstvenom stanju, gde spada evidencija o vašem odsustvovanju sa rada iz zdravstvenih razloga; medicinska dokumentacija, lekarski nalazi i sl. radi obrade eventualnih zahteva za naknadu štete koja se desila u našem maloprodajnom objektu ili poslovnom prostoru. Nećemo evidentirati vaše podatke, iz zdravstvenog kartona, osim kada je to izričito neophodno. Moguće je da će ovi podaci biti prosleđeni našoj osiguravajućoj kući, radi postupanja po vašem zahtevu za naknadu štete. U slučaju da protiv nas pokrenete sudski postupak, predmetni podaci mogu biti dostavljeni na uvid nadležnom sudu u toku postupka.
                                                                       Ko ima pristup vašim ličnim podacima?
@@ -87,8 +87,8 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       Trećim licima koji nastupaju u naše ime (obrađivačima). U ovim slučajevima, takva treća lica mogu da koriste vaše lične podatke isključivo za potrebe koje su gore navedene i isključivo u skladu sa našim instrukcijama;
                                                                       Saradnici u sektorima koji se bave gore navedenim uslugama mogu imati pristup vašim ličnim podacima, ali samo kada je to strogo neophodno da bi obavili svoje radne zadatke, i kada je saradnik obavezan da čuva poverljivost informacija;
-                                                                      Osiguravajuća društva koja pružaju usluge preduzeću Apotekarska ustanova “Janković" i saradnicima
-                                                                      Treća lica koja su odgovorna za čuvanje vaših ličnih podataka, nezavisno od Apotekarska ustanova “Janković" (to su lica angažovana spolja, nezavisni revizori, advokati, poreski savetnici i sl.)
+                                                                      Osiguravajuća društva koja pružaju usluge preduzeću Apotekarska ustanova “dar" i saradnicima
+                                                                      Treća lica koja su odgovorna za čuvanje vaših ličnih podataka, nezavisno od Apotekarska ustanova “dar" (to su lica angažovana spolja, nezavisni revizori, advokati, poreski savetnici i sl.)
                                                                       Ukoliko to bude zahtevao zakon ili sudski nalog, na primer organi za sprovođenje zakona ili drugi državni organi.
                                                                       Koliko dugo čuvamo vaše lične podatke?
 
@@ -102,7 +102,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
 
                                                                       OBRADA PODATAKA KOD POSETA INTERNET STRANICE
-                                                                      Prilikom korišćenja određenih funkcionalnosti (aplikacija, zahteva) na našem sajtu u kontakt formi, zahteva za ponudu za kupoprodaju robe, zahteva za dobijanje novosti, informacija i promocija… Apotekarska ustanova “Janković" obrađuje vaše lične podatke (lične podatke o identitetu i kontakt informacije) samo ako ste ih dobrovoljno dali na našoj internet stranici radi korišćenja naših usluga i proizvoda. Ovi lični podaci mogu uključivati ime, prezime, e-mail, broj telefona i / ili druge kontakt informacije i koristiće se u skladu sa politikom privatnosti i svrhom u koju ste ih ostavili.
+                                                                      Prilikom korišćenja određenih funkcionalnosti (aplikacija, zahteva) na našem sajtu u kontakt formi, zahteva za ponudu za kupoprodaju robe, zahteva za dobijanje novosti, informacija i promocija… Apotekarska ustanova “dar" obrađuje vaše lične podatke (lične podatke o identitetu i kontakt informacije) samo ako ste ih dobrovoljno dali na našoj internet stranici radi korišćenja naših usluga i proizvoda. Ovi lični podaci mogu uključivati ime, prezime, e-mail, broj telefona i / ili druge kontakt informacije i koristiće se u skladu sa politikom privatnosti i svrhom u koju ste ih ostavili.
 
                                                                       Svrha obrade podataka / pravni osnov: Prilikom posete naše internet stranice, pretraživač koji koristite na vašem uređaju će automatski i bez vaše aktivnosti poslati na server naše internet stranice:
 
@@ -175,9 +175,9 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                       OBRADA PODATAKA KOD PRIJAVE ZA NEWSLETTER
                                                                       Svrha obrade podataka / pravni osnov: Imate mogućnost da se na našoj internet stranici prijavite za naš newsletter. Ako ste pristali da primate naš newsletter, koristimo vašu e-mail adresu i eventualno vaše ime za slanje informacija o proizvodima, promocijama, nagradnim igrama / konkursima, novostima i ponudama prodavnica. Ove podatke čuvamo i obrađujemo u svrhu slanja newslettera.
 
-                                                                      Sadržaj newslettera uključuje akcije (ponude, promocije, nagradne igre, itd.) kao i proizvode koji se nalaze na www.apotekajankovic.rs .
+                                                                      Sadržaj newslettera uključuje akcije (ponude, promocije, nagradne igre, itd.) kao i proizvode koji se nalaze na www.apotekadar.rs .
 
-                                                                      Uz vašu saglasnost, beležimo vaše ponašanje kao korisnika naše internet stranice www.apotekajankovic.rs i newslettera. Ocena ponašanja korisnika podrazumeva pre svega podatke o odeljcima na kojima se zadržavate i na linkove, koje tamo koristite. Na taj način kreiramo personalizovane korisničke profile sa vašim ličnim podacima i/ili sa podatkom o vašoj e-mail adresi kako bismo omogućili kreiranje reklamne ponude od strane Apotekarska ustanova “Janković" u obliku newslettera, i štampanog materijala, prilagođene vašem ličnom interesovanju i time poboljšamo našu ponudu.
+                                                                      Uz vašu saglasnost, beležimo vaše ponašanje kao korisnika naše internet stranice www.apotekadar.rs i newslettera. Ocena ponašanja korisnika podrazumeva pre svega podatke o odeljcima na kojima se zadržavate i na linkove, koje tamo koristite. Na taj način kreiramo personalizovane korisničke profile sa vašim ličnim podacima i/ili sa podatkom o vašoj e-mail adresi kako bismo omogućili kreiranje reklamne ponude od strane Apotekarska ustanova “dar" u obliku newslettera, i štampanog materijala, prilagođene vašem ličnom interesovanju i time poboljšamo našu ponudu.
 
                                                                       Pravni osnov za obradu podataka prilikom slanja newslettera je vaša saglasnost u skladu sa članom 12, stav 1, tačka 1), Zakona o zaštiti podataka o ličnosti.
 
@@ -236,15 +236,15 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       Odgovorno lice (rukovalac)
 
-                                                                      Odgovorno lice za obradu vaših podataka odnosno rukovalac podataka je zdravstvena ustanova Apotekarska ustanova “Janković" , sa sedištem u 21000 Novi Sad , Adresa , MB: 08289948 , Tel. 063 5 444 66 , E-mail: online@apotekajankovic.rs . Na raspolaganju vam stoji i naše lice zaduženo za zaštitu ličnih podataka i to na sledećoj adresi: Apotekarska ustanova “Janković" , sa sedištem u 21000 Novi Sad , Miloša Bajića 13 , Srbija.
+                                                                      Odgovorno lice za obradu vaših podataka odnosno rukovalac podataka je zdravstvena ustanova Apotekarska ustanova “dar" , sa sedištem u  kragujevac , Adresa , MB: 08289948 , Tel. 063 5 444 66 , E-mail: online@apotekadar.rs . Na raspolaganju vam stoji i naše lice zaduženo za zaštitu ličnih podataka i to na sledećoj adresi: Apotekarska ustanova “dar" , sa sedištem u  kragujevac ,  , Srbija.
 
 
 
                                                                       OBRADA PODATAKA NA DRUŠTVENIM MREŽAMA
-                                                                      Za obradu Vaših podatka je delom odgovoran i operater određene platforme društvene mreže. Pored toga, u nekim slučajevima smo mi takođe i operater platforme i u tom smislu postoji zajednička odgovornost u skladu sa članom 43 Zakona. Apotekarska ustanova “Janković" , upravlja sledećim stranicama društvenih mreža:
+                                                                      Za obradu Vaših podatka je delom odgovoran i operater određene platforme društvene mreže. Pored toga, u nekim slučajevima smo mi takođe i operater platforme i u tom smislu postoji zajednička odgovornost u skladu sa članom 43 Zakona. Apotekarska ustanova “dar" , upravlja sledećim stranicama društvenih mreža:
 
-                                                                      Facebook: https://www.facebook.com/Apoteka-Janković-373610286128056/
-                                                                      Instagram: https://www.instagram.com/jankovicapoteka/
+                                                                      Facebook: https://www.facebook.com/Apoteka-dar-373610286128056/
+                                                                      Instagram: https://www.instagram.com/darapoteka/
 
 
                                                                       1. Odgovornost operatera
@@ -273,7 +273,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       b) Primaoci / kategorije primaoca:
 
-                                                                      Podatke, koje ste uneli na našim stranicama društvenih mreža, kao što su npr. komentari, video snimci, slike, lajkovi, javna obaveštenja i sl. objavljuje operater platforme, a mi ih ni u jednom trenutku ne obrađujemo u neku drugu svrhu od predviđene. Zadržavamo pravo da obrišemo nezakonite sadržaje, ukoliko je to potrebno. To je slučaj na primer u slučaju prekršajnih ili nezakonitih objava, komentara mržnje, komentara (eksplicitno seksualnih sadržaja) ili priloga (npr. slike ili video snimci), koji između ostalog krše autorska prava, lična prava, predstavljaju krivično delo ili krše etička načela zdravstvene ustanove Apotekarska ustanova “Janković" .
+                                                                      Podatke, koje ste uneli na našim stranicama društvenih mreža, kao što su npr. komentari, video snimci, slike, lajkovi, javna obaveštenja i sl. objavljuje operater platforme, a mi ih ni u jednom trenutku ne obrađujemo u neku drugu svrhu od predviđene. Zadržavamo pravo da obrišemo nezakonite sadržaje, ukoliko je to potrebno. To je slučaj na primer u slučaju prekršajnih ili nezakonitih objava, komentara mržnje, komentara (eksplicitno seksualnih sadržaja) ili priloga (npr. slike ili video snimci), koji između ostalog krše autorska prava, lična prava, predstavljaju krivično delo ili krše etička načela zdravstvene ustanove Apotekarska ustanova “dar" .
 
                                                                       Vaše sadržaje ćemo u datom slučaju eventualno podeliti na našoj stranici ako to predstavlja funkciju platforme društvene mreže. Vaše podatke obrađujemo i u svrhu komuniciranja sa vama. Ukoliko nam putem društvene mreže pošaljete upit, možemo da Vas uputimo na druge, bezbedne puteve komunikacije odnosno koji garantuju poverljivost. Imajte na umu da uvek imate mogućnost da nam poverljive upite pošaljete putem email adrese navedene u opštim informacijama ili putem kontakt obrasca.
 
@@ -293,7 +293,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       Svrha / pravni osnov obrade podataka:
 
-                                                                      Imate mogućnost da na našoj stranici, preko našeg newslettera, na našim društvenim mrežama ili na sajtu www.apotekajankovic.rs , učestvujete u različitim nagradnim igrama. Ukoliko u određenoj nagradnoj igri nije drugačije određeno, ili ako nam niste dali drugačiju izričitu saglasnost, mi ćemo podatke o ličnosti, koje ste nam dostavili u okviru učešća u nagradnoj igri, obrađivati isključivo u svrhu realizacije nagradne igre (npr. izvlačenje/ utvrđivanje dobitnika, obaveštavanje dobitnika, slanje nagrade, po potrebi anonimno objavljivanje dobitnika). Ukoliko na društvenoj mreži koristite Vaše puno ime i prezime ili ste prepoznatljivi preko fotografija na Vašem profilu, mi ne možemo da isključimo Vašu identifikaciju od strane drugih korisnika.
+                                                                      Imate mogućnost da na našoj stranici, preko našeg newslettera, na našim društvenim mrežama ili na sajtu www.apotekadar.rs , učestvujete u različitim nagradnim igrama. Ukoliko u određenoj nagradnoj igri nije drugačije određeno, ili ako nam niste dali drugačiju izričitu saglasnost, mi ćemo podatke o ličnosti, koje ste nam dostavili u okviru učešća u nagradnoj igri, obrađivati isključivo u svrhu realizacije nagradne igre (npr. izvlačenje/ utvrđivanje dobitnika, obaveštavanje dobitnika, slanje nagrade, po potrebi anonimno objavljivanje dobitnika). Ukoliko na društvenoj mreži koristite Vaše puno ime i prezime ili ste prepoznatljivi preko fotografija na Vašem profilu, mi ne možemo da isključimo Vašu identifikaciju od strane drugih korisnika.
 
                                                                       Pravni osnov obrade Vaših podataka u okviru nagradnih igara je u načelu član 12 stav 1 tačka2) (izvršenje ugovora) Zakona. U slučaju davanja pristanka u okviru nagradne igre, pravni osnov za obradu podataka je saglasnost u skladu sa članom 12 stav 1 tačka 1) Zakona. U tom slučaju imate pravo da opozovete pristanak i to u svakom trenutku. Opoziv pristanka ne utiče na dopuštenost obrade koja je vršena na osnovu pristanka pre opoziva.
 
@@ -311,7 +311,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       Na naš newsletter možete da se prijavite i preko društvene mreže. Ukoliko ste dali saglasnost za prijem našeg newslettera, obrađivaćemo samo podatak o Vašoj email adresi i po potrebi Vaše ime da bismo Vam poslali (ako je moguće individualne) informacije o proizvodima, akcijama, nagradnim igrama i novostima iz ponude prodavnica kao i o anketama o zadovoljstvu kupaca. Te podatke čuvamo i obrađujemo u svrhu slanja newslettera.Sadržaji newsletter-a obuhvataju ponude proizvoda, akcijske popuste, nagradne igre itd.
 
-                                                                      Uz Vašu saglasnost evidentiraćemo Vaše ponašanje kao korisnika naše stranice koja su prikupljena na www.apotekajankovic.rs kao i na našem newsletteru. Evaluacija korisničkog ponašanja obuhvata pre svega kategorije u kojima se krećete na dotičnoj stranici tj. newsletteru i koje linkove tamo pozivate. Tom prilikom se kreiraju personalizovani korisnički profili koji se vezuje za Vašu ličnost i/ili email adresu, kako bi marketinško obraćanje (pre svega u obliku newsletter-a, reklamnih banera i štampane reklame) bilo što više usmereno na Vaša lična interesovanja i kako bi se reklamna ponuda poboljšala.
+                                                                      Uz Vašu saglasnost evidentiraćemo Vaše ponašanje kao korisnika naše stranice koja su prikupljena na www.apotekadar.rs kao i na našem newsletteru. Evaluacija korisničkog ponašanja obuhvata pre svega kategorije u kojima se krećete na dotičnoj stranici tj. newsletteru i koje linkove tamo pozivate. Tom prilikom se kreiraju personalizovani korisnički profili koji se vezuje za Vašu ličnost i/ili email adresu, kako bi marketinško obraćanje (pre svega u obliku newsletter-a, reklamnih banera i štampane reklame) bilo što više usmereno na Vaša lična interesovanja i kako bi se reklamna ponuda poboljšala.
 
                                                                       Pravni osnov za gore navedene obrade Vaših podataka je Vaša saglasnost u skladu sa članom 12 stav 1 tačka 1) Zakona.
 
@@ -342,7 +342,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       U pogledu statistika koje nam operater platforme društvene mreže stavlja na raspolaganje, mi samo uslovno možemo da utičemo na njih i da ih sprečimo. Ali, vodimo računa da nam se ne dostavljaju nikakve dodatne opcione statistike.
 
-                                                                      Iz svega gore navedenog, molimo Vas da budete svesni činjenice da nije moguće isključiti mogućnost da operater platforme društvene mreže koristi podatke sa Vašeg profila kao i podatke o Vašem ponašanju kako bi na primer ocenio Vaše navike, lične odnose, tendencije i sl. Apotekarska ustanova “Janković" nema nikakav uticaj na obradu ili prosleđivanje Vaših podataka od strane operatera društvene mreže.
+                                                                      Iz svega gore navedenog, molimo Vas da budete svesni činjenice da nije moguće isključiti mogućnost da operater platforme društvene mreže koristi podatke sa Vašeg profila kao i podatke o Vašem ponašanju kako bi na primer ocenio Vaše navike, lične odnose, tendencije i sl. Apotekarska ustanova “dar" nema nikakav uticaj na obradu ili prosleđivanje Vaših podataka od strane operatera društvene mreže.
 
 
 
@@ -365,10 +365,10 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
 
 
-                                                                      5. Kontakt lica zaduženog za zaštitu ličnih podataka u Apotekarska ustanova “Janković" :
+                                                                      5. Kontakt lica zaduženog za zaštitu ličnih podataka u Apotekarska ustanova “dar" :
                                                                       Ako imate bilo kakvih dodatnih pitanja ili nedoumica u vezi sa obradom Vaših podataka, slobodno nas kontaktirajte, a mi ćemo se potruditi da vam pomognemo.
 
-                                                                      U te svrhe, na raspolaganju Vam stoji lice za zaštitu ličnih podataka u Apotekarska ustanova “Janković" koga možete da kontaktirate pisanim putem ili putem emaila: Apotekarska ustanova “Janković", 21000 Novi Sad, Miloša Bajića 13 , Zaštita ličnih podataka, E-Mail: online@apotekajankovic.rs .
+                                                                      U te svrhe, na raspolaganju Vam stoji lice za zaštitu ličnih podataka u Apotekarska ustanova “dar" koga možete da kontaktirate pisanim putem ili putem emaila: Apotekarska ustanova “dar",  kragujevac,  , Zaštita ličnih podataka, E-Mail: online@apotekadar.rs .
 
 
 
@@ -392,7 +392,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                       o vrstama podataka o ličnosti koji se obrađuju;
                                                                       o primaocima ili vrstama primaoca kojima su podaci o ličnosti otkriveni ili će im biti otkriveni, a posebno primaocima u drugim državama ili međunarodnim organizacijama;
                                                                       o predviđenom roku čuvanja podataka o ličnosti, ili ako to nije moguće, o kriterijumima za određivanje tog roka;
-                                                                      o postojanju prava da se od rukovaoca ( Apotekarska ustanova “Janković" ) zahteva ispravka ili brisanje podataka o ličnosti, prava na ograničenje obrade i prava na prigovor na obradu;o pravu da se podnese pritužba državnom organu (Poverenik za informacije od javnog značaja i zaštitu podataka o ličnosti); o izvoru podataka o ličnosti (dostupne informacije), ako podaci o ličnosti nisu prikupljeni od lica na koje se odnose (od vas); o postojanju postupka automatizovanog donošenja odluke, uključujući profilisanje iz člana 38 stav 1 i 4 Zakona o zaštiti podataka o ličnosti, i, najmanje u tim slučajevima, svrsishodne informacije o logici koja se pri tome koristi, kao i o značaju i očekivanim posledicama te obrade po lice na koje se podaci odnose (po vas).
+                                                                      o postojanju prava da se od rukovaoca ( Apotekarska ustanova “dar" ) zahteva ispravka ili brisanje podataka o ličnosti, prava na ograničenje obrade i prava na prigovor na obradu;o pravu da se podnese pritužba državnom organu (Poverenik za informacije od javnog značaja i zaštitu podataka o ličnosti); o izvoru podataka o ličnosti (dostupne informacije), ako podaci o ličnosti nisu prikupljeni od lica na koje se odnose (od vas); o postojanju postupka automatizovanog donošenja odluke, uključujući profilisanje iz člana 38 stav 1 i 4 Zakona o zaštiti podataka o ličnosti, i, najmanje u tim slučajevima, svrsishodne informacije o logici koja se pri tome koristi, kao i o značaju i očekivanim posledicama te obrade po lice na koje se podaci odnose (po vas).
                                                                       Ako se podaci o ličnosti prenose u drugu državu ili međunarodnu organizaciju, imate pravo da budete informisani o odgovarajućim merama zaštite koje se odnose na prenos, u skladu sa članom 65 Zakona o zaštiti podataka o ličnosti.
 
 
@@ -435,13 +435,13 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                       7. Pravo na prigovor u skladu sa članom 37 Zkaona o zaštiti podataka o ličnosti
                                                                       Pod uslovima iz člana 37, stav 1 Zkaona o zaštiti podataka o ličnosti, obrada podataka može biti predmet prigovora iz razloga koji zavise od vaše konkretne situacije.
 
-                                                                      Navedeno opšte pravo prigovora se odnosi na sve svrhe obrade opisane u ovim pravilima o zaštiti podataka, koja se obrađuju na osnovu člana 12 stav 1, tačka 6) Zakona o zaštiti podataka o ličnosti. Za razliku od prava na prigovor na obradu podataka u komercijalne svrhe (pogledaj tačku 6), mi smo na osnovu Zakona o zaštiti podataka o ličnosti u obavezi da primenjujemo takvo opšte pravo na prigovor samo ako su razlozi za to od velikog značaja, na primer, potencijalna opasnost po život ili zdravlje. Osim toga, imate mogućnost da se obratite državnom organu nadležnom za zaštitu podataka o ličnosti ili licu zaduženom za zaštitu podataka u Apotekarska ustanova “Janković" .
+                                                                      Navedeno opšte pravo prigovora se odnosi na sve svrhe obrade opisane u ovim pravilima o zaštiti podataka, koja se obrađuju na osnovu člana 12 stav 1, tačka 6) Zakona o zaštiti podataka o ličnosti. Za razliku od prava na prigovor na obradu podataka u komercijalne svrhe (pogledaj tačku 6), mi smo na osnovu Zakona o zaštiti podataka o ličnosti u obavezi da primenjujemo takvo opšte pravo na prigovor samo ako su razlozi za to od velikog značaja, na primer, potencijalna opasnost po život ili zdravlje. Osim toga, imate mogućnost da se obratite državnom organu nadležnom za zaštitu podataka o ličnosti ili licu zaduženom za zaštitu podataka u Apotekarska ustanova “dar" .
 
 
 
-                                                                      Ova pravila o zaštiti ličnih podataka se odnose na internet stranicu www.apotekajankovic.rs i na obradu podataka od strane nas kao rukovaoca podataka:
+                                                                      Ova pravila o zaštiti ličnih podataka se odnose na internet stranicu www.apotekadar.rs i na obradu podataka od strane nas kao rukovaoca podataka:
 
-                                                                      Apotekarska ustanova “Janković", Miloša Bajića 13, 21000 Novi Sad
+                                                                      Apotekarska ustanova “dar", ,  kragujevac
                                                             </Box>
                                                   </UIProvider>
                                         </Stack>
