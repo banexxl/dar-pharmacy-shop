@@ -41,7 +41,7 @@ export const authOptions: NextAuthOptions = {
 
                               return account?.provider === "google" ?
                                         profile?.email && profile.email.endsWith("@gmail.com") ? true : false
-                                        : true
+                                        : email?.verificationRequest ? true : false
 
                     },
                     async redirect({ url, baseUrl }) {
