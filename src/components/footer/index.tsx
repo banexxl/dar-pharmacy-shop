@@ -7,12 +7,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { SubscribeTf, FooterTitle } from "../../styles/footer";
 import SendIcon from "@mui/icons-material/Send";
-import { ExpandLess } from "@mui/icons-material";
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import Collapse from '@mui/material/Collapse';
-import StarBorder from '@mui/icons-material/StarBorder';
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Footer() {
 
@@ -61,7 +57,9 @@ export default function Footer() {
                                                             </ListItemText>
                                                             <ListItemText>
                                                                       <Typography lineHeight={2} variant="caption">
-                                                                                Privacy &amp; Policy
+                                                                                <Link href='/information/privacy-policy'>
+                                                                                          Privacy &amp; Policy
+                                                                                </Link>
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText>

@@ -2,7 +2,6 @@ import { NextAuthOptions, Theme } from "next-auth";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from 'next-auth/providers/email'
-import dotenv from 'dotenv'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../services/usersdb-connect";
 import nodemailer from "nodemailer"
@@ -105,6 +104,7 @@ export const authOptions: NextAuthOptions = {
                     GoogleProvider({
                               clientId: process.env.GOOGLE_CLIENT_ID!,
                               clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+
                     }),
                     // Passwordless / email sign in
                     EmailProvider({
@@ -117,6 +117,23 @@ export const authOptions: NextAuthOptions = {
                                         },
                               },
                               from: process.env.EMAIL_FROM,
+                              normalizeIdentifier(identifier: string): string {
+                                        // Get the first two elements only,
+                                        // separated by `@` from user input.
+                                        let [local, domain] = identifier.toLowerCase().trim().split("@")
+                                        // The part before "@" can contain a ","
+                                        // but we remove it on the domain part
+                                        domain = domain.split(",")[0]
+                                        console.log(local, domain);
+
+                                        return `${local}@${domain}`
+
+                                        // You can also throw an error, which will redirect the user
+                                        // to the error page with error=EmailSignin in the URL
+                                        // if (identifier.split("@").length > 2) {
+                                        //   throw new Error("Only one email allowed")
+                                        // 
+                              }
                     }),
           ],
           callbacks: {

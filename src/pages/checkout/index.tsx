@@ -21,7 +21,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
           const [tabIndex, setTabIndex] = useState(0)
-          const userData = useSelector(checkoutSelectors.getCheckoutState)
 
           const setTab = (tabIndex: number) => {
                     setTabIndex(tabIndex)

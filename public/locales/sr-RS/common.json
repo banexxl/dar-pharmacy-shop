@@ -59,6 +59,27 @@
     "confirmPassword": "Šifre se moraju poklapati",
     "invalidFormat": "Nevalidan format"
   },
+  "information": {
+          "privacy-policy":{
+                    "title": "Politika privatnosti",
+                    "p1":"Lični podaci su informacije koje se neposredno ili posredno odnose ili mogu da se odnose na vašu ličnost. Kao zakonski osnov koji uređuje zaštitu podataka i uslove za obradu vaših podataka primenjujem Zakon o zaštiti podataka o ličnosti ",
+                    "p2": "Zdravstvena ustanova",
+                    "p3": "Apotekarska ustanova",
+                    "p4": " sa sedištem u ulici",
+                    "p5": "u daljem tekstu Apotekarska ustanova ",
+                    "p6": " kao rukovalac podataka, pre prikupljanja i obrade podataka o ličnosti u skladu sa članom 23. Zakona o zaštiti podtaka o ličnosti, ovim putem",
+                    "p7": "obaveštava o uslovima prikupljanja i obrade podataka o ličnosti",
+                    "h1": "Informacije koje prikljupamo",
+                    "h2": "Javni podaci",
+                    "p8": "Moguće je da posetite i koristite naš sajt bez otkrivanja Vašeg identiteta ili nekih drugih podataka koji se odnose na njega. Prilikom posete našem veb-sajtu, uzimajući u obzir prirodu Interneta, prikupljaju se podaci koji evidentiraju korisnike, ali sami po sebi nisu dovoljni za identifikaciju određene osobe i predstavljaju statističke pokazatelje koji se koriste za poboljšanje kvaliteta veb-sajta. Takve informacije mogu uključivati ime pretraživača na Internetu, broj poseta, prosečno vreme provedeno na stranici, tip računara i tehničke informacije o konekciji koju korisnik koristi prilikom posete veb-sajtu, kao što su operativni sistem i isporučilac Internet usluga, IP (Internet Protocol) adresa koju dodeljuju provajderi koji su različiti za svakog Internet korisnika kao i slične informacije.",
+                    "h3": "Lični podaci",
+                    "p9": "",
+                    "p10": "",
+                    "p11": "",
+                    "p12": "",
+                    "p13": ""
+          }
+  },
   "homepage":{
           "title": "Apoteka DAR"
   }

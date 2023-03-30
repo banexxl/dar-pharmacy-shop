@@ -61,5 +61,27 @@
   },
   "homepage":{
           "title": "DAR Pharmacy"
+  },
+  "information": {
+          "privacy-policy":{
+                    "title": "Privacy Policy",
+                    "p1": "Personal data is information that directly or indirectly relates or may relate to your personality. As a legal basis that governs data protection and conditions for processing your data, we apply Personal Data Protection Act ",
+                    "p2": "Health institution",
+                    "p3": "Pharmacy institution",
+                    "p4": " with headquarters based in",
+                    "p5": "hereinafter referred to as the Pharmacy Institution ",
+                    "p6": " as a data handler, before collecting and processing personal data in accordance with Article 23 of the Law on the Protection of Personal Data, is hereby",
+                    "p7": "informing about the conditions of collection and processing of personal data",
+                    "h1": "Gathered information",
+                    "h2": "Public Information",
+                    "p8": "It is possible to visit and use our site without revealing your identity or any other information related to it. When visiting our website, taking into account the nature of the Internet, data is collected that registers users, but is not sufficient by itself to identify a specific person and represents statistical indicators used to improve the quality of the website. Such information may include the name of the Internet browser, the number of visits, the average time spent on the page, the type of computer and technical information about the connection that the user uses when visiting the website, such as the operating system and Internet service provider, IP (Internet Protocol) address assigned by providers that are different for each Internet user as well as similar information.",
+                    "h3": "Personal data",
+                    "p9": "",
+                    "p10": "",
+                    "p11": "",
+                    "p12": "",
+                    "p13": ""
+
+          }
   }
 }
