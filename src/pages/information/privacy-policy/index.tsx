@@ -36,7 +36,9 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                       <Typography textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                                                                 {t('information.privacy-policy.title')}
                                                                       </Typography>
+
                                                                       <Divider sx={{ marginBottom: '30px' }} variant="middle" />
+
                                                                       <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left' }}>
                                                                                 {t('information.privacy-policy.p1')}<Typography fontWeight='bold' sx={{ display: 'inline-block' }}>(&apos;Sl. glasnik RS&apos;, br. 87/2018).</Typography>
                                                                       </Typography>
@@ -102,7 +104,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <List sx={{ listStyleType: 'num', pl: 4 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText>
+                                                                                          <ListItemText >
                                                                                                     {t('information.privacy-policy.p16')}
                                                                                           </ListItemText>
                                                                                 </ListItem>
@@ -128,62 +130,153 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 </ListItem>
                                                                       </List>
 
+                                                                      <Typography fontWeight='bold' padding='20px 20px' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p21')}</Typography>
 
-                                                                      Apotekarska ustanova DAR vrši obradu određenih podataka o ličnosti za koje se smatra da su osetljive prirode iz razloga izvršavanja obaveza koje imamo na način i u meri u kojoj to propisuje zakon:
+                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p22')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography fontWeight='bold' padding='20px 20px' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p23')}</Typography>
+
+                                                                      <Typography paddingLeft='20px' textAlign='left'>{t('information.privacy-policy.p24')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p25')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p26')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p27')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p28')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p29')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography fontWeight='bold' padding='20px 20px' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p30')}</Typography>
+
+                                                                      <Typography padding='20px 20px' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p31')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p32')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p33')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p34')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='center' fontWeight='bold' >
+                                                                                {t('information.privacy-policy.p35')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.privacy-policy.p36')}<Typography fontWeight='bold' sx={{ display: 'inline-block' }}>Apotekarska ustanova&rdquo;DAR&rdquo;</Typography>,
+                                                                                {t('information.privacy-policy.p37')}
+                                                                      </Typography>
+
+                                                                      <Typography padding='0px 20px' fontWeight='bold' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.ppo')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p41')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p42')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p43')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p44')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p45')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography padding='20px 20px' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p46')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p47')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p48')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p49')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography padding='0px 20px' textAlign='left' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p50')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' fontWeight='bold' textAlign='left' sx={{ display: 'block' }}>{t('information.privacy-policy.ppo')}
+                                                                                <Typography display='inline'>{t('information.privacy-policy.p51')}</Typography>
+                                                                      </Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' fontWeight='bold' textAlign='left' sx={{ display: 'block' }}>{t('information.privacy-policy.prc')}
+                                                                                <Typography display='inline'>{t('information.privacy-policy.p52')}</Typography>
+                                                                      </Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' fontWeight='bold' textAlign='left'>{t('information.privacy-policy.cookies')}
+
+                                                                                <Typography sx={{ display: 'inline-flex', textAlign: 'justify' }}>{t('information.privacy-policy.p53')}</Typography>
+
+                                                                                <Typography sx={{ display: 'inline-flex', textIndent: '20px', textAlign: 'justify' }}>{t('information.privacy-policy.p54')}</Typography>
+
+                                                                      </Typography>
+
+                                                                      <Typography alignContent='flex-start' variant='h5' padding='20px 20px' textAlign='center' fontWeight='bold' >
+                                                                                {t('information.privacy-policy.p55')}
+                                                                      </Typography>
 
 
 
-
-
-                                                                      Podaci o vašem zdravstvenom stanju, gde spada evidencija o vašem odsustvovanju sa rada iz zdravstvenih razloga; medicinska dokumentacija, lekarski nalazi i sl. radi obrade eventualnih zahteva za naknadu štete koja se desila u našem maloprodajnom objektu ili poslovnom prostoru. Nećemo evidentirati vaše podatke, iz zdravstvenog kartona, osim kada je to izričito neophodno. Moguće je da će ovi podaci biti prosleđeni našoj osiguravajućoj kući, radi postupanja po vašem zahtevu za naknadu štete. U slučaju da protiv nas pokrenete sudski postupak, predmetni podaci mogu biti dostavljeni na uvid nadležnom sudu u toku postupka.
-                                                                      Ko ima pristup vašim ličnim podacima?
-
-                                                                      Vaše lične podatke dostavljamo sledećim licima:
-
-                                                                      Trećim licima koji nastupaju u naše ime (obrađivačima). U ovim slučajevima, takva treća lica mogu da koriste vaše lične podatke isključivo za potrebe koje su gore navedene i isključivo u skladu sa našim instrukcijama;
-                                                                      Saradnici u sektorima koji se bave gore navedenim uslugama mogu imati pristup vašim ličnim podacima, ali samo kada je to strogo neophodno da bi obavili svoje radne zadatke, i kada je saradnik obavezan da čuva poverljivost informacija;
-                                                                      Osiguravajuća društva koja pružaju usluge preduzeću Apotekarska ustanova “dar" i saradnicima
-                                                                      Treća lica koja su odgovorna za čuvanje vaših ličnih podataka, nezavisno od Apotekarska ustanova “dar" (to su lica angažovana spolja, nezavisni revizori, advokati, poreski savetnici i sl.)
-                                                                      Ukoliko to bude zahtevao zakon ili sudski nalog, na primer organi za sprovođenje zakona ili drugi državni organi.
-                                                                      Koliko dugo čuvamo vaše lične podatke?
-
-                                                                      Vaše lične podatke čuvamo određeno vreme dok su potrebni za svrhu obrade, nakon čega ih brišemo ili onemogućavamo pristup – postaju anonimni.
-
-                                                                      Kriterijumi na osnovu kojih je određeno vreme za koje se podaci čuvaju su:
-
-                                                                      Dužina trajanja vašeg ugovornog odnosa;
-                                                                      Sve dok imamo uspostavljene odnose sa Vama;
-                                                                      Prema zakonskim uslovima koji se primenjuju na nas.
-
-
-                                                                      OBRADA PODATAKA KOD POSETA INTERNET STRANICE
-                                                                      Prilikom korišćenja određenih funkcionalnosti (aplikacija, zahteva) na našem sajtu u kontakt formi, zahteva za ponudu za kupoprodaju robe, zahteva za dobijanje novosti, informacija i promocija… Apotekarska ustanova “dar" obrađuje vaše lične podatke (lične podatke o identitetu i kontakt informacije) samo ako ste ih dobrovoljno dali na našoj internet stranici radi korišćenja naših usluga i proizvoda. Ovi lični podaci mogu uključivati ime, prezime, e-mail, broj telefona i / ili druge kontakt informacije i koristiće se u skladu sa politikom privatnosti i svrhom u koju ste ih ostavili.
-
-                                                                      Svrha obrade podataka / pravni osnov: Prilikom posete naše internet stranice, pretraživač koji koristite na vašem uređaju će automatski i bez vaše aktivnosti poslati na server naše internet stranice:
-
-                                                                      IP adresu uređaja sa kog je poslat upit i koji ima pristup internetu,
-                                                                      datum i vreme pristupa,
-                                                                      ime i URL preuzete datoteke,
-                                                                      internet stranicu /aplikaciju sa koje se pristupa (referrer URL),
-                                                                      pretraživač koji koristite i, ako je potrebno, operativni sistem računara koji podržava internet, kao i ime vašeg provajdera.
-                                                                      Navedene podatke server privremeno čuva u takozvanoj log datoteci u sledeće svrhe:
-
-                                                                      obezbeđivanje uspostavljanja nesmetane veze,
-                                                                      obezbeđivanje komfornog korišćenja naše internet stranice/aplikacije,
-                                                                      procena bezbednosti i stabilnosti sistema.
-                                                                      Pravni osnov za obradu IP adrese je član 12, stav 1 tačka 6), Zakona o zaštiti podataka o ličnosti (legitiman interes). Naš legitimni interes proizilazi iz gore navede svrhe obrade podataka.
-
-                                                                      Primaoci / kategorije primaoca: Generalno ove podatke ne prenosimo trećim licima.
-
-                                                                      Rok čuvanja / kriterijumi za određivanje roka čuvanja podataka: Podaci se čuvaju privremeno i to za vreme posete stranici, a zatim se automatski brišu. Nakon što napustite našu internet stranicu, podaci o geolokaciji se brišu.
-
-                                                                      Kolačići: Na našoj internet stranici koristimo takozvane kolačiće u skladu sa članom 12, stav 1, tačka 6), Zakona o zaštiti podataka o ličnosti (legitimni interes). Smatramo da je interes za optimizacijom naše internet stranice opravdan u smislu gore pomenute odredbe. Kolačići su male datoteke koje se čuvaju na vašem uređaju (laptop, tablet, smartphone itd.) i to prilikom posete naše internet stranice. Kolačići ne nanose štetu vašem uređaju, ne sadrže viruse, trojance ili druge zlonamerne softvere. U kolačićima se čuvaju informacije koje se dobijaju u vezi sa uređajem koji koristite. Međutim, to ne znači da smo upoznati sa vašim identitetom. S jedne strane, korišćenje kolačića služi da vam poseta internet stranici bude prijatnija. Na primer, mi koristimo takozvane kolačiće sesije kako bismo prepoznali da ste određene delove naše stranice već posetili ili da ste već prijavljeni na svom korisničkom nalogu. Oni se automatski brišu nakon što napustite našu internet stranicu. Pored toga, koristimo i privremene kolačiće koji se određeno vreme skladište na vašem uređaju. Kada ponovo posetite našu internet stranicu, automatski se prepoznaje da ste već bili na stranici i koja podešavanja ste postavili, tako da ove radnje nećete morati da ponovite.
-
-                                                                      S druge strane, kolačiće koristimo kako bismo statistički evidentirali korišćenje naše internet stranice, i to u ilju optimizacije ponude i prikaza informacija koje su prilagođene vašim interesovanjima. Ovi kolačići nam omogućavaju da vas automatski prepoznamo kada ponovo posetite našu internet stranicu. Ovi kolačići se automatski brišu nakon određenog vremena. Većina pretraživača automatski prihvata kolačiće. Međutim, možete da podesite vaš pretraživač tako da se na vašem računaru ne čuvaju kolačići ili da se uvek pojavljuje poruka pre nego što se kreira novi kolačić. Ipak, potpuno onemogućavanje kolačića može da znači da ne možete da koristite sve funkcije naše internet stranice.
-
-
-
-                                                                      OBRADA PODATAKA IZ BEZBEDNOSNIH RAZLOGA (VIDEO NADZOR)
                                                                       Svrha obrade podataka / pravni osnov: Vaše podatke obrađujemo i putem video nadzora koji smo uveli u našim prodavnicama i poslovnim prostorijama u cilju vaše i naše zaštite, a na osnovu zakonski opravdanog interesa u cilju zaštite imovine, zaposlenih, kupaca I posetilaca a naročito za zaštitu od sledećih identifikovanih rizika:
 
                                                                       nedozvoljen pristup u prostore i objekte;
