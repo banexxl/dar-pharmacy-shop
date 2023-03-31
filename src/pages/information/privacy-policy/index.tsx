@@ -64,7 +64,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 2. {t('information.privacy-policy.h3')}
                                                                       </Typography>
 
-                                                                      <Typography textAlign='justify' fontStyle='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                      <Typography textAlign='justify' fontWeight='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                                                                 {t('information.privacy-policy.p9')}
                                                                       </Typography>
 
@@ -96,7 +96,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 </ListItem>
                                                                       </List>
 
-                                                                      <Typography textAlign='justify' fontStyle='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                      <Typography textAlign='justify' fontWeight='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                                                                 {t('information.privacy-policy.p15')}
                                                                       </Typography>
 
@@ -128,12 +128,12 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 </ListItem>
                                                                       </List>
 
-                                                                      Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem www.apotekadar.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke, kako bismo Vam isporučili robu na željenu adresu;
-                                                                      Izvršavanje zahteva - rešavanje reklamacija, primedbi: nastojimo da ih rešimo na odgovoarajući način u skladu sa Zakonom. Kako bismo imali dovoljno informacija da sprovedemo ovaj postupak i donesemo pravilnu odluku, kao i da dostavimo povratnu informaciju u vezi reklamacije – potrebno je da prikupljamo određene podatke o Vama. Takođe, ukoliko želite povraćaj novca biće neophodno da se popuni propisani formular-takozvani NI obrazac, u koji se unosi vaš jmbg, jer tako nalažu važeći propisi.
-                                                                      Ugovaranje – da bismo zaključili ugovor potrebno je da proverimo da li je lice sa kojim stupamo u ugovorni odnos za to ovlašćeno. Isti je slučaj sa izvršenjem pojedinih ugovornih odredbi od strane lica koja su za to određena. Ponekad je potrebno da proverimo identitet ovih lica, kako bismo bili sigurni da postupamo na ispravan način. Ove aktivnosti preduzimamo za potrebe postupanja po osnovu ugovora koji smo sklopili sa Vama da bismo ispunili zakonske obaveze.
-                                                                      Obaveštenje o ponudama – ako ste se prijavili da povremeno dobijate obaveštenja o akcijama i drugim pogodnostima, tom prilikom ste nam podelili neke vase podatke koje možemo koristiti za slanje ovih obaveštenja – dok Vi to želite.
-                                                                      Preduzimamo mere bezbednosti – kao što su CCTV kamere i imamo pristup bezbednosnim podacima o našim kancelarijskim prostorijama da bismo bili sigurni da su naši saradnici, kupci posetioci i imovina zaštićeni.
-                                                                      Apotekarska ustanova “dar" vrši obradu određenih podataka o ličnosti za koje se smatra da su osetljive prirode iz razloga izvršavanja obaveza koje imamo na način i u meri u kojoj to propisuje zakon:
+
+                                                                      Apotekarska ustanova DAR vrši obradu određenih podataka o ličnosti za koje se smatra da su osetljive prirode iz razloga izvršavanja obaveza koje imamo na način i u meri u kojoj to propisuje zakon:
+
+
+
+
 
                                                                       Podaci o vašem zdravstvenom stanju, gde spada evidencija o vašem odsustvovanju sa rada iz zdravstvenih razloga; medicinska dokumentacija, lekarski nalazi i sl. radi obrade eventualnih zahteva za naknadu štete koja se desila u našem maloprodajnom objektu ili poslovnom prostoru. Nećemo evidentirati vaše podatke, iz zdravstvenog kartona, osim kada je to izričito neophodno. Moguće je da će ovi podaci biti prosleđeni našoj osiguravajućoj kući, radi postupanja po vašem zahtevu za naknadu štete. U slučaju da protiv nas pokrenete sudski postupak, predmetni podaci mogu biti dostavljeni na uvid nadležnom sudu u toku postupka.
                                                                       Ko ima pristup vašim ličnim podacima?
