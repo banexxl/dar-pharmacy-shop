@@ -76,12 +76,36 @@
                     "h2": "Public Information",
                     "p8": "It is possible to visit and use our site without revealing your identity or any other information related to it. When visiting our website, taking into account the nature of the Internet, data is collected that registers users, but is not sufficient by itself to identify a specific person and represents statistical indicators used to improve the quality of the website. Such information may include the name of the Internet browser, the number of visits, the average time spent on the page, the type of computer and technical information about the connection that the user uses when visiting the website, such as the operating system and Internet service provider, IP (Internet Protocol) address assigned by providers that are different for each Internet user as well as similar information.",
                     "h3": "Personal data",
-                    "p9": "",
-                    "p10": "",
-                    "p11": "",
-                    "p12": "",
-                    "p13": ""
+                    "p9": "Types of personal data do we use:",
+                    "p10": "PERSONAL DATA: for contact such as name, surname, address, e-mail, phone number",
+                    "p11": "INFORMATION ABOUT BUSINESS CONTACTS: such as the address of the business entity, business e-mail",
+                    "p12": "SENSITIVE PERSONAL DATA: gender, date of birth",
+                    "p13": "CONTRACT INFORMATION: such as the content of the business cooperation agreement",
+                    "p14":"PAYMENT INFORMATION: such as current account number, claims for compensation, payment of contractual obligations",
+                    "p15":"Purpose of data processing/legal basis:",
+                    "p16":"",
+                    "p17":"",
+                    "p18":"",
+                    "p19":"",
+                    "p20":"",
+                    "p21":"",
+                    "p22":"",
+                    "p23":"",
+                    "p24":"",
+                    "p25":"",
+                    "p26":"",
+                    "p27":"",
+                    "p28":"",
+                    "p29":"",
+                    "p30":"",
+                    "p31":"",
+                    "p32":"",
+                    "p33":"",
+                    "p34":"",
+                    "p35":"",
+                    "p36":"",
+                    "p37":""
+          }
 
           }
   }
-}

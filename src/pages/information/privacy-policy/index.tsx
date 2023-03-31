@@ -1,7 +1,7 @@
 import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme from '@/styles/theme'
-import { Box, Container, Divider, Stack, Typography } from '@mui/material'
+import { Box, Container, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import React from 'react'
@@ -43,7 +43,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                                                                 {t('information.privacy-policy.p2')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}> {t('information.privacy-policy.p3')} &rdquo;DAR&rdquo;</Typography>,
-                                                                                {t('information.privacy-policy.p4')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>Kralja Aleksandra I Karađorđevića, 34000 Kragujevac</Typography>,
+                                                                                {t('information.privacy-policy.p4')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac</Typography>,
                                                                                 <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>( {t('information.privacy-policy.p5')} &rdquo;DAR&rdquo; ),</Typography>
                                                                                 {t('information.privacy-policy.p6')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}> {t('information.privacy-policy.p7')}.</Typography>
                                                                       </Typography>
@@ -64,14 +64,69 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 2. {t('information.privacy-policy.h3')}
                                                                       </Typography>
 
-                                                                      Koje vrste podataka o ličnosti koristimo?
+                                                                      <Typography textAlign='justify' fontStyle='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.privacy-policy.p9')}
+                                                                      </Typography>
 
-                                                                      LIČNI PODACI: za kontkt kao što su ime, prezime, adresa, elektronska pošta, broj telefona
-                                                                      PODACI O POSLOVNIM KONTAKTIMA: kao što su adresa privrednog subjekta, poslovna elektronska pošta
-                                                                      OSETLJIVI LIČNI PODACI: pol, jmbg, datum rođenja
-                                                                      PODACI O UGOVORU: kao što je sadržaj ugovora o poslovnoj saradnji
-                                                                      INFORMACIJE O PLAĆANJU: kao što su broj tekućeg računa, zahtevi za nadoknadu štete, plaćanje obaveza iz ugovora
-                                                                      Svrha obrade podataka/ pravni osnov:
+                                                                      <List sx={{ listStyleType: 'num', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p10')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p11')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p12')}
+                                                                                          </ListItemText>
+                                                                                </ListItem >
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p13')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p14')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography textAlign='justify' fontStyle='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.privacy-policy.p15')}
+                                                                      </Typography>
+
+                                                                      <List sx={{ listStyleType: 'num', pl: 4 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p16')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p17')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p18')}
+                                                                                          </ListItemText>
+                                                                                </ListItem >
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p19')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                          <ListItemText>
+                                                                                                    {t('information.privacy-policy.p20')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
 
                                                                       Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem www.apotekadar.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke, kako bismo Vam isporučili robu na željenu adresu;
                                                                       Izvršavanje zahteva - rešavanje reklamacija, primedbi: nastojimo da ih rešimo na odgovoarajući način u skladu sa Zakonom. Kako bismo imali dovoljno informacija da sprovedemo ovaj postupak i donesemo pravilnu odluku, kao i da dostavimo povratnu informaciju u vezi reklamacije – potrebno je da prikupljamo određene podatke o Vama. Takođe, ukoliko želite povraćaj novca biće neophodno da se popuni propisani formular-takozvani NI obrazac, u koji se unosi vaš jmbg, jer tako nalažu važeći propisi.
@@ -445,7 +500,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                             </Box>
                                                   </UIProvider>
                                         </Stack>
-                              </Container>
+                              </Container >
                     </DynamicThemeProvider >
           )
 }
