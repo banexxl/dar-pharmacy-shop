@@ -17,13 +17,13 @@ export default function Banner() {
                               <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
                               <BannerContent>
                                         <BannerText>
-                                                  <BannerTitle sx={{ textAlign: 'right' }}>
+                                                  <BannerTitle>
                                                             Apoteka DAR
                                                   </BannerTitle>
-                                                  Dobro došli u <BannerTextInner fontSize='1.5rem' sx={{ color: 'darkred', textAlign: 'justify', display: 'inline', fontWeight: 'bold' }}>našu i Vašu apoteku</BannerTextInner>, gde se pružaju
-                                                  <BannerTextInner sx={{ color: 'darkred', textAlign: 'justify', display: 'inline', fontWeight: 'bold' }}> visokokvalitetni proizvodi i usluge.</BannerTextInner>
-                                                  <BannerTextInner sx={{ color: 'darkred', textAlign: 'justify', display: 'inline', fontWeight: 'bold' }}> Mi smo tu da Vam pomognemo</BannerTextInner> da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu.
-                                                  Imamo stručan tim koji će Vam pružiti <BannerTextInner sx={{ color: 'darkred', textAlign: 'justify', display: 'inline', fontWeight: 'bold' }}>savet i pomoć </BannerTextInner>u bilo kojem trenutku. Posetite nas i uverite se u našu kvalitet i uslugu. Hvala što ste nas odabrali!
+                                                  Dobro došli u <BannerTextInner>našu i Vašu apoteku</BannerTextInner>, gde se pružaju
+                                                  <BannerTextInner > visokokvalitetni proizvodi i usluge.</BannerTextInner>
+                                                  <BannerTextInner > Mi smo tu da Vam pomognemo</BannerTextInner> da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu.
+                                                  Imamo stručan tim koji će Vam pružiti <BannerTextInner>savet i pomoć </BannerTextInner>u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
                                                   <BannerShopButton color="primary" >
                                                             <Link href="/products">Proizvodi</Link>
                                                   </BannerShopButton>

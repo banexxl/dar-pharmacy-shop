@@ -33,36 +33,36 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
 }));
 
 export const BannerContent = styled(Box)(({ theme }) => ({
-          borderStyle: 'double',
           textAlign: 'center',
           boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
           borderRadius: '10px',
-          height: '500px',
-          [theme.breakpoints.down("md")]: {
+          width: '40%',
+          height: '100%',
+          [theme.breakpoints.up("xs")]: {
                     width: '80%',
+                    height: '100%',
           },
-          [theme.breakpoints.down("sm")]: {
-                    width: '80%',
-                    height: '80%'
-          },
-
 })) as typeof Box
 
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
-          fontSize: "2rem",
+          fontSize: '2.5rem',
+          textAlign: 'right',
           marginBottom: "20px",
-          color: 'darkred',
+          color: Colors.secondary,
+          fontFamily: 'monospace',
+          textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
+          [theme.breakpoints.down("xl")]: {
+                    fontSize: '2.2rem',
+          },
           [theme.breakpoints.down("lg")]: {
-                    fontSize: '2.8rem',
-                    color: 'white'
+                    fontSize: '2rem',
           },
           [theme.breakpoints.down("md")]: {
-                    fontSize: '2.6rem'
+                    fontSize: '1.8rem'
           },
           [theme.breakpoints.down("sm")]: {
-                    fontSize: '2rem',
-                    color: 'white'
+                    fontSize: '1.6rem',
           },
 })) as typeof Typography
 
@@ -74,39 +74,48 @@ export const BannerText = styled(Typography)(({ theme }) => ({
           color: 'white',
           textAlign: 'justify',
           padding: '5px',
+          fontFamily: 'monospace',
+          textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
+          fontSize: '2rem',
           [theme.breakpoints.down("xl")]: {
-                    fontSize: '1.7rem'
+                    fontSize: '2rem',
           },
           [theme.breakpoints.down("lg")]: {
-                    fontSize: '1.6rem'
+                    fontSize: '1.8rem',
           },
           [theme.breakpoints.down("md")]: {
-                    fontSize: '1.5rem'
+                    fontSize: '1.6rem'
           },
           [theme.breakpoints.down("sm")]: {
-                    fontSize: '1.4rem'
+                    fontSize: '1.2rem',
           },
 })) as typeof Typography
 
 export const BannerTextInner = styled(Typography)(({ theme }) => ({
           textAlign: 'justify',
           padding: '5px',
+          fontFamily: 'monospace',
+          textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
+          fontSize: '2rem',
+          display: 'inline',
+          fontWeight: 'bold',
+          color: Colors.secondary,
           [theme.breakpoints.down("xl")]: {
-                    fontSize: '1.7    rem'
+                    fontSize: '2rem',
           },
           [theme.breakpoints.down("lg")]: {
-                    fontSize: '1.6rem'
+                    fontSize: '1.8rem',
           },
           [theme.breakpoints.down("md")]: {
-                    fontSize: '1.5rem'
+                    fontSize: '1.6rem'
           },
           [theme.breakpoints.down("sm")]: {
-                    fontSize: '1.4rem'
+                    fontSize: '1.2rem',
           },
 })) as typeof Typography
 
 export const BannerShopButton = styled(Button)(({ theme }) => ({
-          padding: "20px 0px",
+          padding: "10px 0px",
           color: Colors.white,
           fontSize: "16px",
           width: '50%',
@@ -114,6 +123,7 @@ export const BannerShopButton = styled(Button)(({ theme }) => ({
           display: 'block',
           left: '50%',
           transform: 'translateX(-50%)',
+          fontFamily: 'monospace',
           [theme.breakpoints.down("sm")]: {
                     padding: "10px 0px",
                     fontSize: "14px",
