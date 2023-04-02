@@ -16,7 +16,7 @@ export default function Banner() {
                               <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
                               <BannerContent>
                                         <BannerText>
-                                                  <BannerTitle>
+                                                  <BannerTitle sx={{ textAlign: 'right' }}>
                                                             Apoteka DAR
                                                   </BannerTitle>
                                                   Dobro došli u našu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge.

@@ -1,7 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Colors } from "../theme";
-import img1 from '../../../public/images/backgrounds/dar1.png'
 
 export const BannerContainer = styled(Box)(({ theme }) => ({
           display: "flex",
@@ -21,10 +20,6 @@ export const BannerContainer = styled(Box)(({ theme }) => ({
 
 export const BannerContent = styled(Box)(({ theme }) => ({
           width: '40%',
-
-
-
-
           textAlign: 'center',
           boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
           [theme.breakpoints.down("lg")]: {
@@ -63,7 +58,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
 export const BannerTitle = styled(Typography)(({ theme }) => ({
           fontSize: "2rem",
           marginBottom: "20px",
-          color: 'darksalmon',
+          color: 'darkred',
           [theme.breakpoints.down("lg")]: {
                     fontSize: '2rem'
           },
@@ -76,12 +71,11 @@ export const BannerTitle = styled(Typography)(({ theme }) => ({
 })) as typeof Typography
 
 export const BannerText = styled(Typography)(({ theme }) => ({
-          backgroundImage: `url("/images/backgrounds/dar7.png")`,
-          backgroundColor: "rgba(0, 0, 0, 0.2)",
+          backgroundImage: `url("/images/backgrounds/dar5.png")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: 'no-repeat',
-          color: 'darksalmon',
+          color: 'white',
           textAlign: 'justify',
           padding: '5px',
           [theme.breakpoints.down("lg")]: {
