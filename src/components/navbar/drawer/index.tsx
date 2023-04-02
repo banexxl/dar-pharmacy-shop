@@ -9,6 +9,7 @@ import useDialogModal from "../../../hooks/useDialogModal"
 import WishList from "../../wishlist"
 import Cart from "../../cart"
 import LoginRegister from "../../cart"
+import Link from "next/link"
 
 const MiddleDivider = styled((props) => (
           <Divider variant="middle" {...props} />
@@ -30,28 +31,30 @@ export default function AppDrawer({ isScreenToMedium }: any) {
 
           return (
                     <>
-                              {drawerOpen && (
-                                        <DrawerCloseButton onClick={() => setDrawerOpen(false)}>
-                                                  <CloseIcon
-                                                            sx={{
-                                                                      fontSize: "2.5rem",
-                                                                      color: lighten(0.09, Colors.secondary),
-                                                            }}
-                                                  />
-                                        </DrawerCloseButton>
-                              )}
                               <Drawer open={drawerOpen}>
                                         <List>
                                                   <ListItemButton>
-                                                            <ListItemText>Početna</ListItemText>
+                                                            <ListItemText onClick={() => { setDrawerOpen(false) }}>
+                                                                      <Link href={'/'}>
+                                                                                Početna
+                                                                      </Link>
+                                                            </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton>
-                                                            <ListItemText>Proizvodi</ListItemText>
+                                                            <ListItemText onClick={() => { setDrawerOpen(false) }}>
+                                                                      <Link href={'/'}>
+                                                                                Proizvodi
+                                                                      </Link>
+                                                            </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton>
-                                                            <ListItemText>Kontakt</ListItemText>
+                                                            <ListItemText onClick={() => { setDrawerOpen(false) }}>
+                                                                      <Link href={'/'}>
+                                                                                Kontakt
+                                                                      </Link>
+                                                            </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>

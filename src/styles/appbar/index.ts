@@ -33,7 +33,6 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
           left: 0,
           width: '100%',
           alignItems: 'center',
-          zIndex: 99,
           borderTop: `1px solid ${Colors.border}`
 })) as typeof Box
 
@@ -53,8 +52,9 @@ export const MyList = styled(List)<ListType>(({ type }: any) => ({
 }))
 
 export const DrawerCloseButton = styled(IconButton)(() => ({
+
           position: 'absolute',
-          top: 1,
-          left: 220,
-          zIndex: 1500,
+          top: '5px',
+          left: '240px',
+          zIndex: '100',
 })) as typeof IconButton
