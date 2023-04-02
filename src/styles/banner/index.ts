@@ -22,6 +22,9 @@ export const BannerContainer = styled(Box)(({ theme }) => ({
 export const BannerContent = styled(Box)(({ theme }) => ({
           width: '40%',
           backgroundImage: `url("/images/backgrounds/dar7.png")`,
+          '&::before': {
+                    opacity: '.8',
+          },
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           textAlign: 'center',
