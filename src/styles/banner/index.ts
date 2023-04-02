@@ -18,24 +18,6 @@ export const BannerContainer = styled(Box)(({ theme }) => ({
           // backgroundPosition: "center",
 })) as typeof Box;
 
-export const BannerContent = styled(Box)(({ theme }) => ({
-          width: '40%',
-          textAlign: 'center',
-          boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
-          [theme.breakpoints.down("lg")]: {
-                    width: "500px",
-                    height: '500px'
-          },
-          [theme.breakpoints.down("md")]: {
-                    width: "400px",
-                    height: '400px'
-          },
-          [theme.breakpoints.down("sm")]: {
-                    width: "300px",
-                    height: "300px",
-          },
-})) as typeof Box
-
 export const BannerImage = styled("img")(({ src, theme }) => ({
           src: `url(${src})`,
           // backgroundImage: `url(${src})`,
@@ -43,30 +25,44 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
           // backgroundPosition: "center",
           width: "40%",
           [theme.breakpoints.down("lg")]: {
-                    width: "500px",
-                    height: '500px'
+                    height: '100%'
           },
           [theme.breakpoints.down("md")]: {
-                    width: "400px",
-                    height: '400px'
-          },
-          [theme.breakpoints.down("sm")]: {
                     display: 'none'
           },
 }));
+
+export const BannerContent = styled(Box)(({ theme }) => ({
+          borderStyle: 'double',
+          textAlign: 'center',
+          boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
+          borderRadius: '10px',
+          height: '500px',
+          [theme.breakpoints.down("md")]: {
+                    width: '80%',
+          },
+          [theme.breakpoints.down("sm")]: {
+                    width: '80%',
+                    height: '80%'
+          },
+
+})) as typeof Box
+
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
           fontSize: "2rem",
           marginBottom: "20px",
           color: 'darkred',
           [theme.breakpoints.down("lg")]: {
-                    fontSize: '2rem'
+                    fontSize: '2.8rem',
+                    color: 'white'
           },
           [theme.breakpoints.down("md")]: {
-                    fontSize: '1.5rem'
+                    fontSize: '2.6rem'
           },
           [theme.breakpoints.down("sm")]: {
-                    fontSize: '1.3rem'
+                    fontSize: '2rem',
+                    color: 'white'
           },
 })) as typeof Typography
 
@@ -78,34 +74,46 @@ export const BannerText = styled(Typography)(({ theme }) => ({
           color: 'white',
           textAlign: 'justify',
           padding: '5px',
+          [theme.breakpoints.down("xl")]: {
+                    fontSize: '1.7rem'
+          },
           [theme.breakpoints.down("lg")]: {
-                    fontSize: '1.4rem'
+                    fontSize: '1.6rem'
           },
           [theme.breakpoints.down("md")]: {
-                    fontSize: '1.3rem'
+                    fontSize: '1.5rem'
           },
           [theme.breakpoints.down("sm")]: {
-                    fontSize: '.9rem'
+                    fontSize: '1.4rem'
           },
 })) as typeof Typography
 
-export const BannerShopButton = styled(Button, {
-          // Configure which props should be forwarded on DOM
-          shouldForwardProp: (prop) => prop !== "color",
-          name: "MuiButton",
-          slot: "Root",
-          // We are specifying here how the styleOverrides are being applied based on props
-          overridesResolver: (props, styles) => [
-                    styles.root,
-                    props.color === "primary" && styles.primary,
-                    props.color === "secondary" && styles.secondary,
-          ],
-})(({ theme }) => ({
+export const BannerTextInner = styled(Typography)(({ theme }) => ({
+          textAlign: 'justify',
+          padding: '5px',
+          [theme.breakpoints.down("xl")]: {
+                    fontSize: '1.7    rem'
+          },
+          [theme.breakpoints.down("lg")]: {
+                    fontSize: '1.6rem'
+          },
+          [theme.breakpoints.down("md")]: {
+                    fontSize: '1.5rem'
+          },
+          [theme.breakpoints.down("sm")]: {
+                    fontSize: '1.4rem'
+          },
+})) as typeof Typography
+
+export const BannerShopButton = styled(Button)(({ theme }) => ({
           padding: "20px 0px",
           color: Colors.white,
-          fontWeight: "bold",
           fontSize: "16px",
-          width: '200px',
+          width: '50%',
+          height: '10%',
+          display: 'block',
+          left: '50%',
+          transform: 'translateX(-50%)',
           [theme.breakpoints.down("sm")]: {
                     padding: "10px 0px",
                     fontSize: "14px",
