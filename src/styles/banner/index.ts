@@ -21,11 +21,10 @@ export const BannerContainer = styled(Box)(({ theme }) => ({
 
 export const BannerContent = styled(Box)(({ theme }) => ({
           width: '40%',
-          backgroundImage: `url("/images/backgrounds/dar7.png")`,
-          backgroundColor: "rgba(0, 0, 0, 0.2)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: 'no-repeat',
+
+
+
+
           textAlign: 'center',
           boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
           [theme.breakpoints.down("lg")]: {
@@ -57,15 +56,14 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
                     height: '400px'
           },
           [theme.breakpoints.down("sm")]: {
-                    width: "300px",
-                    height: "300px",
+                    display: 'none'
           },
 }));
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
           fontSize: "2rem",
           marginBottom: "20px",
-          color: 'yellow',
+          color: 'darksalmon',
           [theme.breakpoints.down("lg")]: {
                     fontSize: '2rem'
           },
@@ -78,11 +76,16 @@ export const BannerTitle = styled(Typography)(({ theme }) => ({
 })) as typeof Typography
 
 export const BannerText = styled(Typography)(({ theme }) => ({
-          color: 'white',
+          backgroundImage: `url("/images/backgrounds/dar7.png")`,
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: 'no-repeat',
+          color: 'darksalmon',
           textAlign: 'justify',
           padding: '5px',
           [theme.breakpoints.down("lg")]: {
-                    fontSize: '1.8rem'
+                    fontSize: '1.4rem'
           },
           [theme.breakpoints.down("md")]: {
                     fontSize: '1.3rem'

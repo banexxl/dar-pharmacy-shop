@@ -13,23 +13,19 @@ export default function Banner() {
           return (
                     <BannerContainer>
 
-                              <BannerImage src="/Logos/ailogo.png" alt={"banner"} sx={{ width: { xs: '200px', md: '250px', lg: '300px', xl: '400px' }, height: { xs: '200px', md: '250px', lg: '300px', xl: '400px' } }} />
+                              <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
                               <BannerContent>
-
-                                        <BannerTitle>
-                                                  Apoteka DAR
-                                        </BannerTitle>
                                         <BannerText>
+                                                  <BannerTitle>
+                                                            Apoteka DAR
+                                                  </BannerTitle>
                                                   Dobro došli u našu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge.
                                                   Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu.
                                                   Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u našu kvalitet i uslugu. Hvala što ste nas odabrali!
                                         </BannerText>
-
-
                                         <BannerShopButton color="primary" >
                                                   <Link href="/products">Proizvodi</Link>
                                         </BannerShopButton>
-
                               </BannerContent>
                     </BannerContainer >
           )
