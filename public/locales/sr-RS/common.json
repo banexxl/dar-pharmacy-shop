@@ -61,6 +61,8 @@
   },
   "information": {
           "privacy-policy":{
+                    "agree-warning":"Upozorenje: Morate prihvatiti Politiku privatnosti!",
+                    "agree": "Prihvatam uslove politike privatnosti",
                     "title": "Politika privatnosti",
                     "p1":"Lični podaci su informacije koje se neposredno ili posredno odnose ili mogu da se odnose na vašu ličnost. Kao zakonski osnov koji uređuje zaštitu podataka i uslove za obradu vaših podataka primenjujem Zakon o zaštiti podataka o ličnosti ",
                     "p2": "Zdravstvena ustanova",
