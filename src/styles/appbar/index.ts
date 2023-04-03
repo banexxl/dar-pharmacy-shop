@@ -52,9 +52,7 @@ export const MyList = styled(List)<ListType>(({ type }: any) => ({
 }))
 
 export const DrawerCloseButton = styled(IconButton)(() => ({
-
-          position: 'absolute',
-          top: '5px',
-          left: '240px',
+          color: Colors.secondary,
+          left: '-20px',
           zIndex: '100',
 })) as typeof IconButton

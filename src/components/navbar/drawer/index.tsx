@@ -1,8 +1,7 @@
-import { Box, Button, Divider, Drawer, IconButton, List, ListItemButton, ListItemText, styled } from "@mui/material"
+import { Box, Button, Divider, Drawer, IconButton, List, ListItemButton, ListItemText, styled, Typography } from "@mui/material"
 import { useUIContext } from "../../../context/ui/ui.context"
 import CloseIcon from "@mui/icons-material/Close"
 import { DrawerCloseButton } from "../../../styles/appbar"
-import { lighten } from "polished"
 import { Colors } from "../../../styles/theme"
 import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
@@ -39,6 +38,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                                                 Početna
                                                                       </Link>
                                                             </ListItemText>
+                                                            <DrawerCloseButton onClick={() => setDrawerOpen(false)}>
+                                                                      <CloseIcon />
+                                                            </DrawerCloseButton>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton>
