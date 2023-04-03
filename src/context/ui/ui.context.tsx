@@ -1,5 +1,5 @@
-import Footer from "@/components/footer";
-import NavBar from "@/components/navbar";
+import Footer from "@/components/footer/footer";
+import NavBar from "@/components/navbar/navbar";
 import { createContext, useContext, useEffect, useState } from "react";
 
 

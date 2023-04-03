@@ -1,12 +1,12 @@
 import { Container, Typography, Box, Stack } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import theme from "../styles/theme";
-import Banner from "../components/banner";
-import Products from "../components/products";
+import Banner from "../components/banner/banner";
+import Products from "../components/products/products";
 import { UIProvider } from "../context/ui/ui.context";
 import AppDrawer from "../components/navbar/drawer";
-import Promotions from "../components/promotions";
-import SearchBox from "../components/search"
+import Promotions from "../components/promotions/promotions";
+import SearchBox from "../components/search/search"
 import productsServices from '@/services/product.services'
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";

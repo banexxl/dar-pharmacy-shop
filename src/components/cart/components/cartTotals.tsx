@@ -6,7 +6,7 @@ import { Box, Button, Slide, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Cart from '..'
+import Cart from '../cart'
 
 interface ICartTotalsProps {
           onClose: () => void

@@ -1,15 +1,15 @@
 import { Inter } from '@next/font/google'
 import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
-import Navbar from "../../components/navbar";
+import Navbar from "../../components/navbar/navbar";
 import { ThemeProvider } from "@mui/system";
 import theme from "../../styles/theme";
-import Banner from "../../components/banner";
-import Products from "../../components/products";
+import Banner from "../../components/banner/banner";
+import Products from "../../components/products/products";
 import { UIProvider } from "../../context/ui/ui.context";
-import Footer from "../../components/footer";
+import Footer from "../../components/footer/footer";
 import AppDrawer from "../../components/navbar/drawer";
-import Promotions from "../../components/promotions";
-import SearchBox from "../../components/search"
+import Promotions from "../../components/promotions/promotions";
+import SearchBox from "../../components/search/search"
 import productsServices from '@/services/product.services'
 import Toolbar from '@/components/toolbar';
 

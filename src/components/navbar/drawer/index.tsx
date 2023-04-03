@@ -5,9 +5,9 @@ import { DrawerCloseButton } from "../../../styles/appbar"
 import { Colors } from "../../../styles/theme"
 import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
-import WishList from "../../wishlist"
-import Cart from "../../cart"
-import LoginRegister from "../../cart"
+import WishList from "../../wishlist/wish-list"
+import Cart from "../../cart/cart"
+import LoginRegister from "../../cart/cart"
 import Link from "next/link"
 
 const MiddleDivider = styled((props) => (

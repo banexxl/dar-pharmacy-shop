@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { Grid, List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon } from "@mui/material";
-import { Box } from "@mui/system";
+import { List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon, Box } from "@mui/material"
 import { Colors } from "../../styles/theme";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -29,20 +28,8 @@ export default function Footer() {
                                         fontSize: { xs: '12px', md: '14px' }
                               }}
                     >
-                              <Grid container spacing={1} justifyContent="center">
-                                        <Grid item md={2} lg={2}>
-                                                  <Box
-                                                            sx={{
-                                                                      mt: 4,
-                                                                      color: Colors.dove_gray,
-                                                            }}
-                                                  >
-                                                            <FacebookIcon sx={{ mr: 1 }} />
-                                                            <TwitterIcon sx={{ mr: 1 }} />
-                                                            <InstagramIcon />
-                                                  </Box>
-                                        </Grid>
-                                        <Grid item md={6} lg={2}>
+                              <Box >
+                                        <Box>
                                                   <FooterTitle variant="body1">information</FooterTitle>
                                                   <List>
                                                             <ListItemText>
@@ -68,8 +55,8 @@ export default function Footer() {
                                                                       </Typography>
                                                             </ListItemText>
                                                   </List>
-                                        </Grid>
-                                        <Grid item md={6} lg={2}>
+                                        </Box>
+                                        <Box>
                                                   <FooterTitle variant="body1">my account</FooterTitle>
                                                   <List>
                                                             <ListItemText>
@@ -93,8 +80,20 @@ export default function Footer() {
                                                                       </Typography>
                                                             </ListItemText>
                                                   </List>
-                                        </Grid>
-                                        <Grid item md={6} lg={4}>
+                                        </Box>
+                                        <Box>
+                                                  <Box
+                                                            sx={{
+                                                                      mt: 4,
+                                                                      color: Colors.dove_gray,
+                                                            }}
+                                                  >
+                                                            <FacebookIcon sx={{ mr: 1 }} />
+                                                            <TwitterIcon sx={{ mr: 1 }} />
+                                                            <InstagramIcon />
+                                                  </Box>
+                                        </Box>
+                                        <Box>
                                                   <FooterTitle variant="body1">newsletter</FooterTitle>
                                                   <Stack>
                                                             <SubscribeTf
@@ -110,8 +109,8 @@ export default function Footer() {
                                                                       Subscribe
                                                             </Button>
                                                   </Stack>
-                                        </Grid>
-                              </Grid>
+                                        </Box>
+                              </Box>
                     </Box>
           );
 }

@@ -4,6 +4,8 @@ import { Box } from "@mui/system";
 import "@fontsource/montez";
 import { Colors, DrawerWidth } from "../theme";
 import { textPopUpTop } from "../animation";
+import { Zilla_Slab } from "@next/font/google";
+import zIndex from "@mui/material/styles/zIndex";
 
 export const AppbarContainer = styled(Box)(() => ({
           display: 'flex',
@@ -33,7 +35,8 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
           left: 0,
           width: '100%',
           alignItems: 'center',
-          borderTop: `1px solid ${Colors.border}`
+          borderTop: `1px solid ${Colors.border}`,
+          zIndex: '1000'
 })) as typeof Box
 
 export const ActionIconsContainerDesktop = styled(Box)(() => ({
