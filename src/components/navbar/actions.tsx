@@ -6,7 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Colors } from "../../styles/theme";
 import useDialogModal from "../../hooks/useDialogModal";
 import Cart from '../cart/cart'
-import WishList from "../wishlist/wish-list";
+import WishList from "../wishlist/wishlist";
 import LoginRegister from '../login/login'
 import { Language } from "@mui/icons-material";
 import { useRouter } from "next/router";

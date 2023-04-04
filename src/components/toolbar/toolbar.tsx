@@ -4,7 +4,7 @@ import { MenuButton, ToolbarContainer, ToolbarItems } from "../../styles/toolbar
 import ListItemButton from '@mui/material/ListItemButton';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
-import ToolbarMenu from './toolbarmenu';
+import ToolbarMenu from './toolbarmenu/toolbar-menu';
 
 function Toolbar() {
 

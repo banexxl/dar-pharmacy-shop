@@ -5,7 +5,7 @@ import { DrawerCloseButton } from "../../../styles/appbar"
 import { Colors } from "../../../styles/theme"
 import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
-import WishList from "../../wishlist/wish-list"
+import WishList from "../../wishlist/wishlist"
 import Cart from "../../cart/cart"
 import LoginRegister from "../../cart/cart"
 import Link from "next/link"
@@ -53,7 +53,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   <MiddleDivider />
                                                   <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
-                                                                      <Link href={'/'}>
+                                                                      <Link href={'/contact'}>
                                                                                 Kontakt
                                                                       </Link>
                                                             </ListItemText>
@@ -68,7 +68,11 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
-                                                            <ListItemText>Login</ListItemText>
+                                                            <ListItemText>
+                                                                      <Link href={'/api/auth'}>
+                                                                                Login
+                                                                      </Link>
+                                                            </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                         </List>

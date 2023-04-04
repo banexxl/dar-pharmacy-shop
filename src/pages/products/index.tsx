@@ -7,11 +7,11 @@ import Banner from "../../components/banner/banner";
 import Products from "../../components/products/products";
 import { UIProvider } from "../../context/ui/ui.context";
 import Footer from "../../components/footer/footer";
-import AppDrawer from "../../components/navbar/drawer";
+import AppDrawer from "../../components/navbar/drawer/drawer";
 import Promotions from "../../components/promotions/promotions";
 import SearchBox from "../../components/search/search"
 import productsServices from '@/services/product.services'
-import Toolbar from '@/components/toolbar';
+import Toolbar from '@/components/toolbar/toolbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
