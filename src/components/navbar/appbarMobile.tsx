@@ -5,25 +5,46 @@ import Actions from "./actions";
 import { IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
           const { setDrawerOpen, setShowSearchBox } = useUIContext();
-
           const { t } = useTranslation('common')
+          const [isScrolled, setIsScrolled] = useState<Boolean>(false);
+
+          useEffect(() => {
+                    function handleScroll() {
+                              const scrolled = window.scrollY > 0;
+                              setIsScrolled(scrolled);
+                    }
+
+                    window.addEventListener('scroll', handleScroll);
+                    return () => window.removeEventListener('scroll', handleScroll);
+          }, []);
+
+          const getHeight = () => {
+                    if (isScrolled) {
+                              return '40px';
+                    } else {
+                              return '90px';
+                    }
+          };
 
           return (
-                    <AppbarContainer>
-                              <IconButton onClick={() => setDrawerOpen(true)}>
-                                        <MenuIcon />
-                              </IconButton>
-                              <AppbarHeader textAlign={"center"} variant="h4">
-                                        DAR
-                              </AppbarHeader>
-                              <IconButton onClick={() => setShowSearchBox(true)}>
-                                        <SearchIcon />
-                              </IconButton>
+                    <>
+                              <AppbarContainer sx={{ height: getHeight() }}>
+                                        <IconButton onClick={() => setDrawerOpen(true)} >
+                                                  <MenuIcon />
+                                        </IconButton>
+                                        <AppbarHeader textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
+                                                  DAR
+                                        </AppbarHeader>
+                                        <IconButton onClick={() => setShowSearchBox(true)} >
+                                                  <SearchIcon />
+                                        </IconButton>
+                              </AppbarContainer >
                               <Actions isScreenToMedium={isScreenToMedium} />
-                    </AppbarContainer>
+                    </>
           );
 }

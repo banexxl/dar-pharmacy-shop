@@ -8,6 +8,8 @@ import React from 'react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { InferGetStaticPropsType } from 'next'
+import SearchBox from '@/components/search/search'
+import AppDrawer from '@/components/navbar/drawer/drawer'
 
 const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
@@ -442,6 +444,8 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
 
                                                             </Box>
+                                                            <SearchBox />
+                                                            <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
                               </Container >
