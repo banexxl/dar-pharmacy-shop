@@ -12,15 +12,31 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
           const { setDrawerOpen, setShowSearchBox } = useUIContext();
           const { t } = useTranslation('common')
           const [isScrolled, setIsScrolled] = useState<Boolean>(false);
+          const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 
           useEffect(() => {
+
                     function handleScroll() {
                               const scrolled = window.scrollY > 0;
                               setIsScrolled(scrolled);
                     }
 
+                    const isScrollHalfway = () => {
+                              const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                              const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+                              const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+
+                              setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
+                    }
+
+                    window.addEventListener('scroll', isScrollHalfway);
                     window.addEventListener('scroll', handleScroll);
-                    return () => window.removeEventListener('scroll', handleScroll);
+
+
+                    return () => {
+                              window.removeEventListener('scroll', handleScroll);
+                              window.removeEventListener('scroll', isScrollHalfway);
+                    }
           }, []);
 
           const getHeight = () => {
@@ -33,7 +49,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
           return (
                     <>
-                              <AppbarContainer sx={{ height: getHeight() }}>
+                              <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
                                         <IconButton onClick={() => setDrawerOpen(true)} >
                                                   <MenuIcon />
                                         </IconButton>
@@ -43,8 +59,8 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         <IconButton onClick={() => setShowSearchBox(true)} >
                                                   <SearchIcon />
                                         </IconButton>
+                                        <Actions isScreenToMedium={isScreenToMedium} />
                               </AppbarContainer >
-                              <Actions isScreenToMedium={isScreenToMedium} />
                     </>
           );
 }
