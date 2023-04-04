@@ -1,4 +1,4 @@
-import { AppbarContainer, AppbarHeader } from "../../styles/appbar";
+import { AppbarContainer, AppbarTitle } from "../../styles/appbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
@@ -37,9 +37,9 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         <IconButton onClick={() => setDrawerOpen(true)} >
                                                   <MenuIcon />
                                         </IconButton>
-                                        <AppbarHeader textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
+                                        <AppbarTitle textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
                                                   DAR
-                                        </AppbarHeader>
+                                        </AppbarTitle>
                                         <IconButton onClick={() => setShowSearchBox(true)} >
                                                   <SearchIcon />
                                         </IconButton>

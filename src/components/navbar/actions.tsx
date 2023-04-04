@@ -25,78 +25,75 @@ export default function Actions({ isScreenToMedium }: any) {
 
           return (
                     <Component>
-                              <MyList type="row">
-                                        <ListItemButton
-                                                  onClick={showCartDialog}
+                              <ListItemButton
+                                        onClick={showCartDialog}
+                                        sx={{
+                                                  justifyContent: "center",
+                                        }}
+                              >
+                                        <ListItemIcon
                                                   sx={{
+                                                            display: "flex",
                                                             justifyContent: "center",
+                                                            color: isScreenToMedium && Colors.secondary,
                                                   }}
                                         >
-                                                  <ListItemIcon
-                                                            sx={{
-                                                                      display: "flex",
-                                                                      justifyContent: "center",
-                                                                      color: isScreenToMedium && Colors.secondary,
-                                                            }}
-                                                  >
-                                                            <ShoppingCartIcon />
-                                                  </ListItemIcon>
-                                        </ListItemButton>
-                                        <Divider orientation="vertical" flexItem />
-                                        <ListItemButton
-                                                  onClick={showWishListDialog}
+                                                  <ShoppingCartIcon />
+                                        </ListItemIcon>
+                              </ListItemButton>
+                              <Divider orientation="vertical" flexItem />
+                              <ListItemButton
+                                        onClick={showWishListDialog}
+                                        sx={{
+                                                  justifyContent: "center",
+                                        }}
+                              >
+                                        <ListItemIcon
                                                   sx={{
+                                                            display: "flex",
                                                             justifyContent: "center",
+                                                            color: isScreenToMedium && Colors.secondary,
                                                   }}
                                         >
-                                                  <ListItemIcon
-                                                            sx={{
-                                                                      display: "flex",
-                                                                      justifyContent: "center",
-                                                                      color: isScreenToMedium && Colors.secondary,
-                                                            }}
-                                                  >
-                                                            <FavoriteIcon />
-                                                  </ListItemIcon>
-                                        </ListItemButton>
-                                        <Divider orientation="vertical" flexItem />
-                                        <ListItemButton
-                                                  onClick={showLoginDialog}
+                                                  <FavoriteIcon />
+                                        </ListItemIcon>
+                              </ListItemButton>
+                              <Divider orientation="vertical" flexItem />
+                              <ListItemButton
+                                        onClick={showLoginDialog}
+                                        sx={{
+                                                  justifyContent: "center",
+                                        }}
+                              >
+                                        <ListItemIcon
                                                   sx={{
+                                                            display: "flex",
                                                             justifyContent: "center",
+                                                            color: isScreenToMedium && Colors.secondary,
                                                   }}
                                         >
-                                                  <ListItemIcon
-                                                            sx={{
-                                                                      display: "flex",
-                                                                      justifyContent: "center",
-                                                                      color: isScreenToMedium && Colors.secondary,
-                                                            }}
-                                                  >
-                                                            <PersonIcon />
-                                                  </ListItemIcon>
-                                        </ListItemButton>
-                                        <Divider orientation="vertical" flexItem />
-                                        <ListItemButton
-                                                  sx={{
-                                                            justifyContent: "center",
-                                                  }}
+                                                  <PersonIcon />
+                                        </ListItemIcon>
+                              </ListItemButton>
+                              <Divider orientation="vertical" flexItem />
+                              <ListItemButton
+                                        sx={{
+                                                  justifyContent: "center",
+                                        }}
+                              >
+                                        <Select
+                                                  placeholder="Language"
+                                                  IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
+                                                  sx={{ width: 75, height: 24, alignItems: 'center' }}
                                         >
-                                                  <Select
-                                                            placeholder="Language"
-                                                            IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
-                                                            sx={{ width: 75, height: 24, alignItems: 'center' }}
-                                                  >
-                                                            <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'en-US' }) }}>
-                                                                      en
-                                                            </MenuItem>
-                                                            <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'sr-RS' }) }}>
-                                                                      sr
-                                                            </MenuItem>
-                                                  </Select>
-                                        </ListItemButton>
-
-                              </MyList>
+                                                  <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'en-US' }) }}>
+                                                            en
+                                                  </MenuItem>
+                                                  <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'sr-RS' }) }}>
+                                                            sr
+                                                  </MenuItem>
+                                        </Select>
+                              </ListItemButton>
                               <WishListDialog />
                               <CartDialog />
                               <LoginDialog />

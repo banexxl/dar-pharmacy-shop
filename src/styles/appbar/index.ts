@@ -5,10 +5,12 @@ import "@fontsource/montez";
 import { Colors } from "../theme";
 import { textPopUpTop } from "../animation";
 
-export const AppbarContainer = styled(Box)(() => ({
+export const AppbarContainer = styled(Box)(({ theme }: any) => ({
+          [theme.breakpoints.down('md')]: {
+                    marginLeft: '30px'
+          },
+          minWidth: '75%',
           display: 'flex',
-          left: '50%',
-          transform: 'translateX(-50%)',
           justifyContent: 'space-between',
           alignItems: 'center',
           position: 'fixed',
@@ -16,15 +18,14 @@ export const AppbarContainer = styled(Box)(() => ({
           zIndex: '1000'
 })) as typeof Box
 
-export const AppbarHeader = styled(Typography)(({ theme }) => ({
-          padding: "4px",
-          flexGrow: 1,
+export const AppbarTitle = styled(Typography)(({ theme }) => ({
           [theme.breakpoints.up("md")]: {
-                    width: '300px',
+                    maxWwidth: '250px',
           },
           [theme.breakpoints.down("md")]: {
-                    width: '200px',
+                    maxWwidth: '250px',
           },
+          paddingLeft: '4px',
           fontSize: "3rem",
           fontFamily: '"Montez", "cursive"',
           color: Colors.primary,
@@ -47,8 +48,8 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
 })) as typeof Box
 
 export const ActionIconsContainerDesktop = styled(Box)(() => ({
-          flexGrow: 0,
-          backgroundColor: Colors.primary
+          backgroundColor: Colors.primary,
+          display: 'flex',
 })) as typeof Box
 
 type ListType = {
@@ -56,9 +57,6 @@ type ListType = {
 }
 export const MyList = styled(List)<ListType>(({ type }: any) => ({
           display: type === "row" ? "flex" : "block",
-          flexGrow: 3,
-          justifyContent: "right",
-          alignItems: "center",
 }))
 
 export const DrawerCloseButton = styled(IconButton)(() => ({
