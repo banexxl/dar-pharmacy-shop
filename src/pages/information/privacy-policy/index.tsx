@@ -72,7 +72,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 {t('information.privacy-policy.p9')}
                                                                       </Typography>
 
-                                                                      <List sx={{ listStyleType: 'num', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'num', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
                                                                                           <ListItemText>
                                                                                                     {t('information.privacy-policy.p10')}
@@ -104,7 +104,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 {t('information.privacy-policy.p15')}
                                                                       </Typography>
 
-                                                                      <List sx={{ listStyleType: 'num', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'num', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p16')}
@@ -134,7 +134,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <Typography fontWeight='bold' padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p21')}</Typography>
 
-                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p22')}
@@ -146,7 +146,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <Typography paddingLeft='20px' textAlign='justify'>{t('information.privacy-policy.p24')}</Typography>
 
-                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p25')}
@@ -178,7 +178,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <Typography padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p31')}</Typography>
 
-                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p32')}
@@ -207,7 +207,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <Typography padding='0px 20px' fontWeight='bold' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.ppo')}</Typography>
 
-                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p41')}
@@ -237,7 +237,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
                                                                       <Typography padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p46')}</Typography>
 
-                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p47')}
@@ -281,7 +281,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 <Typography display='inline'>{t('information.privacy-policy.p56')}</Typography>
                                                                       </Typography>
 
-                                                                      <List sx={{ listStyleType: 'circle', pl: 4 }}>
+                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                                                                 <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
                                                                                           <ListItemText >
                                                                                                     {t('information.privacy-policy.p57')}
