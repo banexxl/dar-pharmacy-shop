@@ -440,6 +440,305 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 {t('information.privacy-policy.p105')}
                                                                       </Typography>
 
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p106')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p107')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p108')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p109')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p110')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p111')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p112')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <Link href='https://www.facebook.com/privacy/explanation' target="_blank">
+                                                                                                    {t('information.privacy-policy.p113')}
+                                                                                          </Link>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <Link href='https://help.instagram.com/519522125107875' target="_blank">
+                                                                                                    {t('information.privacy-policy.p114')}
+                                                                                          </Link>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p115')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.ppo')}
+                                                                                <Typography padding='20px 20px 0px 0px' display='inline' textAlign='justify'>{t('information.privacy-policy.p116')}</Typography>
+                                                                                <Typography padding='20px 0px' display='block' textAlign='justify'>{t('information.privacy-policy.p117')}</Typography>
+                                                                                <Typography padding='20px 0px 20px 0px' display='inline' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p118')}</Typography>
+                                                                                <Typography padding='20px 20px 20px 0px' display='inline' textAlign='justify'>{t('information.privacy-policy.p119')}</Typography>
+                                                                      </Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.pkp')}
+                                                                      </Typography>
+
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p120')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p121')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p122')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p123')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.prc')}
+                                                                      </Typography>
+
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p124')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p125')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p126')}</Typography>
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p127')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.ppo')}
+                                                                      </Typography>
+
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p128')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p129')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.pkp')}
+                                                                      </Typography>
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p130')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.prc')}
+                                                                      </Typography>
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p131')}</Typography>
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p132')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.ppo')}
+                                                                      </Typography>
+
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p133')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p134')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p135')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p136')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p137')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.pkp')}
+                                                                      </Typography>
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p138')}</Typography>
+
+                                                                      <Typography padding='20px 20px' fontWeight='bold' textAlign='justify' display='block' >
+                                                                                {t('information.privacy-policy.prc')}
+                                                                      </Typography>
+                                                                      <Typography padding='0px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p139')}</Typography>
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p140')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p141')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p142')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p143')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p144')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p145')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p146')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p147')}</Typography>
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p148')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p149')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p150')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p151')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p152')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p153')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p154')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p155')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p156')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p157')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' >{t('information.privacy-policy.p158')}</Typography>
+                                                                      <Typography padding='20px 20px 20px 20px' display='block' textAlign='justify' >
+                                                                                {t('information.privacy-policy.p159')}
+                                                                                <Typography display='inline'>
+                                                                                          <Link href={`mailto:${'maja@apoteka-dar.rs'}`} sx={{ color: Colors.primary }}> maja@apoteka-dar.rs.</Link>
+                                                                                </Typography>
+                                                                      </Typography>
+
+
+                                                                      <Typography alignContent='flex-start' variant='h5' padding='20px 20px' textAlign='center' fontWeight='bold' >
+                                                                                {t('information.privacy-policy.p160')}
+                                                                      </Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p161')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >{t('information.privacy-policy.p162')}</Typography>
+
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p163')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p164')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p165')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p166')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p167')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p168')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p169')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >{t('information.privacy-policy.p170')}</Typography>
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p171')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p172')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p173')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p174')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p175')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p176')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p177')}</Typography>
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p178')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p179')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >{t('information.privacy-policy.p180')}</Typography>
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p181')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p182')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p183')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p184')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p185')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p186')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p187')}</Typography>
+
+
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p188')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >{t('information.privacy-policy.p189')}</Typography>
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p190')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p191')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p192')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p193')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p194')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >{t('information.privacy-policy.p195')}</Typography>
+                                                                      <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                                                                          <ListItemText >
+                                                                                                    {t('information.privacy-policy.p196')}
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                      </List>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p197')}</Typography>
+
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>{t('information.privacy-policy.p198')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold'>{t('information.privacy-policy.p199')}</Typography>
+                                                                      <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>{t('information.privacy-policy.p200')}</Typography>
+                                                                      <Typography padding='20px' display='block' textAlign='justify'>{t('information.privacy-policy.p201')}</Typography>
 
 
 
