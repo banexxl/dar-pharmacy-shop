@@ -34,7 +34,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Box>
+                                                            <Box sx={{ mt: '70px' }}>
                                                                       <Typography textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                                                                 {t('information.privacy-policy.title')}
                                                                       </Typography>
@@ -434,13 +434,13 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                 <Typography display='inline' textAlign='justify'>
                                                                                           <Link href={`mailto:${'maja@apoteka-dar.rs'}`} sx={{ color: Colors.primary }}> maja@apoteka-dar.rs.</Link>
                                                                                 </Typography>
-
                                                                       </Typography>
-
 
                                                                       <Typography alignContent='flex-start' variant='h5' padding='20px 20px' textAlign='center' fontWeight='bold' >
                                                                                 {t('information.privacy-policy.p105')}
                                                                       </Typography>
+
+
 
 
                                                             </Box>

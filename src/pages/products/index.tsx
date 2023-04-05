@@ -30,10 +30,10 @@ export default function Home(props: any) {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Navbar />
+
                                                             <Toolbar />
                                                             <SearchBox />
-                                                            <Footer />
+
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
