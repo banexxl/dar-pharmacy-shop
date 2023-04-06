@@ -119,6 +119,8 @@ export default function Footer() {
                                         </Button>
                                         <FormControlLabel control={<PrivacyPolicyCheckBox value={agreed} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePrivacyAgreement(e.target.checked)} />} label={t('information.privacy-policy.agree')} />
                               </FooterSubscribe>
+
+
                               {agreedWarning && (
                                         <Alert variant="filled" severity="error" sx={{ position: 'fixed', top: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
                                                   {t('information.privacy-policy.agree-warning')}

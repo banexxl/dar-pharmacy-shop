@@ -13,6 +13,7 @@ export const FooterContainer = styled(Box)(({ theme }: any) => ({
           color: Colors.white,
           padding: '2rem',
           display: 'flex',
+          justifyContent: 'space-between',
           [theme.breakpoints?.down("md")]: {
                     flexDirection: 'column'
           },
@@ -34,7 +35,7 @@ export const FooterSocial = styled(Box)(({ theme }: any) => ({
           justifyContent: 'center',
           gap: '2rem',
           color: Colors.primary,
-          marginBottom: '20px'
+          margin: '20px 40px'
 })) as typeof Box
 
 export const FooterSubscribe = styled(Box)(({ theme }: any) => ({
