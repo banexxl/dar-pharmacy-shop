@@ -273,5 +273,8 @@
   },
   "homepage":{
           "title": "Apoteka DAR"
+  },
+  "product": {
+          "added-to-cart": "Proizvod uspešno dodat u korpu!"
   }
 }

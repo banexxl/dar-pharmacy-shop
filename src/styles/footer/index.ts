@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Box, TextField, Typography, Checkbox } from "@mui/material";
-import { CheckboxWithLabel } from "formik-mui";
 import { Colors } from "../theme";
 
 
@@ -14,10 +13,10 @@ export const FooterContainer = styled(Box)(({ theme }: any) => ({
           color: Colors.white,
           padding: '2rem',
           display: 'flex',
-          [theme.breakpoints.down("md")]: {
+          [theme.breakpoints?.down("md")]: {
                     flexDirection: 'column'
           },
-          [theme.breakpoints.up("md")]: {
+          [theme.breakpoints?.up("md")]: {
                     flexDirection: 'row',
                     justifyContent: 'space-around'
           },
@@ -43,7 +42,7 @@ export const FooterSubscribe = styled(Box)(({ theme }: any) => ({
           flexDirection: 'column',
           gap: '20px',
           color: Colors.primary,
-          [theme.breakpoints.down("md")]: {
+          [theme.breakpoints?.down("md")]: {
                     marginBottom: '40px'
           },
 })) as typeof Box

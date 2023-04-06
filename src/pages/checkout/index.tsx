@@ -47,7 +47,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Box sx={{ borderBottom: 3, borderColor: Colors.secondary }}>
+                                                            <Box sx={{ borderBottom: 3, borderColor: Colors.secondary, marginTop: '100px' }}>
                                                                       <Stepper activeStep={tabIndex}>
                                                                                 {steps.map(label => (
                                                                                           <Step key={label}>

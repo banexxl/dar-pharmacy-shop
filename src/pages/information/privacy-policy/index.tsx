@@ -3,25 +3,21 @@ import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, Container, Divider, Link, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import React from 'react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { InferGetStaticPropsType } from 'next'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
+import SpinningWheel from '@/components/circularprogress/circular-progress'
 
 const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
 
-          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
-          })
-
-
           return (
-                    <DynamicThemeProvider theme={theme}>
+                    <Suspense fallback={<SpinningWheel />}>
                               <Head>
                                         <title>{t('information.privacy-policy.title')}</title>
                               </Head>
@@ -748,7 +744,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                   </UIProvider>
                                         </Stack>
                               </Container >
-                    </DynamicThemeProvider >
+                    </Suspense>
           )
 }
 
