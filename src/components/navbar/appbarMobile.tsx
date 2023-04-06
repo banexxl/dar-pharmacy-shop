@@ -59,8 +59,9 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         <IconButton onClick={() => setShowSearchBox(true)} >
                                                   <SearchIcon />
                                         </IconButton>
-                                        <Actions isScreenToMedium={isScreenToMedium} />
+
                               </AppbarContainer >
+                              {/* <Actions isScreenToMedium={isScreenToMedium} /> */}
                     </>
           );
 }
