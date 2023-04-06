@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage } from "../../styles/product";
 import { Alert, Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -10,6 +10,7 @@ import ProductMeta from "./products-meta";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
+import LoadingWheel from "../loading/loading";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
@@ -42,7 +43,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           return (
 
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                              <ProductImage src={product.imageURL} />
+                              <Suspense fallback={<LoadingWheel />}>
+                                        <ProductImage src={product.imageURL} />
+                              </Suspense>
                               <ProductFavButton isfav={0}>
                                         <Tooltip placement="left" title="Add to wishlist">
                                                   <FavoriteIcon />

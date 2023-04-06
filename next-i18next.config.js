@@ -12,8 +12,7 @@ module.exports = {
                               : '/locales',
 
           reloadOnPrerender: process.env.NODE_ENV === 'development',
-          react: { useSuspense: false },
-
+          react: { useSuspense: true },
           /**
            * @link https://github.com/i18next/next-i18next#6-advanced-configuration
            */

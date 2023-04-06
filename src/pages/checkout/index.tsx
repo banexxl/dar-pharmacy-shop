@@ -15,6 +15,8 @@ import Confirmation from '@/components/checkout/confirmation/confirmation-form'
 import { useSelector } from 'react-redux'
 import { checkoutSelectors } from '@/store/checkout/checkout.selectors'
 import { ICheckoutState } from '@/store/checkout/checkout-state.interface'
+import AppDrawer from '@/components/navbar/drawer/drawer'
+import SearchBox from '@/components/search/search'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -73,7 +75,8 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <Confirmation setTab={setTab} />
                                                                       </TabPanel>
                                                             </Box>
-
+                                                            <SearchBox />
+                                                            <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
                               </Container>

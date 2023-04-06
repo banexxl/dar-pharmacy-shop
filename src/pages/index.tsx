@@ -12,7 +12,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
-import { Suspense, useEffect, useState } from "react";
 import LoadingWheel from "@/components/loading/loading";
 
 
@@ -33,31 +32,27 @@ export default function Home(props: any) {
                               <Head>
                                         <title>{t('homepage.title')}</title>
                               </Head>
-                              <Suspense fallback={<LoadingWheel />}>
-                                        <Container
-                                                  disableGutters
-                                                  maxWidth="lg"
-                                                  sx={{
-                                                            background: "#fff",
-                                                            opacity: '.85'
-                                                  }}
-                                        >
-                                                  <Stack>
-                                                            <UIProvider>
-                                                                      <Banner />
-                                                                      <Promotions />
-                                                                      <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-                                                                                <Typography variant="h4">Deo asortimana</Typography>
-                                                                      </Box>
-
-                                                                      <Products data={products} />
-
-                                                                      <SearchBox />
-                                                                      <AppDrawer isScreenToMedium={false} />
-                                                            </UIProvider>
-                                                  </Stack>
-                                        </Container>
-                              </Suspense>
+                              <Container
+                                        disableGutters
+                                        maxWidth="lg"
+                                        sx={{
+                                                  background: "#fff",
+                                                  opacity: '.85'
+                                        }}
+                              >
+                                        <Stack>
+                                                  <UIProvider>
+                                                            <Banner />
+                                                            <Promotions />
+                                                            <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
+                                                                      <Typography variant="h4">Deo asortimana</Typography>
+                                                            </Box>
+                                                            <Products data={products} />
+                                                            <SearchBox />
+                                                            <AppDrawer isScreenToMedium={false} />
+                                                  </UIProvider>
+                                        </Stack>
+                              </Container>
                     </DynamicThemeProvider>
           )
 }

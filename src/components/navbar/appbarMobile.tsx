@@ -1,8 +1,7 @@
 import { AppbarContainer, AppbarTitle } from "../../styles/appbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import Actions from "./actions";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
@@ -48,7 +47,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
           };
 
           return (
-                    <>
+                    <Box>
                               <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
                                         <IconButton onClick={() => setDrawerOpen(true)} >
                                                   <MenuIcon />
@@ -59,9 +58,8 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         <IconButton onClick={() => setShowSearchBox(true)} >
                                                   <SearchIcon />
                                         </IconButton>
-
                               </AppbarContainer >
                               {/* <Actions isScreenToMedium={isScreenToMedium} /> */}
-                    </>
+                    </Box>
           );
 }
