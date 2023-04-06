@@ -46,12 +46,14 @@ export default function Footer() {
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
                                                             <ListItemText>
                                                                       <Typography lineHeight={2} variant="caption">
-                                                                                About Us
+                                                                                <Link href={"/"}>
+                                                                                          Home
+                                                                                </Link>
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText>
                                                                       <Typography lineHeight={2} variant="caption">
-                                                                                Order Tracking
+                                                                                About Us
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText>
