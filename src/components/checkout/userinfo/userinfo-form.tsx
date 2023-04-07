@@ -18,10 +18,11 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
 
           const { t } = useTranslation('common')
           const [openEmailForm, setOpenEmailForm] = useState(false);
-          const [isLoading, setIsLoading] = useState(false)
           const dispatch = useDispatch()
+
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel isLoading={false} />,
+                    loading: () => <LoadingWheel isLoading={true} />,
+                    ssr: false
           })
 
           const handleSubmit = (values: IUserForm) => {
@@ -33,19 +34,8 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     console.log(email);
           }
 
-          useEffect(() => {
-                    setIsLoading(true)
-          }, [])
-
-          if (isLoading) {
-                    setIsLoading(false)
-                    return <LoadingWheel isLoading={true} />;
-          }
-
-
           return (
                     <DynamicThemeProvider theme={theme}>
-                              <LoadingWheel isLoading={isLoading} />
                               <Container disableGutters maxWidth="md" sx={{ background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
                                         <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)}>
