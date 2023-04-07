@@ -21,13 +21,11 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
           const [openEmailForm, setOpenEmailForm] = useState(false);
           const dispatch = useDispatch()
 
-          console.log("props.tabindex", props.tabIndex);
-
           const handleSubmit = (values: IUserForm) => {
 
                     dispatch(submitUserForm(values))
 
-                    props.tabIndex === 0 || props.tabIndex === 1 ? props.setTab?.(1) : null
+                    props.tabIndex === 0 ? props.setTab?.(1) : null
 
           }
 

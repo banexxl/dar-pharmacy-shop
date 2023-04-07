@@ -21,7 +21,6 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                     loading: () => <LoadingWheel />,
           })
 
-          const tabIndex: number = 2
           const dispatch = useDispatch()
 
           const handleSubmit = (values: ICreditCardForm) => {
@@ -30,11 +29,11 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
                     //dispatch(submitPaymentForm(values))
 
-                    tabIndex === 2 ? props.setTab?.(tabIndex + 1) : null
+                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
           const handleBack = () => {
-                    tabIndex === 2 ? props.setTab?.(tabIndex - 1) : null
+                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
           };
 
           return (
