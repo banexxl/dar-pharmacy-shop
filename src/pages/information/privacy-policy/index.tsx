@@ -11,13 +11,17 @@ import { InferGetStaticPropsType } from 'next'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SpinningWheel from '@/components/circularprogress/circular-progress'
+import dynamic from 'next/dynamic'
 
 const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel />,
+          })
 
           return (
-                    <Suspense fallback={<SpinningWheel />}>
+                    <DynamicThemeProvider theme={theme}>
                               <Head>
                                         <title>{t('information.privacy-policy.title')}</title>
                               </Head>
@@ -744,7 +748,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                   </UIProvider>
                                         </Stack>
                               </Container >
-                    </Suspense>
+                    </DynamicThemeProvider>
           )
 }
 
