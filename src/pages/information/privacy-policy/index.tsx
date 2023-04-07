@@ -17,7 +17,7 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
 
           const { t } = useTranslation('common')
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
+                    loading: () => <LoadingWheel isLoading={true} />
           })
 
           return (

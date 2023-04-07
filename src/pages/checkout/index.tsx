@@ -39,60 +39,60 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           useEffect(() => {
                     const to = setTimeout(() => {
                               setIsLoading(false)
-                    }, 2000);
+                    }, 1500);
 
                     return (() => clearTimeout(to))
           }, [])
 
-          return (
-                    <DynamicThemeProvider theme={theme}>
-                              <LoadingWheel isLoading={isLoading} />
-                              <Head>
-                                        <title>{t('checkout.title')}</title>
-                              </Head>
-                              <Container
-                                        disableGutters
-                                        maxWidth="lg"
-                                        sx={{
-                                                  background: "#fff",
-                                        }}
-                              >
-                                        <Stack>
-                                                  <UIProvider>
-                                                            <Box sx={{ borderBottom: 3, borderColor: Colors.secondary, marginTop: '100px' }}>
-                                                                      <Stepper activeStep={tabIndex}>
-                                                                                {steps.map(label => (
-                                                                                          <Step key={label}>
-                                                                                                    <StepLabel>{label}</StepLabel>
-                                                                                          </Step>
-                                                                                ))}
-                                                                      </Stepper>
-                                                                      <Tabs value={tabIndex}>
-                                                                                <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.card-payment')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
-                                                                      </Tabs>
-                                                                      <TabPanel value={tabIndex} index={0}>
-                                                                                <UserInfoForm formName={'userinfo'} setTab={setTab} tabIndex={0} />
-                                                                      </TabPanel>
-                                                                      <TabPanel value={tabIndex} index={1} >
-                                                                                <Payment sameAsShipping={false} setTab={setTab} formName={'paymentInfo'} tabIndex={1} />
-                                                                      </TabPanel>
-                                                                      <TabPanel value={tabIndex} index={2} >
-                                                                                <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
-                                                                      </TabPanel>
-                                                                      <TabPanel value={tabIndex} index={3} >
-                                                                                <Confirmation setTab={setTab} tabIndex={3} />
-                                                                      </TabPanel>
-                                                            </Box>
-                                                            <SearchBox />
-                                                            <AppDrawer isScreenToMedium={false} />
-                                                  </UIProvider>
-                                        </Stack>
-                              </Container>
-                    </DynamicThemeProvider >
-          )
+          return isLoading ? <LoadingWheel isLoading={isLoading} /> :
+                    (
+                              <DynamicThemeProvider theme={theme}>
+                                        <Head>
+                                                  <title>{t('checkout.title')}</title>
+                                        </Head>
+                                        <Container
+                                                  disableGutters
+                                                  maxWidth="lg"
+                                                  sx={{
+                                                            background: "#fff",
+                                                  }}
+                                        >
+                                                  <Stack>
+                                                            <UIProvider>
+                                                                      <Box sx={{ borderBottom: 3, borderColor: Colors.secondary, marginTop: '100px' }}>
+                                                                                <Stepper activeStep={tabIndex}>
+                                                                                          {steps.map(label => (
+                                                                                                    <Step key={label}>
+                                                                                                              <StepLabel>{label}</StepLabel>
+                                                                                                    </Step>
+                                                                                          ))}
+                                                                                </Stepper>
+                                                                                <Tabs value={tabIndex}>
+                                                                                          <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                          <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                          <Tab label={t('checkout.card-payment')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                          <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                </Tabs>
+                                                                                <TabPanel value={tabIndex} index={0}>
+                                                                                          <UserInfoForm formName={'userinfo'} setTab={setTab} tabIndex={0} />
+                                                                                </TabPanel>
+                                                                                <TabPanel value={tabIndex} index={1} >
+                                                                                          <Payment sameAsShipping={false} setTab={setTab} formName={'paymentInfo'} tabIndex={1} />
+                                                                                </TabPanel>
+                                                                                <TabPanel value={tabIndex} index={2} >
+                                                                                          <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
+                                                                                </TabPanel>
+                                                                                <TabPanel value={tabIndex} index={3} >
+                                                                                          <Confirmation setTab={setTab} tabIndex={3} />
+                                                                                </TabPanel>
+                                                                      </Box>
+                                                                      <SearchBox />
+                                                                      <AppDrawer isScreenToMedium={false} />
+                                                            </UIProvider>
+                                                  </Stack>
+                                        </Container>
+                              </DynamicThemeProvider >
+                    )
 }
 
 

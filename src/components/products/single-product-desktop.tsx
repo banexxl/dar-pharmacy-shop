@@ -41,11 +41,8 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           }
 
           return (
-
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                              <Suspense fallback={<LoadingWheel />}>
-                                        <ProductImage src={product.imageURL} />
-                              </Suspense>
+                              <ProductImage src={product.imageURL} />
                               <ProductFavButton isfav={0}>
                                         <Tooltip placement="left" title="Add to wishlist">
                                                   <FavoriteIcon />
