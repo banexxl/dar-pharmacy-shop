@@ -1,3 +1,4 @@
 export interface IConfirmationProps {
-          setTab?: (tabIndex: number) => number
+          setTab?: (tabIndex: number) => number;
+          tabIndex?: number;
 }

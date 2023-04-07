@@ -13,19 +13,21 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
+import { log } from 'console';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
-          const tabIndex: number = 0
           const [openEmailForm, setOpenEmailForm] = useState(false);
           const dispatch = useDispatch()
+
+          console.log("props.tabindex", props.tabIndex);
 
           const handleSubmit = (values: IUserForm) => {
 
                     dispatch(submitUserForm(values))
 
-                    tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
+                    props.tabIndex === 0 || props.tabIndex === 1 ? props.setTab?.(1) : null
 
           }
 

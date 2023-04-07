@@ -16,10 +16,10 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
           const { t } = useTranslation('common')
           const cart: ICartItem[] = useSelector((state: any) => state.cartState)
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
-          const [tabIndex, setTabIndex] = useState(2)
+          const tabIndex: number = 3
 
           const handleBack = () => {
-                    tabIndex === 1 || tabIndex === 2 ? props.setTab?.(tabIndex - 1) : null
+                    tabIndex === 2 || tabIndex === 3 ? props.setTab?.(tabIndex - 1) : null
           };
 
           return (

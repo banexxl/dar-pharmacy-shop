@@ -4,8 +4,8 @@ import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialPaymentFormValues, IPaymentForm, IPaymentFormProps } from '../../../interfaces/checkout/payment-form-values.interface';
 import { userFormSchema } from '../../../schema/user-form.schema';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { isBillingAndShippingCheckbox, PaymentFormControl } from '@/styles/checkout/payment';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -18,20 +18,17 @@ import theme from '@/styles/theme';
 export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFormProps) => {
 
           const { t } = useTranslation();
-          const tabIndex: number = 1
           const dispatch = useDispatch()
 
           const handleSubmit = (values: IPaymentForm) => {
 
-                    console.log("usao u handle next, vrednosti su: ", values);
-
                     dispatch(submitPaymentForm(values))
 
-                    tabIndex === 0 || tabIndex === 1 ? props.setTab?.(tabIndex + 1) : null
+                    props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
           const handleBack = () => {
-                    tabIndex === 1 || tabIndex === 2 ? props.setTab?.(tabIndex - 1) : null
+                    props.tabIndex === 1 ? props.setTab?.(props.tabIndex - 1) : null
           };
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {

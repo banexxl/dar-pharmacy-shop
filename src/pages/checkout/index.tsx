@@ -17,6 +17,7 @@ import { checkoutSelectors } from '@/store/checkout/checkout.selectors'
 import { ICheckoutState } from '@/store/checkout/checkout-state.interface'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
+import { CreditCard } from '@/components/checkout/credit-card/credit-card-form'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -33,7 +34,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     loading: () => <LoadingWheel />,
           })
 
-          const steps = ["Shipping address", "Payment details", "Review your order"];
+          const steps = [t("checkout.shippingAddress"), t("checkout.payment-info"), t("checkout.card-payment"), t("checkout.confirmation")];
 
           return (
                     <DynamicThemeProvider theme={theme}>
@@ -60,19 +61,20 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                       <Tabs value={tabIndex}>
                                                                                 <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
                                                                                 <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                <Tab label={t('checkout.card-payment')} sx={{ bgcolor: Colors.secondary }} />
                                                                                 <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
                                                                       </Tabs>
                                                                       <TabPanel value={tabIndex} index={0}>
-                                                                                <UserInfoForm formName={'userinfo'} setTab={setTab} />
+                                                                                <UserInfoForm formName={'userinfo'} setTab={setTab} tabIndex={0} />
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={1} >
-                                                                                <Payment sameAsShipping={false} setTab={setTab} formName={'paymentInfo'} />
-                                                                                {/* <CreditCard values={cardValues} handleChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
-                                                                                          throw new Error('Function not implemented.')
-                                                                                }} /> */}
+                                                                                <Payment sameAsShipping={false} setTab={setTab} formName={'paymentInfo'} tabIndex={1} />
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={2} >
-                                                                                <Confirmation setTab={setTab} />
+                                                                                <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
+                                                                      </TabPanel>
+                                                                      <TabPanel value={tabIndex} index={3} >
+                                                                                <Confirmation setTab={setTab} tabIndex={3} />
                                                                       </TabPanel>
                                                             </Box>
                                                             <SearchBox />

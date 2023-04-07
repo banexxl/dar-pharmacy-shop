@@ -45,10 +45,11 @@
     "zipPostalCode": "Zip/Postal Code",
     "email": "Email"
   },
-  "creditCard": {
-    "cardNumber": "Card Number",
-    "expiryDate": "Expiry Date",
-    "securityCode": "Security Code"
+  "credit-card": {
+    "credit-card": "Credit Card",
+    "card-number": "Card Number",
+    "expiry-date": "Expiry Date",
+    "security-code": "Security Code"
   },
   "errorMessages": {
     "required": "{{- fieldName}} is required",

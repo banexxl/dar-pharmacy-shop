@@ -45,10 +45,11 @@
     "zipPostalCode": "Poštanski broj",
     "email": "Email"
   },
-  "creditCard": {
-    "cardNumber": "Broj kreditne kartice",
-    "expiryDate": "Datim isteka",
-    "securityCode": "Sigurnosni kod (trocifreni broj sa poleđine kartice)"
+  "credit-card": {
+    "credit-card": "Platna Kartica: ",
+    "card-number": "Broj kartice: ",
+    "expiry-date": "Datum isteka važenja kartice: ",
+    "security-code": "CVC2/CVV2 kod: "
   },
   "errorMessages": {
     "required": "Polje '{{- fieldName}}' je obavezno",
