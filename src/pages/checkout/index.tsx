@@ -24,7 +24,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const { t } = useTranslation('common')
           const [tabIndex, setTabIndex] = useState(0)
-
+          const [isLoading, setIsLoading] = useState(true)
           const setTab = (tabIndex: number) => {
                     setTabIndex(tabIndex)
                     return 0
@@ -36,8 +36,17 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           const steps = [t("checkout.shippingAddress"), t("checkout.payment-info"), t("checkout.card-payment"), t("checkout.confirmation")];
 
+          useEffect(() => {
+                    const to = setTimeout(() => {
+                              setIsLoading(false)
+                    }, 2000);
+
+                    return (() => clearTimeout(to))
+          }, [])
+
           return (
                     <DynamicThemeProvider theme={theme}>
+                              <LoadingWheel isLoading={isLoading} />
                               <Head>
                                         <title>{t('checkout.title')}</title>
                               </Head>

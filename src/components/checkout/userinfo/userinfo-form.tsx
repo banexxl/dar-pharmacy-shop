@@ -13,14 +13,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
-import { log } from 'console';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
           const [openEmailForm, setOpenEmailForm] = useState(false);
           const [isLoading, setIsLoading] = useState(false)
-          const mounted = useRef(false)
           const dispatch = useDispatch()
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={false} />,
@@ -35,20 +33,20 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     console.log(email);
           }
 
+          useEffect(() => {
+                    setIsLoading(true)
+          }, [])
+
+          if (isLoading) {
+                    setIsLoading(false)
+                    return <LoadingWheel isLoading={true} />;
+          }
+
 
           return (
                     <DynamicThemeProvider theme={theme}>
                               <LoadingWheel isLoading={isLoading} />
-                              <Container
-                                        disableGutters
-                                        maxWidth="md"
-                                        sx={{
-                                                  background: "#fff",
-                                                  display: 'flex',
-                                                  flexDirection: 'column',
-                                                  gap: '20px'
-                                        }}
-                              >
+                              <Container disableGutters maxWidth="md" sx={{ background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
                                         <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)}>
                                                   {
@@ -210,6 +208,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                             )
                                                   }
                                         </Formik>
+
                               </Container>
 
                     </DynamicThemeProvider >
