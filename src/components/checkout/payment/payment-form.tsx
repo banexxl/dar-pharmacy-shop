@@ -32,11 +32,12 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
           };
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
+                    loading: () => <LoadingWheel isLoading={false} />,
           })
 
           return (
                     <DynamicThemeProvider theme={theme}>
+                              <LoadingWheel isLoading={false} />
                               <Container
                                         disableGutters
                                         maxWidth="md"

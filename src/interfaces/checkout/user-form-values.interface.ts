@@ -31,6 +31,7 @@ export const initialEmailFormValues: IEmailForm = {
 };
 
 export interface IUserFormProps {
+          isLoading?: boolean;
           tabIndex?: number
           setTab?: (tabIndex: number) => number
           formName: string

@@ -1,20 +1,24 @@
 import * as React from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useState } from 'react';
+import { Colors } from '@/styles/theme';
+import ILoading from '@/interfaces/loading/loading.interface';
 
-export default function LoadingWheel() {
-          const [open, setOpen] = React.useState(false);
-          const handleClose = () => {
-                    setOpen(false);
-          };
+export default function LoadingWheel(props: ILoading) {
+
 
           return (
                     <Backdrop
-                              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                              open={open}
-                              onClick={handleClose}
+                              sx={{ color: 'red', zIndex: '1000', opacity: '.5' }}
+                              open={props.isLoading}
                     >
-                              <CircularProgress color="inherit" />
+                              <CircularProgress
+                                        size={32}
+                                        sx={{
+                                                  color: Colors.primary[500],
+                                                  position: 'absolute',
+                                        }} />
                     </Backdrop>
 
           );

@@ -31,7 +31,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           }
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
+                    loading: () => <LoadingWheel isLoading={false} />,
           })
 
           const steps = [t("checkout.shippingAddress"), t("checkout.payment-info"), t("checkout.card-payment"), t("checkout.confirmation")];

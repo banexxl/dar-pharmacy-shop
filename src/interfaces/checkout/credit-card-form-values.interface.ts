@@ -8,6 +8,7 @@ export interface ICreditCardForm {
 }
 
 export interface ICreditCardFormProps {
+          isLoading?: boolean;
           formName: string;
           tabIndex?: number;
           setTab?: (tabIndex: number) => number;

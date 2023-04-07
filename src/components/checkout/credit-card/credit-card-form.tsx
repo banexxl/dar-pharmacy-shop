@@ -18,7 +18,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
           const { t } = useTranslation();
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
+                    loading: () => <LoadingWheel isLoading={false} />,
           })
 
           const dispatch = useDispatch()
@@ -38,6 +38,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
           return (
                     <DynamicThemeProvider theme={theme}>
+                              <LoadingWheel isLoading={false} />
                               <Container
                                         disableGutters
                                         maxWidth="md"

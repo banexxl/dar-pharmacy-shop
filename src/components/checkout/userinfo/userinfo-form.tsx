@@ -1,7 +1,7 @@
 import theme, { Colors } from '@/styles/theme';
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import React, { ChangeEvent, FunctionComponent, useState } from 'react';
+import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema, userEmailSchema } from '@/schema/user-form.schema';
@@ -19,26 +19,26 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
 
           const { t } = useTranslation('common')
           const [openEmailForm, setOpenEmailForm] = useState(false);
+          const [isLoading, setIsLoading] = useState(false)
+          const mounted = useRef(false)
           const dispatch = useDispatch()
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel isLoading={false} />,
+          })
 
           const handleSubmit = (values: IUserForm) => {
-
                     dispatch(submitUserForm(values))
-
                     props.tabIndex === 0 ? props.setTab?.(1) : null
-
           }
 
           const onSubmitEmailForm = (email: any) => {
                     console.log(email);
           }
 
-          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
-          })
 
           return (
                     <DynamicThemeProvider theme={theme}>
+                              <LoadingWheel isLoading={isLoading} />
                               <Container
                                         disableGutters
                                         maxWidth="md"
@@ -167,6 +167,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                             )
                                                   }
                                         </Formik>
+
                                         <Formik initialValues={initialEmailFormValues} onSubmit={(e: any) => console.log(e)} validationSchema={userEmailSchema(t)} reset>
                                                   {
                                                             formik => (
@@ -210,6 +211,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                   }
                                         </Formik>
                               </Container>
+
                     </DynamicThemeProvider >
           );
 };

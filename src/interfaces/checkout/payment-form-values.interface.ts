@@ -25,6 +25,7 @@ export const initialPaymentFormValues: IPaymentForm = {
 };
 
 export interface IPaymentFormProps {
+          isLoading?: boolean;
           sameAsShipping: boolean
           tabIndex?: number
           setTab?: (tabIndex: number) => number
