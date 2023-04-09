@@ -4,7 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
-import { userFormSchema, userEmailSchema } from '@/schema/user-form.schema';
+import { userFormSchema, userEmailSchema } from '@/schemas/user-form.schema';
 import { submitUserForm } from '@/store/checkout/checkout.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { ShouldCreateAccountButton } from '@/styles/checkout/userinfo';

@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialPaymentFormValues, IPaymentForm, IPaymentFormProps } from '../../../interfaces/checkout/payment-form-values.interface';
-import { userFormSchema } from '../../../schema/user-form.schema';
+import { userFormSchema } from '../../../schemas/user-form.schema';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';

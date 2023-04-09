@@ -7,7 +7,7 @@ import { ICreditCardForm, ICreditCardFormProps, initialCreditCardValues } from '
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme from '@/styles/theme';
-import { creditCardSchema } from '@/schema/credit-card-form.schema';
+import { creditCardSchema } from '@/schemas/credit-card-form.schema';
 import { useDispatch } from 'react-redux';
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -62,7 +62,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                 <Grid container spacing={2}>
                                                                                           <Grid item xs={12} sm={12}>
                                                                                                     <TextField
-                                                                                                              label={t('creditCard.cardNumber')}
+                                                                                                              label={t('credit-card.card-number')}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
                                                                                                               helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
@@ -80,7 +80,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              label={t('creditCard.expiryDate')}
+                                                                                                              label={t('credit-card.expiry-date')}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.expiryDate && !!formik.errors?.expiryDate}
                                                                                                               helperText={formik.touched?.expiryDate && formik.errors?.expiryDate}
@@ -97,7 +97,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              label={t('creditCard.securityCode')}
+                                                                                                              label={t('credit-card.security-code')}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.securityCode && !!formik.errors?.securityCode}
                                                                                                               helperText={formik.touched?.securityCode && formik.errors?.securityCode}
@@ -112,11 +112,11 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                     </TextField>
                                                                                           </Grid>
                                                                                 </Grid>
-                                                                                < Grid item xs={12} sm={6}>
+                                                                                < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
                                                                                           <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                     {t('checkout.previousbutton')}
                                                                                           </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton type='submit' onClick={() => handleSubmit(formik.values)} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>
