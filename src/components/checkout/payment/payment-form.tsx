@@ -38,7 +38,6 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
 
           return (
                     <DynamicThemeProvider theme={theme}>
-                              <LoadingWheel isLoading={false} />
                               <Container
                                         disableGutters
                                         maxWidth="md"

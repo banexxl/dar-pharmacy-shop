@@ -59,7 +59,7 @@
     "password": "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     "confirmPassword": "Confirm password must match",
     "invalidFormat": "Invalid Format",
-     "date-format":"Exipry date mus bein format MM/YY",
+     "date-format":"Exipry date mus bein format MM/YYYY",
      "expired-card": "Card expired",
      "cvc-required": "Security code is required",
      "card-number": "Card number must be 16 digits",

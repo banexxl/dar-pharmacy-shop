@@ -59,7 +59,7 @@
     "password": "Mora da sadrži minimum osam karaktera, bar jedno veliko i malo slovo, bar jedan broj i sprecijalni karakter",
     "confirmPassword": "Šifre se moraju poklapati",
     "invalidFormat": "Nevalidan format",
-    "date-format":"Datum isteka mora biti u formatu MM/YY",
+    "date-format":"Datum isteka mora biti u formatu MM/YYYY",
     "expired-card": "Istekla kartica",
     "cvc-required": "CVC je obavezan",
     "card-number": "Broj kartice mora da sadrži 16 brojeva",

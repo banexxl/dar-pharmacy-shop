@@ -1,8 +1,9 @@
-import { Container, Grid, TextField, Typography } from '@mui/material';
+import { Container, Grid, Input, TextField, Typography } from '@mui/material';
 import { Field, Form, Formik, FormikErrors, FormikTouched } from 'formik';
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { ChangeEvent, FunctionComponent, useState } from 'react';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useTranslation } from 'next-i18next';
-import InputMask from 'react-input-mask';
+import dayjs, { Dayjs } from 'dayjs';
 import { ICreditCardForm, ICreditCardFormProps, initialCreditCardValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
@@ -12,7 +13,8 @@ import { useDispatch } from 'react-redux';
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-
+import { DatePicker, LocalizationProvider, AdapterUnits } from '@mui/x-date-pickers';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICreditCardFormProps) => {
 
@@ -21,8 +23,15 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
           })
-
           const dispatch = useDispatch()
+          const currentDate = new Date()
+          const expMonth = currentDate.getMonth()
+          const expYear = currentDate.getFullYear()
+          let input: number
+          const handleSecurityChange = (event: any) => {
+                    input = event.target.value.slice(0, 3);
+                    console.log(input);
+          };
 
           const handleSubmit = (values: ICreditCardForm) => {
 
@@ -39,7 +48,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
           return (
                     <DynamicThemeProvider theme={theme}>
-                              <LoadingWheel isLoading={false} />
+
                               <Container
                                         disableGutters
                                         maxWidth="md"
@@ -67,33 +76,21 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
                                                                                                               helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
                                                                                                               fullWidth
+                                                                                                              type='number'
                                                                                                     >
-                                                                                                              <InputMask
-                                                                                                                        mask="9999-9999-9999-9999"
-                                                                                                                        maskPlaceholder="####-####-####-####"
-                                                                                                                        name={`cardNumber`}
-                                                                                                                        value={formik.values.cardNumber}
-                                                                                                                        onChange={formik.handleChange}
-                                                                                                              />
                                                                                                     </TextField>
 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
-                                                                                                    <TextField
-                                                                                                              label={t('credit-card.expiry-date')}
-                                                                                                              variant="outlined"
-                                                                                                              error={formik.touched?.expiryDate && !!formik.errors?.expiryDate}
-                                                                                                              helperText={formik.touched?.expiryDate && formik.errors?.expiryDate}
-                                                                                                              fullWidth
-                                                                                                    >
-                                                                                                              <InputMask
-                                                                                                                        mask="99/9999"
-                                                                                                                        maskPlaceholder="mm/yyyy"
-                                                                                                                        name={`expiryDate`}
-                                                                                                                        value={formik.values.expiryDate}
-                                                                                                                        onChange={formik.handleChange}
+                                                                                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                                                                              <MobileDatePicker
+                                                                                                                        label={t('credit-card.expiry-date')}
+                                                                                                                        defaultValue={dayjs(expYear + "-" + expMonth)}
+                                                                                                                        disablePast
+                                                                                                                        format='MM/YYYY'
+                                                                                                              //onChange={(newValue) => setValue(newValue)}
                                                                                                               />
-                                                                                                    </TextField>
+                                                                                                    </LocalizationProvider>
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
@@ -102,14 +99,11 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               error={formik.touched?.securityCode && !!formik.errors?.securityCode}
                                                                                                               helperText={formik.touched?.securityCode && formik.errors?.securityCode}
                                                                                                               fullWidth
-                                                                                                    >
-                                                                                                              <InputMask
-                                                                                                                        mask="999"
-                                                                                                                        name={`securityCode`}
-                                                                                                                        value={formik.values.securityCode}
-                                                                                                                        onChange={formik.handleChange}
-                                                                                                              />
-                                                                                                    </TextField>
+                                                                                                              maxRows={1}
+                                                                                                              value={input}
+                                                                                                              type='number'
+                                                                                                              onChange={(e) => handleSecurityChange(e)}
+                                                                                                    />
                                                                                           </Grid>
                                                                                 </Grid>
                                                                                 < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
