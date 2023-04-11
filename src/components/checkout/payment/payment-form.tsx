@@ -6,14 +6,14 @@ import { initialPaymentFormValues, IPaymentForm, IPaymentFormProps } from '../..
 import { userFormSchema } from '../../../schemas/user-form.schema';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { isBillingAndShippingCheckbox, PaymentFormControl } from '@/styles/checkout/payment';
-import DeleteIcon from '@mui/icons-material/Delete';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
+import DeleteIcon from '@mui/icons-material/Delete'
 import { submitPaymentForm } from '@/store/checkout/checkout.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme from '@/styles/theme';
+import { isBillingAndShippingCheckbox } from '@/styles/checkout/payment';
 
 export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFormProps) => {
 

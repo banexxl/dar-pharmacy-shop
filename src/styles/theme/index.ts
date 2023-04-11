@@ -83,11 +83,9 @@ const theme: Theme = createTheme({
                               styleOverrides: {
                                         root: {
                                                   color: Colors.white,
-                                                  background: `${Colors.primary}`,
-                                                  "&:hover": {
-                                                            background: lighten(0.05, Colors.secondary),
-                                                  },
+                                                  background: Colors.secondary
                                         },
+
                               },
                     },
           },

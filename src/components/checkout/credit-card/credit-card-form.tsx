@@ -7,14 +7,13 @@ import dayjs, { Dayjs } from 'dayjs';
 import { ICreditCardForm, ICreditCardFormProps, initialCreditCardValues } from '../../../interfaces/checkout/credit-card-form-values.interface';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
-import theme from '@/styles/theme';
+import theme, { Colors } from '@/styles/theme';
 import { creditCardSchema } from '@/schemas/credit-card-form.schema';
 import { useDispatch } from 'react-redux';
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { DatePicker, LocalizationProvider, AdapterUnits } from '@mui/x-date-pickers';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers/';
 
 export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICreditCardFormProps) => {
 
@@ -84,10 +83,22 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                                                                               <MobileDatePicker
+                                                                                                                        views={['year', 'month']}
                                                                                                                         label={t('credit-card.expiry-date')}
                                                                                                                         defaultValue={dayjs(expYear + "-" + expMonth)}
                                                                                                                         disablePast
                                                                                                                         format='MM/YYYY'
+                                                                                                                        slotProps={{
+                                                                                                                                  layout: {
+                                                                                                                                            sx: {
+                                                                                                                                                      backgroundColor: Colors.primary,
+
+                                                                                                                                            }
+                                                                                                                                  }
+                                                                                                                        }}
+
+
+
                                                                                                               //onChange={(newValue) => setValue(newValue)}
                                                                                                               />
                                                                                                     </LocalizationProvider>
