@@ -82,12 +82,17 @@ const theme: Theme = createTheme({
                     MuiButtonBase: {
                               styleOverrides: {
                                         root: {
-                                                  color: Colors.white,
-                                                  background: Colors.secondary
+                                                  background: Colors.secondary,
+
+                                                  ":hover": {
+                                                            background: 'black',
+                                                            innerHeight: '300px'
+                                                  }
                                         },
 
                               },
                     },
+
           },
 });
 

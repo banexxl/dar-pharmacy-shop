@@ -26,10 +26,11 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
           const currentDate = new Date()
           const expMonth = currentDate.getMonth()
           const expYear = currentDate.getFullYear()
-          let input: number
+
+          let codeCount: number = 0
           const handleSecurityChange = (event: any) => {
-                    input = event.target.value.slice(0, 3);
-                    console.log(input);
+                    console.log(event.target.value);
+
           };
 
           const handleSubmit = (values: ICreditCardForm) => {
@@ -75,9 +76,13 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
                                                                                                               helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
                                                                                                               fullWidth
+                                                                                                              inputProps={{
+                                                                                                                        max: 16
+                                                                                                              }}
+                                                                                                              required
                                                                                                               type='number'
-                                                                                                    >
-                                                                                                    </TextField>
+                                                                                                    />
+
 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
@@ -91,14 +96,10 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                                         slotProps={{
                                                                                                                                   layout: {
                                                                                                                                             sx: {
-                                                                                                                                                      backgroundColor: Colors.primary,
-
+                                                                                                                                                      backgroundColor: Colors.dove_gray,
                                                                                                                                             }
                                                                                                                                   }
                                                                                                                         }}
-
-
-
                                                                                                               //onChange={(newValue) => setValue(newValue)}
                                                                                                               />
                                                                                                     </LocalizationProvider>
@@ -107,13 +108,18 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                     <TextField
                                                                                                               label={t('credit-card.security-code')}
                                                                                                               variant="outlined"
+                                                                                                              name="securityCode"
                                                                                                               error={formik.touched?.securityCode && !!formik.errors?.securityCode}
                                                                                                               helperText={formik.touched?.securityCode && formik.errors?.securityCode}
                                                                                                               fullWidth
                                                                                                               maxRows={1}
-                                                                                                              value={input}
-                                                                                                              type='number'
+                                                                                                              // value={values.securityKey}
+                                                                                                              type="password"
+                                                                                                              inputProps={{
+                                                                                                                        maxLength: 4
+                                                                                                              }}
                                                                                                               onChange={(e) => handleSecurityChange(e)}
+                                                                                                              required
                                                                                                     />
                                                                                           </Grid>
                                                                                 </Grid>
