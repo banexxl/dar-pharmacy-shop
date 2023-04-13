@@ -2,7 +2,7 @@ import { Button, Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
 import Image from "next/image";
-import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerText, BannerTextInner, BannerTitle } from "../../styles/banner"
+import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
 import { Colors } from "@/styles/theme";
 
 
@@ -16,18 +16,15 @@ export default function Banner() {
 
                               <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
                               <BannerContent>
-                                        <BannerText>
-                                                  <BannerTitle>
-                                                            Apoteka DAR
-                                                  </BannerTitle>
-                                                  Dobro došli u <BannerTextInner>našu i Vašu apoteku</BannerTextInner>, gde se pružaju
-                                                  <BannerTextInner > visokokvalitetni proizvodi i usluge.</BannerTextInner>
-                                                  <BannerTextInner > Mi smo tu da Vam pomognemo</BannerTextInner> da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu.
-                                                  Imamo stručan tim koji će Vam pružiti <BannerTextInner>savet i pomoć </BannerTextInner>u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
-                                                  <BannerShopButton color="primary" >
-                                                            <Link href="/products">Proizvodi</Link>
-                                                  </BannerShopButton>
-                                        </BannerText>
+                                        <BannerTitle>
+                                                  Apoteka DAR
+                                        </BannerTitle>
+                                        Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge.
+                                        Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu.
+                                        Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
+                                        <BannerShopButton color="primary" >
+                                                  <Link href="/products">Proizvodi</Link>
+                                        </BannerShopButton>
                               </BannerContent>
                     </BannerContainer >
           )

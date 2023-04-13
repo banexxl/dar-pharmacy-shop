@@ -29,6 +29,9 @@ export default function Actions({ isScreenToMedium }: any) {
                                         onClick={showCartDialog}
                                         sx={{
                                                   justifyContent: "center",
+                                                  '&:hover': {
+                                                            backgroundColor: Colors.secondary,
+                                                  },
                                         }}
                               >
                                         <ListItemIcon
@@ -46,6 +49,9 @@ export default function Actions({ isScreenToMedium }: any) {
                                         onClick={showWishListDialog}
                                         sx={{
                                                   justifyContent: "center",
+                                                  '&:hover': {
+                                                            backgroundColor: Colors.secondary,
+                                                  },
                                         }}
                               >
                                         <ListItemIcon
@@ -63,6 +69,9 @@ export default function Actions({ isScreenToMedium }: any) {
                                         onClick={showLoginDialog}
                                         sx={{
                                                   justifyContent: "center",
+                                                  '&:hover': {
+                                                            backgroundColor: Colors.secondary,
+                                                  },
                                         }}
                               >
                                         <ListItemIcon
@@ -79,6 +88,9 @@ export default function Actions({ isScreenToMedium }: any) {
                               <ListItemButton
                                         sx={{
                                                   justifyContent: "center",
+                                                  '&:hover': {
+                                                            backgroundColor: Colors.secondary,
+                                                  },
                                         }}
                               >
                                         <Select

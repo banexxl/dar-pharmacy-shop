@@ -29,6 +29,9 @@ export const ProductImage = styled("img")(({ src, theme }: any) => ({
 export const ProductActionButton = styled(IconButton)(() => ({
           background: Colors.white,
           margin: 4,
+          '&:hover': {
+                    backgroundColor: Colors.secondary,
+          },
 }))
 
 export const ProductFavButton = styled(ProductActionButton)(({ isfav, theme }: any) => ({
@@ -37,6 +40,9 @@ export const ProductFavButton = styled(ProductActionButton)(({ isfav, theme }: a
                     position: "absolute",
                     right: 0,
                     top: 0,
+          },
+          '&:hover': {
+                    backgroundColor: Colors.secondary,
           },
 }));
 
@@ -52,6 +58,9 @@ export const ProductAddToCart = styled(Button, { shouldForwardProp: (prop) => pr
                               animation:
                                         show &&
                                         `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+                    },
+                    '&:hover': {
+                              backgroundColor: Colors.secondary,
                     },
                     background: Colors.primary,
                     opacity: 0.9,
