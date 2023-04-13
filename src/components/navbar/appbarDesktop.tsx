@@ -6,6 +6,7 @@ import { useUIContext } from "../../context/ui/ui.context";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
+import { Colors } from "@/styles/theme";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
@@ -56,7 +57,13 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                                         </Link>
                               </AppbarTitle>
 
-                              <ListItemButton sx={{ maxWidth: '200px' }} onClick={() => setShowSearchBox(true)}>
+                              <ListItemButton sx={{
+                                        maxWidth: '200px',
+                                        borderRadius: '20px',
+                                        '&:hover': {
+                                                  backgroundColor: Colors.secondary,
+                                        },
+                              }} onClick={() => setShowSearchBox(true)}>
                                         <ListItemIcon>
                                                   <SearchIcon />
                                         </ListItemIcon>

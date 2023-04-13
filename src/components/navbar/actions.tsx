@@ -25,15 +25,11 @@ export default function Actions({ isScreenToMedium }: any) {
 
           return (
                     <Component>
-                              <ListItemButton
-                                        onClick={showCartDialog}
-                                        sx={{
-                                                  justifyContent: "center",
-                                                  '&:hover': {
-                                                            backgroundColor: Colors.secondary,
-                                                  },
-                                        }}
-                              >
+                              <ListItemButton onClick={showCartDialog} sx={{
+                                        justifyContent: "center", '&:hover': {
+                                                  backgroundColor: Colors.secondary,
+                                        },
+                              }}>
                                         <ListItemIcon
                                                   sx={{
                                                             display: "flex",

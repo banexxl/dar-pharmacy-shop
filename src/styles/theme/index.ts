@@ -83,8 +83,6 @@ const theme: Theme = createTheme({
                               styleOverrides: {
                                         root: {
                                                   background: Colors.primary,
-                                                  color: 'white',
-                                                  fontWeight: 'bold',
                                         },
 
                               },
