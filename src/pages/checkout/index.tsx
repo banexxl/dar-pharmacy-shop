@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import TabPanel from '@/components/checkout/tab-panel'
+import { TabPanel } from '@/components/checkout/tab-panel'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import Payment from '@/components/checkout/payment/payment-form'
@@ -18,6 +18,8 @@ import { ICheckoutState } from '@/store/checkout/checkout-state.interface'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
 import { CreditCard } from '@/components/checkout/credit-card/credit-card-form'
+import { CheckoutTabs, CheckoutTab } from '@/styles/checkout/checkout-tabs'
+import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/checkout/checkout-stepper'
 
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -28,6 +30,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     setTabIndex(tabIndex)
                     return 0
           }
+
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -51,19 +54,26 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                         <Stack>
                                                   <UIProvider>
                                                             <Box sx={{ borderBottom: 3, borderColor: Colors.secondary, marginTop: '100px' }}>
-                                                                      <Stepper activeStep={tabIndex}>
+                                                                      <CheckoutStepper activeStep={tabIndex}>
                                                                                 {steps.map(label => (
-                                                                                          <Step key={label}>
-                                                                                                    <StepLabel>{label}</StepLabel>
-                                                                                          </Step>
+                                                                                          <CheckoutStep key={label}>
+                                                                                                    <CheckoutStepLabel>{label}</CheckoutStepLabel>
+                                                                                          </CheckoutStep>
                                                                                 ))}
-                                                                      </Stepper>
-                                                                      <Tabs value={tabIndex}>
-                                                                                <Tab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.card-payment')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <Tab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
-                                                                      </Tabs>
+                                                                      </CheckoutStepper>
+
+                                                                      <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}
+                                                                                sx={{
+                                                                                          '& .MuiTabs-flexContainer': {
+                                                                                                    flexWrap: 'wrap',
+                                                                                          },
+                                                                                }}>
+                                                                                <CheckoutTab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                <CheckoutTab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                <CheckoutTab label={t('checkout.card-payment')} sx={{ bgcolor: Colors.secondary }} />
+                                                                                <CheckoutTab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
+                                                                      </CheckoutTabs>
+
                                                                       <TabPanel value={tabIndex} index={0}>
                                                                                 <UserInfoForm formName={'userinfo'} setTab={setTab} tabIndex={0} />
                                                                       </TabPanel>
