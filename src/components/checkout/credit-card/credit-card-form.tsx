@@ -77,7 +77,10 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
                                                                                                               fullWidth
                                                                                                               inputProps={{
-                                                                                                                        max: 16
+                                                                                                                        max: '9999999999999999\n', // Maximum value that can be entered
+                                                                                                                        min: 0, // Minimum value that can be entered
+                                                                                                                        step: 1, // This sets the input to integers only
+                                                                                                                        pattern: '\d{16}', // This limits the input to exactly 16 digits
                                                                                                               }}
                                                                                                               required
                                                                                                               type='number'
