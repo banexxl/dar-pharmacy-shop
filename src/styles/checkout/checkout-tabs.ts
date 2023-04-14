@@ -11,11 +11,12 @@ export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
           [theme.breakpoints.down("xl")]: {
                     width: '600px'
           },
+          [theme.breakpoints.down("lg")]: {
+                    width: '600px'
+          },
           [theme.breakpoints.down("md")]: {
-                    width: '500px',
-                    paddingLeft: '0px',
-                    marginLeft: '0px',
-                    transform: 'translateX(0%)',
+                    width: '600px',
+
           },
 }));
 
@@ -28,6 +29,14 @@ export const CheckoutTab = styled(Tab)(({ theme }) => ({
           },
           [theme.breakpoints.down("md")]: {
                     fontSize: ".6rem",
+
+          },
+          [theme.breakpoints.down("sm")]: {
+                    padding: '5px'
+
+          },
+          [theme.breakpoints.down("xs")]: {
+
 
           },
 }));
