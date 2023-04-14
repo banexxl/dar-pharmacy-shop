@@ -3,7 +3,7 @@ import { ChangeEvent } from "react";
 
 export interface ICreditCardForm {
           cardNumber: string;
-          expiryDate: string;
+          expirationDate: string;
           securityCode: string;
 }
 
@@ -20,6 +20,6 @@ export interface ICreditCardFormProps {
 
 export const initialCreditCardValues: ICreditCardForm = {
           cardNumber: '',
-          expiryDate: '',
+          expirationDate: '',
           securityCode: '',
 };

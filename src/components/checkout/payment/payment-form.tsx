@@ -160,20 +160,20 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                                                                                         fullWidth
                                                                                                               />
                                                                                                     </Grid>
-                                                                                                    <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
-                                                                                                              {t('checkout.clearform')}
-                                                                                                    </ClearFormButton>
+                                                                                                    < Grid item xs={12} sm={6}>
+                                                                                                              <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
+                                                                                                                        {t('checkout.clearform')}
+                                                                                                              </ClearFormButton>
 
+                                                                                                    </Grid>
                                                                                           </Grid>
                                                                                 )}
-                                                                                < Grid item xs={12} sm={6}>
-                                                                                          <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                                                                                    {t('checkout.previousbutton')}
-                                                                                          </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton type='submit' onClick={() => handleSubmit(formik.values)} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
-                                                                                                    {t('checkout.nextbutton')}
-                                                                                          </CheckoutNextPrevButton>
-                                                                                </Grid>
+                                                                                <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                                                                          {t('checkout.previousbutton')}
+                                                                                </CheckoutNextPrevButton>
+                                                                                <CheckoutNextPrevButton type='submit' onClick={() => handleSubmit(formik.values)} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                          {t('checkout.nextbutton')}
+                                                                                </CheckoutNextPrevButton>
                                                                       </Form>
 
                                                             )

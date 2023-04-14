@@ -49,7 +49,11 @@ const theme: Theme = createTheme({
                               },
                               styleOverrides: {
                                         root: {
-                                                  color: 'white'
+                                                  color: 'white',
+                                                  background: Colors.secondary,
+                                                  '&:hover': {
+                                                            background: Colors.primary
+                                                  }
                                         }
                               }
                     },
@@ -84,16 +88,6 @@ const theme: Theme = createTheme({
                                         }
                               }
                     },
-                    MuiButtonBase: {
-                              styleOverrides: {
-                                        root: {
-                                                  background: Colors.primary,
-
-                                        },
-
-                              },
-                    },
-
           },
 });
 

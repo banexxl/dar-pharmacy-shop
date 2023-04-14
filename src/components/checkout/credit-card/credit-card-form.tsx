@@ -27,7 +27,6 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
           const expMonth = currentDate.getMonth()
           const expYear = currentDate.getFullYear()
 
-          let codeCount: number = 0
           const handleSecurityChange = (event: any) => {
                     console.log(event.target.value);
 
@@ -67,23 +66,20 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           {t('credit-card.credit-card')}
                                                                                 </Typography>
 
-
                                                                                 <Grid container spacing={2}>
                                                                                           <Grid item xs={12} sm={12}>
                                                                                                     <TextField
                                                                                                               label={t('credit-card.card-number')}
                                                                                                               variant="outlined"
+                                                                                                              value={formik.values.cardNumber}
                                                                                                               error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
                                                                                                               helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
                                                                                                               fullWidth
                                                                                                               inputProps={{
-                                                                                                                        max: '9999999999999999\n', // Maximum value that can be entered
-                                                                                                                        min: 0, // Minimum value that can be entered
-                                                                                                                        step: 1, // This sets the input to integers only
-                                                                                                                        pattern: '\d{16}', // This limits the input to exactly 16 digits
+                                                                                                                        maxLength: 16
                                                                                                               }}
-                                                                                                              required
                                                                                                               type='number'
+                                                                                                              required
                                                                                                     />
 
 
@@ -112,6 +108,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               label={t('credit-card.security-code')}
                                                                                                               variant="outlined"
                                                                                                               name="securityCode"
+                                                                                                              value={formik.values.securityCode}
                                                                                                               error={formik.touched?.securityCode && !!formik.errors?.securityCode}
                                                                                                               helperText={formik.touched?.securityCode && formik.errors?.securityCode}
                                                                                                               fullWidth
