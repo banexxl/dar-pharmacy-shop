@@ -6,10 +6,10 @@ export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
           transform: 'translateX(-25%)',
           marginTop: '20px',
           [theme.breakpoints.up("xl")]: {
-                    width: '700px'
+                    width: '800px'
           },
           [theme.breakpoints.down("xl")]: {
-                    width: '600px'
+                    width: '700px'
           },
           [theme.breakpoints.down("lg")]: {
                     width: '600px'

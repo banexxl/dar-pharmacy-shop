@@ -47,6 +47,11 @@ const theme: Theme = createTheme({
                                         disableRipple: true,
                                         disableElevation: true,
                               },
+                              styleOverrides: {
+                                        root: {
+                                                  color: 'white'
+                                        }
+                              }
                     },
                     MuiTooltip: {
                               defaultProps: {
@@ -83,6 +88,7 @@ const theme: Theme = createTheme({
                               styleOverrides: {
                                         root: {
                                                   background: Colors.primary,
+
                                         },
 
                               },
