@@ -15,10 +15,10 @@ export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
                     width: '600px'
           },
           [theme.breakpoints.down("md")]: {
-                    width: '600px',
+                    width: '500px',
           },
           [theme.breakpoints.down("sm")]: {
-                    width: '400px',
+                    width: '420px',
                     paddingLeft: '1%',
                     transform: 'translateX(0%)',
           },
