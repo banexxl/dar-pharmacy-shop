@@ -18,7 +18,7 @@ export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
                     width: '500px',
           },
           [theme.breakpoints.down("sm")]: {
-                    width: '420px',
+                    width: '380px',
                     paddingLeft: '1%',
                     transform: 'translateX(0%)',
           },
