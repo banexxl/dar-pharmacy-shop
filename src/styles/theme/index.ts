@@ -42,6 +42,21 @@ const theme: Theme = createTheme({
           },
 
           components: {
+                    MuiStepper: {
+                              styleOverrides: {
+                                        root: {
+                                                  marginBottom: '20px'
+                                        }
+                              }
+                    },
+                    MuiTabs: {
+                              styleOverrides: {
+                                        root: {
+                                                  display: 'inline',
+                                                  flexWrap: 'wrap',
+                                        }
+                              },
+                    },
                     MuiButton: {
                               defaultProps: {
                                         disableRipple: true,
@@ -89,6 +104,14 @@ const theme: Theme = createTheme({
                               }
                     },
           },
-});
-
+          breakpoints: {
+                    values: {
+                              xs: 450,
+                              sm: 600,
+                              md: 900,
+                              lg: 1200,
+                              xl: 1536,
+                    }
+          }
+})
 export default theme;

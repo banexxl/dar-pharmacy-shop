@@ -27,11 +27,6 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
           const expMonth = currentDate.getMonth()
           const expYear = currentDate.getFullYear()
 
-          const handleSecurityChange = (event: any) => {
-                    console.log(event.target.value);
-
-          };
-
           const handleSubmit = (values: any) => {
 
                     console.log("usao u handle next, vrednosti su: ", values);
@@ -128,8 +123,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                     {t('checkout.previousbutton')}
                                                                                           </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}
-                                                                                                    onClick={() => console.log(formik.values)}>
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>

@@ -2,8 +2,7 @@ import { styled, Tab, Tabs } from "@mui/material"
 
 
 export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
-          paddingLeft: '50%',
-          transform: 'translateX(-25%)',
+
           marginTop: '20px',
           [theme.breakpoints.up("xl")]: {
                     width: '800px'
@@ -17,10 +16,9 @@ export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
           [theme.breakpoints.down("md")]: {
                     width: '500px',
           },
-          [theme.breakpoints.down("sm")]: {
-                    width: '380px',
-                    paddingLeft: '1%',
-                    transform: 'translateX(0%)',
+          [theme.breakpoints.down("xs")]: {
+                    width: '500px',
+
           },
 }));
 
@@ -36,7 +34,6 @@ export const CheckoutTab = styled(Tab)(({ theme }) => ({
 
           },
           [theme.breakpoints.down("sm")]: {
-                    padding: '5px'
 
           },
           [theme.breakpoints.down("xs")]: {
