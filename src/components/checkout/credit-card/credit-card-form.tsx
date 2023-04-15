@@ -74,6 +74,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               value={formik.values.cardNumber}
                                                                                                               error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
                                                                                                               helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
+                                                                                                              onChange={formik.handleChange('cardNumber')}
                                                                                                               fullWidth
                                                                                                               inputProps={{
                                                                                                                         maxLength: 16
@@ -85,7 +86,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
-                                                                                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                                                                    <LocalizationProvider dateAdapter={AdapterDayjs} onChange={formik.handleChange('expirationDate')}>
                                                                                                               <MobileDatePicker
                                                                                                                         views={['year', 'month']}
                                                                                                                         label={t('credit-card.expiry-date')}
@@ -99,7 +100,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                                                             }
                                                                                                                                   }
                                                                                                                         }}
-                                                                                                              //onChange={(newValue) => setValue(newValue)}
+
                                                                                                               />
                                                                                                     </LocalizationProvider>
                                                                                           </Grid>
@@ -118,7 +119,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               inputProps={{
                                                                                                                         maxLength: 4
                                                                                                               }}
-                                                                                                              onChange={(e) => handleSecurityChange(e)}
+                                                                                                              onChange={formik.handleChange('securityCode')}
                                                                                                               required
                                                                                                     />
                                                                                           </Grid>
