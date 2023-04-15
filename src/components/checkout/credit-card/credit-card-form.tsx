@@ -1,6 +1,6 @@
 import { Container, Grid, Input, TextField, Typography } from '@mui/material';
 import { Field, Form, Formik, FormikErrors, FormikTouched } from 'formik';
-import React, { ChangeEvent, FunctionComponent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useTranslation } from 'next-i18next';
 import dayjs, { Dayjs } from 'dayjs';
@@ -32,7 +32,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
           };
 
-          const handleSubmit = (values: ICreditCardForm) => {
+          const handleSubmit = (values: any) => {
 
                     console.log("usao u handle next, vrednosti su: ", values);
 
@@ -58,7 +58,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                   gap: '20px'
                                         }}
                               >
-                                        <Formik validationSchema={creditCardSchema(t)} onSubmit={(values: ICreditCardForm) => handleSubmit(values)} initialValues={initialCreditCardValues} >
+                                        <Formik initialValues={initialCreditCardValues} onSubmit={(values: ICreditCardForm) => handleSubmit(values)} validationSchema={creditCardSchema(t)}>
                                                   {
                                                             formik => (
                                                                       <Form>
@@ -86,11 +86,12 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
-                                                                                                    <LocalizationProvider dateAdapter={AdapterDayjs} onChange={formik.handleChange('expirationDate')}>
+                                                                                                    <LocalizationProvider dateAdapter={AdapterDayjs} value={formik.values.expirationDate} onChange={formik.handleChange('expirationDate')}>
                                                                                                               <MobileDatePicker
                                                                                                                         views={['year', 'month']}
                                                                                                                         label={t('credit-card.expiry-date')}
                                                                                                                         defaultValue={dayjs(expYear + "-" + expMonth)}
+                                                                                                                        value={formik.values.expirationDate}
                                                                                                                         disablePast
                                                                                                                         format='MM/YYYY'
                                                                                                                         slotProps={{
@@ -100,7 +101,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                                                             }
                                                                                                                                   }
                                                                                                                         }}
-
+                                                                                                                        onChange={(e) => formik.handleChange('expirationDate')}
                                                                                                               />
                                                                                                     </LocalizationProvider>
                                                                                           </Grid>
@@ -114,7 +115,6 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               helperText={formik.touched?.securityCode && formik.errors?.securityCode}
                                                                                                               fullWidth
                                                                                                               maxRows={1}
-                                                                                                              // value={values.securityKey}
                                                                                                               type="password"
                                                                                                               inputProps={{
                                                                                                                         maxLength: 4
@@ -128,7 +128,8 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                     {t('checkout.previousbutton')}
                                                                                           </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}
+                                                                                                    onClick={() => console.log(formik.values)}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>

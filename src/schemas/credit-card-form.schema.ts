@@ -5,23 +5,7 @@ export const creditCardSchema = (t: any) => yup.object().shape({
                     .string()
                     .required('Card number is required')
                     .matches(
-                              /^4[0-9]{12}(?:[0-9]{3})?$/, // Matches Visa card numbers
-                              'Invalid card number'
-                    )
-                    .matches(
-                              /^5[1-5][0-9]{14}$/, // Matches Mastercard card numbers
-                              'Invalid card number'
-                    )
-                    .matches(
-                              /^3[47][0-9]{13}$/, // Matches American Express card numbers
-                              'Invalid card number'
-                    )
-                    .matches(
-                              /^6(?:011|5[0-9][0-9])[0-9]{12}$/, // Matches Discover card numbers
-                              'Invalid card number'
-                    )
-                    .matches(
-                              /^(?:2131|1800|35\d{3})\d{11}$/, // Matches JCB card numbers
+                              (/^4[0-9]{12}(?:[0-9]{3})?$/) || (/^5[1-5][0-9]{14}$/) || (/^3[47][0-9]{13}$/) || (/^6(?:011|5[0-9][0-9])[0-9]{12}$/) || (/^(?:2131|1800|35\d{3})\d{11}$/), // Matches Visa card numbers
                               'Invalid card number'
                     ),
           expirationDate: yup

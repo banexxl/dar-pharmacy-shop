@@ -1,9 +1,11 @@
+import dayjs, { Dayjs } from "dayjs";
 import { FormikErrors, FormikTouched } from "formik";
 import { ChangeEvent } from "react";
 
+
 export interface ICreditCardForm {
           cardNumber: string;
-          expirationDate: string;
+          expirationDate: Dayjs;
           securityCode: string;
 }
 
@@ -20,6 +22,6 @@ export interface ICreditCardFormProps {
 
 export const initialCreditCardValues: ICreditCardForm = {
           cardNumber: '',
-          expirationDate: '',
+          expirationDate: dayjs(),
           securityCode: '',
 };
