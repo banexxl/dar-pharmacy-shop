@@ -38,6 +38,7 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
 
           return (
                     <DynamicThemeProvider theme={theme}>
+
                               <Container
                                         disableGutters
                                         maxWidth="md"
@@ -175,7 +176,6 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                                                           {t('checkout.nextbutton')}
                                                                                 </CheckoutNextPrevButton>
                                                                       </Form>
-
                                                             )
                                                   }
                                         </Formik>

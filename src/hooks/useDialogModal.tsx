@@ -25,7 +25,6 @@ export default function useDialogModal(Component: any) {
                                         return null
                               }
                     }
-                    return null
           },
                     [open, Component]
           )

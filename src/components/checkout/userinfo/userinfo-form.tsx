@@ -200,7 +200,6 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                         </Formik>
 
                               </Container>
-
                     </DynamicThemeProvider >
           );
 };
