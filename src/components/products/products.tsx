@@ -15,7 +15,8 @@ export default function Products(props: any) {
           const cart: ICartItem[] = useSelector((state: any) => state.cart)
 
           const renderProducts = props.data?.map((product: any) => (
-                    <Grid item key={product._id} xs={2} sm={4} md={4} display="flex" flexDirection={'column'} alignItems="center">
+                    <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
+
                               {isScreenToMedium ? (
                                         <SingleProduct product={product} isScreenToMedium={isScreenToMedium} />
                               ) : (
@@ -31,11 +32,12 @@ export default function Products(props: any) {
                                         spacing={{ xs: 2, md: 3 }}
                                         justifyContent="center"
                                         sx={{ margin: `20px 4px 10px 4px` }}
-                                        columns={{ xs: 4, sm: 8, md: 12 }}
+                                        // columns={{ xs: 4, sm: 4, md: 6 }}
+                                        gridTemplateColumns={{ xs: '1fr 1fr', sm: '1fr 1fr 1fr', md: '1fr 1fr 1fr' }}
                               >
                                         {renderProducts}
                               </Grid>
-                    </Container>
+                    </Container >
           );
 }
 

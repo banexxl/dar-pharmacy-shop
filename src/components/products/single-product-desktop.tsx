@@ -79,7 +79,5 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                         </Alert>
                               )}
                     </Product>
-
-
           );
 }

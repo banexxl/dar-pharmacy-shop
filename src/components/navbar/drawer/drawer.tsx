@@ -32,11 +32,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                     <>
                               <Drawer open={drawerOpen}>
                                         <List>
-                                                  <ListItemButton sx={{
-                                                            '&:hover': {
-                                                                      backgroundColor: Colors.secondary,
-                                                            },
-                                                  }}>
+                                                  <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
                                                                       <Link href={'/'}>
                                                                                 Početna
@@ -47,11 +43,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                             </DrawerCloseButton>
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton sx={{
-                                                            '&:hover': {
-                                                                      backgroundColor: Colors.secondary,
-                                                            },
-                                                  }}>
+                                                  <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
                                                                       <Link href={'/'}>
                                                                                 Proizvodi
@@ -59,11 +51,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                             </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton sx={{
-                                                            '&:hover': {
-                                                                      backgroundColor: Colors.secondary,
-                                                            },
-                                                  }}>
+                                                  <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
                                                                       <Link href={'/contact'}>
                                                                                 Kontakt
@@ -71,27 +59,15 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                             </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }} sx={{
-                                                            '&:hover': {
-                                                                      backgroundColor: Colors.secondary,
-                                                            },
-                                                  }}>
+                                                  <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
                                                             <ListItemText>Korpa</ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }} sx={{
-                                                            '&:hover': {
-                                                                      backgroundColor: Colors.secondary,
-                                                            },
-                                                  }}>
+                                                  <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }}>
                                                             <ListItemText>Omiljeni</ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }} sx={{
-                                                            '&:hover': {
-                                                                      backgroundColor: Colors.secondary,
-                                                            },
-                                                  }}>
+                                                  <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
                                                             <ListItemText>
                                                                       <Link href={'/api/auth'}>
                                                                                 Login

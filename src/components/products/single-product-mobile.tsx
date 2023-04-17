@@ -40,28 +40,26 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
           }
 
           return (
-                    <>
-                              <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                                        <ProductImage src={product.imageURL} />
-                                        <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
-                                        <ProductActionsWrapper>
-                                                  <Stack direction={isScreenToMedium ? "row" : "column"}>
-                                                            <ProductFavButton isfav={0}>
-                                                                      <FavoriteIcon />
-                                                            </ProductFavButton>
-                                                            <ProductActionButton>
-                                                                      <Tooltip placement="left" title="share this product">
-                                                                                <ShareIcon color="primary" />
-                                                                      </Tooltip>
-                                                            </ProductActionButton>
-                                                            <ProductActionButton onClick={() => showProductDetailDialog()}>
-                                                                      <Tooltip placement="left" title="Full view">
-                                                                                <FitScreenIcon color="primary" />
-                                                                      </Tooltip>
-                                                            </ProductActionButton>
-                                                  </Stack>
-                                        </ProductActionsWrapper>
-                              </Product>
+                    <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                              <ProductImage src={product.imageURL} />
+                              <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
+                              <ProductActionsWrapper>
+                                        <Stack direction={isScreenToMedium ? "row" : "column"}>
+                                                  <ProductFavButton isfav={0}>
+                                                            <FavoriteIcon />
+                                                  </ProductFavButton>
+                                                  <ProductActionButton>
+                                                            <Tooltip placement="left" title="share this product">
+                                                                      <ShareIcon color="primary" />
+                                                            </Tooltip>
+                                                  </ProductActionButton>
+                                                  <ProductActionButton onClick={() => showProductDetailDialog()}>
+                                                            <Tooltip placement="left" title="Full view">
+                                                                      <FitScreenIcon color="primary" />
+                                                            </Tooltip>
+                                                  </ProductActionButton>
+                                        </Stack>
+                              </ProductActionsWrapper>
                               {addedToCartAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                                                   {t('product.added-to-cart')}
@@ -69,6 +67,6 @@ export default function SingleProduct({ product, isScreenToMedium }: any) {
                               )}
                               <ProductAddToCart variant="contained" onClick={() => { callAlert(); dispatch(addToCart(product)) }}>Add to cart</ProductAddToCart >
                               <ProductDetailDialog product={product} />
-                    </>
+                    </Product>
           );
 }

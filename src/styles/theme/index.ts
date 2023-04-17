@@ -65,9 +65,9 @@ const theme: Theme = createTheme({
                               styleOverrides: {
                                         root: {
                                                   color: 'white',
-                                                  background: Colors.secondary,
+                                                  background: Colors.primary,
                                                   '&:hover': {
-                                                            background: Colors.primary
+                                                            background: Colors.secondary
                                                   }
                                         }
                               }
@@ -106,7 +106,7 @@ const theme: Theme = createTheme({
           },
           breakpoints: {
                     values: {
-                              xs: 450,
+                              xs: 0,
                               sm: 600,
                               md: 900,
                               lg: 1200,
