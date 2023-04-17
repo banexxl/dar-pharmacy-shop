@@ -1,9 +1,9 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { CartWrapper, StyledHeaderCell, StyledHeader } from "@/styles/cart"
+import { CartWrapper, StyledHeaderCell, StyledHeader, StyledHeaderRow } from "@/styles/cart"
 import { useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart/cart.interface";
 import CartItem from "./components/cartItem";
@@ -54,13 +54,15 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   <Table aria-label="customized table"
                                                   >
                                                             <StyledHeader>
-                                                                      <StyledHeaderCell>Slika</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">Naziv</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">Pakovanje</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">Sifra</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">Kolicina</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">Cena</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">Ukupno</StyledHeaderCell>
+                                                                      <StyledHeaderRow>
+                                                                                <StyledHeaderCell>Slika</StyledHeaderCell>
+                                                                                <StyledHeaderCell align="left">Naziv</StyledHeaderCell>
+                                                                                <StyledHeaderCell align="left">Pakovanje</StyledHeaderCell>
+                                                                                <StyledHeaderCell align="left">Sifra</StyledHeaderCell>
+                                                                                <StyledHeaderCell align="left">Kolicina</StyledHeaderCell>
+                                                                                <StyledHeaderCell align="left">Cena</StyledHeaderCell>
+                                                                                <StyledHeaderCell align="left">Ukupno</StyledHeaderCell>
+                                                                      </StyledHeaderRow>
                                                             </StyledHeader>
                                                             <TableBody>
                                                                       {cart.map((cartItem: ICartItem) => (

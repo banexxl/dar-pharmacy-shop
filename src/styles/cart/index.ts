@@ -65,6 +65,18 @@ export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
           }
 }))
 
+export const StyledHeaderRow = styled(TableRow)(({ theme }: any) => ({
+          [theme.breakpoints.up("xs")]: {
+                    display: 'none',
+                    color: 'white'
+          },
+          [theme.breakpoints.up("sm")]: {
+                    display: 'flex',
+                    alignItems: "center",
+                    backgroundColor: Colors.secondary
+          }
+}))
+
 export const StyledProductCell = styled(TableCell)(({ theme }: any) => ({
           [`&.${tableCellClasses.head}`]: {
                     backgroundColor: Colors.secondary,
