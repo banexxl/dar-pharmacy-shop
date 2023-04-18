@@ -1,4 +1,14 @@
 {
+"cart": {
+          "products": "Products in cart:",
+          "image": "Image",
+          "name": "Name",
+          "quantity": "Quantity",
+          "code": "Code",
+          "amount": "Amount",
+          "price": "Price",
+          "total": "Total price"
+},
   "checkout": {
           "on-delivery-payment": "On delivery payment",
           "card-payment": "Card payment",
@@ -45,11 +55,16 @@
     "zipPostalCode": "Zip/Postal Code",
     "email": "Email"
   },
-  "credit-card": {
-    "credit-card": "Credit Card",
-    "card-number": "Card Number",
-    "expiry-date": "Expiry Date",
-    "security-code": "Security Code"
+  "confirmation": {
+          "total-with-tax": "Total with tax",
+          "to-payment": "To payment page",
+          "to-shop": "Back to shop"
+  },
+"credit-card": {
+          "credit-card": "Credit Card",
+          "card-number": "Card Number",
+          "expiry-date": "Expiry Date",
+          "security-code": "Security Code"
   },
   "errorMessages": {
     "required": "{{- fieldName}} is required",

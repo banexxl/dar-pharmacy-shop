@@ -1,5 +1,5 @@
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { CartProductImage, StyledProductCell, StyledProductRow } from '@/styles/cart'
+import { CartProductImage, StyledProductCell, StyledProductName, StyledProductRow } from '@/styles/cart'
 import Counter from '@/utils/counter'
 import React from 'react'
 
@@ -11,9 +11,9 @@ const CartItem = (props: ICartItem) => {
                               <StyledProductCell component="th" scope="row">
                                         <CartProductImage src={props.imageURL} />
                               </StyledProductCell>
-                              <StyledProductCell align="left">
+                              <StyledProductName>
                                         {props.name}
-                              </StyledProductCell>
+                              </StyledProductName>
                               <StyledProductCell>
                                         {props.quantity}
                               </StyledProductCell>

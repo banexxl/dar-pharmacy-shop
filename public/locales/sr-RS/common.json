@@ -1,4 +1,14 @@
 {
+"cart": {
+          "products":"Proizvodi u korpi:",
+          "image": "Slika",
+          "name": "Naziv",
+          "quantity": "Pakovanje",
+          "code": "Kod",
+          "amount": "Količina",
+          "price": "Cena",
+          "total": "Ukupno"
+},
   "checkout": {
           "on-delivery-payment": "Plaćanje pouzećem",
           "card-payment": "Kartično plaćanje",
@@ -44,6 +54,11 @@
     "country": "Država",
     "zipPostalCode": "Poštanski broj",
     "email": "Email"
+  },
+  "confirmation": {
+          "total-with-tax": "Ukupno sa PDV-om",
+          "to-payment": "Na plaćanje",
+          "to-shop": "Nazad u apoteku"
   },
   "credit-card": {
     "credit-card": "Platna Kartica: ",
