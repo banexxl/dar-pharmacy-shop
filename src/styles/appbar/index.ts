@@ -10,6 +10,7 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
                     marginLeft: '30px'
           },
           minWidth: '75%',
+          maxWidth: '1000px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
