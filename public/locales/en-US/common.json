@@ -311,5 +311,10 @@
           "email": "Email address",
           "subscribe": "Subscribe",
           "accept-terms": "I accept the terms of the "
+  },
+  "404":{
+          "not-found": "404 - Page Not Found",
+          "message": "UPS!....The page you are looking for is under construction! Please stay tuned! It could be live any moment",
+          "back-to-home": "Back to home page"
   }
   }

@@ -13,6 +13,7 @@ import useDialogModal from "@/hooks/useDialogModal";
 import WishList from "../wishlist/wishlist";
 import Cart from "../cart/cart";
 import LoginRegister from "../login/login";
+import { useRouter } from "next/router";
 
 export default function Footer() {
 
@@ -22,6 +23,7 @@ export default function Footer() {
           const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
           const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
           const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
+          const router = useRouter();
 
           const handlePrivacyAgreement = (checked: any) => {
                     setAgreed(checked)
@@ -52,28 +54,32 @@ export default function Footer() {
                                                   <FooterTitle variant="body1">{t('footer.information')}</FooterTitle>
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                <Link href={"/"}>
+                                                                      <Link href={"/"} >
+                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }} onClick={() => router.push("/")}>
                                                                                           {t('footer.home')}
-                                                                                </Link>
-                                                                      </Typography>
+                                                                                </Typography>
+                                                                      </Link>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                {t('footer.about-us')}
-                                                                      </Typography>
+                                                                      <Link href='/information/about-us' >
+                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }} onClick={() => router.push("/information/about-us")}>
+                                                                                          {t('footer.about-us')}
+                                                                                </Typography>
+                                                                      </Link>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                <Link href='/information/privacy-policy'>
+                                                                      <Link href='/information/privacy-policy' onClick={() => router.push("/information/privacy-policy")}>
+                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                           {t('footer.privacy-policy')}
-                                                                                </Link>
-                                                                      </Typography>
+                                                                                </Typography>
+                                                                      </Link>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                {t('footer.terms-conditions')}
-                                                                      </Typography>
+                                                                      <Link href='/information/terms-conditions' onClick={() => router.push("/information/terms-conditions")}>
+                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                          {t('footer.terms-conditions')}
+                                                                                </Typography>
+                                                                      </Link>
                                                             </ListItemText>
                                                   </List>
                                         </Box>
@@ -128,11 +134,13 @@ export default function Footer() {
                               </FooterSubscribe>
 
 
-                              {agreedWarning && (
-                                        <Alert variant="filled" severity="error" sx={{ position: 'fixed', top: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
-                                                  {t('information.privacy-policy.agree-warning')}
-                                        </Alert>
-                              )}
+                              {
+                                        agreedWarning && (
+                                                  <Alert variant="filled" severity="error" sx={{ position: 'fixed', top: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
+                                                            {t('information.privacy-policy.agree-warning')}
+                                                  </Alert>
+                                        )
+                              }
                               <WishListDialog />
                               <CartDialog />
                               <LoginDialog />
