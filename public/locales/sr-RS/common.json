@@ -297,5 +297,20 @@
   },
   "product": {
           "added-to-cart": "Proizvod uspešno dodat u korpu!"
+  },
+  "footer":{
+          "information": "Informacije",
+          "home": "Početna",
+          "about-us": "O nama",
+          "privacy-policy": "Politike privatnosti",
+          "terms-conditions": "Uslovi",
+          "my-account": "Moj nalog",
+          "login": "Prijavi se",
+          "cart":"Korpa",
+          "wishlist": "Omiljeno",
+          "newsletter":"Bilten",
+          "email": "E-mail adresa",
+          "subscribe": "Pretplati se",
+          "accept-terms": "Prihvatam uslove "
   }
 }

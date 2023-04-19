@@ -9,12 +9,19 @@ import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import useDialogModal from "@/hooks/useDialogModal";
+import WishList from "../wishlist/wishlist";
+import Cart from "../cart/cart";
+import LoginRegister from "../login/login";
 
 export default function Footer() {
 
-          const { t } = useTranslation();
+          const { t } = useTranslation('common');
           const [agreed, setAgreed] = useState(false)
           const [agreedWarning, setAgreedWarning] = useState(false)
+          const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
+          const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
+          const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
 
           const handlePrivacyAgreement = (checked: any) => {
                     setAgreed(checked)
@@ -42,55 +49,55 @@ export default function Footer() {
                     <FooterContainer>
                               <FooterInfoAccount >
                                         <Box>
-                                                  <FooterTitle variant="body1">information</FooterTitle>
+                                                  <FooterTitle variant="body1">{t('footer.information')}</FooterTitle>
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                 <Link href={"/"}>
-                                                                                          Home
+                                                                                          {t('footer.home')}
                                                                                 </Link>
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                About Us
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                {t('footer.about-us')}
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                 <Link href='/information/privacy-policy'>
-                                                                                          Privacy &amp; Policy
+                                                                                          {t('footer.privacy-policy')}
                                                                                 </Link>
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                Terms &amp; Conditions
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                {t('footer.terms-conditions')}
                                                                       </Typography>
                                                             </ListItemText>
                                                   </List>
                                         </Box>
                                         <Box>
-                                                  <FooterTitle variant="body1">my account</FooterTitle>
+                                                  <FooterTitle variant="body1">{t('footer.my-account')}</FooterTitle>
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption" >
-                                                                                Login
+                                                            <ListItemText onClick={showLoginDialog}>
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                {t('footer.login')}
                                                                       </Typography>
                                                             </ListItemText>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                My Cart
+                                                            <ListItemText onClick={showCartDialog}>
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                {t('footer.cart')}
                                                                       </Typography>
                                                             </ListItemText>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                My Account
+                                                            <ListItemText onClick={showWishListDialog}>
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                {t('footer.my-account')}
                                                                       </Typography>
                                                             </ListItemText>
-                                                            <ListItemText>
-                                                                      <Typography lineHeight={2} variant="caption">
-                                                                                Wishlist
+                                                            <ListItemText onClick={showWishListDialog}>
+                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                                                                {t('footer.wishlist')}
                                                                       </Typography>
                                                             </ListItemText>
                                                   </List>
@@ -104,10 +111,10 @@ export default function Footer() {
                               </FooterSocial>
 
                               <FooterSubscribe>
-                                        <FooterTitle variant="body1">newsletter</FooterTitle>
+                                        <FooterTitle variant="body1">{t('footer.newsletter')}</FooterTitle>
                                         <SubscribeTf
                                                   color="secondary"
-                                                  label="Email address"
+                                                  label={t('footer.email')}
                                                   variant="filled"
                                         />
                                         <Button
@@ -115,7 +122,7 @@ export default function Footer() {
                                                   variant="contained"
                                                   onClick={() => handleSubscribe(agreed)}
                                         >
-                                                  Subscribe
+                                                  {t('footer.subscribe')}
                                         </Button>
                                         <FormControlLabel control={<PrivacyPolicyCheckBox value={agreed} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePrivacyAgreement(e.target.checked)} />} label={t('information.privacy-policy.agree')} />
                               </FooterSubscribe>
@@ -126,6 +133,9 @@ export default function Footer() {
                                                   {t('information.privacy-policy.agree-warning')}
                                         </Alert>
                               )}
+                              <WishListDialog />
+                              <CartDialog />
+                              <LoginDialog />
                     </FooterContainer >
           );
 }

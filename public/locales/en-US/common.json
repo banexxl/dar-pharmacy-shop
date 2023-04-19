@@ -295,5 +295,21 @@
 },
  "product": {
           "added-to-cart": "Item successfuly added to cart!"
+  },
+  "footer":{
+          "information": "Information",
+          "home": "Home",
+          "about-us": "About us",
+          "privacy-policy": "Privacy and policy",
+          "terms-conditions": "Terms and conditions",
+          "my-account": "My Account",
+          "login": "Login",
+          "cart":"Cart",
+          "account": "My account",
+          "wishlist": "Wishlist",
+          "newsletter":"Newsletter",
+          "email": "Email address",
+          "subscribe": "Subscribe",
+          "accept-terms": "I accept the terms of the "
   }
   }
