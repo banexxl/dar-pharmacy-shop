@@ -9,7 +9,15 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
           [theme.breakpoints.down('md')]: {
                     marginLeft: '30px'
           },
-          minWidth: '75%',
+          [theme.breakpoints.up('md')]: {
+                    minWidth: '85%',
+          },
+          [theme.breakpoints.up('lg')]: {
+                    minWidth: '75%',
+          },
+          [theme.breakpoints.up('xl')]: {
+                    minWidth: '75%',
+          },
           maxWidth: '1000px',
           display: 'flex',
           justifyContent: 'space-between',
