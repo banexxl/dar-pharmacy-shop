@@ -68,7 +68,7 @@ const theme: Theme = createTheme({
                                                   background: Colors.primary,
                                                   '&:hover': {
                                                             background: Colors.secondary
-                                                  }
+                                                  },
                                         }
                               }
                     },
@@ -103,6 +103,13 @@ const theme: Theme = createTheme({
                                         }
                               }
                     },
+                    MuiTouchRipple: {
+                              styleOverrides: {
+                                        root: {
+                                                  padding: '10px'
+                                        }
+                              }
+                    }
           },
           breakpoints: {
                     values: {

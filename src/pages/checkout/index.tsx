@@ -1,7 +1,7 @@
 import UserInfoForm from '@/components/checkout/userinfo/userinfo-form'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Stack, Step, StepLabel, Stepper, Tab, Tabs } from '@mui/material'
+import { Box, Container, Stack, Step, StepLabel, Stepper, Tab, Tabs, Typography } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -18,7 +18,7 @@ import { ICheckoutState } from '@/store/checkout/checkout-state.interface'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
 import { CreditCard } from '@/components/checkout/credit-card/credit-card-form'
-import { CheckoutTabs, CheckoutTab } from '@/styles/checkout/checkout-tabs'
+import { CheckoutTabs, CheckoutTab, CheckoutTabText } from '@/styles/checkout/checkout-tabs'
 import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/checkout/checkout-stepper'
 
 
@@ -62,16 +62,11 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 ))}
                                                                       </CheckoutStepper>
 
-                                                                      <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}
-                                                                                sx={{
-                                                                                          '& .MuiTabs-flexContainer': {
-                                                                                                    flexWrap: 'wrap',
-                                                                                          },
-                                                                                }}>
-                                                                                <CheckoutTab label={t('checkout.user-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <CheckoutTab label={t('checkout.payment-info')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <CheckoutTab label={t('checkout.card-payment')} sx={{ bgcolor: Colors.secondary }} />
-                                                                                <CheckoutTab label={t('checkout.confirmation')} sx={{ bgcolor: Colors.secondary }} />
+                                                                      <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}>
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.user-info')}</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.payment-info')}</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.card-payment')}</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.confirmation')}</CheckoutTabText>} />
                                                                       </CheckoutTabs>
 
                                                                       <TabPanel value={tabIndex} index={0}>

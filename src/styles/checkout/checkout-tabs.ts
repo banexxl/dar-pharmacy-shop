@@ -1,8 +1,8 @@
-import { styled, Tab, Tabs } from "@mui/material"
+import { styled, Tab, Tabs, Typography } from "@mui/material"
+import { Colors } from "../theme";
 
 
 export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
-
           marginTop: '20px',
           [theme.breakpoints.up("xl")]: {
                     width: '800px'
@@ -16,13 +16,20 @@ export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
           [theme.breakpoints.down("md")]: {
                     width: '500px',
           },
-          [theme.breakpoints.down("xs")]: {
-                    width: '500px',
-
-          },
 }));
 
 export const CheckoutTab = styled(Tab)(({ theme }) => ({
+          background: Colors.secondary,
+          [theme.breakpoints.up("md")]: {
+                    width: '250px',
+          },
+          [theme.breakpoints.down("md")]: {
+                    width: '110px',
+          },
+}));
+
+export const CheckoutTabText = styled(Typography)(({ theme }) => ({
+          wordWrap: 'break-word',
           [theme.breakpoints.up("xl")]: {
                     fontSize: "1rem",
           },
@@ -31,13 +38,11 @@ export const CheckoutTab = styled(Tab)(({ theme }) => ({
           },
           [theme.breakpoints.down("md")]: {
                     fontSize: ".6rem",
-
           },
           [theme.breakpoints.down("sm")]: {
-
+                    paddingRight: '50px'
           },
           [theme.breakpoints.down("xs")]: {
-
 
           },
 }));
