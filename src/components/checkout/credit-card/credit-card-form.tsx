@@ -75,8 +75,6 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                               type='number'
                                                                                                               required
                                                                                                     />
-
-
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -119,7 +117,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                     {t('checkout.previousbutton')}
                                                                                           </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>

@@ -1,6 +1,6 @@
 import { Container, Grid, TextField, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import React, { FunctionComponent, useState } from 'react';
+import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialPaymentFormValues, IPaymentForm, IPaymentFormProps } from '../../../interfaces/checkout/payment-form-values.interface';
 import { userFormSchema } from '../../../schemas/user-form.schema';
@@ -19,6 +19,7 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
 
           const { t } = useTranslation();
           const dispatch = useDispatch()
+          const [sameAsShippingCB, setSameAsShippingCB] = useState(false)
 
           const handleSubmit = (values: IPaymentForm) => {
 
@@ -27,9 +28,17 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                     props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
+          const handleNext = () => {
+                    props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
+          };
+
           const handleBack = () => {
                     props.tabIndex === 1 ? props.setTab?.(props.tabIndex - 1) : null
           };
+
+          const handleSameAsShippingCheckBoxChange = (event: ChangeEvent<HTMLInputElement>) => {
+                    setSameAsShippingCB(event.target.checked)
+          }
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -57,13 +66,28 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                                                           {t('checkout.billingAddress')}
                                                                                 </Typography>
                                                                                 <Field
+                                                                                          checked={sameAsShippingCB}
                                                                                           component={isBillingAndShippingCheckbox}
                                                                                           type="checkbox"
                                                                                           name="sameAsShipping"
                                                                                           Label={{ label: t('checkout.sameAsShipping') }}
+                                                                                          onChange={handleSameAsShippingCheckBoxChange}
                                                                                 />
 
-                                                                                {!formik.values.sameAsShipping && (
+                                                                                {
+                                                                                          sameAsShippingCB && (
+                                                                                                    <Grid item xs={12} sm={6}>
+                                                                                                              <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                                                                                                        {t('checkout.previousbutton')}
+                                                                                                              </CheckoutNextPrevButton>
+                                                                                                              <CheckoutNextPrevButton onClick={() => handleNext()} type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                                                        {t('checkout.nextbutton')}
+                                                                                                              </CheckoutNextPrevButton>
+                                                                                                    </Grid>
+                                                                                          )
+                                                                                }
+
+                                                                                {!sameAsShippingCB && (
                                                                                           <Grid container spacing={2}>
                                                                                                     <Grid item xs={12} sm={6}>
                                                                                                               <TextField
@@ -165,16 +189,16 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                                                                               <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
                                                                                                                         {t('checkout.clearform')}
                                                                                                               </ClearFormButton>
-
+                                                                                                              <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                                                                                                        {t('checkout.previousbutton')}
+                                                                                                              </CheckoutNextPrevButton>
+                                                                                                              <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                                                        {t('checkout.nextbutton')}
+                                                                                                              </CheckoutNextPrevButton>
                                                                                                     </Grid>
                                                                                           </Grid>
                                                                                 )}
-                                                                                <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                                                                          {t('checkout.previousbutton')}
-                                                                                </CheckoutNextPrevButton>
-                                                                                <CheckoutNextPrevButton type='submit' onClick={() => handleSubmit(formik.values)} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
-                                                                                          {t('checkout.nextbutton')}
-                                                                                </CheckoutNextPrevButton>
+
                                                                       </Form>
                                                             )
                                                   }
