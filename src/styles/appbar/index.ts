@@ -7,7 +7,7 @@ import { textPopUpTop } from "../animation";
 
 export const AppbarContainer = styled(Box)(({ theme }: any) => ({
           [theme.breakpoints.down('md')]: {
-                    marginLeft: '30px'
+                    marginLeft: '20%'
           },
           [theme.breakpoints.up('md')]: {
                     minWidth: '700px',
