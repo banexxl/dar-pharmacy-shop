@@ -119,17 +119,24 @@ export const StyledProductRow = styled(TableRow)(({ theme }: any) => ({
 export const StyledTotalsBox = styled(Box)(({ theme }: any) => ({
           display: 'flex',
           flexDirection: 'column',
-          mt: '30px',
           gap: '10px',
           alignItems: 'center',
-          ml: '50px'
+          [theme.breakpoints.down("md")]: {
+                    margin: '30px',
+          },
+          [theme.breakpoints.up("md")]: {
+                    marginRight: 'auto',
+                    marginLeft: 'auto',
+                    marginTop: '100px'
+          }
 }))
 
 export const StyledTotalsTitle = styled(Typography)(({ theme }: any) => ({
           fontFamily: 'sans-serif',
           fontSize: '1.5rem',
           color: Colors.secondary,
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          textAlign: 'center'
 }))
 
 export const StyledTotalsPrice = styled(Typography)(({ theme }: any) => ({
