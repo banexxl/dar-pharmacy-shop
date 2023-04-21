@@ -25,9 +25,12 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
           })
           const dispatch = useDispatch()
 
-          const handleSubmit = (values: ICreditCardForm) => {
+          const handleSubmit = (values: any) => {
 
-                    console.log("usao u handle next, vrednosti su: ", values.expirationDate.year() + " " + values.expirationDate.month());
+                    console.log(dayjs());
+
+                    console.log("usao u handle next, vrednosti su: ", values);
+
 
                     //dispatch(submitPaymentForm(values))
 
@@ -37,6 +40,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
           const handleBack = () => {
                     props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
           };
+
 
           return (
                     <DynamicThemeProvider theme={theme}>
@@ -82,8 +86,8 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                                         views={['year', 'month']}
                                                                                                                         label={t('credit-card.expiry-date')}
                                                                                                                         disablePast
-                                                                                                                        onChange={(date: any) => formik.setFieldValue('expirationDate', date)}
-                                                                                                                        format='MM/YYYY'
+                                                                                                                        onAccept={(date: ChangeEvent<HTMLInputElement> | null) => formik.setFieldValue('expirationDate', date)}
+                                                                                                                        format='MM/YY'
                                                                                                                         slotProps={{
                                                                                                                                   layout: {
                                                                                                                                             sx: {
@@ -117,7 +121,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                     {t('checkout.previousbutton')}
                                                                                           </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                          <CheckoutNextPrevButton onClick={(e: any) => handleSubmit(formik.values)} type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>
