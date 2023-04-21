@@ -9,11 +9,21 @@ export const creditCardSchema = (t: any) => yup.object().shape({
                               'Invalid card number'
                     ),
           expirationDate: yup
-                    .string()
-                    .required('Expiration date is required')
-                    .matches(
-                              /^(0[1-9]|1[0-2])\/([0-9]{2})$/, // Matches MM/YY format
-                              'Invalid expiration date'
-                    ),
+                    .object()
+                    .required('required')
+                    .default(undefined)
+                    .shape({
+                              '$D': yup.number().required('Required'),
+                              '$H': yup.number().required('Required'),
+                              '$L': yup.string().required('Required'),
+                              '$M': yup.number().required('Required'),
+                              '$W': yup.number().required('Required'),
+                              '$d': yup.string().required('Required'),
+                              '$m': yup.number().required('Required'),
+                              '$ms': yup.number().required('Required'),
+                              '$s': yup.number().required('Required'),
+                              '$x': yup.object().required('Required'),
+                              '$y': yup.number().required('Required'),
+                    }),
           securityCode: yup.string().required('CVV is required').matches(/^[0-9]{3,4}$/, 'Invalid CVV'), // Matches 3 or 4 digit numbers
 });

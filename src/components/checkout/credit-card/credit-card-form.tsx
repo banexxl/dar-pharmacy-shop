@@ -25,10 +25,9 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
           })
           const dispatch = useDispatch()
 
-          const handleSubmit = (values: any) => {
+          const handleSubmit = (values: ICreditCardForm) => {
 
-                    console.log(dayjs());
-
+                    console.log(values)
                     console.log("usao u handle next, vrednosti su: ", values);
 
 
@@ -92,6 +91,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                                                   layout: {
                                                                                                                                             sx: {
                                                                                                                                                       backgroundColor: Colors.dove_gray,
+
                                                                                                                                             }
                                                                                                                                   }
                                                                                                                         }}
@@ -121,7 +121,7 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                           <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                     {t('checkout.previousbutton')}
                                                                                           </CheckoutNextPrevButton>
-                                                                                          <CheckoutNextPrevButton onClick={(e: any) => handleSubmit(formik.values)} type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                          <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
                                                                                                     {t('checkout.nextbutton')}
                                                                                           </CheckoutNextPrevButton>
                                                                                 </Grid>
