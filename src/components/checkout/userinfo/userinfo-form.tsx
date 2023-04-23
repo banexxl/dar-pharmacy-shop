@@ -1,5 +1,5 @@
 import theme, { Colors } from '@/styles/theme';
-import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, Grid, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
@@ -7,7 +7,7 @@ import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserFor
 import { userFormSchema, userEmailSchema } from '@/schemas/user-form.schema';
 import { submitUserForm } from '@/store/checkout/checkout.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { ShouldCreateAccountButton } from '@/styles/checkout/userinfo';
+import { PaymentOptionRadio, ShouldCreateAccountButton } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
@@ -142,14 +142,25 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                               fullWidth
                                                                                                     />
                                                                                           </Grid>
-                                                                                          <Grid item xs={12} sm={6}>
+                                                                                          <PaymentOptionRadio>
                                                                                                     <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
                                                                                                               {t('checkout.clearform')}
                                                                                                     </ClearFormButton>
-                                                                                                    <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={< NavigateNextIcon />}>
+                                                                                                    <CheckoutNextPrevButton type='submit' endIcon={< NavigateNextIcon />}>
                                                                                                               {t('checkout.nextbutton')}
                                                                                                     </CheckoutNextPrevButton>
-                                                                                          </Grid>
+                                                                                                    <FormLabel id="demo-controlled-radio-buttons-group">{t('checkout.payment-options')}</FormLabel>
+                                                                                                    <RadioGroup
+                                                                                                              aria-labelledby="demo-controlled-radio-buttons-group"
+                                                                                                              name="controlled-radio-buttons-group"
+                                                                                                              value={formik.values.paymentOption}
+                                                                                                              onChange={(e: any) => console.log(e)}
+                                                                                                              sx={{ display: 'flex', flexDirection: 'row' }}
+                                                                                                    >
+                                                                                                              <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={t('checkout.on-delivery-payment')} />
+                                                                                                              <FormControlLabel value="cardPayment" control={<Radio />} label={t('checkout.card-payment')} />
+                                                                                                    </RadioGroup>
+                                                                                          </PaymentOptionRadio>
                                                                                 </Grid>
                                                                       </Form>
                                                             )
@@ -162,9 +173,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                       <Form onSubmit={formik.handleSubmit}>
                                                                                 <Grid item xs={12} sm={6}>
                                                                                           <ShouldCreateAccountButton onClick={() => setOpenEmailForm(true)} >
-                                                                                                    {<Typography sx={{
-                                                                                                              fontFamily: 'inherit', color: Colors.secondary
-                                                                                                    }}>{t('checkout.shouldcreateaccount')}</Typography>}
+                                                                                                    {<Typography>{t('checkout.shouldcreateaccount')}</Typography>}
                                                                                           </ShouldCreateAccountButton>
                                                                                           <Dialog open={openEmailForm}>
                                                                                                     <DialogTitle>Subscribe</DialogTitle>

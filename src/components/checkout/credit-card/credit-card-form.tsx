@@ -1,4 +1,4 @@
-import { Container, Grid, Input, InputAdornment, TextField, Typography } from '@mui/material';
+import { Box, Container, Grid, Input, InputAdornment, TextField, Typography } from '@mui/material';
 import { Field, Form, Formik, FormikErrors, FormikTouched } from 'formik';
 import React, { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
@@ -15,6 +15,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers/';
 import { FieldChangeHandlerContext } from '@mui/x-date-pickers/internals/hooks/useField/useField.types';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import DatePickerInput from '@/components/datepicker';
 
 export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICreditCardFormProps) => {
 
@@ -91,7 +92,6 @@ export const CreditCard: FunctionComponent<ICreditCardFormProps> = (props: ICred
                                                                                                                                   layout: {
                                                                                                                                             sx: {
                                                                                                                                                       backgroundColor: Colors.dove_gray,
-
                                                                                                                                             }
                                                                                                                                   }
                                                                                                                         }}

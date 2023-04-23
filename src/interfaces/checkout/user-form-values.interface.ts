@@ -9,6 +9,7 @@ export interface IUserForm {
           provinceState?: string;
           country: string;
           zipPostalCode: string;
+          paymentOption: string;
 }
 
 export interface IEmailForm {
@@ -24,6 +25,7 @@ export const initialUserFormValues: IUserForm = {
           provinceState: '',
           country: '',
           zipPostalCode: '',
+          paymentOption: 'onDelivery'
 };
 
 export const initialEmailFormValues: IEmailForm = {

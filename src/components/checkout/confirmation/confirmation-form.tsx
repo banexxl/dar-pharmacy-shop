@@ -2,7 +2,7 @@ import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { sendForm } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
-import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow } from '@/styles/cart'
+import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledTotalsTitle } from '@/styles/cart'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
 import { Button, Paper, Table, TableBody } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -28,13 +28,13 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               >
                                         <StyledHeader>
                                                   <StyledProductRow>
-                                                            <StyledProductCell>Slika</StyledProductCell>
-                                                            <StyledProductCell align="left">Naziv</StyledProductCell>
-                                                            <StyledProductCell align="left">Pakovanje</StyledProductCell>
-                                                            <StyledProductCell align="left">Sifra</StyledProductCell>
-                                                            <StyledProductCell align="left">Kolicina</StyledProductCell>
-                                                            <StyledProductCell align="left">Cena</StyledProductCell>
-                                                            <StyledProductCell align="left">Ukupno</StyledProductCell>
+                                                            <StyledProductCell>{t("cart.image")}</StyledProductCell>
+                                                            <StyledProductCell align="left">{t("cart.name")}</StyledProductCell>
+                                                            <StyledProductCell align="left">{t("cart.quantity")}</StyledProductCell>
+                                                            <StyledProductCell align="left">{t("cart.code")}</StyledProductCell>
+                                                            <StyledProductCell align="left">{t("cart.amount")}</StyledProductCell>
+                                                            <StyledProductCell align="left">{t("cart.price")}</StyledProductCell>
+                                                            <StyledProductCell align="left">{t("cart.total")}</StyledProductCell>
                                                   </StyledProductRow>
                                         </StyledHeader>
                                         <TableBody>
@@ -47,13 +47,16 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                   ))}
                                         </TableBody>
                               </Table>
-                              Ukupno sa PDV-om: {parseFloat(totalItemPrice).toFixed(2)} RSD
+                              <StyledTotalsTitle>
+                                        {t('confirmation.total-with-tax')}{parseFloat(totalItemPrice).toFixed(2)} RSD
+                              </StyledTotalsTitle>
+
                               <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                         {t('checkout.previousbutton')}
                               </CheckoutNextPrevButton>
                               <Button sx={{ color: 'white' }}
                                         onClick={() => sendForm({ email: 'damjanovic.branislav@gmail.com', subject: 'Potvrda porudzbine', name: 'Majo', title: 'Potvrda porudzbine', message: 'majaidrugari@gmail.com', cart })}>
-                                        Na placanje
+                                        {t('confirmation.to-payment')}
                               </Button>
                     </CartWrapper>
           )
