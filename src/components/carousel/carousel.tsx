@@ -1,8 +1,9 @@
 import IProduct from '@/interfaces/product/product.interface';
-import { Button, Paper } from '@mui/material';
+import { Button, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
+import { ProductImage } from './carousel-image-loader';
 
 const ProductCarousel = (props: any) => {
 
@@ -10,7 +11,7 @@ const ProductCarousel = (props: any) => {
           console.log(products);
 
           return (
-                    <Carousel animation="slide">
+                    <Carousel animation="slide" sx={{ marginTop: '80px', position: 'relative' }}>
                               {products.map((product: IProduct) => (
                                         <CarouselProductItem key={product._id} name={product.name} description={product.description} img={product.imageURL} />
                               ))}
@@ -19,11 +20,13 @@ const ProductCarousel = (props: any) => {
 }
 
 const CarouselProductItem = (props: any) => {
+
+          console.log('props u karoselu', props);
+
           return (
-                    <Paper>
-                              <h2>{props.name}</h2>
-                              <p>{props.description}</p>
-                              <Image src={props.image} alt={props.name} />
+                    <Paper >
+                              <Typography>{props.name}</Typography>
+                              <ProductImage src={props.img} alt={props.name} height={100} width={100} />
                               <Button>Learn More</Button>
                     </Paper>
           );

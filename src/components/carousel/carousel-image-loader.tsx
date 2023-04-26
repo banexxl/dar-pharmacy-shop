@@ -1,6 +1,6 @@
 import Image, { ImageLoader } from 'next/image'
 
-const myLoader: ImageLoader = ({ src, width }) => {
+const myLoader: ImageLoader = ({ src }) => {
           return `${src}`
 }
 
@@ -11,6 +11,7 @@ type ProductImage = {
           width: number
 }
 export const ProductImage = (props: ProductImage) => {
+
           return (
                     <Image
                               loader={myLoader}
