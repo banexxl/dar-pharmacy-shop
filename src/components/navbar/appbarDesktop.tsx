@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { Colors } from "@/styles/theme";
-
+import Image from "next/image";
+import Logo from '../../../public/Logos/new_logos/rs_logo_1-fotor-bg-remover-20230424221111.png'
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
           const { setShowSearchBox } = useUIContext()
@@ -56,6 +57,8 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                                                   {t('homepage.title')}
                                         </Link>
                               </AppbarTitle>
+
+                              {/* <Image src={Logo} alt={"text"} width={200} height={200} /> */}
 
                               <ListItemButton sx={{
                                         maxWidth: '200px',

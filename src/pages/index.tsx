@@ -13,6 +13,8 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import LoadingWheel from "@/components/loading/loading";
+import IProduct from "@/interfaces/product/product.interface";
+import ProductCarousel from "@/components/carousel/carousel";
 
 
 
@@ -43,6 +45,7 @@ export default function Home(props: any) {
                               >
                                         <Stack>
                                                   <UIProvider>
+                                                            <ProductCarousel products={products} />
                                                             <Banner />
                                                             <Promotions />
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
@@ -61,7 +64,7 @@ export default function Home(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const dbData: any = await productsServices().getProductForHomePage().then((data: any) => {
+          const dbData: IProduct[] = await productsServices().getProductForHomePage().then((data: any) => {
                     return data
           })
 

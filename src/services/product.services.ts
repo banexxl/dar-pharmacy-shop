@@ -1,3 +1,4 @@
+import IProduct from "@/interfaces/product/product.interface"
 import { MongoClient } from "mongodb"
 
 const productsServices = () => {
@@ -8,7 +9,7 @@ const productsServices = () => {
 
                     try {
                               const db = client.db('DAR_DB')
-                              let data: [] = await db.collection('Products').find().toArray()
+                              let data: IProduct[] = await db.collection('Products').find().toArray()
                               return data
                     } catch (error: any) {
                               return { message: error.message }

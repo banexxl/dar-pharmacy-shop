@@ -3,8 +3,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { LoginButton, SwitchLoginRegisterButton } from "@/styles/login";
-import GoogleButton from 'react-google-button'
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from 'next/image'
@@ -76,7 +74,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                                                       {session.user?.name}
 
                                                             </Typography>
-                                                            {/* <Image src={session.user?.image!} height={200} width={100} alt='image'></Image> */}
+                                                            <Image src={session.user?.image!} height={200} width={100} alt='image'></Image>
                                                             <Button onClick={() => signOut()}>Logout</Button>
                                                   </Box>
                                         </DialogContent>
