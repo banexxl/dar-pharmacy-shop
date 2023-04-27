@@ -3,6 +3,7 @@ import { Button, Typography } from '@mui/material';
 import Carousel from "react-multi-carousel";
 import { ProductImage } from './carousel-image-loader';
 import { StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const ProductCarousel = (props: any) => {
 
