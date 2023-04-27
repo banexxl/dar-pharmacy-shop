@@ -6,7 +6,7 @@ export const StyledCarouselBox = styled(Box)({
           maxWidth: '100vw',
           overflow: 'hidden',
           width: '100%',
-          maxHeight: '200px',
+          maxHeight: '300px',
           marginTop: '100px',
 });
 
