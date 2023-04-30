@@ -2,7 +2,7 @@ import IProduct from '@/interfaces/product/product.interface';
 import { Button, Typography } from '@mui/material';
 import Carousel from "react-multi-carousel";
 import { ProductImage } from './carousel-image-loader';
-import { CarouselTitle, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import { CarouselButton, CarouselImg, CarouselTitle, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import carouselStyles from './carousel.module.css'
 
@@ -28,21 +28,6 @@ const ProductCarousel = (props: any) => {
                     }
           };
 
-          const responsiveImageHero = {
-                    desktop: {
-                              breakpoint: { max: 3000, min: 1024 },
-                              items: 4
-                    },
-                    tablet: {
-                              breakpoint: { max: 1024, min: 464 },
-                              items: 3
-                    },
-                    mobile: {
-                              breakpoint: { max: 464, min: 0 },
-                              items: 2
-                    }
-          };
-
           return (
                     <StyledCarouselBox >
                               <Carousel
@@ -62,9 +47,11 @@ const ProductCarousel = (props: any) => {
                                         {
                                                   products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
+                                                                      <CarouselImg>
+                                                                                <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
+                                                                      </CarouselImg>
                                                                       <CarouselTitle>{product.name}</CarouselTitle>
-                                                                      <Button>Learn More</Button>
+                                                                      <CarouselButton>Learn More</CarouselButton>
                                                             </StyledCarouselCard>
                                                   ))
                                         }

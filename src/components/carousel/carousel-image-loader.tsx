@@ -20,7 +20,10 @@ export const ProductImage = (props: ProductImage) => {
                               alt={props.alt}
                               width={props.width}
                               height={props.height}
-                              style={{ borderRadius: '20px' }}
+                              style={{
+                                        borderRadius: '20px',
+
+                              }}
                     />
           )
 }
