@@ -10,6 +10,7 @@ type ProductImage = {
           height: number,
           width: number
 }
+
 export const ProductImage = (props: ProductImage) => {
 
           return (
@@ -19,6 +20,7 @@ export const ProductImage = (props: ProductImage) => {
                               alt={props.alt}
                               width={props.width}
                               height={props.height}
+                              style={{ borderRadius: '20px' }}
                     />
           )
 }

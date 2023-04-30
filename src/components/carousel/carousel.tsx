@@ -2,8 +2,9 @@ import IProduct from '@/interfaces/product/product.interface';
 import { Button, Typography } from '@mui/material';
 import Carousel from "react-multi-carousel";
 import { ProductImage } from './carousel-image-loader';
-import { StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import { CarouselTitle, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
+import carouselStyles from './carousel.module.css'
 
 const ProductCarousel = (props: any) => {
 
@@ -12,17 +13,17 @@ const ProductCarousel = (props: any) => {
           const responsive = {
                     desktop: {
                               breakpoint: { max: 3000, min: 1024 },
-                              items: 3,
+                              items: 4,
                               partialVisibilityGutter: 40 // this is optional if you are not using partialVisible props
                     },
                     tablet: {
-                              breakpoint: { max: 1024, min: 464 },
-                              items: 2,
+                              breakpoint: { max: 1024, min: 600 },
+                              items: 3,
                               partialVisibilityGutter: 30 // this is optional if you are not using partialVisible props
                     },
                     mobile: {
-                              breakpoint: { max: 464, min: 0 },
-                              items: 1,
+                              breakpoint: { max: 600, min: 0 },
+                              items: 2,
                               partialVisibilityGutter: 30 // this is optional if you are not using partialVisible props
                     }
           };
@@ -52,17 +53,17 @@ const ProductCarousel = (props: any) => {
                                         autoPlay={true}
                                         autoPlaySpeed={3000}
                                         keyBoardControl={true}
-                                        customTransition="transform 500ms ease-in-out"
+                                        customTransition=""
                                         transitionDuration={500}
-                                        containerClass="carousel-container"
-                                        itemClass="carousel-item-padding-40-px"
+                                        containerClass=""
+                                        itemClass=""
                               >
 
                                         {
                                                   products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <Typography>{product.name}</Typography>
                                                                       <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
+                                                                      <CarouselTitle>{product.name}</CarouselTitle>
                                                                       <Button>Learn More</Button>
                                                             </StyledCarouselCard>
                                                   ))
