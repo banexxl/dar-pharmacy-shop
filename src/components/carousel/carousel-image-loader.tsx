@@ -14,16 +14,21 @@ type ProductImage = {
 export const ProductImage = (props: ProductImage) => {
 
           return (
-                    <Image
-                              loader={myLoader}
-                              src={props.src}
-                              alt={props.alt}
-                              width={props.width}
-                              height={props.height}
-                              style={{
-                                        borderRadius: '20px',
+                    <div style={{ width: '100%', position: 'relative' }}>
+                              <Image
+                                        loader={myLoader}
+                                        src={props.src}
+                                        alt={props.alt}
+                                        width={props.width}
+                                        height={props.height}
 
-                              }}
-                    />
+                                        style={{
+                                                  borderRadius: '20px',
+                                                  maxWidth: '100%',
+                                                  height: 'auto',
+                                                  objectPosition: "center",
+                                        }}
+                              />
+                    </div>
           )
 }
