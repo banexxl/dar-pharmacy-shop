@@ -16,16 +16,17 @@ export const ProductImage = (props: ProductImage) => {
           return (
                     <div style={{ width: '100%', position: 'relative' }}>
                               <Image
+                                        unoptimized
                                         loader={myLoader}
                                         src={props.src}
                                         alt={props.alt}
                                         width={props.width}
                                         height={props.height}
-
                                         style={{
                                                   borderRadius: '20px',
                                                   maxWidth: '100%',
                                                   height: 'auto',
+                                                  width: '100%',
                                                   objectPosition: "center",
                                         }}
                               />

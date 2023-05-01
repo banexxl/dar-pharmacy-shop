@@ -33,7 +33,7 @@ export const CarouselTitle = styled(Typography)({
 export const CarouselImg = styled(Box)({
           alignItem: 'center',
           cursor: 'pointer',
-          '-webkit-transition': '-webkit-transform 0.4s',
+          webkitTransition: '-webkit-transform 0.4s',
           transition: 'transform 0.4s',
           ':hover': {
                     webkitTransform: 'scale(1.2) rotate(0.01deg)',
@@ -41,6 +41,7 @@ export const CarouselImg = styled(Box)({
           },
           maxWidth: '100%',
           height: 'auto',
+          width: 'auto',
           margin: '0px auto 0px auto',
 })
 
