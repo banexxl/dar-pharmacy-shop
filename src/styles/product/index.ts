@@ -47,12 +47,12 @@ export const ProductFavButton = styled(ProductActionButton)(({ isfav, theme }: a
 
 export const ProductAddToCart = styled(Button, { shouldForwardProp: (prop) => prop !== "show", })
           (({ show, theme }: any) => ({
-                    width: "120px",
+
                     fontSize: "12px",
                     [theme.breakpoints.up("md")]: {
                               position: "absolute",
                               bottom: "2%",
-                              width: "300px",
+                              width: "150px",
                               padding: "10px 5px",
                               animation:
                                         show &&

@@ -54,7 +54,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   dispatch(addToCart(product))
                                         }}
                                         >
-                                                  Add to cart
+                                                  {t('homepage.addtocart')}
                                         </ProductAddToCart>
                               )}
                               <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>

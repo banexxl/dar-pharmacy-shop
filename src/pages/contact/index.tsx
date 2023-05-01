@@ -1,67 +1,48 @@
-import { Container, Typography, Box, Stack } from "@mui/material";
-import { ThemeProvider } from "@mui/system";
-import theme from "../styles/theme";
-import Banner from "../components/banner/banner";
-import Products from "../components/products/products";
-import { UIProvider } from "../context/ui/ui.context";
-import AppDrawer from "../components/navbar/drawer/drawer";
-import Promotions from "../components/promotions/promotions";
-import SearchBox from "../components/search/search"
-import productsServices from '@/services/product.services'
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Head from "next/head";
-import { useTranslation } from "next-i18next";
-import dynamic from "next/dynamic";
+import Contact from "@/components/contact/contact";
 import LoadingWheel from "@/components/loading/loading";
+import { UIProvider } from "@/context/ui/ui.context";
 import IProduct from "@/interfaces/product/product.interface";
-import ProductCarousel from "@/components/carousel/carousel";
-import { MessageText } from "@/styles/promotions";
+import productsServices from "@/services/product.services";
+import theme from "@/styles/theme";
+import { Container, Stack } from "@mui/material";
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 
+const ContactPage = () => {
 
-
-export default function Home(props: any) {
-
-          const { products } = props
           const { t } = useTranslation('common')
 
 
-          //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
           })
 
+          const steps = [t("checkout.shippingAddress"), t("checkout.payment-info"), t("checkout.card-payment"), t("checkout.confirmation")];
+
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('homepage.title')}</title>
+                                        <title>{t('checkout.title')}</title>
                               </Head>
                               <Container
                                         disableGutters
                                         maxWidth="lg"
                                         sx={{
                                                   background: "#fff",
-                                                  opacity: '.85'
                                         }}
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Banner />
-                                                            <Promotions />
-                                                            <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-                                                                      <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
-                                                            </Box>
-                                                            <Products data={products} />
-                                                            <ProductCarousel products={products} />
-                                                            <SearchBox />
-                                                            <AppDrawer isScreenToMedium={false} />
+                                                            <Contact />
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </DynamicThemeProvider>
+                    </DynamicThemeProvider >
           )
 }
-
 
 export async function getStaticProps({ locale }: any) {
 
@@ -85,3 +66,4 @@ export async function getStaticProps({ locale }: any) {
           }
 }
 
+export default ContactPage

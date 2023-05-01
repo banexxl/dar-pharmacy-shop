@@ -294,7 +294,9 @@
   },
   "homepage":{
           "title": "Apoteka DAR",
-          "carousel-details": "Detalji"
+          "carousel-details": "Detalji",
+          "featured-products": "Izdvajamo iz ponude",
+          "addtocart":"Dodaj u korpu"
   },
   "product": {
           "added-to-cart": "Proizvod uspešno dodat u korpu!"

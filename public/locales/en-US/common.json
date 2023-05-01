@@ -82,7 +82,9 @@
   },
   "homepage":{
           "title": "DAR Pharmacy",
-          "carousel-details": "Details"
+          "carousel-details": "Details",
+          "featured-products":"Featured Products",
+          "addtocart":"Add to cart"
   },
   "information": {
           "privacy-policy":{
