@@ -1,14 +1,14 @@
 import IProduct from '@/interfaces/product/product.interface';
-import { Button, Typography } from '@mui/material';
 import Carousel from "react-multi-carousel";
 import { ProductImage } from './carousel-image-loader';
 import { CarouselButton, CarouselImg, CarouselTitle, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
-import carouselStyles from './carousel.module.css'
+import { useTranslation } from 'next-i18next';
 
 const ProductCarousel = (props: any) => {
 
           const { products } = props
+          const { t } = useTranslation('common')
 
           const responsive = {
                     desktop: {
@@ -51,7 +51,7 @@ const ProductCarousel = (props: any) => {
                                                                                 <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
                                                                       </CarouselImg>
                                                                       <CarouselTitle>{product.name}</CarouselTitle>
-                                                                      <CarouselButton>Learn More</CarouselButton>
+                                                                      <CarouselButton>{t('homepage.carousel-details')}</CarouselButton>
                                                             </StyledCarouselCard>
                                                   ))
                                         }

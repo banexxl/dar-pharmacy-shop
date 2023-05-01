@@ -293,7 +293,8 @@
           }
   },
   "homepage":{
-          "title": "Apoteka DAR"
+          "title": "Apoteka DAR",
+          "carousel-details": "Detalji"
   },
   "product": {
           "added-to-cart": "Proizvod uspešno dodat u korpu!"

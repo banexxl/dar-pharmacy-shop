@@ -4,11 +4,12 @@ import { Colors } from '../theme';
 
 export const StyledCarouselBox = styled(Box)({
           height: '400px',
-          marginTop: '100px',
+          marginTop: '50px',
           justifyContent: 'center'
 });
 
 export const StyledCarouselCard = styled(Box)({
+          background: Colors.dove_gray,
           display: 'flex',
           flexDirection: 'column',
           alignItem: 'center',
@@ -16,7 +17,7 @@ export const StyledCarouselCard = styled(Box)({
           border: '1px solid',
           borderRadius: '20px',
           borderColor: Colors.secondary,
-          height: '100%',
+          height: '95%',
           maxWidth: '100%',
           color: 'black',
           cursor: 'pointer',
@@ -24,8 +25,9 @@ export const StyledCarouselCard = styled(Box)({
 })
 
 export const CarouselTitle = styled(Typography)({
-          color: 'black',
-          textAlign: 'center'
+          color: Colors.primary,
+          textAlign: 'center',
+          fontWeight: 'bold'
 });
 
 export const CarouselImg = styled(Box)({
@@ -52,4 +54,5 @@ export const CarouselButton = styled(Button)({
                     webkitTransform: 'scale(1.2) rotate(0.01deg)',
                     transform: 'scale(1.1) rotate(0.01deg) translateX(50%)',
           },
+          height: '30px'
 });

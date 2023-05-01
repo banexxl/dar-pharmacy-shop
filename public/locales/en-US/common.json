@@ -81,7 +81,8 @@
      "cvc-number": "Security code must contain only 3 digits"
   },
   "homepage":{
-          "title": "DAR Pharmacy"
+          "title": "DAR Pharmacy",
+          "carousel-details": "Details"
   },
   "information": {
           "privacy-policy":{
