@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { Colors } from "../theme";
 
@@ -43,13 +43,14 @@ export const ContactMap = styled(Box)(({ theme }: any) => ({
 }));
 
 export const ContactForm = styled(Box)(({ theme }: any) => ({
+          height: '400px',
+          width: '400px'
+}));
+
+export const ContactTitle = styled(Typography)(({ theme }: any) => ({
 
 }));
 
-export const ContactTitle = styled(Box)(({ theme }: any) => ({
-
-}));
-
-export const ContacText = styled(Box)(({ theme }: any) => ({
+export const ContacText = styled(Typography)(({ theme }: any) => ({
 
 }));
