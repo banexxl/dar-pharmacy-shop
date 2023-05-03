@@ -1,14 +1,15 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import { Colors } from "../theme";
 
 
-export const ContactContainer = styled(Box)(({ theme }: any) => ({
+export const ContactBox = styled(Box)(({ theme }: any) => ({
           [theme.breakpoints.up("md")]: {
                     padding: "40px 0px 40px 0px",
           },
           marginTop: '130px',
           display: "flex",
+          flexDirection: 'column',
           justifyContent: "center",
           alignItems: "center",
           padding: "20px 0px 20px 0px",
@@ -16,11 +17,11 @@ export const ContactContainer = styled(Box)(({ theme }: any) => ({
           background: Colors.secondary,
 }));
 
-export const ContactInfo = styled(Box)(({ theme }: any) => ({
+export const ContactInfoBox = styled(Box)(({ theme }: any) => ({
 
 }));
 
-export const ContactMap = styled(Box)(({ theme }: any) => ({
+export const ContactMapBox = styled(Box)(({ theme }: any) => ({
           borderRadius: '20px',
           [theme.breakpoints.down("xs")]: {
                     width: '310px'
@@ -42,15 +43,29 @@ export const ContactMap = styled(Box)(({ theme }: any) => ({
           },
 }));
 
-export const ContactForm = styled(Box)(({ theme }: any) => ({
-          height: '400px',
-          width: '400px'
+export const ContactFormBox = styled(Box)(({ theme }: any) => ({
+          width: '50%',
+          margin: '10px',
+          borderRadius: '20px',
+          padding: '10px',
+          background: Colors.dove_gray,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '20px',
+
 }));
 
 export const ContactTitle = styled(Typography)(({ theme }: any) => ({
+          fontFamily: 'monospace',
+          color: Colors.primary
+}));
+
+export const ContactText = styled(Typography)(({ theme }: any) => ({
 
 }));
 
-export const ContacText = styled(Typography)(({ theme }: any) => ({
+export const ContactButton = styled(Button)(({ theme }: any) => ({
 
 }));

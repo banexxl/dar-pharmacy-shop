@@ -1,7 +1,8 @@
-import Contact, { ContactPageProps } from "@/components/contact/contact";
+import { ContactPageProps, ContactMap } from "@/components/contact/contact";
+import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import { ContactForm, ContactInfo } from "@/styles/contact/contact";
+import { ContactBox, ContactButton, ContactFormBox, ContactInfoBox } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
 import { Container, Stack } from "@mui/material";
 import { useTranslation } from "next-i18next"
@@ -31,9 +32,11 @@ const ContactPage = (props: ContactPageProps) => {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Contact mapApiKey={props.mapApiKey} />
-                                                            <ContactInfo />
-                                                            <ContactForm />
+                                                            <ContactBox>
+                                                                      <ContactForm />
+                                                                      <ContactMap mapApiKey={props.mapApiKey} />
+                                                                      <ContactInfoBox >aaaa</ContactInfoBox>
+                                                            </ContactBox>
                                                   </UIProvider>
                                         </Stack>
                               </Container>

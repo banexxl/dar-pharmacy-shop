@@ -80,6 +80,13 @@
     "card-number": "Broj kartice mora da sadrži 16 brojeva",
 "cvc-number": "CVC broj mora da sadrži samo 3 cifre"
   },
+   "contact":{
+          "contact-form": "Kontakt forma",
+          "name": "Ime",
+          "email": "Email",
+          "message": "Pošaljite name poruku",
+          "send-message": "Pošalji poruku"
+  },
   "information": {
           "privacy-policy":{
                     "agree-warning":"Upozorenje: Morate prihvatiti Politiku privatnosti!",

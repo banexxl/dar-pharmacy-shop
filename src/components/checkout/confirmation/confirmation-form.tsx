@@ -1,6 +1,6 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { sendForm } from '@/services/email/send-email'
+import { SendCheckoutConfirmationEmail } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledTotalsTitle } from '@/styles/cart'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
@@ -55,7 +55,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                         {t('checkout.previousbutton')}
                               </CheckoutNextPrevButton>
                               <Button sx={{ color: 'white' }}
-                                        onClick={() => sendForm({ email: 'damjanovic.branislav@gmail.com', subject: 'Potvrda porudzbine', name: 'Majo', title: 'Potvrda porudzbine', message: 'majaidrugari@gmail.com', cart })}>
+                                        onClick={() => SendCheckoutConfirmationEmail({ email: 'damjanovic.branislav@gmail.com', subject: 'Potvrda porudzbine', name: 'Majo', title: 'Potvrda porudzbine', message: 'majaidrugari@gmail.com', cart })}>
                                         {t('confirmation.to-payment')}
                               </Button>
                     </CartWrapper>

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl';
-import { ContactContainer, ContactMap } from '@/styles/contact/contact';
+import { } from '@/styles/contact/contact';
 import { Colors } from '@/styles/theme';
 
 export type ContactPageProps = {
           mapApiKey: string
 }
 
-function Contact(props: ContactPageProps) {
+export const ContactMap = (props: ContactPageProps) => {
 
           const mapContainer = useRef(null);
           const map = useRef<maplibregl.Map>();
@@ -52,10 +52,8 @@ function Contact(props: ContactPageProps) {
           });
 
           return (
-                    <ContactContainer>
-                              <ContactMap ref={mapContainer} />
-                    </ContactContainer>
+
+                    <div ref={mapContainer} />
+
           )
 }
-
-export default Contact

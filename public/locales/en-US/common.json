@@ -86,6 +86,16 @@
           "featured-products":"Featured Products",
           "addtocart":"Add to cart"
   },
+  "contact":{
+          "contact-form": "Contact form",
+          "name": "Name",
+          "email": "Email",
+          "message": "Message us",
+          "send-message":"Send message",
+          "contact-street":"Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac",
+          "contact-mb":"Identification number: 66597784",
+          "contact-pib":"Tax identiication number: "
+  },
   "information": {
           "privacy-policy":{
                     "agree-warning": "Warning: You must accept the Privacy Policy!",

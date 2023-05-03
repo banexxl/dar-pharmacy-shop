@@ -1,12 +1,12 @@
 export interface IContactForm {
-          firstName: string;
+          name: string;
           email: string,
-          contactMessage: string
+          message: string
 }
 
 export const initialContactFormValues: IContactForm = {
-          firstName: '',
+          name: '',
           email: '',
-          contactMessage: ''
+          message: ''
 
 };
