@@ -42,6 +42,13 @@ const theme: Theme = createTheme({
           },
 
           components: {
+                    MuiContainer: {
+                              styleOverrides: {
+                                        root: {
+                                                  boxShadow: `8px 8px 8px 8px ${Colors.secondary}`
+                                        }
+                              }
+                    },
                     MuiStepper: {
                               styleOverrides: {
                                         root: {
