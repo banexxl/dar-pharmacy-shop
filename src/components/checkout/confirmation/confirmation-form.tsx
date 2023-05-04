@@ -48,7 +48,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                         </TableBody>
                               </Table>
                               <StyledTotalsTitle>
-                                        {t('confirmation.total-with-tax')}{parseFloat(totalItemPrice).toFixed(2)} RSD
+                                        {t('confirmation.total-with-tax')}: {parseFloat(totalItemPrice).toFixed(2)} RSD
                               </StyledTotalsTitle>
 
                               <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>

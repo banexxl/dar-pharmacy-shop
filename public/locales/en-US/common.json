@@ -92,9 +92,22 @@
           "email": "Email",
           "message": "Message us",
           "send-message":"Send message",
-          "contact-street":"Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac",
-          "contact-mb":"Identification number: 66597784",
-          "contact-pib":"Tax identiication number: "
+          "street":"Street address: ",
+          "actual-street":"Kragujevac, postal code 34000, Kralja Aleksandra I Karadjordjevica Street, number 102, unit 9",
+          "phone-number": "Phone number",
+          "actual-phone-number":"+381 34 610 4222",
+          "mb":"Identification number: ",
+          "actual-mb": "66597784",
+          "pib":"Tax identification number: ",
+          "actual-pib": "113127282",
+          "bussines-name":"Business name of the entrepreneur: ",
+          "actual-bussines-name": "Maja Joksovic PR, private practice, DAR pharmacy Kragujevac",
+          "work-days":"Working hours: ",
+          "working-days":"Work days: 08 - 22h", 
+          "saturday":"Saturday: 08 - 22h", 
+          "sunday":"Sunday: 08 - 20h", 
+          "company-activity": "Company activity: ",
+          "actual-company-activity":"4773 - retail trade of pharmaceutical products and medicines in pharmacies"
   },
   "information": {
           "privacy-policy":{

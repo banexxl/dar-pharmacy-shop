@@ -45,7 +45,8 @@ const theme: Theme = createTheme({
                     MuiContainer: {
                               styleOverrides: {
                                         root: {
-                                                  boxShadow: `8px 8px 8px 8px ${Colors.secondary}`
+                                                  boxShadow: `8px 8px 8px 8px ${Colors.secondary}`,
+                                                  padding: '20px 20px 0px 20px'
                                         }
                               }
                     },

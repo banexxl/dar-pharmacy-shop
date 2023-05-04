@@ -18,7 +18,7 @@ export const ContactBox = styled(Box)(({ theme }: any) => ({
 }));
 
 export const ContactInfoBox = styled(Box)(({ theme }: any) => ({
-
+          textAlign: 'center'
 }));
 
 export const ContactMapBox = styled(Box)(({ theme }: any) => ({
@@ -63,7 +63,13 @@ export const ContactTitle = styled(Typography)(({ theme }: any) => ({
 }));
 
 export const ContactText = styled(Typography)(({ theme }: any) => ({
+          fontFamily: 'monospace'
+}));
 
+export const ContactStrongText = styled(Typography)(({ theme }: any) => ({
+          fontFamily: 'monospace',
+          fontStyle: 'italic',
+          fontWeight: 'bolder'
 }));
 
 export const ContactButton = styled(Button)(({ theme }: any) => ({

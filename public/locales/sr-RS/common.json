@@ -78,14 +78,30 @@
     "expired-card": "Istekla kartica",
     "cvc-required": "CVC je obavezan",
     "card-number": "Broj kartice mora da sadrži 16 brojeva",
-"cvc-number": "CVC broj mora da sadrži samo 3 cifre"
+    "cvc-number": "CVC broj mora da sadrži samo 3 cifre"
   },
    "contact":{
           "contact-form": "Kontakt forma",
           "name": "Ime",
           "email": "Email",
           "message": "Pošaljite name poruku",
-          "send-message": "Pošalji poruku"
+          "send-message": "Pošalji poruku",
+          "street":"Adresa: ",
+          "actual-street":"Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9",
+          "phone-number": "Telefon: ",
+          "actual-phone-number":"+381 34 610 4222",
+          "mb":"Matični broj: ",
+          "actual-mb": "66597784",
+          "pib":"Poresko identifikacioni broj: ",
+          "actual-pib": "113127282",
+          "bussines-name":"Business name of the entrepreneur: ",
+          "actual-bussines-name": "Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac",
+          "work-days":"Radno vreme: ",
+          "working-days":"Radnim danima: 08 - 22h", 
+          "saturday":"Subota: 08 - 22h", 
+          "sunday":"Nedelja: 08 - 20h", 
+          "company-activity": "Pretežna delatnost: ",
+          "actual-company-activity":"4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama"
   },
   "information": {
           "privacy-policy":{
