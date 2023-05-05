@@ -96,7 +96,7 @@ export async function getStaticProps({ locale }: any) {
                               ...(await serverSideTranslations(locale ?? 'sr-RS', [
                                         'common',
                               ])),
-                              mapApiKey: process.env.GOOGLE_API_KEY,
+                              mapApiKey: process.env.GOOGLE_MAPS_API_KEY,
                     },
           }
 }
