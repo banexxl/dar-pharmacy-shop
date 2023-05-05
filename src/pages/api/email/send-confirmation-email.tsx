@@ -134,7 +134,6 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                         to: data.email,
                                         subject: data.subject,
                                         html
-
                               });
 
 

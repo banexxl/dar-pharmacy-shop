@@ -21,6 +21,8 @@ const ContactForm = () => {
           })
 
           const handleSubmit = (values: IContactForm) => {
+                    console.log(values);
+
                     SendContactEmail({ email: values.email, name: values.name, message: values.message })
           }
 

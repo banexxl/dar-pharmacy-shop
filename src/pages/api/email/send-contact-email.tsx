@@ -108,7 +108,7 @@ const ContactEmailHandler = async (req: any, res: any) => {
 
                     try {
                               await transporter.sendMail({
-                                        from: process.env.EMAIL_SERVER_USER,
+                                        from: process.env.EMAIL_FROM,
                                         to: ['maja@apoteka-dar.rs', 'damjanovic.branislav@gmail.com'],
                                         subject: 'Poruka od klijenta',
                                         html
