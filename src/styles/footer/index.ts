@@ -51,6 +51,7 @@ export const FooterSubscribe = styled(Box)(({ theme }: any) => ({
 export const FooterTitle = styled(Typography)(() => ({
           color: Colors.primary,
           textTransform: "uppercase",
+          textAlign: 'center'
 })) as typeof Typography
 
 export const PrivacyPolicyCheckBox = styled(Checkbox)(() => ({

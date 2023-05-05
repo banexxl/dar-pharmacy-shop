@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl';
-import { } from '@/styles/contact/contact';
 import { Colors } from '@/styles/theme';
+import { Loader } from "@googlemaps/js-api-loader"
+import Box from '@mui/material/Box';
 
 export type ContactPageProps = {
           mapApiKey: string
@@ -9,51 +10,75 @@ export type ContactPageProps = {
 
 export const ContactMap = (props: ContactPageProps) => {
 
-          const mapContainer = useRef(null);
-          const map = useRef<maplibregl.Map>();
+          //const mapContainer = useRef(null);
+          //const map = useRef<maplibregl.Map>();
           const [lat, setLat] = useState(44.01262879017728)
-          const [long, setLong] = useState(20.912097948648388)
-          const [currentLocation, setCurrentLocation] = useState<GeolocationPosition>()
+          const [lng, setLng] = useState(20.912097948648388)
+          //const [currentLocation, setCurrentLocation] = useState<GeolocationPosition>()
 
-          const options = {
-                    enableHighAccuracy: true,
-                    timeout: 5000,
-                    maximumAge: 0
-          };
-
-          function success(pos: GeolocationPosition) {
-                    setCurrentLocation(pos)
-          }
-
-          function error(err: any) {
-                    console.warn(`ERROR(${err.code}): ${err.message}`);
-          }
-
-          navigator.geolocation.getCurrentPosition(success, error, options);
+          //GOOGLE MAPS
+          const mapRef = useRef<HTMLDivElement>(null);
 
           useEffect(() => {
-                    if (map.current) return; //stops map from intializing more than once
-                    map.current = new maplibregl.Map({
-                              container: mapContainer.current!,
-                              style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${props.mapApiKey}`,
-                              center: [long, lat],
-                              zoom: 18,
-                              maplibreLogo: false,
+                    const loader = new Loader({
+                              apiKey: props.mapApiKey,
+                              version: 'weekly',
                     });
 
-                    map.current.addControl(new maplibregl.NavigationControl({ showZoom: true, showCompass: true }), 'top-left');
-                    new maplibregl.Marker({ color: Colors.primary })
-                              .setLngLat([20.912097948648388, 44.01262879017728])
-                              .addTo(map.current)
+                    loader.load().then(() => {
+                              const map = new google.maps.Map(mapRef.current!, {
+                                        center: { lat, lng },
+                                        zoom: 14,
+                              });
 
-                    return () => {
-                              map.current?.remove;
-                    }
-          });
+                              new google.maps.Marker({
+                                        position: { lat, lng },
+                                        map,
+                              });
+                    });
+          }, [lat, lng]);
+
+
+          ///////////////////////////////////////////////
+          // const options = {
+          //           enableHighAccuracy: true,
+          //           timeout: 5000,
+          //           maximumAge: 0
+          // };
+
+          // function success(pos: GeolocationPosition) {
+          //           setCurrentLocation(pos)
+          // }
+
+          // function error(err: any) {
+          //           console.warn(`ERROR(${err.code}): ${err.message}`);
+          // }
+
+          // navigator.geolocation.getCurrentPosition(success, error, options);
+
+          // useEffect(() => {
+          //           if (map.current) return; //stops map from intializing more than once
+          //           map.current = new maplibregl.Map({
+          //                     container: mapContainer.current!,
+          //                     style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${props.mapApiKey}`,
+          //                     center: [lng, lat],
+          //                     zoom: 18,
+          //                     maplibreLogo: false,
+          //           });
+
+          //           map.current.addControl(new maplibregl.NavigationControl({ showZoom: true, showCompass: true }), 'top-left');
+          //           new maplibregl.Marker({ color: Colors.primary })
+          //                     .setLngLat([20.912097948648388, 44.01262879017728])
+          //                     .addTo(map.current)
+
+          //           return () => {
+          //                     map.current?.remove;
+          //           }
+          // });
 
           return (
 
-                    <div ref={mapContainer} />
+                    <Box ref={mapRef} sx={{ width: '400px', height: '200px' }} />
 
           )
 }

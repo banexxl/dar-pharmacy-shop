@@ -42,6 +42,13 @@ const theme: Theme = createTheme({
           },
 
           components: {
+                    MuiTypography: {
+                              styleOverrides: {
+                                        root: {
+                                                  fontFamily: 'monospace'
+                                        }
+                              }
+                    },
                     MuiContainer: {
                               styleOverrides: {
                                         root: {
