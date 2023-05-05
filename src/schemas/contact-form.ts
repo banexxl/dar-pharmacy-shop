@@ -2,13 +2,13 @@ import { object, string } from 'yup';
 
 export const contactFormSchema = (t: any) => {
           return object().shape({
-                    firstName: string()
+                    name: string()
                               .required(t('errorMessages.required', { fieldName: t('contact.name') }))
                               .max(30, t('errorMessages.tooLong', { max: 30 })),
                     email: string()
                               .required(t('errorMessages.required', { fieldName: t('contact.email') }))
                               .email(t('errorMessages.email', { fieldName: t('contact.email') })),
-                    contactMessage: string()
-                              .required(t('errorMessages.required', { contactMessage: t('contact.message') }))
+                    message: string()
+                              .required(t('errorMessages.required', { fieldName: t('contact.message') }))
           });
 };

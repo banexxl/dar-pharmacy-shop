@@ -78,7 +78,7 @@ export const ContactMap = (props: ContactPageProps) => {
 
           return (
 
-                    <Box ref={mapRef} sx={{ width: '400px', height: '200px' }} />
+                    <Box ref={mapRef} sx={{ borderRadius: '10px', width: { md: '400px', xs: '80%' }, height: { md: '300px', xs: '200px' } }} />
 
           )
 }

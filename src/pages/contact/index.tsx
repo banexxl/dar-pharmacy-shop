@@ -1,4 +1,4 @@
-import { ContactPageProps, ContactMap } from "@/components/contact/contact";
+import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
 import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
@@ -9,6 +9,8 @@ import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import SearchBox from "@/components/search/search";
+import AppDrawer from "@/components/navbar/drawer/drawer";
 
 const ContactPage = (props: ContactPageProps) => {
 
@@ -21,7 +23,7 @@ const ContactPage = (props: ContactPageProps) => {
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('checkout.title')}</title>
+                                        <title>{t('contact.contact-form')}</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -82,6 +84,8 @@ const ContactPage = (props: ContactPageProps) => {
                                                                                 </ContactStrongText>
                                                                       </ContactInfoBox>
                                                             </ContactBox>
+                                                            <SearchBox />
+                                                            <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
                               </Container>
