@@ -1,5 +1,4 @@
 import { initialEmailFormValues } from '@/interfaces/checkout/user-form-values.interface'
-import { userEmailSchema } from '@/schemas/user-form.schema'
 import { ShouldCreateAccountButton } from '@/styles/checkout/userinfo'
 import theme from '@/styles/theme'
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField, Typography } from '@mui/material'
@@ -8,6 +7,7 @@ import { useTranslation } from 'next-i18next'
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 import LoadingWheel from '../loading/loading'
+import { userEmailSchema } from '@/schemas/email-form.schema'
 
 function CreateAccountForm() {
 
