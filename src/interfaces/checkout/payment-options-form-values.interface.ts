@@ -7,7 +7,6 @@ export interface IPaymentOptionsForm {
           cardNumber: number | null;
           expirationDate: Dayjs | null;
           securityCode: string;
-          paymentOption: string;
 }
 
 export interface IPaymentOptionsFormProps {
@@ -24,6 +23,5 @@ export interface IPaymentOptionsFormProps {
 export const initialCreditCardValues: IPaymentOptionsForm = {
           cardNumber: null,
           expirationDate: null,
-          securityCode: '',
-          paymentOption: 'onDelivery'
+          securityCode: ''
 };

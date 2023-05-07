@@ -8,7 +8,7 @@ import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/useri
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { clearPaymentForm, submitPaymentForm } from '@/store/checkout/checkout.slice';
+import { submitPaymentInfoForm, clearPaymentInfoForm } from '@/store/checkout/checkout.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
@@ -23,7 +23,7 @@ export const Payment: FunctionComponent<IPaymentInfoFormProps> = (props: IPaymen
 
           const handleSubmit = (values: IPaymentInfoForm) => {
 
-                    dispatch(submitPaymentForm(values))
+                    dispatch(submitPaymentInfoForm(values))
 
                     props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
           };
@@ -186,7 +186,7 @@ export const Payment: FunctionComponent<IPaymentInfoFormProps> = (props: IPaymen
                                                                                                               />
                                                                                                     </Grid>
                                                                                                     < Grid item xs={12} sm={6}>
-                                                                                                              <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(); dispatch(clearPaymentForm()) }}                                                                                          >
+                                                                                                              <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(); dispatch(clearPaymentInfoForm()) }}                                                                                          >
                                                                                                                         {t('checkout.clearform')}
                                                                                                               </ClearFormButton>
                                                                                                               <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>

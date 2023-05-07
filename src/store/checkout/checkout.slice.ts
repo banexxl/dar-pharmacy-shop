@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { ICheckoutState } from './checkout-state.interface';
 import { initialCheckoutState } from './checkout-state.intial';
+import { IPaymentOptionsForm } from '@/interfaces/checkout/payment-options-form-values.interface';
 
 export const checkoutSlice = createSlice({
           name: 'checkout',
@@ -16,21 +17,21 @@ export const checkoutSlice = createSlice({
                               state.userForm = initialCheckoutState.userForm;
                     },
                     submitPaymentInfoForm(state: ICheckoutState, action: PayloadAction<IPaymentInfoForm>) {
-                              state.paymentForm = action.payload;
+                              state.paymentInfoForm = action.payload;
                     },
                     clearPaymentInfoForm(state: ICheckoutState) {
-                              state.paymentForm = initialCheckoutState.paymentForm;
+                              state.paymentInfoForm = initialCheckoutState.paymentInfoForm;
                     },
-                    submitPaymentOptionsForm(state: ICheckoutState, action: PayloadAction<IPaymentInfoForm>) {
-                              state.paymentForm = action.payload;
+                    submitPaymentOptionsForm(state: ICheckoutState, action: PayloadAction<IPaymentOptionsForm>) {
+                              state.paymentOptionsForm = action.payload;
                     },
                     clearPaymentOptionsForm(state: ICheckoutState) {
-                              state.paymentForm = initialCheckoutState.paymentForm;
+                              state.paymentOptionsForm = initialCheckoutState.paymentOptionsForm;
                     },
           },
 });
 
-export const { submitUserForm, clearUserForm, submitPaymentForm, clearPaymentForm } = checkoutSlice.actions
+export const { submitUserForm, clearUserForm, clearPaymentInfoForm, submitPaymentInfoForm, clearPaymentOptionsForm, submitPaymentOptionsForm } = checkoutSlice.actions
 const checkoutSliceReducer = checkoutSlice.reducer
 
 export default checkoutSliceReducer

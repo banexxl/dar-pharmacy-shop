@@ -8,13 +8,13 @@ const getCheckoutState = (state: ICheckoutState) => state;
 
 const getUserForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState) => checkoutState?.userForm)
 
-const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentInfoForm => checkoutState?.paymentForm)
+const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentInfoForm => checkoutState?.paymentInfoForm)
 
-const creditCardForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentOptionsForm => checkoutState?.creditCardForm)
+const PaymentOptionsForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentOptionsForm => checkoutState?.paymentOptionsForm)
 
 export const checkoutSelectors = {
           getCheckoutState,
           getUserForm,
           getPaymentForm,
-          creditCardForm
+          PaymentOptionsForm
 };

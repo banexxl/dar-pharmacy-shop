@@ -6,7 +6,7 @@ import { ICheckoutState } from './checkout-state.interface';
 
 export const initialCheckoutState: ICheckoutState = {
           userForm: initialUserFormValues,
-          paymentForm: initialPaymentFormValues,
-          creditCardForm: initialCreditCardValues,
+          paymentInfoForm: initialPaymentFormValues,
+          paymentOptionsForm: initialCreditCardValues,
           checkoutState: undefined
 };

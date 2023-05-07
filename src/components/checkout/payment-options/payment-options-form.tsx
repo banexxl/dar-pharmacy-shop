@@ -13,6 +13,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers/';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { submitPaymentOptionsForm } from '@/store/checkout/checkout.slice';
 
 export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: IPaymentOptionsFormProps) => {
 
@@ -26,18 +27,16 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
           })
 
           const handleSubmit = (values: IPaymentOptionsForm) => {
-
-                    console.log(values)
-                    console.log("usao u handle next, vrednosti su: ", values);
-
-
-                    //dispatch(submitPaymentForm(values))
-
+                    dispatch(submitPaymentOptionsForm(values))
                     props.tabIndex === 2 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
           const handleBack = () => {
                     props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
+          };
+
+          const handleNext = () => {
+                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
 
@@ -68,7 +67,6 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                     <Typography variant="h6" component="legend" gutterBottom>
                                                                                                               {t('credit-card.credit-card')}
                                                                                                     </Typography>
-
                                                                                                     <Grid container spacing={2}>
                                                                                                               <Grid item xs={12} sm={12}>
                                                                                                                         <TextField
@@ -123,22 +121,31 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                                                   required
                                                                                                                         />
                                                                                                               </Grid>
+                                                                                                              < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
+                                                                                                                        <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                                                                                                                  {t('checkout.previousbutton')}
+                                                                                                                        </CheckoutNextPrevButton>
+                                                                                                                        <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                                                                  {t('checkout.nextbutton')}
+                                                                                                                        </CheckoutNextPrevButton>
+                                                                                                              </Grid>
                                                                                                     </Grid>
 
                                                                                           </Form>
                                                                                 )
                                                                       }
                                                             </Formik>
-                                                            : null
+                                                            :
+                                                            < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
+                                                                      <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                                                                {t('checkout.previousbutton')}
+                                                                      </CheckoutNextPrevButton>
+                                                                      <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                {t('checkout.nextbutton')}
+                                                                      </CheckoutNextPrevButton>
+                                                            </Grid>
                                         }
-                                        < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
-                                                  <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                                            {t('checkout.previousbutton')}
-                                                  </CheckoutNextPrevButton>
-                                                  <CheckoutNextPrevButton onClick={() => handleSubmit()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
-                                                            {t('checkout.nextbutton')}
-                                                  </CheckoutNextPrevButton>
-                                        </Grid>
+
                               </Container>
                     </DynamicThemeProvider >
           );

@@ -7,6 +7,6 @@ import { IPaymentInfoForm } from '../../interfaces/checkout/payment-info-form-va
 export interface ICheckoutState {
           checkoutState: any;
           userForm: IUserForm;
-          paymentForm: IPaymentInfoForm;
-          creditCardForm: IPaymentOptionsForm;
+          paymentInfoForm: IPaymentInfoForm;
+          paymentOptionsForm: IPaymentOptionsForm;
 }
