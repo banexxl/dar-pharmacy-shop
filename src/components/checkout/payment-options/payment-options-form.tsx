@@ -125,12 +125,11 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                                         <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                                                                                   {t('checkout.previousbutton')}
                                                                                                                         </CheckoutNextPrevButton>
-                                                                                                                        <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
+                                                                                                                        <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
                                                                                                                                   {t('checkout.nextbutton')}
                                                                                                                         </CheckoutNextPrevButton>
                                                                                                               </Grid>
                                                                                                     </Grid>
-
                                                                                           </Form>
                                                                                 )
                                                                       }
