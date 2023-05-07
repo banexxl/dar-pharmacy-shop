@@ -1,4 +1,4 @@
-import { IPaymentForm } from '@/interfaces/checkout/payment-form-values.interface';
+import { IPaymentInfoForm } from '@/interfaces/checkout/payment-info-form-values.interface';
 import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -15,10 +15,16 @@ export const checkoutSlice = createSlice({
                     clearUserForm(state: ICheckoutState) {
                               state.userForm = initialCheckoutState.userForm;
                     },
-                    submitPaymentForm(state: ICheckoutState, action: PayloadAction<IPaymentForm>) {
+                    submitPaymentInfoForm(state: ICheckoutState, action: PayloadAction<IPaymentInfoForm>) {
                               state.paymentForm = action.payload;
                     },
-                    clearPaymentForm(state: ICheckoutState) {
+                    clearPaymentInfoForm(state: ICheckoutState) {
+                              state.paymentForm = initialCheckoutState.paymentForm;
+                    },
+                    submitPaymentOptionsForm(state: ICheckoutState, action: PayloadAction<IPaymentInfoForm>) {
+                              state.paymentForm = action.payload;
+                    },
+                    clearPaymentOptionsForm(state: ICheckoutState) {
                               state.paymentForm = initialCheckoutState.paymentForm;
                     },
           },

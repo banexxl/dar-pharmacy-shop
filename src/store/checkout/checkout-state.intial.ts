@@ -1,6 +1,6 @@
 
-import { initialCreditCardValues } from '@/interfaces/checkout/credit-card-form-values.interface';
-import { initialPaymentFormValues } from '@/interfaces/checkout/payment-form-values.interface';
+import { initialCreditCardValues } from '@/interfaces/checkout/payment-options-form-values.interface';
+import { initialPaymentFormValues } from '@/interfaces/checkout/payment-info-form-values.interface';
 import { initialUserFormValues } from '@/interfaces/checkout/user-form-values.interface';
 import { ICheckoutState } from './checkout-state.interface';
 

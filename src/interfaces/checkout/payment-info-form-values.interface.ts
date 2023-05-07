@@ -1,6 +1,6 @@
 import { FormikErrors, FormikTouched } from "formik";
 
-export interface IPaymentForm {
+export interface IPaymentInfoForm {
           sameAsShipping: boolean;
           firstName?: string;
           lastName?: string;
@@ -12,7 +12,7 @@ export interface IPaymentForm {
           zipPostalCode?: string;
 }
 
-export const initialPaymentFormValues: IPaymentForm = {
+export const initialPaymentFormValues: IPaymentInfoForm = {
           sameAsShipping: false,
           firstName: '',
           lastName: '',
@@ -24,12 +24,12 @@ export const initialPaymentFormValues: IPaymentForm = {
           zipPostalCode: '',
 };
 
-export interface IPaymentFormProps {
+export interface IPaymentInfoFormProps {
           isLoading?: boolean;
           sameAsShipping: boolean
           tabIndex?: number
           setTab?: (tabIndex: number) => number
           formName: string
-          errors?: FormikErrors<IPaymentForm>
-          touched?: FormikTouched<IPaymentForm>
+          errors?: FormikErrors<IPaymentInfoForm>
+          touched?: FormikTouched<IPaymentInfoForm>
 }

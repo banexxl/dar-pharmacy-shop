@@ -3,25 +3,27 @@ import { FormikErrors, FormikTouched } from "formik";
 import { ChangeEvent } from "react";
 
 
-export interface ICreditCardForm {
+export interface IPaymentOptionsForm {
           cardNumber: number | null;
           expirationDate: Dayjs | null;
           securityCode: string;
+          paymentOption: string;
 }
 
-export interface ICreditCardFormProps {
+export interface IPaymentOptionsFormProps {
           isLoading?: boolean;
           formName: string;
           tabIndex?: number;
           setTab?: (tabIndex: number) => number;
-          errors?: FormikErrors<ICreditCardForm>;
-          touched?: FormikTouched<ICreditCardForm>;
-          values?: ICreditCardForm;
+          errors?: FormikErrors<IPaymentOptionsForm>;
+          touched?: FormikTouched<IPaymentOptionsForm>;
+          values?: IPaymentOptionsForm;
           handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const initialCreditCardValues: ICreditCardForm = {
+export const initialCreditCardValues: IPaymentOptionsForm = {
           cardNumber: null,
           expirationDate: null,
           securityCode: '',
+          paymentOption: 'onDelivery'
 };

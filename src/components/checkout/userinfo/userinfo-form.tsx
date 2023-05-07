@@ -1,13 +1,13 @@
-import theme, { Colors } from '@/styles/theme';
-import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, ThemeProvider, Typography } from '@mui/material';
-import { Field, Form, Formik } from 'formik';
-import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from 'react';
+import theme from '@/styles/theme';
+import { Container, Grid, TextField, Typography } from '@mui/material';
+import { Form, Formik } from 'formik';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { initialEmailFormValues, initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
-import { userFormSchema, userEmailSchema } from '@/schemas/user-form.schema';
-import { submitUserForm } from '@/store/checkout/checkout.slice'
+import { initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
+import { userFormSchema } from '@/schemas/user-form.schema';
+import { clearUserForm, submitUserForm } from '@/store/checkout/checkout.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { PaymentOptionRadio, ShouldCreateAccountButton } from '@/styles/checkout/userinfo';
+import { PaymentOptionRadio } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
@@ -17,7 +17,7 @@ import LoadingWheel from '@/components/loading/loading';
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
-          const [openEmailForm, setOpenEmailForm] = useState(false);
+
           const dispatch = useDispatch()
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -36,7 +36,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
 
           return (
                     <DynamicThemeProvider theme={theme}>
-                              <Container disableGutters maxWidth="md" sx={{ background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                              <Container disableGutters maxWidth="md">
 
                                         <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)}>
                                                   {
@@ -143,23 +143,12 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     />
                                                                                           </Grid>
                                                                                           <PaymentOptionRadio>
-                                                                                                    <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
+                                                                                                    <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(), dispatch(clearUserForm()) }}                                                                                          >
                                                                                                               {t('checkout.clearform')}
                                                                                                     </ClearFormButton>
                                                                                                     <CheckoutNextPrevButton type='submit' endIcon={< NavigateNextIcon />}>
                                                                                                               {t('checkout.nextbutton')}
                                                                                                     </CheckoutNextPrevButton>
-                                                                                                    <FormLabel id="demo-controlled-radio-buttons-group">{t('checkout.payment-options')}</FormLabel>
-                                                                                                    <RadioGroup
-                                                                                                              aria-labelledby="demo-controlled-radio-buttons-group"
-                                                                                                              name="controlled-radio-buttons-group"
-                                                                                                              value={formik.values.paymentOption}
-                                                                                                              onChange={(e: any) => console.log(e)}
-                                                                                                              sx={{ display: 'flex', flexDirection: 'row' }}
-                                                                                                    >
-                                                                                                              <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={t('checkout.on-delivery-payment')} />
-                                                                                                              <FormControlLabel value="cardPayment" control={<Radio />} label={t('checkout.card-payment')} />
-                                                                                                    </RadioGroup>
                                                                                           </PaymentOptionRadio>
                                                                                 </Grid>
                                                                       </Form>
@@ -167,46 +156,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                   }
                                         </Formik>
 
-                                        <Formik initialValues={initialEmailFormValues} onSubmit={(e: any) => console.log(e)} validationSchema={userEmailSchema(t)} reset>
-                                                  {
-                                                            formik => (
-                                                                      <Form onSubmit={formik.handleSubmit}>
-                                                                                <Grid item xs={12} sm={6}>
-                                                                                          <ShouldCreateAccountButton onClick={() => setOpenEmailForm(true)} >
-                                                                                                    {<Typography>{t('checkout.shouldcreateaccount')}</Typography>}
-                                                                                          </ShouldCreateAccountButton>
-                                                                                          <Dialog open={openEmailForm}>
-                                                                                                    <DialogTitle>Subscribe</DialogTitle>
-                                                                                                    <DialogContent>
-                                                                                                              <DialogContentText>
-                                                                                                                        To subscribe to this website, please enter your email address here. We
-                                                                                                                        will send updates occasionally.
-                                                                                                              </DialogContentText>
-                                                                                                              <TextField
-                                                                                                                        value={formik.values.email}
-                                                                                                                        onChange={formik.handleChange('email')}
-                                                                                                                        label={t('signup.email')}
-                                                                                                                        name={'email'}
-                                                                                                                        variant="outlined"
-                                                                                                                        error={formik.touched?.email && !!formik.errors?.email}
-                                                                                                                        helperText={formik.touched?.email && formik.errors?.email}
-                                                                                                                        autoFocus
-                                                                                                                        margin="dense"
-                                                                                                                        id="name"
-                                                                                                                        type="email"
-                                                                                                                        fullWidth
-                                                                                                              />
-                                                                                                    </DialogContent>
-                                                                                                    <DialogActions>
-                                                                                                              <Button onClick={() => setOpenEmailForm(false)}>Cancel</Button>
-                                                                                                              <Button type='submit' onClick={() => setOpenEmailForm(false)}>Subscribe</Button>
-                                                                                                    </DialogActions>
-                                                                                          </Dialog>
-                                                                                </Grid>
-                                                                      </Form>
-                                                            )
-                                                  }
-                                        </Formik>
+
 
                               </Container>
                     </DynamicThemeProvider >

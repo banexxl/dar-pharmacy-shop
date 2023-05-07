@@ -1,27 +1,27 @@
-import { Container, Grid, TextField, Typography } from '@mui/material';
+import { Container, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { initialPaymentFormValues, IPaymentForm, IPaymentFormProps } from '../../../interfaces/checkout/payment-form-values.interface';
+import { initialPaymentFormValues, IPaymentInfoForm, IPaymentInfoFormProps } from '../../../interfaces/checkout/payment-info-form-values.interface';
 import { userFormSchema } from '../../../schemas/user-form.schema';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { submitPaymentForm } from '@/store/checkout/checkout.slice';
+import { clearPaymentForm, submitPaymentForm } from '@/store/checkout/checkout.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme from '@/styles/theme';
 import { isBillingAndShippingCheckbox } from '@/styles/checkout/payment';
 
-export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFormProps) => {
+export const Payment: FunctionComponent<IPaymentInfoFormProps> = (props: IPaymentInfoFormProps) => {
 
           const { t } = useTranslation();
           const dispatch = useDispatch()
           const [sameAsShippingCB, setSameAsShippingCB] = useState(false)
 
-          const handleSubmit = (values: IPaymentForm) => {
+          const handleSubmit = (values: IPaymentInfoForm) => {
 
                     dispatch(submitPaymentForm(values))
 
@@ -58,7 +58,7 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                   gap: '20px'
                                         }}
                               >
-                                        <Formik validationSchema={userFormSchema(t)} onSubmit={(values: IPaymentForm) => handleSubmit(values)} initialValues={initialPaymentFormValues} >
+                                        <Formik validationSchema={userFormSchema(t)} onSubmit={(values: IPaymentInfoForm) => handleSubmit(values)} initialValues={initialPaymentFormValues} >
                                                   {
                                                             formik => (
                                                                       <Form>
@@ -186,7 +186,7 @@ export const Payment: FunctionComponent<IPaymentFormProps> = (props: IPaymentFor
                                                                                                               />
                                                                                                     </Grid>
                                                                                                     < Grid item xs={12} sm={6}>
-                                                                                                              <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => formik.handleReset()}                                                                                          >
+                                                                                                              <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(); dispatch(clearPaymentForm()) }}                                                                                          >
                                                                                                                         {t('checkout.clearform')}
                                                                                                               </ClearFormButton>
                                                                                                               <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
