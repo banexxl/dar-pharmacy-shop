@@ -76,7 +76,6 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                                                   error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
                                                                                                                                   helperText={formik.touched?.cardNumber && formik.errors?.cardNumber}
                                                                                                                                   onChange={formik.handleChange('cardNumber')}
-                                                                                                                                  onEndedCapture={(e: any) => console.log(e)}
                                                                                                                                   fullWidth
                                                                                                                                   inputProps={{
                                                                                                                                             maxLength: 16

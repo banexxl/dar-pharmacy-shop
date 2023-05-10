@@ -13,10 +13,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
+import { useSelector } from "react-redux";
+import { getCheckoutState, getUserForm } from '@/store/checkout/checkout.selectors';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
+          const userFormSelector = useSelector((state: any) => state)
+          console.log('userFormSelector iz user info form', userFormSelector);
 
           const dispatch = useDispatch()
 
@@ -33,6 +37,10 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
           const onSubmitEmailForm = (email: any) => {
                     console.log(email);
           }
+
+          useEffect(() => {
+                    dispatch(submitUserForm(userFormSelector))
+          }, [])
 
           return (
                     <DynamicThemeProvider theme={theme}>

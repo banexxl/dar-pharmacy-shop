@@ -1,5 +1,5 @@
 import ICartItem from "@/interfaces/cart/cart.interface";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 const initialState: ICartItem[] = [];
 

@@ -5,7 +5,7 @@ import { AnyAction, Reducer } from '@reduxjs/toolkit';
 import { IPaymentInfoForm } from '../../interfaces/checkout/payment-info-form-values.interface';
 
 export interface ICheckoutState {
-          checkoutState: any;
+          // checkoutState: any;
           userForm: IUserForm;
           paymentInfoForm: IPaymentInfoForm;
           paymentOptionsForm: IPaymentOptionsForm;

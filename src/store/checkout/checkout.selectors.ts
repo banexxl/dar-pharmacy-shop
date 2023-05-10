@@ -4,17 +4,11 @@ import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { IPaymentInfoForm } from '@/interfaces/checkout/payment-info-form-values.interface';
 import { IPaymentOptionsForm } from '@/interfaces/checkout/payment-options-form-values.interface';
 
-const getCheckoutState = (state: ICheckoutState) => state;
+export const getCheckoutState = (state: ICheckoutState) => state;
 
-const getUserForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState) => checkoutState?.userForm)
+export const getUserForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IUserForm => checkoutState?.userForm)
 
-const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentInfoForm => checkoutState?.paymentInfoForm)
+export const getPaymentForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentInfoForm => checkoutState?.paymentInfoForm)
 
-const PaymentOptionsForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentOptionsForm => checkoutState?.paymentOptionsForm)
+export const PaymentOptionsForm = createSelector(getCheckoutState, (checkoutState: ICheckoutState): IPaymentOptionsForm => checkoutState?.paymentOptionsForm)
 
-export const checkoutSelectors = {
-          getCheckoutState,
-          getUserForm,
-          getPaymentForm,
-          PaymentOptionsForm
-};
