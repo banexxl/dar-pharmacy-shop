@@ -1,9 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import cartSliceReducer from './cart/cart.slice'
-import checkoutSliceReducer from './checkout/checkout.slice'
+import checkoutSliceReducer from './checkout/user-info-form.slice'
 import wishListReducer from './wishlist/wishlist.slice'
 import storage from 'redux-persist/lib/storage'
-import { PersistConfig, persistReducer } from "redux-persist"
+import { persistReducer } from "redux-persist"
+import userInfoFormSliceReducer from './checkout/user-info-form.slice'
+import paymentInfoFormSliceReducer from './checkout/payment-info-form.slice'
+import paymentOptionsFormSliceReducer from './checkout/payment-options-form.slice'
 
 const persistConfig = {
           key: 'persist-key',
@@ -12,8 +15,10 @@ const persistConfig = {
 
 const comboReducer = combineReducers({
           cartSliceReducer,
-          checkoutSliceReducer,
-          wishListReducer
+          wishListReducer,
+          userInfoFormSliceReducer,
+          paymentInfoFormSliceReducer,
+          paymentOptionsFormSliceReducer
 })
 
 const persistReduce = persistReducer(persistConfig, comboReducer)
@@ -23,7 +28,9 @@ const store = configureStore({
           reducer: {
                     // cartState: cartSliceReducer,
                     // wishListState: wishListReducer,
-                    // checkoutState: checkoutSliceReducer,
+                    // userInfoState: userInfoFormSliceReducer,
+                    // paymentInfoState: paymentInfoFormSliceReducer,
+                    // paymentOptionsState: paymentOptionsFormSliceReducer
                     persistReduce
           },
           middleware: (getDefaultMiddleware) =>

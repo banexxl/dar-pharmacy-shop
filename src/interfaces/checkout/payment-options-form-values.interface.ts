@@ -9,6 +9,12 @@ export interface IPaymentOptionsForm {
           securityCode: string;
 }
 
+export const initialPaymentOptionsValues: IPaymentOptionsForm = {
+          cardNumber: null,
+          expirationDate: null,
+          securityCode: ''
+};
+
 export interface IPaymentOptionsFormProps {
           isLoading?: boolean;
           formName: string;
@@ -20,8 +26,3 @@ export interface IPaymentOptionsFormProps {
           handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const initialCreditCardValues: IPaymentOptionsForm = {
-          cardNumber: null,
-          expirationDate: null,
-          securityCode: ''
-};

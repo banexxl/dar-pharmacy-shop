@@ -2,7 +2,7 @@ import { Box, Container, FormControlLabel, FormLabel, Grid, Input, InputAdornmen
 import { Form, Formik, FormikErrors, FormikTouched } from 'formik';
 import React, { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { IPaymentOptionsForm, IPaymentOptionsFormProps, initialCreditCardValues } from '../../../interfaces/checkout/payment-options-form-values.interface';
+import { IPaymentOptionsForm, IPaymentOptionsFormProps, initialPaymentOptionsValues } from '../../../interfaces/checkout/payment-options-form-values.interface';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme, { Colors } from '@/styles/theme';
@@ -13,7 +13,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers/';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { submitPaymentOptionsForm } from '@/store/checkout/checkout.slice';
+import { submitPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice';
 
 export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: IPaymentOptionsFormProps) => {
 
@@ -60,7 +60,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                         </RadioGroup>
                                         {
                                                   paymentOption === 'cardPayment' ?
-                                                            <Formik initialValues={initialCreditCardValues} onSubmit={(values: IPaymentOptionsForm) => handleSubmit(values)} validationSchema={creditCardSchema(t)}>
+                                                            <Formik initialValues={initialPaymentOptionsValues} onSubmit={(values: IPaymentOptionsForm) => handleSubmit(values)} validationSchema={creditCardSchema(t)}>
                                                                       {
                                                                                 formik => (
                                                                                           <Form>

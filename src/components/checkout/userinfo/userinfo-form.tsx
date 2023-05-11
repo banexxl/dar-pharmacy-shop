@@ -5,7 +5,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
-import { clearUserForm, submitUserForm } from '@/store/checkout/checkout.slice'
+import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { PaymentOptionRadio } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
@@ -14,13 +14,13 @@ import { useDispatch } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { useSelector } from "react-redux";
-import { getCheckoutState, getUserForm } from '@/store/checkout/checkout.selectors';
+import { getUserForm } from '@/store/checkout/checkout.selectors';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
           const { t } = useTranslation('common')
-          const userFormSelector = useSelector((state: any) => state)
-          console.log('userFormSelector iz user info form', userFormSelector);
+          const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce }))
+          console.log('userFormSelector iz user info form', userFormSelector.checkoutSliceReducer);
 
           const dispatch = useDispatch()
 
@@ -29,7 +29,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     ssr: false
           })
 
-          const handleSubmit = (values: IUserForm) => {
+          const handleSubmit = (values: any) => {
                     dispatch(submitUserForm(values))
                     props.tabIndex === 0 ? props.setTab?.(1) : null
           }

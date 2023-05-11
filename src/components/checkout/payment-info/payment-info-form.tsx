@@ -8,13 +8,13 @@ import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/useri
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { submitPaymentInfoForm, clearPaymentInfoForm } from '@/store/checkout/checkout.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme from '@/styles/theme';
 import { isBillingAndShippingCheckbox } from '@/styles/checkout/payment';
 import { getUserForm } from '@/store/checkout/checkout.selectors';
+import { clearPaymentInfoForm, submitPaymentInfoForm } from '@/store/checkout/payment-info-form.slice';
 
 export const Payment: FunctionComponent<IPaymentInfoFormProps> = (props: IPaymentInfoFormProps) => {
 

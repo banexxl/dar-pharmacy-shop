@@ -1,7 +1,6 @@
 
 import ICartItem from "@/interfaces/cart/cart.interface";
 import { createSelector } from "@reduxjs/toolkit"
-import { ICartState } from "./cart-state.interface";
 
 const cartSelector = (state: any) => state.persistReduce.cartSliceReducer
 
