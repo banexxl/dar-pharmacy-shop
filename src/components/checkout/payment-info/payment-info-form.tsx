@@ -13,15 +13,14 @@ import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme from '@/styles/theme';
 import { isBillingAndShippingCheckbox } from '@/styles/checkout/payment';
-import { getUserForm } from '@/store/checkout/checkout.selectors';
 import { clearPaymentInfoForm, submitPaymentInfoForm } from '@/store/checkout/payment-info-form.slice';
 
 export const Payment: FunctionComponent<IPaymentInfoFormProps> = (props: IPaymentInfoFormProps) => {
 
           const { t } = useTranslation();
           const dispatch = useDispatch()
-          const userFormSelector = useSelector(getUserForm)
-          //console.log('userFormSelector iz payment infoa: ', userFormSelector);
+
+
 
           const [sameAsShippingCB, setSameAsShippingCB] = useState(false)
 

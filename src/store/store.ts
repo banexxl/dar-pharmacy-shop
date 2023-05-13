@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import cartSliceReducer from './cart/cart.slice'
-import checkoutSliceReducer from './checkout/user-info-form.slice'
 import wishListReducer from './wishlist/wishlist.slice'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from "redux-persist"
@@ -9,8 +8,8 @@ import paymentInfoFormSliceReducer from './checkout/payment-info-form.slice'
 import paymentOptionsFormSliceReducer from './checkout/payment-options-form.slice'
 
 const persistConfig = {
-          key: 'persist-key',
-          storage
+          key: 'root',
+          storage,
 }
 
 const comboReducer = combineReducers({

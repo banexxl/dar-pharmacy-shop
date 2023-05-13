@@ -5,14 +5,11 @@ export const userInfoFormSlice = createSlice({
           name: 'userInfoForm',
           initialState: initialUserFormValues,
           reducers: {
-                    submitUserForm(state, { payload }: PayloadAction) {
-                              console.log('payload', payload);
-
+                    submitUserForm(state: any, action: PayloadAction) {
+                              return action.payload
                     },
                     clearUserForm(state) {
-                              console.log('usao u clear user form uncheckoutsliceu');
-
-                              //state.userForm = initialCheckoutState.userForm;
+                              return initialUserFormValues
                     },
           },
 });
