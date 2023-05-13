@@ -3,7 +3,7 @@ import { Container, Grid, TextField, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import React, { FunctionComponent, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
-import { initialUserFormValues, IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
+import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -19,6 +19,17 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
 
           const { t } = useTranslation('common')
           const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
+          const initialUserFormValues: IUserForm = {
+                    firstName: userFormSelector.firstName,
+                    lastName: userFormSelector.lastName,
+                    streetAddress: userFormSelector.streetAddress,
+                    phoneNumber: userFormSelector.phoneNumber,
+                    city: userFormSelector.city,
+                    provinceState: userFormSelector.provinceState,
+                    country: userFormSelector.country,
+                    zipPostalCode: userFormSelector.zipPostalCode,
+          };
+
 
           const dispatch = useDispatch()
 
@@ -54,7 +65,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                 <Grid container spacing={2}>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.firstName}
+                                                                                                              value={formik.values.firstName}
                                                                                                               label={t('userinfo.firstName')}
                                                                                                               name={'firstName'}
                                                                                                               variant="outlined"
@@ -66,7 +77,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.lastName}
+                                                                                                              value={formik.values.lastName}
                                                                                                               onChange={formik.handleChange('lastName')}
                                                                                                               label={t('userinfo.lastName')}
                                                                                                               name={'lastName'}
@@ -78,7 +89,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.phoneNumber}
+                                                                                                              value={formik.values.phoneNumber}
                                                                                                               onChange={formik.handleChange('phoneNumber')}
                                                                                                               label={t('userinfo.phoneNumber')}
                                                                                                               name={'phoneNumber'}
@@ -90,7 +101,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.streetAddress}
+                                                                                                              value={formik.values.streetAddress}
                                                                                                               onChange={formik.handleChange('streetAddress')}
                                                                                                               label={t('userinfo.streetAddress')}
                                                                                                               name={'streetAddress'}
@@ -102,7 +113,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.city}
+                                                                                                              value={formik.values.city}
                                                                                                               onChange={formik.handleChange('city')}
                                                                                                               label={t('userinfo.city')}
                                                                                                               name={'city'}
@@ -114,7 +125,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.provinceState}
+                                                                                                              value={formik.values.provinceState}
                                                                                                               onChange={formik.handleChange('provinceState')}
                                                                                                               label={t('userinfo.provinceState')}
                                                                                                               name={'provinceState'}
@@ -126,7 +137,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.country}
+                                                                                                              value={formik.values.country}
                                                                                                               onChange={formik.handleChange('country')}
                                                                                                               label={t('userinfo.country')}
                                                                                                               name={'country'}
@@ -138,7 +149,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
-                                                                                                              value={userFormSelector.zipPostalCode}
+                                                                                                              value={formik.values.zipPostalCode}
                                                                                                               onChange={formik.handleChange('zipPostalCode')}
                                                                                                               label={t('userinfo.zipPostalCode')}
                                                                                                               name={'zipPostalCode'}
