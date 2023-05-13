@@ -7,10 +7,10 @@ export const paymentOptionsFormSlice = createSlice({
           initialState: initialPaymentOptionsValues,
           reducers: {
                     submitPaymentOptionsForm(state, action: PayloadAction<IPaymentOptionsForm>) {
-                              //state.paymentOptionsForm = action.payload;
+                              return action.payload
                     },
                     clearPaymentOptionsForm(state) {
-                              // state.paymentOptionsForm = initialCheckoutState.paymentOptionsForm;
+                              return initialPaymentOptionsValues
                     },
           },
 });

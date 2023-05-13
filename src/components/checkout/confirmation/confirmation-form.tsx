@@ -14,9 +14,12 @@ import { useTranslation } from 'next-i18next'
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
           const { t } = useTranslation('common')
-          const cart: ICartItem[] = useSelector((state: any) => state.cartState)
+          const cart: ICartItem[] = useSelector((state: any) => state.persistReduce.cartSliceReducer)
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
           const tabIndex: number = 3
+
+          console.log(cart);
+
 
           const handleBack = () => {
                     tabIndex === 2 || tabIndex === 3 ? props.setTab?.(tabIndex - 1) : null

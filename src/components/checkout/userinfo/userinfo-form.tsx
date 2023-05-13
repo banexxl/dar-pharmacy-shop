@@ -47,10 +47,6 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     console.log(email);
           }
 
-          // useEffect(() => {
-          //           dispatch(submitUserForm(userFormSelector))
-          // }, [])
-
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Container disableGutters maxWidth="md">

@@ -26,7 +26,9 @@ export default function Cart({ open, onClose }: ICartProps) {
           const theme = useTheme()
           const { t } = useTranslation();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-          const cart = useSelector((state: any) => ({ ...state.persistReduce }))
+          const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
+
+          console.log(cart);
 
           return (
                     <Dialog
@@ -64,7 +66,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                       <StyledHeaderCell align="left">{t('cart.total')}</StyledHeaderCell>
                                                             </StyledHeader>
                                                             <StyledTableBody>
-                                                                      {cart.cartSliceReducer.map((cartItem: ICartItem) => (
+                                                                      {cart.map((cartItem: ICartItem) => (
                                                                                 <CartItem key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                                                                           name={cartItem.name} description={cartItem.description} category={cartItem.category}
                                                                                           availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}

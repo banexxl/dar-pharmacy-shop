@@ -2,12 +2,12 @@ import { Box, Container, FormControlLabel, FormLabel, Grid, Input, InputAdornmen
 import { Form, Formik, FormikErrors, FormikTouched } from 'formik';
 import React, { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { IPaymentOptionsForm, IPaymentOptionsFormProps, initialPaymentOptionsValues } from '../../../interfaces/checkout/payment-options-form-values.interface';
+import { IPaymentOptionsForm, IPaymentOptionsFormProps } from '../../../interfaces/checkout/payment-options-form-values.interface';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import theme, { Colors } from '@/styles/theme';
 import { creditCardSchema } from '@/schemas/payment-form.schema';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -20,7 +20,12 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
           const { t } = useTranslation();
           const [paymentOption, setPaymentOption] = useState('onDelivery')
           const dispatch = useDispatch()
-
+          const paymentOptionsFormSelector = useSelector((state: any) => ({ ...state.persistReduce.paymentOptionsFormSliceReducer }))
+          const initialPaymentOptionsValues: IPaymentOptionsForm = {
+                    cardNumber: paymentOptionsFormSelector.cardNumber,
+                    expirationDate: paymentOptionsFormSelector.expirationDate,
+                    securityCode: paymentOptionsFormSelector.securityCode
+          };
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false

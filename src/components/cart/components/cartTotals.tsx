@@ -1,11 +1,7 @@
-import { useUIContext } from '@/context/ui/ui.context'
-import useDialogModal from '@/hooks/useDialogModal'
-import ICartItem from '@/interfaces/cart/cart.interface'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Cart from '../cart'
 import { useTranslation } from 'next-i18next'
 import { StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle, StyledTotalsToPaymentButton, StyledTotalsToShopButton } from '@/styles/cart'
 

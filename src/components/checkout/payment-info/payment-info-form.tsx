@@ -2,7 +2,7 @@ import { Container, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextFi
 import { Field, Form, Formik } from 'formik';
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { initialPaymentFormValues, IPaymentInfoForm, IPaymentInfoFormProps } from '../../../interfaces/checkout/payment-info-form-values.interface';
+import { IPaymentInfoForm, IPaymentInfoFormProps } from '../../../interfaces/checkout/payment-info-form-values.interface';
 import { userFormSchema } from '../../../schemas/user-form.schema';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -19,7 +19,18 @@ export const Payment: FunctionComponent<IPaymentInfoFormProps> = (props: IPaymen
 
           const { t } = useTranslation();
           const dispatch = useDispatch()
-
+          const paymentInfoFormSelector = useSelector((state: any) => ({ ...state.persistReduce.paymentInfoFormSliceReducer }))
+          const initialPaymentFormValues: IPaymentInfoForm = {
+                    sameAsShipping: paymentInfoFormSelector.sameAsShipping,
+                    firstName: paymentInfoFormSelector.firstName,
+                    lastName: paymentInfoFormSelector.lastName,
+                    streetAddress: paymentInfoFormSelector.streetAddress,
+                    phoneNumber: paymentInfoFormSelector.phoneNumber,
+                    city: paymentInfoFormSelector.city,
+                    provinceState: paymentInfoFormSelector.provinceState,
+                    country: paymentInfoFormSelector.country,
+                    zipPostalCode: paymentInfoFormSelector.zipPostalCode,
+          };
 
 
           const [sameAsShippingCB, setSameAsShippingCB] = useState(false)
