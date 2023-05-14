@@ -31,21 +31,22 @@ export const SendContactEmail = async (data: IContactForm) => {
           }).then((response: Response) => {
                     if (response.ok) {
                               Swal.fire({
-                                        title: 'Bravo!',
+                                        title: 'Hvala Vam na kontaktu!',
                                         text: 'Poruka poslata!',
                                         icon: 'success',
                                         confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!',
                                         confirmButtonAriaLabel: 'Thumbs up, great!',
                                         showCloseButton: true,
-                                        showClass: {
-                                                  popup: 'animate__animated animate__fadeInDown'
-                                        },
-                                        hideClass: {
-                                                  popup: 'animate__animated animate__fadeOutUp'
-                                        }
                               })
                     } else {
-                              throw new Error('Failed to send email');
+                              Swal.fire({
+                                        title: 'Eh!',
+                                        text: 'Poruka iz nekog razloga nije poslata!',
+                                        icon: 'error',
+                                        confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!',
+                                        confirmButtonAriaLabel: 'Thumbs down',
+                                        showCloseButton: true,
+                              })
                     }
           })
 }
