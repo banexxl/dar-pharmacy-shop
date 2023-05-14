@@ -2,8 +2,12 @@ import ICartItem from '@/interfaces/cart/cart.interface';
 import { Colors } from '@/styles/theme';
 import { transporter } from '../../../services/email/email-config'
 import { IContactForm } from '@/interfaces/contact/contact.interface';
+import { NextApiRequest, NextApiResponse } from 'next/types';
 
-const ContactEmailHandler = async (req: any, res: any) => {
+const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+
+          await console.log(req);
+
 
           if (req.method === "POST") {
 
@@ -109,14 +113,11 @@ const ContactEmailHandler = async (req: any, res: any) => {
                     try {
                               await transporter.sendMail({
                                         from: process.env.EMAIL_FROM,
-                                        to: ['maja@apoteka-dar.rs', 'damjanovic.branislav@gmail.com'],
+                                        to: 'maja@apoteka-dar.rs',
                                         subject: 'Poruka od klijenta',
                                         html
-                              });
-
-
+                              })
                               return res.status(200).json({ success: true });
-
                     } catch (err: any) {
                               return res.status(400).json({ message: err });
                     }
