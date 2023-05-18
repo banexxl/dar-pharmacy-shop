@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from "react"
-import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage } from "../../styles/product";
+import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductDiscountSticker, ProductFavButton, ProductImage } from "../../styles/product";
 import { Alert, Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
@@ -41,7 +41,10 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
 
           return (
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                              <ProductImage src={product.imageURL} />
+                              <ProductDiscountSticker>
+
+                                        <ProductImage src={product.imageURL} />
+                              </ProductDiscountSticker>
                               <ProductFavButton isfav={0}>
                                         <Tooltip placement="left" title="Add to wishlist">
                                                   <FavoriteIcon />

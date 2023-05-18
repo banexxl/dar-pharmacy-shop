@@ -84,3 +84,19 @@ export const ProductActionsWrapper = styled(Box)(({ show, theme }: any) => ({
           }
 }));
 
+export const ProductDiscountSticker = styled(Box)(() => ({
+          position: 'absolute',
+          right: '-20px',
+          top: '10px',
+          background: Colors.primary,
+          textAlign: 'center',
+          width: '100 %',
+          transition: '.5s ease',
+          opacity: '0',
+          borderRadius: '30px 30px 30px 30px',
+          color: 'white',
+          padding: '5px 10px',
+          fontSize: '20px'
+}));
+
+

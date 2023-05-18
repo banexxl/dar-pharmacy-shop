@@ -16,6 +16,10 @@ export interface IEmailForm {
           email: string
 }
 
+export const initialEmailFormValues: IEmailForm = {
+          email: ''
+}
+
 export const initialUserFormValues: IUserForm = {
           firstName: '',
           lastName: '',
