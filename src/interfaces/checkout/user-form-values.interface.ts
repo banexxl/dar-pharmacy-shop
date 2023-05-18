@@ -9,6 +9,7 @@ export interface IUserForm {
           provinceState?: string;
           country: string;
           zipPostalCode: string;
+          email: string;
 }
 
 export interface IEmailForm {
@@ -24,10 +25,7 @@ export const initialUserFormValues: IUserForm = {
           provinceState: '',
           country: '',
           zipPostalCode: '',
-};
-
-export const initialEmailFormValues: IEmailForm = {
-          email: ''
+          email: '',
 };
 
 export interface IUserFormProps {
@@ -38,4 +36,3 @@ export interface IUserFormProps {
           errors?: FormikErrors<IUserForm>
           touched?: FormikTouched<IUserForm>
 }
-

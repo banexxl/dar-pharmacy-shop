@@ -35,5 +35,8 @@ export const userFormSchema = (t: any) => {
                               .required(t('errorMessages.required', { fieldName: t('userinfo.zipPostalCode') }))
                               .min(5, t('errorMessages.tooShort', { min: 5 }))
                               .max(7, t('errorMessages.tooLong', { max: 7 })),
+                    email: string().
+                              required(t('errorMessages.required', { fieldName: t('userinfo.email') }))
+                              .email(t('errorMessages.email', { fieldName: t('userinfo.email') })),
           });
 };

@@ -28,6 +28,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     provinceState: userFormSelector.provinceState,
                     country: userFormSelector.country,
                     zipPostalCode: userFormSelector.zipPostalCode,
+                    email: userFormSelector.email
           };
 
 
@@ -152,6 +153,18 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.zipPostalCode && !!formik.errors?.zipPostalCode}
                                                                                                               helperText={formik.touched?.zipPostalCode && formik.errors?.zipPostalCode}
+                                                                                                              fullWidth
+                                                                                                    />
+                                                                                          </Grid>
+                                                                                          <Grid item xs={12} sm={6}>
+                                                                                                    <TextField
+                                                                                                              value={formik.values.email}
+                                                                                                              onChange={formik.handleChange('email')}
+                                                                                                              label={t('userinfo.email')}
+                                                                                                              name={'email'}
+                                                                                                              variant="outlined"
+                                                                                                              error={formik.touched?.email && !!formik.errors?.email}
+                                                                                                              helperText={formik.touched?.email && formik.errors?.email}
                                                                                                               fullWidth
                                                                                                     />
                                                                                           </Grid>

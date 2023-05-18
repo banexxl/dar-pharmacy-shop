@@ -1,28 +1,29 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { SendCheckoutConfirmationEmail } from '@/services/email/send-email'
+import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUser } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledTotalsTitle } from '@/styles/cart'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
 import { Button, Paper, Table, TableBody } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import React, { FunctionComponent, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IConfirmationProps } from '@/interfaces/checkout/confirmation.interface'
 import { useTranslation } from 'next-i18next'
+import { clearCart } from '@/store/cart/cart.slice'
+import { clearPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice'
+import { clearUserForm } from '@/store/checkout/user-info-form.slice'
 
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
           const { t } = useTranslation('common')
-          const cart: ICartItem[] = useSelector((state: any) => state.persistReduce.cartSliceReducer)
+          const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
-          const tabIndex: number = 3
-
-          console.log(cart);
-
+          const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
+          const dispatch = useDispatch()
 
           const handleBack = () => {
-                    tabIndex === 2 || tabIndex === 3 ? props.setTab?.(tabIndex - 1) : null
+                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
           };
 
           return (
@@ -58,7 +59,26 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                         {t('checkout.previousbutton')}
                               </CheckoutNextPrevButton>
                               <Button sx={{ color: 'white' }}
-                                        onClick={() => SendCheckoutConfirmationEmail({ email: 'damjanovic.branislav@gmail.com', subject: 'Potvrda porudzbine', name: 'Majo', title: 'Potvrda porudzbine', message: 'majaidrugari@gmail.com', cart })}>
+                                        disabled={totalItemPrice === 0}
+                                        onClick={() => {
+                                                  SendCheckoutConfirmationEmailToAdmin({
+                                                            email: 'maja@apoteka-dar.rs', subject: 'Poružbenica',
+                                                            name: userFormSelector.firstName, surname: userFormSelector.secondName,
+                                                            title: 'Potvrda porudzbenice',
+                                                            cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
+                                                            country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
+
+                                                  }),
+                                                            SendCheckoutConfirmationEmailToUser({
+                                                                      email: userFormSelector.email, subject: 'Poružbenica',
+                                                                      name: userFormSelector.firstName, title: 'Potvrda porudzbenice',
+                                                                      cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
+                                                                      country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
+                                                            }),
+                                                            dispatch(clearCart()),
+                                                            dispatch(clearUserForm()),
+                                                            dispatch(clearPaymentOptionsForm())
+                                        }}>
                                         {t('confirmation.to-payment')}
                               </Button>
                     </CartWrapper>

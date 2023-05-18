@@ -4,7 +4,11 @@ export interface IEmailToFields {
           email: string,
           subject: string,
           name?: string,
+          surname?: string,
           title?: string
-          message?: string,
-          cart: ICartItem[]
+          cart: ICartItem[],
+          streetAddress?: string,
+          city?: string,
+          country?: string,
+          phoneNumber?: string
 }

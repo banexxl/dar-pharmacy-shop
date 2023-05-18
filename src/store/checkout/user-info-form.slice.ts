@@ -8,7 +8,7 @@ export const userInfoFormSlice = createSlice({
                     submitUserForm(state: any, action: PayloadAction) {
                               return action.payload
                     },
-                    clearUserForm(state) {
+                    clearUserForm() {
                               return initialUserFormValues
                     },
           },

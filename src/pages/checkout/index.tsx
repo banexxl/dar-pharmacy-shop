@@ -10,7 +10,6 @@ import React, { useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
-import Payment from '@/components/checkout/payment-info/payment-info-form'
 import Confirmation from '@/components/checkout/confirmation/confirmation-form'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
@@ -34,7 +33,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     ssr: false
           })
 
-          const steps = [t("checkout.shippingAddress"), t("checkout.payment-info"), t("checkout.card-payment"), t("checkout.confirmation")];
+          const steps = [t("checkout.shippingAddress"), t("checkout.card-payment"), t("checkout.confirmation")];
 
           return (
                     <DynamicThemeProvider theme={theme}>
@@ -60,9 +59,8 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                       </CheckoutStepper>
 
                                                                       <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}>
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.user-info')}</CheckoutTabText>} />
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.payment-info')}</CheckoutTabText>} />
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.card-payment')}</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.user-info')}</CheckoutTabText>} />s
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.payment-options')}</CheckoutTabText>} />
                                                                                 <CheckoutTab label={<CheckoutTabText>{t('checkout.confirmation')}</CheckoutTabText>} />
                                                                       </CheckoutTabs>
 
@@ -70,13 +68,10 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                                 <UserInfoForm formName={'userinfo'} setTab={setTab} tabIndex={0} />
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={1} >
-                                                                                <Payment sameAsShipping={false} setTab={setTab} formName={'paymentInfo'} tabIndex={1} />
+                                                                                <CreditCard setTab={setTab} formName='credit-card' tabIndex={1} />
                                                                       </TabPanel>
                                                                       <TabPanel value={tabIndex} index={2} >
-                                                                                <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
-                                                                      </TabPanel>
-                                                                      <TabPanel value={tabIndex} index={3} >
-                                                                                <Confirmation setTab={setTab} tabIndex={3} />
+                                                                                <Confirmation setTab={setTab} tabIndex={2} />
                                                                       </TabPanel>
                                                             </Box>
                                                             <SearchBox />

@@ -4,7 +4,6 @@ import wishListReducer from './wishlist/wishlist.slice'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from "redux-persist"
 import userInfoFormSliceReducer from './checkout/user-info-form.slice'
-import paymentInfoFormSliceReducer from './checkout/payment-info-form.slice'
 import paymentOptionsFormSliceReducer from './checkout/payment-options-form.slice'
 
 const persistConfig = {
@@ -16,7 +15,6 @@ const comboReducer = combineReducers({
           cartSliceReducer,
           wishListReducer,
           userInfoFormSliceReducer,
-          paymentInfoFormSliceReducer,
           paymentOptionsFormSliceReducer
 })
 
@@ -28,7 +26,6 @@ const store = configureStore({
                     // cartState: cartSliceReducer,
                     // wishListState: wishListReducer,
                     // userInfoState: userInfoFormSliceReducer,
-                    // paymentInfoState: paymentInfoFormSliceReducer,
                     // paymentOptionsState: paymentOptionsFormSliceReducer
                     persistReduce
           },

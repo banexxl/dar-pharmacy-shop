@@ -5,21 +5,19 @@ import { Colors } from '@/styles/theme';
 import { useSelector } from 'react-redux';
 import { transporter } from '../../../services/email/email-config'
 
-const ConfirmationEmailHandler = async (req: any, res: any) => {
+const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
 
           if (req.method === "POST") {
 
                     const data: IEmailToFields = req.body;
 
-                    if (!data || !data.name || !data.email || !data.subject || !data.message || !data.cart) {
+                    if (!data || !data.name || !data.email || !data.subject || !data.cart) {
                               return res.status(400).send({ message: "Bad request, data missing" });
                     }
 
-                    const names = data.cart.map((cartItem: ICartItem) => cartItem.name)
+                    const products = data.cart.map((cartItem: ICartItem) => cartItem.name + " " + cartItem.quantity + " " + "*" + cartItem.count)
 
-                    const quantity = data.cart.map((cartItem: ICartItem) => cartItem.quantity)
-
-                    const html =
+                    const htmlForMaja =
                               `
                               <html>
                               <head>
@@ -31,6 +29,7 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                                             display: grid;
                                                             background-color: ${Colors.secondary};
                                                             border-radius: 15px;
+                                                            height: auto,
                                                             width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
@@ -98,31 +97,15 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                               </head>
                               <body>
                                         <div class="container">
-                                                  <h1>Vaša porudžbenica je primljena!</h1>
-                                                  <br>&nbsp;&nbsp;&nbsp;Poštovana/i ${data.name}, 
-                                                            <br>
-                                                                      <p class="message">
-                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu nedavnu kupovinu. <br>
-                                                                                <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em> <br>
-                                                                                <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje 
-                                                                                proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
-                                                                                <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku</strong> 
-                                                                                <br>Radujemo se što ćemo vam i u budućnosti služiti. <br>
-                                                                                <br>Srdačni pozdravi,
-                                                                                <br><strong>DAR apoteka tim</strong>
-                                                                      </p>
-                                                            <table class="list">
-
-                                                                      <tr class="list-item">
-                                                                                <strong>Vaši proizvodi u korpi su:</strong>
-                                                                      </tr>
-
-                                                                      <tr class="list-item">
-                                                                                ${names}
-                                                                      </tr>  
-
-                                                            </table>
-                                                  <a href="apoteka-dar.rs" class="button">Apoteka DAR</a>
+                                                  <h1>Nova porudzbenica od korisnika  ${data.name + "" + data.surname}!</h1>
+                                                  <p>Korisnik je poručio sledeće proizvode:</p>
+                                                  ${products}
+                                                  </br>
+                                                  <p>Ove proizvode je potrebno poslati na adresu:</p><br/>
+                                                  ${data.country}
+                                                  ${data.city}
+                                                  ${data.streetAddress}
+                                                  ${data.phoneNumber}
                                         </div>
                               </body>
                               </html>
@@ -133,9 +116,8 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
                                         from: process.env.EMAIL_SERVER_USER,
                                         to: data.email,
                                         subject: data.subject,
-                                        html
+                                        html: htmlForMaja
                               });
-
 
                               return res.status(200).json({ success: true });
 
@@ -145,4 +127,5 @@ const ConfirmationEmailHandler = async (req: any, res: any) => {
 
           }
 };
-export default ConfirmationEmailHandler;
+
+export default SendConfirmMessageToAdminAPI

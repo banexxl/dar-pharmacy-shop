@@ -31,9 +31,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           const callAlert = () => {
                     setAddedToCartAlert(true)
                     const timeId = setTimeout(() => {
-                              // After 3 seconds set the show value to false
+                              // After X seconds set the show value to false
                               setAddedToCartAlert(false)
-                    }, 2000)
+                    }, 500)
 
                     return () => {
                               clearTimeout(timeId)

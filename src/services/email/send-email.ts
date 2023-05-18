@@ -1,10 +1,11 @@
 import { IContactForm } from "@/interfaces/contact/contact.interface";
 import { IEmailToFields } from "@/interfaces/email/email-to-fields.interface";
+import { Colors } from "@/styles/theme";
 import Swal from 'sweetalert2'
 
-export const SendCheckoutConfirmationEmail = async (data: IEmailToFields) => {
+export const SendCheckoutConfirmationEmailToUser = async (data: IEmailToFields) => {
 
-          fetch("/api/email/send-confirmation-email", {
+          fetch("/api/email/send-confirmation-email-user", {
                     method: "POST",
                     body: JSON.stringify(data),
                     headers: {
@@ -12,10 +13,62 @@ export const SendCheckoutConfirmationEmail = async (data: IEmailToFields) => {
                               'Access-Control-Allow-Origin': '*',
                               'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                     },
-          }).then((res: any) => {
-                    if (!res.ok) alert(`Message not sent! ${res.message}`)
-                    return res.json();
-          });
+          }).then((response: Response) => {
+                    if (response.ok) {
+                              Swal.fire({
+                                        title: 'Hvala Vam na porudžbini!',
+                                        text: 'Proverite mejl i detalje porudžbenice!',
+                                        icon: 'success',
+                                        background: Colors.secondary,
+                                        confirmButtonText: '<b >OK!</b> ',
+                                        // confirmButtonAriaLabel: 'Thumbs up, great!',
+                                        showCloseButton: true
+                              })
+                    } else {
+                              Swal.fire({
+                                        title: 'Eh!',
+                                        text: 'Poruka iz nekog razloga nije poslata!',
+                                        icon: 'error',
+                                        confirmButtonText: 'OK!',
+                                        confirmButtonAriaLabel: 'Thumbs down',
+                                        showCloseButton: true,
+                              })
+                    }
+          })
+}
+
+export const SendCheckoutConfirmationEmailToAdmin = async (data: IEmailToFields) => {
+
+          fetch("/api/email/send-confirmation-email-admin", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                              'Content-Type': 'application/json',
+                              'Access-Control-Allow-Origin': '*',
+                              'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                    },
+          }).then((response: Response) => {
+                    if (response.ok) {
+                              Swal.fire({
+                                        title: 'Hvala Vam na porudžbini!',
+                                        text: 'Proverite mejl i detalje porudžbenice!',
+                                        icon: 'success',
+                                        background: Colors.secondary,
+                                        confirmButtonText: '<b >OK!</b> ',
+                                        // confirmButtonAriaLabel: 'Thumbs up, great!',
+                                        showCloseButton: true
+                              })
+                    } else {
+                              Swal.fire({
+                                        title: 'Eh!',
+                                        text: 'Poruka iz nekog razloga nije poslata!',
+                                        icon: 'error',
+                                        confirmButtonText: 'OK!',
+                                        confirmButtonAriaLabel: 'Thumbs down',
+                                        showCloseButton: true,
+                              })
+                    }
+          })
 }
 
 export const SendContactEmail = async (data: IContactForm) => {

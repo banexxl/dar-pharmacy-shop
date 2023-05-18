@@ -33,15 +33,15 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
 
           const handleSubmit = (values: IPaymentOptionsForm) => {
                     dispatch(submitPaymentOptionsForm(values))
-                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex + 1) : null
+                    props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
           const handleBack = () => {
-                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
+                    props.tabIndex === 1 ? props.setTab?.(props.tabIndex - 1) : null
           };
 
           const handleNext = () => {
-                    props.tabIndex === 2 ? props.setTab?.(props.tabIndex + 1) : null
+                    props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
           };
 
 
@@ -61,7 +61,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                   sx={{ display: 'flex', flexDirection: 'row' }}
                                         >
                                                   <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={t('checkout.on-delivery-payment')} />
-                                                  <FormControlLabel value="cardPayment" control={<Radio />} label={t('checkout.card-payment')} />
+                                                  <FormControlLabel disabled value="cardPayment" control={<Radio />} label={t('checkout.card-payment') + " " + "(" + t('checkout.payment-comming-soon') + ")"} />
                                         </RadioGroup>
                                         {
                                                   paymentOption === 'cardPayment' ?
