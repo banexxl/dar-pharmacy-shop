@@ -6,7 +6,7 @@ const nextConfig = {
           reactStrictMode: true,
           i18n,
           images: {
-                    domains: ['i.ibb.co'],
+                    domains: ['i.ibb.co', 'lh3.googleusercontent.com'],
           }
 }
 
