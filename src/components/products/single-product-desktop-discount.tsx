@@ -17,7 +17,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails)
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [showOptions, setShowOptions] = useState(false);
-
+          let buttonLoading: boolean = false
           const dispatch = useDispatch();
 
           const handleMouseEnter = () => {
@@ -31,10 +31,12 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                     setAddedToCartAlert(true)
                     const timeId = setTimeout(() => {
                               // After X seconds set the show value to false
+                              buttonLoading = true
                               setAddedToCartAlert(false)
                     }, 500)
 
                     return () => {
+                              buttonLoading = false
                               clearTimeout(timeId)
                     }
           }
@@ -51,7 +53,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                         </Tooltip>
                               </ProductFavButton>
                               {(showOptions || isScreenToMedium) && (
-                                        <ProductAddToCart show={showOptions.toString()} variant="contained" onClick={() => {
+                                        <ProductAddToCart show={showOptions.toString()} variant="contained" loading={buttonLoading} onClick={() => {
                                                   callAlert()
                                                   dispatch(addToCart(product))
                                         }}

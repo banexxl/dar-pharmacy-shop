@@ -3,6 +3,7 @@ import { Button, IconButton } from "@mui/material";
 import { Box } from "@mui/material";
 import { slideInBottom, slideInRight } from "../animation";
 import { Colors } from "../theme";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 export const Product = styled(Box)(({ theme }: any) => ({
           display: "flex",
@@ -22,6 +23,13 @@ export const ProductImage = styled("img")(({ src, theme }: any) => ({
           padding: '10px',
           [theme.breakpoints.up("md")]: {
                     width: "80%",
+          },
+          cursor: 'pointer',
+          webkitTransition: '-webkit-transform 0.4s',
+          transition: 'transform 0.4s',
+          ':hover': {
+                    webkitTransform: 'scale(1.2) rotate(0.01deg)',
+                    transform: 'scale(1.1) rotate(0.01deg)'
           },
 }));
 
@@ -45,9 +53,8 @@ export const ProductFavButton = styled(ProductActionButton)(({ isfav, theme }: a
           },
 }));
 
-export const ProductAddToCart = styled(Button, { shouldForwardProp: (prop) => prop !== "show", })
+export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== "show", })
           (({ show, theme }: any) => ({
-
                     fontSize: "12px",
                     [theme.breakpoints.up("md")]: {
                               position: "absolute",
@@ -62,10 +69,9 @@ export const ProductAddToCart = styled(Button, { shouldForwardProp: (prop) => pr
                               backgroundColor: Colors.secondary,
                     },
                     background: Colors.primary,
-                    opacity: 0.9,
           }));
 
-export const ProductMetaWrapper = styled(Box)(({ theme }) => ({
+export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
           padding: 4,
           display: "flex",
           flexDirection: "column",

@@ -1,9 +1,7 @@
-import { Button, Typography, useMediaQuery } from "@mui/material"
+import { useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
-import Image from "next/image";
 import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
-import { Colors } from "@/styles/theme";
 
 
 export default function Banner() {
