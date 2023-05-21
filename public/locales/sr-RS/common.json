@@ -59,7 +59,8 @@
           "confirmation": {
                     "total-with-tax": "Ukupno sa PDV-om",
                     "to-payment": "Na plaćanje",
-                    "to-shop": "Nazad u apoteku"
+                    "to-shop": "Nazad u apoteku",
+                    "clear-cart": "Isprazni korpu"
           },
           "credit-card": {
                     "credit-card": "Platna Kartica: ",

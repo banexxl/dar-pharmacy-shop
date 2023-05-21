@@ -1,9 +1,10 @@
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import Link from 'next/link'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'next-i18next'
 import { StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle, StyledTotalsToPaymentButton, StyledTotalsToShopButton } from '@/styles/cart'
+import { clearCart } from '@/store/cart/cart.slice'
 
 interface ICartTotalsProps {
           onClose: () => void
@@ -13,6 +14,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
 
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
           const { t } = useTranslation();
+          const dispatch = useDispatch()
 
           return (
                     <StyledTotalsBox>
@@ -31,6 +33,11 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                         <Link href='/checkout'>
                                                   {t('confirmation.to-payment')}
                                         </Link>
+                              </StyledTotalsToPaymentButton>
+                              <StyledTotalsToPaymentButton onClick={() => dispatch(clearCart())}>
+
+                                        {t('confirmation.clear-cart')}
+
                               </StyledTotalsToPaymentButton>
                     </StyledTotalsBox>
           )

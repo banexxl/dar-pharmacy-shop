@@ -1,6 +1,6 @@
-import styled from "@mui/styled-engine";
 import { Box, Button, IconButton, Table, TableBody, TableCell, tableCellClasses, TableHead, TableRow, Typography } from "@mui/material";
 import { Colors } from "../theme";
+import styled from "@emotion/styled";
 
 export const CartWrapper = styled(Box)(({ theme }: any) => ({
           gap: '20px',

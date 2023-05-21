@@ -59,7 +59,8 @@
           "confirmation": {
                     "total-with-tax": "Total with tax",
                     "to-payment": "To payment page",
-                    "to-shop": "Back to shop"
+                    "to-shop": "Back to shop",
+                    "clear-cart": "Clear cart"
           },
           "credit-card": {
                     "credit-card": "Credit Card",

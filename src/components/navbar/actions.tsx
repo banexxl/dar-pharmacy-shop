@@ -10,6 +10,9 @@ import WishList from "../wishlist/wishlist";
 import LoginRegister from '../login/login'
 import { Language } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import { CartCounter } from "@/styles/navbar/navbar-cart-counter";
+import { useSelector } from "react-redux";
+import { cartTotalSelector } from "@/store/cart/cart.selector";
 
 export default function Actions({ isScreenToMedium }: any) {
 
@@ -21,6 +24,7 @@ export default function Actions({ isScreenToMedium }: any) {
 
           const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
+          const counter = useSelector(cartTotalSelector)
           const router = useRouter()
 
           return (
@@ -33,11 +37,13 @@ export default function Actions({ isScreenToMedium }: any) {
                                         <ListItemIcon
                                                   sx={{
                                                             display: "flex",
-                                                            justifyContent: "center",
+                                                            justifyContent: "space-around",
+                                                            alignItems: 'center',
                                                             color: isScreenToMedium && Colors.secondary,
                                                   }}
                                         >
                                                   <ShoppingCartIcon />
+                                                  <CartCounter>{counter}</CartCounter>
                                         </ListItemIcon>
                               </ListItemButton>
                               <Divider orientation="vertical" flexItem />
