@@ -41,19 +41,20 @@ export const ProductActionButton = styled(IconButton)(() => ({
           },
 }))
 
-export const ProductFavButton = styled(ProductActionButton)(({ isfav, theme }: any) => ({
-          color: isfav ? Colors.primary : Colors.light,
-          [theme.breakpoints.up("md")]: {
-                    position: "absolute",
-                    right: 0,
-                    top: 0,
-          },
-          '&:hover': {
-                    backgroundColor: Colors.secondary,
-          },
-}));
+export const ProductFavButton = styled(ProductActionButton, { shouldForwardProp: (prop) => prop !== 'isfav' })
+          (({ isfav, theme }: any) => ({
+                    color: isfav ? Colors.primary : Colors.light,
+                    [theme.breakpoints.up("md")]: {
+                              position: "absolute",
+                              right: 0,
+                              top: 0,
+                    },
+                    '&:hover': {
+                              backgroundColor: Colors.secondary,
+                    },
+          }));
 
-export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== "show", })
+export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== "show" })
           (({ show, theme }: any) => ({
                     fontSize: "12px",
                     [theme.breakpoints.up("md")]: {
@@ -80,15 +81,16 @@ export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
           fontStyle: 'italic'
 }));
 
-export const ProductActionsWrapper = styled(Box)(({ show, theme }: any) => ({
-          [theme.breakpoints.up("md")]: {
-                    display: show ? 'visible' : 'none',
-                    position: "absolute",
-                    right: 0,
-                    top: '20%',
-                    animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
-          }
-}));
+export const ProductActionsWrapper = styled(Box, { shouldForwardProp: (prop) => prop !== 'show' })
+          (({ show, theme }: any) => ({
+                    [theme.breakpoints.up("md")]: {
+                              display: show ? 'visible' : 'none',
+                              position: "absolute",
+                              right: 0,
+                              top: '20%',
+                              animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+                    }
+          }));
 
 export const ProductDiscountSticker = styled(Box)(() => ({
           position: 'absolute',

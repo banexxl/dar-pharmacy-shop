@@ -2,7 +2,7 @@ const i18next = require('i18next')
 
 i18next.init({
           // Your i18next configuration options
-          ReduxLogger: { level: 'warn' }
+          ReduxLogger: { level: 'warn' },
 });
 
 module.exports = {
@@ -11,7 +11,6 @@ module.exports = {
           i18n: {
                     defaultLocale: 'sr-RS',
                     locales: ['en-US', 'sr-RS'],
-
           },
           /** To avoid issues when deploying to some paas (vercel...) */
           localePath:
@@ -19,7 +18,7 @@ module.exports = {
                               ? require('path').resolve('./public/locales')
                               : '/locales',
 
-          reloadOnPrerender: process.env.NODE_ENV === 'development',
+          reloadOnPrerender: process.env.NODE_ENV === 'production',
           react: { useSuspense: true },
           /**
            * @link https://github.com/i18next/next-i18next#6-advanced-configuration

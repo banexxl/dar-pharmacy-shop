@@ -19,8 +19,28 @@ const productsServices = () => {
                     }
           }
 
+          const getProductById = async (_id: string) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+                    console.log('_id from services', _id);
+
+                    try {
+                              const db = client.db('DAR_DB')
+                              let product: IProduct = await db.collection('Products').find({ _id: _id })
+                              console.log(product);
+
+                              return product
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
           return {
                     getProductForHomePage,
+                    getProductById
           }
 }
 

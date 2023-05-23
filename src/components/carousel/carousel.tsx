@@ -4,6 +4,7 @@ import { ProductImage } from './carousel-image-loader';
 import { CarouselButton, CarouselImg, CarouselTitle, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
 const ProductCarousel = (props: any) => {
 
@@ -43,7 +44,6 @@ const ProductCarousel = (props: any) => {
                                         containerClass=""
                                         itemClass=""
                               >
-
                                         {
                                                   products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
@@ -51,12 +51,18 @@ const ProductCarousel = (props: any) => {
                                                                                 <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
                                                                       </CarouselImg>
                                                                       <CarouselTitle>{product.name}</CarouselTitle>
-                                                                      <CarouselButton>{t('homepage.carousel-details')}</CarouselButton>
+                                                                      <CarouselButton >
+                                                                                <Link href={`/product/${encodeURIComponent(product._id)}`}>
+                                                                                          {t('homepage.carousel-details')}
+                                                                                </Link>
+                                                                      </CarouselButton>
                                                             </StyledCarouselCard>
                                                   ))
                                         }
                               </Carousel>
-                    </StyledCarouselBox>
+
+
+                    </StyledCarouselBox >
           );
 }
 

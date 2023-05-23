@@ -47,27 +47,6 @@ export const SendCheckoutConfirmationEmailToAdmin = async (data: IEmailToFields)
                               'Access-Control-Allow-Origin': '*',
                               'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                     },
-          }).then((response: Response) => {
-                    if (response.ok) {
-                              Swal.fire({
-                                        title: 'Hvala Vam na porudžbini!',
-                                        text: 'Proverite mejl i detalje porudžbenice!',
-                                        icon: 'success',
-                                        background: Colors.secondary,
-                                        confirmButtonText: '<b >OK!</b> ',
-                                        // confirmButtonAriaLabel: 'Thumbs up, great!',
-                                        showCloseButton: true
-                              })
-                    } else {
-                              Swal.fire({
-                                        title: 'Eh!',
-                                        text: 'Poruka iz nekog razloga nije poslata!',
-                                        icon: 'error',
-                                        confirmButtonText: 'OK!',
-                                        confirmButtonAriaLabel: 'Thumbs down',
-                                        showCloseButton: true,
-                              })
-                    }
           })
 }
 

@@ -10,5 +10,6 @@ export default interface IProduct {
           warning: string;
           imageURL: string;
           price: number;
+          productURL?: string;
 }
 
