@@ -40,14 +40,12 @@ export default SingleProduct
 
 export async function getStaticProps({ locale }: any, _id: string) {
 
-          console.log('usao u get static props');
 
           const product: IProduct = await productsServices().getProductById(_id).then((product: any) => {
-                    console.log(product);
                     return product
           })
 
-
+          console.log(product);
 
           //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           //redirect: {
@@ -65,10 +63,25 @@ export async function getStaticProps({ locale }: any, _id: string) {
           }
 }
 
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+export const getStaticPaths = async () => {
+
+          let ids = []
+
+          await productsServices().getProductsForHomePage().then((products: any) => {
+                    products.forEach((element: IProduct) => {
+                              var id = element._id.valueOf()
+                              ids.push(id)
+                    });
+          })
 
           return {
-                    paths: [], //indicates that no page needs be created at build time
-                    fallback: 'blocking' //indicates the type of fallback
-          }
+                    paths: [
+                              {
+                                        params: {
+                                                  _id: 'next.js',
+                                        },
+                              }, // See the "paths" section below
+                    ],
+                    fallback: true, // false or "blocking"
+          };
 }

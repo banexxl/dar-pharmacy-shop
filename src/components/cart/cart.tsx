@@ -28,8 +28,6 @@ export default function Cart({ open, onClose }: ICartProps) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
 
-          console.log(cart);
-
           return (
                     <Dialog
                               TransitionComponent={SlideTransition}

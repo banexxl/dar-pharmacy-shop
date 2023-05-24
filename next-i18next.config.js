@@ -2,7 +2,8 @@ const i18next = require('i18next')
 
 i18next.init({
           // Your i18next configuration options
-          ReduxLogger: { level: 'warn' },
+          //ReduxLogger: { level: 'warn' },
+          debug: false,
 });
 
 module.exports = {
