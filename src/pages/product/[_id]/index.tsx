@@ -65,23 +65,15 @@ export async function getStaticProps({ locale }: any, _id: string) {
 
 export const getStaticPaths = async () => {
 
-          let ids = []
+          const data: any = await productsServices().getProductsForHomePage()
 
-          await productsServices().getProductsForHomePage().then((products: any) => {
-                    products.forEach((element: IProduct) => {
-                              var id = element._id.valueOf()
-                              ids.push(id)
-                    });
-          })
+          const paths = data.map((product: IProduct) =>
+                    '/product/' + product._id.valueOf().toString() + '/'
+          )
+
 
           return {
-                    paths: [
-                              {
-                                        params: {
-                                                  _id: 'next.js',
-                                        },
-                              }, // See the "paths" section below
-                    ],
+                    paths,
                     fallback: true, // false or "blocking"
           };
 }
