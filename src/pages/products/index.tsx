@@ -43,7 +43,7 @@ export default function Home(props: any) {
 
 export async function getStaticProps() {
 
-          const dbData: any = await productsServices().getProductForHomePage().then((data: any) => {
+          const dbData: any = await productsServices().getProductsForHomePage().then((data: any) => {
                     return data
           })
 
