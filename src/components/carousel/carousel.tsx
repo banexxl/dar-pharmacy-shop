@@ -5,11 +5,13 @@ import { CarouselButton, CarouselImg, CarouselTitle, StyledCarouselBox, StyledCa
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const ProductCarousel = (props: any) => {
 
           const { products } = props
           const { t } = useTranslation('common')
+          const router = useRouter()
 
           const responsive = {
                     desktop: {
@@ -47,15 +49,15 @@ const ProductCarousel = (props: any) => {
                                         {
                                                   products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <CarouselImg>
-                                                                                <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
-                                                                      </CarouselImg>
-                                                                      <CarouselTitle>{product.name}</CarouselTitle>
-                                                                      <CarouselButton >
-                                                                                <Link href={`/product/${encodeURIComponent(product._id)}`}>
+                                                                      <Link href={`/product/${product._id}`}>
+                                                                                <CarouselImg>
+                                                                                          <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
+                                                                                </CarouselImg>
+                                                                                <CarouselTitle>{product.name}</CarouselTitle>
+                                                                                <CarouselButton >
                                                                                           {t('homepage.carousel-details')}
-                                                                                </Link>
-                                                                      </CarouselButton>
+                                                                                </CarouselButton>
+                                                                      </Link>
                                                             </StyledCarouselCard>
                                                   ))
                                         }

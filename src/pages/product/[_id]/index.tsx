@@ -6,13 +6,12 @@ import IProduct from '@/interfaces/product/product.interface'
 import productsServices from '@/services/product.services'
 import theme from '@/styles/theme'
 import { Container, Stack, ThemeProvider, Toolbar } from '@mui/material'
-import { GetStaticPaths } from 'next'
+import { _id } from '@next-auth/mongodb-adapter'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { ObjectId } from 'mongodb'
 import React from 'react'
 
 const SingleProduct = (props: any) => {
-
-          console.log('data from product props', props);
 
           return (
                     <ThemeProvider theme={theme}>
@@ -25,9 +24,9 @@ const SingleProduct = (props: any) => {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <ProductDetails _id={props._id} availableStock={props.availableStock} category={props.category} description={props.description}
-                                                                      imageURL={props.imageURL} ingredients={props.ingredients} instructions={props.instructions} name={props.name}
-                                                                      price={props.price} quantity={props.quantity} warning={props.warning} productURL={props.productURL}
+                                                            <ProductDetails _id={props.product._id} availableStock={props.product.availableStock} category={props.product.category} description={props.product.description}
+                                                                      imageURL={props.product.imageURL} ingredients={props.product.ingredients} instructions={props.product.instructions} name={props.product.name}
+                                                                      price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} productURL={props.product.productURL}
                                                             />
                                                   </UIProvider>
                                         </Stack>
@@ -38,25 +37,19 @@ const SingleProduct = (props: any) => {
 
 export default SingleProduct
 
-export async function getStaticProps({ locale }: any, _id: string) {
+export async function getStaticProps({ params }: any) {
+
+          console.log('getstaticprops params', params);
 
 
-          const product: IProduct = await productsServices().getProductById(_id).then((product: any) => {
+          const product: IProduct = await productsServices().getProductById(params._id).then((product: any) => {
                     return product
           })
-
-          console.log(product);
-
-          //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
-          //redirect: {
-          //           destination: "/nodata"
-          // }  mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
-          //revalidate bi trebao da ponovo odradi getstaticprops logiku
 
           return {
                     props: {
                               product: JSON.parse(JSON.stringify(product)),
-                              ...(await serverSideTranslations(locale ?? 'sr-RS', [
+                              ...(await serverSideTranslations(params.locale ?? 'sr-RS', [
                                         'common',
                               ])),
                     },
@@ -67,10 +60,9 @@ export const getStaticPaths = async () => {
 
           const data: any = await productsServices().getProductsForHomePage()
 
-          const paths = data.map((product: IProduct) =>
-                    '/product/' + product._id.valueOf().toString() + '/'
-          )
-
+          const paths = data.map((product: IProduct) => ({
+                    params: { _id: product._id.toString() }
+          }))
 
           return {
                     paths,
