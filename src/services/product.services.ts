@@ -36,9 +36,68 @@ const productsServices = () => {
                     }
           }
 
+          const getProductsByManufacturer = async (manufacturer: string) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ "manufacturer": `${manufacturer}` }).toArray()
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
+          const getProductsByCategory = async (category: string) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ "category": `${category}` }).toArray()
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
+          const getProductsByName = async (name: string) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ "name": `${name}` }).toArray()
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
+          const getProductsByDiscount = async (discount: boolean) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ "discount": `${discount}` }).toArray()
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
           return {
                     getProductsForHomePage,
-                    getProductById
+                    getProductById,
+                    getProductsByManufacturer,
+                    getProductsByCategory,
+                    getProductsByDiscount
           }
 }
 

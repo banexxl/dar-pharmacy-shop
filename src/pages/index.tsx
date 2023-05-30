@@ -65,7 +65,7 @@ export default function Home(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const dbData: IProduct[] = await productsServices().getProductsForHomePage().then((data: any) => {
+          const dbData: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
                     return data
           })
 
