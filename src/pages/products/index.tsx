@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/navbar";
 import { ThemeProvider } from "@mui/system";
 import theme from "../../styles/theme";
 import Banner from "../../components/banner/banner";
-import Products from "../../components/products/products";
+import Products from "../../components/products/products-grid";
 import { UIProvider } from "../../context/ui/ui.context";
 import Footer from "../../components/footer/footer";
 import AppDrawer from "../../components/navbar/drawer/drawer";

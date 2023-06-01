@@ -1,5 +1,5 @@
 import { Box, Button, Container, Grid } from "@mui/material";
-import SingleProduct from "./single-product-mobile";
+import SingleProductMobile from "./single-product-mobile";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./single-product-desktop";
@@ -17,7 +17,7 @@ export default function Products(props: any) {
           const renderProducts = props.data?.map((product: any) => (
                     <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                               {isScreenToMedium ? (
-                                        <SingleProduct product={product} isScreenToMedium={isScreenToMedium} />
+                                        <SingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />
                               ) : (
                                         <SingleProductDesktop product={product} isScreenToMedium={isScreenToMedium} />
                               )}

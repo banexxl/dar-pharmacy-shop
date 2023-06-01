@@ -2,7 +2,7 @@ import { Container, Typography, Box, Stack } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import theme from "../styles/theme";
 import Banner from "../components/banner/banner";
-import Products from "../components/products/products";
+import Products from "../components/products/products-grid";
 import { UIProvider } from "../context/ui/ui.context";
 import AppDrawer from "../components/navbar/drawer/drawer";
 import Promotions from "../components/promotions/promotions";

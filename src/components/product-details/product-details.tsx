@@ -1,4 +1,4 @@
-import { Product, ProductImage } from '@/styles/product';
+import { Product, ProductImage } from '@/styles/productdetails';
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
 import { Colors } from '@/styles/theme';
 import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';

@@ -10,11 +10,28 @@ import { _id } from '@next-auth/mongodb-adapter'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { ObjectId } from 'mongodb'
 import React from 'react'
+import LoadingWheel from '@/components/loading/loading'
+import dynamic from 'next/dynamic'
+import Head from 'next/head'
+import { useTranslation } from 'next-i18next'
 
 const SingleProduct = (props: any) => {
 
+          const { t } = useTranslation('common')
+
+          //this way next js does not try to render theme provider on server (no hydration error : )
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel isLoading={true} />,
+                    ssr: false
+          })
+
+
+
           return (
-                    <ThemeProvider theme={theme}>
+                    <DynamicThemeProvider theme={theme}>
+                              <Head>
+                                        <title>{t('homepage.title')}</title>
+                              </Head>
                               <Container
                                         disableGutters
                                         maxWidth="lg"
@@ -31,7 +48,7 @@ const SingleProduct = (props: any) => {
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </ThemeProvider>
+                    </DynamicThemeProvider>
           )
 }
 
@@ -40,15 +57,13 @@ export default SingleProduct
 export async function getStaticProps({ params }: any) {
 
           console.log('getstaticprops params', params);
-
-
           const product: IProduct = await productsServices().getProductById(params._id).then((product: any) => {
                     return product
           })
 
           return {
                     props: {
-                              product: JSON.parse(JSON.stringify(product)),
+                              product, //: JSON.parse(JSON.stringify(product))
                               ...(await serverSideTranslations(params.locale ?? 'sr-RS', [
                                         'common',
                               ])),
@@ -58,6 +73,7 @@ export async function getStaticProps({ params }: any) {
 
 export const getStaticPaths = async () => {
 
+          console.log("usao u get static paths");
           const data: any = await productsServices().getProductsForHomePage()
 
           const paths = data.map((product: IProduct) => ({
@@ -66,6 +82,6 @@ export const getStaticPaths = async () => {
 
           return {
                     paths,
-                    fallback: true, // false or "blocking"
+                    fallback: false, // false or "blocking"
           };
 }

@@ -9,7 +9,9 @@ import { useRouter } from 'next/router';
 
 const ProductCarousel = (props: any) => {
 
-          const { products } = props
+          console.log(props);
+
+          //const { products } = props
           const { t } = useTranslation('common')
           const router = useRouter()
 
@@ -46,10 +48,14 @@ const ProductCarousel = (props: any) => {
                                         containerClass=""
                                         itemClass=""
                               >
+
                                         {
-                                                  products.map((product: IProduct) => (
+                                                  props.products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <Link href={`/product/${product._id}`}>
+                                                                      <Link href={{
+                                                                                pathname: `/product/${encodeURIComponent(product._id)}`,
+                                                                                query: { _id: product._id },
+                                                                      }}>
                                                                                 <CarouselImg>
                                                                                           <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
                                                                                 </CarouselImg>

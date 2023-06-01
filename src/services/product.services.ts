@@ -25,8 +25,6 @@ const productsServices = () => {
                     try {
                               const db = client.db('DAR_DB')
                               let product: IProduct = await db.collection('Products').findOne({ _id: new ObjectId(_id) });
-
-
                               return product
                     } catch (error: any) {
                               return { message: error.message }

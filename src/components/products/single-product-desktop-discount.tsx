@@ -5,7 +5,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
-import ProductDetails from "../product-dropdown/product-details";
+import ProductDetails from "../product-dropdown/product-dropdown";
 import ProductMeta from "./products-meta";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
