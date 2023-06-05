@@ -6,14 +6,11 @@ import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import productsServices from '@/services/product.services';
 
 const ProductCarousel = (props: any) => {
 
-          console.log(props);
-
-          //const { products } = props
           const { t } = useTranslation('common')
-          const router = useRouter()
 
           const responsive = {
                     desktop: {
@@ -35,7 +32,8 @@ const ProductCarousel = (props: any) => {
 
           return (
                     <StyledCarouselBox >
-                              <Carousel
+                              <Link href={`/product/647660082a76d9e7aa674df1`}>aaaaaaa</Link>
+                              {/* <Carousel
                                         responsive={responsive}
                                         swipeable={true}
                                         draggable={false}
@@ -48,14 +46,15 @@ const ProductCarousel = (props: any) => {
                                         containerClass=""
                                         itemClass=""
                               >
-
                                         {
                                                   props.products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <Link href={{
-                                                                                pathname: `/product/${encodeURIComponent(product._id)}`,
-                                                                                query: { _id: product._id },
-                                                                      }}>
+                                                                      <Link href={`/product/${decodeURIComponent(product._id)}`
+                                                                                // {
+                                                                                // pathname: `/product/${decodeURIComponent(product._id)}`,
+                                                                                // query: { _id: product._id },
+                                                                                // }
+                                                                      }>
                                                                                 <CarouselImg>
                                                                                           <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
                                                                                 </CarouselImg>
@@ -67,11 +66,10 @@ const ProductCarousel = (props: any) => {
                                                             </StyledCarouselCard>
                                                   ))
                                         }
-                              </Carousel>
-
-
+                              </Carousel> */}
                     </StyledCarouselBox >
           );
 }
 
 export default ProductCarousel;
+

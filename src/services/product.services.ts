@@ -24,7 +24,9 @@ const productsServices = () => {
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
-                              let product: IProduct = await db.collection('Products').findOne({ _id: new ObjectId(_id) });
+                              let product: IProduct = await db.collection('Products').findOne({ _id: new ObjectId(_id) })
+                              console.log('product from services', product);
+
                               return product
                     } catch (error: any) {
                               return { message: error.message }

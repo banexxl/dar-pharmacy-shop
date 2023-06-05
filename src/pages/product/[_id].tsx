@@ -5,10 +5,9 @@ import { UIProvider } from '@/context/ui/ui.context'
 import IProduct from '@/interfaces/product/product.interface'
 import productsServices from '@/services/product.services'
 import theme from '@/styles/theme'
-import { Container, Stack, ThemeProvider, Toolbar } from '@mui/material'
+import { Container, Stack } from '@mui/material'
 import { _id } from '@next-auth/mongodb-adapter'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { ObjectId } from 'mongodb'
 import React from 'react'
 import LoadingWheel from '@/components/loading/loading'
 import dynamic from 'next/dynamic'
@@ -16,6 +15,8 @@ import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 
 const SingleProduct = (props: any) => {
+
+          console.log("single product props", props);
 
           const { t } = useTranslation('common')
 
@@ -25,6 +26,7 @@ const SingleProduct = (props: any) => {
                     ssr: false
           })
 
+          console.log("props from product page", props);
 
 
           return (
@@ -56,14 +58,12 @@ export default SingleProduct
 
 export async function getStaticProps({ params }: any) {
 
-          console.log('getstaticprops params', params);
-          const product: IProduct = await productsServices().getProductById(params._id).then((product: any) => {
-                    return product
-          })
+          const products: any = await productsServices().getProductsForHomePage()
+          console.log('product from get staticprops', products);
 
           return {
                     props: {
-                              product, //: JSON.parse(JSON.stringify(product))
+                              products: JSON.parse(JSON.stringify(products)),
                               ...(await serverSideTranslations(params.locale ?? 'sr-RS', [
                                         'common',
                               ])),
@@ -73,12 +73,13 @@ export async function getStaticProps({ params }: any) {
 
 export const getStaticPaths = async () => {
 
-          console.log("usao u get static paths");
-          const data: any = await productsServices().getProductsForHomePage()
+          const data: any = await productsServices().getProductsByCategory('Herbalab')
 
           const paths = data.map((product: IProduct) => ({
                     params: { _id: product._id.toString() }
           }))
+
+          console.log('paths', paths);
 
           return {
                     paths,
