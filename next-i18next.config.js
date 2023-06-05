@@ -14,11 +14,7 @@ module.exports = {
                     locales: ['en-US', 'sr-RS'],
           },
           /** To avoid issues when deploying to some paas (vercel...) */
-          localePath:
-                    typeof window === 'undefined'
-                              ? require('path').resolve('./public/locales')
-                              : '/locales',
-
+          localePath: require('path').resolve('./public/locales'),
           reloadOnPrerender: process.env.NODE_ENV === 'production',
           react: { useSuspense: true },
           /**

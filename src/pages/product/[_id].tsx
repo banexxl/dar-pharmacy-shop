@@ -16,17 +16,14 @@ import { useTranslation } from 'next-i18next'
 
 const SingleProduct = (props: any) => {
 
-          console.log("single product props", props);
-
           const { t } = useTranslation('common')
+          console.log(props.product);
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
           })
-
-          console.log("props from product page", props);
 
 
           return (
@@ -58,13 +55,15 @@ export default SingleProduct
 
 export async function getStaticProps({ params }: any) {
 
-          const products: any = await productsServices().getProductsForHomePage()
-          console.log('product from get staticprops', products);
+          const product: any = await productsServices().getProductById(params._id)
 
           return {
                     props: {
-                              products: JSON.parse(JSON.stringify(products)),
-                              ...(await serverSideTranslations(params.locale ?? 'sr-RS', [
+                              product: JSON.parse(JSON.stringify(product)),
+                              ...(await serverSideTranslations('sr-RS', [
+                                        'common',
+                              ])),
+                              ...(await serverSideTranslations('en-US', [
                                         'common',
                               ])),
                     },
@@ -76,10 +75,10 @@ export const getStaticPaths = async () => {
           const data: any = await productsServices().getProductsByCategory('Herbalab')
 
           const paths = data.map((product: IProduct) => ({
-                    params: { _id: product._id.toString() }
+                    params: {
+                              _id: product._id.toString()
+                    }
           }))
-
-          console.log('paths', paths);
 
           return {
                     paths,

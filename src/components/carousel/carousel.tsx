@@ -32,8 +32,7 @@ const ProductCarousel = (props: any) => {
 
           return (
                     <StyledCarouselBox >
-                              <Link href={`/product/647660082a76d9e7aa674df1`}>aaaaaaa</Link>
-                              {/* <Carousel
+                              <Carousel
                                         responsive={responsive}
                                         swipeable={true}
                                         draggable={false}
@@ -49,12 +48,7 @@ const ProductCarousel = (props: any) => {
                                         {
                                                   props.products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <Link href={`/product/${decodeURIComponent(product._id)}`
-                                                                                // {
-                                                                                // pathname: `/product/${decodeURIComponent(product._id)}`,
-                                                                                // query: { _id: product._id },
-                                                                                // }
-                                                                      }>
+                                                                      <Link href={`/product/${decodeURIComponent(product._id)}`}>
                                                                                 <CarouselImg>
                                                                                           <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
                                                                                 </CarouselImg>
@@ -66,7 +60,7 @@ const ProductCarousel = (props: any) => {
                                                             </StyledCarouselCard>
                                                   ))
                                         }
-                              </Carousel> */}
+                              </Carousel>
                     </StyledCarouselBox >
           );
 }

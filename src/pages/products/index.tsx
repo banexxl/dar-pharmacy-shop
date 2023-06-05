@@ -7,11 +7,13 @@ import Banner from "../../components/banner/banner";
 import Products from "../../components/products/products-grid";
 import { UIProvider } from "../../context/ui/ui.context";
 import Footer from "../../components/footer/footer";
+import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from "../../components/navbar/drawer/drawer";
 import Promotions from "../../components/promotions/promotions";
 import SearchBox from "../../components/search/search"
 import productsServices from '@/services/product.services'
 import Toolbar from '@/components/toolbar/toolbar';
+import dynamic from 'next/dynamic';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,8 +21,13 @@ export default function Home(props: any) {
 
           const { products } = props
 
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel isLoading={true} />,
+                    ssr: false
+          })
+
           return (
-                    <ThemeProvider theme={theme}>
+                    <DynamicThemeProvider theme={theme}>
                               <Container
                                         disableGutters
                                         maxWidth="lg"
@@ -36,7 +43,7 @@ export default function Home(props: any) {
                                                   </UIProvider>
                                         </Stack>
                               </Container>
-                    </ThemeProvider>
+                    </DynamicThemeProvider>
           )
 }
 
