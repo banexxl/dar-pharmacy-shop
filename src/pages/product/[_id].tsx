@@ -17,7 +17,6 @@ import { useTranslation } from 'next-i18next'
 const SingleProduct = (props: any) => {
 
           const { t } = useTranslation('common')
-          console.log(props.product);
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -53,32 +52,36 @@ const SingleProduct = (props: any) => {
 
 export default SingleProduct
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps(context: any) {
 
-          const product: any = await productsServices().getProductById(params._id)
+          const product: any = await productsServices().getProductById(context.params._id)
+          // context iz getstaticprops {
+          //           params: { _id: '647660082a76d9e7aa674dc8' },
+          //           locales: ['sr-RS', 'en-US'],
+          //           locale: 'sr-RS',
+          //           defaultLocale: 'sr-RS'
+          // }
 
           return {
                     props: {
                               product: JSON.parse(JSON.stringify(product)),
-                              ...(await serverSideTranslations('sr-RS', [
-                                        'common',
-                              ])),
-                              ...(await serverSideTranslations('en-US', [
-                                        'common',
-                              ])),
+                              ...(await serverSideTranslations(context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
           }
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async (context: any) => {
+
+          //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
           const data: any = await productsServices().getProductsByCategory('Herbalab')
 
-          const paths = data.map((product: IProduct) => ({
-                    params: {
-                              _id: product._id.toString()
-                    }
-          }))
+          const paths = data.flatMap((product: any) =>
+                    context.locales.map((locale: any) => ({
+                              params: { _id: product._id.toString() },
+                              locale,
+                    }))
+          );
 
           return {
                     paths,

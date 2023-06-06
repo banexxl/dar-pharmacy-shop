@@ -5,8 +5,6 @@ import { CarouselButton, CarouselImg, CarouselTitle, StyledCarouselBox, StyledCa
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import productsServices from '@/services/product.services';
 
 const ProductCarousel = (props: any) => {
 

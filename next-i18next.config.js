@@ -13,6 +13,9 @@ module.exports = {
                     defaultLocale: 'sr-RS',
                     locales: ['en-US', 'sr-RS'],
           },
+          fallbackLng: {
+                    default: ['sr-RS']
+          },
           /** To avoid issues when deploying to some paas (vercel...) */
           localePath: require('path').resolve('./public/locales'),
           reloadOnPrerender: process.env.NODE_ENV === 'production',
