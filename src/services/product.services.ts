@@ -20,6 +20,22 @@ const productsServices = () => {
                     }
           }
 
+          const getAllLogos = async () => {
+
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+                    try {
+                              const db = client.db('DAR_DB')
+                              let data: IProduct[] = await db.collection('LogoURLs').find().toArray()
+                              return data
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
           const getProductById = async (_id: any) => {
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
@@ -97,7 +113,8 @@ const productsServices = () => {
                     getProductById,
                     getProductsByManufacturer,
                     getProductsByCategory,
-                    getProductsByDiscount
+                    getProductsByDiscount,
+                    getAllLogos
           }
 }
 

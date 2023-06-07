@@ -16,12 +16,13 @@ import LoadingWheel from "@/components/loading/loading";
 import IProduct from "@/interfaces/product/product.interface";
 import ProductCarousel from "@/components/carousel/carousel";
 import { MessageText } from "@/styles/promotions";
+import CarouselLogo from "@/components/carousel/carousel-logo";
 
 
 
 export default function Home(props: any) {
 
-          const { products } = props
+          const { products, manufacturers } = props
           const { t } = useTranslation('common')
 
 
@@ -53,6 +54,7 @@ export default function Home(props: any) {
                                                             </Box>
                                                             <Products data={products} />
                                                             <ProductCarousel products={products} />
+                                                            <CarouselLogo manufacturers={manufacturers} />
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
@@ -69,6 +71,10 @@ export async function getStaticProps({ locale }: any) {
                     return data
           })
 
+          const manufacturersLogos: string[] = await productsServices().getAllLogos().then((logos: any) => {
+                    return logos
+          })
+
           //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           //redirect: {
           //           destination: "/nodata"
@@ -78,6 +84,7 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(dbData)),
+                              manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                               //...(await serverSideTranslations(locale, ['common'], null, ['en-US', 'sr-RS'])),
                               ...(await serverSideTranslations(locale ?? 'sr-RS', [
                                         'common',
