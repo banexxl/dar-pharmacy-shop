@@ -9,6 +9,7 @@ import Link from 'next/link';
 const CarouselLogo = (props: any) => {
 
           const { t } = useTranslation('common')
+          console.log(props);
 
           const responsive = {
                     desktop: {
@@ -44,9 +45,9 @@ const CarouselLogo = (props: any) => {
                                         itemClass=""
                               >
                                         {
-                                                  props.manufacturers.map((logo: string) => (
+                                                  props.manufacturers.map((logo: any) => (
                                                             <CarouselImgBox key={logo}>
-                                                                      <CarouselProductImage src={logo} alt={'LOGO'} height={200} width={200} />
+                                                                      <CarouselProductImage src={logo.url} alt={'LOGO'} height={200} width={200} />
                                                             </CarouselImgBox>
                                                   ))
                                         }
