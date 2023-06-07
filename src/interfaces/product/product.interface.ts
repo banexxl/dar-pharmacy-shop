@@ -11,5 +11,8 @@ export default interface IProduct {
           imageURL: string;
           price: number;
           productURL?: string;
+          manufacturer: string;
+          discount?: boolean;
+          discountamount?: number;
 }
 

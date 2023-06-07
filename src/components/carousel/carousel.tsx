@@ -1,7 +1,7 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { ProductImage } from './carousel-image-loader';
-import { CarouselButton, CarouselImg, CarouselTitle, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import { CarouselProductImage } from './carousel-image-loader';
+import { CarouselButton, CarouselImgBox, CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
@@ -46,15 +46,20 @@ const ProductCarousel = (props: any) => {
                                         {
                                                   props.products.map((product: IProduct) => (
                                                             <StyledCarouselCard key={product._id}>
-                                                                      <Link href={`/product/${decodeURIComponent(product._id)}`}>
-                                                                                <CarouselImg>
-                                                                                          <ProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
-                                                                                </CarouselImg>
+                                                                      <CarouselImgBox>
+                                                                                <CarouselProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
+                                                                      </CarouselImgBox>
+                                                                      <CarouselManufacturerBox>
+                                                                                <CarouselManufacturer>{product.manufacturer}</CarouselManufacturer>
+                                                                      </CarouselManufacturerBox>
+                                                                      <CarouselTitleBox>
                                                                                 <CarouselTitle>{product.name}</CarouselTitle>
-                                                                                <CarouselButton >
+                                                                      </CarouselTitleBox>
+                                                                      <CarouselButton >
+                                                                                <Link href={`/product/${decodeURIComponent(product._id)}`}>
                                                                                           {t('homepage.carousel-details')}
-                                                                                </CarouselButton>
-                                                                      </Link>
+                                                                                </Link>
+                                                                      </CarouselButton>
                                                             </StyledCarouselCard>
                                                   ))
                                         }

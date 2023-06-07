@@ -11,7 +11,7 @@ type ProductImage = {
           width: number
 }
 
-export const ProductImage = (props: ProductImage) => {
+export const CarouselProductImage = (props: ProductImage) => {
 
           return (
                     <div style={{ width: '100%', position: 'relative' }}>
@@ -25,9 +25,10 @@ export const ProductImage = (props: ProductImage) => {
                                         style={{
                                                   borderRadius: '20px',
                                                   maxWidth: '100%',
-                                                  height: 'auto',
+                                                  maxHeight: '150px',
                                                   width: '100%',
                                                   objectPosition: "center",
+                                                  zIndex: '1000'
                                         }}
                               />
                     </div>

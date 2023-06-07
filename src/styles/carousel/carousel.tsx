@@ -3,9 +3,9 @@ import { Box, Button, Typography } from '@mui/material';
 import { Colors } from '../theme';
 
 export const StyledCarouselBox = styled(Box)({
+          display: 'flex',
           height: '400px',
-          marginTop: '50px',
-          justifyContent: 'center'
+          justifyContent: 'center',
 });
 
 export const StyledCarouselCard = styled(Box)({
@@ -17,12 +17,20 @@ export const StyledCarouselCard = styled(Box)({
           border: '1px solid',
           borderRadius: '20px',
           borderColor: Colors.secondary,
-          height: '95%',
+          height: '350px',
           maxWidth: '100%',
           color: 'black',
           cursor: 'pointer',
-          margin: '0px 25px'
+          margin: '0px 25px',
+          ':hover': {
+                    boxShadow: `0 0 11px ${Colors.secondary}`
+          },
 })
+
+export const CarouselTitleBox = styled(Box)({
+          height: 'auto',
+          width: '100%'
+});
 
 export const CarouselTitle = styled(Typography)({
           color: Colors.primary,
@@ -30,7 +38,18 @@ export const CarouselTitle = styled(Typography)({
           fontWeight: 'bold'
 });
 
-export const CarouselImg = styled(Box)({
+export const CarouselManufacturerBox = styled(Box)({
+          height: 'auto',
+          width: '100%'
+});
+
+export const CarouselManufacturer = styled(Typography)({
+          color: Colors.secondary,
+          textAlign: 'center',
+          fontWeight: 'bold'
+});
+
+export const CarouselImgBox = styled(Box)({
           alignItem: 'center',
           cursor: 'pointer',
           webkitTransition: '-webkit-transform 0.4s',
@@ -40,8 +59,7 @@ export const CarouselImg = styled(Box)({
                     transform: 'scale(1.1) rotate(0.01deg)'
           },
           maxWidth: '100%',
-          height: 'auto',
-          width: 'auto',
+          height: '100px',
           margin: '0px auto 0px auto',
 })
 
