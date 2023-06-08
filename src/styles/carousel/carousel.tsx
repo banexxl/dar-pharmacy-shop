@@ -3,7 +3,8 @@ import { Box, Button, Typography } from '@mui/material';
 import { Colors } from '../theme';
 
 export const StyledCarouselBox = styled(Box)({
-          display: 'flex',
+          display: 'block',
+          marginTop: '50px',
           height: '400px',
           justifyContent: 'center',
 });
@@ -39,7 +40,7 @@ export const CarouselTitle = styled(Typography)({
 });
 
 export const CarouselManufacturerBox = styled(Box)({
-          height: 'auto',
+          height: '200px',
           width: '100%'
 });
 
@@ -60,6 +61,20 @@ export const CarouselImgBox = styled(Box)({
           },
           maxWidth: '100%',
           height: '100px',
+          margin: '0px auto 0px auto',
+})
+
+export const CarouselLogoImgBox = styled(Box)({
+          alignItem: 'center',
+          cursor: 'pointer',
+          webkitTransition: '-webkit-transform 0.4s',
+          transition: 'transform 0.4s',
+          ':hover': {
+                    webkitTransform: 'scale(1.2) rotate(0.01deg)',
+                    transform: 'scale(1.1) rotate(0.01deg)'
+          },
+          maxWidth: '100%',
+          height: '150px',
           margin: '0px auto 0px auto',
 })
 

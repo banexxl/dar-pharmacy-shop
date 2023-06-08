@@ -34,3 +34,27 @@ export const CarouselProductImage = (props: ProductImage) => {
                     </div>
           )
 }
+
+export const CarouselManufacturerImage = (props: ProductImage) => {
+
+          return (
+                    <div style={{ width: '100%', position: 'relative' }}>
+                              <Image
+                                        unoptimized
+                                        loader={myLoader}
+                                        src={props.src}
+                                        alt={props.alt}
+                                        width={props.width}
+                                        height={props.height}
+                                        style={{
+                                                  borderRadius: '20px',
+                                                  maxWidth: '100%',
+                                                  maxHeight: '150px',
+                                                  width: '100%',
+                                                  objectPosition: "center",
+                                                  zIndex: '1000'
+                                        }}
+                              />
+                    </div>
+          )
+}

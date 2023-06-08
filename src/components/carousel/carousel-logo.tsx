@@ -1,7 +1,7 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselProductImage } from './carousel-image-loader';
-import { CarouselButton, CarouselImgBox, CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import { CarouselProductImage, CarouselManufacturerImage } from './carousel-image-loader';
+import { CarouselButton, CarouselImgBox, CarouselLogoImgBox, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
@@ -46,9 +46,9 @@ const CarouselLogo = (props: any) => {
                               >
                                         {
                                                   props.manufacturers.map((logo: any) => (
-                                                            <CarouselImgBox key={logo}>
-                                                                      <CarouselProductImage src={logo.url} alt={'LOGO'} height={200} width={200} />
-                                                            </CarouselImgBox>
+                                                            <CarouselLogoImgBox key={logo}>
+                                                                      <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={200} />
+                                                            </CarouselLogoImgBox>
                                                   ))
                                         }
                               </Carousel>
