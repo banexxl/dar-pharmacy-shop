@@ -57,9 +57,6 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                                                   {t('homepage.title')}
                                         </Link>
                               </AppbarTitle>
-
-                              {/* <Image src={Logo} alt={"text"} width={200} height={200} /> */}
-
                               <ListItemButton sx={{
                                         maxWidth: '200px',
                                         borderRadius: '20px',
@@ -71,7 +68,6 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                                                   <SearchIcon />
                                         </ListItemIcon>
                               </ListItemButton>
-
                               <Actions isScreenToMedium={isScreenToMedium} />
                     </AppbarContainer>
           );

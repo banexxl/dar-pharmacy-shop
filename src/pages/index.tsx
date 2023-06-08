@@ -1,4 +1,4 @@
-import { Container, Typography, Box, Stack } from "@mui/material";
+import { Container, Typography, Box, Stack, Divider } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import theme from "../styles/theme";
 import Banner from "../components/banner/banner";
@@ -17,7 +17,7 @@ import IProduct from "@/interfaces/product/product.interface";
 import ProductCarousel from "@/components/carousel/carousel";
 import { MessageText } from "@/styles/promotions";
 import CarouselLogo from "@/components/carousel/carousel-logo";
-
+import CarouselBlog from "@/components/carousel/carousel-blog";
 
 
 export default function Home(props: any) {
@@ -53,8 +53,24 @@ export default function Home(props: any) {
                                                                       <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
                                                             </Box>
                                                             <Products data={products} />
+                                                            <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
+                                                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                                      <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
+                                                            </Box>
+                                                            <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                                                             <ProductCarousel products={products} />
+                                                            <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
+                                                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                                      <Typography sx={{ fontSize: '2rem' }}>Brendovi</Typography>
+                                                            </Box>
+                                                            <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                                                             <CarouselLogo manufacturers={manufacturers} />
+                                                            <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
+                                                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                                      <Typography sx={{ fontSize: '2rem' }}>Nase price</Typography>
+                                                            </Box>
+                                                            <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
+                                                            <CarouselBlog />
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>

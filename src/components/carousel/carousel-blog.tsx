@@ -5,8 +5,9 @@ import { CarouselButton, CarouselImgBox, CarouselLogoImgBox, CarouselManufacture
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import BlogCard from '../blog-card/blog-card';
 
-const CarouselLogo = (props: any) => {
+const CarouselBlog = (props: any) => {
 
           const { t } = useTranslation('common')
           console.log(props);
@@ -44,22 +45,16 @@ const CarouselLogo = (props: any) => {
                                         containerClass=""
                                         itemClass=""
                               >
-                                        {
-                                                  props.manufacturers.map((logo: any) => (
-                                                            <CarouselLogoImgBox key={logo}>
-                                                                      <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={200} />
-                                                            </CarouselLogoImgBox>
-                                                  ))
-                                        }
+                                        {/* {
+                                                  props.manufacturers.map((logo: any) => ( */}
+                                        <BlogCard />
+                                        {/* ))
+                                        } */}
                               </Carousel>
                     </StyledCarouselLogoBox >
           );
 }
 
-export default CarouselLogo
-
-    // <Link href={`/product/${decodeURIComponent(product._id)}`}>
-                                                            //           {t('homepage.carousel-details')}
-                                                            // </Link>
+export default CarouselBlog
 
 

@@ -9,12 +9,19 @@ export const StyledCarouselBox = styled(Box)({
           justifyContent: 'center',
 });
 
+export const StyledCarouselLogoBox = styled(Box)({
+          display: 'block',
+          marginTop: '50px',
+          height: '200px',
+          justifyContent: 'center',
+});
+
 export const StyledCarouselCard = styled(Box)({
           background: Colors.dove_gray,
           display: 'flex',
           flexDirection: 'column',
           alignItem: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           border: '1px solid',
           borderRadius: '20px',
           borderColor: Colors.secondary,
@@ -29,23 +36,27 @@ export const StyledCarouselCard = styled(Box)({
 })
 
 export const CarouselTitleBox = styled(Box)({
-          height: 'auto',
-          width: '100%'
+          height: '100px',
+          width: '90%',
+          paddingBottom: '30px',
+          justifyContent: 'center',
+          alignItems: 'center'
 });
 
 export const CarouselTitle = styled(Typography)({
-          color: Colors.primary,
+          color: Colors.light,
           textAlign: 'center',
           fontWeight: 'bold'
 });
 
 export const CarouselManufacturerBox = styled(Box)({
+          marginTop: '70px',
           height: '200px',
           width: '100%'
 });
 
 export const CarouselManufacturer = styled(Typography)({
-          color: Colors.secondary,
+          color: Colors.primary,
           textAlign: 'center',
           fontWeight: 'bold'
 });

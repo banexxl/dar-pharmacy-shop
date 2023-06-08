@@ -45,7 +45,8 @@ const theme: Theme = createTheme({
                     MuiTypography: {
                               styleOverrides: {
                                         root: {
-                                                  fontFamily: 'monospace'
+                                                  fontFamily: 'cursive',
+                                                  color: Colors.primary
                                         }
                               }
                     },
