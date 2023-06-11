@@ -45,8 +45,8 @@ const theme: Theme = createTheme({
                     MuiTypography: {
                               styleOverrides: {
                                         root: {
-                                                  fontFamily: 'cursive',
-                                                  color: Colors.shaft
+                                                  fontFamily: 'monospace',
+                                                  color: Colors.secondary
                                         }
                               }
                     },
@@ -107,10 +107,9 @@ const theme: Theme = createTheme({
                                         paper: {
                                                   width: DrawerWidth,
                                                   background: Colors.primary,
-                                                  color: Colors.secondary,
                                                   borderRadius: '0px 100px 0px 0px',
                                                   borderRight: `1px solid ${Colors.primary}`
-                                        }
+                                        },
                               }
                     },
                     MuiDivider: {

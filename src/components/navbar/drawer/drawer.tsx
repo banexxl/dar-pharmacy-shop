@@ -29,8 +29,8 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                     useDialogModal(LoginRegister)
 
           return (
-                    <>
-                              <Drawer open={drawerOpen}>
+                    <Box >
+                              <Drawer open={drawerOpen} >
                                         <List>
                                                   <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
@@ -81,6 +81,6 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                               <CartDialog />
                               <LoginDialog />
                               <Actions isScreenToMedium={isScreenToMedium} />
-                    </>
+                    </Box>
           );
 }
