@@ -29,7 +29,7 @@ const ProductCarousel = (props: any) => {
           };
 
           return (
-                    <StyledCarouselBox >
+                    <StyledCarouselBox>
                               <Carousel
                                         responsive={responsive}
                                         swipeable={true}
@@ -45,9 +45,9 @@ const ProductCarousel = (props: any) => {
                               >
                                         {
                                                   props.products.map((product: IProduct) => (
-                                                            <StyledCarouselCard key={product._id}>
+                                                            <StyledCarouselCard key={product._id} >
                                                                       <CarouselImgBox>
-                                                                                <CarouselProductImage src={product.imageURL} alt={product.name} height={200} width={200} />
+                                                                                <CarouselProductImage isOnDiscount={product.discount} src={product.imageURL} alt={product.name} height={200} width={200} />
                                                                       </CarouselImgBox>
                                                                       <CarouselManufacturerBox>
                                                                                 <CarouselManufacturer>{product.manufacturer}</CarouselManufacturer>

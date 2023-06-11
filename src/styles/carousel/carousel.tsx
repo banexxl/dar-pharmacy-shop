@@ -86,7 +86,7 @@ export const CarouselLogoImgBox = styled(Box)({
           },
           maxWidth: '100%',
           height: '150px',
-          margin: '0px auto 0px auto',
+          margin: '0px 50px',
 })
 
 export const CarouselButton = styled(Button)({
@@ -101,3 +101,29 @@ export const CarouselButton = styled(Button)({
           },
           height: '30px'
 });
+
+export const DiscountSticker = styled(Box)({
+          position: 'absolute',
+          top: '50%',
+          right: '0',
+          transform: 'translate(50%, -50%)',
+          backgroundColor: 'red',
+          color: 'white',
+          padding: '5px 10px',
+          fontWeight: 'bold',
+          fontSize: '14px',
+          writingMode: 'vertical-rl',
+          textOrientation: 'mixed',
+          ":before": {
+                    content: '""',
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    bottom: '0',
+                    width: '1px',
+                    backgroundColor: 'white',
+                    transformOrigin: 'left top',
+                    transform: 'scaleY(0.5)'
+          }
+
+})

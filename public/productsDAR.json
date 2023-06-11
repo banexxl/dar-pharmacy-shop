@@ -10,7 +10,9 @@
                     "manufacturer": "Herbalab",
                     "warning": "Zlatna krema sadrži pčelinji vosak, ne koristiti u slučaju alergija na pčelinje proizvode. Ukoliko ne znate da li ste alergični, naneti malu količinu na unutrašnji deo podlaktice i sačekati 15 minuta, pa nastaviti sa korišćenjem ako ne dođe do neželjenih reakcija.",
                     "imageURL": "https://i.ibb.co/tcHFvtZ/zlatna-Krema30ml.jpg",
-                    "price": "475"
+                    "price": "475",
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Ulje za negu brade",
@@ -23,7 +25,9 @@
                     "manufacturer": "Herbalab",
                     "warning": "/",
                     "imageURL": "https://i.ibb.co/GHHHXBV/Brada-2mp.jpg",
-                    "price": 465
+                    "price": 465,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Ulje za negu noktiju",
@@ -36,7 +40,9 @@
                     "manufacturer": "Herbalab",
                     "warning": "/",
                     "imageURL": "https://i.ibb.co/QCqDC1b/IMG-9040-scaled.jpg",
-                    "price": 499
+                    "price": 499,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Ulje za negu i oporavak kose",
@@ -49,7 +55,9 @@
                     "manufacturer": "Herbalab",
                     "warning": "/",
                     "imageURL": "https://i.ibb.co/H2jpMc9/uljeKosa.jpg",
-                    "price": 610
+                    "price": 610,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Suvo ulje za negu tela",
@@ -57,12 +65,14 @@
                     "category": "Herbalab",
                     "availableStock": 23,
                     "instructions": "Naprskati na željena područja i nežno umasirati.",
+                    "ingredients": "Prunus Dulcis (badem) Oil, Caprylic/capric triglyceride, Coco-Caprylate, Dicaprylyl Carbonate, Corylus Avellana (lešnik) Oil, Simmondsia Chinensis (jojoba) Oil, Macadamia Ternifolia (makadamija) Oil, Matricaria Chamomilla (kamilica) Oil, Calendula Officinalis (neven) Flower Oil, Helichrysum Angustifolium (smilje) Oil, Olea Europaea (maslina) Fruit Oil, Citrus Aurantium Amara (neroli) Flower, Citrus Paradisi (Grejpfrut) Peel essential oils, Tocopheryl Acetate (Vitamin E).",
                     "quantity": "100ml",
                     "manufacturer": "Herbalab",
                     "warning": "/",
                     "imageURL": "https://i.ibb.co/sPBP3Kt/Suvouljezanegutela.jpg",
                     "price": 1110,
-                    "ingredients": "Prunus Dulcis (badem) Oil, Caprylic/capric triglyceride, Coco-Caprylate, Dicaprylyl Carbonate, Corylus Avellana (lešnik) Oil, Simmondsia Chinensis (jojoba) Oil, Macadamia Ternifolia (makadamija) Oil, Matricaria Chamomilla (kamilica) Oil, Calendula Officinalis (neven) Flower Oil, Helichrysum Angustifolium (smilje) Oil, Olea Europaea (maslina) Fruit Oil, Citrus Aurantium Amara (neroli) Flower, Citrus Paradisi (Grejpfrut) Peel essential oils, Tocopheryl Acetate (Vitamin E)."
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Dezodorans u stiku bor + bergamot",
@@ -75,7 +85,9 @@
                     "manufacturer": "Herbalab",
                     "warning": "Proizvod sadrži sodu bikarbonu (zadužena za neutralisanje neprijatnih mirisa), koja u slučaju osetljive kože, a u kombinaciji sa velikom vrućinom i prekomernim znojenjem, može da izazove blage iritacije. Ukoliko dođe do iritacije, prestati par dana sa korišćenjem, pa ponovo oprezno uvoditi u upotebu.",
                     "imageURL": "https://i.ibb.co/hMJMtgq/Herbastik-B.jpg",
-                    "price": 499
+                    "price": 499,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Dezodorans u stiku menta",
@@ -86,9 +98,11 @@
                     "quantity": "50ml",
                     "manufacturer": "Herbalab",
                     "warning": "Proizvod sadrži sodu bikarbonu (zadužena za neutralisanje neprijatnih mirisa), koja u slučaju osetljive kože, a u kombinaciji sa velikom vrućinom i prekomernim znojenjem može da izazove blage iritacije. Prestati par dana sa korišćenjem, pa ponovo oprezno uvoditi u upotebu.",
+                    "availableStock": 23,
                     "imageURL": "https://i.ibb.co/QYcCgm2/Herbastik-M.jpg",
                     "price": 499,
-                    "availableStock": 23
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Dezodorans u stiku citrus",
@@ -97,11 +111,13 @@
                     "ingredients": "Maydis Amylum (kukuruzni skrob), Sodium Bicarbonate, Cera Alba (pčelinji vosak), Cocos Nucifera (kokos) Oil, Theobroma Cacao (kakao) Seed Butter, Butyrospermum Parkii (shea) Butter, Calendula Officinalis (neven) Flower Oil, Olea Europaea (maslina) Fruit Oil, Citrus Aurantium Amara (neroli) Flower, Citrus Paradisi (grejpfrut) Peel, Citrus Aurantium Bergamia (bergamot), Cananga Odorata (ylang-ylang), Cetyl Alcohol.",
                     "instructions": "Naneti na čistu i suvu kožu pazuha u par poteza. Čuvati na suvom mestu. Ne nanositi na iritiranu kožu pazuha.",
                     "quantity": "50ml",
+                    "availableStock": 23,
                     "manufacturer": "Herbalab",
                     "warning": "Proizvod sadrži sodu bikarbonu (zadužena za neutralisanje neprijatnih mirisa), koja u slučaju osetljive kože, a u kombinaciji sa velikom vrućinom i prekomernim znojenjem može da izazove blage iritacije. Prestati par dana sa korišćenjem, pa ponovo oprezno uvoditi u upotebu.",
                     "imageURL": "https://i.ibb.co/gw33fRX/Herbastik-C.jpg",
                     "price": 55,
-                    "availableStock": 23
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Dezodorans u stiku ylang-ylang",
@@ -114,7 +130,9 @@
                     "warning": "Proizvod sadrži sodu bikarbonu (zadužena za neutralisanje neprijatnih mirisa), koja u slučaju osetljive kože, a u kombinaciji sa velikom vrućinom i prekomernim znojenjem može da izazove blage iritacije. Prestati par dana sa korišćenjem, pa ponovo oprezno uvoditi u upotebu.",
                     "imageURL": "https://i.ibb.co/pRMXLQH/Herbastik-Y.jpg",
                     "price": 55,
-                    "availableStock": 23
+                    "availableStock": 23,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Dezodorans u stiku lavanda",
@@ -127,7 +145,9 @@
                     "warning": "Proizvod sadrži sodu bikarbonu (zadužena za neutralisanje neprijatnih mirisa), koja u slučaju osetljive kože, a u kombinaciji sa velikom vrućinom i prekomernim znojenjem može da izazove blage iritacije. Prestati par dana sa korišćenjem, pa ponovo oprezno uvoditi u upotebu.",
                     "imageURL": "https://i.ibb.co/ZfMG1sV/stiklavanda.jpg",
                     "price": 499,
-                    "availableStock": 23
+                    "availableStock": 23,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Anti-age serum za lice",
@@ -140,7 +160,9 @@
                     "warning": "/",
                     "imageURL": "https://i.ibb.co/48Qr4xV/serumzalice.jpg",
                     "price": 852,
-                    "availableStock": 23
+                    "availableStock": 23,
+                    "discount": false,
+                    "discountamount": 5
           },
           {
                     "name": "Alkoholni gel za Suvo Pranje ruku",

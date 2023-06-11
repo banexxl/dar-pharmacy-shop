@@ -22,9 +22,8 @@ import CarouselBlog from "@/components/carousel/carousel-blog";
 
 export default function Home(props: any) {
 
-          const { products, manufacturers } = props
+          const { productsManufacturer, productsOnDiscount, manufacturers } = props
           const { t } = useTranslation('common')
-
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -52,13 +51,13 @@ export default function Home(props: any) {
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
                                                             </Box>
-                                                            <Products data={products} />
+                                                            <Products data={productsManufacturer} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                                                       <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
                                                             </Box>
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                                                            <ProductCarousel products={products} />
+                                                            <ProductCarousel products={productsManufacturer} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                                                       <Typography sx={{ fontSize: '2rem' }}>Brendovi</Typography>
@@ -67,10 +66,11 @@ export default function Home(props: any) {
                                                             <CarouselLogo manufacturers={manufacturers} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                                                      <Typography sx={{ fontSize: '2rem' }}>Nase price</Typography>
+                                                                      <Typography sx={{ fontSize: '2rem' }}>Proizvodi na akciji</Typography>
                                                             </Box>
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                                                            <CarouselBlog />
+                                                            <ProductCarousel products={productsOnDiscount} discount={true} />
+                                                            {/* <CarouselBlog /> */}
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
@@ -83,7 +83,11 @@ export default function Home(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const dbData: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
+          const productsManufacturer: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
+                    return data
+          })
+
+          const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount(true).then((data: any) => {
                     return data
           })
 
@@ -99,7 +103,8 @@ export async function getStaticProps({ locale }: any) {
 
           return {
                     props: {
-                              products: JSON.parse(JSON.stringify(dbData)),
+                              productsManufacturer: JSON.parse(JSON.stringify(productsManufacturer)),
+                              productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                               //...(await serverSideTranslations(locale, ['common'], null, ['en-US', 'sr-RS'])),
                               ...(await serverSideTranslations(locale ?? 'sr-RS', [

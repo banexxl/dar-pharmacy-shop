@@ -12,7 +12,7 @@ export default interface IProduct {
           price: number;
           productURL?: string;
           manufacturer?: string;
-          discount?: boolean;
+          discount: boolean;
           discountamount?: number;
 }
 

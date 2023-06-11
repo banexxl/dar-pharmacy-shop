@@ -98,7 +98,9 @@ const productsServices = () => {
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
-                              let products: IProduct[] = await db.collection('Products').find({ "discount": `${discount}` }).toArray()
+                              let products: IProduct[] = await db.collection('Products').find({ discount: true }).toArray()
+                              console.log("iz product servisa ", discount, products);
+
                               return products
                     } catch (error: any) {
                               return { message: error.message }

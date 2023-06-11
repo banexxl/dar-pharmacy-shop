@@ -9,7 +9,6 @@ import Link from 'next/link';
 const CarouselLogo = (props: any) => {
 
           const { t } = useTranslation('common')
-          console.log(props);
 
           const responsive = {
                     desktop: {
