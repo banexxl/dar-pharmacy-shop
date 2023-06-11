@@ -43,7 +43,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                         </StyledHeader>
                                         <TableBody>
                                                   {cart.map((cartItem: ICartItem) => (
-                                                            <CartItem key={cartItem._id} count={cartItem.count} _id={cartItem._id}
+                                                            <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                                                       name={cartItem.name} description={cartItem.description} category={cartItem.category}
                                                                       availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
                                                                       instructions={cartItem.instructions} quantity={cartItem.quantity}

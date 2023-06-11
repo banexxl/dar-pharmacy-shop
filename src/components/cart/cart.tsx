@@ -65,7 +65,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                             </StyledHeader>
                                                             <StyledTableBody>
                                                                       {cart.map((cartItem: ICartItem) => (
-                                                                                <CartItem key={cartItem._id} count={cartItem.count} _id={cartItem._id}
+                                                                                <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                                                                           name={cartItem.name} description={cartItem.description} category={cartItem.category}
                                                                                           availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
                                                                                           instructions={cartItem.instructions} quantity={cartItem.quantity}

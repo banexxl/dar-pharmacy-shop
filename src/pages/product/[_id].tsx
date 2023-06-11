@@ -39,7 +39,7 @@ const SingleProduct = (props: any) => {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <ProductDetails _id={props.product._id} availableStock={props.product.availableStock} category={props.product.category} description={props.product.description}
+                                                            <ProductDetails discount={props.product.discount} _id={props.product._id} availableStock={props.product.availableStock} category={props.product.category} description={props.product.description}
                                                                       imageURL={props.product.imageURL} ingredients={props.product.ingredients} instructions={props.product.instructions} name={props.product.name}
                                                                       price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} productURL={props.product.productURL} manufacturer={props.product.manufacturer} />
                                                             <SearchBox />
