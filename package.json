@@ -39,6 +39,7 @@
     "i18next-resources-to-backend": "^1.1.1",
     "maplibre-gl": "^2.4.0",
     "mongodb": "^4.13.0",
+    "mui-nested-menu": "^3.2.1",
     "next": "13.1.4",
     "next-auth": "^4.19.2",
     "next-i18next": "^13.1.5",

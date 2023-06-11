@@ -1,4 +1,4 @@
-import { Divider, ListItemButton, ListItemIcon, MenuItem, Select } from "@mui/material";
+import { Divider, ListItemButton, ListItemIcon, Menu, MenuItem, Select } from "@mui/material";
 import { ActionIconsContainerDesktop, ActionIconsContainerMobile, MyList } from "../../styles/appbar";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -13,6 +13,9 @@ import { useRouter } from "next/router";
 import { CartCounter } from "@/styles/navbar/navbar-cart-counter";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "@/store/cart/cart.selector";
+import { useState } from "react";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { ProductsMenu } from "./product-menu";
 
 export default function Actions({ isScreenToMedium }: any) {
 
@@ -26,9 +29,31 @@ export default function Actions({ isScreenToMedium }: any) {
 
           const counter = useSelector(cartTotalSelector)
           const router = useRouter()
+          const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+          const open = Boolean(anchorEl);
+          const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+                    setAnchorEl(event.currentTarget);
+          };
+          const handleMenuClose = () => {
+                    setAnchorEl(null);
+          };
 
           return (
                     <Component>
+                              <ListItemButton onClick={(e: any) => handleMenuOpen(e)}
+                                        id="demo-customized-button"
+                                        aria-controls={open ? 'demo-customized-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? 'true' : undefined}
+                                        sx={{
+                                                  justifyContent: "center", '&:hover': {
+                                                            backgroundColor: Colors.secondary,
+                                                  },
+
+                                        }}>
+                                        <ProductsMenu />
+                              </ListItemButton>
+                              <Divider orientation="vertical" flexItem />
                               <ListItemButton onClick={showCartDialog} sx={{
                                         justifyContent: "center", '&:hover': {
                                                   backgroundColor: Colors.secondary,

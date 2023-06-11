@@ -46,7 +46,7 @@ const theme: Theme = createTheme({
                               styleOverrides: {
                                         root: {
                                                   fontFamily: 'cursive',
-                                                  color: Colors.primary
+                                                  color: Colors.shaft
                                         }
                               }
                     },
