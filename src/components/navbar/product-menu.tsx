@@ -3,10 +3,11 @@ import Button from '@mui/material/Button';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { StyledProductMenu } from '@/styles/navbar/product-menu';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import { IconMenuItem, NestedMenuItem } from 'mui-nested-menu';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Colors } from '@/styles/theme';
+import theme, { Colors } from '@/styles/theme';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 export const ProductsMenu = () => {
           const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -18,16 +19,24 @@ export const ProductsMenu = () => {
                     setAnchorEl(null);
           };
 
+          const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'));
+
           return (
+
                     <Box>
                               <Button
                                         variant="contained"
                                         onClick={handleClick}
                                         endIcon={<ArrowDownwardIcon />}
                               >
-                                        <Typography sx={{ color: Colors.shaft }}>
-                                                  Proizvodi
-                                        </Typography>
+                                        {
+                                                  isScreenToMedium ?
+                                                            <LocalMallIcon sx={{ color: Colors.shaft }} />
+                                                            :
+                                                            <Typography sx={{ color: Colors.shaft }}>
+                                                                      Proizvodi
+                                                            </Typography>
+                                        }
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                                         <MenuItem onClick={handleClose}>
