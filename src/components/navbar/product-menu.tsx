@@ -63,6 +63,30 @@ export const ProductsMenu = () => {
                                                                       Antioksidanti
                                                             </Typography>
                                                   </MenuItem>
+                                                  <MenuItem onClick={handleClose}>
+
+
+                                                            <NestedMenuItem
+                                                                      label="Apoteka"
+                                                                      parentMenuOpen={open}
+                                                            >
+                                                                      <MenuItem onClick={handleClose}>
+                                                                                <Typography>
+                                                                                          Alergije
+                                                                                </Typography>
+                                                                      </MenuItem>
+                                                                      <MenuItem onClick={handleClose}>
+                                                                                <Typography>
+                                                                                          Anemije
+                                                                                </Typography>
+                                                                      </MenuItem>
+                                                                      <MenuItem onClick={handleClose}>
+                                                                                <Typography>
+                                                                                          Antioksidanti
+                                                                                </Typography>
+                                                                      </MenuItem>
+                                                            </NestedMenuItem>
+                                                  </MenuItem>
                                         </NestedMenuItem>
 
                                         <NestedMenuItem

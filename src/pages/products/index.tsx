@@ -13,9 +13,7 @@ import Promotions from "../../components/promotions/promotions";
 import SearchBox from "../../components/search/search"
 import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
-import { ProductsFilterContainer } from '@/styles/products-filter/products-filter';
-
-const inter = Inter({ subsets: ['latin'] })
+import ProductsFilter from '@/components/products-filter/products-filter';
 
 export default function Home(props: any) {
 
@@ -38,7 +36,7 @@ export default function Home(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <SearchBox />
-                                                            <ProductsFilterContainer />
+                                                            <ProductsFilter />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
