@@ -2,8 +2,6 @@
 import { Typography } from "@mui/material";
 import { ProductMetaWrapper } from "../../styles/product";
 
-import Divider from '@mui/material/Divider'
-
 export default function ProductMeta({ product, isScreenToMedium }: any) {
           return (
                     <ProductMetaWrapper>

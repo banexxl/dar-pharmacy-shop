@@ -46,7 +46,8 @@ const theme: Theme = createTheme({
                               styleOverrides: {
                                         root: {
                                                   fontFamily: 'monospace',
-                                                  color: Colors.secondary
+                                                  color: Colors.secondary,
+                                                  textAlign: 'center',
                                         }
                               }
                     },

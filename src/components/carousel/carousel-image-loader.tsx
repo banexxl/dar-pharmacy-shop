@@ -18,7 +18,7 @@ export const CarouselProductImage = (props: ProductImage) => {
 
           return (
                     <Box style={{ width: '100%', position: 'relative' }}>
-                              <DiscountSticker>50%</DiscountSticker>
+                              {/* <DiscountSticker>50%</DiscountSticker> */}
                               <Image
                                         unoptimized
                                         loader={myLoader}
