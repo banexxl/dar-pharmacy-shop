@@ -12,8 +12,8 @@ import AppDrawer from "../../components/navbar/drawer/drawer";
 import Promotions from "../../components/promotions/promotions";
 import SearchBox from "../../components/search/search"
 import productsServices from '@/services/product.services'
-import Toolbar from '@/components/toolbar/toolbar';
 import dynamic from 'next/dynamic';
+import { ProductsFilterContainer } from '@/styles/products-filter/products-filter';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,8 +37,8 @@ export default function Home(props: any) {
                               >
                                         <Stack>
                                                   <UIProvider>
-                                                            <Toolbar />
                                                             <SearchBox />
+                                                            <ProductsFilterContainer />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
