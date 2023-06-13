@@ -1,25 +1,21 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Menu, { MenuProps } from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { StyledProductMenu } from '@/styles/navbar/product-menu';
-import { Box, Typography, useMediaQuery } from '@mui/material';
-import { IconMenuItem, NestedMenuItem } from 'mui-nested-menu';
+import { Box, Typography } from '@mui/material';
+import { NestedMenuItem } from 'mui-nested-menu';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import theme, { Colors } from '@/styles/theme';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+import { StyledMenuItem, StyledNestedTypography } from '@/styles/products-nested/products-nested';
 
 export const ProductsMenu = () => {
           const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
           const open = Boolean(anchorEl);
+
           const handleClick = (event: React.MouseEvent<HTMLElement>) => {
                     setAnchorEl(event.currentTarget);
           };
           const handleClose = () => {
                     setAnchorEl(null);
           };
-
-          const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'));
 
           return (
 
@@ -29,187 +25,187 @@ export const ProductsMenu = () => {
                                         onClick={handleClick}
                                         endIcon={<ArrowDownwardIcon />}
                               >
-                                        <Typography sx={{ textAlign: 'center' }}>
+                                        <StyledNestedTypography sx={{ textAlign: 'center' }}>
                                                   Proizvodi
-                                        </Typography>
+                                        </StyledNestedTypography>
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                                         {/* --------------------------AKCIJE------------------------------------------ */}
-                                        <MenuItem onClick={handleClose}>
-                                                  <Typography>
+                                        <StyledMenuItem onClick={handleClose} sx={{ fontSize: '.8rem' }}>
+                                                  <StyledNestedTypography>
                                                             Akcije
-                                                  </Typography>
-                                        </MenuItem>
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
                                         {/* --------------------------APOTEKA------------------------------------------ */}
                                         <NestedMenuItem
                                                   label="Apoteka"
                                                   parentMenuOpen={open}
                                         >
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Alergije
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Anemije
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Antioksidanti i detoksikacija
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Biljne kapi i etarska ulja
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Bol
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Bubrezi o mokracni putevi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Cajevi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  {/* <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Dijabetes i insulinska resistencija
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem> */}
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Hemoroidi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Hlesterol i trigliceridi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Imunitet i prehlada
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Jetra i zuc
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Kasalj
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Kosa, koza, nokti
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Kosti i zglobovi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Menopauza
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       PMS
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Mrsavljenje i celulit
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Odvikavanje od alkohola
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Pamcenje i koncentracija
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Poremecaj fertiliteta
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Prostata i potencija
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Posebna ishrana
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Posebna ishrana
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Putna apoteka
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Stomacne tegobe
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Stres, depresija, nesanica
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Srce i cirkulacija
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Vitamini i minerali
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Preparati za kozu
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Oci i usi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Prva pomoc
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Dozatori i sekaci za lekove
-                                                            </Typography>
-                                                  </MenuItem>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
                                         </NestedMenuItem>
                                         {/* --------------------------Med kozmetika------------------------------------------ */}
                                         <NestedMenuItem
@@ -217,514 +213,514 @@ export const ProductsMenu = () => {
                                                   parentMenuOpen={open}
                                         >
                                                   <NestedMenuItem label='Lice' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Higijena lica
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Trepavice i obrve
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Hidratacija
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Anti-age
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Osetljiva koza
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Suva i atopijska koza
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Osetljiva koza, sklona crvenilu
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Specificna nega, iritacije
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Normalna koza
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Masna i problematicna koza
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Hiperpigmentacije
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega usana
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Telo' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ostecena koza
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Pilinzi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Celulit i strije
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Losioni i kreme za telo
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega ruku i noktiju
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Dezodoransi, stikovi i roll-on
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Suva koza i ekcemi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Dermatitis i iritacija koze
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega grudi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Zadebljanja
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Svrab
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ulja
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Higijena tela
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Kosa i koza glave' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Opadanje kose
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega kose na suncu
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Osetljiva koza glave
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Vitamini i dodaci prehrani
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Normalna kosa
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Suva i ostecena kosa
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Masna kosa
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Perut
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Farbe za kosu
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Bebe i deca' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Pranje
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Suncanje
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Zastita od sunca' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Oralni preparati
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Bebe i deca
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Lice
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Telo
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Muskarci
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Brendovi
-                                                            </Typography>
-                                                  </MenuItem>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
                                         </NestedMenuItem>
                                         {/* --------------------------Lepota i nega------------------------------------------ */}
                                         <NestedMenuItem label='Lepota i nega' parentMenuOpen={open}>
                                                   <NestedMenuItem label='Lice' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Blaznice i tuferi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Cetkice i aplikatori za sminku
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Gelovi i pene za lice
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Vestacke trepavice
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Sminka za lice
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Sminka za oci i obrve
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Telo' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega grudi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Piling
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Gelovi za tusiranje, kupke i soli
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Pene i pilinzi za kupanje
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Mleka, kreme i losioni
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ulja za telo
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Intimna nega' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Higijena
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Tamponi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ulosci
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ulosci za inkontinenciju
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Vaginalete, kreme, gelovi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Lubrikanti
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Oralna higijena' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Paste za zube
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Cetkice i konac za zube
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Proteze i kutije za zube
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Rastvori za usta
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Afte
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ostalo
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Kosa i koza glave' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Sprejevi za suvo pranje kose
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Samponi za kosu
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Regeneratori i pakovanja za kosu
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Ulje za kosu
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Kapi i ampule za kosu
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Ruke' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Kreme za ruke
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Lak za nokte
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega noktiju
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Skidaci lakova za nokte
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Stopala' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Dezodoransi
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Zuljevi, kurije oci, urastanje noktiju
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Skidaci lakova za nokte
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Bebe i deca' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Higijena
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Nega
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Zastita od sunca' parentMenuOpen={open}>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Odrasli
-                                                                      </Typography>
-                                                            </MenuItem>
-                                                            <MenuItem onClick={handleClose}>
-                                                                      <Typography>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
                                                                                 Bebe i deca
-                                                                      </Typography>
-                                                            </MenuItem>
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
                                         </NestedMenuItem>
                                         {/* --------------------------Bebi program----------------------------------------- */}
                                         <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Bebi apoteka
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Bebi kozmetika
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Oprema za bebe
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Pribor za negu
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Pribor za hranjenje
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Flasice, cucle, glodalice, zvecke
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Pelene
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Hrana za bebe
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Bebi cajevi
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Trudnice dojilje
-                                                            </Typography>
-                                                  </MenuItem>
-                                                  <MenuItem onClick={handleClose}>
-                                                            <Typography>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
                                                                       Aparati
-                                                            </Typography>
-                                                  </MenuItem>
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
                                         </NestedMenuItem>
                               </StyledProductMenu>
                     </Box>
