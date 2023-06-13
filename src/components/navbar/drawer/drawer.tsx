@@ -9,6 +9,7 @@ import WishList from "../../wishlist/wishlist"
 import Cart from "../../cart/cart"
 import LoginRegister from "../../cart/cart"
 import Link from "next/link"
+import { ProductsMenu } from "../product-menu"
 
 const MiddleDivider = styled((props) => (
           <Divider variant="middle" {...props} />
@@ -28,6 +29,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
           const [LoginDialog, showLoginDialog, closeLoginDialog] =
                     useDialogModal(LoginRegister)
 
+
           return (
                     <Box >
                               <Drawer open={drawerOpen} >
@@ -43,12 +45,8 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                             </DrawerCloseButton>
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton>
-                                                            <ListItemText onClick={() => { setDrawerOpen(false) }}>
-                                                                      <Link href={'/products'}>
-                                                                                Proizvodi
-                                                                      </Link>
-                                                            </ListItemText>
+                                                  <ListItemButton sx={{ justifyContent: 'center' }}>
+                                                            <ProductsMenu />
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton>
