@@ -30,12 +30,6 @@ export const ProductsMenu = () => {
                                         </StyledNestedTypography>
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                                        {/* --------------------------AKCIJE------------------------------------------ */}
-                                        <StyledMenuItem onClick={handleClose} sx={{ fontSize: '.8rem' }}>
-                                                  <StyledNestedTypography>
-                                                            Akcije
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
                                         {/* --------------------------APOTEKA------------------------------------------ */}
                                         <NestedMenuItem
                                                   label="Apoteka"
@@ -207,7 +201,7 @@ export const ProductsMenu = () => {
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                         </NestedMenuItem>
-                                        {/* --------------------------Med kozmetika------------------------------------------ */}
+                                        {/* --------------------------Medicinska kozmetika------------------------------------------ */}
                                         <NestedMenuItem
                                                   label="Medicinska kozmetika"
                                                   parentMenuOpen={open}
@@ -722,6 +716,212 @@ export const ProductsMenu = () => {
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                         </NestedMenuItem>
+                                        {/* --------------------------Medicinski aparati i oprema----------------------------------------- */}
+                                        <NestedMenuItem label='Medicinski aparati i oprema' parentMenuOpen={open}>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Aparati za analizu sna
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Preciscivaci vazduha
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Pulsni oksimetri
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Vage
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Aspiratori
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <NestedMenuItem label='Inhalatori' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Aparati
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Dodatna oprema
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                                  <NestedMenuItem label='Merenje pritiska' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Aparati
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Dodatna oprema
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                                  <NestedMenuItem label='Merenje secera' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Aparati
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Dodatna oprema
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Trake i lancete
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Toplomeri
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Stetoskopi
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                        </NestedMenuItem>
+                                        {/* --------------------------Ortopedija i pomagala----------------------------------------- */}
+                                        <NestedMenuItem label='Ortopedija i pomagala' parentMenuOpen={open}>
+                                                  <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Jastuci
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Duseci
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Stake
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Stapovi
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Ortoze
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Kinezi trake
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Hodalice
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Postoljni podmetaci
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                        </NestedMenuItem>
+                                        {/* --------------------------Dezinfekcija, dezinsekcija, maske----------------------------------------- */}
+                                        <NestedMenuItem label='Dezinfekcija, dezinsekcija, maske' parentMenuOpen={open}>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Sredstva za dezinfekciju
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Repelenti
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <NestedMenuItem label='Maske za lice' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Odrasli
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Deca
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                        </NestedMenuItem>
+                                        {/* --------------------------Obuca, carape, ulosci---------------------------------------- */}
+                                        <NestedMenuItem label='Obuca, carape, ulosci' parentMenuOpen={open}>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Bebe
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <NestedMenuItem label='Deca' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Decaci
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Devojcice
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                                  <NestedMenuItem label='Odrasli' parentMenuOpen={open}>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Muskarci
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                            <StyledMenuItem onClick={handleClose}>
+                                                                      <StyledNestedTypography>
+                                                                                Zene
+                                                                      </StyledNestedTypography>
+                                                            </StyledMenuItem>
+                                                  </NestedMenuItem>
+                                        </NestedMenuItem>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography>
+                                                            Carape za vene
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography>
+                                                            Ulosci za stopala
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography>
+                                                            Stitnici i separatori
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography>
+                                                            AKCIJE
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography>
+                                                            PROMOCIJE
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
                               </StyledProductMenu>
                     </Box>
           );
