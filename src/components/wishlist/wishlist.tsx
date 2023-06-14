@@ -1,33 +1,27 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, } from "@mui/material";
-import { useRef } from "react";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
-import styled from "@emotion/styled";
-import { ProductAddToCart, Product, ProductImage } from "../../styles/product"
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { WishListWrapper, WishlistHeader, WishlistHeaderCell, WishlistRemoveAllButton, WishlistTable, WishlistTableBody } from "@/styles/wishlist";
+import { useTranslation } from "next-i18next";
+import IWishlistItem from "@/interfaces/wishlist/wishlist.interface";
+import WishlistItem from "./wishlist-item";
+import { clearWishList } from "@/store/wishlist/wishlist.slice";
 
-function SlideTransition(props: any) {
+
+const SlideTransition = (props: any) => {
           return <Slide direction="down" {...props} />;
 }
 
-const WishListWrapper = styled(Box)(({ theme }: any) => ({
-          display: "flex",
-          padding: theme.spacing(4),
-}));
-
-const ProductDetailInfoWrapper = styled(Box)(() => ({
-          display: "flex",
-          flexDirection: "column",
-          maxWidth: 500,
-          lineHeight: 1.5,
-}));
-
 export default function WishList({ open, onClose, product }: any) {
 
-          const theme = useTheme();
-          const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+          const theme = useTheme()
+          const { t } = useTranslation();
+          const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+          const wishlist = useSelector((state: any) => state.persistReduce.wishListReducer)
+          const dispatch = useDispatch()
 
           return (
                     <Dialog
@@ -45,44 +39,37 @@ export default function WishList({ open, onClose, product }: any) {
                                                   alignItems="center"
                                                   justifyContent={"space-between"}
                                         >
-                                                  Omiljeni proizvodi
+                                                  <Typography sx={{ color: Colors.primary, fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                            Omiljeni proizvodi
+                                                  </Typography>
                                                   <IconButton onClick={onClose}>
                                                             <CloseIcon />
                                                   </IconButton>
                                         </Box>
                               </DialogTitle>
                               <DialogContent>
-                                        <WishListWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-                                                  <Product sx={{ mr: 4, width: { xs: '150px', sm: '200px', md: '250px', lg: '400px' } }}>
-                                                            <ProductImage />
-                                                  </Product>
-                                                  <ProductDetailInfoWrapper>
-                                                            <Typography sx={{ lineHeight: 2 }} variant="h4">
-                                                                      Product name
-                                                            </Typography>
-                                                            <Typography>
-                                                                      Description
-                                                            </Typography>
-                                                            <Typography>
-                                                                      Price
-                                                            </Typography>
-                                                            <Box
-                                                                      sx={{ mt: 4 }}
-                                                                      display="flex"
-                                                                      alignItems="center"
-                                                                      justifyContent="space-between"
-                                                            >
-                                                                      <Button variant="contained">Add to Cart</Button>
-                                                            </Box>
-                                                            <Box
-                                                                      display="flex"
-                                                                      alignItems="center"
-                                                                      sx={{ mt: 4, color: Colors.light }}
-                                                            >
-                                                                      <FavoriteIcon sx={{ mr: 2 }} />
-                                                                      Wishlist
-                                                            </Box>
-                                                  </ProductDetailInfoWrapper>
+                                        <WishListWrapper component={Paper}>
+                                                  <WishlistTable>
+                                                            <WishlistHeader>
+                                                                      <WishlistHeaderCell>{t('cart.image')}</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">{t('cart.name')}</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">{t('cart.quantity')}</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">{t('cart.code')}</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">{t('cart.price')}</WishlistHeaderCell>
+                                                            </WishlistHeader>
+                                                            <WishlistTableBody>
+                                                                      {wishlist.map((cartItem: IWishlistItem) => (
+                                                                                <WishlistItem discount={cartItem.discount} key={cartItem._id} _id={cartItem._id}
+                                                                                          name={cartItem.name} description={cartItem.description} category={cartItem.category}
+                                                                                          availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
+                                                                                          instructions={cartItem.instructions} quantity={cartItem.quantity}
+                                                                                          warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} />
+                                                                      ))}
+                                                            </WishlistTableBody>
+                                                  </WishlistTable>
+                                                  <WishlistRemoveAllButton onClick={() => dispatch(clearWishList())}>
+                                                            Obrisi listu omiljenih proizvoda
+                                                  </WishlistRemoveAllButton>
                                         </WishListWrapper>
                               </DialogContent>
                     </Dialog>

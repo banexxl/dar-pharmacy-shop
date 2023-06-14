@@ -10,6 +10,7 @@ import ProductMeta from "./products-meta"
 import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "next-i18next";
+import { addToWishList } from "@/store/wishlist/wishlist.slice";
 
 export default function SingleProductMobile({ product, isScreenToMedium }: any) {
 
@@ -45,11 +46,13 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                               <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                               <ProductActionsWrapper>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
-                                                  <ProductFavButton isfav={0}>
-                                                            <FavoriteIcon />
+                                                  <ProductFavButton isfav={0} onClick={() => dispatch(addToWishList(product))}>
+                                                            <Tooltip placement="left" title="Add to wishlist">
+                                                                      <FavoriteIcon />
+                                                            </Tooltip>
                                                   </ProductFavButton>
                                                   <ProductActionButton>
-                                                            <Tooltip placement="left" title="share this product">
+                                                            <Tooltip placement="left" title="Share this product">
                                                                       <ShareIcon color="primary" />
                                                             </Tooltip>
                                                   </ProductActionButton>

@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
@@ -44,7 +44,9 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   alignItems="center"
                                                   justifyContent={"space-between"}
                                         >
-                                                  {t('cart.products')}
+                                                  <Typography sx={{ color: Colors.primary, fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                            {t('cart.products')}
+                                                  </Typography>
                                                   <IconButton onClick={onClose}>
                                                             <CloseIcon />
                                                   </IconButton>

@@ -10,6 +10,7 @@ import ProductMeta from "./products-meta";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
+import { addToWishList } from "@/store/wishlist/wishlist.slice";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
@@ -47,7 +48,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           return (
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                               <ProductImage src={product.imageURL} />
-                              <ProductFavButton isfav={0}>
+                              <ProductFavButton isfav={0} onClick={() => dispatch(addToWishList(product))}>
                                         <Tooltip placement="left" title="Add to wishlist">
                                                   <FavoriteIcon />
                                         </Tooltip>

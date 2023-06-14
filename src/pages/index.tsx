@@ -18,7 +18,7 @@ import ProductCarousel from "@/components/carousel/carousel";
 import { MessageText } from "@/styles/promotions";
 import CarouselLogo from "@/components/carousel/carousel-logo";
 import CarouselBlog from "@/components/carousel/carousel-blog";
-
+import { useSelector } from "react-redux";
 
 export default function Home(props: any) {
 

@@ -9,7 +9,6 @@ const cartSlice = createSlice({
           reducers: {
                     addToCart(state, { payload }) {
                               const { _id } = payload;
-
                               const find = state.find((item: ICartItem) => item._id === _id);
                               //provera da li item postoji u korpi
                               if (find) {

@@ -35,9 +35,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                         </Link>
                               </StyledTotalsToPaymentButton>
                               <StyledTotalsToPaymentButton onClick={() => dispatch(clearCart())}>
-
                                         {t('confirmation.clear-cart')}
-
                               </StyledTotalsToPaymentButton>
                     </StyledTotalsBox>
           )
