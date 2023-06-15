@@ -17,6 +17,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
           const { t } = useTranslation();
           const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
+          const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
           const [showOptions, setShowOptions] = useState(false);
 
           const dispatch = useDispatch();
@@ -28,11 +29,23 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                     setShowOptions(false);
           };
 
-          const callAlert = () => {
+          const callCartAlert = () => {
                     setAddedToCartAlert(true)
                     const timeId = setTimeout(() => {
                               // After 3 seconds set the show value to false
                               setAddedToCartAlert(false)
+                    }, 2000)
+
+                    return () => {
+                              clearTimeout(timeId)
+                    }
+          }
+
+          const callWishlistAlert = () => {
+                    setAddedToWishlistAlert(true)
+                    const timeId = setTimeout(() => {
+                              // After 3 seconds set the show value to false
+                              setAddedToWishlistAlert(false)
                     }, 2000)
 
                     return () => {
@@ -46,7 +59,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                               <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                               <ProductActionsWrapper>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
-                                                  <ProductFavButton isfav={0} onClick={() => dispatch(addToWishList(product))}>
+                                                  <ProductFavButton isfav={0} onClick={() => { callWishlistAlert(); dispatch(addToWishList(product)) }}>
                                                             <Tooltip placement="left" title="Add to wishlist">
                                                                       <FavoriteIcon />
                                                             </Tooltip>
@@ -68,7 +81,12 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                                                   {t('product.added-to-cart')}
                                         </Alert>
                               )}
-                              <ProductAddToCart variant="contained" onClick={() => { callAlert(); dispatch(addToCart(product)) }}>Add to cart</ProductAddToCart >
+                              {addedToWishlistAlert && (
+                                        <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                  {t('product.added-to-wishlist')}
+                                        </Alert>
+                              )}
+                              <ProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Add to cart</ProductAddToCart >
                               <ProductDetailDialog product={product} />
                     </Product>
           );

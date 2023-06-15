@@ -60,7 +60,7 @@
                     "total-with-tax": "Total with tax",
                     "to-payment": "To payment page",
                     "to-shop": "Back to shop",
-                    "clear-cart": "Clear cart"
+                    "clear-cart": "Clear Cart"
           },
           "credit-card": {
                     "credit-card": "Credit Card",
@@ -322,7 +322,8 @@
                     }
           },
           "product": {
-                    "added-to-cart": "Item successfuly added to cart!"
+                    "added-to-cart": "Item successfuly added to cart!",
+                    "added-to-wishlist": "Item successfuly added to wishlist!"
           },
           "footer": {
                     "information": "Information",
