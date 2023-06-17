@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { MutableRefObject, useEffect, useRef, useState } from "react"
 import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage } from "../../styles/product";
-import { Alert, Stack, Tooltip } from "@mui/material";
+import { Alert, Box, Stack, Tooltip } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
@@ -18,8 +18,39 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-          const [showOptions, setShowOptions] = useState(false);
-          const [loading, setLoading] = useState(false);
+          const [showOptions, setShowOptions] = useState(false)
+          const [loading, setLoading] = useState(false)
+          const [isVisible, setVisible] = useState(false)
+          const domRef = useRef<HTMLElement | null>(null)
+          const observerRef = useRef<IntersectionObserver | null>(null);
+
+          useEffect(() => {
+                    observerRef.current = new IntersectionObserver(
+                              (entries) => {
+                                        entries.forEach((entry) => {
+                                                  if (entry.isIntersecting) {
+                                                            setVisible(true);
+                                                  } else {
+                                                            setVisible(false);
+                                                  }
+                                        });
+                              },
+                              { threshold: 0.5 } // Set your desired threshold value
+                    );
+
+                    const currentRef = domRef.current;
+
+
+                    if (currentRef && observerRef.current) {
+                              observerRef.current.observe(currentRef);
+                    }
+                    return () => {
+                              if (currentRef && observerRef.current) {
+                                        observerRef.current.unobserve(currentRef);
+                              }
+                    };
+          }, []);
+
           function handleClick() {
                     setLoading(true);
           }
@@ -61,7 +92,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           }
 
           return (
-                    <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                    <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible}>
                               <ProductImage src={product.imageURL} />
                               <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
                                         <Tooltip placement="left" title="Add to wishlist">

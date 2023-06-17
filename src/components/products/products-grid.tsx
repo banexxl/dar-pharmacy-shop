@@ -24,7 +24,7 @@ export default function Products(props: any) {
                     </Grid>
           ));
           return (
-                    <Container>
+                    <Container sx={{ paddingBottom: '100px' }}>
                               <Grid
                                         container
                                         spacing={{ xs: 2, md: 3 }}

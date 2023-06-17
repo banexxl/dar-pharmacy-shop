@@ -5,14 +5,22 @@ import { slideInBottom, slideInRight } from "../animation";
 import { Colors } from "../theme";
 import LoadingButton from '@mui/lab/LoadingButton';
 
-export const Product = styled(Box)(({ theme }: any) => ({
-          display: "flex",
+export const Product = styled(Box, {
+          shouldForwardProp: (prop) => prop !== "isVisible"
+})(({ isVisible, theme }: any) => ({
+          display: 'flex',
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
           [theme.breakpoints.up("md")]: {
                     position: "relative",
           },
+          opacity: isVisible ? '1' : '0',
+          transform: isVisible ? 'translateY(50px)' : 'none',
+          visibility: isVisible ? 'visible' : 'hidden',
+          transition: 'opacity 1200ms ease-out, transform 600ms ease-out, visibility 1200ms ease-out',
+          willChange: 'opacity, transform, visibility',
+
 }))
 
 export const ProductImage = styled("img")(({ src, theme }: any) => ({
