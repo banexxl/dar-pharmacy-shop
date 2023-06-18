@@ -9,6 +9,7 @@ import Link from 'next/link';
 const ProductCarousel = (props: any) => {
 
           const { t } = useTranslation('common')
+          console.log('props is karusela: ', props);
 
           const responsive = {
                     desktop: {

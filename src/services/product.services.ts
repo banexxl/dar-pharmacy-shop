@@ -41,8 +41,6 @@ const productsServices = () => {
                     try {
                               const db = client.db('DAR_DB')
                               let product: IProduct = await db.collection('Products').findOne({ _id: new ObjectId(_id) })
-                              console.log('product from services', product);
-
                               return product
                     } catch (error: any) {
                               return { message: error.message }
@@ -94,12 +92,11 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsByDiscount = async (discount: boolean) => {
+          const getProductsByDiscount = async () => {
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
                               let products: IProduct[] = await db.collection('Products').find({ discount: true }).toArray()
-                              console.log("iz product servisa ", discount, products);
 
                               return products
                     } catch (error: any) {

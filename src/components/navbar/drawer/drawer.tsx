@@ -66,10 +66,8 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
-                                                            <ListItemText>
-                                                                      <Link href={'/api/auth'}>
-                                                                                Login
-                                                                      </Link>
+                                                            <ListItemText onClick={showLoginDialog}>
+                                                                      Login
                                                             </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />

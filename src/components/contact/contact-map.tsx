@@ -36,7 +36,7 @@ export const ContactMap = (props: ContactPageProps) => {
                                         map,
                               });
                     });
-          }, [lat, lng]);
+          }, [lat, lng, props.mapApiKey]);
 
 
           ///////////////////////////////////////////////

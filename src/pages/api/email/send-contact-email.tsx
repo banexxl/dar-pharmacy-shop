@@ -6,9 +6,6 @@ import { NextApiRequest, NextApiResponse } from 'next/types';
 
 const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
-          await console.log(req);
-
-
           if (req.method === "POST") {
 
                     const data: IContactForm = req.body;

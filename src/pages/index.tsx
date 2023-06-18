@@ -22,8 +22,9 @@ import { useSelector } from "react-redux";
 
 export default function Home(props: any) {
 
-          const { productsManufacturer, productsOnDiscount, manufacturers } = props
+          const { productsFromManufacturer, productsOnDiscount, manufacturers } = props
           const { t } = useTranslation('common')
+          console.log('home props', props);
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -51,13 +52,13 @@ export default function Home(props: any) {
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
                                                             </Box>
-                                                            <Products data={productsManufacturer} />
+                                                            <Products data={productsFromManufacturer} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                                                       <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
                                                             </Box>
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                                                            <ProductCarousel products={productsManufacturer} />
+                                                            <ProductCarousel products={productsFromManufacturer} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                                                       <Typography sx={{ fontSize: '2rem' }}>Brendovi</Typography>
@@ -69,7 +70,7 @@ export default function Home(props: any) {
                                                                       <Typography sx={{ fontSize: '2rem' }}>Proizvodi na akciji</Typography>
                                                             </Box>
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                                                            <ProductCarousel products={productsOnDiscount} discount={true} />
+                                                            <ProductCarousel products={productsOnDiscount} />
                                                             {/* <CarouselBlog /> */}
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
@@ -83,11 +84,11 @@ export default function Home(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const productsManufacturer: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
+          const productsFromManufacturer: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
                     return data
           })
 
-          const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount(true).then((data: any) => {
+          const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount().then((data: any) => {
                     return data
           })
 
@@ -103,13 +104,13 @@ export async function getStaticProps({ locale }: any) {
 
           return {
                     props: {
-                              productsManufacturer: JSON.parse(JSON.stringify(productsManufacturer)),
+                              productsFromManufacturer: JSON.parse(JSON.stringify(productsFromManufacturer)),
                               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
-                              //...(await serverSideTranslations(locale, ['common'], null, ['en-US', 'sr-RS'])),
-                              ...(await serverSideTranslations(locale ?? 'sr-RS', [
-                                        'common',
-                              ])),
+                              ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
+                              // ...(await serverSideTranslations(locale ?? 'sr-RS', [
+                              //           'common',
+                              // ])),
                     },
           }
 }

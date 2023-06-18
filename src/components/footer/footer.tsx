@@ -96,7 +96,7 @@ export default function Footer() {
                                                                                 {t('footer.cart')}
                                                                       </Typography>
                                                             </ListItemText>
-                                                            <ListItemText onClick={showWishListDialog}>
+                                                            <ListItemText onClick={showLoginDialog}>
                                                                       <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                 {t('footer.my-account')}
                                                                       </Typography>
