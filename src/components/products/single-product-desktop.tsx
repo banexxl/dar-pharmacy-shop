@@ -35,7 +35,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   }
                                         });
                               },
-                              { threshold: 0.5 } // Set your desired threshold value
+                              { threshold: 1 } // Set your desired threshold value
                     );
 
                     const currentRef = domRef.current;
@@ -125,17 +125,12 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                               <ProductMeta product={product} />
                               <ProductDetailDialog product={product} />
                               {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-cart')}
-                                        </Alert>
-                              )}
-                              {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                                                   {t('product.added-to-cart')}
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                                                   {t('product.added-to-wishlist')}
                                         </Alert>
                               )}

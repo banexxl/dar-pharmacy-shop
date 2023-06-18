@@ -12,9 +12,9 @@ export const Product = styled(Box, {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          [theme.breakpoints.up("md")]: {
-                    position: "relative",
-          },
+          // [theme.breakpoints.up("md")]: {
+          //           position: "relative",
+          // },
           opacity: isVisible ? '1' : '0',
           transform: isVisible ? 'translateY(50px)' : 'none',
           visibility: isVisible ? 'visible' : 'hidden',

@@ -35,7 +35,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                                                   }
                                         });
                               },
-                              { threshold: 0.5 } // Set your desired threshold value
+                              { threshold: 1 } // Set your desired threshold value
                     );
 
                     const currentRef = domRef.current;
@@ -50,6 +50,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                               }
                     };
           }, []);
+
           const dispatch = useDispatch();
 
           const handleMouseEnter = () => {
