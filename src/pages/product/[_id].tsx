@@ -80,9 +80,11 @@ export const getStaticPaths = async (context: any) => {
           const productsOnDiscount: any = await productsServices().getProductsByDiscount()
 
           const finalList = [
-                    productsByCategory,
-                    productsOnDiscount
+                    ...productsByCategory,
+                    ...productsOnDiscount
           ]
+
+          console.log(finalList);
 
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
