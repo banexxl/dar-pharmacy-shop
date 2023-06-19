@@ -50,6 +50,7 @@
     "react-dom": "18.2.0",
     "react-google-button": "^0.7.2",
     "react-i18next": "^12.1.5",
+    "react-icons": "^4.9.0",
     "react-input-mask": "^2.0.4",
     "react-input-mask-next": "^3.0.0-alpha.12",
     "react-material-ui-carousel": "^3.4.2",

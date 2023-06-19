@@ -7,7 +7,7 @@ import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
 import WishList from "../../wishlist/wishlist"
 import Cart from "../../cart/cart"
-import LoginRegister from "../../cart/cart"
+import LoginRegister from "../../login/login"
 import Link from "next/link"
 import { ProductsMenu } from "../product-menu"
 

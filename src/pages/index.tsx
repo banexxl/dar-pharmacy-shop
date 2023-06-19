@@ -24,7 +24,6 @@ export default function Home(props: any) {
 
           const { productsFromManufacturer, productsOnDiscount, manufacturers } = props
           const { t } = useTranslation('common')
-          console.log('home props', props);
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
