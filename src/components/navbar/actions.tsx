@@ -14,6 +14,7 @@ import { CartCounter } from "@/styles/navbar/navbar-cart-counter";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "@/store/cart/cart.selector";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Actions({ isScreenToMedium }: any) {
 
@@ -69,7 +70,6 @@ export default function Actions({ isScreenToMedium }: any) {
                               </ListItemButton>
                               <Divider orientation="vertical" flexItem />
                               <ListItemButton
-                                        onClick={showLoginDialog}
                                         sx={{
                                                   justifyContent: "center",
                                                   '&:hover': {
