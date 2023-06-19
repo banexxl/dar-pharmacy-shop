@@ -69,7 +69,7 @@ export default function Actions({ isScreenToMedium }: any) {
                                         </ListItemIcon>
                               </ListItemButton>
                               <Divider orientation="vertical" flexItem />
-                              <ListItemButton
+                              <ListItemButton onClick={() => showLoginDialog()}
                                         sx={{
                                                   justifyContent: "center",
                                                   '&:hover': {
