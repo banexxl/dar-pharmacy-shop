@@ -37,7 +37,8 @@
                               "nextDay": "Next Day"
                     },
                     "customerInfo": "Customer Info",
-                    "creditCard": "Credit Card"
+                    "creditCard": "Credit Card",
+                    "order": "SEND ORDER"
           },
           "signup": {
                     "email": "Email",
@@ -319,6 +320,9 @@
                               "p199": "Under the conditions set out in Article 37 paragraph 1 of the Personal Data Protection Act, data processing may be subject to objection for reasons relating to your particular situation.",
                               "p200": "This general right of objection applies to all processing purposes described in these data protection rules that are processed on the basis of Article 12 paragraph 1 point 6) of the Personal Data Protection Act. Unlike the right to object to data processing for commercial purposes (see point 6), we are obliged under the Personal Data Protection Act to apply such a general right of objection only if there are compelling reasons for doing so, such as potential danger to life or health. In addition, you have the option of contacting the state authority responsible for personal data protection or the person responsible for data protection at Apotekarska ustanova 'DAR'",
                               "p201": "These personal data protection rules apply to the website www.apoteka-dar.rs and to data processing by us as data controller: Apotekarska ustanova DAR, in Kragujevac, postal code 34000, at Kralja Aleksandra I Karađorđevića Street No.102, premises No.9."
+                    },
+                    "terms-conditions": {
+                              "asas": "asas"
                     }
           },
           "product": {
