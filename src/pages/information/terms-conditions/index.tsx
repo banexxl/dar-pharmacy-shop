@@ -1,7 +1,7 @@
 import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Divider, Link, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
+import { Box, Container, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Head from 'next/head'
 import { Suspense } from 'react'
 import React from 'react'
@@ -12,6 +12,7 @@ import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SpinningWheel from '@/components/circularprogress/circular-progress'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 const TermsConditions = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
@@ -24,7 +25,7 @@ const TermsConditions = (props: InferGetStaticPropsType<typeof getStaticProps>) 
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('information.privacy-policy.title')}</title>
+                                        <title>{t('information.terms-conditions.title')}</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -37,183 +38,290 @@ const TermsConditions = (props: InferGetStaticPropsType<typeof getStaticProps>) 
                                                   <UIProvider>
                                                             <Box sx={{ mt: '70px' }}>
                                                                       <Typography textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
-                                                                                {t('information.privacy-policy.title')}
+                                                                                {t('information.terms-conditions.title')}
                                                                       </Typography>
 
                                                                       <Divider sx={{ marginBottom: '30px' }} variant="middle" />
 
-                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left' }}>
-                                                                                {t('information.privacy-policy.p1')}<Typography fontWeight='bold' sx={{ display: 'inline-block' }}>(&apos;Sl. glasnik RS&apos;, br. 87/2018).</Typography>
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p4')}
                                                                       </Typography>
 
                                                                       <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                                                                {t('information.privacy-policy.p2')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}> {t('information.privacy-policy.p3')} &rdquo;DAR&rdquo;</Typography>,
-                                                                                {t('information.privacy-policy.p4')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac</Typography>,
-                                                                                <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>( {t('information.privacy-policy.p5')} &rdquo;DAR&rdquo; ),</Typography>
-                                                                                {t('information.privacy-policy.p6')} <Typography fontWeight='bold' sx={{ display: 'inline-block' }}> {t('information.privacy-policy.p7')}.</Typography>
-                                                                      </Typography>
-
-                                                                      <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='center' fontWeight='bold' >
-                                                                                {t('information.privacy-policy.h1')}
-                                                                      </Typography>
-
-                                                                      <Typography alignContent='flex-start' variant='h6' padding='0px 20px' fontWeight='bold' >
-                                                                                1. {t('information.privacy-policy.h2')}
-                                                                      </Typography>
-
-                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                                                                {t('information.privacy-policy.p8')}
-                                                                      </Typography>
-
-                                                                      <Typography alignContent='flex-start' variant='h6' padding='0px 20px' fontWeight='bold' >
-                                                                                2. {t('information.privacy-policy.h3')}
-                                                                      </Typography>
-
-                                                                      <Typography textAlign='justify' fontWeight='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                                                                {t('information.privacy-policy.p9')}
+                                                                                {t('information.terms-conditions.p5')}
                                                                       </Typography>
 
                                                                       <List sx={{ listStyleType: 'num', pl: 6 }}>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                                                                           <ListItemText>
-                                                                                                    {t('information.privacy-policy.p10')}
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p6')}
+                                                                                                    </Typography>
                                                                                           </ListItemText>
                                                                                 </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                                                                           <ListItemText>
-                                                                                                    {t('information.privacy-policy.p11')}
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p7')}
+                                                                                                    </Typography>
                                                                                           </ListItemText>
                                                                                 </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                                                                           <ListItemText>
-                                                                                                    {t('information.privacy-policy.p12')}
-                                                                                          </ListItemText>
-                                                                                </ListItem >
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText>
-                                                                                                    {t('information.privacy-policy.p13')}
+                                                                                                    <Typography textAlign='justify'>
+                                                                                                              {t('information.terms-conditions.p8')}
+                                                                                                    </Typography>
                                                                                           </ListItemText>
                                                                                 </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                                                                           <ListItemText>
-                                                                                                    {t('information.privacy-policy.p14')}
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p9')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p10')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p11')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p12')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p13')}
+
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p15')}<Link href={''}>OVDE.&nbsp;</Link>
+                                                                                                              {t('information.terms-conditions.p16')}<Link href={''}>REKLAMACIJE.</Link>
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p17')}<Link href={''}>&nbsp;PRAVO NA ODUSTAJANJE.</Link>
+                                                                                                    </Typography>
                                                                                           </ListItemText>
                                                                                 </ListItem>
                                                                       </List>
 
-                                                                      <Typography textAlign='justify' fontWeight='bold' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                                                                {t('information.privacy-policy.p15')}
-                                                                      </Typography>
-
-                                                                      <List sx={{ listStyleType: 'num', pl: 6 }}>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p16')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText>
-                                                                                                    {t('information.privacy-policy.p17')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText>
-                                                                                                    {t('information.privacy-policy.p18')}
-                                                                                          </ListItemText>
-                                                                                </ListItem >
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText>
-                                                                                                    {t('information.privacy-policy.p19')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                                                                          <ListItemText>
-                                                                                                    {t('information.privacy-policy.p20')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                      </List>
-
-                                                                      <Typography fontWeight='bold' padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p21')}</Typography>
-
-                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p22')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                      </List>
-
-                                                                      <Typography fontWeight='bold' padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p23')}</Typography>
-
-                                                                      <Typography paddingLeft='20px' textAlign='justify'>{t('information.privacy-policy.p24')}</Typography>
-
-                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p25')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p26')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p27')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p28')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p29')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                      </List>
-
-                                                                      <Typography fontWeight='bold' padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p30')}</Typography>
-
-                                                                      <Typography padding='20px 20px' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.p31')}</Typography>
-
-                                                                      <List sx={{ listStyleType: 'circle', pl: 6 }}>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p32')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p33')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <ListItemText >
-                                                                                                    {t('information.privacy-policy.p34')}
-                                                                                          </ListItemText>
-                                                                                </ListItem>
-                                                                      </List>
-
-                                                                      <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='center' fontWeight='bold' >
-                                                                                {t('information.privacy-policy.p35')}
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p18')}
                                                                       </Typography>
 
                                                                       <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                                                                {t('information.privacy-policy.p36')}<Typography fontWeight='bold' sx={{ display: 'inline-block' }}>Apotekarska ustanova&rdquo;DAR&rdquo;</Typography>,
-                                                                                {t('information.privacy-policy.p37')}
+                                                                                {t('information.terms-conditions.p19')}
                                                                       </Typography>
 
-                                                                      <Typography padding='0px 20px' fontWeight='bold' textAlign='justify' sx={{ display: 'inline-block' }}>{t('information.privacy-policy.ppo')}</Typography>
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p20')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p21')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p22')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p23')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p24')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p25')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p26')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p27')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p28')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p29')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p30')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p31')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p32')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p33')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p34')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p35')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p36')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p38')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p39')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p40')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p41')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p42')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p43')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p44')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p45')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p46')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p47')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p48')}<Link href={''}>OVDE.</Link>
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p49')}<a href='tel:0640172227'>0640172227</a>
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p50')}
+                                                                      </Typography>
+
+                                                                      <List sx={{ listStyleType: 'num', pl: 6 }}>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p52')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p53')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify'>
+                                                                                                              {t('information.terms-conditions.p54')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <ListItemText>
+                                                                                                    <Typography textAlign='justify' sx={{ fontWeight: 'bold' }}>
+                                                                                                              {t('information.terms-conditions.p55')}
+                                                                                                    </Typography>
+                                                                                                    <Typography textAlign='justify' >
+                                                                                                              {t('information.terms-conditions.p56')}
+                                                                                                    </Typography>
+                                                                                          </ListItemText>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <Typography textAlign='justify' sx={{ fontWeight: 'bold' }}>
+                                                                                                    {t('information.terms-conditions.p56b')}
+                                                                                          </Typography>
+                                                                                          <Typography textAlign='justify' >
+                                                                                                    {t('information.terms-conditions.p57')}
+                                                                                          </Typography>
+                                                                                </ListItem>
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.secondary, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
+                                                                                          <Typography textAlign='justify' sx={{ fontWeight: 'bold' }}>
+                                                                                                    {t('information.terms-conditions.p57b')}
+                                                                                          </Typography>
+                                                                                          <Typography textAlign='justify' >
+                                                                                                    {t('information.terms-conditions.p57c')}
+                                                                                          </Typography>
+                                                                                </ListItem>
+                                                                      </List>
+
+                                                                      <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                                                {t('information.terms-conditions.p58')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p59')}
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p60')}
+                                                                      </Typography>
                                                             </Box>
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
                               </Container >
-                    </DynamicThemeProvider>
+                    </DynamicThemeProvider >
           )
 }
 
