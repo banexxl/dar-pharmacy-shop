@@ -320,7 +320,7 @@
                     "terms-conditions": {
                               "title": "Uslovi prodaje",
                               "p1": "Poštovani korisnici, molimo vas da pre korišćenja naših usluga, pažljivo pročitate sledeće uslove. Svaka poseta našem sajtu, kao i kupovina, znači da ste ove uslove pročitali i da se slažete sa njima u celosti. Ukoliko su oni za vas neprihvatljivi, molimo vas da ne koristite ovu prezentaciju.",
-                              "p4": "Dobrodošli na sajt",
+                              "p4": "Dobrodošli na internet stranicu Apoteke DAR",
                               "p5": "Apotekarska ustanova 'DAR' Kragujevac vam omogućava korišćenje usluga i sadržaja svog portala koje je podložno niže navedenim Uslovima korišćenja. Uslovi korišćenja se primenjuju na sve sadržaje i usluge www.apoteka-dar.rs. Korišćenjem bilo kog dela portala, smatra se da su korisnici upoznati sa ovim uslovima, kao i da prihvataju korišćenje sadržaja ovog portala isključivo za ličnu upotrebu i na sopstvenu odgovornost",
                               "p6": "Apotekarska ustanova 'DAR' Kragujevac svoje cenjene potrošače koji robu kupuju putem internet sajta www.apoteka-dar.rs obaveštava:",
                               "p7": "da se prodaja robe putem internet sajta www.apoteka-dar.rs obavlja u okviru registrovane delatnosti zdravstvena ustanova Apotekarska ustanova DAR Kragujevac, Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac, MB: 66597784, PIB: 113127282, tel: 0640172227;",
@@ -378,7 +378,10 @@
                               "p58": "Reklamacije",
                               "p59": "Prilikom preuzimanja pošiljke molimo Vas da u prisustvu kurira proverite svoj paket. Ukoliko na njemu ima vidljivih oštećenja (pocepani delovi i ugnječenje) paket ne bi trebalo da preuzmete. U ovom slučaju molimo Vas da nas pozovete telefonom na broj 0640172227 ili nam pošaljete e-mail sa svojim podacima (ime, prezime, telefon) na adresu maja@apoteka-dar.rs i navedete razlog zbog koga ste odbili da preuzmete paket. U najkraćem mogućem roku obavestićemo Vas o daljem postupanju.",
                               "p60": "Ukoliko ste primili pošiljku i nakon otvaranja kutije ustanovili da isporučena roba ne odgovara naručenoj ili podaci na računu nisu odgovarajući, molimo Vas da nas, najkasnije u roku od 24h od trenutka prijema pošiljke, pozovete telefonom na broj 0640172227, ili pošaljete e-mail sa svojim podacima (ime, prezime, telefon) na adresu maja@apoteka-dar.rs i opišete kakav problem imate. U najkraćem mogućem roku obavestićemo Vas o daljem postupanju.",
-                              "p61": "Ukoliko se na kupljenom proizvodu pojave neusaglašenosti u smislu odredbi Zakona o zaštiti potrošača, molimo Vas da postupite na način definisan Pravilnikom o reklamaciji potrošača za robu kupljenu putem internet prodavnice (pravilnik možete preuzeti OVDE). Robu zajedno sa obrascem Zahteva za reklamaciju (obrazac možete preuzeti OVDE) treba da pošaljete na adresu Apotekarska ustanova DAR (sa naznakom za web shop), Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9"
+                              "p61": "Ukoliko se na kupljenom proizvodu pojave neusaglašenosti u smislu odredbi Zakona o zaštiti potrošača, molimo Vas da postupite na način definisan Pravilnikom o reklamaciji potrošača za robu kupljenu putem internet prodavnice koji možete preuzeti ",
+                              "p62": "Robu zajedno sa obrascem Zahteva za reklamaciju, koji možete preuzeti",
+                              "p63": ", treba da pošaljete na adresu Apotekarska ustanova DAR (sa naznakom za web shop), Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9",
+                              "p64": "OVDE"
                     }
           },
           "homepage": {

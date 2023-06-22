@@ -315,6 +315,15 @@ const TermsConditions = (props: InferGetStaticPropsType<typeof getStaticProps>) 
                                                                       <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                                                                 {t('information.terms-conditions.p60')}
                                                                       </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p61')}<a href={'/docs/Pravilnik_o_zastiti_potrosaca_i_postupku_resavanja_reklamacija.pdf'} >{t('information.terms-conditions.p64')}</a>
+                                                                      </Typography>
+
+                                                                      <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                                                {t('information.terms-conditions.p62')} <a href={'/docs/Zahtev_za_reklamaciju.pdf'} >{t('information.terms-conditions.p64')}</a>
+                                                                                {t('information.terms-conditions.p63')}
+                                                                      </Typography>
                                                             </Box>
                                                             <SearchBox />
                                                             <AppDrawer isScreenToMedium={false} />
