@@ -59,7 +59,7 @@
           },
           "confirmation": {
                     "total-with-tax": "Total with tax",
-                    "to-payment": "To payment page",
+                    "to-payment": "FINISH ORDER",
                     "to-shop": "Back to shop",
                     "clear-cart": "Clear Cart"
           },

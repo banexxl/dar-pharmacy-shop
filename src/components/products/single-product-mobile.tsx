@@ -108,16 +108,16 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                                         </Stack>
                               </ProductActionsWrapper>
                               {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
                                                   {t('product.added-to-cart')}
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
                                                   {t('product.added-to-wishlist')}
                                         </Alert>
                               )}
-                              <ProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Add to cart</ProductAddToCart >
+                              <ProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>{t('homepage.addtocart')}</ProductAddToCart >
                               <ProductDetailDialog product={product} />
                     </Product>
           )
