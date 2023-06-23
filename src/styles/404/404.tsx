@@ -20,13 +20,13 @@ export const StyledButton404 = styled(Button)(({ theme }: any) => ({
           fontSize: '.8rem',
           padding: '1rem 2rem',
           borderRadius: '2rem',
-          marginTop: '2rem'
+          margin: '2rem 0 100px 0px'
 }))
 
 export const Container404 = styled(Box)(({ theme }: any) => ({
           borderBottom: 3,
           borderColor: Colors.secondary,
-          marginTop: '100px',
+          marginTop: '200px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

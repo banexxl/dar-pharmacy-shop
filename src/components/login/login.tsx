@@ -6,6 +6,7 @@ import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from 'next/image'
+import { useTranslation } from "next-i18next";
 
 
 
@@ -16,7 +17,7 @@ function SlideTransition(props: any) {
 export default function LoginRegister({ open, onClose }: any) {
 
           const { data: session } = useSession()
-
+          const { t } = useTranslation('common')
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -62,20 +63,25 @@ export default function LoginRegister({ open, onClose }: any) {
 
                                         <DialogContent>
                                                   <Box sx={{
-                                                            ml: '50%', mt: '10%', borderRadius: '20px',
+                                                            ml: '50%', mt: '70px', borderRadius: '20px',
                                                             transform: 'translateX(-50%)',
                                                             display: 'flex', flexDirection: 'column',
-                                                            width: { xs: '200px', sm: '250px', md: '400px', xl: '600px' },
-                                                            height: { xs: '200px', sm: '250px', md: '400px', xl: '500px' },
-                                                            alignItems: 'center', justifyContent: 'center',
+                                                            width: { xs: '350px', sm: '250px', md: '400px', xl: '600px' },
+                                                            height: { xs: '500px', sm: '250px', md: '400px', xl: '500px' },
+                                                            alignItems: 'center', justifyContent: 'space-between',
                                                             boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
-                                                  }}>
-                                                            <Typography>
-                                                                      {session.user?.name}
 
-                                                            </Typography>
-                                                            <Image src={session.user?.image!} height={200} width={100} alt='image'></Image>
-                                                            <Button onClick={() => signOut()}>Logout</Button>
+                                                  }}>
+                                                            <Image src={session.user?.image!} height={200} width={200} alt='image'
+                                                                      style={{ marginTop: '10px', borderRadius: '10px', boxShadow: '10px 10px 20px #c62828' }} />
+                                                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                                                                      <Typography >
+                                                                                {session.user?.name}
+                                                                      </Typography>
+
+                                                                      <Button onClick={() => signOut()}>{t('account.sign-out')}</Button>
+                                                            </Box>
+
                                                   </Box>
                                         </DialogContent>
                               </Dialog >

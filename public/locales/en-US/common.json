@@ -1,4 +1,8 @@
 {
+          "account": {
+                    "sign-in": "Sign in",
+                    "sign-out": "Sign out"
+          },
           "cart": {
                     "products": "Products in cart:",
                     "image": "Image",

@@ -1,4 +1,8 @@
 {
+          "account": {
+                    "sign-in": "Prijavi se",
+                    "sign-out": "Odjavi se"
+          },
           "cart": {
                     "products": "Proizvodi u korpi:",
                     "image": "Slika",
