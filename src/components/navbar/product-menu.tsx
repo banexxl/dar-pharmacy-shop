@@ -203,7 +203,7 @@ export const ProductsMenu = () => {
                                         </NestedMenuItem>
                                         {/* --------------------------Medicinska kozmetika------------------------------------------ */}
                                         <NestedMenuItem
-                                                  label="Medicinska kozmetika"
+                                                  label="Prirodna kozmetika"
                                                   parentMenuOpen={open}
                                         >
                                                   <NestedMenuItem label='Lice' parentMenuOpen={open}>
