@@ -1,14 +1,15 @@
 import theme, { Colors } from '@/styles/theme';
-import { Container, Grid, TextField, Typography } from '@mui/material';
+import { TextField } from '@mui/material';
 import { Form, Formik } from 'formik';
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { IContactForm, initialContactFormValues } from '@/interfaces/contact/contact.interface';
 import { contactFormSchema } from '@/schemas/contact-form';
-import { ContactButton, ContactFormBox, ContactTitle } from '@/styles/contact/contact';
+import { ContactButton, ContactTitle } from '@/styles/contact/contact';
 import { SendContactEmail } from '@/services/email/send-email';
+import Link from 'next/link';
 
 const ContactForm = () => {
 
@@ -73,7 +74,9 @@ const ContactForm = () => {
                                                                                 multiline
                                                                                 minRows={5}
                                                                       />
-                                                                      <ContactButton type='submit'> {t('contact.send-message')}</ContactButton>
+                                                                      <ContactButton type='submit'>
+                                                                                {t('contact.send-message')}
+                                                                      </ContactButton>
                                                             </Form>
                                                   )
                                         }

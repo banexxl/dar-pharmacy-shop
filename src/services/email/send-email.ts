@@ -1,7 +1,7 @@
 import { IContactForm } from "@/interfaces/contact/contact.interface";
 import { IEmailToFields } from "@/interfaces/email/email-to-fields.interface";
 import { Colors } from "@/styles/theme";
-import Swal from 'sweetalert2'
+import Swal, { SweetAlertResult } from 'sweetalert2'
 
 export const SendCheckoutConfirmationEmailToUser = async (data: IEmailToFields) => {
 
@@ -69,6 +69,10 @@ export const SendContactEmail = async (data: IContactForm) => {
                                         confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!',
                                         confirmButtonAriaLabel: 'Thumbs up, great!',
                                         showCloseButton: true,
+                              }).then((result: SweetAlertResult) => {
+                                        result.isConfirmed ?
+                                                  window.location.href = '/'
+                                                  : null
                               })
                     } else {
                               Swal.fire({

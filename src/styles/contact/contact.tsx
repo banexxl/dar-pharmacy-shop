@@ -80,13 +80,15 @@ export const ContactTitle = styled(Typography)(({ theme }: any) => ({
 }));
 
 export const ContactText = styled(Typography)(({ theme }: any) => ({
+          color: Colors.shaft,
           fontFamily: 'monospace'
 }));
 
 export const ContactStrongText = styled(Typography)(({ theme }: any) => ({
           fontFamily: 'monospace',
           fontStyle: 'italic',
-          fontWeight: 'bolder'
+          fontWeight: 'bolder',
+          color: Colors.primary
 }));
 
 export const ContactButton = styled(Button)(({ theme }: any) => ({

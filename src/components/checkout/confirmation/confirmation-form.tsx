@@ -13,6 +13,7 @@ import { useTranslation } from 'next-i18next'
 import { clearCart } from '@/store/cart/cart.slice'
 import { clearPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice'
 import { clearUserForm } from '@/store/checkout/user-info-form.slice'
+import Link from 'next/link'
 
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
@@ -79,7 +80,9 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                             dispatch(clearUserForm()),
                                                             dispatch(clearPaymentOptionsForm())
                                         }}>
-                                        {t('confirmation.to-payment')}
+                                        <Link href={'/'}>
+                                                  {t('confirmation.to-payment')}
+                                        </Link>
                               </Button>
                     </CartWrapper>
           )
