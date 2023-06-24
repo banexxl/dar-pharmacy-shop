@@ -115,9 +115,17 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                                                 <strong>Vaši proizvodi u korpi su:</strong>
                                                                       </tr>
 
-                                                                      <tr class="list-item">
-                                                                                ${products}
-                                                                      </tr>  
+                                                                      
+                                                                                <ul>
+                                                                      ${data.cart.map((cartItem: ICartItem) =>
+                                        `<li>`
+                                        + cartItem._id.toString().slice(-8).toUpperCase()
+                                        + " " + cartItem.name
+                                        + " " + cartItem.quantity + " "
+                                        + "*" + " " + cartItem.count
+                                        + " " + `</li>`).join('')}
+                                                  </ul>
+                                                                    
 
                                                             </table>
                                                   <a href="apoteka-dar.rs" class="button">Apoteka DAR</a>

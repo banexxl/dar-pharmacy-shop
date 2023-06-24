@@ -59,6 +59,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                         {t('checkout.previousbutton')}
                               </CheckoutNextPrevButton>
+
                               <Button sx={{ color: 'white' }}
                                         disabled={totalItemPrice === 0}
                                         onClick={() => {
@@ -72,7 +73,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                   }),
                                                             SendCheckoutConfirmationEmailToUser({
                                                                       email: userFormSelector.email, subject: 'Poružbenica',
-                                                                      name: userFormSelector.firstName, title: 'Potvrda porudzbenice',
+                                                                      name: userFormSelector.firstName, surname: userFormSelector.secondName, title: 'Potvrda porudzbenice',
                                                                       cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                                                                       country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
                                                             }),

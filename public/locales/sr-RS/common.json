@@ -11,7 +11,8 @@
                     "code": "Kod",
                     "amount": "Količina",
                     "price": "Cena",
-                    "total": "Ukupno"
+                    "total": "Ukupno",
+                    "continue": "Nastavi"
           },
           "checkout": {
                     "on-delivery-payment": "Plaćanje pouzećem",

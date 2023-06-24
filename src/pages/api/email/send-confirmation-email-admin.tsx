@@ -14,8 +14,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                     if (!data || !data.name || !data.email || !data.subject || !data.cart) {
                               return res.status(400).send({ message: "Bad request, data missing" });
                     }
-
-                    const products = data.cart.map((cartItem: ICartItem) => cartItem.name + " " + cartItem.quantity + " " + "*" + cartItem.count)
+                    console.log(data);
 
                     const htmlForMaja =
                               `
@@ -97,9 +96,14 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                               </head>
                               <body>
                                         <div class="container">
-                                                  <h1>Nova porudzbenica od korisnika  ${data.name + "" + data.surname}!</h1>
+                                                  <h1>Nova porudzbenica od korisnika  ${data.name + " " + data.surname}!</h1>
                                                   <p>Korisnik je poručio sledeće proizvode:</p>
-                                                  ${products}
+                                                 <ul>
+                                                  ${data.cart.map((cartItem: ICartItem) => `<li>` + cartItem._id.toString().slice(-8).toUpperCase()
+                                        + " " + cartItem.name
+                                        + " " + cartItem.quantity + " " + "*"
+                                        + " " + cartItem.count + " " + `</li>`).join('')}
+                                                  </ul>
                                                   </br>
                                                   <p>Ove proizvode je potrebno poslati na adresu:</p><br/>
                                                   ${data.country}

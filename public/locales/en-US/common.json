@@ -11,7 +11,8 @@
                     "code": "Code",
                     "amount": "Amount",
                     "price": "Price",
-                    "total": "Total price"
+                    "total": "Total price",
+                    "continue": "Continue"
           },
           "checkout": {
                     "on-delivery-payment": "On delivery payment",
