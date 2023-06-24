@@ -65,7 +65,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                         onClick={() => {
                                                   SendCheckoutConfirmationEmailToAdmin({
                                                             email: 'maja@apoteka-dar.rs', subject: 'Poružbenica',
-                                                            name: userFormSelector.firstName, surname: userFormSelector.secondName,
+                                                            name: userFormSelector.firstName, surname: userFormSelector.lastName,
                                                             title: 'Potvrda porudzbenice',
                                                             cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                                                             country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
@@ -73,7 +73,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                   }),
                                                             SendCheckoutConfirmationEmailToUser({
                                                                       email: userFormSelector.email, subject: 'Poružbenica',
-                                                                      name: userFormSelector.firstName, surname: userFormSelector.secondName, title: 'Potvrda porudzbenice',
+                                                                      name: userFormSelector.firstName, surname: userFormSelector.lastName, title: 'Potvrda porudzbenice',
                                                                       cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                                                                       country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
                                                             }),
