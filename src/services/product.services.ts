@@ -83,6 +83,7 @@ const productsServices = () => {
                     try {
                               const db = client.db('DAR_DB')
                               let products: IProduct[] = await db.collection('Products').find({ "name": `${name}` }).toArray()
+
                               return products
                     } catch (error: any) {
                               return { message: error.message }
@@ -110,6 +111,7 @@ const productsServices = () => {
           return {
                     getProductsForHomePage,
                     getProductById,
+                    getProductsByName,
                     getProductsByManufacturer,
                     getProductsByCategory,
                     getProductsByDiscount,

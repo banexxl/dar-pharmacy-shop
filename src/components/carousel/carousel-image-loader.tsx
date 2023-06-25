@@ -19,7 +19,7 @@ export const CarouselProductImage = (props: ProductImage) => {
           return (
                     <Box style={{ width: '100%', position: 'relative' }}>
                               {
-                                        props.isOnDiscount ?
+                                        !props.isOnDiscount ?
                                                   <DiscountSticker>50%</DiscountSticker>
                                                   : null
                               }

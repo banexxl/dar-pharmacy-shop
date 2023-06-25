@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
 
 export default function Home(props: any) {
 
-          const { productsFromManufacturer, productsOnDiscount, manufacturers } = props
+          const { dataForGrid, productsOnDiscount, manufacturers } = props
           const { t } = useTranslation('common')
 
           //this way next js does not try to render theme provider on server (no hydration error : )
@@ -51,13 +51,13 @@ export default function Home(props: any) {
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
                                                             </Box>
-                                                            <Products data={productsFromManufacturer} />
+                                                            <Products data={dataForGrid} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                                                       <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
                                                             </Box>
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                                                            <ProductCarousel products={productsFromManufacturer} />
+                                                            <ProductCarousel products={dataForGrid} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                                                       <Typography sx={{ fontSize: '2rem' }}>Brendovi</Typography>
@@ -87,6 +87,12 @@ export async function getStaticProps({ locale }: any) {
                     return data
           })
 
+          const productsByName: IProduct[] = await productsServices().getProductsByName("Crux kolagen").then((data: any) => {
+                    return data
+          })
+
+          const dataForGrid = productsFromManufacturer.concat(productsByName)
+
           const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount().then((data: any) => {
                     return data
           })
@@ -103,7 +109,7 @@ export async function getStaticProps({ locale }: any) {
 
           return {
                     props: {
-                              productsFromManufacturer: JSON.parse(JSON.stringify(productsFromManufacturer)),
+                              dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
                               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                               ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
