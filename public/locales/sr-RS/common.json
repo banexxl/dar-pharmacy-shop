@@ -60,7 +60,8 @@
                     "provinceState": "Region",
                     "country": "Država",
                     "zipPostalCode": "Poštanski broj",
-                    "email": "Email"
+                    "email": "Email",
+                    "subscribeCheckbox": "Agree"
           },
           "confirmation": {
                     "total-with-tax": "Ukupno sa PDV-om",
@@ -393,7 +394,12 @@
                     "title": "Apoteka DAR",
                     "carousel-details": "Detalji",
                     "featured-products": "Izdvajamo iz ponude",
-                    "addtocart": "Dodaj u korpu"
+                    "addtocart": "Dodaj u korpu",
+                    "banner": {
+                              "title":"Apoteka DAR",
+                              "banner-text": "Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!",
+                              "banner-button": "Svi proizvodi"
+                    }
           },
           "product": {
                     "added-to-cart": "Proizvod uspešno dodat u korpu!",

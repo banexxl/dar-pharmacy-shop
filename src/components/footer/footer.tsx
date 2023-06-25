@@ -14,6 +14,10 @@ import WishList from "../wishlist/wishlist";
 import Cart from "../cart/cart";
 import LoginRegister from "../login/login";
 import { useRouter } from "next/router";
+import { Form, Formik } from "formik";
+import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
+import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
+import { SubscribeClientService } from "@/services/subscribe";
 
 export default function Footer() {
 
@@ -41,12 +45,14 @@ export default function Footer() {
                     }
           }
 
-          const handleSubscribe = (agreedToTerms: boolean) => {
-                    !agreedToTerms ? callAlert()
-                              :
-                              console.log("do subscribe logic")
+          const handleSubmit = (data: ISubscribeEmailForm) => {
+                    console.log(data);
 
+                    !data.agreedToTerms ? callAlert()
+                              :
+                              () => SubscribeClientService(data)
           }
+
           return (
                     <FooterContainer>
                               <FooterInfoAccount >
@@ -116,22 +122,41 @@ export default function Footer() {
                                         <InstagramIcon />
                               </FooterSocial>
 
-                              <FooterSubscribe>
-                                        <FooterTitle variant="body1">{t('footer.newsletter')}</FooterTitle>
-                                        <SubscribeTf
-                                                  color="secondary"
-                                                  label={t('footer.email')}
-                                                  variant="filled"
-                                        />
-                                        <Button
-                                                  startIcon={<SendIcon sx={{ color: Colors.white }} />}
-                                                  variant="contained"
-                                                  onClick={() => handleSubscribe(agreed)}
-                                        >
-                                                  {t('footer.subscribe')}
-                                        </Button>
-                                        <FormControlLabel control={<PrivacyPolicyCheckBox value={agreed} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePrivacyAgreement(e.target.checked)} />} label={t('information.privacy-policy.agree')} />
-                              </FooterSubscribe>
+
+                              <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema(t)}>
+                                        {
+                                                  formik => (
+                                                            <Form>
+                                                                      <FooterSubscribe>
+                                                                                <FooterTitle variant="body1">{t('footer.newsletter')}</FooterTitle>
+                                                                                <SubscribeTf
+                                                                                          color="secondary"
+                                                                                          label={t('footer.email')}
+                                                                                          variant="filled"
+                                                                                          value={formik.values.email}
+                                                                                          onChange={formik.handleChange('email')}
+                                                                                          error={formik.touched.email && !!formik.errors.email}
+                                                                                          helperText={formik.touched.email && formik.errors.email}
+                                                                                />
+                                                                                <Button
+                                                                                          startIcon={<SendIcon sx={{ color: Colors.white }} />}
+                                                                                          variant="contained"
+                                                                                          type="submit"
+                                                                                //disabled={formik.errors ? true : false}
+                                                                                >
+                                                                                          {t('footer.subscribe')}
+                                                                                </Button>
+                                                                                <FormControlLabel
+                                                                                          control={<PrivacyPolicyCheckBox value={formik.values.agreedToTerms}
+                                                                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { handlePrivacyAgreement(e.target.checked); formik.handleChange('agreedToTerms') }} />}
+
+                                                                                          label={t('information.privacy-policy.agree')} />
+                                                                      </FooterSubscribe>
+                                                            </Form>
+                                                  )
+                                        }
+                              </Formik>
+
 
 
                               {

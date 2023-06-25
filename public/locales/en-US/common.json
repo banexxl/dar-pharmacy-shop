@@ -60,7 +60,8 @@
                     "provinceState": "Province/State",
                     "country": "Country",
                     "zipPostalCode": "Zip/Postal Code",
-                    "email": "Email"
+                    "email": "Email",
+                    "subscribeCheckbox": "Agree"
           },
           "confirmation": {
                     "total-with-tax": "Total with tax",
@@ -92,7 +93,12 @@
                     "title": "DAR Pharmacy",
                     "carousel-details": "Details",
                     "featured-products": "Featured Products",
-                    "addtocart": "Add to cart"
+                    "addtocart": "Add to cart",
+                    "banner": {
+                              "title":"DAR Pharmacy",
+                              "banner-text": "Welcome to our pharmacy, where high-quality products and services are provided. We are here to help you find what you need, whether it's medication or refreshing care products. We have a professional team that will offer you advice and assistance at any time. Visit us and experience our quality and service. Thank you for choosing us!",
+                              "banner-button": "Visit shop"
+                    }
           },
           "contact": {
                     "contact-form": "Contact form",
