@@ -29,6 +29,7 @@ export default function Actions({ isScreenToMedium }: any) {
           const counter = useSelector(cartTotalSelector)
           const router = useRouter()
 
+
           return (
                     <Component>
                               <ListItemButton onClick={showCartDialog} sx={{
