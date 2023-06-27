@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import { NestedMenuItem } from 'mui-nested-menu';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { StyledMenuItem, StyledNestedTypography } from '@/styles/products-nested/products-nested';
+import Link from 'next/link';
 
 export const ProductsMenu = () => {
           const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -41,7 +42,9 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Kapsule i tablete
+                                                                                <Link href={'/products/apoteka'}>
+                                                                                          Kapsule i tablete
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>

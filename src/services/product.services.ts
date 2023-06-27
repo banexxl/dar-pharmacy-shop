@@ -108,6 +108,36 @@ const productsServices = () => {
                     }
           }
 
+          const getProductsByMainCategoryMidCategory = async (category: string, midCategory: string) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: category, midCategory: midCategory }).toArray()
+
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
+          const getProductsByMainCategoryMidCategorySubCategory = async (category: string, midCategory: string, subCategory: string) => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: category, midCategory: midCategory, subCategory: subCategory }).toArray()
+
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
           return {
                     getProductsForHomePage,
                     getProductById,
@@ -115,6 +145,8 @@ const productsServices = () => {
                     getProductsByManufacturer,
                     getProductsByCategory,
                     getProductsByDiscount,
+                    getProductsByMainCategoryMidCategory,
+                    getProductsByMainCategoryMidCategorySubCategory,
                     getAllLogos
           }
 }

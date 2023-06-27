@@ -77,6 +77,8 @@ export const getStaticPaths = async (context: any) => {
 
           const productsByCategory: any = await productsServices().getProductsByCategory('Herbalab')
 
+
+
           const productsOnDiscount: any = await productsServices().getProductsByDiscount()
 
           const finalList = [

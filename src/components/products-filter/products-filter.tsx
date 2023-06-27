@@ -4,6 +4,9 @@ import React from 'react'
 import ProductsAllCategories from './products-categories'
 
 function ProductsFilter(props: any) {
+
+
+
           return (
                     <ProductsFilterContainer>
                               <ProductsFilters>
