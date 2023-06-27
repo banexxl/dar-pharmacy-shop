@@ -1722,7 +1722,7 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
-                                                                      Preciscivaci vazduha
+                                                                      Prečisćivači vazduha
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
@@ -1764,7 +1764,7 @@ export const ProductsMenu = () => {
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
-                                                  <NestedMenuItem label='Merenje secera' parentMenuOpen={open}>
+                                                  <NestedMenuItem label='Merenje sećera' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
                                                                                 Aparati
@@ -1802,18 +1802,18 @@ export const ProductsMenu = () => {
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Duseci
+                                                                                Dušeci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
-                                                                      Stake
+                                                                      Štake
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
-                                                                      Stapovi
+                                                                      Štapovi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
@@ -1833,7 +1833,7 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
-                                                                      Postoljni podmetaci
+                                                                      Postoljni podmetači
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                         </NestedMenuItem>
@@ -1863,7 +1863,7 @@ export const ProductsMenu = () => {
                                                   </NestedMenuItem>
                                         </NestedMenuItem>
                                         {/* --------------------------Obuca, carape, ulosci---------------------------------------- */}
-                                        <NestedMenuItem label='Obuca, carape, ulosci' parentMenuOpen={open}>
+                                        <NestedMenuItem label='Obuća, čarape, ulošci' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Bebe
@@ -1872,41 +1872,41 @@ export const ProductsMenu = () => {
                                                   <NestedMenuItem label='Deca' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Decaci
+                                                                                Dečaci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Devojcice
+                                                                                Devojčice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <NestedMenuItem label='Odrasli' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Muskarci
+                                                                                Muškarci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Zene
+                                                                                Žene
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
                                         </NestedMenuItem>
                                         <StyledMenuItem onClick={handleClose}>
                                                   <StyledNestedTypography>
-                                                            Carape za vene
+                                                            Čarape za vene
                                                   </StyledNestedTypography>
                                         </StyledMenuItem>
                                         <StyledMenuItem onClick={handleClose}>
                                                   <StyledNestedTypography>
-                                                            Ulosci za stopala
+                                                            Ulošci za stopala
                                                   </StyledNestedTypography>
                                         </StyledMenuItem>
                                         <StyledMenuItem onClick={handleClose}>
                                                   <StyledNestedTypography>
-                                                            Stitnici i separatori
+                                                            Štitnici i separatori
                                                   </StyledNestedTypography>
                                         </StyledMenuItem>
                                         <StyledMenuItem onClick={handleClose}>
