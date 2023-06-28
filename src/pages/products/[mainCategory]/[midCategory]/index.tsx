@@ -87,7 +87,9 @@ export const getStaticPaths = async (context: any) => {
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {
-                                        midCategory: product.midCategory.toString()
+                                        mainCategory: product.mainCategory.toString(),
+                                        midCategory: product.midCategory.toString(),
+                                        subCategory: product.subCategory.toString()
                               },
                               locale,
                     }))
