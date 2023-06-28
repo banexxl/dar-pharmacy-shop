@@ -88,7 +88,6 @@ export const getStaticPaths = async (context: any) => {
                     context.locales.map((locale: any) => ({
                               params: {
                                         mainCategory: product.mainCategory.toString(),
-                                        midCategory: product.midCategory.toString(),
                                         subCategory: product.subCategory.toString()
                               },
                               locale,
