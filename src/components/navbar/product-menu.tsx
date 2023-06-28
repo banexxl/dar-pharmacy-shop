@@ -220,7 +220,7 @@ export const ProductsMenu = () => {
                                                   </NestedMenuItem>
 
                                                   <NestedMenuItem
-                                                            label="Kosa, koža, nokti"
+                                                            label="Kosa, koža i nokti"
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
