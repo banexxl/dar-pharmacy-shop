@@ -41,7 +41,7 @@ export const MainCategoryPage = (props: any) => {
                                                   <UIProvider>
                                                             <SearchBox />
                                                             aaaaaaaaaaaa
-                                                            {/* <ProductsFilter filterObject={props.filterObject} /> */}
+                                                            <ProductsFilter filterObject={props.filterObject} />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>

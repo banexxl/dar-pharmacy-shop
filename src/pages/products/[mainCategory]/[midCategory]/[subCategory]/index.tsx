@@ -1,4 +1,16 @@
-
+import { Inter } from '@next/font/google'
+import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
+import Navbar from "../../../../../components/navbar/navbar";
+import { ThemeProvider } from "@mui/system";
+import theme from "../../../../../styles/theme";
+import Banner from "../../../../../components/banner/banner";
+import Products from "../../../../../components/products/products-grid";
+import { UIProvider } from "../../../../../context/ui/ui.context";
+import Footer from "../../../../../components/footer/footer";
+import LoadingWheel from '@/components/loading/loading'
+import AppDrawer from "../../../../../components/navbar/drawer/drawer";
+import Promotions from "../../../../../components/promotions/promotions";
+import SearchBox from "../../../../../components/search/search"
 import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
@@ -11,31 +23,30 @@ export const MainCategoryPage = (props: any) => {
           const { products } = props
 
 
-          // const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          //           loading: () => <LoadingWheel isLoading={true} />,
-          //           ssr: false
-          // })
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel isLoading={true} />,
+                    ssr: false
+          })
 
           return (
-                    // <DynamicThemeProvider theme={theme}>
-                    //           <Container
-                    //                     disableGutters
-                    //                     maxWidth="lg"
-                    //                     sx={{
-                    //                               background: "#fff",
-                    //                     }}
-                    //           >
-                    //                     <Stack>
-                    //                               <UIProvider>
-                    //                                         <SearchBox />
-                    //                                         aaaaaaaaaaaa
-                    //                                         {/* <ProductsFilter filterObject={props.filterObject} /> */}
-                    //                                         <AppDrawer isScreenToMedium={false} />
-                    //                               </UIProvider>
-                    //                     </Stack>
-                    //           </Container>
-                    // </DynamicThemeProvider>
-                    <div>aaaaaaa</div>
+                    <DynamicThemeProvider theme={theme}>
+                              <Container
+                                        disableGutters
+                                        maxWidth="lg"
+                                        sx={{
+                                                  background: "#fff",
+                                        }}
+                              >
+                                        <Stack>
+                                                  <UIProvider>
+                                                            <SearchBox />
+                                                            aaaaaaaaaaaa
+                                                            <ProductsFilter filterObject={props.filterObject} />
+                                                            <AppDrawer isScreenToMedium={false} />
+                                                  </UIProvider>
+                                        </Stack>
+                              </Container>
+                    </DynamicThemeProvider>
           )
 }
 
