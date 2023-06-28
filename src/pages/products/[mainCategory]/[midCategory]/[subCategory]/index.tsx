@@ -73,7 +73,6 @@ export async function getStaticProps({ locale }: any) {
           }
 }
 
-
 export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
@@ -88,7 +87,7 @@ export const getStaticPaths = async (context: any) => {
                     context.locales.map((locale: any) => ({
                               params: {
                                         mainCategory: product.mainCategory.toString(),
-                                        midCategory: product.midCategory.toString(),
+                                        midCategory: product.midCategory.toString()
                               },
                               locale,
                     }))
