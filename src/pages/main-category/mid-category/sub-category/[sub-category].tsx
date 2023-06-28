@@ -16,12 +16,10 @@ import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export default function MainCategoryPage(props: any) {
-
-          console.log('sdsdsdsddsdsds', props);
+export default function SubCategoryPage(props: any) {
 
           const { products } = props
-
+          console.log(products);
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -53,7 +51,7 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const dbData: any = await productsServices().getProductsByManufacturer('Herbalab').then((data: any) => {
+          const dbData: any = await productsServices().getProductsByMainCategory('Apoteka').then((data: any) => {
                     return data
           })
 
@@ -78,10 +76,10 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByManufacturer: any = await productsServices().getProductsByManufacturer('Herbalab')
+          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
 
           const finalList = [
-                    ...productsByManufacturer,
+                    ...productsByMainCategory,
           ]
 
           const paths = finalList.flatMap((product: any) => {
