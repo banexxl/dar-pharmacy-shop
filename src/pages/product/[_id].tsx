@@ -77,8 +77,6 @@ export const getStaticPaths = async (context: any) => {
 
           const productsByCategory: any = await productsServices().getProductsByMainCategory('Kosa, koža i nokti')
 
-
-
           const productsOnDiscount: any = await productsServices().getProductsByDiscount()
 
           const finalList = [
