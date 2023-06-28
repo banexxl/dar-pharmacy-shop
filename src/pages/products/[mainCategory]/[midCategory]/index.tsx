@@ -84,16 +84,18 @@ export const getStaticPaths = async (context: any) => {
                     ...productsByManufacturer,
           ]
 
-          const paths = finalList.flatMap((product: any) =>
+          const paths = finalList.flatMap((product: any) => {
+                    const subCategory = product.subCategory.toString()
+                    const subCategoryPath = subCategory !== '' ? `/${subCategory}` : '';
                     context.locales.map((locale: any) => ({
                               params: {
                                         mainCategory: product.mainCategory.toString(),
                                         midCategory: product.midCategory.toString(),
-                                        subCategory: product.subCategory.toString()
+                                        subCategory: subCategoryPath
                               },
                               locale,
                     }))
-          );
+          });
 
           return {
                     paths,
