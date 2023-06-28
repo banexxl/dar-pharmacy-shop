@@ -78,6 +78,9 @@ export const getStaticPaths = async (context: any) => {
 
           const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
 
+          console.log('productsByMainCategory', productsByMainCategory);
+
+
           const finalList = [
                     ...productsByMainCategory,
           ]

@@ -76,10 +76,11 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+          const productsBySubCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+          console.log('productsBySubCategory', productsBySubCategory);
 
           const finalList = [
-                    ...productsByMainCategory,
+                    ...productsBySubCategory,
           ]
 
           const paths = finalList.flatMap((product: any) => {

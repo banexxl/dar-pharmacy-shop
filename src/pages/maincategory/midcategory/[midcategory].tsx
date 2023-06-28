@@ -78,6 +78,8 @@ export const getStaticPaths = async (context: any) => {
 
           const productsByMidCategory: any = await productsServices().getProductsByMainCategoryMidCategory('Apoteka', 'Kosa, koža i nokti')
 
+          console.log('productsByMidCategory', productsByMidCategory);
+
           const finalList = [
                     ...productsByMidCategory,
           ]
