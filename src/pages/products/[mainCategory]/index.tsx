@@ -16,7 +16,7 @@ import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export const MainCategoryPage = (props: any) => {
+export default function MainCategoryPage(props: any) {
 
           console.log('sdsdsdsddsdsds', props);
 
