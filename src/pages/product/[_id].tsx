@@ -75,7 +75,7 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByCategory: any = await productsServices().getProductsByCategory('Herbalab')
+          const productsByCategory: any = await productsServices().getProductsByMainCategory('Kosa, koža i nokti')
 
 
 

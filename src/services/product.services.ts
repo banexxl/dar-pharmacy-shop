@@ -64,20 +64,6 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsByCategory = async (category: string) => {
-                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
-                    try {
-                              const db = client.db('DAR_DB')
-                              let products: IProduct[] = await db.collection('Products').find({ "category": `${category}` }).toArray()
-                              return products
-                    } catch (error: any) {
-                              return { message: error.message }
-                    }
-                    finally {
-                              await client.close();
-                    }
-          }
-
           const getProductsByName = async (name: string) => {
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
@@ -99,6 +85,21 @@ const productsServices = () => {
                               const db = client.db('DAR_DB')
                               let products: IProduct[] = await db.collection('Products').find({ discount: true }).toArray()
 
+                              return products
+                    } catch (error: any) {
+                              return { message: error.message }
+                    }
+                    finally {
+                              await client.close();
+                    }
+          }
+
+          const getProductsByMainCategory = async (category: string) => {
+
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    try {
+                              const db = client.db('DAR_DB')
+                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: `${category}` }).toArray()
                               return products
                     } catch (error: any) {
                               return { message: error.message }
@@ -143,8 +144,8 @@ const productsServices = () => {
                     getProductById,
                     getProductsByName,
                     getProductsByManufacturer,
-                    getProductsByCategory,
                     getProductsByDiscount,
+                    getProductsByMainCategory,
                     getProductsByMainCategoryMidCategory,
                     getProductsByMainCategoryMidCategorySubCategory,
                     getAllLogos
