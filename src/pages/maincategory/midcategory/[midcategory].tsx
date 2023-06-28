@@ -1,22 +1,22 @@
 import { Inter } from '@next/font/google'
 import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
-import Navbar from "../../components/navbar/navbar";
+import Navbar from "../../../components/navbar/navbar";
 import { ThemeProvider } from "@mui/system";
-import theme from "../../styles/theme";
-import Banner from "../../components/banner/banner";
-import Products from "../../components/products/products-grid";
-import { UIProvider } from "../../context/ui/ui.context";
-import Footer from "../../components/footer/footer";
+import theme from "../../../styles/theme";
+import Banner from "../../../components/banner/banner";
+import Products from "../../../components/products/products-grid";
+import { UIProvider } from "../../../context/ui/ui.context";
+import Footer from "../../../components/footer/footer";
 import LoadingWheel from '@/components/loading/loading'
-import AppDrawer from "../../components/navbar/drawer/drawer";
-import Promotions from "../../components/promotions/promotions";
-import SearchBox from "../../components/search/search"
+import AppDrawer from "../../../components/navbar/drawer/drawer";
+import Promotions from "../../../components/promotions/promotions";
+import SearchBox from "../../../components/search/search"
 import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export default function MainCategoryPage(props: any) {
+export default function MidCategoryPage(props: any) {
 
           const { products } = props
           console.log(products);
@@ -51,7 +51,7 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const dbData: any = await productsServices().getProductsByMainCategory('Apoteka').then((data: any) => {
+          const dbData: any = await productsServices().getProductsByMainCategoryMidCategory('Apoteka', 'Kosa, koža i nokti').then((data: any) => {
                     return data
           })
 
@@ -76,16 +76,16 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+          const productsByMidCategory: any = await productsServices().getProductsByMainCategoryMidCategory('Apoteka', 'Kosa, koža i nokti')
 
           const finalList = [
-                    ...productsByMainCategory,
+                    ...productsByMidCategory,
           ]
 
           const paths = finalList.flatMap((product: any) => {
                     context.locales.map((locale: any) => ({
                               params: {
-                                        mainCategory: product.mainCategory.toString(),
+                                        midcategory: product.midCategory.toString(),
                               },
                               locale,
                     }))
