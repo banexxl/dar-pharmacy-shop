@@ -97,6 +97,10 @@ export async function getStaticProps({ locale }: any) {
                     return data
           })
 
+          const productsByMainCategoryApoteka: IProduct[] = await productsServices().getProductsByMainCategory("Apoteka").then((data: any) => {
+                    return data
+          })
+
           const manufacturersLogos: string[] = await productsServices().getAllLogos().then((logos: any) => {
                     return logos
           })
@@ -112,6 +116,7 @@ export async function getStaticProps({ locale }: any) {
                               dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
                               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
+                              productsByMainCategoryApoteka: JSON.parse(JSON.stringify(productsByMainCategoryApoteka)),
                               ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
                               // ...(await serverSideTranslations(locale ?? 'sr-RS', [
                               //           'common',

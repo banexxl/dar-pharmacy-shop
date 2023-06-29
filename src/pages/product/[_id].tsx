@@ -75,7 +75,7 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByCategory: any = await productsServices().getProductsByMainCategory('Kosa, koža i nokti')
+          const productsByCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
 
           const productsOnDiscount: any = await productsServices().getProductsByDiscount()
 
@@ -84,15 +84,9 @@ export const getStaticPaths = async (context: any) => {
                     ...productsOnDiscount
           ]
 
-          console.log(finalList);
+          const paths = finalList.flatMap((product: any) => { params: _id: product._id.toString() });
 
-          const paths = finalList.flatMap((product: any) =>
-                    context.locales.map((locale: any) => ({
-                              params: { _id: product._id.toString() },
-                              locale,
-                    }))
-          );
-
+          console.log(paths);
           return {
                     paths,
                     fallback: false, // false or "blocking"

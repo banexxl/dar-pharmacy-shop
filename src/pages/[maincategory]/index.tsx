@@ -19,7 +19,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 export default function MainCategoryPage(props: any) {
 
           const { products } = props
-          console.log(products);
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -39,7 +38,7 @@ export default function MainCategoryPage(props: any) {
                                                   <UIProvider>
                                                             <SearchBox />
                                                             aaaaaaaaaaaa
-                                                            <ProductsFilter filterObject={props.filterObject} />
+                                                            {/* <ProductsFilter filterObject={props.filterObject} /> */}
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
@@ -57,7 +56,7 @@ export async function getStaticProps({ locale }: any) {
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
-                    destination: "/nodata"
+                    destination: "/404"
           }
           // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
           // revalidate bi trebao da ponovo odradi getstaticprops logiku
@@ -78,7 +77,6 @@ export const getStaticPaths = async (context: any) => {
 
           const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
 
-          console.log('productsByMainCategory', productsByMainCategory);
 
 
           const finalList = [
@@ -86,13 +84,9 @@ export const getStaticPaths = async (context: any) => {
           ]
 
           const paths = finalList.flatMap((product: any) => {
-                    context.locales.map((locale: any) => ({
-                              params: {
-                                        maincategory: product.mainCategory.toString(),
-                              },
-                              locale,
-                    }))
+                    params: maincategory: product.mainCategory.toString()
           });
+
 
           return {
                     paths,
