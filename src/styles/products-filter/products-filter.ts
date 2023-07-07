@@ -5,23 +5,26 @@ import { Colors } from "../theme";
 export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
           marginTop: '100px',
           height: '100vh',
-          width: '100%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
+          width: '90%',
+          [theme.breakpoints.up("md")]: {
+                    padding: "20px 20px",
+                    borderRadius: '20px'
+          },
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "flex-start",
           overflow: "hidden",
           background: Colors.secondary,
 }));
 
 export const ProductsFilters = styled(Box)(({ theme }) => ({
           height: '100%',
-          width: '20%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
+          width: '40%',
+          [theme.breakpoints.down("md")]: {
+                    display: 'none'
+          },
+          [theme.breakpoints.up("md")]: {
+                    display: 'flex'
+          },
           display: "flex",
           flexDirection: 'column',
           justifyContent: "start",
@@ -33,10 +36,12 @@ export const ProductsFilters = styled(Box)(({ theme }) => ({
 export const FilterTitleBox = styled(Box)(({ theme }) => ({
           height: '10%',
           width: '100%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
-          display: "flex",
+          [theme.breakpoints.down("md")]: {
+                    display: 'none'
+          },
+          [theme.breakpoints.up("md")]: {
+                    display: 'flex'
+          },
           justifyContent: "center",
           alignItems: "center",
           background: Colors.primary,
@@ -45,10 +50,12 @@ export const FilterTitleBox = styled(Box)(({ theme }) => ({
 export const FilterPriceAccordionBox = styled(Box)(({ theme }) => ({
           height: '10%',
           width: '100%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
-          display: "flex",
+          [theme.breakpoints.down("md")]: {
+                    display: 'none'
+          },
+          [theme.breakpoints.up("md")]: {
+                    display: 'flex'
+          },
           justifyContent: "center",
           alignItems: "center",
           background: Colors.secondary,
@@ -57,10 +64,12 @@ export const FilterPriceAccordionBox = styled(Box)(({ theme }) => ({
 export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
           height: '40%',
           width: '100%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
-          // display: "flex",
+          [theme.breakpoints.down("md")]: {
+                    display: 'none'
+          },
+          [theme.breakpoints.up("md")]: {
+                    display: 'flex'
+          },
           justifyContent: "center",
           alignItems: "center",
           background: Colors.dove_gray,
@@ -68,10 +77,16 @@ export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
 
 export const FilteredProducts = styled(Box)(({ theme }) => ({
           height: '100%',
-          width: '80%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
+          [theme.breakpoints.down("md")]: {
+                    padding: "20px 20px",
+                    width: '1000%',
+                    borderRadius: '20px'
+          },
+          [theme.breakpoints.up("md")]: {
+                    padding: "0px 20px",
+                    width: '100%',
+                    borderRadius: '20px'
+          },
           display: "flex",
           flexDirection: 'column',
           justifyContent: "start",
@@ -81,11 +96,17 @@ export const FilteredProducts = styled(Box)(({ theme }) => ({
 }));
 
 export const FilteredProductsTitle = styled(Box)(({ theme }) => ({
-          height: '10%',
-          width: '100%',
-          // [theme.breakpoints.up("md")]: {
-          //           padding: "20px 20px",
-          // },
+          height: '1%',
+          [theme.breakpoints.down("md")]: {
+                    padding: "20px 20px",
+                    width: '100%',
+                    borderRadius: '20px'
+          },
+          [theme.breakpoints.up("md")]: {
+                    padding: "20px 20px",
+                    width: '100%',
+                    borderRadius: '20px'
+          },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

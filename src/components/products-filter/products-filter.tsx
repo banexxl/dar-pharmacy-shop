@@ -5,8 +5,6 @@ import ProductsAllCategories from './products-categories'
 
 function ProductsFilter(props: any) {
 
-
-
           return (
                     <ProductsFilterContainer>
                               <ProductsFilters>
@@ -22,7 +20,7 @@ function ProductsFilter(props: any) {
                               </ProductsFilters>
                               <FilteredProducts>
                                         <FilteredProductsTitle>
-                                                  asasasas
+                                                  Na sta smo kliknuli
                                         </FilteredProductsTitle>
                               </FilteredProducts>
                     </ProductsFilterContainer>

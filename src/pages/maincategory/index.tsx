@@ -37,7 +37,6 @@ export default function MainCategoryPage(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <SearchBox />
-
                                                             <ProductsFilter filterObject={props.filterObject} />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
