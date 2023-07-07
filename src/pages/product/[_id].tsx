@@ -83,10 +83,17 @@ export const getStaticPaths = async (context: any) => {
                     ...productsByCategory,
                     ...productsOnDiscount
           ]
+          console.log('product/_id finallist', finalList);
 
-          const paths = finalList.flatMap((product: any) => { params: _id: product._id.toString() });
+          const paths = finalList.flatMap((product: any) =>
+                    context.locales.map((locale: any) => ({
+                              params: { _id: product._id.toString() },
+                              locale,
+                    }))
+          );
 
-          console.log(paths);
+          console.log('product/_id paths', paths);
+
           return {
                     paths,
                     fallback: false, // false or "blocking"
