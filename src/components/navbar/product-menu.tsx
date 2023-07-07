@@ -42,7 +42,7 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                <Link href={'/products/apoteka'}>
+                                                                                <Link href={'/apoteka'}>
                                                                                           Kapsule i tablete
                                                                                 </Link>
                                                                       </StyledNestedTypography>
