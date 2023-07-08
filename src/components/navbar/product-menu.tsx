@@ -47,6 +47,7 @@ export const ProductsMenu = () => {
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
+
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
                                                                                 Sprejevi za nos

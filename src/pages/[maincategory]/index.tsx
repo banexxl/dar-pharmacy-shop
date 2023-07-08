@@ -47,51 +47,51 @@ export default function MainCategoryPage(props: any) {
 }
 
 
-// export async function getStaticProps({ locale }: any) {
+export async function getStaticProps({ locale }: any) {
 
-//           const dbData: any = await productsServices().getProductsByMainCategory('Apoteka').then((data: any) => {
-//                     return data
-//           })
+          const dbData: any = await productsServices().getProductsByMainCategory('Apoteka').then((data: any) => {
+                    return data
+          })
 
-//           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
-//           redirect: {
-//                     destination: "/404"
-//           }
-//           // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
-//           // revalidate bi trebao da ponovo odradi getstaticprops logiku
+          // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
+          redirect: {
+                    destination: "/404"
+          }
+          // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
+          // revalidate bi trebao da ponovo odradi getstaticprops logiku
 
-//           return {
-//                     props: {
-//                               products: JSON.parse(JSON.stringify(dbData)),
-//                               ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
-//                     },
-//                     revalidate: 10,
-//           }
-// }
-
-
-// export const getStaticPaths = async (context: any) => {
-
-//           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
-
-//           const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+          return {
+                    props: {
+                              products: JSON.parse(JSON.stringify(dbData)),
+                              ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
+                    },
+                    revalidate: 10,
+          }
+}
 
 
+export const getStaticPaths = async (context: any) => {
 
-//           const finalList = [
-//                     ...productsByMainCategory,
-//           ]
+          //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-//           const paths = finalList.flatMap((product: any) =>
-//                     context.locales.map((locale: any) => ({
-//                               params: {
-//                                         maincategory: product.mainCategory.toString()
-//                               },
-//                               locale,
-//                     }))
-//           );
-//           return {
-//                     paths,
-//                     fallback: false, // false or "blocking"
-//           };
-// }
+          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+
+
+
+          const finalList = [
+                    ...productsByMainCategory,
+          ]
+
+          const paths = finalList.flatMap((product: any) =>
+                    context.locales.map((locale: any) => ({
+                              params: {
+                                        maincategory: product.mainCategory.toString()
+                              },
+                              locale,
+                    }))
+          );
+          return {
+                    paths,
+                    fallback: false, // false or "blocking"
+          };
+}
