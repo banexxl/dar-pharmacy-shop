@@ -19,14 +19,12 @@ export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
 export const ProductsFilters = styled(Box)(({ theme }) => ({
           height: '100%',
           width: '40%',
-          marginTop: '30px',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
           },
           [theme.breakpoints.up("md")]: {
                     display: 'flex',
                     flexDirection: 'column',
-                    margin: '5px',
                     borderRadius: '10px',
           },
           justifyContent: 'flex-start',
@@ -36,11 +34,10 @@ export const ProductsFilters = styled(Box)(({ theme }) => ({
 }));
 
 export const FilterTitleBox = styled(Box)(({ theme }) => ({
-          height: '5%',
+          height: '10%',
           width: '100%',
-          backgroundColor: 'red',
+          backgroundColor: Colors.secondary,
           borderRadius: '10px',
-          marginBottom: '20px',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
           },
@@ -73,7 +70,6 @@ export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
           },
           [theme.breakpoints.up("md")]: {
                     display: 'flex',
-                    paddingTop: '20px'
           },
           justifyContent: "center",
           alignItems: "center",
