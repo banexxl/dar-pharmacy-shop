@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Accordion, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
+import { AccordionBox, Accordion, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
+import { Box } from '@mui/material';
 
 export default function ProductsAllCategories() {
 
@@ -11,7 +12,7 @@ export default function ProductsAllCategories() {
           };
 
           return (
-                    <div>
+                    <AccordionBox>
                               <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                                                   <Typography>Apoteka</Typography>
@@ -92,6 +93,6 @@ export default function ProductsAllCategories() {
                                                   </Typography>
                                         </AccordionDetails>
                               </Accordion>
-                    </div>
+                    </AccordionBox >
           );
 }

@@ -14,9 +14,9 @@ function ProductsFilter(props: any) {
                                         <FilterCategoryAccordionBox>
                                                   <ProductsAllCategories></ProductsAllCategories>
                                         </FilterCategoryAccordionBox>
-                                        <FilterPriceAccordionBox>
+                                        {/* <FilterPriceAccordionBox>
 
-                                        </FilterPriceAccordionBox>
+                                        </FilterPriceAccordionBox> */}
                               </ProductsFilters>
                               <FilteredProducts>
                                         <FilteredProductsTitle>

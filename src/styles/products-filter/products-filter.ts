@@ -19,36 +19,40 @@ export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
 export const ProductsFilters = styled(Box)(({ theme }) => ({
           height: '100%',
           width: '40%',
+          marginTop: '30px',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
           },
           [theme.breakpoints.up("md")]: {
-                    display: 'flex'
+                    display: 'flex',
+                    flexDirection: 'column',
+                    margin: '5px',
+                    borderRadius: '10px',
           },
-          display: "flex",
+          justifyContent: 'flex-start',
           flexDirection: 'column',
-          justifyContent: "start",
-          alignItems: "center",
           overflow: "hidden",
           background: Colors.white,
 }));
 
 export const FilterTitleBox = styled(Box)(({ theme }) => ({
-          height: '10%',
+          height: '5%',
           width: '100%',
+          backgroundColor: 'red',
+          borderRadius: '10px',
+          marginBottom: '20px',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
           },
           [theme.breakpoints.up("md")]: {
-                    display: 'flex'
+                    display: 'flex',
+
           },
           justifyContent: "center",
           alignItems: "center",
-          background: Colors.primary,
 }));
 
 export const FilterPriceAccordionBox = styled(Box)(({ theme }) => ({
-          height: '10%',
           width: '100%',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
@@ -68,7 +72,8 @@ export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
                     display: 'none'
           },
           [theme.breakpoints.up("md")]: {
-                    display: 'flex'
+                    display: 'flex',
+                    paddingTop: '20px'
           },
           justifyContent: "center",
           alignItems: "center",
