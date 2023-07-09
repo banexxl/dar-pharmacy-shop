@@ -71,28 +71,28 @@ export async function getStaticProps({ locale }: any) {
 }
 
 
-// export const getStaticPaths = async (context: any) => {
+export const getStaticPaths = async (context: any) => {
 
-//           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
+          //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-//           const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
 
-//           const finalList = [
-//                     ...productsByMainCategory,
-//           ]
+          const finalList = [
+                    ...productsByMainCategory,
+          ]
 
-//           const paths = finalList.flatMap((product: any) =>
-//                     context.locales.map((locale: any) => ({
-//                               params: {
-//                                         maincategory: product.mainCategory.toString()
-//                               },
-//                               locale,
-//                     }))
-//           );
-//           console.log(paths);
+          const paths = finalList.flatMap((product: any) =>
+                    context.locales.map((locale: any) => ({
+                              params: {
+                                        maincategory: product.mainCategory.toString()
+                              },
+                              locale,
+                    }))
+          );
+          console.log(paths);
 
-//           return {
-//                     paths,
-//                     fallback: false, // false or "blocking"
-//           };
-// }
+          return {
+                    paths,
+                    fallback: false, // false or "blocking"
+          };
+}

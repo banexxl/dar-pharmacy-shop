@@ -19,7 +19,6 @@ export const ProductsMenu = () => {
           };
 
           return (
-
                     <Box>
                               <Button
                                         variant="contained"
@@ -32,7 +31,6 @@ export const ProductsMenu = () => {
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                                         {/* --------------------------APOTEKA------------------------------------------ */}
-
                                         <NestedMenuItem
                                                   label="Apoteka"
                                                   parentMenuOpen={open}
@@ -771,7 +769,6 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
 
                                         </NestedMenuItem>
-
                                         {/* --------------------------Prirodna kozmetika------------------------------------------ */}
                                         <NestedMenuItem
                                                   label="Prirodna kozmetika"

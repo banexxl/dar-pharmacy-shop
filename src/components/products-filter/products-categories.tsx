@@ -7,43 +7,51 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const Accordion = (props: any) => {
-          const [isOpen, setIsOpen] = React.useState(false);
+
+          const [isOpen, setIsOpen] = useState(false);
 
           const toggleAccordion = () => {
                     setIsOpen(!isOpen);
           };
 
           return (
-                    <div>
-                              <button onClick={toggleAccordion}>{props.label}</button>
-                              {isOpen && <div>{props.children}</div>}
-                    </div>
+                    <Accordion>
+                              <AccordionSummary onClick={toggleAccordion}>
+                                        {props.title}
+                              </AccordionSummary>
+                              {
+                                        isOpen &&
+                                        <AccordionDetails>
+                                                  {props.children}
+                                        </AccordionDetails>
+                              }
+                    </Accordion>
           );
 };
 
 const NestedAccordion = (props: any) => {
 
-          console.log(AccordionPanels);
+          console.log(props);
 
           return (
 
-                    <Box>
+                    <AccordionBox>
                               {AccordionPanels.map((item: any) => (
-                                        <Link href={`${item.link}`} key={item.id}>
-                                                  <Accordion label={item.label}>
+                                        <Link href={item.link == undefined || item.link == null ? "" : `${item.link}`} key={item.id}>
+                                                  <Accordion label={item.title}>
                                                             {item.children && item.children.map((child: any) => (
-                                                                      <a key={child.id} href={`${child.link}`}>{child.label}</a>
+                                                                      <Link key={child.id} href={`${child.link}`}>{child.title}</Link>
                                                             ))}
                                                   </Accordion>
                                         </Link>
                               ))
                               }
-                    </Box >
+                    </AccordionBox >
           );
 };
 export default function ProductsAllCategories() {
 
-          const [expanded, setExpanded] = useState<string | false>('Apoteka');
+          const [expanded, setExpanded] = useState<string | false>('');
 
           const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
                     setExpanded(newExpanded ? panel : false);
