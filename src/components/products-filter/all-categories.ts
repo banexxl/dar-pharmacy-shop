@@ -4,476 +4,1222 @@ export const AccordionPanels = [
                     children: [
                               {
                                         title: 'Apoteka',
+                                        link: '/apoteka',
                                         children: [
                                                   {
-                                                            label: 'Alergije',
+                                                            title: 'Alergije',
+                                                            link: '/apoteka/alergije',
                                                             children: [
                                                                       {
-                                                                                label: 'Kapsule i tablete',
+                                                                                title: 'Kapsule i tablete',
                                                                                 link: '/apoteka',
                                                                       },
                                                                       {
-                                                                                label: 'Sprejevi za nos',
+                                                                                title: 'Sprejevi za nos',
                                                                                 link: '/spray',
                                                                       },
                                                                       {
-                                                                                label: 'Masti, gelovi',
+                                                                                title: 'Masti, gelovi',
                                                                                 link: '/ointments',
                                                                       },
                                                                       {
-                                                                                label: 'Irigacioni set',
+                                                                                title: 'Irigacioni set',
                                                                                 link: '/irrigation-set',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Anemije',
+                                                            title: 'Anemije',
+                                                            link: '/apoteka/anemije',
                                                             children: [
                                                                       {
-                                                                                label: 'Folna kiselina i vitamini',
+                                                                                title: 'Folna kiselina i vitamini',
                                                                       },
                                                                       {
-                                                                                label: 'Biljni preparati',
+                                                                                title: 'Biljni preparati',
                                                                       },
                                                                       {
-                                                                                label: 'Preparati gvožđa',
+                                                                                title: 'Preparati gvožđa',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Bol',
+                                                            title: 'Bol',
+                                                            link: '/apoteka/bol',
                                                             children: [
                                                                       {
-                                                                                label: 'Bol u grlu',
+                                                                                title: 'Bol u grlu',
                                                                       },
                                                                       {
-                                                                                label: 'Menstrualni bolovi',
+                                                                                title: 'Menstrualni bolovi',
                                                                       },
                                                                       {
-                                                                                label: 'Bolovi u kostima i mišićima',
+                                                                                title: 'Bolovi u kostima i mišićima',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Hemoroidi',
+                                                            title: 'Hemoroidi',
+                                                            link: '/apoteka/hemoroidi',
                                                             children: [
                                                                       {
-                                                                                label: 'Oralni preparati',
+                                                                                title: 'Oralni preparati',
                                                                       },
                                                                       {
-                                                                                label: 'Lokalna primena',
+                                                                                title: 'Lokalna primena',
                                                                       },
                                                                       {
-                                                                                label: 'Bolovi u kostima i mišićima',
+                                                                                title: 'Bolovi u kostima i mišićima',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Holesterol i trigliceridi',
+                                                            title: 'Holesterol i trigliceridi',
                                                             children: [
                                                                       {
-                                                                                label: 'Omega masne kiseline',
+                                                                                title: 'Omega masne kiseline',
                                                                       },
                                                                       {
-                                                                                label: 'Ostalo',
+                                                                                title: 'Ostalo',
                                                                       },
                                                                       {
-                                                                                label: 'Bolovi u kostima i mišićima',
+                                                                                title: 'Bolovi u kostima i mišićima',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Imunitet, prehlada',
+                                                            title: 'Imunitet, prehlada',
                                                             children: [
                                                                       {
-                                                                                label: 'Deca',
+                                                                                title: 'Deca',
                                                                       },
                                                                       {
-                                                                                label: 'Vitamini i minerali',
+                                                                                title: 'Vitamini i minerali',
                                                                       },
                                                                       {
-                                                                                label: 'Sprejevi za nos',
+                                                                                title: 'Sprejevi za nos',
                                                                       },
                                                                       {
-                                                                                label: 'Sprejevi za grlo',
+                                                                                title: 'Sprejevi za grlo',
                                                                       },
                                                                       {
-                                                                                label: 'Irigacioni set',
+                                                                                title: 'Irigacioni set',
                                                                       },
                                                                       {
-                                                                                label: 'Masti, gelovi',
+                                                                                title: 'Masti, gelovi',
                                                                       },
                                                                       {
-                                                                                label: 'Biljne kapi',
+                                                                                title: 'Biljne kapi',
                                                                       },
                                                                       {
-                                                                                label: 'Med, matični mleč i propolis',
+                                                                                title: 'Med, matični mleč i propolis',
                                                                       },
                                                                       {
-                                                                                label: 'Pastile za grlo',
+                                                                                title: 'Pastile za grlo',
                                                                       },
                                                                       {
-                                                                                label: 'Aloja, ehinacea, noni, aronija',
+                                                                                title: 'Aloja, ehinacea, noni, aronija',
                                                                       },
                                                                       {
-                                                                                label: 'Probiotici',
+                                                                                title: 'Probiotici',
                                                                       },
                                                                       {
-                                                                                label: 'Omega masne kiseline',
+                                                                                title: 'Omega masne kiseline',
                                                                       },
                                                                       {
-                                                                                label: 'Ostalo',
+                                                                                title: 'Ostalo',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Kosa, koža i nokti',
+                                                            title: 'Kosa, koža i nokti',
                                                             children: [
                                                                       {
-                                                                                label: 'Oralni preparati',
+                                                                                title: 'Oralni preparati',
                                                                       },
                                                                       {
-                                                                                label: 'Lokalna primena',
+                                                                                title: 'Lokalna primena',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Kosti i zglobovi',
+                                                            title: 'Kosti i zglobovi',
                                                             children: [
                                                                       {
-                                                                                label: 'Oralni preparati',
+                                                                                title: 'Oralni preparati',
                                                                       },
                                                                       {
-                                                                                label: 'Primena na koži',
+                                                                                title: 'Primena na koži',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Mršavljenje, celulit',
+                                                            title: 'Mršavljenje, celulit',
                                                             children: [
                                                                       {
-                                                                                label: 'Oralni preparati',
+                                                                                title: 'Oralni preparati',
                                                                       },
                                                                       {
-                                                                                label: 'Primena na koži',
+                                                                                title: 'Primena na koži',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Posebna ishrana',
+                                                            title: 'Posebna ishrana',
                                                             children: [
                                                                       {
-                                                                                label: 'Kaše',
+                                                                                title: 'Kaše',
                                                                       },
                                                                       {
-                                                                                label: 'Šejkovi',
+                                                                                title: 'Šejkovi',
                                                                       },
                                                                       {
-                                                                                label: 'Zaslađivači',
+                                                                                title: 'Zaslađivači',
                                                                       },
                                                                       {
-                                                                                label: 'Sportisti',
+                                                                                title: 'Sportisti',
                                                                       },
                                                                       {
-                                                                                label: 'Bombone',
+                                                                                title: 'Bombone',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Putna apoteka',
+                                                            title: 'Putna apoteka',
                                                             children: [
                                                                       {
-                                                                                label: 'Dehidratacija',
+                                                                                title: 'Dehidratacija',
                                                                       },
                                                                       {
-                                                                                label: 'Dijareja',
+                                                                                title: 'Dijareja',
                                                                       },
                                                                       {
-                                                                                label: 'Mučnina',
+                                                                                title: 'Mučnina',
                                                                       },
                                                                       {
-                                                                                label: 'Auto apoteka',
+                                                                                title: 'Auto apoteka',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Stomačne tekobe',
+                                                            title: 'Stomačne tekobe',
                                                             children: [
                                                                       {
-                                                                                label: 'Nadutost i gasovi',
+                                                                                title: 'Nadutost i gasovi',
                                                                       },
                                                                       {
-                                                                                label: 'Zatvor',
+                                                                                title: 'Zatvor',
                                                                       },
                                                                       {
-                                                                                label: 'Dijareja',
+                                                                                title: 'Dijareja',
                                                                       },
                                                                       {
-                                                                                label: 'Iritabilni kolon',
+                                                                                title: 'Iritabilni kolon',
                                                                       },
                                                                       {
-                                                                                label: 'Otežan ovarenje i gorušica',
+                                                                                title: 'Otežan ovarenje i gorušica',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Zdravo srce i cirkulacija',
+                                                            title: 'Zdravo srce i cirkulacija',
                                                             children: [
                                                                       {
-                                                                                label: 'Oralni preparati',
+                                                                                title: 'Oralni preparati',
                                                                       },
                                                                       {
-                                                                                label: 'Primena na koži',
+                                                                                title: 'Primena na koži',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Vitamini i minerali',
+                                                            title: 'Vitamini i minerali',
                                                             children: [
                                                                       {
-                                                                                label: 'Vitamin A',
+                                                                                title: 'Vitamin A',
                                                                       },
                                                                       {
-                                                                                label: 'Vitamin B',
+                                                                                title: 'Vitamin B',
                                                                       },
                                                                       {
-                                                                                label: 'Vitamin C',
+                                                                                title: 'Vitamin C',
                                                                       },
                                                                       {
-                                                                                label: 'Vitamin D',
+                                                                                title: 'Vitamin D',
                                                                       },
                                                                       {
-                                                                                label: 'Vitamin K',
+                                                                                title: 'Vitamin K',
                                                                       },
                                                                       {
-                                                                                label: 'Cink',
+                                                                                title: 'Cink',
                                                                       },
                                                                       {
-                                                                                label: 'Kalijum',
+                                                                                title: 'Kalijum',
                                                                       },
                                                                       {
-                                                                                label: 'Kalcijum',
+                                                                                title: 'Kalcijum',
                                                                       },
                                                                       {
-                                                                                label: 'Hrom',
+                                                                                title: 'Hrom',
                                                                       },
                                                                       {
-                                                                                label: 'Magnezijum',
+                                                                                title: 'Magnezijum',
                                                                       },
                                                                       {
-                                                                                label: 'Selen',
+                                                                                title: 'Selen',
                                                                       },
                                                                       {
-                                                                                label: 'Gvožđe',
+                                                                                title: 'Gvožđe',
                                                                       },
                                                                       {
-                                                                                label: 'Ostali minerali',
+                                                                                title: 'Ostali minerali',
                                                                                 children: [
                                                                                           {
-                                                                                                    label: 'Bakar',
+                                                                                                    title: 'Bakar',
                                                                                           },
                                                                                           {
-                                                                                                    label: 'Bor',
+                                                                                                    title: 'Bor',
                                                                                           },
                                                                                           {
-                                                                                                    label: 'Fluor',
+                                                                                                    title: 'Fluor',
                                                                                           },
                                                                                           {
-                                                                                                    label: 'Fosfor',
+                                                                                                    title: 'Fosfor',
                                                                                           },
                                                                                 ],
                                                                       },
                                                                       {
-                                                                                label: 'Kompleksi vitamina i minerala',
+                                                                                title: 'Kompleksi vitamina i minerala',
                                                                       },
                                                                       {
-                                                                                label: 'Riblja ulja',
+                                                                                title: 'Riblja ulja',
                                                                       },
                                                                       {
-                                                                                label: 'Deca',
+                                                                                title: 'Deca',
                                                                       },
                                                                       {
-                                                                                label: 'Sportisti',
+                                                                                title: 'Sportisti',
                                                                       },
                                                                       {
-                                                                                label: 'Trudnice',
+                                                                                title: 'Trudnice',
                                                                       },
                                                                       {
-                                                                                label: 'Stariji',
+                                                                                title: 'Stariji',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Preparati za primenu na koži',
+                                                            title: 'Preparati za primenu na koži',
                                                             children: [
                                                                       {
-                                                                                label: 'Iritacije',
+                                                                                title: 'Iritacije',
                                                                       },
                                                                       {
-                                                                                label: 'Ožiljci i strije',
+                                                                                title: 'Ožiljci i strije',
                                                                       },
                                                                       {
-                                                                                label: 'Hemoroidi',
+                                                                                title: 'Hemoroidi',
                                                                       },
                                                                       {
-                                                                                label: 'Problemi sa cirkulacijom',
+                                                                                title: 'Problemi sa cirkulacijom',
                                                                       },
                                                                       {
-                                                                                label: 'Intimna nega',
+                                                                                title: 'Intimna nega',
                                                                       },
                                                                       {
-                                                                                label: 'Opekotine',
+                                                                                title: 'Opekotine',
                                                                       },
                                                                       {
-                                                                                label: 'Sportske povrede',
+                                                                                title: 'Sportske povrede',
                                                                       },
                                                                       {
-                                                                                label: 'Reuma',
+                                                                                title: 'Reuma',
                                                                       },
                                                                       {
-                                                                                label: 'Antiseptici',
+                                                                                title: 'Antiseptici',
                                                                       },
                                                                       {
-                                                                                label: 'Gljivice',
+                                                                                title: 'Gljivice',
                                                                       },
                                                                       {
-                                                                                label: 'Rozacea',
+                                                                                title: 'Rozacea',
                                                                       },
                                                                       {
-                                                                                label: 'Vitligo',
+                                                                                title: 'Vitligo',
                                                                       },
                                                                       {
-                                                                                label: 'Boginje',
+                                                                                title: 'Boginje',
                                                                       },
                                                                       {
-                                                                                label: 'Herpes',
+                                                                                title: 'Herpes',
                                                                       },
                                                                       {
-                                                                                label: 'Seboreični dermatitis',
+                                                                                title: 'Seboreični dermatitis',
                                                                       },
                                                                       {
-                                                                                label: 'Žuljevi, kurje oči, bradavice',
+                                                                                title: 'Žuljevi, kurje oči, bradavice',
                                                                       },
                                                                       {
-                                                                                label: 'Ekcem, psorijaza',
+                                                                                title: 'Ekcem, psorijaza',
                                                                       },
                                                                       {
-                                                                                label: 'Suva, atopijska koža',
+                                                                                title: 'Suva, atopijska koža',
                                                                       },
                                                                       {
-                                                                                label: 'Lokalni anestetici',
+                                                                                title: 'Lokalni anestetici',
                                                                       },
                                                                       {
-                                                                                label: 'Površinske rane',
+                                                                                title: 'Površinske rane',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Oči i uši',
+                                                            title: 'Oči i uši',
                                                             children: [
                                                                       {
-                                                                                label: 'Tablete, kapsule, rastvori',
+                                                                                title: 'Tablete, kapsule, rastvori',
                                                                       },
                                                                       {
-                                                                                label: 'Higijena, nega',
+                                                                                title: 'Higijena, nega',
                                                                       },
                                                                       {
-                                                                                label: 'Kapi',
+                                                                                title: 'Kapi',
                                                                       },
                                                                       {
-                                                                                label: 'Masti',
+                                                                                title: 'Masti',
                                                                       },
                                                                       {
-                                                                                label: 'Naočare',
+                                                                                title: 'Naočare',
                                                                       },
                                                                       {
-                                                                                label: 'Tečnosti i kutije za sočiva',
+                                                                                title: 'Tečnosti i kutije za sočiva',
                                                                       },
                                                                       {
-                                                                                label: 'Čepovi za uši',
+                                                                                title: 'Čepovi za uši',
                                                                       },
                                                                       {
-                                                                                label: 'Sprejevi',
+                                                                                title: 'Sprejevi',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Prva pomoć',
+                                                            title: 'Prva pomoć',
                                                             children: [
                                                                       {
-                                                                                label: 'Antiseptici',
+                                                                                title: 'Antiseptici',
                                                                       },
                                                                       {
-                                                                                label: 'Flasteri',
+                                                                                title: 'Flasteri',
                                                                       },
                                                                       {
-                                                                                label: 'Zavojni materijal',
+                                                                                title: 'Zavojni materijal',
                                                                       },
                                                             ],
                                                   },
                                                   {
-                                                            label: 'Energija i umor',
+                                                            title: 'Energija i umor',
                                                   },
                                                   {
-                                                            label: 'Sokovi',
+                                                            title: 'Sokovi',
                                                   },
                                                   {
-                                                            label: 'Antioksidansi, detoksikacija',
+                                                            title: 'Antioksidansi, detoksikacija',
                                                   },
                                                   {
-                                                            label: 'Biljne kapi, biljna i eterična ulja',
+                                                            title: 'Biljne kapi, biljna i eterična ulja',
                                                   },
                                                   {
-                                                            label: 'Bubrezi i mokraćni putevi',
+                                                            title: 'Bubrezi i mokraćni putevi',
                                                   },
                                                   {
-                                                            label: 'Čajevi',
+                                                            title: 'Čajevi',
                                                   },
                                                   {
-                                                            label: 'Dijabetes i insulinska resistencija',
+                                                            title: 'Dijabetes i insulinska resistencija',
                                                   },
                                                   {
-                                                            label: 'Jetra i žuč',
+                                                            title: 'Jetra i žuč',
                                                   },
                                                   {
-                                                            label: 'Kašalj',
+                                                            title: 'Kašalj',
                                                   },
                                                   {
-                                                            label: 'PMS',
+                                                            title: 'PMS',
                                                   },
                                                   {
-                                                            label: 'Menopauza',
+                                                            title: 'Menopauza',
                                                   },
                                                   {
-                                                            label: 'Odvikavanje od alkohola',
+                                                            title: 'Odvikavanje od alkohola',
                                                   },
                                                   {
-                                                            label: 'Pamćenje i koncentracija',
+                                                            title: 'Pamćenje i koncentracija',
                                                   },
                                                   {
-                                                            label: 'Poremećaj fertiliteta',
+                                                            title: 'Poremećaj fertiliteta',
                                                   },
                                                   {
-                                                            label: 'Prostata i potencija',
+                                                            title: 'Prostata i potencija',
                                                   },
                                                   {
-                                                            label: 'Stres, depresija, nesanica',
+                                                            title: 'Stres, depresija, nesanica',
                                                   },
                                                   {
-                                                            label: 'Dozatori i sekači za lekove',
+                                                            title: 'Dozatori i sekači za lekove',
                                                   },
                                         ]
                               },
                               {
-                                        title: 'Mid Level 2',
-                                        links: [
-                                                  { label: 'Link 3', url: '/link3' },
-                                                  { label: 'Link 4', url: '/link4' },
-                                                  { label: 'Link 5', url: '/link5' },
-                                        ],
+                                        title: 'Prirodna kozmetika',
+                                        children: [
+                                                  {
+                                                            title: 'Lice',
+
+                                                            children: [
+                                                                      {
+                                                                                title: 'Higijena lica'
+                                                                      },
+                                                                      {
+                                                                                title: 'Trepavice i obrve'
+                                                                      },
+                                                                      {
+                                                                                title: 'Hidratacija'
+                                                                      },
+                                                                      // Add more nested items if needed
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Telo',
+
+                                                            children: [
+                                                                      {
+                                                                                title: 'Ostecena koža'
+                                                                      },
+                                                                      {
+                                                                                title: 'Pilinzi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Celulit i strije'
+                                                                      },
+                                                                      // Add more nested items if needed
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Kosa i koža glave',
+
+                                                            children: [
+                                                                      {
+                                                                                title: 'Opadanje kose'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nega kose na suncu'
+                                                                      },
+                                                                      {
+                                                                                title: 'Osetljiva koža glave'
+                                                                      },
+                                                                      // Add more nested items if needed
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Bebe i deca',
+
+                                                            children: [
+                                                                      {
+                                                                                title: 'Pranje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nega'
+                                                                      },
+                                                                      {
+                                                                                title: 'Sunčanje'
+                                                                      },
+                                                                      // Add more nested items if needed
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Zaštita od sunca',
+
+                                                            children: [
+                                                                      {
+                                                                                title: 'Oralni preparati'
+                                                                      },
+                                                                      {
+                                                                                title: 'Bebe i deca'
+                                                                      },
+                                                                      {
+                                                                                title: 'Lice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Telo'
+                                                                      },
+                                                                      // Add more nested items if needed
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Muškarci'
+                                                  },
+                                        ]
                               },
-                              // Add more mid-level items as needed
+                              {
+                                        title: 'Lepota i nega',
+                                        children: [
+                                                  {
+                                                            title: 'Pribor za negu',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Četke i češljevi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Makazice, gricklalice, turpije i pincete'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ogledala'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Lice',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Blaznice i tuferi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Četkice i aplikatori za šminku'
+                                                                      },
+                                                                      {
+                                                                                title: 'Gelovi i pene za lice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Veštačke trepavice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Šminka za lice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Šminka za oči i obrve'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Telo',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Nega grudi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Piling'
+                                                                      },
+                                                                      {
+                                                                                title: 'Gelovi za tuširanje, kupke i soli'
+                                                                      },
+                                                                      {
+                                                                                title: 'Pene i pilinzi za kupanje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Mleka, kreme i losioni'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ulja za telo'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Intimna nega',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Higijena'
+                                                                      },
+                                                                      {
+                                                                                title: 'Tamponi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ulošci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ulošci za inkontinenciju'
+                                                                      },
+                                                                      {
+                                                                                title: 'Vaginalete, kreme, gelovi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Lubrikanti'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Oralna higijena',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Paste za zube'
+                                                                      },
+                                                                      {
+                                                                                title: 'Četkice i konac za zube'
+                                                                      },
+                                                                      {
+                                                                                title: 'Proteze i kutije za zube'
+                                                                      },
+                                                                      {
+                                                                                title: 'Rastvori za usta'
+                                                                      },
+                                                                      {
+                                                                                title: 'Afte'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ostalo'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Kosa i koža glave',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Sprejevi za suvo pranje kose'
+                                                                      },
+                                                                      {
+                                                                                title: 'Samponi za kosu'
+                                                                      },
+                                                                      {
+                                                                                title: 'Regeneratori i pakovanja za kosu'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ulje za kosu'
+                                                                      },
+                                                                      {
+                                                                                title: 'Kapi i ampule za kosu'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Ruke',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Kreme za ruke'
+                                                                      },
+                                                                      {
+                                                                                title: 'Lak za nokte'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nega noktiju'
+                                                                      },
+                                                                      {
+                                                                                title: 'Skidači lakova za nokte'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Stopala',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Nega'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dezodoransi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Žuljevi, kurije oci, urastanje noktiju'
+                                                                      },
+                                                                      {
+                                                                                title: 'Skidači lakova za nokte'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Bebe i deca',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Higijena'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nega'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Zaštita od sunca',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Odrasli'
+                                                                      },
+                                                                      {
+                                                                                title: 'Bebe i deca'
+                                                                      }
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        title: 'Bebi program',
+                                        children: [
+                                                  {
+                                                            title: 'Pribor za kupanje'
+                                                  },
+                                                  {
+                                                            title: 'Bebi čajevi'
+                                                  },
+                                                  {
+                                                            title: 'Bebi apoteka',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Boginje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Elektroliti'
+                                                                      },
+                                                                      {
+                                                                                title: 'Grčevi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Higijena nosića'
+                                                                      },
+                                                                      {
+                                                                                title: 'Grickanje noktiju'
+                                                                      },
+                                                                      {
+                                                                                title: 'Higijena očiju'
+                                                                      },
+                                                                      {
+                                                                                title: 'Imunitet i apetit'
+                                                                      },
+                                                                      {
+                                                                                title: 'Vitamini'
+                                                                      },
+                                                                      {
+                                                                                title: 'Zubići'
+                                                                      },
+                                                                      {
+                                                                                title: 'Vaške'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Bebi kozmetika',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Deterdženti i omekšivači'
+                                                                      },
+                                                                      {
+                                                                                title: 'Mleka, losioni, ulja'
+                                                                      },
+                                                                      {
+                                                                                title: 'Kupke i šamponi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Micelarne vode'
+                                                                      },
+                                                                      {
+                                                                                title: 'Puderi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Kreme za lice i telo'
+                                                                      },
+                                                                      {
+                                                                                title: 'Kreme protiv ojeda'
+                                                                      },
+                                                                      {
+                                                                                title: 'Sapuni'
+                                                                      },
+                                                                      {
+                                                                                title: 'Balzami za usne'
+                                                                      },
+                                                                      {
+                                                                                title: 'Toaletne vode, dezodoransi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Tuferi i vate'
+                                                                      },
+                                                                      {
+                                                                                title: 'Štapići'
+                                                                      },
+                                                                      {
+                                                                                title: 'Vlažne maramice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Paste i četkice za zube'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Oprema za bebe',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Oprema za kupatilo'
+                                                                      },
+                                                                      {
+                                                                                title: 'Oprema za previjanje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Kolica i dodaci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Sedišta'
+                                                                      },
+                                                                      {
+                                                                                title: 'Tricikli i guralice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nosiljke'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Pribor za negu',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Četke i češljevi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Grickalice, makazice, turpije'
+                                                                      },
+                                                                      {
+                                                                                title: 'Paste za zube'
+                                                                      },
+                                                                      {
+                                                                                title: 'Četkice za zube'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Pribor za hranjenje',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Tanjiri i činije'
+                                                                      },
+                                                                      {
+                                                                                title: 'Čaše i šolje'
+                                                                      },
+                                                                      {
+                                                                                title: 'No spill čaše'
+                                                                      },
+                                                                      {
+                                                                                title: 'Escajg'
+                                                                      },
+                                                                      {
+                                                                                title: 'Setovi za hranjenje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Šerpice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Miljackalica'
+                                                                      },
+                                                                      {
+                                                                                title: 'Portikle'
+                                                                      },
+                                                                      {
+                                                                                title: 'Posude za čuvanje hrane'
+                                                                      },
+                                                                      {
+                                                                                title: 'Termosi i termos torbe'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Flašice, cucle, glodalice, zvečke',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Cucle'
+                                                                      },
+                                                                      {
+                                                                                title: 'Flašice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dodaci za cucle i flašice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Termosi i termos torbe'
+                                                                      },
+                                                                      {
+                                                                                title: 'Laže i dodaci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Glođalice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Zvečke'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Pelene',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Pelene za jednokratnu upotrebu'
+                                                                      },
+                                                                      {
+                                                                                title: 'Pelene za odvikavanje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Pelene za kupanje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Tetra pelene'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Hrana za bebe',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Lino'
+                                                                      },
+                                                                      {
+                                                                                title: 'Modilac'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nestle'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nutrino'
+                                                                      },
+                                                                      {
+                                                                                title: 'Bebelac'
+                                                                      },
+                                                                      {
+                                                                                title: 'Celia'
+                                                                      },
+                                                                      {
+                                                                                title: 'Hipp'
+                                                                      },
+                                                                      {
+                                                                                title: 'Humana'
+                                                                      },
+                                                                      {
+                                                                                title: 'Novalac'
+                                                                      },
+                                                                      {
+                                                                                title: 'Juvitana'
+                                                                      },
+                                                                      {
+                                                                                title: 'Milupa'
+                                                                      },
+                                                                      {
+                                                                                title: 'Aptamil'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Trudnice i dojilje',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Kozmetika za telo'
+                                                                      },
+                                                                      {
+                                                                                title: 'Mrežaste gaćice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Nega i zaštita bradavica'
+                                                                      },
+                                                                      {
+                                                                                title: 'Pojasevi i grudnjaci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Ulošci za grudi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Pumpice za izmlazavanje'
+                                                                      },
+                                                                      {
+                                                                                title: 'Veštačke bradavice i pumpice za bradavice'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dozeri za mleko'
+                                                                      },
+                                                                      {
+                                                                                title: 'Vitaminski preparati'
+                                                                      },
+                                                                      {
+                                                                                title: 'Čajevi i napici za trudnice i dojilje'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Aparati',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Alarmi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Termometri'
+                                                                      },
+                                                                      {
+                                                                                title: 'Blenderi'
+                                                                      },
+                                                                      {
+                                                                                title: 'Grejači'
+                                                                      },
+                                                                      {
+                                                                                title: 'Sterilizatori'
+                                                                      },
+                                                                      {
+                                                                                title: 'Aspiratori za nos'
+                                                                      }
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        title: 'Medicinski aparati i oprema',
+                                        children: [
+                                                  {
+                                                            title: 'Aparati za analizu sna'
+                                                  },
+                                                  {
+                                                            title: 'Prečisćivači vazduha'
+                                                  },
+                                                  {
+                                                            title: 'Pulsni oksimetri'
+                                                  },
+                                                  {
+                                                            title: 'Vage'
+                                                  },
+                                                  {
+                                                            title: 'Aspiratori'
+                                                  },
+                                                  {
+                                                            title: 'Inhalatori',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Aparati'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dodatna oprema'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Merenje pritiska',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Aparati'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dodatna oprema'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Merenje sećera',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Aparati'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dodatna oprema'
+                                                                      },
+                                                                      {
+                                                                                title: 'Trake i lancete'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Toplomeri'
+                                                  },
+                                                  {
+                                                            title: 'Stetoskopi'
+                                                  }
+                                        ]
+                              },
+                              {
+                                        title: 'Ortopedija i pomagala',
+                                        children: [
+                                                  {
+                                                            title: 'Antidekubitalna pomagala',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Jastuci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Dušeci'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Štake'
+                                                  },
+                                                  {
+                                                            title: 'Štapovi'
+                                                  },
+                                                  {
+                                                            title: 'Ortoze'
+                                                  },
+                                                  {
+                                                            title: 'Kinezi trake'
+                                                  },
+                                                  {
+                                                            title: 'Hodalice'
+                                                  },
+                                                  {
+                                                            title: 'Postoljni podmetači'
+                                                  }
+                                        ]
+                              },
+                              {
+                                        title: 'Dezinfekcija, dezinsekcija, maske',
+                                        children: [
+                                                  {
+                                                            title: 'Sredstva za dezinfekciju'
+                                                  },
+                                                  {
+                                                            title: 'Repelenti'
+                                                  },
+                                                  {
+                                                            title: 'Maske za lice',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Odrasli'
+                                                                      },
+                                                                      {
+                                                                                title: 'Deca'
+                                                                      }
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        title: 'Obuća, čarape, ulošci',
+                                        children: [
+                                                  {
+                                                            title: 'Bebe'
+                                                  },
+                                                  {
+                                                            title: 'Deca',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Dečaci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Devojčice'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Odrasli',
+                                                            children: [
+                                                                      {
+                                                                                title: 'Muškarci'
+                                                                      },
+                                                                      {
+                                                                                title: 'Žene'
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            title: 'Čarape za vene'
+                                                  },
+                                                  {
+                                                            title: 'Ulošci za stopala'
+                                                  },
+                                                  {
+                                                            title: 'Štitnici i separatori'
+                                                  },
+                                        ]
+                              },
+                              {
+                                        title: 'AKCIJE'
+                              },
+                              {
+                                        title: 'PROMOCIJE'
+                              }
                     ],
           },
-          // Add more top-level accordion items as needed
 ]

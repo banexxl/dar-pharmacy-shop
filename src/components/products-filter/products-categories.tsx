@@ -1,27 +1,44 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { AccordionBox, Accordion, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
+import { AccordionBox, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
 import { Box } from '@mui/material';
 import { AccordionPanels } from './all-categories'
 import Link from 'next/link';
 import { useState } from 'react';
 
-const NestedAccordion = ({ title, links }: any) => {
+const Accordion = (props: any) => {
+          const [isOpen, setIsOpen] = React.useState(false);
+
+          const toggleAccordion = () => {
+                    setIsOpen(!isOpen);
+          };
+
           return (
                     <div>
-                              {AccordionPanels.map((item: any, index: any) => (
-                                        <Accordion key={index}>
-                                                  <AccordionSummary>
-                                                            <Typography>{item.title}</Typography>
-                                                  </AccordionSummary>
-                                                  <AccordionDetails>
-                                                            {item.children.map((child: any, childIndex: any) => (
-                                                                      <NestedAccordion key={childIndex} title={child.title} links={child.links} />
-                                                            ))}
-                                                  </AccordionDetails>
-                                        </Accordion>
-                              ))}
+                              <button onClick={toggleAccordion}>{props.label}</button>
+                              {isOpen && <div>{props.children}</div>}
                     </div>
+          );
+};
+
+const NestedAccordion = (props: any) => {
+
+          console.log(AccordionPanels);
+
+          return (
+
+                    <Box>
+                              {AccordionPanels.map((item: any) => (
+                                        <Link href={`${item.link}`} key={item.id}>
+                                                  <Accordion label={item.label}>
+                                                            {item.children && item.children.map((child: any) => (
+                                                                      <a key={child.id} href={`${child.link}`}>{child.label}</a>
+                                                            ))}
+                                                  </Accordion>
+                                        </Link>
+                              ))
+                              }
+                    </Box >
           );
 };
 export default function ProductsAllCategories() {

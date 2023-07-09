@@ -5,6 +5,8 @@ import ProductsAllCategories from './products-categories'
 
 function ProductsFilter(props: any) {
 
+          //props je "{filterObject: 'Apoteka'}"
+
           return (
                     <ProductsFilterContainer>
                               <ProductsFilters>

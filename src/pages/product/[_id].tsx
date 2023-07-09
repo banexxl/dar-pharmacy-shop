@@ -83,7 +83,6 @@ export const getStaticPaths = async (context: any) => {
                     ...productsByCategory,
                     ...productsOnDiscount
           ]
-          console.log('product/_id finallist', finalList);
 
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
@@ -91,8 +90,6 @@ export const getStaticPaths = async (context: any) => {
                               locale,
                     }))
           );
-
-          console.log('product/_id paths', paths);
 
           return {
                     paths,

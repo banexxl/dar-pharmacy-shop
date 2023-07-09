@@ -32,9 +32,11 @@ export const ProductsMenu = () => {
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                                         {/* --------------------------APOTEKA------------------------------------------ */}
+
                                         <NestedMenuItem
                                                   label="Apoteka"
                                                   parentMenuOpen={open}
+                                                  ContainerProps={<Link href={"/as"} />}
                                         >
                                                   <NestedMenuItem
                                                             label="Alergije"
@@ -769,6 +771,7 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
 
                                         </NestedMenuItem>
+
                                         {/* --------------------------Prirodna kozmetika------------------------------------------ */}
                                         <NestedMenuItem
                                                   label="Prirodna kozmetika"

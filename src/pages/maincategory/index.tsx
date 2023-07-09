@@ -19,6 +19,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 export default function MainCategoryPage(props: any) {
 
           const { products } = props
+          console.log(props);
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -37,7 +38,7 @@ export default function MainCategoryPage(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <SearchBox />
-                                                            <ProductsFilter filterObject={props.filterObject} />
+                                                            <ProductsFilter filterObject={props.products[0].mainCategory} />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>
@@ -70,28 +71,28 @@ export async function getStaticProps({ locale }: any) {
 }
 
 
-export const getStaticPaths = async (context: any) => {
+// export const getStaticPaths = async (context: any) => {
 
-          //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
+//           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+//           const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
 
+//           const finalList = [
+//                     ...productsByMainCategory,
+//           ]
 
+//           const paths = finalList.flatMap((product: any) =>
+//                     context.locales.map((locale: any) => ({
+//                               params: {
+//                                         maincategory: product.mainCategory.toString()
+//                               },
+//                               locale,
+//                     }))
+//           );
+//           console.log(paths);
 
-          const finalList = [
-                    ...productsByMainCategory,
-          ]
-
-          const paths = finalList.flatMap((product: any) =>
-                    context.locales.map((locale: any) => ({
-                              params: {
-                                        maincategory: product.mainCategory.toString()
-                              },
-                              locale,
-                    }))
-          );
-          return {
-                    paths,
-                    fallback: false, // false or "blocking"
-          };
-}
+//           return {
+//                     paths,
+//                     fallback: false, // false or "blocking"
+//           };
+// }
