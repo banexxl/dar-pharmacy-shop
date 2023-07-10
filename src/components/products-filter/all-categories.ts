@@ -1,5 +1,6 @@
 export const AccordionPanels = [
           {
+                    id: 'svi-proizvodi',
                     title: 'Proizvodi',
                     children: [
                               {
@@ -89,14 +90,9 @@ export const AccordionPanels = [
                                                                                 link: '/apoteka/hemoroidi/oralni-preparati',
                                                                       },
                                                                       {
-                                                                                id: 'lokalna-primena',
+                                                                                id: 'hemoroidi-lokalna-primena',
                                                                                 title: 'Lokalna primena',
                                                                                 link: '/apoteka/hemoroidi/lokalna-primena',
-                                                                      },
-                                                                      {
-                                                                                id: 'bolovi-u-kostima-i-misicima',
-                                                                                title: 'Bolovi u kostima i mišićima',
-                                                                                link: '/apoteka/hemoroidi/bolovi-u-kostima-i-misicima',
                                                                       },
                                                             ],
                                                   },
@@ -114,11 +110,6 @@ export const AccordionPanels = [
                                                                                 id: 'ostalo',
                                                                                 title: 'Ostalo',
                                                                                 link: '/apoteka/holesterol-i-trigliceridi/ostalo',
-                                                                      },
-                                                                      {
-                                                                                id: 'bolovi-u-kostima-i-misicima',
-                                                                                title: 'Bolovi u kostima i mišićima',
-                                                                                link: '/apoteka/holesterol-i-trigliceridi/bolovi-u-kostima-i-misicima',
                                                                       },
                                                             ],
                                                   },
@@ -266,7 +257,7 @@ export const AccordionPanels = [
                                                                                 link: '/apoteka/posebna-ishrana/zasladjivaci',
                                                                       },
                                                                       {
-                                                                                id: 'sportisti',
+                                                                                id: 'posebna-ishrana-sportisti',
                                                                                 title: 'Sportisti',
                                                                                 link: '/apoteka/posebna-ishrana/sportisti',
                                                                       },
@@ -461,7 +452,7 @@ export const AccordionPanels = [
                                                                                 link: '/apoteka/vitamini-i-minerali/deca',
                                                                       },
                                                                       {
-                                                                                id: 'sportisti',
+                                                                                id: 'vitamini-i-minerali-sportisti',
                                                                                 title: 'Sportisti',
                                                                                 link: '/apoteka/vitamini-i-minerali/sportisti',
                                                                       },
@@ -503,7 +494,7 @@ export const AccordionPanels = [
                                                                                 link: '/apoteka/preparati-za-primenu-na-kozi/problemi-sa-cirkulacijom',
                                                                       },
                                                                       {
-                                                                                id: 'intimna-nega',
+                                                                                id: 'preparati-za-primenu-na-kozi-intimna-nega',
                                                                                 title: 'Intimna nega',
                                                                                 link: '/apoteka/preparati-za-primenu-na-kozi/intimna-nega',
                                                                       },
@@ -523,7 +514,7 @@ export const AccordionPanels = [
                                                                                 link: '/apoteka/preparati-za-primenu-na-kozi/reuma',
                                                                       },
                                                                       {
-                                                                                id: 'antiseptici',
+                                                                                id: 'preparati-za-primenu-na-kozi-antiseptici',
                                                                                 title: 'Antiseptici',
                                                                                 link: '/apoteka/preparati-za-primenu-na-kozi/antiseptici',
                                                                       },
@@ -543,7 +534,7 @@ export const AccordionPanels = [
                                                                                 link: '/apoteka/preparati-za-primenu-na-kozi/vitligo',
                                                                       },
                                                                       {
-                                                                                id: 'boginje',
+                                                                                id: 'preparati-za-primenu-na-kozi-boginje',
                                                                                 title: 'Boginje',
                                                                                 link: '/apoteka/preparati-za-primenu-na-kozi/boginje',
                                                                       },
@@ -637,7 +628,7 @@ export const AccordionPanels = [
                                                             link: '/apoteka/prva-pomoc',
                                                             children: [
                                                                       {
-                                                                                id: 'antiseptici',
+                                                                                id: 'prva-pomoc-antiseptici',
                                                                                 title: 'Antiseptici',
                                                                                 link: '/apoteka/prva-pomoc/antiseptici',
                                                                       },
@@ -813,7 +804,7 @@ export const AccordionPanels = [
                                                             ],
                                                   },
                                                   {
-                                                            id: 'bebe-i-deca',
+                                                            id: 'prirodna-kozmetika-bebe-i-deca',
                                                             title: 'Bebe i deca',
                                                             link: '/prirodna-kozmetika/bebe-i-deca',
                                                             children: [
@@ -943,7 +934,7 @@ export const AccordionPanels = [
                                                             ],
                                                   },
                                                   {
-                                                            id: 'intimna-nega',
+                                                            id: 'lepota-i-nega-intimna-nega',
                                                             title: 'Intimna nega',
                                                             link: '/lepota-i-nega/intimna-nega',
                                                             children: [
@@ -1103,7 +1094,7 @@ export const AccordionPanels = [
                                                             ],
                                                   },
                                                   {
-                                                            id: 'bebe-i-deca',
+                                                            id: 'lepota-i-nega-bebe-i-deca',
                                                             title: 'Bebe i deca',
                                                             link: '/lepota-i-nega/bebe-i-deca',
                                                             children: [
@@ -1130,7 +1121,7 @@ export const AccordionPanels = [
                                                                                 link: '/lepota-i-nega/zastita-od-sunca/odrasli',
                                                                       },
                                                                       {
-                                                                                id: 'bebe-i-deca',
+                                                                                id: 'zastita-od-sunca-bebe-i-deca',
                                                                                 title: 'Bebe i deca',
                                                                                 link: '/lepota-i-nega/zastita-od-sunca/bebe-i-deca',
                                                                       },
@@ -1159,7 +1150,7 @@ export const AccordionPanels = [
                                                             link: '/bebi-program/bebi-apoteka',
                                                             children: [
                                                                       {
-                                                                                id: 'boginje',
+                                                                                id: 'bebi-apoteka-boginje',
                                                                                 title: 'Boginje',
                                                                                 link: '/bebi-program/bebi-apoteka/boginje',
                                                                       },
@@ -1727,190 +1718,190 @@ export const AccordionPanels = [
                                                                                 link: '/medicinski-aparati-i-oprema/merenje-pritiska/dodatna-oprema',
                                                                       }
                                                             ]
+                                                  },
+                                                  {
+                                                            id: 'merenje-secera',
+                                                            title: 'Merenje šećera',
+                                                            link: '/medicinski-aparati-i-oprema/merenje-secera',
+                                                            children: [
+                                                                      {
+                                                                                id: 'merenje-secera-aparati',
+                                                                                title: 'Aparati',
+                                                                                link: '/medicinski-aparati-i-oprema/merenje-secera/aparati',
+                                                                      },
+                                                                      {
+                                                                                id: 'dodatna-oprema',
+                                                                                title: 'Dodatna oprema',
+                                                                                link: '/medicinski-aparati-i-oprema/merenje-secera/dodatna-oprema',
+                                                                      },
+                                                                      {
+                                                                                id: 'trake-i-lancete',
+                                                                                title: 'Trake i lancete',
+                                                                                link: '/medicinski-aparati-i-oprema/merenje-secera/trake-i-lancete',
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            id: 'toplomeri',
+                                                            title: 'Toplomeri',
+                                                            link: '/medicinski-aparati-i-oprema/toplomeri',
+                                                  },
+                                                  {
+                                                            id: 'stetoskopi',
+                                                            title: 'Stetoskopi',
+                                                            link: '/medicinski-aparati-i-oprema/stetoskopi',
+                                                  },
+                                        ]
+                              },
+                              {
+                                        id: 'ortopedija-i-pomagala',
+                                        link: '/ortopedija-i-pomagala',
+                                        title: 'Ortopedija i pomagala',
+                                        children: [
+                                                  {
+                                                            id: 'antidekubitalna-pomagala',
+                                                            title: 'Antidekubitalna pomagala',
+                                                            link: '/ortopedija-i-pomagala/antidekubitalna-pomagala',
+                                                            children: [
+                                                                      {
+                                                                                id: 'jastuci',
+                                                                                title: 'Jastuci',
+                                                                                link: '/ortopedija-i-pomagala/antidekubitalna-pomagala/jastuci',
+                                                                      },
+                                                                      {
+                                                                                id: 'duseci',
+                                                                                title: 'Dušeci',
+                                                                                link: '/ortopedija-i-pomagala/antidekubitalna-pomagala/duseci',
+                                                                      }
+                                                            ]
+                                                  },
+                                                  {
+                                                            id: 'stake',
+                                                            title: 'Štake',
+                                                            link: '/ortopedija-i-pomagala/stake',
+                                                  },
+                                                  {
+                                                            id: 'stapovi',
+                                                            title: 'Štapovi',
+                                                            link: '/ortopedija-i-pomagala/stapovi',
+                                                  },
+                                                  {
+                                                            id: 'ortoze',
+                                                            title: 'Ortoze',
+                                                            link: '/ortopedija-i-pomagala/ortoze',
+                                                  },
+                                                  {
+                                                            id: 'kinezi-trake',
+                                                            title: 'Kinezi trake',
+                                                            link: '/ortopedija-i-pomagala/kinezi-trake',
+                                                  },
+                                                  {
+                                                            id: 'hodalice',
+                                                            title: 'Hodalice',
+                                                            link: '/ortopedija-i-pomagala/hodalice',
+                                                  },
+                                                  {
+                                                            id: 'postoljni-podmetaci',
+                                                            title: 'Postoljni podmetači',
+                                                            link: '/ortopedija-i-pomagala/postoljni-podmetaci',
                                                   }
                                         ]
                               },
                               {
-                                        id: 'merenje-secera',
-                                        title: 'Merenje šećera',
-                                        link: '/medicinski-aparati-i-oprema/merenje-secera',
+                                        id: 'dezinfekcija-dezinsekcija-maske',
+                                        link: '/dezinfekcija-dezinsekcija-maske',
+                                        title: 'Dezinfekcija, dezinsekcija, maske',
                                         children: [
                                                   {
-                                                            id: 'merenje-secera-aparati',
-                                                            title: 'Aparati',
-                                                            link: '/medicinski-aparati-i-oprema/merenje-secera/aparati',
+                                                            id: 'sredstva-za-dezinfekciju',
+                                                            title: 'Sredstva za dezinfekciju',
+                                                            link: '/dezinfekcija-dezinsekcija-maske/sredstva-za-dezinfekciju',
                                                   },
                                                   {
-                                                            id: 'dodatna-oprema',
-                                                            title: 'Dodatna oprema',
-                                                            link: '/medicinski-aparati-i-oprema/merenje-secera/dodatna-oprema',
+                                                            id: 'repelenti',
+                                                            title: 'Repelenti',
+                                                            link: '/dezinfekcija-dezinsekcija-maske/repelenti',
                                                   },
                                                   {
-                                                            id: 'trake-i-lancete',
-                                                            title: 'Trake i lancete',
-                                                            link: '/medicinski-aparati-i-oprema/merenje-secera/trake-i-lancete',
+                                                            id: 'maske-za-lice',
+                                                            title: 'Maske za lice',
+                                                            link: '/dezinfekcija-dezinsekcija-maske/maske-za-lice',
+                                                            children: [
+                                                                      {
+                                                                                id: 'maske-za-lice-odrasli',
+                                                                                title: 'Odrasli',
+                                                                                link: '/dezinfekcija-dezinsekcija-maske/maske-za-lice/odrasli',
+                                                                      },
+                                                                      {
+                                                                                id: 'maske-za-lice-deca',
+                                                                                title: 'Deca',
+                                                                                link: '/dezinfekcija-dezinsekcija-maske/maske-za-lice/deca',
+                                                                      }
+                                                            ]
                                                   }
                                         ]
                               },
                               {
-                                        id: 'toplomeri',
-                                        title: 'Toplomeri',
-                                        link: '/medicinski-aparati-i-oprema/toplomeri',
-                              },
-                              {
-                                        id: 'stetoskopi',
-                                        title: 'Stetoskopi',
-                                        link: '/medicinski-aparati-i-oprema/stetoskopi',
-                              },
-                    ]
-          },
-          {
-                    id: 'ortopedija-i-pomagala',
-                    link: '/ortopedija-i-pomagala',
-                    title: 'Ortopedija i pomagala',
-                    children: [
-                              {
-                                        id: 'antidekubitalna-pomagala',
-                                        title: 'Antidekubitalna pomagala',
-                                        link: '/ortopedija-i-pomagala/antidekubitalna-pomagala',
+                                        id: 'obuca-carape-ulosci',
+                                        link: '/obuca-carape-ulosci',
+                                        title: 'Obuća, čarape, ulošci',
                                         children: [
                                                   {
-                                                            id: 'jastuci',
-                                                            title: 'Jastuci',
-                                                            link: '/ortopedija-i-pomagala/antidekubitalna-pomagala/jastuci',
+                                                            id: 'bebe',
+                                                            title: 'Bebe',
+                                                            link: '/obuca-carape-ulosci/bebe',
                                                   },
                                                   {
-                                                            id: 'duseci',
-                                                            title: 'Dušeci',
-                                                            link: '/ortopedija-i-pomagala/antidekubitalna-pomagala/duseci',
-                                                  }
-                                        ]
-                              },
-                              {
-                                        id: 'stake',
-                                        title: 'Štake',
-                                        link: '/ortopedija-i-pomagala/stake',
-                              },
-                              {
-                                        id: 'stapovi',
-                                        title: 'Štapovi',
-                                        link: '/ortopedija-i-pomagala/stapovi',
-                              },
-                              {
-                                        id: 'ortoze',
-                                        title: 'Ortoze',
-                                        link: '/ortopedija-i-pomagala/ortoze',
-                              },
-                              {
-                                        id: 'kinezi-trake',
-                                        title: 'Kinezi trake',
-                                        link: '/ortopedija-i-pomagala/kinezi-trake',
-                              },
-                              {
-                                        id: 'hodalice',
-                                        title: 'Hodalice',
-                                        link: '/ortopedija-i-pomagala/hodalice',
-                              },
-                              {
-                                        id: 'postoljni-podmetaci',
-                                        title: 'Postoljni podmetači',
-                                        link: '/ortopedija-i-pomagala/postoljni-podmetaci',
-                              }
-                    ]
-          },
-          {
-                    id: 'dezinfekcija-dezinsekcija-maske',
-                    link: '/dezinfekcija-dezinsekcija-maske',
-                    title: 'Dezinfekcija, dezinsekcija, maske',
-                    children: [
-                              {
-                                        id: 'sredstva-za-dezinfekciju',
-                                        title: 'Sredstva za dezinfekciju',
-                                        link: '/dezinfekcija-dezinsekcija-maske/sredstva-za-dezinfekciju',
-                              },
-                              {
-                                        id: 'repelenti',
-                                        title: 'Repelenti',
-                                        link: '/dezinfekcija-dezinsekcija-maske/repelenti',
-                              },
-                              {
-                                        id: 'maske-za-lice',
-                                        title: 'Maske za lice',
-                                        link: '/dezinfekcija-dezinsekcija-maske/maske-za-lice',
-                                        children: [
-                                                  {
-                                                            id: 'maske-za-lice-odrasli',
-                                                            title: 'Odrasli',
-                                                            link: '/dezinfekcija-dezinsekcija-maske/maske-za-lice/odrasli',
-                                                  },
-                                                  {
-                                                            id: 'maske-za-lice-deca',
+                                                            id: 'obuca-carape-ulosci-deca',
                                                             title: 'Deca',
-                                                            link: '/dezinfekcija-dezinsekcija-maske/maske-za-lice/deca',
-                                                  }
-                                        ]
-                              }
-                    ]
-          },
-          {
-                    id: 'obuca-carape-ulosci',
-                    link: '/obuca-carape-ulosci',
-                    title: 'Obuća, čarape, ulošci',
-                    children: [
-                              {
-                                        id: 'bebe',
-                                        title: 'Bebe',
-                                        link: '/obuca-carape-ulosci/bebe',
-                              },
-                              {
-                                        id: 'obuca-carape-ulosci-deca',
-                                        title: 'Deca',
-                                        link: '/obuca-carape-ulosci/deca',
-                                        children: [
-                                                  {
-                                                            id: 'decaci',
-                                                            title: 'Dečaci',
-                                                            link: '/obuca-carape-ulosci/deca/decaci',
+                                                            link: '/obuca-carape-ulosci/deca',
+                                                            children: [
+                                                                      {
+                                                                                id: 'decaci',
+                                                                                title: 'Dečaci',
+                                                                                link: '/obuca-carape-ulosci/deca/decaci',
+                                                                      },
+                                                                      {
+                                                                                id: 'devojcice',
+                                                                                title: 'Devojčice',
+                                                                                link: '/obuca-carape-ulosci/deca/devojcice',
+                                                                      }
+                                                            ]
                                                   },
                                                   {
-                                                            id: 'devojcice',
-                                                            title: 'Devojčice',
-                                                            link: '/obuca-carape-ulosci/deca/devojcice',
-                                                  }
-                                        ]
-                              },
-                              {
-                                        id: 'obuca-carape-ulosci-odrasli',
-                                        title: 'Odrasli',
-                                        link: '/obuca-carape-ulosci/odrasli',
-                                        children: [
-                                                  {
-                                                            id: 'obuca-carape-ulosci-muskarci',
-                                                            title: 'Muškarci',
-                                                            link: '/obuca-carape-ulosci/odrasli/muskarci',
+                                                            id: 'obuca-carape-ulosci-odrasli',
+                                                            title: 'Odrasli',
+                                                            link: '/obuca-carape-ulosci/odrasli',
+                                                            children: [
+                                                                      {
+                                                                                id: 'obuca-carape-ulosci-muskarci',
+                                                                                title: 'Muškarci',
+                                                                                link: '/obuca-carape-ulosci/odrasli/muskarci',
+                                                                      },
+                                                                      {
+                                                                                id: 'obuca-carape-ulosci-zene',
+                                                                                title: 'Žene',
+                                                                                link: '/obuca-carape-ulosci/odrasli/zene',
+                                                                      }
+                                                            ]
                                                   },
                                                   {
-                                                            id: 'obuca-carape-ulosci-zene',
-                                                            title: 'Žene',
-                                                            link: '/obuca-carape-ulosci/odrasli/zene',
+                                                            id: 'carape-za-vene',
+                                                            title: 'Čarape za vene',
+                                                            link: '/obuca-carape-ulosci/carape-za-vene',
+                                                  },
+                                                  {
+                                                            id: 'ulosci-za-stopala',
+                                                            title: 'Ulošci za stopala',
+                                                            link: '/obuca-carape-ulosci/ulosci-za-stopala',
+                                                  },
+                                                  {
+                                                            id: 'stitnici-i-separatori',
+                                                            title: 'Štitnici i separatori',
+                                                            link: '/obuca-carape-ulosci/stitnici-i-separatori',
                                                   }
                                         ]
                               },
-                              {
-                                        id: 'carape-za-vene',
-                                        title: 'Čarape za vene',
-                                        link: '/obuca-carape-ulosci/carape-za-vene',
-                              },
-                              {
-                                        id: 'ulosci-za-stopala',
-                                        title: 'Ulošci za stopala',
-                                        link: '/obuca-carape-ulosci/ulosci-za-stopala',
-                              },
-                              {
-                                        id: 'stitnici-i-separatori',
-                                        title: 'Štitnici i separatori',
-                                        link: '/obuca-carape-ulosci/stitnici-i-separatori',
-                              }
                     ]
           },
           {

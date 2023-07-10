@@ -18,8 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function MainCategoryPage(props: any) {
 
-          const { products } = props
-          console.log(props);
+          console.log(props.products);
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -38,7 +37,7 @@ export default function MainCategoryPage(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <SearchBox />
-                                                            <ProductsFilter filterObject={props.products[0].mainCategory} />
+                                                            <ProductsFilter filterObject={props.products} />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>

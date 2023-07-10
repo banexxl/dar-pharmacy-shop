@@ -8,6 +8,8 @@ import { useState } from 'react';
 
 const Accordion = (props: any) => {
 
+          console.log('accordion', props);
+
           const [isOpen, setIsOpen] = useState(false);
 
           const toggleAccordion = () => {
@@ -31,16 +33,16 @@ const Accordion = (props: any) => {
 
 const NestedAccordion = (props: any) => {
 
-          console.log(props);
+          console.log('NestedAccordion', props);
 
           return (
 
                     <AccordionBox>
                               {AccordionPanels.map((item: any) => (
-                                        <Link href={item.link == undefined || item.link == null ? "" : `${item.link}`} key={item.id}>
+                                        <Link href={item.link == undefined || item.link == null ? "" : `${item.link}`} key={Math.floor(Math.random() * 10000 + 1)}>
                                                   <Accordion label={item.title}>
                                                             {item.children && item.children.map((child: any) => (
-                                                                      <Link key={child.id} href={`${child.link}`}>{child.title}</Link>
+                                                                      <Link key={Math.floor(Math.random() * 10000 + 1)} href={`${child.link}`}>{child.title}</Link>
                                                             ))}
                                                   </Accordion>
                                         </Link>
