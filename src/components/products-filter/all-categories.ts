@@ -1390,42 +1390,6 @@ export const AccordionPanels = [
                                                             ],
                                                   },
                                                   {
-                                                            id: 'oprema-za-bebe',
-                                                            title: 'Oprema za bebe',
-                                                            children: [
-                                                                      {
-                                                                                id: 'oprema-za-kupatilo',
-                                                                                title: 'Oprema za kupatilo',
-                                                                                link: '/bebi-program/oprema-za-bebe/oprema-za-kupatilo',
-                                                                      },
-                                                                      {
-                                                                                id: 'oprema-za-previjanje',
-                                                                                title: 'Oprema za previjanje',
-                                                                                link: '/bebi-program/oprema-za-bebe/oprema-za-previjanje',
-                                                                      },
-                                                                      {
-                                                                                id: 'kolica-i-dodaci',
-                                                                                title: 'Kolica i dodaci',
-                                                                                link: '/bebi-program/oprema-za-bebe/kolica-i-dodaci',
-                                                                      },
-                                                                      {
-                                                                                id: 'sedista',
-                                                                                title: 'Sedišta',
-                                                                                link: '/bebi-program/oprema-za-bebe/sedista',
-                                                                      },
-                                                                      {
-                                                                                id: 'tricikli-i-guralice',
-                                                                                title: 'Tricikli i guralice',
-                                                                                link: '/bebi-program/oprema-za-bebe/tricikli-i-guralice',
-                                                                      },
-                                                                      {
-                                                                                id: 'nosiljke',
-                                                                                title: 'Nosiljke',
-                                                                                link: '/bebi-program/oprema-za-bebe/nosiljke',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
                                                             id: 'flasice-cucle-glođalice-zvečke',
                                                             title: 'Flašice, cucle, glodalice, zvečke',
                                                             children: [

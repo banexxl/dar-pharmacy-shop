@@ -1,55 +1,45 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { AccordionBox, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
+import { Accordion, AccordionBox, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Box } from '@mui/material';
 import { AccordionPanels } from './all-categories'
 import Link from 'next/link';
 import { useState } from 'react';
 
-const Accordion = (props: any) => {
+const transformToMuiAccordion = (data: any) => {
 
-          console.log('accordion', props);
+          console.log('data for accordion', data);
 
-          const [isOpen, setIsOpen] = useState(false);
+          return data.map((item: any) => {
+                    const { id, link, title, children } = item;
 
-          const toggleAccordion = () => {
-                    setIsOpen(!isOpen);
-          };
+                    if (children && children.length > 0) {
+                              return (
+                                        <Accordion key={id}>
+                                                  <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
+                                                            <Typography>{title}</Typography>
+                                                  </AccordionSummary>
+                                                  <AccordionDetails>
+                                                            {transformToMuiAccordion(children)}
+                                                  </AccordionDetails>
+                                        </Accordion>
+                              );
+                    }
 
-          return (
-                    <Accordion>
-                              <AccordionSummary onClick={toggleAccordion}>
-                                        {props.title}
-                              </AccordionSummary>
-                              {
-                                        isOpen &&
+                    return (
+                              <Accordion key={id}>
+                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
+                                                  <Typography>{title}</Typography>
+                                        </AccordionSummary>
                                         <AccordionDetails>
-                                                  {props.children}
+                                                  <Typography>
+                                                            <a href={link}>{title}</a>
+                                                  </Typography>
                                         </AccordionDetails>
-                              }
-                    </Accordion>
-          );
-};
-
-const NestedAccordion = (props: any) => {
-
-          console.log('NestedAccordion', props);
-
-          return (
-
-                    <AccordionBox>
-                              {AccordionPanels.map((item: any) => (
-                                        <Link href={item.link == undefined || item.link == null ? "" : `${item.link}`} key={Math.floor(Math.random() * 10000 + 1)}>
-                                                  <Accordion label={item.title}>
-                                                            {item.children && item.children.map((child: any) => (
-                                                                      <Link key={Math.floor(Math.random() * 10000 + 1)} href={`${child.link}`}>{child.title}</Link>
-                                                            ))}
-                                                  </Accordion>
-                                        </Link>
-                              ))
-                              }
-                    </AccordionBox >
-          );
+                              </Accordion>
+                    );
+          });
 };
 export default function ProductsAllCategories() {
 
@@ -158,6 +148,6 @@ export default function ProductsAllCategories() {
                     //                     </AccordionDetails>
                     //           </Accordion>
                     // </AccordionBox >
-                    <NestedAccordion panels={AccordionPanels} />
-          );
+                    <Box>{transformToMuiAccordion(AccordionPanels)}</Box>
+          )
 }
