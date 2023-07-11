@@ -29,11 +29,9 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
                               "&.Mui-expanded": {
                                         minHeight: 0,
                                         margin: '0px',
-                                        padding: '0px'
                               },
                               "& .MuiAccordionSummary-content.Mui-expanded": {
                                         margin: '0px',
-                                        padding: '0px'
                               }
                     }}
           />
