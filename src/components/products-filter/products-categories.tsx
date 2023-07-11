@@ -148,6 +148,6 @@ export default function ProductsAllCategories() {
                     //                     </AccordionDetails>
                     //           </Accordion>
                     // </AccordionBox >
-                    <Box>{transformToMuiAccordion(AccordionPanels)}</Box>
+                    <AccordionBox>{transformToMuiAccordion(AccordionPanels)}</AccordionBox>
           )
 }
