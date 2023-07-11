@@ -61,27 +61,27 @@ export default function Footer() {
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
                                                             <ListItemText>
                                                                       <Link href={"/"} >
-                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }} onClick={() => router.push("/")}>
+                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                           {t('footer.home')}
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Link href='/information/about-us' >
-                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }} onClick={() => router.push("/information/about-us")}>
+                                                                      <Link href='/informacije/o-nama' >
+                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                           {t('footer.about-us')}
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Link href='/information/privacy-policy' onClick={() => router.push("/information/privacy-policy")}>
+                                                                      <Link href='/informacije/politika-privatnosti'>
                                                                                 <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                           {t('footer.privacy-policy')}
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                             <ListItemText>
-                                                                      <Link href='/information/terms-conditions' onClick={() => router.push("/information/terms-conditions")}>
+                                                                      <Link href='/informacije/uslovi-koriscenja'>
                                                                                 <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
                                                                                           {t('footer.terms-conditions')}
                                                                                 </Typography>

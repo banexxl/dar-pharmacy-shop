@@ -30,7 +30,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                         </Link>
                               </StyledTotalsToShopButton>
                               <StyledTotalsToPaymentButton>
-                                        <Link href='/checkout'>
+                                        <Link href='/placanje'>
                                                   {t('confirmation.to-payment')}
                                         </Link>
                               </StyledTotalsToPaymentButton>
