@@ -28,7 +28,6 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
                     sx={{
                               "&.Mui-expanded": {
                                         minHeight: 0,
-
                               },
                               "& .MuiAccordionSummary-content.Mui-expanded": {
                               }
@@ -39,7 +38,6 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
           flexDirection: 'row-reverse',
           '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
                     transform: 'rotate(90deg)',
-                    padding: '0px'
           },
           '& .MuiAccordionSummary-content': {
                     marginLeft: theme.spacing(1),
