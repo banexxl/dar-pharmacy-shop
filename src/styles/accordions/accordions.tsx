@@ -27,10 +27,11 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
                     {...props}
                     sx={{
                               "&.Mui-expanded": {
-                                        minHeight: 0
+                                        minHeight: 0,
+                                        margin: '0px'
                               },
                               "& .MuiAccordionSummary-content.Mui-expanded": {
-                                        //margin: '12px 8px'
+                                        margin: '0px'
                               }
                     }}
           />
@@ -39,9 +40,11 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
           flexDirection: 'row-reverse',
           '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
                     transform: 'rotate(90deg)',
+                    padding: '0px'
           },
           '& .MuiAccordionSummary-content': {
                     marginLeft: theme.spacing(1),
+                    padding: '3px'
           },
 }));
 
@@ -50,5 +53,5 @@ export const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export const AccordionBox = styled(Box)(({ theme }) => ({
-          height: '100%'
+          height: '100vh'
 })); 
