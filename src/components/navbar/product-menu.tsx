@@ -34,7 +34,7 @@ export const ProductsMenu = () => {
                                         <NestedMenuItem
                                                   label="Apoteka"
                                                   parentMenuOpen={open}
-                                                  ContainerProps={<Link href={"/proizvidi/apoteka"} />}
+                                                  ContainerProps={<Link href={"/proizvodi/apoteka"} />}
                                         >
                                                   <NestedMenuItem
                                                             label="Alergije"
@@ -42,7 +42,7 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                <Link href={'/proizvidi/apoteka/alergije'}>
+                                                                                <Link href={'/proizvodi/apoteka/alergije'}>
                                                                                           Kapsule i tablete
                                                                                 </Link>
                                                                       </StyledNestedTypography>
