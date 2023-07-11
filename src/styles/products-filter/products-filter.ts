@@ -49,19 +49,6 @@ export const FilterTitleBox = styled(Box)(({ theme }) => ({
           alignItems: "center",
 }));
 
-export const FilterPriceAccordionBox = styled(Box)(({ theme }) => ({
-          width: '100%',
-          [theme.breakpoints.down("md")]: {
-                    display: 'none'
-          },
-          [theme.breakpoints.up("md")]: {
-                    display: 'flex'
-          },
-          justifyContent: "center",
-          alignItems: "center",
-          background: Colors.secondary,
-}));
-
 export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
           height: '40%',
           width: '100%',

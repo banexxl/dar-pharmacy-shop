@@ -51,7 +51,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   <MiddleDivider />
                                                   <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
-                                                                      <Link href={'/contact'}>
+                                                                      <Link href={'/kontakt'}>
                                                                                 Kontakt
                                                                       </Link>
                                                             </ListItemText>
