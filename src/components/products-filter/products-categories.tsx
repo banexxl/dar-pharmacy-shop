@@ -34,7 +34,7 @@ const transformToMuiAccordion = (data: any) => {
                                         </AccordionSummary>
                                         <AccordionDetails>
                                                   <Typography>
-                                                            <a href={link}>{title}</a>
+                                                            <Link href={link}>{title}</Link>
                                                   </Typography>
                                         </AccordionDetails>
                               </Accordion>

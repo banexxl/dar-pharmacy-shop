@@ -30,7 +30,7 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
                                         minHeight: 0
                               },
                               "& .MuiAccordionSummary-content.Mui-expanded": {
-                                        margin: '12px 8px'
+                                        //margin: '12px 8px'
                               }
                     }}
           />
