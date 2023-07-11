@@ -57,8 +57,4 @@ const CarouselLogo = (props: any) => {
 
 export default CarouselLogo
 
-    // <Link href={`/product/${decodeURIComponent(product._id)}`}>
-                                                            //           {t('homepage.carousel-details')}
-                                                            // </Link>
-
 

@@ -56,7 +56,7 @@ const ProductCarousel = (props: any) => {
                                                                                 <CarouselTitle>{product.name}</CarouselTitle>
                                                                       </CarouselTitleBox>
                                                                       <CarouselButton >
-                                                                                <Link href={`/product/${decodeURIComponent(product._id)}`}>
+                                                                                <Link href={`/proizvod/${decodeURIComponent(product._id)}`}>
                                                                                           {t('homepage.carousel-details')}
                                                                                 </Link>
                                                                       </CarouselButton>
