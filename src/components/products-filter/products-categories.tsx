@@ -9,8 +9,6 @@ import { useState } from 'react';
 
 const transformToMuiAccordion = (data: any) => {
 
-          console.log('data for accordion', data);
-
           return data.map((item: any) => {
                     const { id, link, title, children } = item;
 
