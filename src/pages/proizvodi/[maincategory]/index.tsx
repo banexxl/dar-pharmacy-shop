@@ -18,6 +18,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function MainCategoryPage(props: any) {
 
+          console.log(props);
+
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
@@ -47,7 +49,7 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const dbData: any = await productsServices().getProductsByMainCategory('Apoteka').then((data: any) => {
+          const dbData: any = await productsServices().getProductsByMainCategory('apoteka').then((data: any) => {
                     return data
           })
 
@@ -72,10 +74,24 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByMainCategory: any = await productsServices().getProductsByMainCategory('Apoteka')
+          const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
+          const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
+          const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
+          const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
+          const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
+          const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
+          const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
+          const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
           const finalList = [
-                    ...productsByMainCategory,
+                    ...productsByMainCategoryApoteka,
+                    ...productsByMainCategoryPrirodnaKozmetika,
+                    ...productsByMainCategoryLepotaNega,
+                    ...productsByMainCategoryBebiProgram,
+                    ...productsByMainCategoryMedicinskiAparatiOprema,
+                    ...productsByMainCategoryOrtopedijaPomagala,
+                    ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
+                    ...productsByMainCategoryObucaCarapeUlosci,
           ]
 
           const paths = finalList.flatMap((product: any) =>

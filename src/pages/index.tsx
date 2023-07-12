@@ -97,7 +97,7 @@ export async function getStaticProps({ locale }: any) {
                     return data
           })
 
-          const productsByMainCategoryApoteka: IProduct[] = await productsServices().getProductsByMainCategory("Apoteka").then((data: any) => {
+          const productsByMainCategoryApoteka: IProduct[] = await productsServices().getProductsByMainCategory("apoteka").then((data: any) => {
                     return data
           })
 
