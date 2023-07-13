@@ -50,5 +50,5 @@ export const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export const AccordionBox = styled(Box)(({ theme }) => ({
-          height: '100vh'
+          height: '100%'
 })); 

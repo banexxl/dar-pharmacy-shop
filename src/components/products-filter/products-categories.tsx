@@ -16,10 +16,14 @@ const transformToMuiAccordion = (data: any) => {
                               return (
                                         <Accordion key={id}>
                                                   <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                            <Typography>{title}</Typography>
+                                                            <Link href={link}>
+                                                                      <Typography>{title}</Typography>
+                                                            </Link>
                                                   </AccordionSummary>
                                                   <AccordionDetails>
-                                                            {transformToMuiAccordion(children)}
+                                                            <Link href={link}>
+                                                                      {transformToMuiAccordion(children)}
+                                                            </Link>
                                                   </AccordionDetails>
                                         </Accordion>
                               );
@@ -28,7 +32,9 @@ const transformToMuiAccordion = (data: any) => {
                     return (
                               <Accordion key={id}>
                                         <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                  <Typography>{title}</Typography>
+                                                  <Link href={link}>
+                                                            <Typography>{title}</Typography>
+                                                  </Link>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                                   <Typography>
