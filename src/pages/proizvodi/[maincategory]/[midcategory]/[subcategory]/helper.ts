@@ -619,7 +619,6 @@ export const getAllSubCategoriesFromBebiProgramBebiOprema = async () => {
           ]
 }
 
-
 export const getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke = async () => {
 
           const productsBySubCategoryBebiProgramFlasiceCucleZveckeCucle: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('bebi-program', 'flasice-cucle-glodalice-zvecke', 'cucle')

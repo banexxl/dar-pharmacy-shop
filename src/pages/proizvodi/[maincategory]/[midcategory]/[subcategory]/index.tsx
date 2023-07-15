@@ -15,6 +15,7 @@ import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { getAllSubCategoriesFromApotekaAlergije, getAllSubCategoriesFromApotekaAnemije, getAllSubCategoriesFromApotekaBol, getAllSubCategoriesFromApotekaHemoroidi, getAllSubCategoriesFromApotekaHolesterol, getAllSubCategoriesFromApotekaImunitet, getAllSubCategoriesFromApotekaKosaKozaNokti, getAllSubCategoriesFromApotekaKostiZglobovi, getAllSubCategoriesFromApotekaMrsavljenjeCelulit, getAllSubCategoriesFromApotekaOciUsi, getAllSubCategoriesFromApotekaPosebnaIshrana, getAllSubCategoriesFromApotekaPreparatiZaKozu, getAllSubCategoriesFromApotekaPrvaPomoc, getAllSubCategoriesFromApotekaPutnaApoteka, getAllSubCategoriesFromApotekaStomacneTegobe, getAllSubCategoriesFromApotekaVitaminiMinerali, getAllSubCategoriesFromApotekaZdravoSrceCirkulacija, getAllSubCategoriesFromBebiProgramAparati, getAllSubCategoriesFromBebiProgramBebiApoteka, getAllSubCategoriesFromBebiProgramBebiKozmetika, getAllSubCategoriesFromBebiProgramBebiOprema, getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke, getAllSubCategoriesFromBebiProgramHrana, getAllSubCategoriesFromBebiProgramPelene, getAllSubCategoriesFromBebiProgramTrudnice, getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice, getAllSubCategoriesFromLepotaNegaBebe, getAllSubCategoriesFromLepotaNegaIntimnaNega, getAllSubCategoriesFromLepotaNegaKosaKozaGlave, getAllSubCategoriesFromLepotaNegaLice, getAllSubCategoriesFromLepotaNegaOralnaHigijena, getAllSubCategoriesFromLepotaNegaPriborZaNegu, getAllSubCategoriesFromLepotaNegaRuke, getAllSubCategoriesFromLepotaNegaStopala, getAllSubCategoriesFromLepotaNegaTelo, getAllSubCategoriesFromLepotaNegaZastitaOdSunca, getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera, getAllSubCategoriesFromObucaCarapeUlosciDeca, getAllSubCategoriesFromObucaCarapeUlosciOdrasli, getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala, getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca, getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave, getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo } from './helper';
 
 export default function MainCategoryPage(props: any) {
 
@@ -91,24 +92,118 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
-          const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-          const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-          const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-          const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-          const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-          const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-          const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          const productsByMainCategoryApotekaAndMidCategoryAlergija: any = getAllSubCategoriesFromApotekaAlergije()
+          const productsByMainCategoryApotekaAndMidCategoryAnemija: any = getAllSubCategoriesFromApotekaAnemije()
+          const productsByMainCategoryApotekaAndMidCategoryBol: any = getAllSubCategoriesFromApotekaBol()
+          const productsByMainCategoryApotekaAndMidCategoryHemoroidi: any = getAllSubCategoriesFromApotekaHemoroidi()
+          const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
+          const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
+          const productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti: any = getAllSubCategoriesFromApotekaKosaKozaNokti()
+          const productsByMainCategoryApotekaAndMidCategoryKosti: any = getAllSubCategoriesFromApotekaKostiZglobovi()
+          const productsByMainCategoryApotekaAndMidCategoryMrsavljenje: any = getAllSubCategoriesFromApotekaMrsavljenjeCelulit()
+          const productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana: any = getAllSubCategoriesFromApotekaPosebnaIshrana()
+          const productsByMainCategoryApotekaAndMidCategoryPutnaApoteka: any = getAllSubCategoriesFromApotekaPutnaApoteka()
+          const productsByMainCategoryApotekaAndMidCategoryStomacneTegobe: any = getAllSubCategoriesFromApotekaStomacneTegobe()
+          const productsByMainCategoryApotekaAndMidCategoryZdravoSrce: any = getAllSubCategoriesFromApotekaZdravoSrceCirkulacija()
+          const productsByMainCategoryApotekaAndMidCategoryVitamini: any = getAllSubCategoriesFromApotekaVitaminiMinerali()
+          const productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu: any = getAllSubCategoriesFromApotekaPreparatiZaKozu()
+          const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
+          const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
+
+          const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice: any = getAllSubCategoriesFromPrirodnaKozmetikaLice()
+          const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo: any = getAllSubCategoriesFromPrirodnaKozmetikaTelo()
+          const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave()
+          const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryBebeDeca: any = getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca()
+
+          const productsByMainCategoryLepotaNegaAndMidCategoryPribor: any = getAllSubCategoriesFromLepotaNegaPriborZaNegu()
+          const productsByMainCategoryLepotaNegaAndMidCategoryLice: any = getAllSubCategoriesFromLepotaNegaLice()
+          const productsByMainCategoryLepotaNegaAndMidCategoryTelo: any = getAllSubCategoriesFromLepotaNegaTelo()
+          const productsByMainCategoryLepotaNegaAndMidCategoryIntimnaNega: any = getAllSubCategoriesFromLepotaNegaIntimnaNega()
+          const productsByMainCategoryLepotaNegaAndMidCategoryOralnaHigijena: any = getAllSubCategoriesFromLepotaNegaOralnaHigijena()
+          const productsByMainCategoryLepotaNegaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromLepotaNegaKosaKozaGlave()
+          const productsByMainCategoryLepotaNegaAndMidCategoryRuke: any = getAllSubCategoriesFromLepotaNegaRuke()
+          const productsByMainCategoryLepotaNegaAndMidCategoryStopala: any = getAllSubCategoriesFromLepotaNegaStopala()
+          const productsByMainCategoryLepotaNegaAndMidCategoryBebe: any = getAllSubCategoriesFromLepotaNegaBebe()
+          const productsByMainCategoryLepotaNegaAndMidCategorySunce: any = getAllSubCategoriesFromLepotaNegaZastitaOdSunca()
+
+          const productsByMainCategoryBebiProgramAndMidCategoryBebiApoteka: any = getAllSubCategoriesFromBebiProgramBebiApoteka()
+          const productsByMainCategoryBebiProgramAndMidCategoryBebiKozmetika: any = getAllSubCategoriesFromBebiProgramBebiKozmetika()
+          const productsByMainCategoryBebiProgramAndMidCategoryBebiOprema: any = getAllSubCategoriesFromBebiProgramBebiOprema()
+          const productsByMainCategoryBebiProgramAndMidCategoryFlasiceCucleZvecke: any = getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke()
+          const productsByMainCategoryBebiProgramAndMidCategoryPelene: any = getAllSubCategoriesFromBebiProgramPelene()
+          const productsByMainCategoryBebiProgramAndMidCategoryHrana: any = getAllSubCategoriesFromBebiProgramHrana()
+          const productsByMainCategoryBebiProgramAndMidCategoryTrudnice: any = getAllSubCategoriesFromBebiProgramTrudnice()
+          const productsByMainCategoryBebiProgramAndMidCategoryAparati: any = getAllSubCategoriesFromBebiProgramAparati()
+
+          const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryInhalatori: any = getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori()
+          const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryPritisak: any = getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska()
+          const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategorySecer: any = getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera()
+
+          const productsByMainCategoryOrtopedijaOpremaAndMidCategoryAntidekubitalnaPomagala: any = getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala()
+
+          const productsByMainCategoryDezinfekcijaDezinsekcijaMaskeAndMidCategoryMaskeZaLizce: any = getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice()
+
+          const productsByMainCategoryObucaCarapeUlosciAndMidCategoryDeca: any = getAllSubCategoriesFromObucaCarapeUlosciDeca()
+
+          const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
+
 
           const finalList = [
-                    ...productsByMainCategoryApoteka,
-                    ...productsByMainCategoryPrirodnaKozmetika,
-                    ...productsByMainCategoryLepotaNega,
-                    ...productsByMainCategoryBebiProgram,
-                    ...productsByMainCategoryMedicinskiAparatiOprema,
-                    ...productsByMainCategoryOrtopedijaPomagala,
-                    ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-                    ...productsByMainCategoryObucaCarapeUlosci,
+
+                    ...productsByMainCategoryOrtopedijaOpremaAndMidCategoryAntidekubitalnaPomagala,
+                    ...productsByMainCategoryDezinfekcijaDezinsekcijaMaskeAndMidCategoryMaskeZaLizce,
+                    ...productsByMainCategoryObucaCarapeUlosciAndMidCategoryDeca,
+                    ...productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli,
+
+                    ...productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryInhalatori,
+                    ...productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryPritisak,
+                    ...productsByMainCategoryMedicinskiAparatiOpremaAndMidCategorySecer,
+
+                    ...productsByMainCategoryBebiProgramAndMidCategoryBebiApoteka,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryBebiKozmetika,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryBebiOprema,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryFlasiceCucleZvecke,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryPelene,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryHrana,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryTrudnice,
+                    ...productsByMainCategoryBebiProgramAndMidCategoryAparati,
+
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryPribor,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryLice,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryTelo,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryIntimnaNega,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryOralnaHigijena,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryKosaKozaGlave,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryRuke,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryStopala,
+                    ...productsByMainCategoryLepotaNegaAndMidCategoryBebe,
+                    ...productsByMainCategoryLepotaNegaAndMidCategorySunce,
+
+                    ...productsByMainCategoryApotekaAndMidCategoryAlergija,
+                    ...productsByMainCategoryApotekaAndMidCategoryAnemija,
+                    ...productsByMainCategoryApotekaAndMidCategoryBol,
+                    ...productsByMainCategoryApotekaAndMidCategoryHemoroidi,
+                    ...productsByMainCategoryApotekaAndMidCategoryHolesterol,
+                    ...productsByMainCategoryApotekaAndMidCategoryImunitet,
+                    ...productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti,
+                    ...productsByMainCategoryApotekaAndMidCategoryKosti,
+                    ...productsByMainCategoryApotekaAndMidCategoryMrsavljenje,
+                    ...productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana,
+                    ...productsByMainCategoryApotekaAndMidCategoryPutnaApoteka,
+                    ...productsByMainCategoryApotekaAndMidCategoryStomacneTegobe,
+                    ...productsByMainCategoryApotekaAndMidCategoryZdravoSrce,
+                    ...productsByMainCategoryApotekaAndMidCategoryVitamini,
+                    ...productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu,
+                    ...productsByMainCategoryApotekaAndMidCategoryOciUsi,
+                    ...productsByMainCategoryApotekaAndMidCategoryPrvaPomoc,
+
+                    ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice,
+                    ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo,
+                    ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryKosaKozaGlave,
+                    ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryBebeDeca,
+
+
+
           ]
 
           const paths = finalList.flatMap((product: any) =>
