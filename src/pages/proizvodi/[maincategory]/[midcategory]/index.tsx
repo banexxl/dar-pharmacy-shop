@@ -95,7 +95,7 @@ export const getStaticPaths = async (context: any) => {
           const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
           const midCategoryListFromMedicinskiAparatiOprema: any = getAllMidCategoriesFromMedicinskiAparatiOprema()
           const midCategoryListFromOrtopedijaPomagala: any = getAllMidCategoriesFromOrtopedijaPomagala()
-          const getCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
+          const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
           const finalList = [
@@ -105,13 +105,13 @@ export const getStaticPaths = async (context: any) => {
                     midCategoryListFromBebiProgram,
                     midCategoryListFromMedicinskiAparatiOprema,
                     midCategoryListFromOrtopedijaPomagala,
-                    getCategoryListFromDezinfekcijaDezinsekcijaMaske,
+                    midCategoryListFromDezinfekcijaDezinsekcijaMaske,
                     midCategoryListFromObucaCarapeUlosci
           ]
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {
-                                        maincategory: product.mainCategory.toString()
+                                        midCategory: product.midCategory.toString()
                               },
                               locale,
                     }))

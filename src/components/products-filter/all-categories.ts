@@ -214,7 +214,7 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/kosti-i-zglobovi/oralni-preparati',
                                                                       },
                                                                       {
-                                                                                id: 'primena-na-kozi',
+                                                                                id: 'kosti-i-zglobovi-primena-na-kozi',
                                                                                 title: 'Primena na koži',
                                                                                 link: '/proizvodi/apoteka/kosti-i-zglobovi/primena-na-kozi',
                                                                       },
@@ -231,7 +231,7 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/mrsavljenje-celulit/oralni-preparati',
                                                                       },
                                                                       {
-                                                                                id: 'primena-na-kozi',
+                                                                                id: 'mrsavljenje-celulit-primena-na-kozi',
                                                                                 title: 'Primena na koži',
                                                                                 link: '/proizvodi/apoteka/mrsavljenje-celulit/primena-na-kozi',
                                                                       },
@@ -275,9 +275,9 @@ export const AccordionPanels = [
                                                             link: '/proizvodi/apoteka/putna-apoteka',
                                                             children: [
                                                                       {
-                                                                                id: 'dehydratacija',
+                                                                                id: 'dehidratacija',
                                                                                 title: 'Dehidratacija',
-                                                                                link: '/proizvodi/apoteka/putna-apoteka/dehydratacija',
+                                                                                link: '/proizvodi/apoteka/putna-apoteka/dehidratacija',
                                                                       },
                                                                       {
                                                                                 id: 'dijareja',
@@ -324,7 +324,7 @@ export const AccordionPanels = [
                                                                       {
                                                                                 id: 'otezan-ovarenje-i-gorusica',
                                                                                 title: 'Otežan varenje i gorušica',
-                                                                                link: '/proizvodi/apoteka/stomacne-tekobe/otezan-ovarenje-i-gorusica',
+                                                                                link: '/proizvodi/apoteka/stomacne-tekobe/otezano-varenje-i-gorusica',
                                                                       },
                                                             ],
                                                   },
@@ -339,7 +339,7 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija/oralni-preparati',
                                                                       },
                                                                       {
-                                                                                id: 'primena-na-kozi',
+                                                                                id: 'zdravo-srce-i-cirkulacija-primena-na-kozi',
                                                                                 title: 'Primena na koži',
                                                                                 link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija/primena-na-kozi',
                                                                       },
@@ -411,31 +411,24 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/vitamini-i-minerali/gvozdje',
                                                                       },
                                                                       {
-                                                                                id: 'ostali-minerali',
-                                                                                title: 'Ostali minerali',
-                                                                                link: '/proizvodi/apoteka/vitamini-i-minerali/ostali-minerali',
-                                                                                children: [
-                                                                                          {
-                                                                                                    id: 'bakar',
-                                                                                                    title: 'Bakar',
-                                                                                                    link: '/proizvodi/apoteka/vitamini-i-minerali/ostali-minerali/bakar',
-                                                                                          },
-                                                                                          {
-                                                                                                    id: 'bor',
-                                                                                                    title: 'Bor',
-                                                                                                    link: '/proizvodi/apoteka/vitamini-i-minerali/ostali-minerali/bor',
-                                                                                          },
-                                                                                          {
-                                                                                                    id: 'fluor',
-                                                                                                    title: 'Fluor',
-                                                                                                    link: '/proizvodi/apoteka/vitamini-i-minerali/ostali-minerali/fluor',
-                                                                                          },
-                                                                                          {
-                                                                                                    id: 'fosfor',
-                                                                                                    title: 'Fosfor',
-                                                                                                    link: '/proizvodi/apoteka/vitamini-i-minerali/ostali-minerali/fosfor',
-                                                                                          },
-                                                                                ],
+                                                                                id: 'bakar',
+                                                                                title: 'Bakar',
+                                                                                link: '/proizvodi/apoteka/vitamini-i-minerali/bakar',
+                                                                      },
+                                                                      {
+                                                                                id: 'bor',
+                                                                                title: 'Bor',
+                                                                                link: '/proizvodi/apoteka/vitamini-i-minerali/bor',
+                                                                      },
+                                                                      {
+                                                                                id: 'fluor',
+                                                                                title: 'Fluor',
+                                                                                link: '/proizvodi/apoteka/vitamini-i-minerali/fluor',
+                                                                      },
+                                                                      {
+                                                                                id: 'fosfor',
+                                                                                title: 'Fosfor',
+                                                                                link: '/proizvodi/apoteka/vitamini-i-minerali/fosfor',
                                                                       },
                                                                       {
                                                                                 id: 'kompleksi-vitamina-i-minerala',
@@ -485,7 +478,7 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/oziljci-i-strije',
                                                                       },
                                                                       {
-                                                                                id: 'hemoroidi',
+                                                                                id: 'preparati-za-primenu-na-kozi-hemoroidi',
                                                                                 title: 'Hemoroidi',
                                                                                 link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/hemoroidi',
                                                                       },
@@ -612,9 +605,9 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/oci-i-usi/tecnosti-i-kutije-za-sociva',
                                                                       },
                                                                       {
-                                                                                id: 'cefovi-za-usi',
+                                                                                id: 'cepovi-za-usi',
                                                                                 title: 'Čepovi za uši',
-                                                                                link: '/proizvodi/apoteka/oci-i-usi/cefovi-za-usi',
+                                                                                link: '/proizvodi/apoteka/oci-i-usi/cepovi-za-usi',
                                                                       },
                                                                       {
                                                                                 id: 'sprejevi',
@@ -730,7 +723,6 @@ export const AccordionPanels = [
                                                             title: 'Dozatori i sekači za lekove',
                                                             link: '/proizvodi/apoteka/dozatori-i-sekaci-za-lekove',
                                                   },
-
                                         ]
                               },
                               {

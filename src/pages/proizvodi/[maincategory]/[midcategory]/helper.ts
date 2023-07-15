@@ -152,7 +152,7 @@ export const getAllMidCategoriesFromMedicinskiAparatiOprema = async () => {
           const productsByMainCategoryMedicinskiAparatiAspiratori: any = await productsServices().getProductsByMainCategoryMidCategory('medicinski-aparati-oprema', 'aspiratori')
           const productsByMainCategoryMedicinskiAparatiInhalatori: any = await productsServices().getProductsByMainCategoryMidCategory('medicinski-aparati-oprema', 'inhalatori')
           const productsByMainCategoryMedicinskiAparatiMerenjePritiska: any = await productsServices().getProductsByMainCategoryMidCategory('medicinski-aparati-oprema', 'merenje-pritiska')
-          const productsByMainCategoryMedicinskiAparatiMerenjeSeceraToplomeri: any = await productsServices().getProductsByMainCategoryMidCategory('medicinski-aparati-oprema', 'toplomeri')
+          const productsByMainCategoryMedicinskiAparatiToplomeri: any = await productsServices().getProductsByMainCategoryMidCategory('medicinski-aparati-oprema', 'toplomeri')
           const productsByMainCategoryMedicinskiAparatiStetoskopi: any = await productsServices().getProductsByMainCategoryMidCategory('medicinski-aparati-oprema', 'stetoskopi')
 
           return [
@@ -163,7 +163,7 @@ export const getAllMidCategoriesFromMedicinskiAparatiOprema = async () => {
                     ...productsByMainCategoryMedicinskiAparatiAspiratori,
                     ...productsByMainCategoryMedicinskiAparatiInhalatori,
                     ...productsByMainCategoryMedicinskiAparatiMerenjePritiska,
-                    ...productsByMainCategoryMedicinskiAparatiMerenjeSeceraToplomeri,
+                    ...productsByMainCategoryMedicinskiAparatiToplomeri,
                     ...productsByMainCategoryMedicinskiAparatiStetoskopi
           ]
 }
