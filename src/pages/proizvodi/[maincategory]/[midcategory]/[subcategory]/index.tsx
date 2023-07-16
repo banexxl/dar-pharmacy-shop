@@ -114,23 +114,25 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByMainCategoryApotekaAndMidCategoryAlergija: any = getAllSubCategoriesFromApotekaAlergije()
-          const productsByMainCategoryApotekaAndMidCategoryAnemija: any = getAllSubCategoriesFromApotekaAnemije()
-          const productsByMainCategoryApotekaAndMidCategoryBol: any = getAllSubCategoriesFromApotekaBol()
-          const productsByMainCategoryApotekaAndMidCategoryHemoroidi: any = getAllSubCategoriesFromApotekaHemoroidi()
-          const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
-          const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
-          const productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti: any = getAllSubCategoriesFromApotekaKosaKozaNokti()
-          const productsByMainCategoryApotekaAndMidCategoryKosti: any = getAllSubCategoriesFromApotekaKostiZglobovi()
-          const productsByMainCategoryApotekaAndMidCategoryMrsavljenje: any = getAllSubCategoriesFromApotekaMrsavljenjeCelulit()
-          const productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana: any = getAllSubCategoriesFromApotekaPosebnaIshrana()
-          const productsByMainCategoryApotekaAndMidCategoryPutnaApoteka: any = getAllSubCategoriesFromApotekaPutnaApoteka()
-          const productsByMainCategoryApotekaAndMidCategoryStomacneTegobe: any = getAllSubCategoriesFromApotekaStomacneTegobe()
-          const productsByMainCategoryApotekaAndMidCategoryZdravoSrce: any = getAllSubCategoriesFromApotekaZdravoSrceCirkulacija()
-          const productsByMainCategoryApotekaAndMidCategoryVitamini: any = getAllSubCategoriesFromApotekaVitaminiMinerali()
-          const productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu: any = getAllSubCategoriesFromApotekaPreparatiZaKozu()
-          const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
-          const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
+          let productsByMainCategoryApotekaAndMidCategoryAlergija: any = []
+          getAllSubCategoriesFromApotekaAlergije().then((data: any) => productsByMainCategoryApotekaAndMidCategoryAlergija = data)
+          let productsByMainCategoryApotekaAndMidCategoryAnemija: any = []
+          getAllSubCategoriesFromApotekaAnemije().then((data) => productsByMainCategoryApotekaAndMidCategoryAnemija = data)
+          // const productsByMainCategoryApotekaAndMidCategoryBol: any = getAllSubCategoriesFromApotekaBol()
+          // const productsByMainCategoryApotekaAndMidCategoryHemoroidi: any = getAllSubCategoriesFromApotekaHemoroidi()
+          // const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
+          // const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
+          // const productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti: any = getAllSubCategoriesFromApotekaKosaKozaNokti()
+          // const productsByMainCategoryApotekaAndMidCategoryKosti: any = getAllSubCategoriesFromApotekaKostiZglobovi()
+          // const productsByMainCategoryApotekaAndMidCategoryMrsavljenje: any = getAllSubCategoriesFromApotekaMrsavljenjeCelulit()
+          // const productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana: any = getAllSubCategoriesFromApotekaPosebnaIshrana()
+          // const productsByMainCategoryApotekaAndMidCategoryPutnaApoteka: any = getAllSubCategoriesFromApotekaPutnaApoteka()
+          // const productsByMainCategoryApotekaAndMidCategoryStomacneTegobe: any = getAllSubCategoriesFromApotekaStomacneTegobe()
+          // const productsByMainCategoryApotekaAndMidCategoryZdravoSrce: any = getAllSubCategoriesFromApotekaZdravoSrceCirkulacija()
+          // const productsByMainCategoryApotekaAndMidCategoryVitamini: any = getAllSubCategoriesFromApotekaVitaminiMinerali()
+          // const productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu: any = getAllSubCategoriesFromApotekaPreparatiZaKozu()
+          // const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
+          // const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
 
           console.log(productsByMainCategoryApotekaAndMidCategoryAlergija);
 
@@ -210,21 +212,21 @@ export const getStaticPaths = async (context: any) => {
 
                     ...productsByMainCategoryApotekaAndMidCategoryAlergija,
                     ...productsByMainCategoryApotekaAndMidCategoryAnemija,
-                    ...productsByMainCategoryApotekaAndMidCategoryBol,
-                    ...productsByMainCategoryApotekaAndMidCategoryHemoroidi,
-                    ...productsByMainCategoryApotekaAndMidCategoryHolesterol,
-                    ...productsByMainCategoryApotekaAndMidCategoryImunitet,
-                    ...productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti,
-                    ...productsByMainCategoryApotekaAndMidCategoryKosti,
-                    ...productsByMainCategoryApotekaAndMidCategoryMrsavljenje,
-                    ...productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana,
-                    ...productsByMainCategoryApotekaAndMidCategoryPutnaApoteka,
-                    ...productsByMainCategoryApotekaAndMidCategoryStomacneTegobe,
-                    ...productsByMainCategoryApotekaAndMidCategoryZdravoSrce,
-                    ...productsByMainCategoryApotekaAndMidCategoryVitamini,
-                    ...productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu,
-                    ...productsByMainCategoryApotekaAndMidCategoryOciUsi,
-                    ...productsByMainCategoryApotekaAndMidCategoryPrvaPomoc,
+                    // ...productsByMainCategoryApotekaAndMidCategoryBol,
+                    // ...productsByMainCategoryApotekaAndMidCategoryHemoroidi,
+                    // ...productsByMainCategoryApotekaAndMidCategoryHolesterol,
+                    // ...productsByMainCategoryApotekaAndMidCategoryImunitet,
+                    // ...productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti,
+                    // ...productsByMainCategoryApotekaAndMidCategoryKosti,
+                    // ...productsByMainCategoryApotekaAndMidCategoryMrsavljenje,
+                    // ...productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana,
+                    // ...productsByMainCategoryApotekaAndMidCategoryPutnaApoteka,
+                    // ...productsByMainCategoryApotekaAndMidCategoryStomacneTegobe,
+                    // ...productsByMainCategoryApotekaAndMidCategoryZdravoSrce,
+                    // ...productsByMainCategoryApotekaAndMidCategoryVitamini,
+                    // ...productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu,
+                    // ...productsByMainCategoryApotekaAndMidCategoryOciUsi,
+                    // ...productsByMainCategoryApotekaAndMidCategoryPrvaPomoc,
           ]
 
           const paths = finalList.flatMap((product: any) =>
