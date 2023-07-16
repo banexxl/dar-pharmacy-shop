@@ -93,7 +93,12 @@ export async function getStaticProps({ locale }: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          const midCategoryListFromApoteka: any = getAllMidCategoriesFromApoteka()
+          let midCategoryListFromApoteka: any = []
+          getAllMidCategoriesFromApoteka().then((data) => {
+                    midCategoryListFromApoteka = data
+          })
+          console.log(midCategoryListFromApoteka);
+
           // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
           // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
           // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
