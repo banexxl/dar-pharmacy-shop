@@ -132,6 +132,8 @@ export const getStaticPaths = async (context: any) => {
           const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
           const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
 
+          console.log(productsByMainCategoryApotekaAndMidCategoryAlergija);
+
           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice: any = getAllSubCategoriesFromPrirodnaKozmetikaLice()
           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo: any = getAllSubCategoriesFromPrirodnaKozmetikaTelo()
           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave()
