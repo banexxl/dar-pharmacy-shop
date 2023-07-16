@@ -16,14 +16,14 @@ const transformToMuiAccordion = (data: any) => {
                               return (
                                         <Accordion key={id}>
                                                   <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                            <Link href={link}>
-                                                                      <Typography>{title}</Typography>
-                                                            </Link>
+                                                            {/* <Link href={link}> */}
+                                                            <Typography>{title}</Typography>
+                                                            {/* </Link> */}
                                                   </AccordionSummary>
                                                   <AccordionDetails>
-                                                            <Link href={link}>
-                                                                      {transformToMuiAccordion(children)}
-                                                            </Link>
+                                                            {/* <Link href={link}> */}
+                                                            {transformToMuiAccordion(children)}
+                                                            {/* </Link> */}
                                                   </AccordionDetails>
                                         </Accordion>
                               );
@@ -32,13 +32,13 @@ const transformToMuiAccordion = (data: any) => {
                     return (
                               <Accordion key={id}>
                                         <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                  <Link href={link}>
-                                                            <Typography>{title}</Typography>
-                                                  </Link>
+                                                  {/* <Link href={link}> */}
+                                                  <Typography>{title}</Typography>
+                                                  {/* </Link> */}
                                         </AccordionSummary>
                                         <AccordionDetails>
                                                   <Typography>
-                                                            <Link href={link}>{title}</Link>
+                                                            {/* <Link href={link}>{title}</Link> */}
                                                   </Typography>
                                         </AccordionDetails>
                               </Accordion>

@@ -15,7 +15,11 @@ import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { getAllMidCategoriesFromApoteka, getAllMidCategoriesFromBebiProgram, getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske, getAllMidCategoriesFromLepotaINega, getAllMidCategoriesFromMedicinskiAparatiOprema, getAllMidCategoriesFromObucaCarapeUlosci, getAllMidCategoriesFromOrtopedijaPomagala, getAllMidCategoriesFromPrirodnaKozmetika } from './helper';
+import {
+          getAllMidCategoriesFromApoteka, getAllMidCategoriesFromBebiProgram, getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske,
+          getAllMidCategoriesFromLepotaINega, getAllMidCategoriesFromMedicinskiAparatiOprema, getAllMidCategoriesFromObucaCarapeUlosci,
+          getAllMidCategoriesFromOrtopedijaPomagala, getAllMidCategoriesFromPrirodnaKozmetika
+} from '../../../../services/product-mid-category-helper.services';
 
 export default function MainCategoryPage(props: any) {
 
@@ -99,15 +103,19 @@ export const getStaticPaths = async (context: any) => {
           const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
           const finalList = [
-                    midCategoryListFromApoteka,
-                    midCategoryListFromLepotaINega,
-                    midCategoryListFromPrirodnaKozmetika,
-                    midCategoryListFromBebiProgram,
-                    midCategoryListFromMedicinskiAparatiOprema,
-                    midCategoryListFromOrtopedijaPomagala,
-                    midCategoryListFromDezinfekcijaDezinsekcijaMaske,
-                    midCategoryListFromObucaCarapeUlosci
+                    ...midCategoryListFromApoteka,
+                    ...midCategoryListFromLepotaINega,
+                    ...midCategoryListFromPrirodnaKozmetika,
+                    ...midCategoryListFromBebiProgram,
+                    ...midCategoryListFromMedicinskiAparatiOprema,
+                    ...midCategoryListFromOrtopedijaPomagala,
+                    ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
+                    ...midCategoryListFromObucaCarapeUlosci
           ]
+
+          console.log(finalList);
+
+
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {

@@ -15,7 +15,29 @@ import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { getAllSubCategoriesFromApotekaAlergije, getAllSubCategoriesFromApotekaAnemije, getAllSubCategoriesFromApotekaBol, getAllSubCategoriesFromApotekaHemoroidi, getAllSubCategoriesFromApotekaHolesterol, getAllSubCategoriesFromApotekaImunitet, getAllSubCategoriesFromApotekaKosaKozaNokti, getAllSubCategoriesFromApotekaKostiZglobovi, getAllSubCategoriesFromApotekaMrsavljenjeCelulit, getAllSubCategoriesFromApotekaOciUsi, getAllSubCategoriesFromApotekaPosebnaIshrana, getAllSubCategoriesFromApotekaPreparatiZaKozu, getAllSubCategoriesFromApotekaPrvaPomoc, getAllSubCategoriesFromApotekaPutnaApoteka, getAllSubCategoriesFromApotekaStomacneTegobe, getAllSubCategoriesFromApotekaVitaminiMinerali, getAllSubCategoriesFromApotekaZdravoSrceCirkulacija, getAllSubCategoriesFromBebiProgramAparati, getAllSubCategoriesFromBebiProgramBebiApoteka, getAllSubCategoriesFromBebiProgramBebiKozmetika, getAllSubCategoriesFromBebiProgramBebiOprema, getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke, getAllSubCategoriesFromBebiProgramHrana, getAllSubCategoriesFromBebiProgramPelene, getAllSubCategoriesFromBebiProgramTrudnice, getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice, getAllSubCategoriesFromLepotaNegaBebe, getAllSubCategoriesFromLepotaNegaIntimnaNega, getAllSubCategoriesFromLepotaNegaKosaKozaGlave, getAllSubCategoriesFromLepotaNegaLice, getAllSubCategoriesFromLepotaNegaOralnaHigijena, getAllSubCategoriesFromLepotaNegaPriborZaNegu, getAllSubCategoriesFromLepotaNegaRuke, getAllSubCategoriesFromLepotaNegaStopala, getAllSubCategoriesFromLepotaNegaTelo, getAllSubCategoriesFromLepotaNegaZastitaOdSunca, getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera, getAllSubCategoriesFromObucaCarapeUlosciDeca, getAllSubCategoriesFromObucaCarapeUlosciOdrasli, getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala, getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca, getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave, getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo } from './helper';
+import {
+          getAllSubCategoriesFromApotekaAlergije, getAllSubCategoriesFromApotekaAnemije, getAllSubCategoriesFromApotekaBol,
+          getAllSubCategoriesFromApotekaHemoroidi, getAllSubCategoriesFromApotekaHolesterol, getAllSubCategoriesFromApotekaImunitet,
+          getAllSubCategoriesFromApotekaKosaKozaNokti, getAllSubCategoriesFromApotekaKostiZglobovi,
+          getAllSubCategoriesFromApotekaMrsavljenjeCelulit, getAllSubCategoriesFromApotekaOciUsi, getAllSubCategoriesFromApotekaPosebnaIshrana,
+          getAllSubCategoriesFromApotekaPreparatiZaKozu, getAllSubCategoriesFromApotekaPrvaPomoc,
+          getAllSubCategoriesFromApotekaPutnaApoteka, getAllSubCategoriesFromApotekaStomacneTegobe,
+          getAllSubCategoriesFromApotekaVitaminiMinerali, getAllSubCategoriesFromApotekaZdravoSrceCirkulacija,
+          getAllSubCategoriesFromBebiProgramAparati, getAllSubCategoriesFromBebiProgramBebiApoteka,
+          getAllSubCategoriesFromBebiProgramBebiKozmetika, getAllSubCategoriesFromBebiProgramBebiOprema,
+          getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke, getAllSubCategoriesFromBebiProgramHrana,
+          getAllSubCategoriesFromBebiProgramPelene, getAllSubCategoriesFromBebiProgramTrudnice,
+          getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice, getAllSubCategoriesFromLepotaNegaBebe,
+          getAllSubCategoriesFromLepotaNegaIntimnaNega, getAllSubCategoriesFromLepotaNegaKosaKozaGlave,
+          getAllSubCategoriesFromLepotaNegaLice, getAllSubCategoriesFromLepotaNegaOralnaHigijena,
+          getAllSubCategoriesFromLepotaNegaPriborZaNegu, getAllSubCategoriesFromLepotaNegaRuke, getAllSubCategoriesFromLepotaNegaStopala,
+          getAllSubCategoriesFromLepotaNegaTelo, getAllSubCategoriesFromLepotaNegaZastitaOdSunca,
+          getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska,
+          getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera, getAllSubCategoriesFromObucaCarapeUlosciDeca,
+          getAllSubCategoriesFromObucaCarapeUlosciOdrasli, getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala,
+          getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca, getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave,
+          getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo
+} from '../../../../../services/product-sub-category-helper.services';
 
 export default function MainCategoryPage(props: any) {
 
