@@ -29,7 +29,7 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
           transition: '0.3s',
           zIndex: '1000',
           //backgroundColor: Colors.secondary,
-          opacity: '0.8'
+          //opacity: '0.8'
 })) as typeof Box
 
 export const AppbarTitle = styled(Typography)(({ theme }) => ({
