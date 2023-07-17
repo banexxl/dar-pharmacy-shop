@@ -22,7 +22,7 @@ function ProductDetails(product: IProduct) {
                                         <ProductImage src={product.imageURL} />
                               </Product>
                               <ProductDetailInfoWrapper>
-                                        <Typography >{t('product.sku')}: </Typography>
+                                        <Typography >{t('product.sku')}: {product._id.slice(-8)}</Typography>
                                         <Typography >{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                         <Typography sx={{ lineHeight: 2 }} variant="h4">
                                                   {product.name}
