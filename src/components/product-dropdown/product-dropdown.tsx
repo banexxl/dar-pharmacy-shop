@@ -14,6 +14,7 @@ import { useMediaQuery } from "@mui/material";
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/productdetails";
 import { FC } from "react";
 import ICartItem from "@/interfaces/cart/cart.interface";
+import { useTranslation } from "next-i18next";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -29,6 +30,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+          const { t } = useTranslation('common')
+
           return (
                     <Dialog
                               TransitionComponent={SlideTransition}
@@ -54,26 +57,26 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               </DialogTitle>
 
                               <DialogContent>
-                                        <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
+                                        <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                                                   <Product sx={{ mr: 4 }}>
                                                             <ProductImage src={product.imageURL} />
                                                   </Product>
                                                   <ProductDetailInfoWrapper>
-                                                            <Typography >SKU: ?</Typography>
-                                                            <Typography >Availability: {product.availableStock} in stock</Typography>
+                                                            <Typography >{t('product.sku')}: {product._id.slice(-8)}</Typography>
+                                                            <Typography >{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                                             <Typography sx={{ lineHeight: 2 }} variant="h4">
                                                                       {product.name}
                                                             </Typography>
                                                             <Typography variant="h5">
-                                                                      Opis:
+                                                                      {t('product.description')}
                                                             </Typography>
                                                             {product.description}
                                                             <Typography variant="h5">
-                                                                      Instrukcije:
+                                                                      {t('product.instructions')}
                                                             </Typography>
                                                             {product.instructions}
                                                             <Typography variant="h5">
-                                                                      Napomena:
+                                                                      {t('product.warning')}
                                                             </Typography>
                                                             {product.warning}
                                                             <Typography>
@@ -84,7 +87,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       alignItems="center"
                                                                       justifyContent="space-between"
                                                             >
-                                                                      <Button variant="contained">Add to Cart</Button>
+                                                                      <Button variant="contained">{t('product.add-to-cart')}</Button>
                                                             </Box>
                                                             <Box
                                                                       display="flex"
@@ -92,7 +95,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       sx={{ mt: 4, color: Colors.light }}
                                                             >
                                                                       <FavoriteIcon sx={{ mr: 2 }} />
-                                                                      Add to wishlist
+                                                                      {t('product.add-to-wishlist')}
                                                             </Box>
                                                             <Box
                                                                       sx={{
