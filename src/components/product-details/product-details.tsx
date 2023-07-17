@@ -13,6 +13,7 @@ import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch } from 'react-redux';
 import { addToWishList } from '@/store/wishlist/wishlist.slice';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { InitialLocalStorageStore, LocalStorageStore } from '@/interfaces/local-storage';
 
 function ProductDetails(product: IProduct) {
 
@@ -47,8 +48,8 @@ function ProductDetails(product: IProduct) {
                     }
           }
 
-          const isWishListed = useLocalStorage('persist:root', {})
-          console.log(isWishListed);
+          const isWishListed: any = useLocalStorage('wishListReducer', InitialLocalStorageStore)
+          console.log(isWishListed[0].wishListReducer)
 
 
           return (

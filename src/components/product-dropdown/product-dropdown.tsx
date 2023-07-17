@@ -18,8 +18,11 @@ import ICartItem from "@/interfaces/cart/cart.interface";
 import { useTranslation } from "next-i18next";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
-import { addToWishList } from "@/store/wishlist/wishlist.slice";
+import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { LocalStorageStore } from "@/interfaces/local-storage";
+import { log } from "console";
+import IProduct from "@/interfaces/product/product.interface";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -39,6 +42,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
           const dispatch = useDispatch()
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
+          const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
 
           const callCartAlert = () => {
                     setAddedToCartAlert(true)
@@ -63,8 +67,26 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                     }
           }
 
-          const isWishListed = useLocalStorage('persist:root', {})
-          console.log(isWishListed);
+          const callRemovedFromWishlistAlert = () => {
+                    setRemovedFromWishlistAlert(true)
+                    const timeId = setTimeout(() => {
+                              setRemovedFromWishlistAlert(false)
+                    }, 1500)
+
+                    return () => {
+                              clearTimeout(timeId)
+                    }
+          }
+
+
+
+          const localStorage: any = useLocalStorage('persist:root', {})
+          const localStorageReducers: any = localStorage[0]
+          const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
+          const wishListProductID = localStorageWishList.find((el: IProduct) => {
+                    return el._id == product._id
+          })
+
 
           return (
                     <Dialog
@@ -128,8 +150,12 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       alignItems="center"
                                                                       sx={{ mt: 4, color: Colors.light }}
                                                             >
-
-                                                                      <FavoriteIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
+                                                                      {
+                                                                                wishListProductID === null || wishListProductID === undefined ?
+                                                                                          <FavoriteBorderIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
+                                                                                          :
+                                                                                          <FavoriteIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
+                                                                      }
                                                                       {t('product.add-to-wishlist')}
                                                             </Box>
                                                             <Box
@@ -152,6 +178,11 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                         {addedToWishlistAlert && (
                                                   <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                                                             {t('product.added-to-wishlist')}
+                                                  </Alert>
+                                        )}
+                                        {removedFromWishlistAlert && (
+                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                            {t('product.removed-from-wishlist')}
                                                   </Alert>
                                         )}
                               </DialogContent>
