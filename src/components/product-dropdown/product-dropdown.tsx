@@ -9,12 +9,16 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/productdetails";
 import { FC } from "react";
 import ICartItem from "@/interfaces/cart/cart.interface";
 import { useTranslation } from "next-i18next";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cart/cart.slice";
+import { addToWishList } from "@/store/wishlist/wishlist.slice";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -31,6 +35,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
           const { t } = useTranslation('common')
+          const dispatch = useDispatch()
 
           return (
                     <Dialog
@@ -87,14 +92,15 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       alignItems="center"
                                                                       justifyContent="space-between"
                                                             >
-                                                                      <Button variant="contained">{t('product.add-to-cart')}</Button>
+                                                                      <Button variant="contained" onClick={() => dispatch(addToCart(product))}>{t('product.add-to-cart')}</Button>
                                                             </Box>
                                                             <Box
                                                                       display="flex"
                                                                       alignItems="center"
                                                                       sx={{ mt: 4, color: Colors.light }}
                                                             >
-                                                                      <FavoriteIcon sx={{ mr: 2 }} />
+
+                                                                      <FavoriteIcon sx={{ mr: 2 }} onClick={() => dispatch(addToWishList(product))} />
                                                                       {t('product.add-to-wishlist')}
                                                             </Box>
                                                             <Box
