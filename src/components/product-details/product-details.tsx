@@ -8,11 +8,13 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IProduct from '@/interfaces/product/product.interface';
 import React from 'react'
+import { useTranslation } from 'next-i18next';
 
 function ProductDetails(product: IProduct) {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+          const { t } = useTranslation('common')
 
           return (
                     <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
@@ -20,21 +22,21 @@ function ProductDetails(product: IProduct) {
                                         <ProductImage src={product.imageURL} />
                               </Product>
                               <ProductDetailInfoWrapper>
-                                        <Typography >SKU: ?</Typography>
-                                        <Typography >Availability: {product.availableStock} in stock</Typography>
+                                        <Typography >{t('product.sku')}: </Typography>
+                                        <Typography >{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                         <Typography sx={{ lineHeight: 2 }} variant="h4">
                                                   {product.name}
                                         </Typography>
                                         <Typography variant="h5">
-                                                  Opis:
+                                                  {t('product.description')}
                                         </Typography>
                                         {product.description}
                                         <Typography variant="h5">
-                                                  Instrukcije:
+                                                  {t('product.instructions')}
                                         </Typography>
                                         {product.instructions}
                                         <Typography variant="h5">
-                                                  Napomena:
+                                                  {t('product.warning')}
                                         </Typography>
                                         {product.warning}
                                         <Typography>
@@ -45,7 +47,7 @@ function ProductDetails(product: IProduct) {
                                                   alignItems="center"
                                                   justifyContent="space-between"
                                         >
-                                                  <Button variant="contained">Add to Cart</Button>
+                                                  <Button variant="contained">{t('product.add-to-cart')}</Button>
                                         </Box>
                                         <Box
                                                   display="flex"
@@ -53,7 +55,7 @@ function ProductDetails(product: IProduct) {
                                                   sx={{ mt: 4, color: Colors.light }}
                                         >
                                                   <FavoriteIcon sx={{ mr: 2 }} />
-                                                  Add to wishlist
+                                                  {t('product.add-to-wishlist')}
                                         </Box>
                                         <Box
                                                   sx={{

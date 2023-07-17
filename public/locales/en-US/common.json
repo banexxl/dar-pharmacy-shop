@@ -401,7 +401,17 @@
           },
           "product": {
                     "added-to-cart": "Item successfuly added to cart!",
-                    "added-to-wishlist": "Item successfuly added to wishlist!"
+                    "added-to-wishlist": "Item successfuly added to wishlist!",
+                    "add-to-wishlist": "Add to wishlist",
+                    "add-to-cart": "Add to cart", 
+                    "share-product": "Share",
+                    "details": "Details",
+                    "sku": "SKU",
+                    "availability": "Available",
+                    "in-stock": "in stock",
+                    "description": "Description",
+                    "instructions": "Instructions",
+                    "warning": "Warning"
           },
           "footer": {
                     "information": "Information",

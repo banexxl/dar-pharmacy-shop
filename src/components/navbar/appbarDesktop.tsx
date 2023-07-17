@@ -44,7 +44,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
 
           const getHeight = () => {
                     if (isScrolled) {
-                              return '40px';
+                              return '80px';
                     } else {
                               return '90px';
                     }

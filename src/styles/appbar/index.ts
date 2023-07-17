@@ -18,15 +18,18 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
                     maxWidth: '1000px',
           },
           [theme.breakpoints.up('xl')]: {
-                    minWidth: '1100px',
+                    minWidth: '77%',
                     maxWidth: '1200px',
+                    height: '100px',
           },
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           position: 'fixed',
           transition: '0.3s',
-          zIndex: '1000'
+          zIndex: '1000',
+          backgroundColor: Colors.secondary,
+          opacity: '0.8'
 })) as typeof Box
 
 export const AppbarTitle = styled(Typography)(({ theme }) => ({

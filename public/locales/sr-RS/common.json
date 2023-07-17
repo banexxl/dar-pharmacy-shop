@@ -403,7 +403,17 @@
           },
           "product": {
                     "added-to-cart": "Proizvod uspešno dodat u korpu!",
-                    "added-to-wishlist": "Proizvod uspešno dodat u omiljene proizvode!"
+                    "added-to-wishlist": "Proizvod uspešno dodat u omiljene proizvode!",
+                    "add-to-wishlist": "Dodaj u omiljene",
+                    "add-to-cart": "Dodaj u korpu", 
+                    "share-product": "Podeli",
+                    "details": "Detalji",
+                    "sku": "Šifra",
+                    "availability": "Dostupno",
+                    "in-stock": "na stanju",
+                    "description": "Opis",
+                    "instructions": "Instrukcije",
+                    "warning": "Upozorenje"
           },
           "footer": {
                     "information": "Informacije",

@@ -95,7 +95,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible}>
                               <ProductImage src={product.imageURL} />
                               <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
-                                        <Tooltip placement="left" title="Add to wishlist">
+                                        <Tooltip placement="left" title={t("product.add-to-wishlist")}>
                                                   <FavoriteIcon />
                                         </Tooltip>
                               </ProductFavButton>
@@ -111,7 +111,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                               <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
                                                   <ProductActionButton>
-                                                            <Tooltip placement="left" title="share this product">
+                                                            <Tooltip placement="left" title={t("product.share-product")}>
                                                                       <ShareIcon color="primary" />
                                                             </Tooltip>
                                                   </ProductActionButton>
