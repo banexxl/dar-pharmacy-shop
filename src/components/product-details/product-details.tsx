@@ -22,14 +22,11 @@ function ProductDetails(product: IProduct) {
           const dispatch = useDispatch()
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-          const [loading, setLoading] = useState(false)
 
           const callCartAlert = () => {
                     setAddedToCartAlert(true)
-                    setLoading(true)
                     const timeId = setTimeout(() => {
                               // After X seconds set the show value to false
-                              setLoading(false)
                               setAddedToCartAlert(false)
                     }, 1500)
 
@@ -37,6 +34,10 @@ function ProductDetails(product: IProduct) {
                               clearTimeout(timeId)
                     }
           }
+
+          const isWishListed = useLocalStorage('persist:root', {})
+          console.log(isWishListed);
+
 
           return (
                     <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>

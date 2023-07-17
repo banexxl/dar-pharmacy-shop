@@ -87,6 +87,7 @@ const theme: Theme = createTheme({
                                                   '&:hover': {
                                                             background: Colors.secondary
                                                   },
+                                                  cursor: 'pointer'
                                         }
                               }
                     },

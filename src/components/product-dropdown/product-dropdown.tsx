@@ -19,6 +19,7 @@ import { useTranslation } from "next-i18next";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -38,14 +39,11 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
           const dispatch = useDispatch()
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-          const [loading, setLoading] = useState(false)
 
           const callCartAlert = () => {
                     setAddedToCartAlert(true)
-                    setLoading(true)
                     const timeId = setTimeout(() => {
                               // After X seconds set the show value to false
-                              setLoading(false)
                               setAddedToCartAlert(false)
                     }, 1500)
 
@@ -54,6 +52,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                     }
           }
 
+          const isWishListed = useLocalStorage('persist:root', {})
+          console.log(isWishListed);
 
           return (
                     <Dialog
@@ -118,7 +118,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       sx={{ mt: 4, color: Colors.light }}
                                                             >
 
-                                                                      <FavoriteIcon sx={{ mr: 2 }} onClick={() => dispatch(addToWishList(product))} />
+                                                                      <FavoriteIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => dispatch(addToWishList(product))} />
                                                                       {t('product.add-to-wishlist')}
                                                             </Box>
                                                             <Box
