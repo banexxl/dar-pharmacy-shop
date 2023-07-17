@@ -52,6 +52,17 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                     }
           }
 
+          const callWishlistAlert = () => {
+                    setAddedToWishlistAlert(true)
+                    const timeId = setTimeout(() => {
+                              setAddedToWishlistAlert(false)
+                    }, 1500)
+
+                    return () => {
+                              clearTimeout(timeId)
+                    }
+          }
+
           const isWishListed = useLocalStorage('persist:root', {})
           console.log(isWishListed);
 
@@ -118,7 +129,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       sx={{ mt: 4, color: Colors.light }}
                                                             >
 
-                                                                      <FavoriteIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => dispatch(addToWishList(product))} />
+                                                                      <FavoriteIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
                                                                       {t('product.add-to-wishlist')}
                                                             </Box>
                                                             <Box

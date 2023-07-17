@@ -35,6 +35,18 @@ function ProductDetails(product: IProduct) {
                     }
           }
 
+          const callWishlistAlert = () => {
+                    setAddedToWishlistAlert(true)
+                    const timeId = setTimeout(() => {
+                              // After X seconds set the show value to false
+                              setAddedToWishlistAlert(false)
+                    }, 1500)
+
+                    return () => {
+                              clearTimeout(timeId)
+                    }
+          }
+
           const isWishListed = useLocalStorage('persist:root', {})
           console.log(isWishListed);
 
@@ -80,7 +92,7 @@ function ProductDetails(product: IProduct) {
                                                   {
 
                                                   }
-                                                  <FavoriteIcon sx={{ mr: 2 }} onClick={() => dispatch(addToWishList(product))} />
+                                                  <FavoriteIcon sx={{ mr: 2 }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
                                                   {t('product.add-to-wishlist')}
                                         </Box>
                                         <Box
