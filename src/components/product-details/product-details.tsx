@@ -1,13 +1,13 @@
 import { Product, ProductImage } from '@/styles/productdetails';
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
 import { Colors } from '@/styles/theme';
-import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Alert, Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IProduct from '@/interfaces/product/product.interface';
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'next-i18next';
 import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch } from 'react-redux';
@@ -19,6 +19,23 @@ function ProductDetails(product: IProduct) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
           const dispatch = useDispatch()
+          const [addedToCartAlert, setAddedToCartAlert] = useState(false)
+          const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
+          const [loading, setLoading] = useState(false)
+
+          const callCartAlert = () => {
+                    setAddedToCartAlert(true)
+                    setLoading(true)
+                    const timeId = setTimeout(() => {
+                              // After X seconds set the show value to false
+                              setLoading(false)
+                              setAddedToCartAlert(false)
+                    }, 1500)
+
+                    return () => {
+                              clearTimeout(timeId)
+                    }
+          }
 
           return (
                     <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
@@ -72,6 +89,16 @@ function ProductDetails(product: IProduct) {
                                                   <InstagramIcon sx={{ pl: 2 }} />
                                         </Box>
                               </ProductDetailInfoWrapper>
+                              {addedToCartAlert && (
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                  {t('product.added-to-cart')}
+                                        </Alert>
+                              )}
+                              {addedToWishlistAlert && (
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                  {t('product.added-to-wishlist')}
+                                        </Alert>
+                              )}
                     </ProductDetailWrapper>
           )
 }
