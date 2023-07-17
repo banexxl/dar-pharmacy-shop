@@ -13,7 +13,7 @@ import { useTranslation } from 'next-i18next';
 function ProductDetails(product: IProduct) {
 
           const theme = useTheme();
-          const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+          const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
 
           return (
