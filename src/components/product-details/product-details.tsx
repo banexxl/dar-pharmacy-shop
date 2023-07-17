@@ -12,6 +12,7 @@ import { useTranslation } from 'next-i18next';
 import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch } from 'react-redux';
 import { addToWishList } from '@/store/wishlist/wishlist.slice';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 function ProductDetails(product: IProduct) {
 
@@ -68,13 +69,16 @@ function ProductDetails(product: IProduct) {
                                                   alignItems="center"
                                                   justifyContent="space-between"
                                         >
-                                                  <Button variant="contained" onClick={() => dispatch(addToCart(product))}>{t('product.add-to-cart')}</Button>
+                                                  <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>{t('product.add-to-cart')}</Button>
                                         </Box>
                                         <Box
                                                   display="flex"
                                                   alignItems="center"
                                                   sx={{ mt: 4, color: Colors.light }}
                                         >
+                                                  {
+
+                                                  }
                                                   <FavoriteIcon sx={{ mr: 2 }} onClick={() => dispatch(addToWishList(product))} />
                                                   {t('product.add-to-wishlist')}
                                         </Box>
@@ -88,17 +92,17 @@ function ProductDetails(product: IProduct) {
                                                   <TwitterIcon sx={{ pl: 2 }} />
                                                   <InstagramIcon sx={{ pl: 2 }} />
                                         </Box>
+                                        {addedToCartAlert && (
+                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                            {t('product.added-to-cart')}
+                                                  </Alert>
+                                        )}
+                                        {addedToWishlistAlert && (
+                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                            {t('product.added-to-wishlist')}
+                                                  </Alert>
+                                        )}
                               </ProductDetailInfoWrapper>
-                              {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-cart')}
-                                        </Alert>
-                              )}
-                              {addedToWishlistAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-wishlist')}
-                                        </Alert>
-                              )}
                     </ProductDetailWrapper>
           )
 }

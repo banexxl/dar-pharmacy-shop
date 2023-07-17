@@ -110,7 +110,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       alignItems="center"
                                                                       justifyContent="space-between"
                                                             >
-                                                                      <Button variant="contained" onClick={() => dispatch(addToCart(product))}>{t('product.add-to-cart')}</Button>
+                                                                      <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>{t('product.add-to-cart')}</Button>
                                                             </Box>
                                                             <Box
                                                                       display="flex"
@@ -133,17 +133,17 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                             </Box>
                                                   </ProductDetailInfoWrapper>
                                         </ProductDetailWrapper>
+                                        {addedToCartAlert && (
+                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                            {t('product.added-to-cart')}
+                                                  </Alert>
+                                        )}
+                                        {addedToWishlistAlert && (
+                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                                            {t('product.added-to-wishlist')}
+                                                  </Alert>
+                                        )}
                               </DialogContent>
-                              {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-cart')}
-                                        </Alert>
-                              )}
-                              {addedToWishlistAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-wishlist')}
-                                        </Alert>
-                              )}
                     </Dialog>
           );
 }
