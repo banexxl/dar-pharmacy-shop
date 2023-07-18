@@ -69,7 +69,6 @@ function ProductDetails(product: IProduct) {
                     return el._id == product._id
           })
 
-
           return (
                     <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                               <Product sx={{ mr: 4 }}>
