@@ -7,25 +7,13 @@ import { textPopUpTop } from "../animation";
 
 export const AppbarContainer = styled(Box)(({ theme }: any) => ({
           [theme.breakpoints.down('md')]: {
-                    marginLeft: '20%'
+                    marginLeft: '10%'
           },
-          [theme.breakpoints.up('md')]: {
-                    minWidth: '700px',
-                    maxWidth: '900px',
-          },
-          [theme.breakpoints.up('lg')]: {
-                    minWidth: '900px',
-                    maxWidth: '1000px',
-          },
-          [theme.breakpoints.up('xl')]: {
-                    minWidth: '77%',
-                    maxWidth: '1200px',
-                    height: '100px',
-          },
+          width: '61.5%',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          position: 'fixed',
+          position: 'absolute',
           transition: '0.3s',
           zIndex: '1000',
           //backgroundColor: Colors.secondary,
