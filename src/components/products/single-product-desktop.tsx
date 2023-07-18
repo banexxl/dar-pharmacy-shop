@@ -35,7 +35,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   }
                                         });
                               },
-                              { threshold: 2 } // Set your desired threshold value
+                              { threshold: 1 } // Set your desired threshold value
                     );
 
                     const currentRef = domRef.current;
