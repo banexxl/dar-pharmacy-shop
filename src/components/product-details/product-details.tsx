@@ -6,12 +6,13 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IProduct from '@/interfaces/product/product.interface';
 import React, { useState } from 'react'
 import { useTranslation } from 'next-i18next';
 import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch } from 'react-redux';
-import { addToWishList } from '@/store/wishlist/wishlist.slice';
+import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.slice';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { InitialLocalStorageStore, LocalStorageStore } from '@/interfaces/local-storage';
 
@@ -23,6 +24,7 @@ function ProductDetails(product: IProduct) {
           const dispatch = useDispatch()
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
+          const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
 
           const callCartAlert = () => {
                     setAddedToCartAlert(true)
@@ -48,8 +50,24 @@ function ProductDetails(product: IProduct) {
                     }
           }
 
-          const isWishListed: any = useLocalStorage('wishListReducer', InitialLocalStorageStore)
-          console.log(isWishListed[0].wishListReducer)
+          const callRemovedFromWishlistAlert = () => {
+                    setRemovedFromWishlistAlert(true)
+                    const timeId = setTimeout(() => {
+                              setRemovedFromWishlistAlert(false)
+                    }, 1500)
+
+                    return () => {
+                              clearTimeout(timeId)
+                    }
+          }
+
+          const localStorage: any = useLocalStorage('persist:root', {})
+          const localStorageReducers: any = localStorage[0]
+          const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
+
+          const wishListProductID = localStorageWishList.find((el: IProduct) => {
+                    return el._id == product._id
+          })
 
 
           return (
@@ -91,9 +109,11 @@ function ProductDetails(product: IProduct) {
                                                   sx={{ mt: 4, color: Colors.light }}
                                         >
                                                   {
-
+                                                            wishListProductID === null || wishListProductID === undefined ?
+                                                                      <FavoriteBorderIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.secondary})` } }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
+                                                                      :
+                                                                      <FavoriteIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.secondary})` } }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
                                                   }
-                                                  <FavoriteIcon sx={{ mr: 2 }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
                                                   {t('product.add-to-wishlist')}
                                         </Box>
                                         <Box

@@ -78,15 +78,13 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                     }
           }
 
-
-
           const localStorage: any = useLocalStorage('persist:root', {})
           const localStorageReducers: any = localStorage[0]
           const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
+
           const wishListProductID = localStorageWishList.find((el: IProduct) => {
                     return el._id == product._id
           })
-
 
           return (
                     <Dialog
@@ -152,9 +150,9 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                             >
                                                                       {
                                                                                 wishListProductID === null || wishListProductID === undefined ?
-                                                                                          <FavoriteBorderIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
+                                                                                          <FavoriteBorderIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.secondary})` } }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
                                                                                           :
-                                                                                          <FavoriteIcon sx={{ mr: 2, cursor: 'pointer' }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
+                                                                                          <FavoriteIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.secondary})` } }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
                                                                       }
                                                                       {t('product.add-to-wishlist')}
                                                             </Box>
