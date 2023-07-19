@@ -116,8 +116,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                   <Product sx={{ mr: 4 }}>
                                                             <ProductImage src={product.imageURL} />
                                                   </Product>
-                                                  <ProductMeta product={product} />
                                                   <ProductDetailInfoWrapper>
+                                                            <ProductMeta product={product} />
                                                             <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>
                                                             <Typography textAlign='center'>{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                                             <Typography variant="h5">

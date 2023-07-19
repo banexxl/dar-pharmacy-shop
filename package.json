@@ -39,6 +39,7 @@
     "i18next-resources-to-backend": "^1.1.1",
     "maplibre-gl": "^2.4.0",
     "mongodb": "^4.13.0",
+    "mui-image": "^1.0.7",
     "mui-nested-menu": "^3.2.1",
     "next": "13.1.4",
     "next-auth": "^4.19.2",
@@ -67,6 +68,7 @@
   },
   "devDependencies": {
     "@types/googlemaps": "^3.43.3",
+    "@types/mui-image": "^1.0.1",
     "@types/nodemailer": "^6.4.7",
     "@types/react-input-mask": "^3.0.2",
     "axios": "^1.4.0"

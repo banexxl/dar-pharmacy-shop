@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import { slideInBottom, slideInRight } from "../animation";
 import { Colors } from "../theme";
 import LoadingButton from '@mui/lab/LoadingButton';
+import Image from 'mui-image'
 
 export const Product = styled(Box, {
           shouldForwardProp: (prop) => prop !== "isVisible"
@@ -23,8 +24,8 @@ export const Product = styled(Box, {
 
 }))
 
-export const ProductImage = styled("img")(({ src, theme }: any) => ({
-          src: `url(${src})`,
+export const ProductImage = styled(Image)(({ src, theme }: any) => ({
+          src: `${src}`,
           width: "50%",
           background: Colors.light_gray,
           padding: '10px',
@@ -32,12 +33,12 @@ export const ProductImage = styled("img")(({ src, theme }: any) => ({
                     width: "80%",
           },
           cursor: 'pointer',
-          webkitTransition: '-webkit-transform 0.4s',
-          transition: 'transform 0.4s',
-          ':hover': {
-                    webkitTransform: 'scale(1.2) rotate(0.01deg)',
-                    transform: 'scale(1.1) rotate(0.01deg)'
-          },
+          // webkitTransition: '-webkit-transform 0.4s',
+          // transition: 'transform 0.4s',
+          // ':hover': {
+          //           webkitTransform: 'scale(1.2) rotate(0.01deg)',
+          //           transform: 'scale(1.1) rotate(0.01deg)'
+          // },
 }));
 
 export const ProductActionButton = styled(IconButton)(() => ({

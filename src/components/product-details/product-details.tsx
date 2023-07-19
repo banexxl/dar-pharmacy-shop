@@ -75,8 +75,8 @@ function ProductDetails(product: IProduct) {
                               <Product sx={{ mr: 4 }}>
                                         <ProductImage src={product.imageURL} />
                               </Product>
-                              <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
                               <ProductDetailInfoWrapper>
+                                        <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
                                         <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>
                                         <Typography textAlign='center'>{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                         <Typography variant="h5">
