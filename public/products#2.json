@@ -1649,8 +1649,8 @@
                     "manufacturer": "Gana kozmetika",
                     "newArrival": false,
                     "bestSeller": false,
-                    "discount": true,
-                    "discountamount": 5
+                    "discount": false,
+                    "discountamount": 0
           },
           {
                     "name": "AloeVera pantenol gel za umivanje",
@@ -2445,25 +2445,6 @@
                     "warning": "/",
                     "imageURL": "https://majana.co.rs/products/pakovanje-za-kosu-100ml",
                     "price": 600.00,
-                    "newArrival": false,
-                    "bestSeller": false,
-                    "discount": false,
-                    "discountAmount": 0
-          },
-          {
-                    "name": "Gana Shea puter 265ml",
-                    "description": "Shea drvo raste isključivo u savanskim predelima Afrike, i u svetu je poznat kao ”tečno zlato” zbog svojih magičnih dejstava. Gana ši puter ručno su izradile marljive žene iz Gane koristeći tradicionalne procese i tehnike koje se prenose generacijama. Proces počinje sakupljanjem shea orašastih plodova nakon što plod padne s divljih stabala. Sakupljeni plodovi se čiste, suše, ljušte i transportuju u centar za preradu gde se puter dobija iz semena koristeći iste metode koje se koriste preko 1000 godina, osiguravajući da svi prirodni, magični sastojci ostanu u shea puteru. Gana shea puter prolazi i rigorozne zdravstvene analize u Africi i Srbiji.",
-                    "mainCategory": "apoteka",
-                    "midCategory": "Kosa, koža i nokti",
-                    "subCategory": "",
-                    "availableStock": 58,
-                    "ingredients": "Nerafinisan, 100% prirodan, FairTrade Gana Shea puter",
-                    "instructions": "Svakodnevno nanositi u tankom sloju radi nege i hidratacije koze lica i tela. Pogodan za bebe,decu i odrasle.",
-                    "quantity": "265ml",
-                    "manufacturer": "Gana kozmetika",
-                    "warning": "/",
-                    "imageURL": "https://www.marketzdravlja.rs/wp-content/uploads/2022/12/Gana-shea-puter-106g-scaled-e1671044083144.jpg",
-                    "price": 1995,
                     "newArrival": false,
                     "bestSeller": false,
                     "discount": false,

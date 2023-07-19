@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.slice';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { InitialLocalStorageStore, LocalStorageStore } from '@/interfaces/local-storage';
+import ProductMeta from '../products/products-meta';
 
 function ProductDetails(product: IProduct) {
 
@@ -74,12 +75,10 @@ function ProductDetails(product: IProduct) {
                               <Product sx={{ mr: 4 }}>
                                         <ProductImage src={product.imageURL} />
                               </Product>
+                              <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
                               <ProductDetailInfoWrapper>
-                                        <Typography >{t('product.sku')}: {product._id.slice(-8)}</Typography>
-                                        <Typography >{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
-                                        <Typography sx={{ lineHeight: 2 }} variant="h4">
-                                                  {product.name}
-                                        </Typography>
+                                        <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>
+                                        <Typography textAlign='center'>{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                         <Typography variant="h5">
                                                   {t('product.description')}
                                         </Typography>

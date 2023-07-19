@@ -23,6 +23,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { LocalStorageStore } from "@/interfaces/local-storage";
 import { log } from "console";
 import IProduct from "@/interfaces/product/product.interface";
+import ProductMeta from "../products/products-meta";
 
 function SlideTransition(props: any) {
           return <Slide direction="down" {...props} />;
@@ -115,12 +116,10 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                   <Product sx={{ mr: 4 }}>
                                                             <ProductImage src={product.imageURL} />
                                                   </Product>
+                                                  <ProductMeta product={product} />
                                                   <ProductDetailInfoWrapper>
-                                                            <Typography >{t('product.sku')}: {product._id.slice(-8)}</Typography>
-                                                            <Typography >{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
-                                                            <Typography sx={{ lineHeight: 2 }} variant="h4">
-                                                                      {product.name}
-                                                            </Typography>
+                                                            <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>
+                                                            <Typography textAlign='center'>{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
                                                             <Typography variant="h5">
                                                                       {t('product.description')}
                                                             </Typography>

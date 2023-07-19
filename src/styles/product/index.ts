@@ -85,7 +85,8 @@ export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
           flexDirection: "column",
           alignItems: "center",
           color: Colors.primary,
-          fontStyle: 'italic'
+          fontStyle: 'italic',
+          textAlign: 'center'
 }));
 
 export const ProductActionsWrapper = styled(Box, { shouldForwardProp: (prop) => prop !== 'show' })
