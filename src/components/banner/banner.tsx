@@ -21,7 +21,7 @@ export default function Banner() {
                                         </BannerTitle>
                                         {t('homepage.banner.banner-text')}
                                         <BannerShopButton color="primary" >
-                                                  <Link href="/proizvodi">{t('homepage.banner.banner-button')}</Link>
+                                                  <Link href="/proizvodi/apoteka">{t('homepage.banner.banner-button')}</Link>
                                         </BannerShopButton>
                               </BannerContent>
                     </BannerContainer >
