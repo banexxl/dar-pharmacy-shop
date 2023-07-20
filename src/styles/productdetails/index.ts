@@ -13,7 +13,7 @@ export const Product = styled(Box)(({ theme }: any) => ({
 }))
 
 
-export const ProductImage = styled('img')(({ src, theme }: any) => ({
+export const ProductImage = styled(Image)(({ src, theme }: any) => ({
           src: `${src}`,
           width: "50%",
           background: Colors.light_gray,
