@@ -103,7 +103,7 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(finalList)),
-                              ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
+                              ...(await serverSideTranslations('sr-RS' ?? locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
                     revalidate: 10,
           }
