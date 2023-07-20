@@ -16,22 +16,16 @@ const transformToMuiAccordion = (data: any) => {
                     return children && children.length > 0 ?
                               <Accordion key={id}>
                                         <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                  <Link href={`${link}`}>
-                                                            <Typography>{title}</Typography>
-                                                  </Link>
+                                                  <Typography>{title}</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-                                                  <Link href={`${link}`}>
-                                                            {transformToMuiAccordion(children)}
-                                                  </Link>
+                                                  {transformToMuiAccordion(children)}
                                         </AccordionDetails>
                               </Accordion>
                               :
                               <Accordion key={id}>
                                         <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                  <Link href={`${link}`}>
-                                                            <Typography>{title}</Typography>
-                                                  </Link>
+                                                  <Typography>{title}</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                                   <Typography>
