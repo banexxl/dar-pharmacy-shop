@@ -13,9 +13,9 @@ export const Product = styled(Box, {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          // [theme.breakpoints.up("md")]: {
-          //           position: "relative",
-          // },
+          [theme.breakpoints.up("md")]: {
+                    position: "relative",
+          },
           opacity: isVisible ? '1' : '0',
           transform: isVisible ? 'translateY(50px)' : 'none',
           visibility: isVisible ? 'visible' : 'hidden',
@@ -33,6 +33,41 @@ export const ProductImage = styled(Image)(({ src, theme }: any) => ({
                     width: "80%",
           },
           cursor: 'pointer',
+          webkitTransition: '-webkit-transform 0.4s',
+          transition: 'transform 0.4s',
+          ':hover': {
+                    webkitTransform: 'scale(1.2) rotate(0.01deg)',
+                    transform: 'scale(1.1) rotate(0.01deg)'
+          },
+}));
+
+export const ProductDropdown = styled(Box, {
+          shouldForwardProp: (prop) => prop !== "isVisible"
+})(({ isVisible, theme }: any) => ({
+          display: 'flex',
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          [theme.breakpoints.up("md")]: {
+                    position: "relative",
+          },
+          // opacity: isVisible ? '1' : '0',
+          // transform: isVisible ? 'translateY(50px)' : 'none',
+          // visibility: isVisible ? 'visible' : 'hidden',
+          // transition: 'opacity 1200ms ease-out, transform 600ms ease-out, visibility 1200ms ease-out',
+          // willChange: 'opacity, transform, visibility',
+
+}))
+
+export const ProductImageDropdown = styled(Image)(({ src, theme }: any) => ({
+          src: `${src}`,
+          width: "50%",
+          background: Colors.light_gray,
+          padding: '10px',
+          [theme.breakpoints.up("md")]: {
+                    width: "80%",
+          },
+          // cursor: 'pointer',
           // webkitTransition: '-webkit-transform 0.4s',
           // transition: 'transform 0.4s',
           // ':hover': {

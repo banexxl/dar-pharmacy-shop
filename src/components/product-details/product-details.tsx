@@ -14,7 +14,6 @@ import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch } from 'react-redux';
 import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.slice';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { InitialLocalStorageStore, LocalStorageStore } from '@/interfaces/local-storage';
 import ProductMeta from '../products/products-meta';
 
 function ProductDetails(product: IProduct) {

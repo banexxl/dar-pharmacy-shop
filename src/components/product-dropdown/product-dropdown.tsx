@@ -2,7 +2,7 @@ import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography,
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
-import { ProductAddToCart, Product, ProductImage } from "../../styles/product";
+import { ProductAddToCart, Product, ProductImage, ProductImageDropdown, ProductDropdown } from "../../styles/product";
 import { BannerShopButton } from "../../styles/banner";
 import Counter from "../../utils/counter";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -111,10 +111,10 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               </DialogTitle>
 
                               <DialogContent>
-                                        <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-                                                  <Product sx={{ mr: 4 }}>
-                                                            <ProductImage src={product.imageURL} />
-                                                  </Product>
+                                        <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
+                                                  <ProductDropdown sx={{ mr: 4 }}>
+                                                            <ProductImageDropdown src={product.imageURL} />
+                                                  </ProductDropdown>
                                                   <ProductDetailInfoWrapper>
                                                             <ProductMeta product={product} />
                                                             <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>

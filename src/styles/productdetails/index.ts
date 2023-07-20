@@ -1,5 +1,6 @@
 import { Box, styled } from "@mui/material"
 import { Colors } from "../theme";
+import Image from 'mui-image'
 
 export const Product = styled(Box)(({ theme }: any) => ({
           display: "flex",
@@ -12,8 +13,8 @@ export const Product = styled(Box)(({ theme }: any) => ({
 }))
 
 
-export const ProductImage = styled("img")(({ src, theme }: any) => ({
-          src: `url(${src})`,
+export const ProductImage = styled('img')(({ src, theme }: any) => ({
+          src: `${src}`,
           width: "50%",
           background: Colors.light_gray,
           padding: '10px',
