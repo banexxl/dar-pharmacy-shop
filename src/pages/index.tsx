@@ -83,6 +83,9 @@ export default function Home(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
+          console.log(locale);
+
+
           const productsFromManufacturer: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
                     return data
           })
@@ -117,7 +120,7 @@ export async function getStaticProps({ locale }: any) {
                               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                               productsByMainCategoryApoteka: JSON.parse(JSON.stringify(productsByMainCategoryApoteka)),
-                              ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['en-US', 'sr-RS'])),
+                              ...(await serverSideTranslations(locale ?? 'sr-RS', ['common'], null, ['sr-RS', 'en-US'])),
                               // ...(await serverSideTranslations(locale ?? 'sr-RS', [
                               //           'common',
                               // ])),

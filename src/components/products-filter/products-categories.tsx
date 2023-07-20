@@ -23,16 +23,13 @@ const transformToMuiAccordion = (data: any) => {
                                         </AccordionDetails>
                               </Accordion>
                               :
-                              <Accordion key={id}>
-                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                                                  <Typography>{title}</Typography>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                                  <Typography>
-                                                            <Link href={`${link}`}>{title}</Link>
-                                                  </Typography>
-                                        </AccordionDetails>
-                              </Accordion>
+
+                              <AccordionDetails>
+                                        <Typography>
+                                                  <Link href={`${link}`}>{title}</Link>
+                                        </Typography>
+                              </AccordionDetails>
+
           });
 };
 export default function ProductsAllCategories() {
