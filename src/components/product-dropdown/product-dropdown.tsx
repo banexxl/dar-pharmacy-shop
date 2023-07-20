@@ -82,7 +82,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
           const localStorage: any = useLocalStorage('persist:root', {})
           const localStorageReducers: any = localStorage[0]
           const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
-
           const wishListProductID = localStorageWishList.find((el: IProduct) => {
                     return el._id == product._id
           })
