@@ -73,24 +73,25 @@ export default function MainCategoryPage(props: any) {
 export async function getStaticProps({ locale }: any) {
 
 
-          const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
-          const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-          const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-          const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-          const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-          const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-          const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-          const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          let productsByMainCategoryApoteka: any = []
+          getAllSubCategoriesFromApotekaAlergije().then((data: any) => productsByMainCategoryApoteka = data)
+          // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
+          // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
+          // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
+          // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
+          // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
+          // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
+          // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
           const finalList = [
                     ...productsByMainCategoryApoteka,
-                    ...productsByMainCategoryPrirodnaKozmetika,
-                    ...productsByMainCategoryLepotaNega,
-                    ...productsByMainCategoryBebiProgram,
-                    ...productsByMainCategoryMedicinskiAparatiOprema,
-                    ...productsByMainCategoryOrtopedijaPomagala,
-                    ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-                    ...productsByMainCategoryObucaCarapeUlosci,
+                    // ...productsByMainCategoryPrirodnaKozmetika,
+                    // ...productsByMainCategoryLepotaNega,
+                    // ...productsByMainCategoryBebiProgram,
+                    // ...productsByMainCategoryMedicinskiAparatiOprema,
+                    // ...productsByMainCategoryOrtopedijaPomagala,
+                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
+                    // ...productsByMainCategoryObucaCarapeUlosci,
           ]
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
