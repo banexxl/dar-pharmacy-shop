@@ -67,7 +67,9 @@ function ProductDetails(product: IProduct) {
           const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
 
           const wishListProductID = localStorageWishList.find((el: IProduct) => {
+
                     return el._id == product._id
+
           })
 
           return (
