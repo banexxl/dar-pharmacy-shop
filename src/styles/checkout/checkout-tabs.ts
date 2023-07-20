@@ -33,4 +33,5 @@ export const CheckoutTabText = styled(Typography)(({ theme }) => ({
           [theme.breakpoints.down("xl")]: {
                     fontSize: ".8rem",
           },
+          color: Colors.primary
 }));

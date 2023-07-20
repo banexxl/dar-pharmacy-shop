@@ -59,7 +59,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                       </CheckoutStepper>
 
                                                                       <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}>
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.user-info')}</CheckoutTabText>} />s
+                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.user-info')}</CheckoutTabText>} />
                                                                                 <CheckoutTab label={<CheckoutTabText>{t('checkout.payment-options')}</CheckoutTabText>} />
                                                                                 <CheckoutTab label={<CheckoutTabText>{t('checkout.confirmation')}</CheckoutTabText>} />
                                                                       </CheckoutTabs>
