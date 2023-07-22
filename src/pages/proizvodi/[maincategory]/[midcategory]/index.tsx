@@ -23,7 +23,7 @@ import {
 
 export default function MainCategoryPage(props: any) {
 
-          console.log(props);
+          console.log('props iz mid cat MainCategoryPage', props);
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -52,26 +52,26 @@ export default function MainCategoryPage(props: any) {
 }
 
 
-export async function getStaticProps({ locale }: any) {
+export async function getStaticProps(context: any) {
 
-          const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
-          // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-          // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-          // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-          // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-          // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-          // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-          // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          const midCategoryListFromApoteka: any = await getAllMidCategoriesFromApoteka()
+          // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
+          // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
+          // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
+          // const midCategoryListFromMedicinskiAparatiOprema: any = getAllMidCategoriesFromMedicinskiAparatiOprema()
+          // const midCategoryListFromOrtopedijaPomagala: any = getAllMidCategoriesFromOrtopedijaPomagala()
+          // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
+          // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
           const finalList = [
-                    ...productsByMainCategoryApoteka,
-                    // ...productsByMainCategoryPrirodnaKozmetika,
-                    // ...productsByMainCategoryLepotaNega,
-                    // ...productsByMainCategoryBebiProgram,
-                    // ...productsByMainCategoryMedicinskiAparatiOprema,
-                    // ...productsByMainCategoryOrtopedijaPomagala,
-                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-                    // ...productsByMainCategoryObucaCarapeUlosci,
+                    ...midCategoryListFromApoteka,
+                    // ...midCategoryListFromPrirodnaKozmetika,
+                    // ...midCategoryListFromLepotaINega,
+                    // ...midCategoryListFromBebiProgram,
+                    // ...midCategoryListFromMedicinskiAparatiOprema,
+                    // ...midCategoryListFromOrtopedijaPomagala,
+                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
+                    // ...midCategoryListFromObucaCarapeUlosci,
           ]
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
@@ -84,7 +84,7 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(finalList)),
-                              ...(await serverSideTranslations('sr-RS' ?? locale, ['common'], null, ['en-US', 'sr-RS'])),
+                              ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
                     revalidate: 10,
           }
@@ -93,12 +93,7 @@ export async function getStaticProps({ locale }: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          let midCategoryListFromApoteka: any = []
-          getAllMidCategoriesFromApoteka().then((data) => {
-                    midCategoryListFromApoteka = data
-          })
-          console.log(midCategoryListFromApoteka);
-
+          const midCategoryListFromApoteka: any = await getAllMidCategoriesFromApoteka()
           // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
           // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
           // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
@@ -107,10 +102,12 @@ export const getStaticPaths = async (context: any) => {
           // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          const finalList = [
+          const productsByMainCategoryApotekaEnergijaUmor: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'energija-i-umor')
+
+          const finalList: any = [
                     ...midCategoryListFromApoteka,
-                    // ...midCategoryListFromLepotaINega,
                     // ...midCategoryListFromPrirodnaKozmetika,
+                    // ...midCategoryListFromLepotaINega,
                     // ...midCategoryListFromBebiProgram,
                     // ...midCategoryListFromMedicinskiAparatiOprema,
                     // ...midCategoryListFromOrtopedijaPomagala,
@@ -118,13 +115,13 @@ export const getStaticPaths = async (context: any) => {
                     // ...midCategoryListFromObucaCarapeUlosci
           ]
 
-          console.log(finalList);
+          console.log('aaaaaaaa', productsByMainCategoryApotekaEnergijaUmor);
 
-
-          const paths = finalList.flatMap((product: any) =>
+          const paths = productsByMainCategoryApotekaEnergijaUmor.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {
-                                        midCategory: product.midCategory.toString()
+                                        maincategory: product.mainCategory.toString(),
+                                        midcategory: product.midCategory.toString()
                               },
                               locale,
                     }))

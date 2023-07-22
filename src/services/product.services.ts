@@ -109,13 +109,16 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsByMainCategoryMidCategory = async (category: string, midCategory: string) => {
+          const getProductsByMainCategoryMidCategory = async (mainCategory: string, midCategory: string) => {
+
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
-                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: category, midCategory: midCategory }).toArray()
+                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: mainCategory, midCategory: midCategory }).toArray()
                               return products
                     } catch (error: any) {
+                              console.log('aaaaaa', error);
+
                               return { message: error.message }
                     }
                     finally {

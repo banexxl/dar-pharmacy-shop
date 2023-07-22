@@ -41,7 +41,7 @@ import {
 
 export default function MainCategoryPage(props: any) {
 
-          console.log(props);
+          console.log('props iz sub cat MainCategoryPage', props);
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -70,8 +70,7 @@ export default function MainCategoryPage(props: any) {
 }
 
 
-export async function getStaticProps({ locale }: any) {
-
+export async function getStaticProps(context: any) {
 
           let productsByMainCategoryApoteka: any = []
           getAllSubCategoriesFromApotekaAlergije().then((data: any) => productsByMainCategoryApoteka = data)
@@ -104,7 +103,7 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(finalList)),
-                              ...(await serverSideTranslations('sr-RS' ?? locale, ['common'], null, ['en-US', 'sr-RS'])),
+                              ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
                     revalidate: 10,
           }
@@ -112,8 +111,6 @@ export async function getStaticProps({ locale }: any) {
 
 
 export const getStaticPaths = async (context: any) => {
-
-          //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
           let productsByMainCategoryApotekaAndMidCategoryAlergija: any = []
           getAllSubCategoriesFromApotekaAlergije().then((data: any) => productsByMainCategoryApotekaAndMidCategoryAlergija = data)
@@ -134,8 +131,6 @@ export const getStaticPaths = async (context: any) => {
           // const productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu: any = getAllSubCategoriesFromApotekaPreparatiZaKozu()
           // const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
           // const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
-
-          console.log(productsByMainCategoryApotekaAndMidCategoryAlergija);
 
           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice: any = getAllSubCategoriesFromPrirodnaKozmetikaLice()
           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo: any = getAllSubCategoriesFromPrirodnaKozmetikaTelo()

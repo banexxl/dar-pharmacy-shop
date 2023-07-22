@@ -18,7 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function MainCategoryPage(props: any) {
 
-          console.log(props);
+          console.log('props iz main cat stranice');
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
@@ -47,8 +47,7 @@ export default function MainCategoryPage(props: any) {
 }
 
 
-export async function getStaticProps({ locale }: any) {
-
+export async function getStaticProps(context: any) {
 
           const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
@@ -80,7 +79,7 @@ export async function getStaticProps({ locale }: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(finalList)),
-                              ...(await serverSideTranslations('sr-RS' ?? locale, ['common'], null, ['en-US', 'sr-RS'])),
+                              ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
                     revalidate: 10,
           }
@@ -88,8 +87,6 @@ export async function getStaticProps({ locale }: any) {
 
 
 export const getStaticPaths = async (context: any) => {
-
-          //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
           const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')

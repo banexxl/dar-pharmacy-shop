@@ -2,8 +2,8 @@ import productsServices from "@/services/product.services"
 
 export const getAllMidCategoriesFromApoteka = async () => {
 
-          const productsByMainCategoryApotekaAlergije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'alergije')
-          const productsByMainCategoryApotekaAnemije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'anemije')
+          // const productsByMainCategoryApotekaAlergije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'alergije')
+          // const productsByMainCategoryApotekaAnemije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'anemije')
           // const productsByMainCategoryApotekaBol: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'bol')
           // const productsByMainCategoryApotekaHemoroidi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'hemoroidi')
           // const productsByMainCategoryApotekaHolesterol: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'holesterol-i-trigliceridi')
@@ -18,7 +18,7 @@ export const getAllMidCategoriesFromApoteka = async () => {
           // const productsByMainCategoryApotekaPreparatiZaKozu: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'preparati-za-primenu-na-kozi')
           // const productsByMainCategoryApotekaOciUsi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'oci-i-usi')
           // const productsByMainCategoryApotekaPrvaPomoc: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'prva-pomoc')
-          // const productsByMainCategoryApotekaEnergijaUmor: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'energija-i-umor')
+          const productsByMainCategoryApotekaEnergijaUmor: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'energija-i-umor')
           // const productsByMainCategoryApotekaSokovi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'sokovi')
           // const productsByMainCategoryApotekaAntioksidanti: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'antioksidansi-detoksikacija')
           // const productsByMainCategoryApotekaBiljneKapiUlja: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'biljne-kapi-biljna-i-etericna-ulja')
@@ -37,8 +37,8 @@ export const getAllMidCategoriesFromApoteka = async () => {
           // const productsByMainCategoryApotekaDozatori: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'dozatori-i-sekaci-za-lekove')
 
           return [
-                    productsByMainCategoryApotekaAlergije,
-                    productsByMainCategoryApotekaAnemije,
+                    // productsByMainCategoryApotekaAlergije,
+                    // productsByMainCategoryApotekaAnemije,
                     // productsByMainCategoryApotekaBol,
                     // productsByMainCategoryApotekaHemoroidi,
                     // productsByMainCategoryApotekaHolesterol,
@@ -53,7 +53,7 @@ export const getAllMidCategoriesFromApoteka = async () => {
                     // productsByMainCategoryApotekaPreparatiZaKozu,
                     // productsByMainCategoryApotekaOciUsi,
                     // productsByMainCategoryApotekaPrvaPomoc,
-                    // productsByMainCategoryApotekaEnergijaUmor,
+                    productsByMainCategoryApotekaEnergijaUmor,
                     // productsByMainCategoryApotekaSokovi,
                     // productsByMainCategoryApotekaAntioksidanti,
                     // productsByMainCategoryApotekaBiljneKapiUlja,
@@ -75,20 +75,21 @@ export const getAllMidCategoriesFromApoteka = async () => {
 }
 
 export const getAllMidCategoriesFromPrirodnaKozmetika = async () => {
+
           const productsByMainCategoryPrirodnaKozmetikaLice: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'lice')
-          const productsByMainCategoryPrirodnaKozmetikaTelo: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'telo')
-          const productsByMainCategoryPrirodnaKozmetikaKosaKozaGlave: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'kosa-i-koza-glave')
-          const productsByMainCategoryPrirodnaKozmetikaBebeDeca: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'bebe-i-deca')
-          const productsByMainCategoryPrirodnaKozmetikaMuskarci: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'muskarci')
-          const productsByMainCategoryPrirodnaKozmetikaZene: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'zene')
+          // const productsByMainCategoryPrirodnaKozmetikaTelo: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'telo')
+          // const productsByMainCategoryPrirodnaKozmetikaKosaKozaGlave: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'kosa-i-koza-glave')
+          // const productsByMainCategoryPrirodnaKozmetikaBebeDeca: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'bebe-i-deca')
+          // const productsByMainCategoryPrirodnaKozmetikaMuskarci: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'muskarci')
+          // const productsByMainCategoryPrirodnaKozmetikaZene: any = await productsServices().getProductsByMainCategoryMidCategory('prirodna-kozmetika', 'zene')
 
           return [
                     ...productsByMainCategoryPrirodnaKozmetikaLice,
-                    ...productsByMainCategoryPrirodnaKozmetikaTelo,
-                    ...productsByMainCategoryPrirodnaKozmetikaKosaKozaGlave,
-                    ...productsByMainCategoryPrirodnaKozmetikaBebeDeca,
-                    ...productsByMainCategoryPrirodnaKozmetikaMuskarci,
-                    ...productsByMainCategoryPrirodnaKozmetikaZene
+                    // ...productsByMainCategoryPrirodnaKozmetikaTelo,
+                    // ...productsByMainCategoryPrirodnaKozmetikaKosaKozaGlave,
+                    // ...productsByMainCategoryPrirodnaKozmetikaBebeDeca,
+                    // ...productsByMainCategoryPrirodnaKozmetikaMuskarci,
+                    // ...productsByMainCategoryPrirodnaKozmetikaZene
           ]
 }
 
