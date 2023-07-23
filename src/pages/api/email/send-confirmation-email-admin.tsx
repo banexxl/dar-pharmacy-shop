@@ -14,7 +14,6 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                     if (!data || !data.name || !data.email || !data.subject || !data.cart) {
                               return res.status(400).send({ message: "Bad request, data missing" });
                     }
-                    console.log(data);
 
                     const htmlForMaja =
                               `

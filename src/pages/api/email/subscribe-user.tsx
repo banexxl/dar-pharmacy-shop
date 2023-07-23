@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 export const SubscribeClient = async (request: NextApiRequest, response: NextApiResponse) => {
 
           const { subscription }: any = request.body
-          console.log(request);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 

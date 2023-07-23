@@ -23,8 +23,6 @@ import {
 
 export default function MainCategoryPage(props: any) {
 
-          console.log('props iz mid cat MainCategoryPage', props);
-
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
@@ -66,16 +64,7 @@ export async function getStaticProps(context: any) {
           // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          const finalList = [
-                    ...midCategoryListFromApoteka,
-                    // ...midCategoryListFromPrirodnaKozmetika,
-                    // ...midCategoryListFromLepotaINega,
-                    // ...midCategoryListFromBebiProgram,
-                    // ...midCategoryListFromMedicinskiAparatiOprema,
-                    // ...midCategoryListFromOrtopedijaPomagala,
-                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
-                    // ...midCategoryListFromObucaCarapeUlosci,
-          ]
+          const finalList = midCategoryListFromApoteka
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {

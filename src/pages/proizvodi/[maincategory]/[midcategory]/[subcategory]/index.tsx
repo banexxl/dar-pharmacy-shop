@@ -42,8 +42,6 @@ import IProduct from '@/interfaces/product/product.interface';
 
 export default function MainCategoryPage(props: any) {
 
-          console.log('props iz sub cat MainCategoryPage', props);
-
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
@@ -85,16 +83,7 @@ export async function getStaticProps(context: any) {
           // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
           // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
-          const finalList = [
-                    ...productsInMainCategoryApotekaAndSubcategoryAlergije,
-                    // ...productsByMainCategoryPrirodnaKozmetika,
-                    // ...productsByMainCategoryLepotaNega,
-                    // ...productsByMainCategoryBebiProgram,
-                    // ...productsByMainCategoryMedicinskiAparatiOprema,
-                    // ...productsByMainCategoryOrtopedijaPomagala,
-                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-                    // ...productsByMainCategoryObucaCarapeUlosci,
-          ]
+          const finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {

@@ -18,8 +18,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function MainCategoryPage(props: any) {
 
-          console.log('props iz main cat stranice');
-
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
                     ssr: false
