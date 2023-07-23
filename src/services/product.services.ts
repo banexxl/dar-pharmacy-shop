@@ -117,8 +117,6 @@ const productsServices = () => {
                               let products: IProduct[] = await db.collection('Products').find({ mainCategory: mainCategory, midCategory: midCategory }).toArray()
                               return products
                     } catch (error: any) {
-                              console.log('aaaaaa', error);
-
                               return { message: error.message }
                     }
                     finally {
@@ -126,11 +124,11 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsByMainCategoryMidCategorySubCategory = async (category: string, midCategory: string, subCategory: string) => {
+          const getProductsByMainCategoryMidCategorySubCategory = async (mainCategory: string, midCategory: string, subCategory: string) => {
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
-                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: category, midCategory: midCategory, subCategory: subCategory }).toArray()
+                              let products: IProduct[] = await db.collection('Products').find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory }).toArray()
                               return products
                     } catch (error: any) {
                               return { message: error.message }

@@ -2,16 +2,16 @@ import productsServices from "@/services/product.services"
 
 export const getAllSubCategoriesFromApotekaAlergije = async () => {
 
-          const productsBySubCategoryApotekaAlergijeKapsuleTablete: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'kapsule-i-tablete')
-          const productsBySubCategoryApotekaAlergijeSprejeviZaNos: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'sprejevi-za-nos')
-          const productsBySubCategoryApotekaAlergijeMastiIGelovi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'masti-gelovi')
-          const productsBySubCategoryApotekaAlergijeIrigacioniSet: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'irigacioni-set')
+          let productsBySubCategoryApotekaAlergijeKapsuleTablete: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'kapsule-i-tablete')
+          // const productsBySubCategoryApotekaAlergijeSprejeviZaNos: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'sprejevi-za-nos')
+          // const productsBySubCategoryApotekaAlergijeMastiIGelovi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'masti-gelovi')
+          //const productsBySubCategoryApotekaAlergijeIrigacioniSet: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'irigacioni-set')
 
           return [
                     ...productsBySubCategoryApotekaAlergijeKapsuleTablete,
-                    ...productsBySubCategoryApotekaAlergijeSprejeviZaNos,
-                    ...productsBySubCategoryApotekaAlergijeMastiIGelovi,
-                    ...productsBySubCategoryApotekaAlergijeIrigacioniSet
+                    // ...productsBySubCategoryApotekaAlergijeSprejeviZaNos,
+                    // ...productsBySubCategoryApotekaAlergijeMastiIGelovi,
+                    //productsBySubCategoryApotekaAlergijeIrigacioniSet
           ]
 }
 

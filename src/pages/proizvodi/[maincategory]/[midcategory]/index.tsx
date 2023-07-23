@@ -54,7 +54,10 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps(context: any) {
 
-          const midCategoryListFromApoteka: any = await getAllMidCategoriesFromApoteka()
+          let midCategoryListFromApoteka: any = []
+          getAllMidCategoriesFromApoteka().then((data: any) => {
+                    midCategoryListFromApoteka = data
+          })
           // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
           // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
           // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
@@ -93,7 +96,11 @@ export async function getStaticProps(context: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          const midCategoryListFromApoteka: any = await getAllMidCategoriesFromApoteka()
+          let midCategoryListFromApoteka: any = []
+          getAllMidCategoriesFromApoteka().then((data: any) => {
+                    midCategoryListFromApoteka = data
+          })
+
           // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
           // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
           // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
@@ -102,22 +109,9 @@ export const getStaticPaths = async (context: any) => {
           // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          const productsByMainCategoryApotekaEnergijaUmor: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'energija-i-umor')
+          const finalList: any = midCategoryListFromApoteka
 
-          const finalList: any = [
-                    ...midCategoryListFromApoteka,
-                    // ...midCategoryListFromPrirodnaKozmetika,
-                    // ...midCategoryListFromLepotaINega,
-                    // ...midCategoryListFromBebiProgram,
-                    // ...midCategoryListFromMedicinskiAparatiOprema,
-                    // ...midCategoryListFromOrtopedijaPomagala,
-                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
-                    // ...midCategoryListFromObucaCarapeUlosci
-          ]
-
-          console.log('aaaaaaaa', productsByMainCategoryApotekaEnergijaUmor);
-
-          const paths = productsByMainCategoryApotekaEnergijaUmor.flatMap((product: any) =>
+          const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {
                                         maincategory: product.mainCategory.toString(),

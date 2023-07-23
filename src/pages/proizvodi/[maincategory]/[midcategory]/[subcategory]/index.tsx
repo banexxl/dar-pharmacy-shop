@@ -38,6 +38,7 @@ import {
           getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca, getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave,
           getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo
 } from '../../../../../services/product-sub-category-helper.services';
+import IProduct from '@/interfaces/product/product.interface';
 
 export default function MainCategoryPage(props: any) {
 
@@ -72,8 +73,10 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps(context: any) {
 
-          let productsByMainCategoryApoteka: any = []
-          getAllSubCategoriesFromApotekaAlergije().then((data: any) => productsByMainCategoryApoteka = data)
+          let productsInMainCategoryApotekaAndSubcategoryAlergije: any = []
+          getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
+                    productsInMainCategoryApotekaAndSubcategoryAlergije = data
+          })
           // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
           // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
           // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
@@ -83,7 +86,7 @@ export async function getStaticProps(context: any) {
           // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
           const finalList = [
-                    ...productsByMainCategoryApoteka,
+                    ...productsInMainCategoryApotekaAndSubcategoryAlergije,
                     // ...productsByMainCategoryPrirodnaKozmetika,
                     // ...productsByMainCategoryLepotaNega,
                     // ...productsByMainCategoryBebiProgram,
@@ -112,10 +115,11 @@ export async function getStaticProps(context: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          let productsByMainCategoryApotekaAndMidCategoryAlergija: any = []
-          getAllSubCategoriesFromApotekaAlergije().then((data: any) => productsByMainCategoryApotekaAndMidCategoryAlergija = data)
-          let productsByMainCategoryApotekaAndMidCategoryAnemija: any = []
-          getAllSubCategoriesFromApotekaAnemije().then((data) => productsByMainCategoryApotekaAndMidCategoryAnemija = data)
+          let productsInMainCategoryApotekaAndSubcategoryAlergije: any = []
+          getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
+                    productsInMainCategoryApotekaAndSubcategoryAlergije = data
+          })
+          //const productsByMainCategoryApotekaAndMidCategoryAnemija: any = getAllSubCategoriesFromApotekaAnemije()
           // const productsByMainCategoryApotekaAndMidCategoryBol: any = getAllSubCategoriesFromApotekaBol()
           // const productsByMainCategoryApotekaAndMidCategoryHemoroidi: any = getAllSubCategoriesFromApotekaHemoroidi()
           // const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
@@ -169,69 +173,18 @@ export const getStaticPaths = async (context: any) => {
 
           // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
 
+          let finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
 
-          const finalList = [
-
-                    // ...productsByMainCategoryOrtopedijaOpremaAndMidCategoryAntidekubitalnaPomagala,
-                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaskeAndMidCategoryMaskeZaLizce,
-                    // ...productsByMainCategoryObucaCarapeUlosciAndMidCategoryDeca,
-                    // ...productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli,
-
-                    // ...productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryInhalatori,
-                    // ...productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryPritisak,
-                    // ...productsByMainCategoryMedicinskiAparatiOpremaAndMidCategorySecer,
-
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryBebiApoteka,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryBebiKozmetika,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryBebiOprema,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryFlasiceCucleZvecke,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryPelene,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryHrana,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryTrudnice,
-                    // ...productsByMainCategoryBebiProgramAndMidCategoryAparati,
-
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryPribor,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryLice,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryTelo,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryIntimnaNega,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryOralnaHigijena,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryKosaKozaGlave,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryRuke,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryStopala,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategoryBebe,
-                    // ...productsByMainCategoryLepotaNegaAndMidCategorySunce,
-
-                    // ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice,
-                    // ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo,
-                    // ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryKosaKozaGlave,
-                    // ...productsByMainCategoryPrirodnaKozmetikaAndMidCategoryBebeDeca,
-
-                    ...productsByMainCategoryApotekaAndMidCategoryAlergija,
-                    ...productsByMainCategoryApotekaAndMidCategoryAnemija,
-                    // ...productsByMainCategoryApotekaAndMidCategoryBol,
-                    // ...productsByMainCategoryApotekaAndMidCategoryHemoroidi,
-                    // ...productsByMainCategoryApotekaAndMidCategoryHolesterol,
-                    // ...productsByMainCategoryApotekaAndMidCategoryImunitet,
-                    // ...productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti,
-                    // ...productsByMainCategoryApotekaAndMidCategoryKosti,
-                    // ...productsByMainCategoryApotekaAndMidCategoryMrsavljenje,
-                    // ...productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana,
-                    // ...productsByMainCategoryApotekaAndMidCategoryPutnaApoteka,
-                    // ...productsByMainCategoryApotekaAndMidCategoryStomacneTegobe,
-                    // ...productsByMainCategoryApotekaAndMidCategoryZdravoSrce,
-                    // ...productsByMainCategoryApotekaAndMidCategoryVitamini,
-                    // ...productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu,
-                    // ...productsByMainCategoryApotekaAndMidCategoryOciUsi,
-                    // ...productsByMainCategoryApotekaAndMidCategoryPrvaPomoc,
-          ]
-
-          const paths = finalList.flatMap((product: any) =>
+          const paths = finalList.flatMap((product: any) => {
                     context.locales.map((locale: any) => ({
                               params: {
-                                        subCategory: product.subCategory.toString()
+                                        maincategory: product.mainCategory.toString(),
+                                        midcategory: product.midCategory.toString(),
+                                        subcategory: product.subCategory.toString()
                               },
                               locale,
                     }))
+          }
           );
 
           return {
