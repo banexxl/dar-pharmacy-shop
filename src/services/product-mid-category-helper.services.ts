@@ -53,7 +53,7 @@ export const getAllMidCategoriesFromApoteka = async () => {
                     // productsByMainCategoryApotekaPreparatiZaKozu,
                     // productsByMainCategoryApotekaOciUsi,
                     // productsByMainCategoryApotekaPrvaPomoc,
-                    productsByMainCategoryApotekaEnergijaUmor,
+                    ...productsByMainCategoryApotekaEnergijaUmor,
                     // productsByMainCategoryApotekaSokovi,
                     // productsByMainCategoryApotekaAntioksidanti,
                     // productsByMainCategoryApotekaBiljneKapiUlja,

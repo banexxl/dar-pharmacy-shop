@@ -71,10 +71,9 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps(context: any) {
 
-          let productsInMainCategoryApotekaAndSubcategoryAlergije: any = []
-          getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
-                    productsInMainCategoryApotekaAndSubcategoryAlergije = data
-          })
+          let finalList: IProduct[] = []
+          let productsInMainCategoryApotekaAndSubcategoryAlergije: IProduct[] = []
+          await getAllSubCategoriesFromApotekaAlergije().then((data: any) => { productsInMainCategoryApotekaAndSubcategoryAlergije = data })
           // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
           // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
           // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
@@ -83,7 +82,7 @@ export async function getStaticProps(context: any) {
           // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
           // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
-          const finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
+          finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
@@ -104,8 +103,10 @@ export async function getStaticProps(context: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          let productsInMainCategoryApotekaAndSubcategoryAlergije: any = []
-          getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
+          let finalList: any = []
+          let productsInMainCategoryApotekaAndSubcategoryAlergije: IProduct[] = []
+
+          await getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
                     productsInMainCategoryApotekaAndSubcategoryAlergije = data
           })
           //const productsByMainCategoryApotekaAndMidCategoryAnemija: any = getAllSubCategoriesFromApotekaAnemije()
@@ -162,9 +163,10 @@ export const getStaticPaths = async (context: any) => {
 
           // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
 
-          let finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
 
-          const paths = finalList.flatMap((product: any) => {
+          finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
+
+          const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {
                                         maincategory: product.mainCategory.toString(),
@@ -173,8 +175,10 @@ export const getStaticPaths = async (context: any) => {
                               },
                               locale,
                     }))
-          }
           );
+
+
+
 
           return {
                     paths,

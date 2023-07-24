@@ -20,6 +20,7 @@ import {
           getAllMidCategoriesFromLepotaINega, getAllMidCategoriesFromMedicinskiAparatiOprema, getAllMidCategoriesFromObucaCarapeUlosci,
           getAllMidCategoriesFromOrtopedijaPomagala, getAllMidCategoriesFromPrirodnaKozmetika
 } from '../../../../services/product-mid-category-helper.services';
+import IProduct from '@/interfaces/product/product.interface';
 
 export default function MainCategoryPage(props: any) {
 
@@ -52,8 +53,10 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps(context: any) {
 
-          let midCategoryListFromApoteka: any = []
-          getAllMidCategoriesFromApoteka().then((data: any) => {
+          let finalList: IProduct[] = []
+          let midCategoryListFromApoteka: IProduct[] = []
+
+          await getAllMidCategoriesFromApoteka().then((data: any) => {
                     midCategoryListFromApoteka = data
           })
           // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
@@ -64,7 +67,7 @@ export async function getStaticProps(context: any) {
           // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          const finalList = midCategoryListFromApoteka
+          finalList = midCategoryListFromApoteka
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
@@ -85,8 +88,9 @@ export async function getStaticProps(context: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          let midCategoryListFromApoteka: any = []
-          getAllMidCategoriesFromApoteka().then((data: any) => {
+          let finalList: IProduct[] = []
+          let midCategoryListFromApoteka: IProduct[] = []
+          await getAllMidCategoriesFromApoteka().then((data: any) => {
                     midCategoryListFromApoteka = data
           })
 
@@ -98,7 +102,9 @@ export const getStaticPaths = async (context: any) => {
           // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          const finalList: any = midCategoryListFromApoteka
+          console.log(midCategoryListFromApoteka);
+
+          finalList = midCategoryListFromApoteka
 
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
