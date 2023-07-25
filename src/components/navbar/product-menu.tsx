@@ -102,7 +102,7 @@ export const ProductsMenu = () => {
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Bolovi u kostima i mišićima
+                                                                                Bolovi u zglobovima i mišićima
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
@@ -121,11 +121,6 @@ export const ProductsMenu = () => {
                                                                                 Lokalna primena
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
-                                                                                Bolovi u kostima i mišićima
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
                                                   </NestedMenuItem>
 
                                                   <NestedMenuItem
@@ -140,11 +135,6 @@ export const ProductsMenu = () => {
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
                                                                                 Ostalo
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
-                                                                                Bolovi u kostima i mišićima
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>

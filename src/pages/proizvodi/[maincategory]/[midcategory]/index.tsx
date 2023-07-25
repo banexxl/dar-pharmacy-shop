@@ -102,7 +102,7 @@ export const getStaticPaths = async (context: any) => {
           // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
           // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          console.log(midCategoryListFromApoteka);
+          console.log('aaaaaaaaa', midCategoryListFromApoteka);
 
           finalList = midCategoryListFromApoteka
 

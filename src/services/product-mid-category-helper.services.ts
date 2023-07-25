@@ -2,13 +2,13 @@ import productsServices from "@/services/product.services"
 
 export const getAllMidCategoriesFromApoteka = async () => {
 
-          // const productsByMainCategoryApotekaAlergije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'alergije')
-          // const productsByMainCategoryApotekaAnemije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'anemije')
-          // const productsByMainCategoryApotekaBol: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'bol')
-          // const productsByMainCategoryApotekaHemoroidi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'hemoroidi')
+          const productsByMainCategoryApotekaAlergije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'alergije')
+          const productsByMainCategoryApotekaAnemije: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'anemija')
+          const productsByMainCategoryApotekaBol: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'bol')
+          const productsByMainCategoryApotekaHemoroidi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'hemoroidi')
           // const productsByMainCategoryApotekaHolesterol: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'holesterol-i-trigliceridi')
           // const productsByMainCategoryApotekaImunitet: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'imunitet-prehlada')
-          // const productsByMainCategoryApotekaKosa: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'kosa-koza-i-nokti')
+          const productsByMainCategoryApotekaKosa: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'kosa-koza-i-nokti')
           // const productsByMainCategoryApotekaKosti: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'kosti-i-zglobovi')
           // const productsByMainCategoryApotekaMrsavljenje: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'mrsavljenje-celulit')
           // const productsByMainCategoryApotekaPosebnaIshrana: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'posebna-ishrana')
@@ -19,10 +19,10 @@ export const getAllMidCategoriesFromApoteka = async () => {
           // const productsByMainCategoryApotekaOciUsi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'oci-i-usi')
           // const productsByMainCategoryApotekaPrvaPomoc: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'prva-pomoc')
           const productsByMainCategoryApotekaEnergijaUmor: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'energija-i-umor')
-          // const productsByMainCategoryApotekaSokovi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'sokovi')
-          // const productsByMainCategoryApotekaAntioksidanti: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'antioksidansi-detoksikacija')
+          const productsByMainCategoryApotekaSokovi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'sokovi')
+          const productsByMainCategoryApotekaAntioksidanti: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'antioksidansi-detoksikacija')
           // const productsByMainCategoryApotekaBiljneKapiUlja: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'biljne-kapi-biljna-i-etericna-ulja')
-          // const productsByMainCategoryApotekaBubrezi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'bubrezi-i-mokracni-putevi')
+          const productsByMainCategoryApotekaBubrezi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'bubrezi-i-mokracni-putevi')
           // const productsByMainCategoryApotekaCajevi: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'cajevi')
           // const productsByMainCategoryApotekaDijabetes: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'dijabetes-i-insulinska-resistencija')
           // const productsByMainCategoryApotekaJetraZuc: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'jetra-i-zuc')
@@ -37,13 +37,13 @@ export const getAllMidCategoriesFromApoteka = async () => {
           // const productsByMainCategoryApotekaDozatori: any = await productsServices().getProductsByMainCategoryMidCategory('apoteka', 'dozatori-i-sekaci-za-lekove')
 
           return [
-                    // productsByMainCategoryApotekaAlergije,
-                    // productsByMainCategoryApotekaAnemije,
-                    // productsByMainCategoryApotekaBol,
-                    // productsByMainCategoryApotekaHemoroidi,
+                    ...productsByMainCategoryApotekaAlergije,
+                    ...productsByMainCategoryApotekaAnemije,
+                    ...productsByMainCategoryApotekaBol,
+                    ...productsByMainCategoryApotekaHemoroidi,
                     // productsByMainCategoryApotekaHolesterol,
                     // productsByMainCategoryApotekaImunitet,
-                    // productsByMainCategoryApotekaKosa,
+                    ...productsByMainCategoryApotekaKosa,
                     // productsByMainCategoryApotekaKosti,
                     // productsByMainCategoryApotekaMrsavljenje,
                     // productsByMainCategoryApotekaPosebnaIshrana,
@@ -54,10 +54,10 @@ export const getAllMidCategoriesFromApoteka = async () => {
                     // productsByMainCategoryApotekaOciUsi,
                     // productsByMainCategoryApotekaPrvaPomoc,
                     ...productsByMainCategoryApotekaEnergijaUmor,
-                    // productsByMainCategoryApotekaSokovi,
-                    // productsByMainCategoryApotekaAntioksidanti,
+                    ...productsByMainCategoryApotekaSokovi,
+                    ...productsByMainCategoryApotekaAntioksidanti,
                     // productsByMainCategoryApotekaBiljneKapiUlja,
-                    // productsByMainCategoryApotekaBubrezi,
+                    ...productsByMainCategoryApotekaBubrezi,
                     // productsByMainCategoryApotekaCajevi,
                     // productsByMainCategoryApotekaDijabetes,
                     // productsByMainCategoryApotekaJetraZuc,

@@ -37,24 +37,24 @@ export const AccordionPanels = [
                                                             ],
                                                   },
                                                   {
-                                                            id: 'anemije',
-                                                            link: '/proizvodi/apoteka/anemije',
+                                                            id: 'anemija',
+                                                            link: '/proizvodi/apoteka/anemija',
                                                             title: 'Anemije',
                                                             children: [
                                                                       {
                                                                                 id: 'folna-kiselina-i-vitamini',
                                                                                 title: 'Folna kiselina i vitamini',
-                                                                                link: '/proizvodi/apoteka/anemije/folna-kiselina-i-vitamini',
+                                                                                link: '/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini',
                                                                       },
                                                                       {
                                                                                 id: 'biljni-preparati',
                                                                                 title: 'Biljni preparati',
-                                                                                link: '/proizvodi/apoteka/anemije/biljni-preparati',
+                                                                                link: '/proizvodi/apoteka/anemija/biljni-preparati',
                                                                       },
                                                                       {
                                                                                 id: 'preparati-gvozda',
                                                                                 title: 'Preparati gvožđa',
-                                                                                link: '/proizvodi/apoteka/anemije/preparati-gvozda',
+                                                                                link: '/proizvodi/apoteka/anemija/preparati-gvozda',
                                                                       },
                                                             ],
                                                   },
@@ -74,9 +74,9 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/bol/menstrualni-bolovi',
                                                                       },
                                                                       {
-                                                                                id: 'bolovi-u-kostima-i-misicima',
-                                                                                title: 'Bolovi u kostima i mišićima',
-                                                                                link: '/proizvodi/apoteka/bol/bolovi-u-kostima-i-misicima',
+                                                                                id: 'bolovi-u-zglobovima-i-misicima',
+                                                                                title: 'Bolovi u zglobovima i mišićima',
+                                                                                link: '/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima',
                                                                       },
                                                             ],
                                                   },

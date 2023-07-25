@@ -104,17 +104,33 @@ export async function getStaticProps(context: any) {
 export const getStaticPaths = async (context: any) => {
 
           let finalList: any = []
-          let productsInMainCategoryApotekaAndSubcategoryAlergije: IProduct[] = []
 
+          let productsInSubCategoryApotekaAndMidAlergije: IProduct[] = []
           await getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
-                    productsInMainCategoryApotekaAndSubcategoryAlergije = data
+                    productsInSubCategoryApotekaAndMidAlergije = data
           })
-          //const productsByMainCategoryApotekaAndMidCategoryAnemija: any = getAllSubCategoriesFromApotekaAnemije()
-          // const productsByMainCategoryApotekaAndMidCategoryBol: any = getAllSubCategoriesFromApotekaBol()
-          // const productsByMainCategoryApotekaAndMidCategoryHemoroidi: any = getAllSubCategoriesFromApotekaHemoroidi()
+
+          let productsInSubCategoryApotekaAndMidAnemija: IProduct[] = []
+          await getAllSubCategoriesFromApotekaAnemije().then((data: any) => {
+                    productsInSubCategoryApotekaAndMidAnemija = data
+          })
+
+          let productsInSubCategoryApotekaAndMidBol: IProduct[] = []
+          await getAllSubCategoriesFromApotekaBol().then((data: any) => {
+                    productsInSubCategoryApotekaAndMidAnemija = data
+          })
+
+          let productsInSubCategoryApotekaAndMidHemoroidi: IProduct[] = []
+          await getAllSubCategoriesFromApotekaHemoroidi().then((data: any) => {
+                    productsInSubCategoryApotekaAndMidHemoroidi = data
+          })
+
+          let productsInMainCategoryApotekaAndMidCategoryKosaKozaNokti: IProduct[] = []
+          await getAllSubCategoriesFromApotekaKosaKozaNokti().then((data: any) => {
+                    productsInSubCategoryApotekaAndMidHemoroidi = data
+          })
           // const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
           // const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
-          // const productsByMainCategoryApotekaAndMidCategoryKosaKozaNokti: any = getAllSubCategoriesFromApotekaKosaKozaNokti()
           // const productsByMainCategoryApotekaAndMidCategoryKosti: any = getAllSubCategoriesFromApotekaKostiZglobovi()
           // const productsByMainCategoryApotekaAndMidCategoryMrsavljenje: any = getAllSubCategoriesFromApotekaMrsavljenjeCelulit()
           // const productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana: any = getAllSubCategoriesFromApotekaPosebnaIshrana()
@@ -164,7 +180,9 @@ export const getStaticPaths = async (context: any) => {
           // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
 
 
-          finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
+          finalList = productsInSubCategoryApotekaAndMidAlergije.concat(productsInSubCategoryApotekaAndMidAnemija).concat(productsInSubCategoryApotekaAndMidBol)
+                    .concat(productsInSubCategoryApotekaAndMidHemoroidi).concat(productsInMainCategoryApotekaAndMidCategoryKosaKozaNokti)
+
 
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
