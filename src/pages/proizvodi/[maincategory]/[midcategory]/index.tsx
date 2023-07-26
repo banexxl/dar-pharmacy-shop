@@ -54,20 +54,57 @@ export default function MainCategoryPage(props: any) {
 export async function getStaticProps(context: any) {
 
           let finalList: IProduct[] = []
-          let midCategoryListFromApoteka: IProduct[] = []
 
+          let midCategoryListFromApoteka: IProduct[] = []
           await getAllMidCategoriesFromApoteka().then((data: any) => {
                     midCategoryListFromApoteka = data
           })
-          // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
-          // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
-          // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
-          // const midCategoryListFromMedicinskiAparatiOprema: any = getAllMidCategoriesFromMedicinskiAparatiOprema()
-          // const midCategoryListFromOrtopedijaPomagala: any = getAllMidCategoriesFromOrtopedijaPomagala()
-          // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
-          // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
 
-          finalList = midCategoryListFromApoteka
+          // let midCategoryListFromPrirodnaKozmetika: IProduct[] = []
+          // await getAllMidCategoriesFromPrirodnaKozmetika().then((data: any) => {
+          //           midCategoryListFromPrirodnaKozmetika = data
+          // })
+
+          // let midCategoryListFromLepotaINega: IProduct[] = []
+          // await getAllMidCategoriesFromLepotaINega().then((data: any) => {
+          //           midCategoryListFromLepotaINega = data
+          // })
+
+          // let midCategoryListFromBebiProgram: IProduct[] = []
+          // await getAllMidCategoriesFromBebiProgram().then((data: any) => {
+          //           midCategoryListFromBebiProgram = data
+          // })
+
+          // let midCategoryListFromMedicinskiAparatiOprema: IProduct[] = []
+          // await getAllMidCategoriesFromMedicinskiAparatiOprema().then((data: any) => {
+          //           midCategoryListFromMedicinskiAparatiOprema = data
+          // })
+
+          // let midCategoryListFromOrtopedijaPomagala: IProduct[] = []
+          // await getAllMidCategoriesFromOrtopedijaPomagala().then((data: any) => {
+          //           midCategoryListFromOrtopedijaPomagala = data
+          // })
+
+          // let midCategoryListFromDezinfekcijaDezinsekcijaMaske: IProduct[] = []
+          // await getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske().then((data: any) => {
+          //           midCategoryListFromDezinfekcijaDezinsekcijaMaske = data
+          // })
+
+          // let midCategoryListFromObucaCarapeUlosci: IProduct[] = []
+          // await getAllMidCategoriesFromObucaCarapeUlosci().then((data: any) => {
+          //           midCategoryListFromObucaCarapeUlosci = data
+          // })
+
+          finalList = [
+                    ...midCategoryListFromApoteka,
+                    // ...midCategoryListFromPrirodnaKozmetika,
+                    // ...midCategoryListFromLepotaINega,
+                    // ...midCategoryListFromBebiProgram,
+                    // ...midCategoryListFromMedicinskiAparatiOprema,
+                    // ...midCategoryListFromOrtopedijaPomagala,
+                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
+                    // ...midCategoryListFromObucaCarapeUlosci
+          ]
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
@@ -89,22 +126,57 @@ export async function getStaticProps(context: any) {
 export const getStaticPaths = async (context: any) => {
 
           let finalList: IProduct[] = []
+
           let midCategoryListFromApoteka: IProduct[] = []
           await getAllMidCategoriesFromApoteka().then((data: any) => {
                     midCategoryListFromApoteka = data
           })
 
-          // const midCategoryListFromPrirodnaKozmetika: any = getAllMidCategoriesFromPrirodnaKozmetika()
-          // const midCategoryListFromLepotaINega: any = getAllMidCategoriesFromLepotaINega()
-          // const midCategoryListFromBebiProgram: any = getAllMidCategoriesFromBebiProgram()
-          // const midCategoryListFromMedicinskiAparatiOprema: any = getAllMidCategoriesFromMedicinskiAparatiOprema()
-          // const midCategoryListFromOrtopedijaPomagala: any = getAllMidCategoriesFromOrtopedijaPomagala()
-          // const midCategoryListFromDezinfekcijaDezinsekcijaMaske: any = getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske()
-          // const midCategoryListFromObucaCarapeUlosci: any = getAllMidCategoriesFromObucaCarapeUlosci()
+          // let midCategoryListFromPrirodnaKozmetika: IProduct[] = []
+          // await getAllMidCategoriesFromPrirodnaKozmetika().then((data: any) => {
+          //           midCategoryListFromPrirodnaKozmetika = data
+          // })
 
-          console.log('aaaaaaaaa', midCategoryListFromApoteka);
+          // let midCategoryListFromLepotaINega: IProduct[] = []
+          // await getAllMidCategoriesFromLepotaINega().then((data: any) => {
+          //           midCategoryListFromLepotaINega = data
+          // })
 
-          finalList = midCategoryListFromApoteka
+          // let midCategoryListFromBebiProgram: IProduct[] = []
+          // await getAllMidCategoriesFromBebiProgram().then((data: any) => {
+          //           midCategoryListFromBebiProgram = data
+          // })
+
+          // let midCategoryListFromMedicinskiAparatiOprema: IProduct[] = []
+          // await getAllMidCategoriesFromMedicinskiAparatiOprema().then((data: any) => {
+          //           midCategoryListFromMedicinskiAparatiOprema = data
+          // })
+
+          // let midCategoryListFromOrtopedijaPomagala: IProduct[] = []
+          // await getAllMidCategoriesFromOrtopedijaPomagala().then((data: any) => {
+          //           midCategoryListFromOrtopedijaPomagala = data
+          // })
+
+          // let midCategoryListFromDezinfekcijaDezinsekcijaMaske: IProduct[] = []
+          // await getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske().then((data: any) => {
+          //           midCategoryListFromDezinfekcijaDezinsekcijaMaske = data
+          // })
+
+          // let midCategoryListFromObucaCarapeUlosci: IProduct[] = []
+          // await getAllMidCategoriesFromObucaCarapeUlosci().then((data: any) => {
+          //           midCategoryListFromObucaCarapeUlosci = data
+          // })
+
+          finalList = [
+                    ...midCategoryListFromApoteka,
+                    // ...midCategoryListFromPrirodnaKozmetika,
+                    // ...midCategoryListFromLepotaINega,
+                    // ...midCategoryListFromBebiProgram,
+                    // ...midCategoryListFromMedicinskiAparatiOprema,
+                    // ...midCategoryListFromOrtopedijaPomagala,
+                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
+                    // ...midCategoryListFromObucaCarapeUlosci
+          ]
 
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({

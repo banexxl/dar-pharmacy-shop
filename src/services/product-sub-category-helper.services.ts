@@ -2,16 +2,15 @@ import productsServices from "@/services/product.services"
 
 export const getAllSubCategoriesFromApotekaAlergije = async () => {
 
-          let productsBySubCategoryApotekaAlergijeKapsuleTablete: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'kapsule-i-tablete')
+          const productsBySubCategoryApotekaAlergijeKapsuleTablete: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'kapsule-i-tablete')
           // const productsBySubCategoryApotekaAlergijeSprejeviZaNos: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'sprejevi-za-nos')
           // const productsBySubCategoryApotekaAlergijeMastiIGelovi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'masti-gelovi')
-          //const productsBySubCategoryApotekaAlergijeIrigacioniSet: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'irigacioni-set')
+          const productsBySubCategoryApotekaAlergijeIrigacioniSet: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'alergije', 'irigacioni-set')
 
           return [
                     ...productsBySubCategoryApotekaAlergijeKapsuleTablete,
                     // ...productsBySubCategoryApotekaAlergijeSprejeviZaNos,
-                    // ...productsBySubCategoryApotekaAlergijeMastiIGelovi,
-                    //productsBySubCategoryApotekaAlergijeIrigacioniSet
+                    ...productsBySubCategoryApotekaAlergijeIrigacioniSet
           ]
 }
 
@@ -22,7 +21,7 @@ export const getAllSubCategoriesFromApotekaAnemije = async () => {
           //const productsBySubCategoryApotekaAnemijePreparatiGvozdja: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'anemija', 'preparati-gvozda')
 
           return [
-                    //...productsBySubCategoryApotekaAnemijeFolanaKiselina,
+                    // ...productsBySubCategoryApotekaAnemijeFolanaKiselina,
                     ...productsBySubCategoryApotekaAnemijeBiljniPreparati,
                     // ...productsBySubCategoryApotekaAnemijePreparatiGvozdja,
           ]
@@ -30,7 +29,7 @@ export const getAllSubCategoriesFromApotekaAnemije = async () => {
 
 export const getAllSubCategoriesFromApotekaBol = async () => {
 
-          //const productsBySubCategoryApotekaBolUGrlu: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'bol', 'bol-u-grlu')
+          // const productsBySubCategoryApotekaBolUGrlu: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'bol', 'bol-u-grlu')
           // const productsBySubCategoryApotekaBolMenstrualni: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'bol', 'menstrualni-bolovi')
           const productsBySubCategoryApotekaBolZglobMisici: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'bol', 'bolovi-u-zglobovima-i-misicima')
 
@@ -69,7 +68,7 @@ export const getAllSubCategoriesFromApotekaImunitet = async () => {
           // const productsBySubCategoryApotekaImunitetVitaminiMinerali: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'vitamini-i-minerali')
           // const productsBySubCategoryApotekaImunitetSprejeviNos: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'sprejevi-za-nos')
           // const productsBySubCategoryApotekaImunitetSprejeviGrlo: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'sprejevi-za-grlo')
-          const productsBySubCategoryApotekaImunitetIrigacioniSet: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'irigacioni-set')
+          // const productsBySubCategoryApotekaImunitetIrigacioniSet: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'irigacioni-set')
           // const productsBySubCategoryApotekaImunitetMastiGelovi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'masti-gelovi')
           // const productsBySubCategoryApotekaImunitetBiljneKapi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'biljne-kapi')
           // const productsBySubCategoryApotekaImunitetMedMlecPropolis: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'med-maticni-mlec-i-propolis')
@@ -78,20 +77,21 @@ export const getAllSubCategoriesFromApotekaImunitet = async () => {
           // const productsBySubCategoryApotekaImunitetProbiotici: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'probiotici')
           // const productsBySubCategoryApotekaImunitetOmegaMasneKiseline: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'omega-masne-kiseline')
           // const productsBySubCategoryApotekaImunitetOstalo: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'imunitet-prehlada', 'ostalo')
+
           return [
-                    // productsBySubCategoryApotekaImunitetDeca,
-                    // productsBySubCategoryApotekaImunitetVitaminiMinerali,
-                    // productsBySubCategoryApotekaImunitetSprejeviNos,
-                    // productsBySubCategoryApotekaImunitetSprejeviGrlo,
-                    ...productsBySubCategoryApotekaImunitetIrigacioniSet,
-                    // productsBySubCategoryApotekaImunitetMastiGelovi,
-                    // productsBySubCategoryApotekaImunitetBiljneKapi,
-                    // productsBySubCategoryApotekaImunitetMedMlecPropolis,
-                    // productsBySubCategoryApotekaImunitetPastileZaGrlo,
-                    // productsBySubCategoryApotekaImunitetAlojaNoniAronija,
-                    // productsBySubCategoryApotekaImunitetProbiotici,
-                    // productsBySubCategoryApotekaImunitetOmegaMasneKiseline,
-                    // productsBySubCategoryApotekaImunitetOstalo,
+                    // ...productsBySubCategoryApotekaImunitetDeca,
+                    // ...productsBySubCategoryApotekaImunitetVitaminiMinerali,
+                    // ...productsBySubCategoryApotekaImunitetSprejeviNos,
+                    // ...productsBySubCategoryApotekaImunitetSprejeviGrlo,
+                    // ...productsBySubCategoryApotekaImunitetIrigacioniSet,
+                    // ...productsBySubCategoryApotekaImunitetMastiGelovi,
+                    // ...productsBySubCategoryApotekaImunitetBiljneKapi,
+                    // ...productsBySubCategoryApotekaImunitetMedMlecPropolis,
+                    // ...productsBySubCategoryApotekaImunitetPastileZaGrlo,
+                    // ...productsBySubCategoryApotekaImunitetAlojaNoniAronija,
+                    // ...productsBySubCategoryApotekaImunitetProbiotici,
+                    // ...productsBySubCategoryApotekaImunitetOmegaMasneKiseline,
+                    // ...productsBySubCategoryApotekaImunitetOstalo,
           ]
 }
 
@@ -290,23 +290,23 @@ export const getAllSubCategoriesFromApotekaPreparatiZaKozu = async () => {
 export const getAllSubCategoriesFromApotekaOciUsi = async () => {
 
           const productsBySubCategoryApotekaOciUsiTablete: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'tablete-kapsule-rastvori')
-          // const productsBySubCategoryApotekaOciUsiHigijena: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'higijena-nega')
-          // const productsBySubCategoryApotekaOciUsiKapi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'kapi')
-          // const productsBySubCategoryApotekaOciUsiMasti: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'masti')
-          // const productsBySubCategoryApotekaOciUsiNaocare: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'naocare')
-          // const productsBySubCategoryApotekaOciUsiTecnosti: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'tecnosti-i-kutije-za-sociva')
-          // const productsBySubCategoryApotekaOciUsiCepovi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'cepovi-za-usi')
-          // const productsBySubCategoryApotekaOciUsiSprejevi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'sprejevi')
+          const productsBySubCategoryApotekaOciUsiHigijena: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'higijena-nega')
+          const productsBySubCategoryApotekaOciUsiKapi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'kapi')
+          const productsBySubCategoryApotekaOciUsiMasti: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'masti')
+          const productsBySubCategoryApotekaOciUsiNaocare: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'naocare')
+          const productsBySubCategoryApotekaOciUsiTecnosti: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'tecnosti-i-kutije-za-sociva')
+          const productsBySubCategoryApotekaOciUsiCepovi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'cepovi-za-usi')
+          const productsBySubCategoryApotekaOciUsiSprejevi: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory('apoteka', 'oci-i-usi', 'sprejevi')
 
           return [
                     ...productsBySubCategoryApotekaOciUsiTablete,
-                    // ...productsBySubCategoryApotekaOciUsiHigijena,
-                    // ...productsBySubCategoryApotekaOciUsiKapi,
-                    // ...productsBySubCategoryApotekaOciUsiMasti,
-                    // ...productsBySubCategoryApotekaOciUsiNaocare,
-                    // ...productsBySubCategoryApotekaOciUsiTecnosti,
-                    // ...productsBySubCategoryApotekaOciUsiCepovi,
-                    // ...productsBySubCategoryApotekaOciUsiSprejevi
+                    ...productsBySubCategoryApotekaOciUsiHigijena,
+                    ...productsBySubCategoryApotekaOciUsiKapi,
+                    ...productsBySubCategoryApotekaOciUsiMasti,
+                    ...productsBySubCategoryApotekaOciUsiNaocare,
+                    ...productsBySubCategoryApotekaOciUsiTecnosti,
+                    ...productsBySubCategoryApotekaOciUsiCepovi,
+                    ...productsBySubCategoryApotekaOciUsiSprejevi
           ]
 }
 

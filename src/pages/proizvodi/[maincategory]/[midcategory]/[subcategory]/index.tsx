@@ -117,7 +117,7 @@ export const getStaticPaths = async (context: any) => {
 
           let productsInSubCategoryApotekaAndMidBol: IProduct[] = []
           await getAllSubCategoriesFromApotekaBol().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidAnemija = data
+                    productsInSubCategoryApotekaAndMidBol = data
           })
 
           let productsInSubCategoryApotekaAndMidHemoroidi: IProduct[] = []
@@ -125,9 +125,9 @@ export const getStaticPaths = async (context: any) => {
                     productsInSubCategoryApotekaAndMidHemoroidi = data
           })
 
-          let productsInMainCategoryApotekaAndMidCategoryKosaKozaNokti: IProduct[] = []
+          let productsInSubCategoryApotekaAndMidKosaKozaNokti: IProduct[] = []
           await getAllSubCategoriesFromApotekaKosaKozaNokti().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidHemoroidi = data
+                    productsInSubCategoryApotekaAndMidKosaKozaNokti = data
           })
           // const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
           // const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
@@ -180,8 +180,13 @@ export const getStaticPaths = async (context: any) => {
           // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
 
 
-          finalList = productsInSubCategoryApotekaAndMidAlergije.concat(productsInSubCategoryApotekaAndMidAnemija).concat(productsInSubCategoryApotekaAndMidBol)
-                    .concat(productsInSubCategoryApotekaAndMidHemoroidi).concat(productsInMainCategoryApotekaAndMidCategoryKosaKozaNokti)
+          finalList = [
+                    ...productsInSubCategoryApotekaAndMidAlergije,
+                    ...productsInSubCategoryApotekaAndMidAnemija,
+                    ...productsInSubCategoryApotekaAndMidBol,
+                    ...productsInSubCategoryApotekaAndMidHemoroidi,
+                    ...productsInSubCategoryApotekaAndMidKosaKozaNokti
+          ]
 
 
           const paths = finalList.flatMap((product: any) =>
