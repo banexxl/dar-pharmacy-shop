@@ -435,5 +435,8 @@
                     "not-found": "404 - Stranica nije pronađena",
                     "message": "UPS!....Stranica koju ste zahtevali je u izradi! Možda iznenadi i pojavi se posle osvežavanja stranice",
                     "back-to-home": "Back to home page"
+          },
+          "filter-page": {
+                    "all-categories": "Sve kategorije"
           }
 }

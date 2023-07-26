@@ -2,17 +2,24 @@ import { FilterCategoryAccordionBox, FilterTitleBox, FilteredProducts, FilteredP
 import { Box } from '@mui/material'
 import React from 'react'
 import ProductsAllCategories from './products-categories'
+import { useTranslation } from 'next-i18next'
+import PriceFilterComponent from './product-filter-price'
+import IProduct from '@/interfaces/product/product.interface'
 
 function ProductsFilter(props: any) {
 
-          //props je "{filterObject: 'Apoteka'}"
+          const { t } = useTranslation('common')
 
           return (
                     <ProductsFilterContainer>
                               <ProductsFilters>
+
                                         <FilterTitleBox>
-                                                  Sve kategorije
+                                                  {t('filter-page.all-categories')}
                                         </FilterTitleBox>
+                                        <PriceFilterComponent products={[]} onPriceFilterChange={function (filteredProducts: IProduct[]): void {
+                                                  throw new Error('Function not implemented.')
+                                        }} />
                                         <FilterCategoryAccordionBox>
                                                   <ProductsAllCategories></ProductsAllCategories>
                                         </FilterCategoryAccordionBox>

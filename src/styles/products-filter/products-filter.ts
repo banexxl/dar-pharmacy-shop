@@ -4,11 +4,11 @@ import { Colors } from "../theme";
 
 export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
           marginTop: '100px',
-          height: '100vh',
-          width: '90%',
+          minHeight: '100vh',
+          width: '99%',
           [theme.breakpoints.up("md")]: {
-                    padding: "20px 20px",
-                    borderRadius: '20px'
+                    padding: "5px 5px",
+                    borderRadius: '10px'
           },
           display: "flex",
           justifyContent: "flex-start",
@@ -36,8 +36,8 @@ export const ProductsFilters = styled(Box)(({ theme }) => ({
 export const FilterTitleBox = styled(Box)(({ theme }) => ({
           height: '10%',
           width: '100%',
-          backgroundColor: Colors.secondary,
           borderRadius: '10px',
+          padding: '20px',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
           },
