@@ -5,15 +5,17 @@ import ProductsAllCategories from './products-categories'
 import { useTranslation } from 'next-i18next'
 import PriceFilterComponent from './product-filter-price'
 import IProduct from '@/interfaces/product/product.interface'
+import Products from '../products/products-grid'
 
 function ProductsFilter(props: any) {
 
           const { t } = useTranslation('common')
+          console.log('props iz komponente', props);
+
 
           return (
                     <ProductsFilterContainer>
                               <ProductsFilters>
-
                                         <FilterTitleBox>
                                                   {t('filter-page.all-categories')}
                                         </FilterTitleBox>
@@ -28,6 +30,7 @@ function ProductsFilter(props: any) {
                                         <FilteredProductsTitle>
                                                   Na sta smo kliknuli
                                         </FilteredProductsTitle>
+                                        <Products data={props.filterObject} />
                               </FilteredProducts>
                     </ProductsFilterContainer>
           )
