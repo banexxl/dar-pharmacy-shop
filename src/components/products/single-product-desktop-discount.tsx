@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from "react"
-import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductDiscountSticker, ProductFavButton, ProductImage } from "../../styles/product";
+import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductDiscountSticker, ProductFavButton, ProductImage } from "../../styles/product/single-product";
 import { Alert, Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";

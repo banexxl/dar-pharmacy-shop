@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 import PriceFilterComponent from './product-filter-price'
 import IProduct from '@/interfaces/product/product.interface'
 import Products from '../products/products-grid'
+import FilteredProductsGrid from './filtered-products-grid'
 
 function ProductsFilter(props: any) {
 
@@ -30,7 +31,7 @@ function ProductsFilter(props: any) {
                                         <FilteredProductsTitle>
                                                   Na sta smo kliknuli
                                         </FilteredProductsTitle>
-                                        <Products data={props.filterObject} />
+                                        <FilteredProductsGrid data={props.filterObject} />
                               </FilteredProducts>
                     </ProductsFilterContainer>
           )

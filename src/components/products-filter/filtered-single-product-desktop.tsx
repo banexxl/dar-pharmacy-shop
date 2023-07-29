@@ -1,25 +1,25 @@
-import { useEffect, useRef, useState } from "react";
-import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, ProductMetaWrapper, } from "../../styles/product/single-product";
-import { Alert, Stack, Tooltip, Typography } from "@mui/material";
+import { MutableRefObject, useEffect, useRef, useState } from "react"
+import { FilteredProduct, FilteredProductActionButton, FilteredProductActionsWrapper, FilteredProductAddToCart, FilteredProductFavButton, FilteredProductImage, FilteredProductImageContainer } from "../../styles/product/filtered-single-product";
+import { Alert, Box, Stack, Tooltip } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../product-dropdown/product-dropdown";
-import ProductMeta from "./products-meta"
-import { addToCart } from "@/store/cart/cart.slice";
+import ProductMeta from "./filtered-products-meta";
 import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 
-export default function SingleProductMobile({ product, isScreenToMedium }: any) {
+export default function FilteredSingleProductDesktop({ product, isScreenToMedium }: any) {
 
           const { t } = useTranslation();
-          const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
+          const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-          const [showOptions, setShowOptions] = useState(false);
-
+          const [showOptions, setShowOptions] = useState(false)
+          const [loading, setLoading] = useState(false)
           const [isVisible, setVisible] = useState(false)
           const domRef = useRef<HTMLElement | null>(null)
           const observerRef = useRef<IntersectionObserver | null>(null);
@@ -51,6 +51,9 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                     };
           }, []);
 
+          function handleClick() {
+                    setLoading(true);
+          }
           const dispatch = useDispatch();
 
           const handleMouseEnter = () => {
@@ -62,10 +65,12 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
 
           const callCartAlert = () => {
                     setAddedToCartAlert(true)
+                    setLoading(true)
                     const timeId = setTimeout(() => {
-                              // After 3 seconds set the show value to false
+                              // After X seconds set the show value to false
+                              setLoading(false)
                               setAddedToCartAlert(false)
-                    }, 2000)
+                    }, 1500)
 
                     return () => {
                               clearTimeout(timeId)
@@ -74,10 +79,12 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
 
           const callWishlistAlert = () => {
                     setAddedToWishlistAlert(true)
+                    setLoading(true)
                     const timeId = setTimeout(() => {
-                              // After 3 seconds set the show value to false
+                              // After X seconds set the show value to false
+                              setLoading(false)
                               setAddedToWishlistAlert(false)
-                    }, 2000)
+                    }, 1500)
 
                     return () => {
                               clearTimeout(timeId)
@@ -85,40 +92,50 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
           }
 
           return (
-                    <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={undefined} isVisible={isVisible}>
-                              <ProductImage src={product.imageURL} />
-                              <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
-                              <ProductActionsWrapper>
+                    <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible}>
+                              <FilteredProductImageContainer>
+                                        <FilteredProductImage src={product.imageURL} />
+                              </FilteredProductImageContainer>
+                              <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
+                                        <Tooltip placement="left" title={t("product.add-to-wishlist")}>
+                                                  <FavoriteIcon />
+                                        </Tooltip>
+                              </FilteredProductFavButton>
+                              {(showOptions || isScreenToMedium) && (
+                                        <FilteredProductAddToCart show={showOptions} variant="contained" loading={loading} onClick={() => {
+                                                  callCartAlert()
+                                                  dispatch(addToCart(product))
+                                        }}
+                                        >
+                                                  {t('homepage.addtocart')}
+                                        </FilteredProductAddToCart>
+                              )}
+                              <FilteredProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
-                                                  <ProductFavButton isfav={0} onClick={() => { callWishlistAlert(); dispatch(addToWishList(product)) }}>
-                                                            <Tooltip placement="left" title="Add to wishlist">
-                                                                      <FavoriteIcon />
-                                                            </Tooltip>
-                                                  </ProductFavButton>
-                                                  <ProductActionButton>
-                                                            <Tooltip placement="left" title="Share this product">
+                                                  <FilteredProductActionButton>
+                                                            <Tooltip placement="left" title={t("product.share-product")}>
                                                                       <ShareIcon color="primary" />
                                                             </Tooltip>
-                                                  </ProductActionButton>
-                                                  <ProductActionButton onClick={() => showProductDetailDialog()}>
+                                                  </FilteredProductActionButton>
+                                                  <FilteredProductActionButton onClick={() => showProductDetailDialog()}>
                                                             <Tooltip placement="left" title="Full view">
                                                                       <FitScreenIcon color="primary" />
                                                             </Tooltip>
-                                                  </ProductActionButton>
+                                                  </FilteredProductActionButton>
                                         </Stack>
-                              </ProductActionsWrapper>
+                              </FilteredProductActionsWrapper>
+                              <ProductMeta product={product} />
+                              <ProductDetailDialog product={product} />
                               {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                                                   {t('product.added-to-cart')}
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                                                   {t('product.added-to-wishlist')}
                                         </Alert>
                               )}
-                              <ProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>{t('homepage.addtocart')}</ProductAddToCart >
-                              <ProductDetailDialog product={product} />
-                    </Product>
-          )
+                    </FilteredProduct>
+          );
 }
