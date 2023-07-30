@@ -72,11 +72,15 @@ export default function MainCategoryPage(props: any) {
 }
 
 
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
 
-          let finalList: IProduct[] = []
-          let productsInMainCategoryApotekaAndSubcategoryAlergije: IProduct[] = []
-          await getAllSubCategoriesFromApotekaAlergije().then((data: any) => { productsInMainCategoryApotekaAndSubcategoryAlergije = data })
+          const { resolvedUrl } = context
+          const urlSplit = resolvedUrl.split('/');
+          const mainCategory = urlSplit[2];
+          const midCategory = urlSplit[3];
+          const subCategory = urlSplit[4];
+
+          const productsByMainMidSubCategory: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory(mainCategory, midCategory, subCategory)
           // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
           // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
           // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
@@ -85,7 +89,6 @@ export async function getStaticProps(context: any) {
           // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
           // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
-          finalList = productsInMainCategoryApotekaAndSubcategoryAlergije
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
@@ -96,118 +99,117 @@ export async function getStaticProps(context: any) {
 
           return {
                     props: {
-                              products: JSON.parse(JSON.stringify(finalList)),
+                              products: JSON.parse(JSON.stringify(productsByMainMidSubCategory)),
                               ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
-                    revalidate: 10,
           }
 }
 
 
-export const getStaticPaths = async (context: any) => {
+// export const getStaticPaths = async (context: any) => {
 
-          let finalList: any = []
+//           let finalList: any = []
 
-          let productsInSubCategoryApotekaAndMidAlergije: IProduct[] = []
-          await getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidAlergije = data
-          })
+//           let productsInSubCategoryApotekaAndMidAlergije: IProduct[] = []
+//           await getAllSubCategoriesFromApotekaAlergije().then((data: any) => {
+//                     productsInSubCategoryApotekaAndMidAlergije = data
+//           })
 
-          let productsInSubCategoryApotekaAndMidAnemija: IProduct[] = []
-          await getAllSubCategoriesFromApotekaAnemije().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidAnemija = data
-          })
+//           let productsInSubCategoryApotekaAndMidAnemija: IProduct[] = []
+//           await getAllSubCategoriesFromApotekaAnemije().then((data: any) => {
+//                     productsInSubCategoryApotekaAndMidAnemija = data
+//           })
 
-          let productsInSubCategoryApotekaAndMidBol: IProduct[] = []
-          await getAllSubCategoriesFromApotekaBol().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidBol = data
-          })
+//           let productsInSubCategoryApotekaAndMidBol: IProduct[] = []
+//           await getAllSubCategoriesFromApotekaBol().then((data: any) => {
+//                     productsInSubCategoryApotekaAndMidBol = data
+//           })
 
-          let productsInSubCategoryApotekaAndMidHemoroidi: IProduct[] = []
-          await getAllSubCategoriesFromApotekaHemoroidi().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidHemoroidi = data
-          })
+//           let productsInSubCategoryApotekaAndMidHemoroidi: IProduct[] = []
+//           await getAllSubCategoriesFromApotekaHemoroidi().then((data: any) => {
+//                     productsInSubCategoryApotekaAndMidHemoroidi = data
+//           })
 
-          let productsInSubCategoryApotekaAndMidKosaKozaNokti: IProduct[] = []
-          await getAllSubCategoriesFromApotekaKosaKozaNokti().then((data: any) => {
-                    productsInSubCategoryApotekaAndMidKosaKozaNokti = data
-          })
-          // const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
-          // const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
-          // const productsByMainCategoryApotekaAndMidCategoryKosti: any = getAllSubCategoriesFromApotekaKostiZglobovi()
-          // const productsByMainCategoryApotekaAndMidCategoryMrsavljenje: any = getAllSubCategoriesFromApotekaMrsavljenjeCelulit()
-          // const productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana: any = getAllSubCategoriesFromApotekaPosebnaIshrana()
-          // const productsByMainCategoryApotekaAndMidCategoryPutnaApoteka: any = getAllSubCategoriesFromApotekaPutnaApoteka()
-          // const productsByMainCategoryApotekaAndMidCategoryStomacneTegobe: any = getAllSubCategoriesFromApotekaStomacneTegobe()
-          // const productsByMainCategoryApotekaAndMidCategoryZdravoSrce: any = getAllSubCategoriesFromApotekaZdravoSrceCirkulacija()
-          // const productsByMainCategoryApotekaAndMidCategoryVitamini: any = getAllSubCategoriesFromApotekaVitaminiMinerali()
-          // const productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu: any = getAllSubCategoriesFromApotekaPreparatiZaKozu()
-          // const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
-          // const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
+//           let productsInSubCategoryApotekaAndMidKosaKozaNokti: IProduct[] = []
+//           await getAllSubCategoriesFromApotekaKosaKozaNokti().then((data: any) => {
+//                     productsInSubCategoryApotekaAndMidKosaKozaNokti = data
+//           })
+//           // const productsByMainCategoryApotekaAndMidCategoryHolesterol: any = getAllSubCategoriesFromApotekaHolesterol()
+//           // const productsByMainCategoryApotekaAndMidCategoryImunitet: any = getAllSubCategoriesFromApotekaImunitet()
+//           // const productsByMainCategoryApotekaAndMidCategoryKosti: any = getAllSubCategoriesFromApotekaKostiZglobovi()
+//           // const productsByMainCategoryApotekaAndMidCategoryMrsavljenje: any = getAllSubCategoriesFromApotekaMrsavljenjeCelulit()
+//           // const productsByMainCategoryApotekaAndMidCategoryPosebnaIshrana: any = getAllSubCategoriesFromApotekaPosebnaIshrana()
+//           // const productsByMainCategoryApotekaAndMidCategoryPutnaApoteka: any = getAllSubCategoriesFromApotekaPutnaApoteka()
+//           // const productsByMainCategoryApotekaAndMidCategoryStomacneTegobe: any = getAllSubCategoriesFromApotekaStomacneTegobe()
+//           // const productsByMainCategoryApotekaAndMidCategoryZdravoSrce: any = getAllSubCategoriesFromApotekaZdravoSrceCirkulacija()
+//           // const productsByMainCategoryApotekaAndMidCategoryVitamini: any = getAllSubCategoriesFromApotekaVitaminiMinerali()
+//           // const productsByMainCategoryApotekaAndMidCategoryPreparatiZaKozu: any = getAllSubCategoriesFromApotekaPreparatiZaKozu()
+//           // const productsByMainCategoryApotekaAndMidCategoryOciUsi: any = getAllSubCategoriesFromApotekaOciUsi()
+//           // const productsByMainCategoryApotekaAndMidCategoryPrvaPomoc: any = getAllSubCategoriesFromApotekaPrvaPomoc()
 
-          // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice: any = getAllSubCategoriesFromPrirodnaKozmetikaLice()
-          // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo: any = getAllSubCategoriesFromPrirodnaKozmetikaTelo()
-          // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave()
-          // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryBebeDeca: any = getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca()
+//           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryLice: any = getAllSubCategoriesFromPrirodnaKozmetikaLice()
+//           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryTelo: any = getAllSubCategoriesFromPrirodnaKozmetikaTelo()
+//           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave()
+//           // const productsByMainCategoryPrirodnaKozmetikaAndMidCategoryBebeDeca: any = getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca()
 
-          // const productsByMainCategoryLepotaNegaAndMidCategoryPribor: any = getAllSubCategoriesFromLepotaNegaPriborZaNegu()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryLice: any = getAllSubCategoriesFromLepotaNegaLice()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryTelo: any = getAllSubCategoriesFromLepotaNegaTelo()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryIntimnaNega: any = getAllSubCategoriesFromLepotaNegaIntimnaNega()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryOralnaHigijena: any = getAllSubCategoriesFromLepotaNegaOralnaHigijena()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromLepotaNegaKosaKozaGlave()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryRuke: any = getAllSubCategoriesFromLepotaNegaRuke()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryStopala: any = getAllSubCategoriesFromLepotaNegaStopala()
-          // const productsByMainCategoryLepotaNegaAndMidCategoryBebe: any = getAllSubCategoriesFromLepotaNegaBebe()
-          // const productsByMainCategoryLepotaNegaAndMidCategorySunce: any = getAllSubCategoriesFromLepotaNegaZastitaOdSunca()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryPribor: any = getAllSubCategoriesFromLepotaNegaPriborZaNegu()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryLice: any = getAllSubCategoriesFromLepotaNegaLice()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryTelo: any = getAllSubCategoriesFromLepotaNegaTelo()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryIntimnaNega: any = getAllSubCategoriesFromLepotaNegaIntimnaNega()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryOralnaHigijena: any = getAllSubCategoriesFromLepotaNegaOralnaHigijena()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryKosaKozaGlave: any = getAllSubCategoriesFromLepotaNegaKosaKozaGlave()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryRuke: any = getAllSubCategoriesFromLepotaNegaRuke()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryStopala: any = getAllSubCategoriesFromLepotaNegaStopala()
+//           // const productsByMainCategoryLepotaNegaAndMidCategoryBebe: any = getAllSubCategoriesFromLepotaNegaBebe()
+//           // const productsByMainCategoryLepotaNegaAndMidCategorySunce: any = getAllSubCategoriesFromLepotaNegaZastitaOdSunca()
 
-          // const productsByMainCategoryBebiProgramAndMidCategoryBebiApoteka: any = getAllSubCategoriesFromBebiProgramBebiApoteka()
-          // const productsByMainCategoryBebiProgramAndMidCategoryBebiKozmetika: any = getAllSubCategoriesFromBebiProgramBebiKozmetika()
-          // const productsByMainCategoryBebiProgramAndMidCategoryBebiOprema: any = getAllSubCategoriesFromBebiProgramBebiOprema()
-          // const productsByMainCategoryBebiProgramAndMidCategoryFlasiceCucleZvecke: any = getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke()
-          // const productsByMainCategoryBebiProgramAndMidCategoryPelene: any = getAllSubCategoriesFromBebiProgramPelene()
-          // const productsByMainCategoryBebiProgramAndMidCategoryHrana: any = getAllSubCategoriesFromBebiProgramHrana()
-          // const productsByMainCategoryBebiProgramAndMidCategoryTrudnice: any = getAllSubCategoriesFromBebiProgramTrudnice()
-          // const productsByMainCategoryBebiProgramAndMidCategoryAparati: any = getAllSubCategoriesFromBebiProgramAparati()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryBebiApoteka: any = getAllSubCategoriesFromBebiProgramBebiApoteka()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryBebiKozmetika: any = getAllSubCategoriesFromBebiProgramBebiKozmetika()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryBebiOprema: any = getAllSubCategoriesFromBebiProgramBebiOprema()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryFlasiceCucleZvecke: any = getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryPelene: any = getAllSubCategoriesFromBebiProgramPelene()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryHrana: any = getAllSubCategoriesFromBebiProgramHrana()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryTrudnice: any = getAllSubCategoriesFromBebiProgramTrudnice()
+//           // const productsByMainCategoryBebiProgramAndMidCategoryAparati: any = getAllSubCategoriesFromBebiProgramAparati()
 
-          // const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryInhalatori: any = getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori()
-          // const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryPritisak: any = getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska()
-          // const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategorySecer: any = getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera()
+//           // const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryInhalatori: any = getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori()
+//           // const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategoryPritisak: any = getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska()
+//           // const productsByMainCategoryMedicinskiAparatiOpremaAndMidCategorySecer: any = getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera()
 
-          // const productsByMainCategoryOrtopedijaOpremaAndMidCategoryAntidekubitalnaPomagala: any = getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala()
+//           // const productsByMainCategoryOrtopedijaOpremaAndMidCategoryAntidekubitalnaPomagala: any = getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala()
 
-          // const productsByMainCategoryDezinfekcijaDezinsekcijaMaskeAndMidCategoryMaskeZaLizce: any = getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice()
+//           // const productsByMainCategoryDezinfekcijaDezinsekcijaMaskeAndMidCategoryMaskeZaLizce: any = getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice()
 
-          // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryDeca: any = getAllSubCategoriesFromObucaCarapeUlosciDeca()
+//           // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryDeca: any = getAllSubCategoriesFromObucaCarapeUlosciDeca()
 
-          // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
-
-
-          finalList = [
-                    ...productsInSubCategoryApotekaAndMidAlergije,
-                    ...productsInSubCategoryApotekaAndMidAnemija,
-                    ...productsInSubCategoryApotekaAndMidBol,
-                    ...productsInSubCategoryApotekaAndMidHemoroidi,
-                    ...productsInSubCategoryApotekaAndMidKosaKozaNokti
-          ]
+//           // const productsByMainCategoryObucaCarapeUlosciAndMidCategoryOdrasli: any = getAllSubCategoriesFromObucaCarapeUlosciOdrasli()
 
 
-          const paths = finalList.flatMap((product: any) =>
-                    context.locales.map((locale: any) => ({
-                              params: {
-                                        maincategory: product.mainCategory.toString(),
-                                        midcategory: product.midCategory.toString(),
-                                        subcategory: product.subCategory.toString()
-                              },
-                              locale,
-                    }))
-          );
+//           finalList = [
+//                     ...productsInSubCategoryApotekaAndMidAlergije,
+//                     ...productsInSubCategoryApotekaAndMidAnemija,
+//                     ...productsInSubCategoryApotekaAndMidBol,
+//                     ...productsInSubCategoryApotekaAndMidHemoroidi,
+//                     ...productsInSubCategoryApotekaAndMidKosaKozaNokti
+//           ]
+
+
+//           const paths = finalList.flatMap((product: any) =>
+//                     context.locales.map((locale: any) => ({
+//                               params: {
+//                                         maincategory: product.mainCategory.toString(),
+//                                         midcategory: product.midCategory.toString(),
+//                                         subcategory: product.subCategory.toString()
+//                               },
+//                               locale,
+//                     }))
+//           );
 
 
 
 
-          return {
-                    paths,
-                    fallback: false, // false or "blocking"
-          };
-}
+//           return {
+//                     paths,
+//                     fallback: false, // false or "blocking"
+//           };
+// }

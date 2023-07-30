@@ -54,14 +54,14 @@ export default function MainCategoryPage(props: any) {
 }
 
 
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
 
-          let finalList: IProduct[] = []
+          const { resolvedUrl } = context
+          const urlSplit = resolvedUrl.split('/');
+          const mainCategory = urlSplit[2];
+          const midCategory = urlSplit[3];
 
-          let midCategoryListFromApoteka: IProduct[] = []
-          await getAllMidCategoriesFromApoteka().then((data: any) => {
-                    midCategoryListFromApoteka = data
-          })
+          const productsByMainMidCategory: any = await productsServices().getProductsByMainCategoryMidCategory(mainCategory, midCategory)
 
           // let midCategoryListFromPrirodnaKozmetika: IProduct[] = []
           // await getAllMidCategoriesFromPrirodnaKozmetika().then((data: any) => {
@@ -97,17 +97,6 @@ export async function getStaticProps(context: any) {
           // await getAllMidCategoriesFromObucaCarapeUlosci().then((data: any) => {
           //           midCategoryListFromObucaCarapeUlosci = data
           // })
-
-          finalList = [
-                    ...midCategoryListFromApoteka,
-                    // ...midCategoryListFromPrirodnaKozmetika,
-                    // ...midCategoryListFromLepotaINega,
-                    // ...midCategoryListFromBebiProgram,
-                    // ...midCategoryListFromMedicinskiAparatiOprema,
-                    // ...midCategoryListFromOrtopedijaPomagala,
-                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
-                    // ...midCategoryListFromObucaCarapeUlosci
-          ]
 
           // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
@@ -118,81 +107,80 @@ export async function getStaticProps(context: any) {
 
           return {
                     props: {
-                              products: JSON.parse(JSON.stringify(finalList)),
+                              products: JSON.parse(JSON.stringify(productsByMainMidCategory)),
                               ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
-                    revalidate: 10,
           }
 }
 
 
-export const getStaticPaths = async (context: any) => {
+// export const getStaticPaths = async (context: any) => {
 
-          let finalList: IProduct[] = []
+//           let finalList: IProduct[] = []
 
-          let midCategoryListFromApoteka: IProduct[] = []
-          await getAllMidCategoriesFromApoteka().then((data: any) => {
-                    midCategoryListFromApoteka = data
-          })
+//           let midCategoryListFromApoteka: IProduct[] = []
+//           await getAllMidCategoriesFromApoteka().then((data: any) => {
+//                     midCategoryListFromApoteka = data
+//           })
 
-          // let midCategoryListFromPrirodnaKozmetika: IProduct[] = []
-          // await getAllMidCategoriesFromPrirodnaKozmetika().then((data: any) => {
-          //           midCategoryListFromPrirodnaKozmetika = data
-          // })
+//           // let midCategoryListFromPrirodnaKozmetika: IProduct[] = []
+//           // await getAllMidCategoriesFromPrirodnaKozmetika().then((data: any) => {
+//           //           midCategoryListFromPrirodnaKozmetika = data
+//           // })
 
-          // let midCategoryListFromLepotaINega: IProduct[] = []
-          // await getAllMidCategoriesFromLepotaINega().then((data: any) => {
-          //           midCategoryListFromLepotaINega = data
-          // })
+//           // let midCategoryListFromLepotaINega: IProduct[] = []
+//           // await getAllMidCategoriesFromLepotaINega().then((data: any) => {
+//           //           midCategoryListFromLepotaINega = data
+//           // })
 
-          // let midCategoryListFromBebiProgram: IProduct[] = []
-          // await getAllMidCategoriesFromBebiProgram().then((data: any) => {
-          //           midCategoryListFromBebiProgram = data
-          // })
+//           // let midCategoryListFromBebiProgram: IProduct[] = []
+//           // await getAllMidCategoriesFromBebiProgram().then((data: any) => {
+//           //           midCategoryListFromBebiProgram = data
+//           // })
 
-          // let midCategoryListFromMedicinskiAparatiOprema: IProduct[] = []
-          // await getAllMidCategoriesFromMedicinskiAparatiOprema().then((data: any) => {
-          //           midCategoryListFromMedicinskiAparatiOprema = data
-          // })
+//           // let midCategoryListFromMedicinskiAparatiOprema: IProduct[] = []
+//           // await getAllMidCategoriesFromMedicinskiAparatiOprema().then((data: any) => {
+//           //           midCategoryListFromMedicinskiAparatiOprema = data
+//           // })
 
-          // let midCategoryListFromOrtopedijaPomagala: IProduct[] = []
-          // await getAllMidCategoriesFromOrtopedijaPomagala().then((data: any) => {
-          //           midCategoryListFromOrtopedijaPomagala = data
-          // })
+//           // let midCategoryListFromOrtopedijaPomagala: IProduct[] = []
+//           // await getAllMidCategoriesFromOrtopedijaPomagala().then((data: any) => {
+//           //           midCategoryListFromOrtopedijaPomagala = data
+//           // })
 
-          // let midCategoryListFromDezinfekcijaDezinsekcijaMaske: IProduct[] = []
-          // await getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske().then((data: any) => {
-          //           midCategoryListFromDezinfekcijaDezinsekcijaMaske = data
-          // })
+//           // let midCategoryListFromDezinfekcijaDezinsekcijaMaske: IProduct[] = []
+//           // await getAllMidCategoriesFromDezinfekcijaDezinsekcijaMaske().then((data: any) => {
+//           //           midCategoryListFromDezinfekcijaDezinsekcijaMaske = data
+//           // })
 
-          // let midCategoryListFromObucaCarapeUlosci: IProduct[] = []
-          // await getAllMidCategoriesFromObucaCarapeUlosci().then((data: any) => {
-          //           midCategoryListFromObucaCarapeUlosci = data
-          // })
+//           // let midCategoryListFromObucaCarapeUlosci: IProduct[] = []
+//           // await getAllMidCategoriesFromObucaCarapeUlosci().then((data: any) => {
+//           //           midCategoryListFromObucaCarapeUlosci = data
+//           // })
 
-          finalList = [
-                    ...midCategoryListFromApoteka,
-                    // ...midCategoryListFromPrirodnaKozmetika,
-                    // ...midCategoryListFromLepotaINega,
-                    // ...midCategoryListFromBebiProgram,
-                    // ...midCategoryListFromMedicinskiAparatiOprema,
-                    // ...midCategoryListFromOrtopedijaPomagala,
-                    // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
-                    // ...midCategoryListFromObucaCarapeUlosci
-          ]
+//           finalList = [
+//                     ...midCategoryListFromApoteka,
+//                     // ...midCategoryListFromPrirodnaKozmetika,
+//                     // ...midCategoryListFromLepotaINega,
+//                     // ...midCategoryListFromBebiProgram,
+//                     // ...midCategoryListFromMedicinskiAparatiOprema,
+//                     // ...midCategoryListFromOrtopedijaPomagala,
+//                     // ...midCategoryListFromDezinfekcijaDezinsekcijaMaske,
+//                     // ...midCategoryListFromObucaCarapeUlosci
+//           ]
 
-          const paths = finalList.flatMap((product: any) =>
-                    context.locales.map((locale: any) => ({
-                              params: {
-                                        maincategory: product.mainCategory.toString(),
-                                        midcategory: product.midCategory.toString()
-                              },
-                              locale,
-                    }))
-          );
+//           const paths = finalList.flatMap((product: any) =>
+//                     context.locales.map((locale: any) => ({
+//                               params: {
+//                                         maincategory: product.mainCategory.toString(),
+//                                         midcategory: product.midCategory.toString()
+//                               },
+//                               locale,
+//                     }))
+//           );
 
-          return {
-                    paths,
-                    fallback: false, // false or "blocking"
-          };
-}
+//           return {
+//                     paths,
+//                     fallback: false, // false or "blocking"
+//           };
+// }
