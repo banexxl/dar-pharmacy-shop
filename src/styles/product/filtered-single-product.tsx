@@ -32,8 +32,8 @@ export const FilteredProductImageContainer = styled(Box)((theme: any) => ({
 
 export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
           src: `${src}`,
-          [theme.breakpoints.down("md")]: {
-                    height: '150px',
+          [theme.breakpoints.up("md")]: {
+                    maxHeight: '150px',
                     width: 'auto'
           },
           cursor: 'pointer',
