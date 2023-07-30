@@ -50,6 +50,13 @@ export const ProductDropdown = styled(Box, {
           flexDirection: "column",
           [theme.breakpoints.up("md")]: {
                     position: "relative",
+                    maxHeight: '600px',
+                    width: 'auto'
+          },
+          [theme.breakpoints.down("md")]: {
+                    position: "relative",
+                    maxHeight: '400px',
+                    width: 'auto'
           },
           // opacity: isVisible ? '1' : '0',
           // transform: isVisible ? 'translateY(50px)' : 'none',

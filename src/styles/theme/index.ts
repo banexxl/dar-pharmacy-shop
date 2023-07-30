@@ -42,6 +42,7 @@ const theme: Theme = createTheme({
           },
 
           components: {
+
                     MuiTypography: {
                               styleOverrides: {
                                         root: {

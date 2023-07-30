@@ -6,11 +6,12 @@ import MuiAccordionSummary, {
           AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import { Colors } from '../theme';
+import theme, { Colors } from '../theme';
 import { Box } from '@mui/material';
 
 export const Accordion = styled((props: AccordionProps) => (
-          <MuiAccordion disableGutters elevation={0}  {...props} />
+          <MuiAccordion square={false} disableGutters elevation={0} {...props}
+          />
 ))(({ theme }) => ({
           border: `1px solid ${theme.palette.divider}`,
           '&:not(:last-child)': {
@@ -26,29 +27,28 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
                     expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
                     {...props}
                     sx={{
-                              "&.Mui-expanded": {
-                                        minHeight: 0,
+                              '&.Mui-expanded': {
+                                        // Remove the excess space when the Accordion is expanded
                               },
-                              "& .MuiAccordionSummary-content.Mui-expanded": {
-                              }
+                              '& .MuiAccordionSummary-content': {
+                                        margin: '8px 0', // Adjust the margin for the content (optional)
+                              },
                     }}
           />
 ))(({ theme }) => ({
-          backgroundColor: Colors.light_gray,
+
+          backgroundColor: Colors.light_gray, // Set your desired background color here
           flexDirection: 'row-reverse',
           '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
                     transform: 'rotate(90deg)',
           },
-          '& .MuiAccordionSummary-content': {
-                    marginLeft: theme.spacing(1),
-                    padding: '3px'
-          },
 }));
-
 export const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
           borderTop: '1px solid rgba(0, 0, 0, .125)',
+          padding: '0px'
 }));
 
 export const AccordionBox = styled(Box)(({ theme }) => ({
-          height: '100%'
+          height: '100%',
+          padding: '0px'
 })); 
