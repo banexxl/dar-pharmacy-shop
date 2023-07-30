@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
+import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
@@ -93,7 +94,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
 
           return (
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible}>
-                              <ProductImage src={product.imageURL} />
+                              <FilteredProductImageContainer>
+                                        <ProductImage src={product.imageURL} />
+                              </FilteredProductImageContainer>
                               <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
                                         <Tooltip placement="left" title={t("product.add-to-wishlist")}>
                                                   <FavoriteIcon />
