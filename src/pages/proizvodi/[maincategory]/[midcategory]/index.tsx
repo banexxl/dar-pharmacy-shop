@@ -26,7 +26,7 @@ export default function MainCategoryPage(props: any) {
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel isLoading={true} />,
-                    ssr: false
+                    ssr: true
           })
 
           console.log('props iz mid cat', props);
