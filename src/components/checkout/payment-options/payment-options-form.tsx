@@ -27,7 +27,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                     securityCode: paymentOptionsFormSelector.securityCode
           };
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel isLoading={true} />,
+                    loading: () => <LoadingWheel />,
                     ssr: false
           })
 

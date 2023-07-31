@@ -20,7 +20,7 @@ const SingleProduct = (props: any) => {
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel isLoading={true} />,
+                    loading: () => <LoadingWheel />,
                     ssr: false
           })
 

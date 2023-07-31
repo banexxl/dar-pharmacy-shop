@@ -35,7 +35,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
           const dispatch = useDispatch()
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel isLoading={true} />,
+                    loading: () => <LoadingWheel />,
                     ssr: false
           })
 

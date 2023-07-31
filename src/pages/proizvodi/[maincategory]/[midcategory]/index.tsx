@@ -25,7 +25,7 @@ import IProduct from '@/interfaces/product/product.interface';
 export default function MainCategoryPage(props: any) {
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel isLoading={true} />,
+                    loading: () => <LoadingWheel />,
                     ssr: true
           })
 
