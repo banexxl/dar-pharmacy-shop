@@ -1,24 +1,23 @@
 import * as React from 'react';
-import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import ILoading from '@/interfaces/loading/loading.interface';
+import Box from '@mui/material/Box';
 import { Colors } from '@/styles/theme';
 
-export default function LoadingWheel(props: ILoading) {
-
-
+export default function CircularIndeterminate() {
           return (
-                    <Backdrop
-                              sx={{ color: Colors.primary, zIndex: '1000', opacity: '.5' }}
-                              open={props.isLoading}
-                    >
+                    <Box sx={{ color: Colors.primary, zIndex: '1000', opacity: '.5' }}>
                               <CircularProgress
-                                        size={32}
                                         sx={{
                                                   color: Colors.primary,
                                                   position: 'absolute',
+                                                  top: '50%',
+                                                  left: '50%',
+                                                  transform: 'translate(-50%, -50%)'
                                         }} />
-                    </Backdrop>
-
+                    </Box>
           );
 }
+
+
+
+
