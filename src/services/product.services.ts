@@ -102,6 +102,7 @@ const productsServices = () => {
                               let products: IProduct[] = await db.collection('Products').find({ mainCategory: `${mainCategory}` }).toArray()
                               return products
                     } catch (error: any) {
+                              console.log('Error message from getProductsByMainCategory', error.message);
                               return { message: error.message }
                     }
                     finally {
