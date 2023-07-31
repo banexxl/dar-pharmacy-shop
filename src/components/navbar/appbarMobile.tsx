@@ -5,6 +5,7 @@ import { Box, IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
@@ -53,7 +54,9 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                                   <MenuIcon />
                                         </IconButton>
                                         <AppbarTitle textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
-                                                  DAR
+                                                  <Link href="/">
+                                                            DAR
+                                                  </Link>
                                         </AppbarTitle>
                                         <IconButton onClick={() => setShowSearchBox(true)} >
                                                   <SearchIcon />
