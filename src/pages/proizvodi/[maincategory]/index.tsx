@@ -20,9 +20,9 @@ import IProduct from '@/interfaces/product/product.interface';
 
 export default function MainCategoryPage(props: any) {
 
-          const DynamicThemeProvider = dynamic(() => import("../[maincategory]"), {
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel />,
-                    ssr: false
+                    ssr: true
           })
 
           console.log('props iz main cat', props);
