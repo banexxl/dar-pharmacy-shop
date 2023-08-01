@@ -17,6 +17,8 @@ import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import IProduct from '@/interfaces/product/product.interface';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function MainCategoryPage(props: any) {
 
@@ -24,9 +26,6 @@ export default function MainCategoryPage(props: any) {
                     loading: () => <LoadingWheel />,
                     ssr: true
           })
-
-          console.log('props iz main cat', props);
-
 
           return (
                     <DynamicThemeProvider theme={theme}>

@@ -21,6 +21,8 @@ import {
           getAllMidCategoriesFromOrtopedijaPomagala, getAllMidCategoriesFromPrirodnaKozmetika
 } from '../../../../services/product-mid-category-helper.services';
 import IProduct from '@/interfaces/product/product.interface';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function MainCategoryPage(props: any) {
 
@@ -30,6 +32,19 @@ export default function MainCategoryPage(props: any) {
           })
 
           console.log('props iz mid cat', props);
+
+          const [isLoading, setIsLoading] = useState(true);
+
+          useEffect(() => {
+                    // Simulate an asynchronous operation, like fetching data
+                    setTimeout(() => {
+                              setIsLoading(false);
+                    }, 1000); // Adjust the duration as needed
+          }, []);
+
+          if (isLoading) {
+                    return <LoadingWheel />;
+          }
 
 
           return (
