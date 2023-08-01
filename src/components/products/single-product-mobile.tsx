@@ -11,6 +11,7 @@ import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
+import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 
 export default function SingleProductMobile({ product, isScreenToMedium }: any) {
 
@@ -86,7 +87,9 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
 
           return (
                     <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={undefined} isVisible={isVisible}>
-                              <ProductImage src={product.imageURL} />
+                              <FilteredProductImageContainer>
+                                        <ProductImage src={product.imageURL} />
+                              </FilteredProductImageContainer>
                               <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                               <ProductActionsWrapper>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
