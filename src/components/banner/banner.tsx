@@ -20,13 +20,11 @@ export default function Banner() {
           const handleClick = (e: any) => {
                     e.preventDefault();
                     setIsLoading(true);
-                    setTimeout(
-                              () => router.push("/proizvodi/apoteka"), 1000
-                    )
+                    // setTimeout(
+                    //           () => router.push("/proizvodi/apoteka"), 3000
+                    // )
                     setIsLoading(false);
           };
-
-
 
           return (
                     <>
@@ -40,7 +38,9 @@ export default function Banner() {
                                                                       </BannerTitle>
                                                                       {t('homepage.banner.banner-text')}
                                                                       <BannerShopButton color="primary" onClick={(e: any) => handleClick(e)}>
-                                                                                {t('homepage.banner.banner-button')}
+                                                                                <Link href={"/proizvodi/apoteka"}>
+                                                                                          {t('homepage.banner.banner-button')}
+                                                                                </Link>
                                                                       </BannerShopButton>
                                                             </BannerContent>
                                                   </BannerContainer >

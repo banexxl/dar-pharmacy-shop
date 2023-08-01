@@ -9,20 +9,25 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import { useEffect, useState } from 'react'
 import LoadingWheel from "@/components/loading/loading";
+import { useRouter } from 'next/router'
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
           let persistor = persistStore(store)
 
-          const [loading, setLoading] = useState(false);
+          const router = useRouter();
+          const [isLoading, setIsLoading] = useState(true);
 
           useEffect(() => {
-                    setLoading(false);
+                    // Simulate an asynchronous operation, like fetching data
+                    setTimeout(() => {
+                              setIsLoading(false);
+                    }, 2000); // Adjust the duration as needed
           }, []);
 
           return (
                     <>
-                              {!loading ? (
+                              {!isLoading ? (
                                         <SessionProvider session={session}>
                                                   <Provider store={store}>
                                                             <PersistGate persistor={persistor}>

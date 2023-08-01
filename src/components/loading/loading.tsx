@@ -5,7 +5,7 @@ import { Colors } from '@/styles/theme';
 
 export default function CircularIndeterminate() {
           return (
-                    <Box sx={{ color: Colors.primary, zIndex: '1000', opacity: '.5' }}>
+                    <Box sx={{ color: Colors.primary, zIndex: '1000' }}>
                               <CircularProgress
                                         sx={{
                                                   color: Colors.primary,

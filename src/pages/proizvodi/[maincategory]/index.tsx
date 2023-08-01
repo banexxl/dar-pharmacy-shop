@@ -27,6 +27,8 @@ export default function MainCategoryPage(props: any) {
                     ssr: true
           })
 
+          const router = useRouter();
+
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Container
