@@ -20,9 +20,9 @@ export default function Banner() {
           const handleClick = (e: any) => {
                     e.preventDefault();
                     setIsLoading(true);
-                    // setTimeout(
-                    //           () => router.push("/proizvodi/apoteka"), 3000
-                    // )
+                     setTimeout(
+                               () => router.push("/proizvodi/apoteka"), 3000
+                     )
                     setIsLoading(false);
           };
 
