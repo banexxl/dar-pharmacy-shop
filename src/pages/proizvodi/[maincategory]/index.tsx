@@ -18,7 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import IProduct from '@/interfaces/product/product.interface';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 export default function MainCategoryPage(props: any) {
 
@@ -30,23 +30,25 @@ export default function MainCategoryPage(props: any) {
           const router = useRouter();
 
           return (
-                    <DynamicThemeProvider theme={theme}>
-                              <Container
-                                        disableGutters
-                                        maxWidth="lg"
-                                        sx={{
-                                                  background: "#fff",
-                                        }}
-                              >
-                                        <Stack>
-                                                  <UIProvider>
-                                                            <SearchBox />
-                                                            <ProductsFilter filterObject={props.products} />
-                                                            <AppDrawer isScreenToMedium={false} />
-                                                  </UIProvider>
-                                        </Stack>
-                              </Container>
-                    </DynamicThemeProvider>
+                    <Suspense fallback={<LoadingWheel />}>
+                              <DynamicThemeProvider theme={theme}>
+                                        <Container
+                                                  disableGutters
+                                                  maxWidth="lg"
+                                                  sx={{
+                                                            background: "#fff",
+                                                  }}
+                                        >
+                                                  <Stack>
+                                                            <UIProvider>
+                                                                      <SearchBox />
+                                                                      <ProductsFilter filterObject={props.products} />
+                                                                      <AppDrawer isScreenToMedium={false} />
+                                                            </UIProvider>
+                                                  </Stack>
+                                        </Container>
+                              </DynamicThemeProvider>
+                    </Suspense>
           )
 }
 

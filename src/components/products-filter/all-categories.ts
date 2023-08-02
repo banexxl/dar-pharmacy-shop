@@ -25,12 +25,12 @@ export const AccordionPanels = [
                                                                                 title: 'Sprejevi za nos',
                                                                       },
                                                                       {
-                                                                                id: 'masti-gelovi',
+                                                                                id: 'alergije-masti-gelovi',
                                                                                 link: '/proizvodi/apoteka/alergije/masti-gelovi',
                                                                                 title: 'Masti, gelovi',
                                                                       },
                                                                       {
-                                                                                id: 'irigacioni-set',
+                                                                                id: 'alergije-irigacioni-set',
                                                                                 link: '/proizvodi/apoteka/alergije/irigacioni-set',
                                                                                 title: 'Irigacioni set',
                                                                       },
@@ -140,17 +140,17 @@ export const AccordionPanels = [
                                                                                 link: '/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-grlo',
                                                                       },
                                                                       {
-                                                                                id: 'irigacioni-set',
+                                                                                id: 'imunitet-prehlada-irigacioni-set',
                                                                                 title: 'Irigacioni set',
                                                                                 link: '/proizvodi/apoteka/imunitet-prehlada/irigacioni-set',
                                                                       },
                                                                       {
-                                                                                id: 'masti-gelovi',
+                                                                                id: 'imunitet-prehlada-masti-gelovi',
                                                                                 title: 'Masti, gelovi',
                                                                                 link: '/proizvodi/apoteka/imunitet-prehlada/masti-gelovi',
                                                                       },
                                                                       {
-                                                                                id: 'biljne-kapi',
+                                                                                id: 'imunitet-prehlada-biljne-kapi',
                                                                                 title: 'Biljne kapi',
                                                                                 link: '/proizvodi/apoteka/imunitet-prehlada/biljne-kapi',
                                                                       },
@@ -346,7 +346,7 @@ export const AccordionPanels = [
                                                             ],
                                                   },
                                                   {
-                                                            id: 'vitamini-i-minerali',
+                                                            id: 'apoteka-vitamini-i-minerali',
                                                             title: 'Vitamini i minerali',
                                                             link: '/proizvodi/apoteka/vitamini-i-minerali',
                                                             children: [

@@ -7,24 +7,21 @@ import store from '../store/store'
 import { appWithTranslation } from 'next-i18next'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
-import { useEffect, useState } from 'react'
-import LoadingWheel from "@/components/loading/loading";
-import { useRouter } from 'next/router'
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
           let persistor = persistStore(store)
 
           return (
-              
-                                        <SessionProvider session={session}>
-                                                  <Provider store={store}>
-                                                            <PersistGate persistor={persistor}>
-                                                                      <Component {...pageProps} />
-                                                            </PersistGate>
-                                                  </Provider>
-                                        </SessionProvider>
-           
+
+                    <SessionProvider session={session}>
+                              <Provider store={store}>
+                                        <PersistGate persistor={persistor}>
+                                                  <Component {...pageProps} />
+                                        </PersistGate>
+                              </Provider>
+                    </SessionProvider>
+
           )
 }
 
