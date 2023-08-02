@@ -15,19 +15,8 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
 
           let persistor = persistStore(store)
 
-          const router = useRouter();
-          const [isLoading, setIsLoading] = useState(true);
-
-          useEffect(() => {
-                    // Simulate an asynchronous operation, like fetching data
-                    setTimeout(() => {
-                              setIsLoading(false);
-                    }, 2000); // Adjust the duration as needed
-          }, []);
-
           return (
-                    <>
-                              {!isLoading ? (
+              
                                         <SessionProvider session={session}>
                                                   <Provider store={store}>
                                                             <PersistGate persistor={persistor}>
@@ -35,10 +24,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
                                                             </PersistGate>
                                                   </Provider>
                                         </SessionProvider>
-                              ) : (
-                                        <LoadingWheel />
-                              )}
-                    </>
+           
           )
 }
 
