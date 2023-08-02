@@ -27,24 +27,51 @@ export default function MainCategoryPage(props: any) {
                     ssr: true
           })
 
+          const router = useRouter()
+          const [loading, setLoading] = useState(false)
+
+          useEffect(() => {
+                    const handleRouteChange = (url: any) => {
+                              setLoading(true)
+                    }
+
+                    const handleRouteChangeComplete = () => {
+                              setLoading(false)
+                    }
+
+                    router.events.on('routeChangeStart', handleRouteChange)
+                    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+
+                    return () => {
+                              router.events.off('routeChangeStart', handleRouteChange)
+                              router.events.off('routeChangeComplete', handleRouteChangeComplete)
+                    }
+          }, [router.events])
+
           return (
-                    <DynamicThemeProvider theme={theme}>
-                              <Container
-                                        disableGutters
-                                        maxWidth="lg"
-                                        sx={{
-                                                  background: "#fff",
-                                        }}
-                              >
-                                        <Stack>
-                                                  <UIProvider>
-                                                            <SearchBox />
-                                                            <ProductsFilter filterObject={props.products} />
-                                                            <AppDrawer isScreenToMedium={false} />
-                                                  </UIProvider>
-                                        </Stack>
-                              </Container>
-                    </DynamicThemeProvider>
+                    <>
+                              {
+                                        loading ?
+                                                  <LoadingWheel /> :
+                                                  <DynamicThemeProvider theme={theme}>
+                                                            <Container
+                                                                      disableGutters
+                                                                      maxWidth="lg"
+                                                                      sx={{
+                                                                                background: "#fff",
+                                                                      }}
+                                                            >
+                                                                      <Stack>
+                                                                                <UIProvider>
+                                                                                          <SearchBox />
+                                                                                          <ProductsFilter filterObject={props.products} />
+                                                                                          <AppDrawer isScreenToMedium={false} />
+                                                                                </UIProvider>
+                                                                      </Stack>
+                                                            </Container>
+                                                  </DynamicThemeProvider>
+                              }
+                    </>
           )
 }
 
