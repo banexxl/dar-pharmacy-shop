@@ -1,26 +1,38 @@
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import FilteredSingleProductMobile from "./filtered-single-product-mobile";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import FilteredSingleProductDesktop from "./filtered-single-product-desktop";
+import { useTranslation } from "next-i18next";
 
 
 export default function FilteredProductsGrid(props: any) {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-
+          const { t } = useTranslation('common')
           //const cart: ICartItem[] = useSelector((state: any) => state.cart)
+          console.log(props.data);
 
-          const renderProducts = props.data?.map((product: any) => (
-                    <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
-                              {isScreenToMedium ? (
-                                        <FilteredSingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />
-                              ) : (
-                                        <FilteredSingleProductDesktop product={product} isScreenToMedium={isScreenToMedium} />
-                              )}
-                    </Grid>
-          ));
+          const renderProducts =
+                    props.data.length !== 0 ?
+                              props.data?.map((product: any) => (
+                                        <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
+                                                  {isScreenToMedium ? (
+                                                            <FilteredSingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />
+                                                  ) : (
+                                                            <FilteredSingleProductDesktop product={product} isScreenToMedium={isScreenToMedium} />
+                                                  )}
+                                        </Grid>
+
+                              ))
+                              :
+                              <Box sx={{ marginTop: '50px' }}>
+                                        <Typography>
+                                                  {t('filter-page.no-products')}
+                                        </Typography>
+                              </Box>
+
           return (
                     <Container sx={{ paddingBottom: '100px' }}>
                               <Grid

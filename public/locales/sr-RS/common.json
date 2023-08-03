@@ -437,6 +437,10 @@
                     "back-to-home": "Back to home page"
           },
           "filter-page": {
-                    "all-categories": "Sve kategorije"
+                    "all-categories": "Sve kategorije",
+                     "price-range": "Opseg cena",
+                     "apply-filter": "Primeni filter",
+                     "no-products": "Nemamo proizvode sa zadatim filterom..."
+
           }
 }

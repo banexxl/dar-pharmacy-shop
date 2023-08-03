@@ -436,6 +436,9 @@
                     "back-to-home": "Back to home page"
           },
           "filter-page": {
-                    "all-categories": "All categories"
+                    "all-categories": "All categories",
+                    "price-range": "Price range",
+                    "apply-filter": "Apply filter",
+                    "no-products": "There are no products in your search criteria..."
           }
 }

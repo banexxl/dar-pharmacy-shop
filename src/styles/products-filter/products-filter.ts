@@ -37,7 +37,8 @@ export const FilterTitleBox = styled(Box)(({ theme }) => ({
           height: '10%',
           width: '100%',
           borderRadius: '10px',
-          padding: '20px',
+          paddingTop: '20px',
+          marginBottom: '20px',
           [theme.breakpoints.down("md")]: {
                     display: 'none'
           },
@@ -98,5 +99,13 @@ export const FilteredProductsTitle = styled(Box)(({ theme }) => ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          background: Colors.secondary,
+          background: Colors.light_gray,
+}));
+
+export const PriceRangeBox = styled(Box)(({ theme }) => ({
+          display: "flex",
+          flexDirection: 'column',
+          justifyContent: "center",
+          alignItems: "center",
+          margin: '20px 0 20px 0'
 }));
