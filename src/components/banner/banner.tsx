@@ -4,14 +4,17 @@ import Link from "next/link";
 import LoadingWheel from '@/components/loading/loading'
 import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useLoading } from '../../context/loading.context';
 
 export default function Banner() {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+          const { setLoading } = useLoading();
           const { t } = useTranslation('common')
+          const handleLinkClick = () => {
+                    setLoading(true);
+          };
 
 
           return (
@@ -22,7 +25,7 @@ export default function Banner() {
                                                   {t('homepage.banner.title')}
                                         </BannerTitle>
                                         {t('homepage.banner.banner-text')}
-                                        <BannerShopButton color="primary">
+                                        <BannerShopButton color="primary" onTouchStart={() => handleLinkClick()}>
                                                   <Link href={"/proizvodi/apoteka"}>
                                                             {t('homepage.banner.banner-button')}
                                                   </Link>
