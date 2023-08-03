@@ -25,7 +25,7 @@ export default function Banner() {
                                                   {t('homepage.banner.title')}
                                         </BannerTitle>
                                         {t('homepage.banner.banner-text')}
-                                        <BannerShopButton color="primary" onClick={() => handleLinkClick()}>
+                                        <BannerShopButton color="primary" onTouchStart={() => handleLinkClick()}>
                                                   <Link href={"/proizvodi/apoteka"}>
                                                             {t('homepage.banner.banner-button')}
                                                   </Link>
