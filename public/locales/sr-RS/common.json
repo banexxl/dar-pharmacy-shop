@@ -396,17 +396,21 @@
                     "featured-products": "Izdvajamo iz ponude",
                     "addtocart": "Dodaj u korpu",
                     "banner": {
-                              "title":"Apoteka DAR",
+                              "title": "Apoteka DAR",
                               "banner-text": "Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!",
                               "banner-button": "Pogledajte ponudu"
-                    }
+                    },
+                    "popular-product": "Trenutno najpopularnije",
+                    "popular-product-title": "Crux Kolagen",
+                    "popular-product-description-short": "Hidrolizovani govedji kolagen (solugel), 10g u dnevnoj dozi",
+                    "popular-product-description-long": "Crux Pure kolagen u prahu za zglobove, kosu, nokte, kožu. Bez aditiva, šećera, dodataka. Prednosti Crux kolagena:mlada i hidrirana koža, sjajna, duga kosa, zdravi nokti,jače kosti, hrskavica, zglobovi, rad creva, kvalitetniji san."
           },
           "product": {
                     "added-to-cart": "Proizvod uspešno dodat u korpu!",
                     "added-to-wishlist": "Proizvod uspešno dodat u omiljene proizvode!",
                     "add-to-wishlist": "Dodaj u omiljene",
                     "removed-from-wishlist": "Uklonjeno iz omiljenih",
-                    "add-to-cart": "Dodaj u korpu", 
+                    "add-to-cart": "Dodaj u korpu",
                     "share-product": "Podeli",
                     "details": "Detalji",
                     "sku": "Šifra",
@@ -438,9 +442,8 @@
           },
           "filter-page": {
                     "all-categories": "Sve kategorije",
-                     "price-range": "Opseg cena",
-                     "apply-filter": "Primeni filter",
-                     "no-products": "Nemamo proizvode sa zadatim filterom..."
-
+                    "price-range": "Opseg cena",
+                    "apply-filter": "Primeni filter",
+                    "no-products": "Nemamo proizvode sa zadatim filterom..."
           }
 }

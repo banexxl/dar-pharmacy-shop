@@ -122,6 +122,14 @@ export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop
                     background: Colors.primary,
           }));
 
+export const PopularProductAddToCart = styled(LoadingButton)({
+          fontSize: "12px",
+          '&:hover': {
+                    backgroundColor: Colors.secondary,
+          },
+          background: Colors.primary,
+});
+
 export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
           padding: 4,
           display: "flex",

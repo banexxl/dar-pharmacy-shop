@@ -19,6 +19,7 @@ import { MessageText } from "@/styles/promotions";
 import CarouselLogo from "@/components/carousel/carousel-logo";
 import CarouselBlog from "@/components/carousel/carousel-blog";
 import { useSelector } from "react-redux";
+import ProductCard from "@/components/product-presentation/product-presentation";
 
 export default function Home(props: any) {
 
@@ -48,6 +49,10 @@ export default function Home(props: any) {
                                                   <UIProvider>
                                                             <Banner />
                                                             <Promotions />
+                                                            <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
+                                                                      <MessageText variant="h4">{t('homepage.popular-product')}</MessageText>
+                                                            </Box>
+                                                            <ProductCard />
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                                                       <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
                                                             </Box>

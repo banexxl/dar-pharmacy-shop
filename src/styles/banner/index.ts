@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Colors } from "../theme";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export const BannerContainer = styled(Box)(({ theme }) => ({
           display: "flex",
@@ -91,7 +92,7 @@ export const BannerTitle = styled(Typography)(({ theme }) => ({
           },
 })) as typeof Typography
 
-export const BannerShopButton = styled(Button)(({ theme }) => ({
+export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
           color: Colors.white,
           fontSize: "16px",
           width: '40%',

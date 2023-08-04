@@ -42,7 +42,7 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                <Link href={'/proizvodi/apoteka/alergije'}>
+                                                                                <Link href={'/proizvodi/apoteka/alergije/kapsule-i-tablete'}>
                                                                                           Kapsule i tablete
                                                                                 </Link>
                                                                       </StyledNestedTypography>
@@ -50,17 +50,23 @@ export const ProductsMenu = () => {
 
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Sprejevi za nos
+                                                                                <Link href={'/proizvodi/apoteka/alergije/sprejevi-za-nos'}>
+                                                                                          Sprejevi za nos
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Masti, gelovi
+                                                                                <Link href={'/proizvodi/apoteka/alergije/masti-gelovi'}>
+                                                                                          Masti, gelovi
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Irigacioni set
+                                                                                <Link href={'/proizvodi/apoteka/alergije/irigacioni-set'}>
+                                                                                          Irigacioni set
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
@@ -71,17 +77,23 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Folna kiselina i vitamini
+                                                                                <Link href={'/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini'}>
+                                                                                          Folna kiselina i vitamini
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Biljni preparati
+                                                                                <Link href={'/proizvodi/apoteka/anemija/biljni-preparati'}>
+                                                                                          Biljni preparati
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Preparati gvožđa
+                                                                                <Link href={'/proizvodi/apoteka/anemija/preparati-gvozdja'}>
+                                                                                          Preparati gvožđa
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
@@ -92,17 +104,23 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Bol u grlu
+                                                                                <Link href={'/proizvodi/apoteka/bol/bol-u-grlu'}>
+                                                                                          Bol u grlu
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Menstrualni bolovi
+                                                                                <Link href={'/proizvodi/apoteka/bol/menstrualni-bolovi'}>
+                                                                                          Menstrualni bolovi
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Bolovi u zglobovima i mišićima
+                                                                                <Link href={'/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima'}>
+                                                                                          Bolovi u zglobovima i mišićima
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
@@ -113,12 +131,16 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Oralni preparati
+                                                                                <Link href={'/proizvodi/apoteka/hemoroidi/oralni-preparati'}>
+                                                                                          Oralni preparati
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Lokalna primena
+                                                                                <Link href={'/proizvodi/apoteka/hemoroidi/lokalna-primena'}>
+                                                                                          Lokalna primena
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
@@ -129,12 +151,16 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Omega masne kiseline
+                                                                                <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/omega-masne-kiseline'}>
+                                                                                          Omega masne kiseline
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Ostalo
+                                                                                <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/ostalo'}>
+                                                                                          Ostalo
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
@@ -145,17 +171,23 @@ export const ProductsMenu = () => {
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Deca
+                                                                                <Link href={'/proizvodi/apoteka/imunitet-prehlada/deca'}>
+                                                                                          Deca
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Vitamini i minerali
+                                                                                <Link href={'/proizvodi/apoteka/imunitet-prehlada/vitamini-i-minerali'}>
+                                                                                          Vitamini i minerali
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
-                                                                                Sprejevi za nos
+                                                                                <Link href={'/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-nos'}>
+                                                                                          Sprejevi za nos
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>

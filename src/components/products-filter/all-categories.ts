@@ -54,7 +54,7 @@ export const AccordionPanels = [
                                                                       {
                                                                                 id: 'preparati-gvozda',
                                                                                 title: 'Preparati gvožđa',
-                                                                                link: '/proizvodi/apoteka/anemija/preparati-gvozda',
+                                                                                link: '/proizvodi/apoteka/anemija/preparati-gvozdja',
                                                                       },
                                                             ],
                                                   },

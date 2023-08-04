@@ -98,7 +98,11 @@
                               "title":"DAR Pharmacy",
                               "banner-text": "Welcome to our pharmacy, where high-quality products and services are provided. We are here to help you find what you need, whether it's medication or refreshing care products. We have a professional team that will offer you advice and assistance at any time. Visit us and experience our quality and service. Thank you for choosing us!",
                               "banner-button": "Visit shop"
-                    }
+                    },
+                    "popular-product": "Most popular",
+                    "popular-product-title": "Crux Colagen",
+                    "popular-product-description-short": "Hydrolyzed bovine collagen (solugel), 10g in a daily dose.",
+                    "popular-product-description-long": "Crux Pure collagen in powder for joints, hair, nails, and skin. No additives, sugar, or additional substances. Benefits of Crux collagen: youthful and hydrated skin, shiny and long hair, healthy nails, stronger bones, cartilage, joints, improved digestion, better quality sleep."
           },
           "contact": {
                     "contact-form": "Contact form",

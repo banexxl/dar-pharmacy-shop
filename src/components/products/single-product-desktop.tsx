@@ -24,6 +24,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           const [isVisible, setVisible] = useState(false)
           const domRef = useRef<HTMLElement | null>(null)
           const observerRef = useRef<IntersectionObserver | null>(null);
+          const dispatch = useDispatch();
 
           useEffect(() => {
                     observerRef.current = new IntersectionObserver(
@@ -55,7 +56,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
           function handleClick() {
                     setLoading(true);
           }
-          const dispatch = useDispatch();
+
 
           const handleMouseEnter = () => {
                     setShowOptions(true);
