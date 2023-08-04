@@ -1,7 +1,6 @@
 import { useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
-import LoadingWheel from '@/components/loading/loading'
 import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
 import { useTranslation } from "next-i18next";
 import { useLoading } from '../../context/loading.context';
@@ -16,7 +15,6 @@ export default function Banner() {
                     setLoading(true);
           };
 
-
           return (
                     <BannerContainer>
                               <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
@@ -25,13 +23,12 @@ export default function Banner() {
                                                   {t('homepage.banner.title')}
                                         </BannerTitle>
                                         {t('homepage.banner.banner-text')}
-                                        <BannerShopButton color="primary" onTouchStart={() => handleLinkClick()}>
-                                                  <Link href={"/proizvodi/apoteka"}>
+                                        <Link href={"/proizvodi/apoteka/alergije/irigacioni-set"}>
+                                                  <BannerShopButton color="primary" onTouchStart={() => handleLinkClick()}>
                                                             {t('homepage.banner.banner-button')}
-                                                  </Link>
-                                        </BannerShopButton>
+                                                  </BannerShopButton>
+                                        </Link>
                               </BannerContent>
                     </BannerContainer >
-
           )
 }
