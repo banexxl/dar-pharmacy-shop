@@ -6,10 +6,13 @@ import { NestedMenuItem } from 'mui-nested-menu';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { StyledMenuItem, StyledNestedTypography } from '@/styles/products-nested/products-nested';
 import Link from 'next/link';
+import LoadingWheel from '@/components/loading/loading';
+import { useState } from 'react';
 
 export const ProductsMenu = () => {
-          const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+          const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
           const open = Boolean(anchorEl);
+          const [loading, setLoading] = useState(false)
 
           const handleClick = (event: React.MouseEvent<HTMLElement>) => {
                     setAnchorEl(event.currentTarget);
@@ -17,9 +20,17 @@ export const ProductsMenu = () => {
           const handleClose = () => {
                     setAnchorEl(null);
           };
-
+          const onLinkClick = () => {
+                    setLoading(true)
+          }
           return (
                     <Box>
+                              {
+                                        loading ?
+                                                  <LoadingWheel />
+                                                  :
+                                                  null
+                              }
                               <Button
                                         variant="contained"
                                         onClick={handleClick}
@@ -30,6 +41,28 @@ export const ProductsMenu = () => {
                                         </StyledNestedTypography>
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography onClick={() => onLinkClick()}>
+                                                            <Link href={'/proizvodi/akcije'}>
+                                                                      Akcije
+                                                            </Link>
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography onClick={() => onLinkClick()}>
+                                                            <Link href={'/proizvodi/popularno'}>
+                                                                      Popularno
+                                                            </Link>
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        {/* --------------------------Prirodna kozmetika------------------------------------------ */}
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography onClick={() => onLinkClick()}>
+                                                            <Link href={'/proizvodi/prirodna-kozmetika'}>
+                                                                      Prirodna kozmetika
+                                                            </Link>
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
                                         {/* --------------------------APOTEKA------------------------------------------ */}
                                         <NestedMenuItem
                                                   label="Apoteka"
@@ -41,7 +74,7 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/alergije/kapsule-i-tablete'}>
                                                                                           Kapsule i tablete
                                                                                 </Link>
@@ -49,21 +82,21 @@ export const ProductsMenu = () => {
                                                             </StyledMenuItem>
 
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/alergije/sprejevi-za-nos'}>
                                                                                           Sprejevi za nos
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/alergije/masti-gelovi'}>
                                                                                           Masti, gelovi
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/alergije/irigacioni-set'}>
                                                                                           Irigacioni set
                                                                                 </Link>
@@ -76,21 +109,21 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini'}>
                                                                                           Folna kiselina i vitamini
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/anemija/biljni-preparati'}>
                                                                                           Biljni preparati
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/anemija/preparati-gvozdja'}>
                                                                                           Preparati gvožđa
                                                                                 </Link>
@@ -103,21 +136,21 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/bol/bol-u-grlu'}>
                                                                                           Bol u grlu
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/bol/menstrualni-bolovi'}>
                                                                                           Menstrualni bolovi
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima'}>
                                                                                           Bolovi u zglobovima i mišićima
                                                                                 </Link>
@@ -130,14 +163,14 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/hemoroidi/oralni-preparati'}>
                                                                                           Oralni preparati
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/hemoroidi/lokalna-primena'}>
                                                                                           Lokalna primena
                                                                                 </Link>
@@ -150,14 +183,14 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/omega-masne-kiseline'}>
                                                                                           Omega masne kiseline
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/ostalo'}>
                                                                                           Ostalo
                                                                                 </Link>
@@ -170,73 +203,73 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/imunitet-prehlada/deca'}>
                                                                                           Deca
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/imunitet-prehlada/vitamini-i-minerali'}>
                                                                                           Vitamini i minerali
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 <Link href={'/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-nos'}>
                                                                                           Sprejevi za nos
                                                                                 </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sprejevi za grlo
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Irigacioni set
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Masti, gelovi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Biljne kapi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Med, matični mleč i propolis
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Pastile za grlo
-                                                                      </StyledNestedTypography>
+                                                                      </StyledNestedTypography >
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Aloja, ehinacea, noni, aronija
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Probiotici
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Omega masne kiseline
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Ostalo
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -247,12 +280,12 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Oralni preparati
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Lokalna primena
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -263,12 +296,12 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Oralni preparati
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Primena na koži
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -279,12 +312,12 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Oralni preparati
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Primena na koži
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -295,27 +328,27 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kaše
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Šejkovi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Zaslađivači
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sportisti
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Bombone
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -326,22 +359,22 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Dehidratacija
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Dijareja
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Mučnina
-                                                                      </StyledNestedTypography>
+                                                                      </StyledNestedTypography >
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Auto apoteka
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -352,27 +385,27 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Nadutost i gasovi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Zatvor
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Dijareja
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Iritabilni kolon
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Otežan ovarenje i gorušica
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -383,12 +416,12 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Oralni preparati
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Primena na koži
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -399,62 +432,62 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitamin A
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitamin B
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitamin C
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitamin D
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitamin K
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Cink
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kalijum
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kalcijum
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Hrom
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Magnezijum
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Selen
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Gvožđe
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -463,53 +496,53 @@ export const ProductsMenu = () => {
                                                                       parentMenuOpen={open}
                                                             >
                                                                       <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography>
+                                                                                <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                           Bakar
                                                                                 </StyledNestedTypography>
                                                                       </StyledMenuItem>
                                                                       <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography>
+                                                                                <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                           Bor
                                                                                 </StyledNestedTypography>
                                                                       </StyledMenuItem>
                                                                       <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography>
+                                                                                <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                           Fluor
                                                                                 </StyledNestedTypography>
                                                                       </StyledMenuItem>
                                                                       <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography>
+                                                                                <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                           Fosfor
                                                                                 </StyledNestedTypography>
                                                                       </StyledMenuItem>
                                                             </NestedMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kompleksi vitamina i minerala
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Riblja ulja
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Deca
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sportisti
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Trudnice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Stariji
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -520,102 +553,102 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Iritacije
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Ožiljci i strije
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Hemoroidi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Problemi sa cirkulacijom
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Intimna nega
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Opekotine
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sportske povrede
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Reuma
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Antiseptici
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Gljivice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Rozacea
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitligo
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Boginje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Herpes
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Seboreični dermatitis
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Žuljevi, kurje oči, bradavice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Ekcem, psorijaza
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Suva, atopijska koža
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Lokalni anestetici
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Površinske rane
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -626,42 +659,42 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Tablete, kapsule, rastvori
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Higijena, nega
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kapi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Masti
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Naočare
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Tečnosti i kutije za sočiva
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Čepovi za uši
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sprejevi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -672,132 +705,128 @@ export const ProductsMenu = () => {
                                                             parentMenuOpen={open}
                                                   >
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Antiseptici
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Flasteri
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Zavojni materijal
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Energija i umor
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Sokovi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Antioksidansi, detoksikacija
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Biljne kapi, biljna i eterična ulja
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Bubrezi i mokraćni putevi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Čajevi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Dijabetes i insulinska resistencija
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Jetra i žuč
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Kašalj
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       PMS
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Menopauza
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Odvikavanje od alkohola
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Pamćenje i koncentracija
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Poremećaj fertiliteta
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Prostata i potencija
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Stres, depresija, nesanica
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Dozatori i sekači za lekove
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                         </NestedMenuItem>
-                                        {/* --------------------------Prirodna kozmetika------------------------------------------ */}
-                                        <NestedMenuItem
-                                                  label="Prirodna kozmetika"
-                                                  parentMenuOpen={open}
-                                        >
+                                        {/* ------------------------------------------------------------------------------- */}
 
-                                                  <NestedMenuItem label='Lice' parentMenuOpen={open}>
+                                        {/* <NestedMenuItem label='Lice' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
                                                                                 Higijena lica
@@ -1021,9 +1050,8 @@ export const ProductsMenu = () => {
                                                             <StyledNestedTypography>
                                                                       Muškarci
                                                             </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                                                  </StyledMenuItem> */}
 
-                                        </NestedMenuItem>
                                         {/* --------------------------Lepota i nega------------------------------------------ */}
                                         {/* <NestedMenuItem label='Lepota i nega' parentMenuOpen={open}>
 
@@ -1282,65 +1310,65 @@ export const ProductsMenu = () => {
                                         <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Pribor za kupanje
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Bebi čajevi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
 
                                                   <NestedMenuItem label='Bebi apoteka' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Boginje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Elektroliti
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Grčevi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Higijena nosića
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Grickanje noktiju
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Higijena očiju
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Imunitet i apetit
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitamini
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Zubići
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vaške
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1348,72 +1376,72 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Bebi kozmetika' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Deterdženti i omekšivači
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Mleka, losioni, ulja
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kupke i šamponi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Micelarne vode
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Puderi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kreme za lice i telo
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kreme protiv ojeda
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sapuni
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Balzami za usne
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Toaletne vode, dezodoransi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Tuferi i vate
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Štapići
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vlažne maramice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Paste i četkiceza zube
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1421,32 +1449,32 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Oprema za bebe' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Oprema za kupatilo
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Oprema za previjanje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kolica i dodaci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sedišta
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Tricikli i guralice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Nosiljke
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1454,22 +1482,22 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Pribor za negu' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Četke i češljevi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Grickalice, makazice, turpije
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Paste za zube
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Četkice za zube
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1477,52 +1505,52 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Pribor za hranjenje' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Tanjiri i činije
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Čaše i šolje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 No spill čaše
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Escajg
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Setovi za hranjenje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Šerpice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Miljackalica
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Portikle
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Posude za čuvanje hrane
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Termosi i termos torbe
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1530,37 +1558,37 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Flašice, cucle, glodalice, zvečke' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Cucle
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Flašice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Dodaci za cucle i flašice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Termosi i termos torbe
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Laže i dodaci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Glodalice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Zvečke
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1568,22 +1596,22 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Pelene' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Pelene za jednokratnu upotrebu
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Pelene za odvikavanje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Pelene za kupanje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Tetra pelene
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1591,62 +1619,62 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Hrana za bebe' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Lino
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Modilac
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Nestle
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Nutrino
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Bebelac
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Celia
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Hipp
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Humana
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Novalac
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Juvitana
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Milupa
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Aptamil
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1654,52 +1682,52 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Trudnice i dojilje' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Kozmetika za telo
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Mrežaste gaćice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Nega i zaštita bradavica
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Pojasevi i grudnjaci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Ulošci za grudi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Pumpice za izmlazavanje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Veštačke bradavice i pumpice za bradavice
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Dozeri za mleko
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Vitaminski preparati
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Čajevi i napici za trudnice i dojilje
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1707,32 +1735,32 @@ export const ProductsMenu = () => {
 
                                                   <NestedMenuItem label='Aparati' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Alarmi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Termometri
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Blenderi
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Grejači
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Sterilizatori
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Aspiratri za nos
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
@@ -1822,43 +1850,43 @@ export const ProductsMenu = () => {
                                         <NestedMenuItem label='Ortopedija i pomagala' parentMenuOpen={open}>
                                                   <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Jastuci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography>
+                                                                      <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                                 Dušeci
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Štake
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Štapovi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Ortoze
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Kinezi trake
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Hodalice
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography>
+                                                            <StyledNestedTypography onClick={() => onLinkClick()}>
                                                                       Postoljni podmetači
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
@@ -1936,16 +1964,7 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
                                         </NestedMenuItem> */}
 
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography>
-                                                            Akcije
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography>
-                                                            Popularno
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
+
                               </StyledProductMenu>
                     </Box>
           );
