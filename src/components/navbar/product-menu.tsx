@@ -15,10 +15,11 @@ export const ProductsMenu = () => {
           const [loading, setLoading] = useState(false)
 
           const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-                    setAnchorEl(event.currentTarget);
+                    setAnchorEl(event.currentTarget)
+                    setLoading(true)
           };
           const handleClose = () => {
-                    setAnchorEl(null);
+                    setAnchorEl(null)
           };
           const onLinkClick = () => {
                     setLoading(true)

@@ -725,408 +725,303 @@ export const AccordionPanels = [
                                                   },
                                         ]
                               },
-                              {
-                                        id: 'prirodna-kozmetika',
-                                        link: 'prirodna-kozmetika',
-                                        title: 'Prirodna kozmetika',
-                                        children: [
-                                                  {
-                                                            id: 'prirodna-kozmetika-lice',
-                                                            title: 'Lice',
-                                                            link: '/proizvodi/prirodna-kozmetika/lice',
-                                                            children: [
-                                                                      {
-                                                                                id: 'higijena-lica',
-                                                                                title: 'Higijena lica',
-                                                                                link: '/proizvodi/prirodna-kozmetika/lice/higijena-lica',
-                                                                      },
-                                                                      {
-                                                                                id: 'trepavice-i-obrve',
-                                                                                title: 'Trepavice i obrve',
-                                                                                link: '/proizvodi/prirodna-kozmetika/lice/trepavice-i-obrve',
-                                                                      },
-                                                                      {
-                                                                                id: 'hidratacija',
-                                                                                title: 'Hidratacija',
-                                                                                link: '/proizvodi/prirodna-kozmetika/lice/hidratacija',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'prirodna-kozmetika-telo',
-                                                            title: 'Telo',
-                                                            link: '/proizvodi/prirodna-kozmetika/telo',
-                                                            children: [
-                                                                      {
-                                                                                id: 'ostecena-koza',
-                                                                                title: 'Oštećena koža',
-                                                                                link: '/proizvodi/prirodna-kozmetika/telo/ostecena-koza',
-                                                                      },
-                                                                      {
-                                                                                id: 'pilinzi',
-                                                                                title: 'Pilinzi',
-                                                                                link: '/proizvodi/prirodna-kozmetika/telo/pilinzi',
-                                                                      },
-                                                                      {
-                                                                                id: 'celulit-i-strije',
-                                                                                title: 'Celulit i strije',
-                                                                                link: '/proizvodi/prirodna-kozmetika/telo/celulit-i-strije',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'prirodna-kozmetika-kosa-i-koza-glave',
-                                                            title: 'Kosa i koža glave',
-                                                            link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave',
-                                                            children: [
-                                                                      {
-                                                                                id: 'opadanje-kose',
-                                                                                title: 'Opadanje kose',
-                                                                                link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/opadanje-kose',
-                                                                      },
-                                                                      {
-                                                                                id: 'nega-kose-na-suncu',
-                                                                                title: 'Nega kose na suncu',
-                                                                                link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/nega-kose-na-suncu',
-                                                                      },
-                                                                      {
-                                                                                id: 'osetljiva-koza-glave',
-                                                                                title: 'Osetljiva koža glave',
-                                                                                link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/osetljiva-koza-glave',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'prirodna-kozmetika-bebe-i-deca',
-                                                            title: 'Bebe i deca',
-                                                            link: '/proizvodi/prirodna-kozmetika/bebe-i-deca',
-                                                            children: [
-                                                                      {
-                                                                                id: 'pranje',
-                                                                                title: 'Pranje',
-                                                                                link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/pranje',
-                                                                      },
-                                                                      {
-                                                                                id: 'prirodna-kozmetika-bebe-i-deca-nega',
-                                                                                title: 'Nega',
-                                                                                link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/nega',
-                                                                      },
-                                                                      {
-                                                                                id: 'suncanje',
-                                                                                title: 'Sunčanje',
-                                                                                link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/suncanje',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'prirodna-kozmetika-muskarci',
-                                                            link: '/proizvodi/prirodna-kozmetika/muskarci',
-                                                            title: 'Muškarci'
-                                                  },
-                                                  {
-                                                            id: 'prirodna-kozmetika-zene',
-                                                            link: '/proizvodi/prirodna-kozmetika/zene',
-                                                            title: 'Žene'
-                                                  },
-                                        ]
-                              },
-                              {
-                                        id: 'lepota-i-nega',
-                                        link: 'lepota-i-nega',
-                                        title: 'Lepota i nega',
-                                        children: [
-                                                  {
-                                                            id: 'pribor-za-negu',
-                                                            title: 'Pribor za negu',
-                                                            link: '/proizvodi/lepota-i-nega/pribor-za-negu',
-                                                            children: [
-                                                                      {
-                                                                                id: 'cetke-i-cesljevi',
-                                                                                title: 'Četke i češljevi',
-                                                                                link: '/proizvodi/lepota-i-nega/pribor-za-negu/cetke-i-cesljevi',
-                                                                      },
-                                                                      {
-                                                                                id: 'makazice-gricklalice-turpije-i-pincete',
-                                                                                title: 'Makazice, gricklalice, turpije i pincete',
-                                                                                link: '/proizvodi/lepota-i-nega/pribor-za-negu/makazice-gricklalice-turpije-i-pincete',
-                                                                      },
-                                                                      {
-                                                                                id: 'ogledala',
-                                                                                title: 'Ogledala',
-                                                                                link: '/proizvodi/lepota-i-nega/pribor-za-negu/ogledala',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'pribor-za-negu-lice',
-                                                            title: 'Lice',
-                                                            link: '/proizvodi/lepota-i-nega/lice',
-                                                            children: [
-                                                                      {
-                                                                                id: 'blaznice-i-tuferi',
-                                                                                title: 'Blaznice i tuferi',
-                                                                                link: '/proizvodi/lepota-i-nega/lice/blaznice-i-tuferi',
-                                                                      },
-                                                                      {
-                                                                                id: 'cetkice-i-aplikatori-za-sminku',
-                                                                                title: 'Četkice i aplikatori za šminku',
-                                                                                link: '/proizvodi/lepota-i-nega/lice/cetkice-i-aplikatori-za-sminku',
-                                                                      },
-                                                                      {
-                                                                                id: 'gelovi-i-pene-za-lice',
-                                                                                title: 'Gelovi i pene za lice',
-                                                                                link: '/proizvodi/lepota-i-nega/lice/gelovi-i-pene-za-lice',
-                                                                      },
-                                                                      {
-                                                                                id: 'vestacke-trepavice',
-                                                                                title: 'Veštačke trepavice',
-                                                                                link: '/proizvodi/lepota-i-nega/lice/vestacke-trepavice',
-                                                                      },
-                                                                      {
-                                                                                id: 'sminka-za-lice',
-                                                                                title: 'Šminka za lice',
-                                                                                link: '/proizvodi/lepota-i-nega/lice/sminka-za-lice',
-                                                                      },
-                                                                      {
-                                                                                id: 'sminka-za-oci-i-obrve',
-                                                                                title: 'Šminka za oči i obrve',
-                                                                                link: '/proizvodi/lepota-i-nega/lice/sminka-za-oci-i-obrve',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'lepota-i-nega-telo',
-                                                            title: 'Telo',
-                                                            link: '/proizvodi/lepota-i-nega/telo',
-                                                            children: [
-                                                                      {
-                                                                                id: 'nega-grudi',
-                                                                                title: 'Nega grudi',
-                                                                                link: '/proizvodi/lepota-i-nega/telo/nega-grudi',
-                                                                      },
-                                                                      {
-                                                                                id: 'piling',
-                                                                                title: 'Piling',
-                                                                                link: '/proizvodi/lepota-i-nega/telo/piling',
-                                                                      },
-                                                                      {
-                                                                                id: 'gelovi-za-tusiranje-kupke-i-soli',
-                                                                                title: 'Gelovi za tuširanje, kupke i soli',
-                                                                                link: '/proizvodi/lepota-i-nega/telo/gelovi-za-tusiranje-kupke-i-soli',
-                                                                      },
-                                                                      {
-                                                                                id: 'pene-i-pilinzi-za-kupanje',
-                                                                                title: 'Pene i pilinzi za kupanje',
-                                                                                link: '/proizvodi/lepota-i-nega/telo/pene-i-pilinzi-za-kupanje',
-                                                                      },
-                                                                      {
-                                                                                id: 'mleka-kreme-i-lozioni',
-                                                                                title: 'Mleka, kreme i losioni',
-                                                                                link: '/proizvodi/lepota-i-nega/telo/mleka-kreme-i-lozioni',
-                                                                      },
-                                                                      {
-                                                                                id: 'ulja-za-telo',
-                                                                                title: 'Ulja za telo',
-                                                                                link: '/proizvodi/lepota-i-nega/telo/ulja-za-telo',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'lepota-i-nega-intimna-nega',
-                                                            title: 'Intimna nega',
-                                                            link: '/proizvodi/lepota-i-nega/intimna-nega',
-                                                            children: [
-                                                                      {
-                                                                                id: 'higijena',
-                                                                                title: 'Higijena',
-                                                                                link: '/proizvodi/lepota-i-nega/intimna-nega/higijena',
-                                                                      },
-                                                                      {
-                                                                                id: 'tamponi',
-                                                                                title: 'Tamponi',
-                                                                                link: '/proizvodi/lepota-i-nega/intimna-nega/tamponi',
-                                                                      },
-                                                                      {
-                                                                                id: 'ulosci',
-                                                                                title: 'Ulošci',
-                                                                                link: '/proizvodi/lepota-i-nega/intimna-nega/ulosci',
-                                                                      },
-                                                                      {
-                                                                                id: 'ulosci-za-inkontinenciju',
-                                                                                title: 'Ulošci za inkontinenciju',
-                                                                                link: '/proizvodi/lepota-i-nega/intimna-nega/ulosci-za-inkontinenciju',
-                                                                      },
-                                                                      {
-                                                                                id: 'vaginalete-kreme-gelovi',
-                                                                                title: 'Vaginalete, kreme, gelovi',
-                                                                                link: '/proizvodi/lepota-i-nega/intimna-nega/vaginalete-kreme-gelovi',
-                                                                      },
-                                                                      {
-                                                                                id: 'lubrikanti',
-                                                                                title: 'Lubrikanti',
-                                                                                link: '/proizvodi/lepota-i-nega/intimna-nega/lubrikanti',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'oralna-higijena',
-                                                            title: 'Oralna higijena',
-                                                            link: '/proizvodi/lepota-i-nega/oralna-higijena',
-                                                            children: [
-                                                                      {
-                                                                                id: 'paste-za-zube',
-                                                                                title: 'Paste za zube',
-                                                                                link: '/proizvodi/lepota-i-nega/oralna-higijena/paste-za-zube',
-                                                                      },
-                                                                      {
-                                                                                id: 'cetkice-i-konac-za-zube',
-                                                                                title: 'Četkice i konac za zube',
-                                                                                link: '/proizvodi/lepota-i-nega/oralna-higijena/cetkice-i-konac-za-zube',
-                                                                      },
-                                                                      {
-                                                                                id: 'proteze-i-kutije-za-zube',
-                                                                                title: 'Proteze i kutije za zube',
-                                                                                link: '/proizvodi/lepota-i-nega/oralna-higijena/proteze-i-kutije-za-zube',
-                                                                      },
-                                                                      {
-                                                                                id: 'rastvori-za-usta',
-                                                                                title: 'Rastvori za usta',
-                                                                                link: '/proizvodi/lepota-i-nega/oralna-higijena/rastvori-za-usta',
-                                                                      },
-                                                                      {
-                                                                                id: 'afte',
-                                                                                title: 'Afte',
-                                                                                link: '/proizvodi/lepota-i-nega/oralna-higijena/afte',
-                                                                      },
-                                                                      {
-                                                                                id: 'ostalo',
-                                                                                title: 'Ostalo',
-                                                                                link: '/proizvodi/lepota-i-nega/oralna-higijena/ostalo',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'lepota-i-nega-kosa-i-koza-glave',
-                                                            title: 'Kosa i koža glave',
-                                                            link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave',
-                                                            children: [
-                                                                      {
-                                                                                id: 'sprejevi-za-suvo-pranje-kose',
-                                                                                title: 'Sprejevi za suvo pranje kose',
-                                                                                link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/sprejevi-za-suvo-pranje-kose',
-                                                                      },
-                                                                      {
-                                                                                id: 'samponi-za-kosu',
-                                                                                title: 'Samponi za kosu',
-                                                                                link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/samponi-za-kosu',
-                                                                      },
-                                                                      {
-                                                                                id: 'regeneratori-i-pakovanja-za-kosu',
-                                                                                title: 'Regeneratori i pakovanja za kosu',
-                                                                                link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/regeneratori-i-pakovanja-za-kosu',
-                                                                      },
-                                                                      {
-                                                                                id: 'ulje-za-kosu',
-                                                                                title: 'Ulje za kosu',
-                                                                                link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/ulje-za-kosu',
-                                                                      },
-                                                                      {
-                                                                                id: 'kapi-i-ampule-za-kosu',
-                                                                                title: 'Kapi i ampule za kosu',
-                                                                                link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/kapi-i-ampule-za-kosu',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'ruke',
-                                                            title: 'Ruke',
-                                                            link: '/proizvodi/lepota-i-nega/ruke',
-                                                            children: [
-                                                                      {
-                                                                                id: 'kreme-za-ruke',
-                                                                                title: 'Kreme za ruke',
-                                                                                link: '/proizvodi/lepota-i-nega/ruke/kreme-za-ruke',
-                                                                      },
-                                                                      {
-                                                                                id: 'lak-za-nokte',
-                                                                                title: 'Lak za nokte',
-                                                                                link: '/proizvodi/lepota-i-nega/ruke/lak-za-nokte',
-                                                                      },
-                                                                      {
-                                                                                id: 'nega-noktiju',
-                                                                                title: 'Nega noktiju',
-                                                                                link: '/proizvodi/lepota-i-nega/ruke/nega-noktiju',
-                                                                      },
-                                                                      {
-                                                                                id: 'skidaci-lakova-za-nokte',
-                                                                                title: 'Skidači lakova za nokte',
-                                                                                link: '/proizvodi/lepota-i-nega/ruke/skidaci-lakova-za-nokte',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'stopala',
-                                                            title: 'Stopala',
-                                                            link: '/proizvodi/lepota-i-nega/stopala',
-                                                            children: [
-                                                                      {
-                                                                                id: 'stopala-nega',
-                                                                                title: 'Nega',
-                                                                                link: '/proizvodi/lepota-i-nega/stopala/nega',
-                                                                      },
-                                                                      {
-                                                                                id: 'dezodoransi',
-                                                                                title: 'Dezodoransi',
-                                                                                link: '/proizvodi/lepota-i-nega/stopala/dezodoransi',
-                                                                      },
-                                                                      {
-                                                                                id: 'zuljevi-kurije-oci-urastanje-noktiju',
-                                                                                title: 'Žuljevi, kurije oci, urastanje noktiju',
-                                                                                link: '/proizvodi/lepota-i-nega/stopala/zuljevi-kurije-oci-urastanje-noktiju',
-                                                                      },
-                                                                      {
-                                                                                id: 'skidaci-lakova-za-nokte',
-                                                                                title: 'Skidači lakova za nokte',
-                                                                                link: '/proizvodi/lepota-i-nega/stopala/skidaci-lakova-za-nokte',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'lepota-i-nega-bebe-i-deca',
-                                                            title: 'Bebe i deca',
-                                                            link: '/proizvodi/lepota-i-nega/bebe-i-deca',
-                                                            children: [
-                                                                      {
-                                                                                id: 'higijena',
-                                                                                title: 'Higijena',
-                                                                                link: '/proizvodi/lepota-i-nega/bebe-i-deca/higijena',
-                                                                      },
-                                                                      {
-                                                                                id: 'bebe-i-deca-nega',
-                                                                                title: 'Nega',
-                                                                                link: '/proizvodi/lepota-i-nega/bebe-i-deca/nega',
-                                                                      },
-                                                            ],
-                                                  },
-                                                  {
-                                                            id: 'zastita-od-sunca',
-                                                            title: 'Zaštita od sunca',
-                                                            link: '/proizvodi/lepota-i-nega/zastita-od-sunca',
-                                                            children: [
-                                                                      {
-                                                                                id: 'lepota-i-nega-odrasli',
-                                                                                title: 'Odrasli',
-                                                                                link: '/proizvodi/lepota-i-nega/zastita-od-sunca/odrasli',
-                                                                      },
-                                                                      {
-                                                                                id: 'zastita-od-sunca-bebe-i-deca',
-                                                                                title: 'Bebe i deca',
-                                                                                link: '/proizvodi/lepota-i-nega/zastita-od-sunca/bebe-i-deca',
-                                                                      },
-                                                            ],
-                                                  },
-                                        ]
-                              },
+                              // {
+                              //           id: 'lepota-i-nega',
+                              //           link: 'lepota-i-nega',
+                              //           title: 'Lepota i nega',
+                              //           children: [
+                              //                     {
+                              //                               id: 'pribor-za-negu',
+                              //                               title: 'Pribor za negu',
+                              //                               link: '/proizvodi/lepota-i-nega/pribor-za-negu',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'cetke-i-cesljevi',
+                              //                                                   title: 'Četke i češljevi',
+                              //                                                   link: '/proizvodi/lepota-i-nega/pribor-za-negu/cetke-i-cesljevi',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'makazice-gricklalice-turpije-i-pincete',
+                              //                                                   title: 'Makazice, gricklalice, turpije i pincete',
+                              //                                                   link: '/proizvodi/lepota-i-nega/pribor-za-negu/makazice-gricklalice-turpije-i-pincete',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'ogledala',
+                              //                                                   title: 'Ogledala',
+                              //                                                   link: '/proizvodi/lepota-i-nega/pribor-za-negu/ogledala',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'pribor-za-negu-lice',
+                              //                               title: 'Lice',
+                              //                               link: '/proizvodi/lepota-i-nega/lice',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'blaznice-i-tuferi',
+                              //                                                   title: 'Blaznice i tuferi',
+                              //                                                   link: '/proizvodi/lepota-i-nega/lice/blaznice-i-tuferi',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'cetkice-i-aplikatori-za-sminku',
+                              //                                                   title: 'Četkice i aplikatori za šminku',
+                              //                                                   link: '/proizvodi/lepota-i-nega/lice/cetkice-i-aplikatori-za-sminku',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'gelovi-i-pene-za-lice',
+                              //                                                   title: 'Gelovi i pene za lice',
+                              //                                                   link: '/proizvodi/lepota-i-nega/lice/gelovi-i-pene-za-lice',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'vestacke-trepavice',
+                              //                                                   title: 'Veštačke trepavice',
+                              //                                                   link: '/proizvodi/lepota-i-nega/lice/vestacke-trepavice',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'sminka-za-lice',
+                              //                                                   title: 'Šminka za lice',
+                              //                                                   link: '/proizvodi/lepota-i-nega/lice/sminka-za-lice',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'sminka-za-oci-i-obrve',
+                              //                                                   title: 'Šminka za oči i obrve',
+                              //                                                   link: '/proizvodi/lepota-i-nega/lice/sminka-za-oci-i-obrve',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'lepota-i-nega-telo',
+                              //                               title: 'Telo',
+                              //                               link: '/proizvodi/lepota-i-nega/telo',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'nega-grudi',
+                              //                                                   title: 'Nega grudi',
+                              //                                                   link: '/proizvodi/lepota-i-nega/telo/nega-grudi',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'piling',
+                              //                                                   title: 'Piling',
+                              //                                                   link: '/proizvodi/lepota-i-nega/telo/piling',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'gelovi-za-tusiranje-kupke-i-soli',
+                              //                                                   title: 'Gelovi za tuširanje, kupke i soli',
+                              //                                                   link: '/proizvodi/lepota-i-nega/telo/gelovi-za-tusiranje-kupke-i-soli',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'pene-i-pilinzi-za-kupanje',
+                              //                                                   title: 'Pene i pilinzi za kupanje',
+                              //                                                   link: '/proizvodi/lepota-i-nega/telo/pene-i-pilinzi-za-kupanje',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'mleka-kreme-i-lozioni',
+                              //                                                   title: 'Mleka, kreme i losioni',
+                              //                                                   link: '/proizvodi/lepota-i-nega/telo/mleka-kreme-i-lozioni',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'ulja-za-telo',
+                              //                                                   title: 'Ulja za telo',
+                              //                                                   link: '/proizvodi/lepota-i-nega/telo/ulja-za-telo',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'lepota-i-nega-intimna-nega',
+                              //                               title: 'Intimna nega',
+                              //                               link: '/proizvodi/lepota-i-nega/intimna-nega',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'higijena',
+                              //                                                   title: 'Higijena',
+                              //                                                   link: '/proizvodi/lepota-i-nega/intimna-nega/higijena',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'tamponi',
+                              //                                                   title: 'Tamponi',
+                              //                                                   link: '/proizvodi/lepota-i-nega/intimna-nega/tamponi',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'ulosci',
+                              //                                                   title: 'Ulošci',
+                              //                                                   link: '/proizvodi/lepota-i-nega/intimna-nega/ulosci',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'ulosci-za-inkontinenciju',
+                              //                                                   title: 'Ulošci za inkontinenciju',
+                              //                                                   link: '/proizvodi/lepota-i-nega/intimna-nega/ulosci-za-inkontinenciju',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'vaginalete-kreme-gelovi',
+                              //                                                   title: 'Vaginalete, kreme, gelovi',
+                              //                                                   link: '/proizvodi/lepota-i-nega/intimna-nega/vaginalete-kreme-gelovi',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'lubrikanti',
+                              //                                                   title: 'Lubrikanti',
+                              //                                                   link: '/proizvodi/lepota-i-nega/intimna-nega/lubrikanti',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'oralna-higijena',
+                              //                               title: 'Oralna higijena',
+                              //                               link: '/proizvodi/lepota-i-nega/oralna-higijena',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'paste-za-zube',
+                              //                                                   title: 'Paste za zube',
+                              //                                                   link: '/proizvodi/lepota-i-nega/oralna-higijena/paste-za-zube',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'cetkice-i-konac-za-zube',
+                              //                                                   title: 'Četkice i konac za zube',
+                              //                                                   link: '/proizvodi/lepota-i-nega/oralna-higijena/cetkice-i-konac-za-zube',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'proteze-i-kutije-za-zube',
+                              //                                                   title: 'Proteze i kutije za zube',
+                              //                                                   link: '/proizvodi/lepota-i-nega/oralna-higijena/proteze-i-kutije-za-zube',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'rastvori-za-usta',
+                              //                                                   title: 'Rastvori za usta',
+                              //                                                   link: '/proizvodi/lepota-i-nega/oralna-higijena/rastvori-za-usta',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'afte',
+                              //                                                   title: 'Afte',
+                              //                                                   link: '/proizvodi/lepota-i-nega/oralna-higijena/afte',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'ostalo',
+                              //                                                   title: 'Ostalo',
+                              //                                                   link: '/proizvodi/lepota-i-nega/oralna-higijena/ostalo',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'lepota-i-nega-kosa-i-koza-glave',
+                              //                               title: 'Kosa i koža glave',
+                              //                               link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'sprejevi-za-suvo-pranje-kose',
+                              //                                                   title: 'Sprejevi za suvo pranje kose',
+                              //                                                   link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/sprejevi-za-suvo-pranje-kose',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'samponi-za-kosu',
+                              //                                                   title: 'Samponi za kosu',
+                              //                                                   link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/samponi-za-kosu',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'regeneratori-i-pakovanja-za-kosu',
+                              //                                                   title: 'Regeneratori i pakovanja za kosu',
+                              //                                                   link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/regeneratori-i-pakovanja-za-kosu',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'ulje-za-kosu',
+                              //                                                   title: 'Ulje za kosu',
+                              //                                                   link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/ulje-za-kosu',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'kapi-i-ampule-za-kosu',
+                              //                                                   title: 'Kapi i ampule za kosu',
+                              //                                                   link: '/proizvodi/lepota-i-nega/kosa-i-koza-glave/kapi-i-ampule-za-kosu',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'ruke',
+                              //                               title: 'Ruke',
+                              //                               link: '/proizvodi/lepota-i-nega/ruke',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'kreme-za-ruke',
+                              //                                                   title: 'Kreme za ruke',
+                              //                                                   link: '/proizvodi/lepota-i-nega/ruke/kreme-za-ruke',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'lak-za-nokte',
+                              //                                                   title: 'Lak za nokte',
+                              //                                                   link: '/proizvodi/lepota-i-nega/ruke/lak-za-nokte',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'nega-noktiju',
+                              //                                                   title: 'Nega noktiju',
+                              //                                                   link: '/proizvodi/lepota-i-nega/ruke/nega-noktiju',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'skidaci-lakova-za-nokte',
+                              //                                                   title: 'Skidači lakova za nokte',
+                              //                                                   link: '/proizvodi/lepota-i-nega/ruke/skidaci-lakova-za-nokte',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'stopala',
+                              //                               title: 'Stopala',
+                              //                               link: '/proizvodi/lepota-i-nega/stopala',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'stopala-nega',
+                              //                                                   title: 'Nega',
+                              //                                                   link: '/proizvodi/lepota-i-nega/stopala/nega',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'dezodoransi',
+                              //                                                   title: 'Dezodoransi',
+                              //                                                   link: '/proizvodi/lepota-i-nega/stopala/dezodoransi',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'zuljevi-kurije-oci-urastanje-noktiju',
+                              //                                                   title: 'Žuljevi, kurije oci, urastanje noktiju',
+                              //                                                   link: '/proizvodi/lepota-i-nega/stopala/zuljevi-kurije-oci-urastanje-noktiju',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'skidaci-lakova-za-nokte',
+                              //                                                   title: 'Skidači lakova za nokte',
+                              //                                                   link: '/proizvodi/lepota-i-nega/stopala/skidaci-lakova-za-nokte',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'lepota-i-nega-bebe-i-deca',
+                              //                               title: 'Bebe i deca',
+                              //                               link: '/proizvodi/lepota-i-nega/bebe-i-deca',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'higijena',
+                              //                                                   title: 'Higijena',
+                              //                                                   link: '/proizvodi/lepota-i-nega/bebe-i-deca/higijena',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'bebe-i-deca-nega',
+                              //                                                   title: 'Nega',
+                              //                                                   link: '/proizvodi/lepota-i-nega/bebe-i-deca/nega',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //                     {
+                              //                               id: 'zastita-od-sunca',
+                              //                               title: 'Zaštita od sunca',
+                              //                               link: '/proizvodi/lepota-i-nega/zastita-od-sunca',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'lepota-i-nega-odrasli',
+                              //                                                   title: 'Odrasli',
+                              //                                                   link: '/proizvodi/lepota-i-nega/zastita-od-sunca/odrasli',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'zastita-od-sunca-bebe-i-deca',
+                              //                                                   title: 'Bebe i deca',
+                              //                                                   link: '/proizvodi/lepota-i-nega/zastita-od-sunca/bebe-i-deca',
+                              //                                         },
+                              //                               ],
+                              //                     },
+                              //           ]
+                              // },
                               {
                                         id: 'bebi-program',
                                         link: '/proizvodi/bebi-program',
@@ -1541,104 +1436,104 @@ export const AccordionPanels = [
                                                   }
                                         ]
                               },
-                              {
-                                        id: 'medicinski-aparati-i-oprema',
-                                        link: '/proizvodi/medicinski-aparati-i-oprema',
-                                        title: 'Medicinski aparati i oprema',
-                                        children: [
-                                                  {
-                                                            id: 'aparati-za-analizu-sna',
-                                                            title: 'Aparati za analizu sna',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/aparati-za-analizu-sna',
-                                                  },
-                                                  {
-                                                            id: 'preciscivaci-vazduha',
-                                                            title: 'Prečišćivači vazduha',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/preciscivaci-vazduha',
-                                                  },
-                                                  {
-                                                            id: 'pulsni-oksimetri',
-                                                            title: 'Pulsni oksimetri',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/pulsni-oksimetri',
-                                                  },
-                                                  {
-                                                            id: 'vage',
-                                                            title: 'Vage',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/vage',
-                                                  },
-                                                  {
-                                                            id: 'aspiratori',
-                                                            title: 'Aspiratori',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/aspiratori',
-                                                  },
-                                                  {
-                                                            id: 'inhalatori',
-                                                            title: 'Inhalatori',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/inhalatori',
-                                                            children: [
-                                                                      {
-                                                                                id: 'inhalatori-aparati',
-                                                                                title: 'Aparati',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/inhalatori/aparati',
-                                                                      },
-                                                                      {
-                                                                                id: 'dodatna-oprema',
-                                                                                title: 'Dodatna oprema',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/inhalatori/dodatna-oprema',
-                                                                      }
-                                                            ]
-                                                  },
-                                                  {
-                                                            id: 'merenje-pritiska',
-                                                            title: 'Merenje pritiska',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/merenje-pritiska',
-                                                            children: [
-                                                                      {
-                                                                                id: 'merenje-pritiska-aparati',
-                                                                                title: 'Aparati',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/merenje-pritiska/aparati',
-                                                                      },
-                                                                      {
-                                                                                id: 'dodatna-oprema',
-                                                                                title: 'Dodatna oprema',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/merenje-pritiska/dodatna-oprema',
-                                                                      }
-                                                            ]
-                                                  },
-                                                  {
-                                                            id: 'merenje-secera',
-                                                            title: 'Merenje šećera',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera',
-                                                            children: [
-                                                                      {
-                                                                                id: 'merenje-secera-aparati',
-                                                                                title: 'Aparati',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera/aparati',
-                                                                      },
-                                                                      {
-                                                                                id: 'dodatna-oprema',
-                                                                                title: 'Dodatna oprema',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera/dodatna-oprema',
-                                                                      },
-                                                                      {
-                                                                                id: 'trake-i-lancete',
-                                                                                title: 'Trake i lancete',
-                                                                                link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera/trake-i-lancete',
-                                                                      }
-                                                            ]
-                                                  },
-                                                  {
-                                                            id: 'toplomeri',
-                                                            title: 'Toplomeri',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/toplomeri',
-                                                  },
-                                                  {
-                                                            id: 'stetoskopi',
-                                                            title: 'Stetoskopi',
-                                                            link: '/proizvodi/medicinski-aparati-i-oprema/stetoskopi',
-                                                  },
-                                        ]
-                              },
+                              // {
+                              //           id: 'medicinski-aparati-i-oprema',
+                              //           link: '/proizvodi/medicinski-aparati-i-oprema',
+                              //           title: 'Medicinski aparati i oprema',
+                              //           children: [
+                              //                     {
+                              //                               id: 'aparati-za-analizu-sna',
+                              //                               title: 'Aparati za analizu sna',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/aparati-za-analizu-sna',
+                              //                     },
+                              //                     {
+                              //                               id: 'preciscivaci-vazduha',
+                              //                               title: 'Prečišćivači vazduha',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/preciscivaci-vazduha',
+                              //                     },
+                              //                     {
+                              //                               id: 'pulsni-oksimetri',
+                              //                               title: 'Pulsni oksimetri',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/pulsni-oksimetri',
+                              //                     },
+                              //                     {
+                              //                               id: 'vage',
+                              //                               title: 'Vage',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/vage',
+                              //                     },
+                              //                     {
+                              //                               id: 'aspiratori',
+                              //                               title: 'Aspiratori',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/aspiratori',
+                              //                     },
+                              //                     {
+                              //                               id: 'inhalatori',
+                              //                               title: 'Inhalatori',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/inhalatori',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'inhalatori-aparati',
+                              //                                                   title: 'Aparati',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/inhalatori/aparati',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'dodatna-oprema',
+                              //                                                   title: 'Dodatna oprema',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/inhalatori/dodatna-oprema',
+                              //                                         }
+                              //                               ]
+                              //                     },
+                              //                     {
+                              //                               id: 'merenje-pritiska',
+                              //                               title: 'Merenje pritiska',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/merenje-pritiska',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'merenje-pritiska-aparati',
+                              //                                                   title: 'Aparati',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/merenje-pritiska/aparati',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'dodatna-oprema',
+                              //                                                   title: 'Dodatna oprema',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/merenje-pritiska/dodatna-oprema',
+                              //                                         }
+                              //                               ]
+                              //                     },
+                              //                     {
+                              //                               id: 'merenje-secera',
+                              //                               title: 'Merenje šećera',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'merenje-secera-aparati',
+                              //                                                   title: 'Aparati',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera/aparati',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'dodatna-oprema',
+                              //                                                   title: 'Dodatna oprema',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera/dodatna-oprema',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'trake-i-lancete',
+                              //                                                   title: 'Trake i lancete',
+                              //                                                   link: '/proizvodi/medicinski-aparati-i-oprema/merenje-secera/trake-i-lancete',
+                              //                                         }
+                              //                               ]
+                              //                     },
+                              //                     {
+                              //                               id: 'toplomeri',
+                              //                               title: 'Toplomeri',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/toplomeri',
+                              //                     },
+                              //                     {
+                              //                               id: 'stetoskopi',
+                              //                               title: 'Stetoskopi',
+                              //                               link: '/proizvodi/medicinski-aparati-i-oprema/stetoskopi',
+                              //                     },
+                              //           ]
+                              // },
                               {
                                         id: 'ortopedija-i-pomagala',
                                         link: '/proizvodi/ortopedija-i-pomagala',
@@ -1693,111 +1588,217 @@ export const AccordionPanels = [
                                                   }
                                         ]
                               },
+                              // {
+                              //           id: 'dezinfekcija-dezinsekcija-maske',
+                              //           link: '/proizvodi/dezinfekcija-dezinsekcija-maske',
+                              //           title: 'Dezinfekcija, dezinsekcija, maske',
+                              //           children: [
+                              //                     {
+                              //                               id: 'sredstva-za-dezinfekciju',
+                              //                               title: 'Sredstva za dezinfekciju',
+                              //                               link: '/proizvodi/dezinfekcija-dezinsekcija-maske/sredstva-za-dezinfekciju',
+                              //                     },
+                              //                     {
+                              //                               id: 'repelenti',
+                              //                               title: 'Repelenti',
+                              //                               link: '/proizvodi/dezinfekcija-dezinsekcija-maske/repelenti',
+                              //                     },
+                              //                     {
+                              //                               id: 'maske-za-lice',
+                              //                               title: 'Maske za lice',
+                              //                               link: '/proizvodi/dezinfekcija-dezinsekcija-maske/maske-za-lice',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'maske-za-lice-odrasli',
+                              //                                                   title: 'Odrasli',
+                              //                                                   link: '/proizvodi/dezinfekcija-dezinsekcija-maske/maske-za-lice/odrasli',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'maske-za-lice-deca',
+                              //                                                   title: 'Deca',
+                              //                                                   link: '/proizvodi/dezinfekcija-dezinsekcija-maske/maske-za-lice/deca',
+                              //                                         }
+                              //                               ]
+                              //                     }
+                              //           ]
+                              // },
+                              // {
+                              //           id: 'obuca-carape-ulosci',
+                              //           link: '/proizvodi/obuca-carape-ulosci',
+                              //           title: 'Obuća, čarape, ulošci',
+                              //           children: [
+                              //                     {
+                              //                               id: 'bebe',
+                              //                               title: 'Bebe',
+                              //                               link: '/proizvodi/obuca-carape-ulosci/bebe',
+                              //                     },
+                              //                     {
+                              //                               id: 'obuca-carape-ulosci-deca',
+                              //                               title: 'Deca',
+                              //                               link: '/proizvodi/obuca-carape-ulosci/deca',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'decaci',
+                              //                                                   title: 'Dečaci',
+                              //                                                   link: '/proizvodi/obuca-carape-ulosci/deca/decaci',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'devojcice',
+                              //                                                   title: 'Devojčice',
+                              //                                                   link: '/proizvodi/obuca-carape-ulosci/deca/devojcice',
+                              //                                         }
+                              //                               ]
+                              //                     },
+                              //                     {
+                              //                               id: 'obuca-carape-ulosci-odrasli',
+                              //                               title: 'Odrasli',
+                              //                               link: '/proizvodi/obuca-carape-ulosci/odrasli',
+                              //                               children: [
+                              //                                         {
+                              //                                                   id: 'obuca-carape-ulosci-muskarci',
+                              //                                                   title: 'Muškarci',
+                              //                                                   link: '/proizvodi/obuca-carape-ulosci/odrasli/muskarci',
+                              //                                         },
+                              //                                         {
+                              //                                                   id: 'obuca-carape-ulosci-zene',
+                              //                                                   title: 'Žene',
+                              //                                                   link: '/proizvodi/obuca-carape-ulosci/odrasli/zene',
+                              //                                         }
+                              //                               ]
+                              //                     },
+                              //                     {
+                              //                               id: 'carape-za-vene',
+                              //                               title: 'Čarape za vene',
+                              //                               link: '/proizvodi/obuca-carape-ulosci/carape-za-vene',
+                              //                     },
+                              //                     {
+                              //                               id: 'ulosci-za-stopala',
+                              //                               title: 'Ulošci za stopala',
+                              //                               link: '/proizvodi/obuca-carape-ulosci/ulosci-za-stopala',
+                              //                     },
+                              //                     {
+                              //                               id: 'stitnici-i-separatori',
+                              //                               title: 'Štitnici i separatori',
+                              //                               link: '/proizvodi/obuca-carape-ulosci/stitnici-i-separatori',
+                              //                     }
+                              //           ]
+                              // },
                               {
-                                        id: 'dezinfekcija-dezinsekcija-maske',
-                                        link: '/proizvodi/dezinfekcija-dezinsekcija-maske',
-                                        title: 'Dezinfekcija, dezinsekcija, maske',
-                                        children: [
-                                                  {
-                                                            id: 'sredstva-za-dezinfekciju',
-                                                            title: 'Sredstva za dezinfekciju',
-                                                            link: '/proizvodi/dezinfekcija-dezinsekcija-maske/sredstva-za-dezinfekciju',
-                                                  },
-                                                  {
-                                                            id: 'repelenti',
-                                                            title: 'Repelenti',
-                                                            link: '/proizvodi/dezinfekcija-dezinsekcija-maske/repelenti',
-                                                  },
-                                                  {
-                                                            id: 'maske-za-lice',
-                                                            title: 'Maske za lice',
-                                                            link: '/proizvodi/dezinfekcija-dezinsekcija-maske/maske-za-lice',
-                                                            children: [
-                                                                      {
-                                                                                id: 'maske-za-lice-odrasli',
-                                                                                title: 'Odrasli',
-                                                                                link: '/proizvodi/dezinfekcija-dezinsekcija-maske/maske-za-lice/odrasli',
-                                                                      },
-                                                                      {
-                                                                                id: 'maske-za-lice-deca',
-                                                                                title: 'Deca',
-                                                                                link: '/proizvodi/dezinfekcija-dezinsekcija-maske/maske-za-lice/deca',
-                                                                      }
-                                                            ]
-                                                  }
-                                        ]
+                                        id: 'prirodna-kozmetika',
+                                        link: 'prirodna-kozmetika',
+                                        title: 'Prirodna kozmetika',
+                                        // children: [
+                                        //           {
+                                        //                     id: 'prirodna-kozmetika-lice',
+                                        //                     title: 'Lice',
+                                        //                     link: '/proizvodi/prirodna-kozmetika/lice',
+                                        //                     children: [
+                                        //                               {
+                                        //                                         id: 'higijena-lica',
+                                        //                                         title: 'Higijena lica',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/lice/higijena-lica',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'trepavice-i-obrve',
+                                        //                                         title: 'Trepavice i obrve',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/lice/trepavice-i-obrve',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'hidratacija',
+                                        //                                         title: 'Hidratacija',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/lice/hidratacija',
+                                        //                               },
+                                        //                     ],
+                                        //           },
+                                        //           {
+                                        //                     id: 'prirodna-kozmetika-telo',
+                                        //                     title: 'Telo',
+                                        //                     link: '/proizvodi/prirodna-kozmetika/telo',
+                                        //                     children: [
+                                        //                               {
+                                        //                                         id: 'ostecena-koza',
+                                        //                                         title: 'Oštećena koža',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/telo/ostecena-koza',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'pilinzi',
+                                        //                                         title: 'Pilinzi',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/telo/pilinzi',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'celulit-i-strije',
+                                        //                                         title: 'Celulit i strije',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/telo/celulit-i-strije',
+                                        //                               },
+                                        //                     ],
+                                        //           },
+                                        //           {
+                                        //                     id: 'prirodna-kozmetika-kosa-i-koza-glave',
+                                        //                     title: 'Kosa i koža glave',
+                                        //                     link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave',
+                                        //                     children: [
+                                        //                               {
+                                        //                                         id: 'opadanje-kose',
+                                        //                                         title: 'Opadanje kose',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/opadanje-kose',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'nega-kose-na-suncu',
+                                        //                                         title: 'Nega kose na suncu',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/nega-kose-na-suncu',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'osetljiva-koza-glave',
+                                        //                                         title: 'Osetljiva koža glave',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/osetljiva-koza-glave',
+                                        //                               },
+                                        //                     ],
+                                        //           },
+                                        //           {
+                                        //                     id: 'prirodna-kozmetika-bebe-i-deca',
+                                        //                     title: 'Bebe i deca',
+                                        //                     link: '/proizvodi/prirodna-kozmetika/bebe-i-deca',
+                                        //                     children: [
+                                        //                               {
+                                        //                                         id: 'pranje',
+                                        //                                         title: 'Pranje',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/pranje',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'prirodna-kozmetika-bebe-i-deca-nega',
+                                        //                                         title: 'Nega',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/nega',
+                                        //                               },
+                                        //                               {
+                                        //                                         id: 'suncanje',
+                                        //                                         title: 'Sunčanje',
+                                        //                                         link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/suncanje',
+                                        //                               },
+                                        //                     ],
+                                        //           },
+                                        //           {
+                                        //                     id: 'prirodna-kozmetika-muskarci',
+                                        //                     link: '/proizvodi/prirodna-kozmetika/muskarci',
+                                        //                     title: 'Muškarci'
+                                        //           },
+                                        //           {
+                                        //                     id: 'prirodna-kozmetika-zene',
+                                        //                     link: '/proizvodi/prirodna-kozmetika/zene',
+                                        //                     title: 'Žene'
+                                        //           },
+                                        // ]
                               },
                               {
-                                        id: 'obuca-carape-ulosci',
-                                        link: '/proizvodi/obuca-carape-ulosci',
-                                        title: 'Obuća, čarape, ulošci',
-                                        children: [
-                                                  {
-                                                            id: 'bebe',
-                                                            title: 'Bebe',
-                                                            link: '/proizvodi/obuca-carape-ulosci/bebe',
-                                                  },
-                                                  {
-                                                            id: 'obuca-carape-ulosci-deca',
-                                                            title: 'Deca',
-                                                            link: '/proizvodi/obuca-carape-ulosci/deca',
-                                                            children: [
-                                                                      {
-                                                                                id: 'decaci',
-                                                                                title: 'Dečaci',
-                                                                                link: '/proizvodi/obuca-carape-ulosci/deca/decaci',
-                                                                      },
-                                                                      {
-                                                                                id: 'devojcice',
-                                                                                title: 'Devojčice',
-                                                                                link: '/proizvodi/obuca-carape-ulosci/deca/devojcice',
-                                                                      }
-                                                            ]
-                                                  },
-                                                  {
-                                                            id: 'obuca-carape-ulosci-odrasli',
-                                                            title: 'Odrasli',
-                                                            link: '/proizvodi/obuca-carape-ulosci/odrasli',
-                                                            children: [
-                                                                      {
-                                                                                id: 'obuca-carape-ulosci-muskarci',
-                                                                                title: 'Muškarci',
-                                                                                link: '/proizvodi/obuca-carape-ulosci/odrasli/muskarci',
-                                                                      },
-                                                                      {
-                                                                                id: 'obuca-carape-ulosci-zene',
-                                                                                title: 'Žene',
-                                                                                link: '/proizvodi/obuca-carape-ulosci/odrasli/zene',
-                                                                      }
-                                                            ]
-                                                  },
-                                                  {
-                                                            id: 'carape-za-vene',
-                                                            title: 'Čarape za vene',
-                                                            link: '/proizvodi/obuca-carape-ulosci/carape-za-vene',
-                                                  },
-                                                  {
-                                                            id: 'ulosci-za-stopala',
-                                                            title: 'Ulošci za stopala',
-                                                            link: '/proizvodi/obuca-carape-ulosci/ulosci-za-stopala',
-                                                  },
-                                                  {
-                                                            id: 'stitnici-i-separatori',
-                                                            title: 'Štitnici i separatori',
-                                                            link: '/proizvodi/obuca-carape-ulosci/stitnici-i-separatori',
-                                                  }
-                                        ]
+                                        id: 'akcije',
+                                        link: '/proizvodi/akcije',
+                                        title: 'AKCIJE'
                               },
+                              {
+                                        id: 'promocije',
+                                        link: '/proizvodi/promocije',
+                                        title: 'PROMOCIJE'
+                              }
                     ]
           },
-          {
-                    id: 'akcije',
-                    link: '/proizvodi/akcije',
-                    title: 'AKCIJE'
-          },
-          {
-                    id: 'promocije',
-                    link: '/proizvodi/promocije',
-                    title: 'PROMOCIJE'
-          }
+
 ]

@@ -15,14 +15,16 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
           alignItems: "center",
           overflow: "hidden",
           background: Colors.secondary,
-          height: '50px'
+          height: '70px'
 }));
 
 export const MessageText = styled(Typography)(({ theme }) => ({
           fontFamily: 'monospace',
           [theme.breakpoints.up("md")]: {
-                    fontSize: "3rem",
+                    fontSize: "2.2rem",
+          },
+          [theme.breakpoints.down("md")]: {
+                    fontSize: "1.5rem",
           },
           color: Colors.primary,
-          fontSize: "1.5rem",
 }));
