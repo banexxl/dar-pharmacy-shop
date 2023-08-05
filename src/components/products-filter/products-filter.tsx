@@ -36,7 +36,21 @@ function ProductsFilter(props: any) {
                                                   <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
                                                             {
                                                                       props.filterObject.length !== 0 ?
-                                                                                (props.filterObject[0].mainCategory + '/' + props.filterObject[0].midCategory + '/' + props.filterObject[0].subCategory).toUpperCase()
+                                                                                (
+                                                                                          props.filterObject[0].mainCategory !== "" ?
+                                                                                                    props.filterObject[0].mainCategory + '/'
+                                                                                                    :
+                                                                                                    props.filterObject[0].midCategory !== "" ?
+                                                                                                              props.filterObject[0].midCategory + '/'
+                                                                                                              :
+                                                                                                              props.filterObject[0].subCategory !== "" ?
+                                                                                                                        props.filterObject[0].subCategory + '/'
+                                                                                                                        :
+                                                                                                                        ""
+
+
+
+                                                                                ).toUpperCase()
                                                                                 :
                                                                                 router.asPath.toUpperCase()
                                                             }

@@ -1685,7 +1685,7 @@ export const AccordionPanels = [
                               // },
                               {
                                         id: 'prirodna-kozmetika',
-                                        link: 'prirodna-kozmetika',
+                                        link: 'proizvodi/prirodna-kozmetika',
                                         title: 'Prirodna kozmetika',
                                         // children: [
                                         //           {
