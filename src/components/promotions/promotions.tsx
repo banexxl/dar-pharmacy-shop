@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { MessageText, PromotionsContainer } from "../../styles/promotions";
 
 const messages = [
-          "20% na prvu porudžbinu!",
-          "Nalazimo se u Kragujevcu",
-          "Pretplatite se na naše vesti i akcije!",
+          "Mala apoteka VELIKOG srca!",
+          "Besplatna poštarina za pakete preko 8000 dinara!",
+          "Prijavite se na naše vesti i akcije!",
+          "Nalazimo se u TC Prostor, Kragujevac!"
 ];
 export default function Promotions() {
 
