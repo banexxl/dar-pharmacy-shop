@@ -22,6 +22,7 @@ export const ProductsMenu = () => {
           };
           const onLinkClick = () => {
                     setLoading(true)
+                    setAnchorEl(null)
           }
           return (
                     <Box>
