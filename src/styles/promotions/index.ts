@@ -6,12 +6,14 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
           [theme.breakpoints.up("md")]: {
                     padding: "40px 0px 40px 0px",
           },
+          borderRadius: '5px',
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "20px 0px 20px 0px",
           overflow: "hidden",
           background: Colors.secondary,
+          height: '20px'
 }));
 
 export const MessageText = styled(Typography)(({ theme }) => ({

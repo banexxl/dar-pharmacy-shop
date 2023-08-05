@@ -37,7 +37,7 @@ export default function Promotions() {
           }, [])
 
           return (
-                    <PromotionsContainer ref={containerRef} overflow="hidden" sx={{ height: '20px' }}>
+                    <PromotionsContainer ref={containerRef} overflow="hidden">
                               <Slide
                                         direction={show ? "left" : "right"}
                                         in={show}

@@ -104,4 +104,10 @@ export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
           '&:hover': {
                     backgroundColor: Colors.secondary,
           },
+          '& .MuiLoadingButton-loadingIndicator': {
+                    // You can adjust the size of the spinner here
+                    // For example, if you want it to be 40px in diameter:
+                    width: 80,
+                    height: 80,
+          },
 }))

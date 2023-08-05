@@ -1025,7 +1025,7 @@ export const ProductsMenu = () => {
 
                                         </NestedMenuItem>
                                         {/* --------------------------Lepota i nega------------------------------------------ */}
-                                        <NestedMenuItem label='Lepota i nega' parentMenuOpen={open}>
+                                        {/* <NestedMenuItem label='Lepota i nega' parentMenuOpen={open}>
 
                                                   <NestedMenuItem label='Pribor za negu' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
@@ -1277,7 +1277,7 @@ export const ProductsMenu = () => {
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
 
-                                        </NestedMenuItem>
+                                        </NestedMenuItem> */}
                                         {/* --------------------------Bebi program----------------------------------------- */}
                                         <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
 
@@ -1740,7 +1740,7 @@ export const ProductsMenu = () => {
 
                                         </NestedMenuItem>
                                         {/* --------------------------Medicinski aparati i oprema----------------------------------------- */}
-                                        <NestedMenuItem label='Medicinski aparati i oprema' parentMenuOpen={open}>
+                                        {/* <NestedMenuItem label='Medicinski aparati i oprema' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Aparati za analizu sna
@@ -1817,7 +1817,7 @@ export const ProductsMenu = () => {
                                                                       Stetoskopi
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
-                                        </NestedMenuItem>
+                                        </NestedMenuItem> */}
                                         {/* --------------------------Ortopedija i pomagala----------------------------------------- */}
                                         <NestedMenuItem label='Ortopedija i pomagala' parentMenuOpen={open}>
                                                   <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
@@ -1864,7 +1864,7 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
                                         </NestedMenuItem>
                                         {/* --------------------------Dezinfekcija, dezinsekcija, maske----------------------------------------- */}
-                                        <NestedMenuItem label='Dezinfekcija, dezinsekcija, maske' parentMenuOpen={open}>
+                                        {/* <NestedMenuItem label='Dezinfekcija, dezinsekcija, maske' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Sredstva za dezinfekciju
@@ -1887,9 +1887,9 @@ export const ProductsMenu = () => {
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
-                                        </NestedMenuItem>
+                                        </NestedMenuItem> */}
                                         {/* --------------------------Obuca, carape, ulosci---------------------------------------- */}
-                                        <NestedMenuItem label='Obuća, čarape, ulošci' parentMenuOpen={open}>
+                                        {/* <NestedMenuItem label='Obuća, čarape, ulošci' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Bebe
@@ -1919,30 +1919,31 @@ export const ProductsMenu = () => {
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
-                                        </NestedMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Čarape za vene
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Ulošci za stopala
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                                  <StyledMenuItem onClick={handleClose}>
+                                                            <StyledNestedTypography>
+                                                                      Štitnici i separatori
+                                                            </StyledNestedTypography>
+                                                  </StyledMenuItem>
+                                        </NestedMenuItem> */}
+
                                         <StyledMenuItem onClick={handleClose}>
                                                   <StyledNestedTypography>
-                                                            Čarape za vene
+                                                            Akcije
                                                   </StyledNestedTypography>
                                         </StyledMenuItem>
                                         <StyledMenuItem onClick={handleClose}>
                                                   <StyledNestedTypography>
-                                                            Ulošci za stopala
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography>
-                                                            Štitnici i separatori
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography>
-                                                            AKCIJE
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography>
-                                                            PROMOCIJE
+                                                            Popularno
                                                   </StyledNestedTypography>
                                         </StyledMenuItem>
                               </StyledProductMenu>
