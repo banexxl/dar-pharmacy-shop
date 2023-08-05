@@ -104,4 +104,4 @@ export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
           '&:hover': {
                     backgroundColor: Colors.secondary,
           },
-})) as typeof Button
+}))

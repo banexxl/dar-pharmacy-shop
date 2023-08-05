@@ -70,11 +70,6 @@ export default function ProductCard() {
                                                             CC
                                                   </Avatar>
                                         }
-                                        action={
-                                                  <IconButton aria-label="settings">
-                                                            <MoreVertIcon />
-                                                  </IconButton>
-                                        }
                                         title={t('homepage.popular-product-title')}
                                         subheader={t('homepage.popular-product-description-short')}
                               />
@@ -84,6 +79,13 @@ export default function ProductCard() {
                                         image={"https://i.ibb.co/KFKjjnb/Crux-kutija-2.png"}
                                         alt="Paella dish"
                               />
+                              {
+                                        addedToCartAlert && (
+                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%, 300px)', width: '250px', zIndex: '1000' }}>
+                                                            {t('product.added-to-cart')}
+                                                  </Alert>
+                                        )
+                              }
                               <CardActions disableSpacing>
                                         <PopularProductAddToCart variant="contained" loading={loading} onClick={() => {
                                                   callCartAlert()
@@ -128,12 +130,7 @@ export default function ProductCard() {
                                                   </Typography>
                                         </CardContent>
                               </Collapse>
-                              {
-                                        addedToCartAlert && (
-                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.added-to-cart')}
-                                                  </Alert>
-                                        )}
+
                     </Box>
           );
 }
