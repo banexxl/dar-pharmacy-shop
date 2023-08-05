@@ -20,11 +20,11 @@ export default function Banner() {
                                                   {t('homepage.banner.title')}
                                         </BannerTitle>
                                         {t('homepage.banner.banner-text')}
-                                        <Link href={"/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima"}>
-                                                  <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
+                                        <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
+                                                  <Link href={"/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima"}>
                                                             {t('homepage.banner.banner-button')}
-                                                  </BannerShopButton>
-                                        </Link>
+                                                  </Link>
+                                        </BannerShopButton>
                               </BannerContent>
                     </BannerContainer >
           )

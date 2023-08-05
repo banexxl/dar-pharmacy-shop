@@ -107,7 +107,9 @@ export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
           '& .MuiLoadingButton-loadingIndicator': {
                     // You can adjust the size of the spinner here
                     // For example, if you want it to be 40px in diameter:
-                    width: 80,
-                    height: 80,
+                    position: 'absolute',
+                    top: '35%',
+                    left: '50%',
+                    transform: 'translate(-40%)'
           },
 }))
