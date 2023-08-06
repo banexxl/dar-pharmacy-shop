@@ -29,7 +29,6 @@ export default function AppDrawer({ isScreenToMedium }: any) {
           const [LoginDialog, showLoginDialog, closeLoginDialog] =
                     useDialogModal(LoginRegister)
 
-
           return (
                     <Box >
                               <Drawer open={drawerOpen} >

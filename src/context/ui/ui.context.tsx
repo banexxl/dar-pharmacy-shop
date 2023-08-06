@@ -1,6 +1,6 @@
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/navbar/navbar";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 
 export const UIContext = createContext<any>({});
@@ -11,10 +11,12 @@ export const UIProvider = ({ children }: any) => {
 
           const [drawerOpen, setDrawerOpen] = useState(false);
           const [showSearchBox, setShowSearchBox] = useState(false);
+          const [showLoadingWheel, setShowLoadingWheel] = useState('none');
 
           const value = {
                     drawerOpen, setDrawerOpen,
                     showSearchBox, setShowSearchBox,
+                    showLoadingWheel, setShowLoadingWheel
           };
 
           return (

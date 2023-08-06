@@ -12,7 +12,6 @@ export default function FilteredProductsGrid(props: any) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
           //const cart: ICartItem[] = useSelector((state: any) => state.cart)
-          console.log(props.data);
 
           const renderProducts =
                     props.data.length !== 0 ?
