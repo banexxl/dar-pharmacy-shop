@@ -12,6 +12,7 @@ import { Colors } from '@/styles/theme';
 import { useUIContext } from '@/context/ui/ui.context';
 
 export const ProductsMenu = () => {
+
           const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
           const open = Boolean(anchorEl);
           const { drawerOpen, setDrawerOpen, showLoadingWheel, setShowLoadingWheel } = useUIContext()
