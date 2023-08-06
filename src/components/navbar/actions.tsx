@@ -89,15 +89,15 @@ export default function Actions({ isScreenToMedium }: any) {
                                         </ListItemIcon>
                               </ListItemButton>
                               <Divider orientation="vertical" flexItem />
-                              <ListItemButton
+                              {/* <ListItemButton
                                         sx={{
                                                   justifyContent: "center",
                                                   '&:hover': {
                                                             backgroundColor: Colors.secondary,
                                                   },
                                         }}
-                              >
-                                        <Select
+                              > */}
+                              {/* <Select
                                                   placeholder="Language"
                                                   IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
                                                   sx={{ width: 75, height: 24, alignItems: 'center' }}
@@ -108,8 +108,8 @@ export default function Actions({ isScreenToMedium }: any) {
                                                   <MenuItem onClick={() => { router.push(`${router.pathname}`, undefined, { locale: 'sr-RS' }) }}>
                                                             sr
                                                   </MenuItem>
-                                        </Select>
-                              </ListItemButton>
+                                        </Select> */}
+                              {/* </ListItemButton> */}
                               <WishListDialog />
                               <CartDialog />
                               <LoginDialog />

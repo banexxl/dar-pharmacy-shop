@@ -8,6 +8,7 @@ import { StyledMenuItem, StyledNestedTypography } from '@/styles/products-nested
 import Link from 'next/link';
 import LoadingWheel from '@/components/loading/loading';
 import { useState } from 'react';
+import { Colors } from '@/styles/theme';
 
 export const ProductsMenu = () => {
           const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -37,10 +38,17 @@ export const ProductsMenu = () => {
                                         variant="contained"
                                         onClick={handleClick}
                                         endIcon={<ArrowDownwardIcon />}
+                                        sx={{
+                                                  ':hover': {
+                                                            backgroundColor: Colors.primary,
+                                                            textEmphasisColor: Colors.dim_grey
+                                                  }
+                                        }}
                               >
                                         <StyledNestedTypography sx={{ textAlign: 'center' }}>
                                                   Proizvodi
                                         </StyledNestedTypography>
+
                               </Button>
                               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                                         <StyledMenuItem onClick={handleClose}>
@@ -62,6 +70,14 @@ export const ProductsMenu = () => {
                                                   <StyledNestedTypography onClick={() => onLinkClick()}>
                                                             <Link href={'/proizvodi/prirodna-kozmetika'}>
                                                                       Prirodna kozmetika
+                                                            </Link>
+                                                  </StyledNestedTypography>
+                                        </StyledMenuItem>
+                                        {/* --------------------------Bebi program----------------------------------------- */}
+                                        <StyledMenuItem onClick={handleClose}>
+                                                  <StyledNestedTypography onClick={() => onLinkClick()}>
+                                                            <Link href={'/proizvodi/bebi-program'}>
+                                                                      Bebi program
                                                             </Link>
                                                   </StyledNestedTypography>
                                         </StyledMenuItem>
@@ -1308,8 +1324,8 @@ export const ProductsMenu = () => {
                                                   </NestedMenuItem>
 
                                         </NestedMenuItem> */}
-                                        {/* --------------------------Bebi program----------------------------------------- */}
-                                        <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
+
+                                        {/* <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
 
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography onClick={() => onLinkClick()}>
@@ -1768,7 +1784,7 @@ export const ProductsMenu = () => {
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
 
-                                        </NestedMenuItem>
+                                        </NestedMenuItem> */}
                                         {/* --------------------------Medicinski aparati i oprema----------------------------------------- */}
                                         {/* <NestedMenuItem label='Medicinski aparati i oprema' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>

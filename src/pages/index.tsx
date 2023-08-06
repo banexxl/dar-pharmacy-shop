@@ -122,7 +122,8 @@ export async function getStaticProps({ locale }: any) {
                               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                               productsByMainCategoryApoteka: JSON.parse(JSON.stringify(productsByMainCategoryApoteka)),
-                              ...(await serverSideTranslations('sr-RS' ?? locale, ['common'], null, ['sr-RS', 'en-US'])),
+                              ...(await serverSideTranslations('sr-RS'))
+                              // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                               // ...(await serverSideTranslations(locale ?? 'sr-RS', [
                               //           'common',
                               // ])),
