@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { IContactForm, initialContactFormValues } from '@/interfaces/contact/contact.interface';
 import { contactFormSchema } from '@/schemas/contact-form';
-import { ContactButton, ContactTitle } from '@/styles/contact/contact';
+import { ContactButton, ContactText, ContactTitle } from '@/styles/contact/contact';
 import { SendContactEmail } from '@/services/email/send-email';
 import Link from 'next/link';
 
@@ -40,6 +40,11 @@ const ContactForm = () => {
                                                                                 {t('contact.contact-form')}
                                                                       </ContactTitle>
 
+                                                                      <ContactText>
+                                                                                Ako ste u potrazi za deficitarnim lekovima, možemo vam pomoći.<br /><br />
+                                                                                Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
+                                                                                Slobodno nas kontaktirajte!
+                                                                      </ContactText>
                                                                       <TextField
                                                                                 value={formik.values.name}
                                                                                 label={t('contact.name')}

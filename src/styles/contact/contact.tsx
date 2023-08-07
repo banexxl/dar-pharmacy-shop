@@ -80,8 +80,11 @@ export const ContactTitle = styled(Typography)(({ theme }: any) => ({
 }));
 
 export const ContactText = styled(Typography)(({ theme }: any) => ({
-          color: Colors.shaft,
-          fontFamily: 'monospace'
+          color: Colors.secondary,
+          fontFamily: 'monospace',
+          textAlign: 'center',
+          alignItems: 'center',
+
 }));
 
 export const ContactStrongText = styled(Typography)(({ theme }: any) => ({

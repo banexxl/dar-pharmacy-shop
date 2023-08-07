@@ -48,20 +48,20 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                             <ProductsMenu />
                                                   </ListItemButton>
                                                   <MiddleDivider />
-                                                  <ListItemButton>
-                                                            <ListItemText onClick={() => { setDrawerOpen(false) }}>
-                                                                      <Link href={'/kontakt'}>
-                                                                                Kontakt
-                                                                      </Link>
-                                                            </ListItemText>
-                                                  </ListItemButton>
-                                                  <MiddleDivider />
                                                   <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
                                                             <ListItemText>Korpa</ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }}>
                                                             <ListItemText>Omiljeni</ListItemText>
+                                                  </ListItemButton>
+                                                  <MiddleDivider />
+                                                  <ListItemButton>
+                                                            <ListItemText onClick={() => { setDrawerOpen(false) }}>
+                                                                      <Link href={'/kontakt'}>
+                                                                                Kontakt
+                                                                      </Link>
+                                                            </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
                                                   <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
