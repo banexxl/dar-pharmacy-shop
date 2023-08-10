@@ -59,7 +59,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   <ListItemButton>
                                                             <ListItemText onClick={() => { setDrawerOpen(false) }}>
                                                                       <Link href={'/kontakt'}>
-                                                                                Kontakt
+                                                                                Pitajte nas...
                                                                       </Link>
                                                             </ListItemText>
                                                   </ListItemButton>

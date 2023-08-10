@@ -1,5 +1,5 @@
 import theme, { Colors } from '@/styles/theme';
-import { TextField } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
@@ -41,7 +41,7 @@ const ContactForm = () => {
                                                                       </ContactTitle>
 
                                                                       <ContactText>
-                                                                                Ako ste u potrazi za deficitarnim lekovima, možemo vam pomoći.<br /><br />
+                                                                                Ako ste u potrazi za <Typography fontWeight={'bold'}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br /><br />
                                                                                 Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                                                                 Slobodno nas kontaktirajte!
                                                                       </ContactText>

@@ -6,7 +6,6 @@ import { ProductAddToCart, Product, ProductImage, ProductImageDropdown, ProductD
 import { BannerShopButton } from "../../styles/banner";
 import Counter from "../../utils/counter";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -161,7 +160,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       }}
                                                             >
                                                                       <FacebookIcon />
-                                                                      <TwitterIcon sx={{ pl: 2 }} />
                                                                       <InstagramIcon sx={{ pl: 2 }} />
                                                             </Box>
                                                   </ProductDetailInfoWrapper>

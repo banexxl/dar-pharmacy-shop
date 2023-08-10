@@ -3,7 +3,6 @@ import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/product
 import { Colors } from '@/styles/theme';
 import { Alert, Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -122,7 +121,6 @@ function ProductDetails(product: IProduct) {
                                                   }}
                                         >
                                                   <FacebookIcon />
-                                                  <TwitterIcon sx={{ pl: 2 }} />
                                                   <InstagramIcon sx={{ pl: 2 }} />
                                         </Box>
                                         {addedToCartAlert && (

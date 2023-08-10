@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, TextField, } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, TextField, CardMedia, Card, Avatar, CardContent, } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
@@ -7,6 +7,10 @@ import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from 'next/image'
 import { useTranslation } from "next-i18next";
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PersonIcon from '@mui/icons-material/Person';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 
 
@@ -62,98 +66,59 @@ export default function LoginRegister({ open, onClose }: any) {
                                         </DialogTitle>
 
                                         <DialogContent>
-                                                  <Box sx={{
-                                                            ml: '50%', mt: '70px', borderRadius: '20px',
-                                                            transform: 'translateX(-50%)',
-                                                            display: 'flex', flexDirection: 'column',
-                                                            width: { xs: '350px', sm: '250px', md: '400px', xl: '600px' },
-                                                            height: { xs: '500px', sm: '250px', md: '400px', xl: '500px' },
-                                                            alignItems: 'center', justifyContent: 'space-between',
-                                                            boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
+                                                  <Card
+                                                            sx={{
+                                                                      marginLeft: '50%',
+                                                                      transform: 'translateX(-50%)',
+                                                                      marginTop: '20px',
+                                                                      variant: "outlined",
+                                                                      borderRadius: 15,
+                                                                      padding: '20px',
+                                                                      width: { xs: '300px', lg: '700px' },
+                                                                      height: { xs: '500px', lg: '600px' },
+                                                                      backgroundColor: Colors.dove_gray,
+                                                            }}
+                                                  >
 
-                                                  }}>
-                                                            <Image src={session.user?.image!} height={200} width={200} alt='image'
-                                                                      style={{ marginTop: '10px', borderRadius: '10px', boxShadow: '10px 10px 20px #c62828' }} />
-                                                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                                                                      <Typography >
-                                                                                {session.user?.name}
-                                                                      </Typography>
+                                                            <CardMedia sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px', gap: '50px' }}>
+                                                                      <Image src={session.user?.image!} alt={"aaa"} width={200} height={200} style={{ borderRadius: '30px' }} />
+                                                                      <CardContent sx={{ alignItems: 'center' }}>
+                                                                                <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
+                                                                                          <PersonIcon />
+                                                                                          <Typography>
+                                                                                                    {session.user?.name}
+                                                                                          </Typography>
+                                                                                </Box>
+                                                                                <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
+                                                                                          <AlternateEmailIcon fontSize="small" />
+                                                                                          <Typography>
+                                                                                                    {session.user?.email}
+                                                                                          </Typography>
+                                                                                </Box>
+                                                                                {/* <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
+                                                                                          <PhoneInTalkIcon fontSize="small" />
+                                                                                          <Typography>
+                                                                                                    {session.user?.name}
+                                                                                          </Typography>
+                                                                                </Box>
+                                                                                <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
+                                                                                          <LocationOnIcon fontSize="small" />
+                                                                                          <Typography>
+                                                                                                    city country
+                                                                                          </Typography>
+                                                                                </Box> */}
+                                                                      </CardContent>
+                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                                <Button onClick={() => signOut()}>{t('account.sign-out')}</Button>
+                                                                      </Box>
+                                                            </CardMedia>
+                                                  </Card>
 
-                                                                      <Button onClick={() => signOut()}>{t('account.sign-out')}</Button>
-                                                            </Box>
 
-                                                  </Box>
                                         </DialogContent>
                               </Dialog >
                     )
           } else {
-
-                    // <Dialog
-                    //           TransitionComponent={SlideTransition}
-                    //           open={open}
-                    //           fullScreen
-                    // >
-                    //           <DialogTitle
-                    //                     sx={{
-                    //                               background: Colors.secondary,
-                    //                     }}
-                    //           >
-                    //                     <Box
-                    //                               display="flex"
-                    //                               alignItems="center"
-                    //                               justifyContent={"space-between"}
-                    //                     >
-                    //                               Prijava
-                    //                               <IconButton onClick={onClose}>
-                    //                                         <CloseIcon />
-                    //                               </IconButton>
-                    //                     </Box>
-                    //           </DialogTitle>
-
-                    //           <DialogContent>
-                    //                     <Box sx={{
-                    //                               ml: '50%', mt: '10%', borderRadius: '20px',
-                    //                               transform: 'translateX(-50%)',
-                    //                               display: 'flex', flexDirection: 'column',
-                    //                               width: { xs: '200px', sm: '250px', md: '400px', xl: '600px' },
-                    //                               height: { xs: '200px', sm: '250px', md: '400px', xl: '500px' },
-                    //                               alignItems: 'center', justifyContent: 'center',
-                    //                               boxShadow: '5px 5px 10px #c62828', ":hover": { boxShadow: '10px 10px 20px #c62828' }
-                    //                     }}>
-                    //                               <Typography variant='h3' sx={{ textAlign: 'center', margin: '20px 20px' }}>
-                    //                                         {
-                    //                                                   isSignUp ? 'Registruj se' : 'Prijavi se'
-                    //                                         }
-                    //                               </Typography>
-
-                    //                               {
-                    //                                         isSignUp ?
-                    //                                                   <TextField value={inputInfo.name} name="name" type='text' placeholder="ime i prezime" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)}></TextField>
-                    //                                                   :
-                    //                                                   null
-                    //                               }
-
-                    //                               <TextField value={inputInfo.email} name="email" type='email' placeholder="email" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
-                    //                               <TextField value={inputInfo.password} name="password" type='password' placeholder="password" sx={{ pb: '20px' }} onChange={(e) => handleChange(e)} ></TextField>
-                    //                               {
-                    //                                         isSignUp ? <LoginButton sx={{ mb: '20px' }}>Registruj se</LoginButton>
-                    //                                                   : <LoginButton sx={{ mb: '20px' }}>Prijavi se</LoginButton>
-                    //                               }
-
-                    //                               {
-                    //                                         isSignUp ? <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Prijavi se</SwitchLoginRegisterButton> :
-                    //                                                   <SwitchLoginRegisterButton onClick={() => setIsSignUp(!isSignUp)}>Registruj se</SwitchLoginRegisterButton>
-
-                    //                               }
-                    //                               <GoogleButton
-                    //                                         style={{ borderRadius: '10px', backgroundColor: Colors.primary }}
-                    //                                         onClick={() => signIn()}
-                    //                               />
-                    //                     </Box>
-
-                    //           </DialogContent>
-                    // </Dialog >
                     signIn()
-
           }
 }

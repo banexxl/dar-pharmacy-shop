@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon, Box, FormControlLabel, Alert } from "@mui/material"
 import { Colors } from "../../styles/theme";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { SubscribeTf, FooterTitle, FooterContainer, FooterInfoAccount, FooterSocial, FooterSubscribe, PrivacyPolicyCheckBox } from "../../styles/footer";
 import SendIcon from "@mui/icons-material/Send";
@@ -27,7 +26,7 @@ export default function Footer() {
           const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
           const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
           const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
-          const router = useRouter();
+
 
           const handlePrivacyAgreement = (checked: any) => {
                     setAgreed(checked)
@@ -48,7 +47,7 @@ export default function Footer() {
           const handleSubmit = (data: ISubscribeEmailForm) => {
                     console.log(data);
 
-                    !data.agreedToTerms ? callAlert()
+                    data.agreedToTerms == false ? callAlert()
                               :
                               () => SubscribeClientService(data)
           }
@@ -118,10 +117,8 @@ export default function Footer() {
 
                               <FooterSocial>
                                         <FacebookIcon />
-                                        <TwitterIcon />
                                         <InstagramIcon />
                               </FooterSocial>
-
 
                               <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema(t)}>
                                         {
@@ -147,21 +144,26 @@ export default function Footer() {
                                                                                           {t('footer.subscribe')}
                                                                                 </Button>
                                                                                 <FormControlLabel
-                                                                                          control={<PrivacyPolicyCheckBox value={formik.values.agreedToTerms}
-                                                                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { handlePrivacyAgreement(e.target.checked); formik.handleChange('agreedToTerms') }} />}
+                                                                                          control={
+                                                                                                    <PrivacyPolicyCheckBox
+                                                                                                              value={formik.values.agreedToTerms}
+                                                                                                              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                                                                                        console.log(formik.errors, e.target.checked);
+                                                                                                                        handlePrivacyAgreement(e.target.checked);
+                                                                                                                        formik.handleChange('agreedToTerms')
+                                                                                                              }}
 
+                                                                                                    />
+                                                                                          }
                                                                                           label={t('information.privacy-policy.agree')} />
                                                                       </FooterSubscribe>
                                                             </Form>
                                                   )
                                         }
                               </Formik>
-
-
-
                               {
                                         agreedWarning && (
-                                                  <Alert variant="filled" severity="error" sx={{ position: 'fixed', top: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
+                                                  <Alert variant="filled" severity="error" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
                                                             {t('information.privacy-policy.agree-warning')}
                                                   </Alert>
                                         )

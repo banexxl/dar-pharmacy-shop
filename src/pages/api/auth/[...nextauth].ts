@@ -157,6 +157,8 @@ export const authOptions: NextAuthOptions = {
                               return baseUrl
                     },
                     async session({ session, user, token }) {
+                              console.log(session);
+
                               return session
                     },
           },

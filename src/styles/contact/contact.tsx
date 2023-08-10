@@ -95,5 +95,5 @@ export const ContactStrongText = styled(Typography)(({ theme }: any) => ({
 }));
 
 export const ContactButton = styled(Button)(({ theme }: any) => ({
-          width: '200px',
+          width: '150px',
 }));

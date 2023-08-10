@@ -13,6 +13,6 @@ export const subscriptionEmailSchema = (t: any) => {
                     email: string().
                               required(t('errorMessages.required', { fieldName: t('userinfo.email') }))
                               .email(t('errorMessages.email', { fieldName: t('userinfo.email') })),
-                    checkbox: boolean().required((t('errorMessages.required', { fieldName: t('userinfo.subscribeCheckbox') })))
+                    agreedToTerms: boolean().required((t('errorMessages.required', { fieldName: t('userinfo.subscribeCheckbox') })))
           })
 }

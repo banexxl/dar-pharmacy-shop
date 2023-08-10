@@ -6,9 +6,6 @@ import { useUIContext } from '@/context/ui/ui.context';
 
 export default function LoadingWheel(props: any) {
 
-          console.log('loading props', props);
-
-
           return (
                     <Box sx={{ color: Colors.primary, zIndex: '1000' }}>
                               <CircularProgress
