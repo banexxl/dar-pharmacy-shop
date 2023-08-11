@@ -4,12 +4,10 @@ import { Colors } from "@/styles/theme"
 import { NextRequest, NextResponse } from "next/server"
 import Swal from "sweetalert2"
 
-export const SubscribeClientService = async (request: NextRequest, response: NextResponse) => {
+const SubscribeClientService = async (request: NextRequest, response: NextResponse) => {
 
-          try {
-                    if (request.method === 'POST') {
-                              console.log(request);
-
+          if (request.method === 'POST') {
+                    try {
                               await SubscribeClient(request.body).then(() => {
                                         Swal.fire({
                                                   title: 'Hvala Vam na prijavi!',
@@ -23,12 +21,15 @@ export const SubscribeClientService = async (request: NextRequest, response: Nex
                               }).then(() => {
                                         response.ok
                               })
-                    } else {
+                    } catch (error) {
                               !response.ok;
                               console.log(response.json())
                     }
-          } catch (error) {
+          } else {
                     !response.ok;
                     console.log(response.json())
           }
+
 }
+
+export default SubscribeClientService
