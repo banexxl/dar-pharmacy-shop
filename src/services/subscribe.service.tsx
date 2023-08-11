@@ -1,15 +1,14 @@
 import { MongoClient } from "mongodb";
-import { NextApiRequest, NextApiResponse } from "next";
 
-export const SubscribeClient = async (request: NextApiRequest, response: NextApiResponse) => {
+export const SubscribeClient = async (data: any) => {
 
-          const { subscription }: any = request.body
+          console.log('data u servisu', data);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
                     const db = client.db('DAR_DB')
-                    await db.collection('Subscriptions').insert(subscription.email)
+                    await db.collection('Subscriptions').insert(data)
           } catch (error: any) {
                     return { message: error.message }
           }

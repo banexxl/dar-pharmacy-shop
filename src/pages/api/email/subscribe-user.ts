@@ -1,14 +1,13 @@
 import { ISubscribeEmailForm } from "@/interfaces/subscribe/subscription-interface"
 import { Colors } from "@/styles/theme"
-import { MongoClient } from "mongodb"
 import { NextRequest, NextResponse } from "next/server"
 import Swal from "sweetalert2"
 
-export const SubscribeClientService = async (subscription: ISubscribeEmailForm) => {
+export const SubscribeClientService = async (request: NextRequest) => {
 
           fetch("/api/email/subscribe-user", {
                     method: "POST",
-                    body: JSON.stringify(subscription),
+                    body: request.body,
                     headers: {
                               'Content-Type': 'application/json',
                               'Access-Control-Allow-Origin': '*',

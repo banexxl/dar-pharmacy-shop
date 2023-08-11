@@ -16,21 +16,15 @@ import { useRouter } from "next/router";
 import { Form, Formik } from "formik";
 import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
 import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
-import { SubscribeClientService } from "@/services/subscribe";
+import { SubscribeClientService } from "@/pages/api/email/subscribe-user";
 
 export default function Footer() {
 
           const { t } = useTranslation('common');
-          const [agreed, setAgreed] = useState(false)
           const [agreedWarning, setAgreedWarning] = useState(false)
           const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
           const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
           const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
-
-
-          const handlePrivacyAgreement = (checked: any) => {
-                    setAgreed(checked)
-          }
 
           const callAlert = () => {
                     setAgreedWarning(true)
@@ -44,12 +38,11 @@ export default function Footer() {
                     }
           }
 
-          const handleSubmit = (data: ISubscribeEmailForm) => {
-                    console.log(data);
-
-                    data.agreedToTerms == false ? callAlert()
+          const handleSubmit = (data: any) => {
+                    data.agreedToTerms == false ?
+                              callAlert()
                               :
-                              () => SubscribeClientService(data)
+                              SubscribeClientService(data)
           }
 
           return (
@@ -124,6 +117,7 @@ export default function Footer() {
                                         {
                                                   formik => (
                                                             <Form>
+
                                                                       <FooterSubscribe>
                                                                                 <FooterTitle variant="body1">{t('footer.newsletter')}</FooterTitle>
                                                                                 <SubscribeTf
@@ -144,19 +138,15 @@ export default function Footer() {
                                                                                           {t('footer.subscribe')}
                                                                                 </Button>
                                                                                 <FormControlLabel
-                                                                                          control={
-                                                                                                    <PrivacyPolicyCheckBox
-                                                                                                              value={formik.values.agreedToTerms}
-                                                                                                              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                                                                                        console.log(formik.errors, e.target.checked);
-                                                                                                                        handlePrivacyAgreement(e.target.checked);
-                                                                                                                        formik.handleChange('agreedToTerms')
-                                                                                                              }}
-
-                                                                                                    />
+                                                                                          control={<PrivacyPolicyCheckBox checked={formik.values.agreedToTerms} />}
+                                                                                          onChange={
+                                                                                                    formik.handleChange('agreedToTerms')
                                                                                           }
-                                                                                          label={t('information.privacy-policy.agree')} />
+                                                                                          label={t('information.privacy-policy.agree')}
+                                                                                          name="agreedToTerms"
+                                                                                />
                                                                       </FooterSubscribe>
+
                                                             </Form>
                                                   )
                                         }
