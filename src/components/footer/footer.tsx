@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import { Form, Formik } from "formik";
 import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
 import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
-import { SubscribeClientService } from "@/pages/api/email/subscribe-user";
+import { SubscribeClientService } from "@/pages/api/email/subscribe-user-api";
 
 export default function Footer() {
 
@@ -38,11 +38,20 @@ export default function Footer() {
                     }
           }
 
-          const handleSubmit = (data: any) => {
+          const handleSubmit = async (data: any) => {
+
                     data.agreedToTerms == false ?
                               callAlert()
                               :
-                              SubscribeClientService(data)
+                              await fetch(`pages/api/email/subscribe-user-api/`, {
+                                        method: "POST",
+                                        body: JSON.stringify(data),
+                                        headers: {
+                                                  'Content-Type': 'application/json',
+                                                  'Access-Control-Allow-Origin': '*',
+                                                  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                                        },
+                              })
           }
 
           return (
