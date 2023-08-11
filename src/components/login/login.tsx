@@ -81,7 +81,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                                   >
 
                                                             <CardMedia sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px', gap: '50px' }}>
-                                                                      <Image src={session.user?.image!} alt={"aaa"} width={200} height={200} style={{ borderRadius: '30px' }} />
+                                                                      <Image src={session.user?.image!} alt={"aaa"} width={100} height={100} style={{ borderRadius: '30px' }} />
                                                                       <CardContent sx={{ alignItems: 'center' }}>
                                                                                 <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
                                                                                           <PersonIcon />

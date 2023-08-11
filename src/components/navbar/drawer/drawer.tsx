@@ -10,6 +10,7 @@ import Cart from "../../cart/cart"
 import LoginRegister from "../../login/login"
 import Link from "next/link"
 import { ProductsMenu } from "../product-menu"
+import { useSession } from "next-auth/react"
 
 const MiddleDivider = styled((props) => (
           <Divider variant="middle" {...props} />
@@ -28,6 +29,8 @@ export default function AppDrawer({ isScreenToMedium }: any) {
 
           const [LoginDialog, showLoginDialog, closeLoginDialog] =
                     useDialogModal(LoginRegister)
+
+          const { data: session } = useSession()
 
           return (
                     <Box >
@@ -66,7 +69,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   <MiddleDivider />
                                                   <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
                                                             <ListItemText>
-                                                                      Login
+                                                                      {
+                                                                                session ? 'Profil' : 'Prijava'
+                                                                      }
                                                             </ListItemText>
                                                   </ListItemButton>
                                                   <MiddleDivider />
