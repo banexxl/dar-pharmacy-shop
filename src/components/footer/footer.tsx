@@ -17,6 +17,8 @@ import { Form, Formik } from "formik";
 import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
 import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
 import SubscribeClientService from "@/pages/api/email/subscribe-user-api";
+import { NextResponse } from "next/server";
+import Swal from "sweetalert2";
 
 export default function Footer() {
 
@@ -38,12 +40,12 @@ export default function Footer() {
                     }
           }
 
-          const handleSubmit = (data: any) => {
+          const handleSubmit = async (data: any) => {
 
                     data.agreedToTerms == false ?
                               callAlert()
                               :
-                              fetch('/api/email/subscribe-user-api', {
+                              await fetch('/api/email/subscribe-user-api', {
                                         method: "POST",
                                         body: JSON.stringify(data),
                                         headers: {
@@ -51,8 +53,30 @@ export default function Footer() {
                                                   'Access-Control-Allow-Origin': '*',
                                                   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                                         },
+
+                              }).then((response) => {
+                                        response.ok ?
+                                                  Swal.fire({
+                                                            title: 'Hvala Vam puno na prijavi!',
+                                                            text: 'Nećemo Vas puno daviti :)',
+                                                            icon: 'success',
+                                                            background: Colors.secondary,
+                                                            confirmButtonText: '<b >OK!</b> ',
+                                                            // confirmButtonAriaLabel: 'Thumbs up, great!',
+                                                            showCloseButton: true
+                                                  })
+                                                  :
+                                                  Swal.fire({
+                                                            title: 'Eh! Nismo uspeli da upišemo vaš email!',
+                                                            text: 'Probajte opet kasnije, ili nas kontaktirajete!',
+                                                            icon: 'error',
+                                                            confirmButtonText: 'OK!',
+                                                            confirmButtonAriaLabel: 'Thumbs down',
+                                                            showCloseButton: true,
+                                                  })
                               })
           }
+
 
           return (
                     <FooterContainer>

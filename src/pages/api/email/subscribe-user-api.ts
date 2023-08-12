@@ -1,35 +1,22 @@
-import { ISubscribeEmailForm } from "@/interfaces/subscribe/subscription-interface"
-import { SubscribeClient } from "@/services/subscribe.service"
-import { Colors } from "@/styles/theme"
+import { SubscribeClientService } from "@/services/subscribe.service"
 import { NextRequest, NextResponse } from "next/server"
-import Swal from "sweetalert2"
 
-const SubscribeClientService = async (request: NextRequest, response: NextResponse) => {
+const SubscribeClientApi = async (request: NextRequest, response: NextResponse) => {
 
           if (request.method === 'POST') {
                     try {
-                              await SubscribeClient(request.body).then(() => {
-                                        Swal.fire({
-                                                  title: 'Hvala Vam na prijavi!',
-                                                  text: 'Nećemo Vas puno daviti :)',
-                                                  icon: 'success',
-                                                  background: Colors.secondary,
-                                                  confirmButtonText: '<b >OK!</b> ',
-                                                  // confirmButtonAriaLabel: 'Thumbs up, great!',
-                                                  showCloseButton: true
-                                        })
-                              }).then(() => {
-                                        response.ok
-                              })
+                              await SubscribeClientService(request.body)
+                              response.ok
+                              return response.json()
                     } catch (error) {
-                              !response.ok;
-                              console.log(response.json())
+                              !response.ok
+                              response.json()
                     }
           } else {
-                    !response.ok;
-                    console.log(response.json())
+                    response.json()
+                    return !response.ok
           }
 
 }
 
-export default SubscribeClientService
+export default SubscribeClientApi

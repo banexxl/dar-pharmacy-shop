@@ -39,7 +39,7 @@ export const SendCheckoutConfirmationEmailToUser = async (data: IEmailToFields) 
 
 export const SendCheckoutConfirmationEmailToAdmin = async (data: IEmailToFields) => {
 
-          fetch("/api/email/send-confirmation-email-admin", {
+          fetch("/api/email/send-confirmation-email-admin-api", {
                     method: "POST",
                     body: JSON.stringify(data),
                     headers: {
@@ -52,7 +52,7 @@ export const SendCheckoutConfirmationEmailToAdmin = async (data: IEmailToFields)
 
 export const SendContactEmail = async (data: IContactForm) => {
 
-          await fetch("/api/email/send-contact-email", {
+          await fetch("/api/email/send-contact-email-api", {
                     method: "POST",
                     headers: {
                               'Content-Type': 'application/json',

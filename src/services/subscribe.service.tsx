@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-export const SubscribeClient = async (data: any) => {
+export const SubscribeClientService = async (data: any) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
