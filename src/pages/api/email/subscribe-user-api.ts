@@ -3,17 +3,21 @@ import { NextRequest, NextResponse } from "next/server"
 
 const SubscribeClientApi = async (request: NextRequest, response: NextResponse) => {
 
+          let subscribed: any
+
           if (request.method === 'POST') {
                     try {
-                              await SubscribeClientService(request.body)
-                              response.ok
-                              return response.json()
+                              subscribed = await SubscribeClientService(request.body)
+
+                              return subscribed === 'Email već postoji' ?
+                                        new NextResponse(subscribed, { status: 200, statusText: 'Email subscription!' })
+                                        :
+                                        new NextResponse(subscribed, { status: 200, statusText: 'Email subscription successful!' })
                     } catch (error) {
-                              !response.ok
-                              response.json()
+                              new NextResponse(subscribed, { status: 500, statusText: 'ServerskInternal server error!' })
                     }
           } else {
-                    response.json()
+                    new NextResponse(subscribed, { status: 405, statusText: 'Method not allowed!' })
                     return !response.ok
           }
 

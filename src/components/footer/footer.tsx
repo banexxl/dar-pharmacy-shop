@@ -55,6 +55,7 @@ export default function Footer() {
                                         },
 
                               }).then((response) => {
+
                                         response.ok ?
                                                   Swal.fire({
                                                             title: 'Hvala Vam puno na prijavi!',
@@ -74,6 +75,9 @@ export default function Footer() {
                                                             confirmButtonAriaLabel: 'Thumbs down',
                                                             showCloseButton: true,
                                                   })
+                              }).catch((error: any) => {
+                                        console.log(error);
+
                               })
           }
 

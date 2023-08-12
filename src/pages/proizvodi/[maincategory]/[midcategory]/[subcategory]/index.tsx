@@ -47,9 +47,6 @@ export default function MainCategoryPage(props: any) {
                     ssr: true
           })
 
-          console.log('props iz sub cat', props);
-
-
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Container

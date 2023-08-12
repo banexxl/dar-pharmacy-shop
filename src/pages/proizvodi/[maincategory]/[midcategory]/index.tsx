@@ -31,8 +31,6 @@ export default function MainCategoryPage(props: any) {
                     ssr: true
           })
 
-          console.log('props iz mid cat', props);
-
           const [isLoading, setIsLoading] = useState(true);
 
           useEffect(() => {
