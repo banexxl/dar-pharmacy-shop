@@ -5,7 +5,7 @@ import Swal, { SweetAlertResult } from 'sweetalert2'
 
 export const SendCheckoutConfirmationEmailToUser = async (data: IEmailToFields) => {
 
-          fetch("/api/email/send-confirmation-email-user", {
+          fetch("/api/email/send-confirmation-email-user-api", {
                     method: "POST",
                     body: JSON.stringify(data),
                     headers: {

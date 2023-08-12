@@ -20,6 +20,7 @@ export const ContactBox = styled(Box)(({ theme }: any) => ({
 export const ContactInfoBox = styled(Box)(({ theme }: any) => ({
           textAlign: 'center',
           padding: '15px'
+
 }));
 
 export const ContactMapBox = styled(Box)(({ theme }: any) => ({
@@ -45,24 +46,6 @@ export const ContactMapBox = styled(Box)(({ theme }: any) => ({
 }));
 
 export const ContactFormBox = styled(Box)(({ theme }: any) => ({
-          [theme.breakpoints.up("xl")]: {
-                    width: '150%'
-          },
-          [theme.breakpoints.down("xl")]: {
-                    width: '100%'
-          },
-          [theme.breakpoints.down("lg")]: {
-                    width: '100%'
-          },
-          [theme.breakpoints.down("md")]: {
-                    width: '100%'
-          },
-          [theme.breakpoints.down("sm")]: {
-                    width: '100%'
-          },
-          [theme.breakpoints.down("xs")]: {
-                    width: '50%'
-          },
           margin: '10px',
           borderRadius: '20px',
           padding: '10px',
