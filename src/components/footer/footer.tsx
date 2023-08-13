@@ -55,26 +55,26 @@ export default function Footer() {
                                         },
 
                               }).then((response) => {
-                                        console.log('response.json', response);
-
                                         response.ok ?
                                                   Swal.fire({
                                                             title: 'Hvala Vam puno na prijavi!',
-                                                            text: 'Nećemo Vas puno daviti :)',
+                                                            text: 'Nećemo Vas puno gnjaviti :)',
                                                             icon: 'success',
                                                             background: Colors.secondary,
                                                             confirmButtonText: '<b >OK!</b> ',
                                                             // confirmButtonAriaLabel: 'Thumbs up, great!',
-                                                            showCloseButton: true
+                                                            showCloseButton: true,
+                                                            timer: 3000
                                                   })
                                                   :
                                                   Swal.fire({
                                                             title: 'Eh! Nismo uspeli da upišemo vaš email!',
-                                                            text: 'Probajte opet kasnije, ili nas kontaktirajete!',
+                                                            text: 'Probajte opet kasnije, ili nas kontaktirajete pozivom na 0640172227!',
                                                             icon: 'error',
                                                             confirmButtonText: 'OK!',
                                                             confirmButtonAriaLabel: 'Thumbs down',
                                                             showCloseButton: true,
+                                                            timer: 3000
                                                   })
                               }).catch((error: any) => {
                                         console.log(error);
