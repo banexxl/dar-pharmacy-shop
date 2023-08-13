@@ -55,6 +55,7 @@ export default function Footer() {
                                         },
 
                               }).then((response) => {
+                                        console.log('response.json', response);
 
                                         response.ok ?
                                                   Swal.fire({

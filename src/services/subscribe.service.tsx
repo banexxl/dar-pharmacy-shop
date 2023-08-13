@@ -6,12 +6,12 @@ export const SubscribeClientService = async (data: any) => {
 
           try {
                     const db = client.db('DAR_DB')
-                    const subExists = await db.collection('Subscriptions').findOne({ email: data.email })
+                    const subscriptionExists = await db.collection('Subscriptions').findOne({ email: data.email })
 
-                    return subExists === null ?
+                    return subscriptionExists === null ?
                               await db.collection('Subscriptions').insertOne(data)
                               :
-                              'Email već postoji'
+                              'Email already exists!'
           } catch (error: any) {
                     return { message: error.message }
           }

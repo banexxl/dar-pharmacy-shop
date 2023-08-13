@@ -8,17 +8,19 @@ const SubscribeClientApi = async (request: NextRequest, response: NextResponse) 
           if (request.method === 'POST') {
                     try {
                               subscribed = await SubscribeClientService(request.body)
-
-                              return subscribed === 'Email već postoji' ?
-                                        new NextResponse(subscribed, { status: 200, statusText: 'Email subscription!' })
+                              return subscribed === 'Email already exists!' ?
+                                        response.json()
+                                        // new NextResponse('Email already exists!', { status: 200, statusText: 'Email already exists!' }) // ono ne radi ima bag prijavljen
                                         :
-                                        new NextResponse(subscribed, { status: 200, statusText: 'Email subscription successful!' })
+                                        response.json()
+                              // new NextResponse('Email successfuly registered!', { status: 200, statusText: 'Email subscription successful!' })
                     } catch (error) {
-                              new NextResponse(subscribed, { status: 500, statusText: 'ServerskInternal server error!' })
+                              response.json()
+                              // new NextResponse('Internal server error!', { status: 500, statusText: 'Internal server error!' })
                     }
           } else {
-                    new NextResponse(subscribed, { status: 405, statusText: 'Method not allowed!' })
-                    return !response.ok
+                    // new NextResponse('Method not allowed!', { status: 405, statusText: 'Method not allowed!' })
+                    response.json()
           }
 
 }
