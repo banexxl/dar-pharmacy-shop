@@ -1,28 +1,21 @@
 import { SubscribeClientService } from "@/services/subscribe.service"
-import { NextRequest, NextResponse } from "next/server"
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const SubscribeClientApi = async (request: NextRequest, response: NextResponse) => {
-
-          let subscribed: any
-
+const SubscribeClientApi = async (request: NextApiRequest, response: NextApiResponse) => {
           if (request.method === 'POST') {
                     try {
-                              subscribed = await SubscribeClientService(request.body)
-                              return subscribed === 'Email already exists!' ?
-                                        response.json()
-                                        // new NextResponse('Email already exists!', { status: 200, statusText: 'Email already exists!' }) // ono ne radi ima bag prijavljen
-                                        :
-                                        response.json()
-                              // new NextResponse('Email successfuly registered!', { status: 200, statusText: 'Email subscription successful!' })
+                              const subscribed = await SubscribeClientService(request.body);
+                              if (subscribed!.message === 'Email already subscribed!') {
+                                        return response.status(409).json({ error: 'Email already subscribed!' });
+                              } else {
+                                        return response.status(200).json({ message: 'Email successfully registered!' });
+                              }
                     } catch (error) {
-                              response.json()
-                              // new NextResponse('Internal server error!', { status: 500, statusText: 'Internal server error!' })
+                              return response.status(500).json({ error: 'Internal server error!' });
                     }
           } else {
-                    // new NextResponse('Method not allowed!', { status: 405, statusText: 'Method not allowed!' })
-                    response.json()
+                    return response.status(405).json({ error: 'Method not allowed!' });
           }
+};
 
-}
-
-export default SubscribeClientApi
+export default SubscribeClientApi;

@@ -42,9 +42,10 @@ export default function Footer() {
 
           const handleSubmit = async (data: any) => {
 
-                    data.agreedToTerms == false ?
-                              callAlert()
-                              :
+                    if (!data.agreedToTerms) {
+                              callAlert();
+                              return;
+                    } else {
                               await fetch('/api/email/subscribe-user-api', {
                                         method: "POST",
                                         body: JSON.stringify(data),
@@ -53,33 +54,33 @@ export default function Footer() {
                                                   'Access-Control-Allow-Origin': '*',
                                                   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                                         },
-
-                              }).then((response) => {
-                                        response.ok ?
-                                                  Swal.fire({
-                                                            title: 'Hvala Vam puno na prijavi!',
-                                                            text: 'Nećemo Vas puno gnjaviti :)',
-                                                            icon: 'success',
-                                                            background: Colors.secondary,
-                                                            confirmButtonText: '<b >OK!</b> ',
-                                                            // confirmButtonAriaLabel: 'Thumbs up, great!',
-                                                            showCloseButton: true,
-                                                            timer: 3000
-                                                  })
-                                                  :
-                                                  Swal.fire({
-                                                            title: 'Eh! Nismo uspeli da upišemo vaš email!',
-                                                            text: 'Probajte opet kasnije, ili nas kontaktirajete pozivom na 0640172227!',
-                                                            icon: 'error',
-                                                            confirmButtonText: 'OK!',
-                                                            confirmButtonAriaLabel: 'Thumbs down',
-                                                            showCloseButton: true,
-                                                            timer: 3000
-                                                  })
-                              }).catch((error: any) => {
-                                        console.log(error);
-
-                              })
+                              }).then((response: any) => response.json())
+                                        .then((response: any) => {
+                                                  if (response.message === "Email successfully registered!") {
+                                                            Swal.fire({
+                                                                      title: 'Hvala Vam puno na prijavi!',
+                                                                      text: 'Nećemo Vas puno gnjaviti :)',
+                                                                      icon: 'success',
+                                                                      background: Colors.secondary,
+                                                                      confirmButtonText: '<b >OK!</b> ',
+                                                                      showCloseButton: true,
+                                                                      timer: 3000
+                                                            });
+                                                  } else if (!response.ok) {
+                                                            Swal.fire({
+                                                                      title: 'Eh! Nismo uspeli da upišemo vaš email!',
+                                                                      text: 'Vaš email je već upisan kod nas :)',
+                                                                      icon: 'error',
+                                                                      confirmButtonText: 'OK!',
+                                                                      showCloseButton: true,
+                                                                      background: Colors.secondary,
+                                                                      timer: 3000
+                                                            });
+                                                  } else {
+                                                            console.error('Unexpected response:', response);
+                                                  }
+                                        })
+                    }
           }
 
 
