@@ -17,7 +17,7 @@ export const Product = styled(Box, {
                     position: "relative",
           },
           opacity: isVisible ? '1' : '0',
-          transform: isVisible ? 'translateY(50px)' : 'none',
+          transform: isVisible ? 'translateY(15px)' : 'none',
           visibility: isVisible ? 'visible' : 'hidden',
           transition: 'opacity 1200ms ease-out, transform 600ms ease-out, visibility 1200ms ease-out',
           willChange: 'opacity, transform, visibility',
@@ -26,7 +26,8 @@ export const Product = styled(Box, {
 
 export const ProductImage = styled(Image)(({ src, theme }: any) => ({
           src: `${src}`,
-          width: "50%",
+          width: "100px",
+          height: '150px',
           background: Colors.light_gray,
           padding: '10px',
           [theme.breakpoints.up("md")]: {

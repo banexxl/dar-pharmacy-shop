@@ -27,7 +27,9 @@ export const FilteredProduct = styled(Box, {
 export const FilteredProductImageContainer = styled(Box)((theme: any) => ({
           padding: '10px',
           backgroundColor: Colors.secondary,
-          borderRadius: '5px'
+          borderRadius: '5px',
+          height: '150px',
+          widthl: '100px'
 }))
 
 export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
