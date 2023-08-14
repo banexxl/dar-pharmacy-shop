@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon, Box, FormControlLabel, Alert } from "@mui/material"
 import { Colors } from "../../styles/theme";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { SubscribeTf, FooterTitle, FooterContainer, FooterInfoAccount, FooterSocial, FooterSubscribe, PrivacyPolicyCheckBox } from "../../styles/footer";
 import SendIcon from "@mui/icons-material/Send";
@@ -148,8 +147,7 @@ export default function Footer() {
                               </FooterInfoAccount>
 
                               <FooterSocial>
-                                        <FacebookIcon />
-                                        <InstagramIcon />
+                                        <InstagramIcon onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                               </FooterSocial>
 
                               <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema(t)}>

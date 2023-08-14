@@ -3,9 +3,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
 import { ProductAddToCart, Product, ProductImage, ProductImageDropdown, ProductDropdown } from "../../styles/product/single-product";
-import { BannerShopButton } from "../../styles/banner";
-import Counter from "../../utils/counter";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -159,7 +156,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                                 color: Colors.dove_gray,
                                                                       }}
                                                             >
-                                                                      <FacebookIcon />
                                                                       <InstagramIcon sx={{ pl: 2 }} />
                                                             </Box>
                                                   </ProductDetailInfoWrapper>

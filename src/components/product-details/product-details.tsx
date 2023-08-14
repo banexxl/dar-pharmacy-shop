@@ -2,7 +2,6 @@ import { Product, ProductImage } from '@/styles/productdetails';
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
 import { Colors } from '@/styles/theme';
 import { Alert, Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
-import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -120,7 +119,6 @@ function ProductDetails(product: IProduct) {
                                                             color: Colors.dove_gray,
                                                   }}
                                         >
-                                                  <FacebookIcon />
                                                   <InstagramIcon sx={{ pl: 2 }} />
                                         </Box>
                                         {addedToCartAlert && (
