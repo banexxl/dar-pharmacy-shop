@@ -26,7 +26,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                               const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
                               const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
 
-                              setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
+                              setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) * 4 / 5);
                     }
 
                     window.addEventListener('scroll', isScrollHalfway);
@@ -48,21 +48,20 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
           };
 
           return (
-                    <Box>
-                              <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
-                                        <IconButton onClick={() => setDrawerOpen(true)} >
-                                                  <MenuIcon />
-                                        </IconButton>
-                                        <AppbarTitle textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
-                                                  <Link href="/">
-                                                            DAR
-                                                  </Link>
-                                        </AppbarTitle>
-                                        <IconButton onClick={() => setShowSearchBox(true)} >
-                                                  <SearchIcon />
-                                        </IconButton>
-                              </AppbarContainer >
-                              {/* <Actions isScreenToMedium={isScreenToMedium} /> */}
-                    </Box>
+
+                    <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+                              <IconButton onClick={() => setDrawerOpen(true)} >
+                                        <MenuIcon />
+                              </IconButton>
+                              <AppbarTitle textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
+                                        <Link href="/">
+                                                  DAR
+                                        </Link>
+                              </AppbarTitle>
+                              <IconButton onClick={() => setShowSearchBox(true)} >
+                                        <SearchIcon />
+                              </IconButton>
+                    </AppbarContainer >
+
           );
 }
