@@ -1,18 +1,21 @@
-import { Button, IconButton, InputAdornment, Slide, TextField } from "@mui/material";
+import { Button, Grid, IconButton, InputAdornment, Slide, TextField, useMediaQuery } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
 import { SearchBoxContainer, SearchField } from "@/styles/search/search.style";
 import { ChangeEventHandler, useState } from "react";
 import IProduct from "@/interfaces/product/product.interface";
-import { Colors } from "@/styles/theme";
+import theme, { Colors } from "@/styles/theme";
 import { NextResponse } from "next/server";
 import { Product } from "@/styles/productdetails";
+import Products from "../products/products-grid";
+import SingleProductMobile from "../products/single-product-mobile";
+import SingleProductDesktop from "../products/single-product-desktop";
+import SingleProductSearched from "../product-search/searched-product";
 
 export default function SearchBox() {
 
           const { showSearchBox, setShowSearchBox } = useUIContext();
-
           const [searchQuery, setSearchQuery] = useState<any>('');
           const [searchResults, setSearchResults] = useState([]);
 
@@ -34,8 +37,8 @@ export default function SearchBox() {
                               }).then((response: Response) => {
                                         return response.json()
                               }).then((fetchSearchResult: any) => {
-                                        console.log('fetchSearchResult', fetchSearchResult);
-                                        setSearchResults(fetchSearchResult)
+                                        setSearchResults(fetchSearchResult.data)
+                                        //setShowSearchBox(false)
                               })
 
                     } catch (error) {
@@ -66,24 +69,23 @@ export default function SearchBox() {
                                         <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' } }} color="secondary" onClick={(e: any) => handleSearchClick()} />
 
                                         <IconButton
+                                                  onClick={() => handleClearSearch()}
                                                   sx={{
                                                             position: 'absolute',
                                                             top: 10,
                                                             right: 10,
                                                   }}
                                         >
-                                                  <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" onClick={() => handleClearSearch()} />
+                                                  <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
                                         </IconButton>
-
-                                        {/* Display search results */}
-                                        {/* {
+                                        {
                                                   searchResults.length !== 0 || searchResults !== undefined || searchResults !== null ?
                                                             searchResults.map((product: IProduct) => (
-                                                                      <Product key={product._id}>{product.name}</Product>
+                                                                      <SingleProductSearched key={product._id} data={product} />
                                                             ))
                                                             :
                                                             null
-                                        } */}
+                                        }
                               </SearchBoxContainer>
                     </Slide>
           );

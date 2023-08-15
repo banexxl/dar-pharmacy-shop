@@ -8,7 +8,7 @@ const ProductSearchApi = async (request: NextApiRequest, response: NextApiRespon
                     try {
                               const searchedProducts: any = await productsServices().getProductsByName(request.body);
                               if (searchedProducts.length > 0) {
-                                        return response.status(200).json({ message: 'Products found!' })
+                                        return response.status(200).json({ message: 'Products found!', data: searchedProducts })
                               } else {
                                         return response.status(404).json({ error: 'Searched products not found!' });
                               }
