@@ -65,6 +65,7 @@ const productsServices = () => {
           }
 
           const getProductsByName = async (name: string) => {
+
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
