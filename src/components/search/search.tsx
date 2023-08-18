@@ -1,23 +1,17 @@
-import { Button, Grid, IconButton, InputAdornment, Slide, TextField, useMediaQuery } from "@mui/material";
+import { IconButton, Slide, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
 import { SearchBoxContainer, SearchField } from "@/styles/search/search.style";
-import { ChangeEventHandler, useState } from "react";
+import { useCallback, useState } from "react";
+import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
-import theme, { Colors } from "@/styles/theme";
-import { NextResponse } from "next/server";
-import { Product } from "@/styles/productdetails";
-import Products from "../products/products-grid";
-import SingleProductMobile from "../products/single-product-mobile";
-import SingleProductDesktop from "../products/single-product-desktop";
-import SingleProductSearched from "../product-search/searched-product";
 
 export default function SearchBox() {
 
           const { showSearchBox, setShowSearchBox } = useUIContext();
           const [searchQuery, setSearchQuery] = useState<any>('');
-          const [searchResults, setSearchResults] = useState([]);
+          const [searchResults, setSearchResults] = useState<IProduct[]>([]);
 
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
                     setSearchQuery(event.target.value);
@@ -38,7 +32,8 @@ export default function SearchBox() {
                                         return response.json()
                               }).then((fetchSearchResult: any) => {
                                         setSearchResults(fetchSearchResult.data)
-                                        //setShowSearchBox(false)
+                                        // setShowSearchBox(false)
+
                               })
 
                     } catch (error) {
@@ -48,9 +43,10 @@ export default function SearchBox() {
 
           const handleClearSearch = () => {
                     setSearchQuery('')
-                    setSearchResults([])
+                    //setSearchResults([])
                     setShowSearchBox(false)
           };
+          console.log('searchResults', searchResults);
 
           return (
                     <Slide direction="down" in={showSearchBox} timeout={500}>
@@ -66,7 +62,13 @@ export default function SearchBox() {
                                                   value={searchQuery}
                                         />
 
-                                        <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' } }} color="secondary" onClick={(e: any) => handleSearchClick()} />
+                                        <Link href={{
+                                                  pathname: '/proizvodi',
+                                                  query: `${searchResults}`
+                                        }}>
+                                                  <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, cursor: 'pointer' }} color="secondary" onClick={(e: any) => handleSearchClick()} />
+                                        </Link>
+
 
                                         <IconButton
                                                   onClick={() => handleClearSearch()}
@@ -78,14 +80,6 @@ export default function SearchBox() {
                                         >
                                                   <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
                                         </IconButton>
-                                        {
-                                                  searchResults.length !== 0 || searchResults !== undefined || searchResults !== null ?
-                                                            searchResults.map((product: IProduct) => (
-                                                                      <SingleProductSearched key={product._id} data={product} />
-                                                            ))
-                                                            :
-                                                            null
-                                        }
                               </SearchBoxContainer>
                     </Slide>
           );

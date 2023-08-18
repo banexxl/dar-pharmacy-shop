@@ -11,6 +11,8 @@ import { useRouter } from 'next/router'
 
 function ProductsFilter(props: any) {
 
+          console.log('props', props);
+
           const { t } = useTranslation('common')
           const router = useRouter()
 
@@ -33,18 +35,18 @@ function ProductsFilter(props: any) {
                               </ProductsFilters>
                               <FilteredProducts>
                                         <FilteredProductsTitle>
-                                                  <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
+                                                  {/* <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
                                                             {
-                                                                      props.filterObject.length !== 0 ?
+                                                                      props.length !== 0 ?
                                                                                 (
-                                                                                          props.filterObject[0].mainCategory !== "" ?
-                                                                                                    props.filterObject[0].mainCategory + '/'
+                                                                                          props[0].mainCategory !== "" ?
+                                                                                                    props[0].mainCategory + '/'
                                                                                                     :
-                                                                                                    props.filterObject[0].midCategory !== "" ?
-                                                                                                              props.filterObject[0].midCategory + '/'
+                                                                                                    props[0].midCategory !== "" ?
+                                                                                                              props[0].midCategory + '/'
                                                                                                               :
-                                                                                                              props.filterObject[0].subCategory !== "" ?
-                                                                                                                        props.filterObject[0].subCategory + '/'
+                                                                                                              props[0].subCategory !== "" ?
+                                                                                                                        props[0].subCategory + '/'
                                                                                                                         :
                                                                                                                         ""
 
@@ -54,9 +56,9 @@ function ProductsFilter(props: any) {
                                                                                 :
                                                                                 router.asPath.toUpperCase()
                                                             }
-                                                  </Typography>
+                                                  </Typography> */}
                                         </FilteredProductsTitle>
-                                        <FilteredProductsGrid data={props.filterObject} />
+                                        <FilteredProductsGrid data={props} />
                               </FilteredProducts>
                     </ProductsFilterContainer>
           )
