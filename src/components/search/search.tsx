@@ -11,13 +11,14 @@ export default function SearchBox() {
 
           const { showSearchBox, setShowSearchBox } = useUIContext();
           const [searchQuery, setSearchQuery] = useState<any>('');
-          const [searchResults, setSearchResults] = useState<IProduct[]>([]);
 
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
                     setSearchQuery(event.target.value);
           };
 
           const handleSearchClick = async () => {
+
+                    localStorage.removeItem('search-results')
 
                     try {
                               await fetch('/api/search/product-search-api', {
@@ -31,22 +32,18 @@ export default function SearchBox() {
                               }).then((response: Response) => {
                                         return response.json()
                               }).then((fetchSearchResult: any) => {
-                                        setSearchResults(fetchSearchResult.data)
-                                        // setShowSearchBox(false)
-
+                                        localStorage.setItem('search-results', JSON.stringify(fetchSearchResult.data));
+                                        setShowSearchBox(false)
                               })
-
                     } catch (error) {
                               console.error('Error searching products:', error);
                     }
           };
 
           const handleClearSearch = () => {
-                    setSearchQuery('')
-                    //setSearchResults([])
+                    localStorage.removeItem('search-results')
                     setShowSearchBox(false)
           };
-          console.log('searchResults', searchResults);
 
           return (
                     <Slide direction="down" in={showSearchBox} timeout={500}>
@@ -61,23 +58,10 @@ export default function SearchBox() {
                                                   sx={{ width: '300px' }}
                                                   value={searchQuery}
                                         />
-
-                                        <Link href={{
-                                                  pathname: '/proizvodi',
-                                                  query: `${searchResults}`
-                                        }}>
+                                        <Link href={{ pathname: '/proizvodi' }}>
                                                   <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, cursor: 'pointer' }} color="secondary" onClick={(e: any) => handleSearchClick()} />
                                         </Link>
-
-
-                                        <IconButton
-                                                  onClick={() => handleClearSearch()}
-                                                  sx={{
-                                                            position: 'absolute',
-                                                            top: 10,
-                                                            right: 10,
-                                                  }}
-                                        >
+                                        <IconButton onClick={() => handleClearSearch()} sx={{ position: 'absolute', top: 10, right: 10, }} >
                                                   <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
                                         </IconButton>
                               </SearchBoxContainer>

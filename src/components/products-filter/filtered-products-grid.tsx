@@ -11,11 +11,12 @@ export default function FilteredProductsGrid(props: any) {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
-          //const cart: ICartItem[] = useSelector((state: any) => state.cart)
+          console.log('props problematicni', props.data);
+
 
           const renderProducts =
-                    props.data.length !== 0 ?
-                              props.data?.map((product: any) => (
+                    props.data.filterObject.length !== 0 ?
+                              props.data.filterObject?.map((product: any) => (
                                         <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                                                   {isScreenToMedium ? (
                                                             <FilteredSingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />

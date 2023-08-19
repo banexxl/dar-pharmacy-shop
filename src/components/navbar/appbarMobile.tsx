@@ -1,16 +1,14 @@
 import { AppbarContainer, AppbarTitle } from "../../styles/appbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Box, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
-import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
           const { setDrawerOpen, setShowSearchBox } = useUIContext();
-          const { t } = useTranslation('common')
           const [isScrolled, setIsScrolled] = useState<Boolean>(false);
           const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 

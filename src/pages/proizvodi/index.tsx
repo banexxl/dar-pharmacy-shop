@@ -17,54 +17,28 @@ export default function ProductsSearchPage() {
                     ssr: true
           })
 
-          const [loading, setLoading] = useState(false)
-          const router = useRouter();
-          const data = router.query;
-          console.log('page data', data);
-
-          // const dataArray = JSON.parse(serializedData)
-          useEffect(() => {
-                    const handleRouteChange = (url: any) => {
-                              setLoading(true)
-                    }
-
-                    const handleRouteChangeComplete = () => {
-                              setLoading(false)
-                    }
-
-                    router.events.on('routeChangeStart', handleRouteChange)
-                    router.events.on('routeChangeComplete', handleRouteChangeComplete)
-
-                    return () => {
-                              router.events.off('routeChangeStart', handleRouteChange)
-                              router.events.off('routeChangeComplete', handleRouteChangeComplete)
-                    }
-          }, [router.events])
+          let searchedProducts: any = JSON.parse(localStorage.getItem('search-results')!)
+          console.log('searchedProducts', searchedProducts);
 
           return (
-                    <>
-                              {
-                                        loading ?
-                                                  <LoadingWheel /> :
-                                                  <DynamicThemeProvider theme={theme}>
-                                                            <Container
-                                                                      disableGutters
-                                                                      maxWidth="lg"
-                                                                      sx={{
-                                                                                background: "#fff",
-                                                                      }}
-                                                            >
-                                                                      <Stack>
-                                                                                <UIProvider>
-                                                                                          <SearchBox />
-                                                                                          <ProductsFilter filterObject={data} />
-                                                                                          <AppDrawer isScreenToMedium={false} />
-                                                                                </UIProvider>
-                                                                      </Stack>
-                                                            </Container>
-                                                  </DynamicThemeProvider>
-                              }
-                    </>
+
+                    <DynamicThemeProvider theme={theme}>
+                              <Container
+                                        disableGutters
+                                        maxWidth="lg"
+                                        sx={{
+                                                  background: "#fff",
+                                        }}
+                              >
+                                        <Stack>
+                                                  <UIProvider>
+                                                            <SearchBox />
+                                                            <ProductsFilter filterObject={searchedProducts} />
+                                                            <AppDrawer isScreenToMedium={false} />
+                                                  </UIProvider>
+                                        </Stack>
+                              </Container>
+                    </DynamicThemeProvider>
           )
 }
 
