@@ -24,18 +24,27 @@ export const FilteredProduct = styled(Box, {
 
 }))
 
-export const FilteredProductImageContainer = styled(Box)((theme: any) => ({
+export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
+          [theme.breakpoints.down("md")]: {
+                    maxHeight: '120px',
+                    width: 'auto'
+          },
           padding: '10px',
           backgroundColor: Colors.secondary,
           borderRadius: '5px',
           height: '150px',
-          widthl: '100px'
+          widthl: '100px',
+
 }))
 
 export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
           src: `${src}`,
           [theme.breakpoints.up("md")]: {
                     maxHeight: '150px',
+                    width: 'auto'
+          },
+          [theme.breakpoints.down("md")]: {
+                    maxHeight: '120px',
                     width: 'auto'
           },
           cursor: 'pointer',
@@ -106,6 +115,7 @@ export const FilteredProductFavButton = styled(FilteredProductActionButton, { sh
 export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== "show" })
           (({ show, theme }: any) => ({
                     fontSize: "12px",
+                    width: "140px",
                     [theme.breakpoints.up("md")]: {
                               position: "absolute",
                               bottom: "2%",

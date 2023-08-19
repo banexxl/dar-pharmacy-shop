@@ -11,7 +11,6 @@ export default function FilteredProductsGrid(props: any) {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
-          console.log('props problematicni', props.data);
 
 
           const renderProducts =

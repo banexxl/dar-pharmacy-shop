@@ -11,10 +11,7 @@ import { useRouter } from 'next/router'
 
 function ProductsFilter(props: any) {
 
-          console.log('props', props);
-
           const { t } = useTranslation('common')
-          const router = useRouter()
 
           return (
                     <ProductsFilterContainer>

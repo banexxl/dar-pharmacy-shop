@@ -9,6 +9,8 @@ import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import SearchBox from '@/components/search/search';
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function ProductsSearchPage() {
 
@@ -18,27 +20,68 @@ export default function ProductsSearchPage() {
           })
 
           let searchedProducts: any = JSON.parse(localStorage.getItem('search-results')!)
-          console.log('searchedProducts', searchedProducts);
+          const router = useRouter()
+          const [loading, setLoading] = useState(false)
 
+          useEffect(() => {
+                    const handleRouteChange = (url: any) => {
+                              setLoading(true)
+                    }
+
+                    const handleRouteChangeComplete = () => {
+                              setLoading(false)
+                    }
+
+                    router.events.on('routeChangeStart', handleRouteChange)
+                    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+
+                    return () => {
+                              router.events.off('routeChangeStart', handleRouteChange)
+                              router.events.off('routeChangeComplete', handleRouteChangeComplete)
+                    }
+          }, [router.events])
           return (
-
-                    <DynamicThemeProvider theme={theme}>
-                              <Container
-                                        disableGutters
-                                        maxWidth="lg"
-                                        sx={{
-                                                  background: "#fff",
-                                        }}
-                              >
-                                        <Stack>
-                                                  <UIProvider>
-                                                            <SearchBox />
-                                                            <ProductsFilter filterObject={searchedProducts} />
-                                                            <AppDrawer isScreenToMedium={false} />
-                                                  </UIProvider>
-                                        </Stack>
-                              </Container>
-                    </DynamicThemeProvider>
+                    <>
+                              {
+                                        loading ?
+                                                  <LoadingWheel /> :
+                                                  <DynamicThemeProvider theme={theme}>
+                                                            <Container
+                                                                      disableGutters
+                                                                      maxWidth="lg"
+                                                                      sx={{
+                                                                                background: "#fff",
+                                                                      }}
+                                                            >
+                                                                      <Stack>
+                                                                                <UIProvider>
+                                                                                          <SearchBox />
+                                                                                          <ProductsFilter filterObject={searchedProducts} />
+                                                                                          <AppDrawer isScreenToMedium={false} />
+                                                                                </UIProvider>
+                                                                      </Stack>
+                                                            </Container>
+                                                  </DynamicThemeProvider>
+                              }
+                    </>
           )
 }
+
+
+export async function getServerSideProps(context: any) {
+
+          redirect: {
+                    destination: "/404"
+          }
+
+
+          return {
+                    props: {
+                              ...(await serverSideTranslations('sr-RS'))
+                              // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
+                    },
+          }
+}
+
+
 
