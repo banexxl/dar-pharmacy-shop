@@ -19,7 +19,7 @@ export default function ProductsSearchPage() {
                     ssr: true
           })
 
-          let searchedProducts: any = JSON.parse(localStorage.getItem('search-results')!)
+          let searchedProducts: any = localStorage.getItem('search-results') !== 'undefined' ? JSON.parse(localStorage.getItem('search-results')!) : null
           const router = useRouter()
           const [loading, setLoading] = useState(false)
 
@@ -40,6 +40,7 @@ export default function ProductsSearchPage() {
                               router.events.off('routeChangeComplete', handleRouteChangeComplete)
                     }
           }, [router.events])
+
           return (
                     <>
                               {

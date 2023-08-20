@@ -18,8 +18,6 @@ export default function SearchBox() {
 
           const handleSearchClick = async () => {
 
-                    localStorage.removeItem('search-results')
-
                     try {
                               await fetch('/api/search/product-search-api', {
                                         method: 'POST',
