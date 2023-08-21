@@ -64,12 +64,27 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsByName = async (name: string) => {
+          const getProductsByName = async (searchTerm: any) => {
+
+                    const searchTermArray = searchTerm.split(" ")
+                    console.log(searchTermArray[0]);
+                    console.log(searchTermArray[1]);
+
 
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
                               const db = client.db('DAR_DB')
-                              let products: IProduct[] = await db.collection('Products').find({ "name": { $regex: `${name}`, $options: 'i' } }).toArray()
+                              let products: IProduct[] = await db.collection('Products')
+                                        .find({
+                                                  $or: [
+                                                            { "name": { $regex: `${searchTermArray[0]}`, $options: 'i' } },
+                                                            { "manufacturer": { $regex: `${searchTermArray[0]}`, $options: 'i' } },
+                                                            { "name": { $regex: `${searchTermArray[1]}`, $options: 'i' } },
+                                                            { "manufacturer": { $regex: `${searchTermArray[1]}`, $options: 'i' } },
+                                                  ]
+                                        }
+                                        ).toArray()
+
                               return products
                     } catch (error: any) {
                               return { message: error.message }

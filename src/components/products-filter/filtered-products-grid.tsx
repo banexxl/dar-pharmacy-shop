@@ -11,6 +11,7 @@ export default function FilteredProductsGrid(props: any) {
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
+          console.log('props is filter grida', props);
 
           const renderProducts =
                     props.data.filterObject !== 'undefined' || props.data.filterObject !== null || props.data.filterObject.length != 0 ?

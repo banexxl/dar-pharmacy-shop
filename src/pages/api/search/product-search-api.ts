@@ -4,6 +4,7 @@ import IProduct from '../../../interfaces/product/product.interface'
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const ProductSearchApi = async (request: NextApiRequest, response: NextApiResponse) => {
+
           if (request.method === 'POST') {
                     try {
                               const searchedProducts: any = await productsServices().getProductsByName(request.body);

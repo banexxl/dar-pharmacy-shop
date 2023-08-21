@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import SearchBox from '@/components/search/search';
-import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function ProductsSearchPage() {
@@ -19,7 +18,47 @@ export default function ProductsSearchPage() {
                     ssr: true
           })
 
-          let searchedProducts: any = localStorage.getItem('search-results') !== 'undefined' ? JSON.parse(localStorage.getItem('search-results')!) : null
+          const [searchedProducts, setSearchedProducts] = useState(null); // Initially set to null
+
+          const fetchDataFromLocalStorage = async () => {
+                    try {
+                              const products: any = await retryLocalStorageGetItem('search-results', 2, 500);
+                              products !== 'undefined' ?
+                                        setSearchedProducts(JSON.parse(products))
+                                        :
+                                        setSearchedProducts(null)
+                    } catch (error) {
+                              console.error('Error fetching products from local storage:', error);
+                    }
+          };
+
+          useEffect(() => {
+                    fetchDataFromLocalStorage();
+          }, []);
+
+          const retryLocalStorageGetItem = (key: any, maxRetries: any, retryDelay: any) => {
+                    return new Promise((resolve, reject) => {
+                              let retries = 0;
+
+                              function attemptGetItem() {
+                                        const item = localStorage.getItem(key);
+
+                                        if (item !== null) {
+                                                  resolve(item);
+                                        } else {
+                                                  retries++;
+                                                  if (retries < maxRetries) {
+                                                            setTimeout(attemptGetItem, retryDelay);
+                                                  } else {
+                                                            reject(new Error(`Failed to retrieve item after ${maxRetries} retries.`));
+                                                  }
+                                        }
+                              }
+
+                              attemptGetItem();
+                    });
+          }
+
           const router = useRouter()
           const [loading, setLoading] = useState(false)
 

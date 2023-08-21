@@ -2,15 +2,14 @@ import { IconButton, Slide, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
-import { SearchBoxContainer, SearchField } from "@/styles/search/search.style";
-import { useCallback, useState } from "react";
+import { SearchBoxContainer } from "@/styles/search/search.style";
+import { useState } from "react";
 import Link from "next/link";
-import IProduct from "@/interfaces/product/product.interface";
 
 export default function SearchBox() {
 
           const { showSearchBox, setShowSearchBox } = useUIContext();
-          const [searchQuery, setSearchQuery] = useState<any>('');
+          const [searchQuery, setSearchQuery] = useState<string>('');
 
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
                     setSearchQuery(event.target.value);
@@ -25,7 +24,8 @@ export default function SearchBox() {
                                         headers: {
                                                   'Content-Type': 'application/text',
                                                   'Access-Control-Allow-Origin': '*',
-                                                  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                                                  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                                                  'Cache-Control': 'no-store'
                                         },
                               }).then((response: Response) => {
                                         return response.json()
@@ -51,7 +51,7 @@ export default function SearchBox() {
                                                   type="search"
                                                   variant='filled'
                                                   color='secondary'
-                                                  helperText="Pretraga po nazivu proizvoda"
+                                                  helperText="Pretraga proizvoda"
                                                   onChange={handleChange}
                                                   sx={{ width: '300px' }}
                                                   value={searchQuery}
