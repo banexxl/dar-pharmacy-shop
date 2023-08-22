@@ -5,12 +5,16 @@ import { useUIContext } from "../../context/ui/ui.context";
 import { SearchBoxContainer } from "@/styles/search/search.style";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import UseLocalStorage from "@/hooks/useLocalStorage";
 
 export default function SearchBox() {
 
           const { showSearchBox, setShowSearchBox } = useUIContext();
           const [searchQuery, setSearchQuery] = useState<string>('');
-
+          const [searchResultsReady, setSearchResultsReady] = useState(false);
+          const router = useRouter()
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
                     setSearchQuery(event.target.value);
           };
@@ -18,7 +22,7 @@ export default function SearchBox() {
           const handleSearchClick = async () => {
 
                     try {
-                              await fetch('/api/search/product-search-api', {
+                              const response = await fetch('/api/search/product-search-api', {
                                         method: 'POST',
                                         body: searchQuery,
                                         headers: {
@@ -27,12 +31,13 @@ export default function SearchBox() {
                                                   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                                                   'Cache-Control': 'no-store'
                                         },
-                              }).then((response: Response) => {
-                                        return response.json()
-                              }).then((fetchSearchResult: any) => {
-                                        localStorage.setItem('search-results', JSON.stringify(fetchSearchResult.data));
-                                        setShowSearchBox(false)
                               })
+
+                              const fetchSearchResult = await response.json();
+                              UseLocalStorage('search-results', fetchSearchResult.data)
+                              // localStorage.setItem('search-results', JSON.stringify(fetchSearchResult.data));
+                              setSearchResultsReady(true);
+                              setShowSearchBox(false);
                     } catch (error) {
                               console.error('Error searching products:', error);
                     }

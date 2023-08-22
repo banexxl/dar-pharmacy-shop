@@ -1,23 +1,40 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
-          const [value, setValue] = useState<T>(() => {
+export default function UseLocalStorage(key: string, initValue: any) {
+          console.log('initValue', initValue);
 
-                    if (typeof window !== 'undefined') {
-                              const jsonValue = localStorage.getItem(key)
-                              if (jsonValue != null) return JSON.parse(jsonValue)
+          const [state, setState] = useState(() => {
+                    const value: any = localStorage.getItem(key);
+                    if (value !== null || value !== undefined || value !== "") {
+                              return JSON.parse(value);
                     }
 
-                    if (typeof initialValue === "function") {
-                              return (initialValue as () => T)()
-                    } else {
-                              return initialValue
-                    }
-          })
+                    localStorage.setItem(key, JSON.stringify(initValue));
+                    window.dispatchEvent(new Event("storage"));
+                    return initValue;
+          });
 
           useEffect(() => {
-                    localStorage.setItem(key, JSON.stringify(value))
-          }, [key, value])
+                    localStorage.setItem(key, state);
+                    window.dispatchEvent(new Event("storage"));
+          }, [key, state]);
 
-          return [value, setValue] as [typeof value, typeof setValue]
+          useEffect(() => {
+                    const listenStorageChange = () => {
+                              setState(() => {
+                                        const value = localStorage.getItem(key);
+                                        if (value !== null) {
+                                                  return JSON.parse(value);
+                                        }
+
+                                        localStorage.setItem(key, JSON.stringify(initValue));
+                                        window.dispatchEvent(new Event("storage"));
+                                        return initValue;
+                              });
+                    };
+                    window.addEventListener("storage", listenStorageChange);
+                    return () => window.removeEventListener("storage", listenStorageChange);
+          }, []);
+
+          return [state, setState];
 }
