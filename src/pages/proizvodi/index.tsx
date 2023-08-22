@@ -22,7 +22,7 @@ export default function ProductsSearchPage() {
 
           const fetchDataFromLocalStorage = async () => {
                     try {
-                              const products: any = await retryLocalStorageGetItem('search-results', 2, 500);
+                              const products: any = await localStorage.getItem('search-results');
                               products !== 'undefined' ?
                                         setSearchedProducts(JSON.parse(products))
                                         :
@@ -33,7 +33,11 @@ export default function ProductsSearchPage() {
           };
 
           useEffect(() => {
-                    fetchDataFromLocalStorage();
+                    const timeout = setTimeout(fetchDataFromLocalStorage, 5000);
+
+                    return (
+                              clearTimeout(timeout)
+                    )
           }, []);
 
           const retryLocalStorageGetItem = (key: any, maxRetries: any, retryDelay: any) => {

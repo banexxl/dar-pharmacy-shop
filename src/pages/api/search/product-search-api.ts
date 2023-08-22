@@ -7,7 +7,7 @@ const ProductSearchApi = async (request: NextApiRequest, response: NextApiRespon
 
           if (request.method === 'POST') {
                     try {
-                              const searchedProducts: any = await productsServices().getProductsByName(request.body);
+                              const searchedProducts: any = await productsServices().getProductsByNameAndOrManufacturer(request.body);
                               if (searchedProducts.length > 0) {
                                         return response.status(200).json({ message: 'Products found!', data: searchedProducts })
                               } else {

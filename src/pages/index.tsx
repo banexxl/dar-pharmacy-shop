@@ -92,7 +92,7 @@ export async function getStaticProps({ locale }: any) {
                     return data
           })
 
-          const productsByName: IProduct[] = await productsServices().getProductsByName("Crux kolagen").then((data: any) => {
+          const productsByName: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer("Crux kolagen").then((data: any) => {
                     return data
           })
 

@@ -64,7 +64,7 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsByName = async (searchTerm: any) => {
+          const getProductsByNameAndOrManufacturer = async (searchTerm: any) => {
 
                     const searchTermArray = searchTerm.split(" ")
                     console.log(searchTermArray[0]);
@@ -156,7 +156,7 @@ const productsServices = () => {
           return {
                     getProductsForHomePage,
                     getProductById,
-                    getProductsByName,
+                    getProductsByNameAndOrManufacturer,
                     getProductsByManufacturer,
                     getProductsByDiscount,
                     getProductsByMainCategory,

@@ -57,7 +57,7 @@ export default function SearchBox() {
                                                   value={searchQuery}
                                         />
                                         <Link href={{ pathname: '/proizvodi' }}>
-                                                  <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, cursor: 'pointer' }} color="secondary" onClick={(e: any) => handleSearchClick()} />
+                                                  <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, cursor: 'pointer' }} color="secondary" onClick={() => handleSearchClick()} />
                                         </Link>
                                         <IconButton onClick={() => handleClearSearch()} sx={{ position: 'absolute', top: 10, right: 10, }} >
                                                   <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
