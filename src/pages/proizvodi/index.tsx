@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import SearchBox from '@/components/search/search';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import { tryParseArrayOfObjectsFromLocalStorage } from "@/hooks/useLocalStorage";
 
 export default function ProductsSearchPage() {
 
@@ -22,7 +22,8 @@ export default function ProductsSearchPage() {
           const [loading, setLoading] = useState(false)
           const [searchedProducts, setSearchedProducts] = useState(null);
 
-          let localStorageData: any = useLocalStorage('search-results', [])
+          let localStorageData: any = tryParseArrayOfObjectsFromLocalStorage('search-results')
+          console.log('localStorageData', localStorageData[0]);
 
           useEffect(() => {
                     const handleRouteChange = (url: any) => {
@@ -36,7 +37,7 @@ export default function ProductsSearchPage() {
                     router.events.on('routeChangeStart', handleRouteChange)
                     router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
-                    setSearchedProducts(localStorageData[0])
+                    setSearchedProducts(localStorageData)
 
                     return () => {
                               router.events.off('routeChangeStart', handleRouteChange)

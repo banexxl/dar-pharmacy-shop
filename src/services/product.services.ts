@@ -67,9 +67,6 @@ const productsServices = () => {
           const getProductsByNameAndOrManufacturer = async (searchTerm: any) => {
 
                     const searchTermArray = searchTerm.split(" ")
-                    console.log(searchTermArray[0]);
-                    console.log(searchTermArray[1]);
-
 
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {

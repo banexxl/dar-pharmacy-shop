@@ -10,6 +10,8 @@ import FilteredProductsGrid from './filtered-products-grid'
 function ProductsFilter(props: any) {
 
           const { t } = useTranslation('common')
+          console.log('props is product filtera', props);
+
 
           return (
                     <ProductsFilterContainer>

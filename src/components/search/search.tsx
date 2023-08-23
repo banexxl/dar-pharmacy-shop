@@ -6,8 +6,6 @@ import { SearchBoxContainer } from "@/styles/search/search.style";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import UseLocalStorage from "@/hooks/useLocalStorage";
 
 export default function SearchBox() {
 
@@ -34,8 +32,7 @@ export default function SearchBox() {
                               })
 
                               const fetchSearchResult = await response.json();
-                              UseLocalStorage('search-results', fetchSearchResult.data)
-                              // localStorage.setItem('search-results', JSON.stringify(fetchSearchResult.data));
+                              localStorage.setItem('search-results', JSON.stringify(fetchSearchResult.data));
                               setSearchResultsReady(true);
                               setShowSearchBox(false);
                     } catch (error) {
