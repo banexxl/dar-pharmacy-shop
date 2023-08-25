@@ -1,18 +1,23 @@
-export const tryParseArrayOfObjectsFromLocalStorage = (key: string) => {
-          const input = localStorage.getItem(key);
+import { useEffect, useState } from "react"
 
-          if (input === null) {
-                    return null; // Key not found in local storage
-          }
+export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
+          const [value, setValue] = useState<T>(() => {
 
-          try {
-                    const parsedArray = JSON.parse(input);
-                    if (Array.isArray(parsedArray)) {
-                              return parsedArray;
+                    if (typeof window !== 'undefined') {
+                              const jsonValue = localStorage.getItem(key)
+                              if (jsonValue != null) return JSON.parse(jsonValue)
                     }
-          } catch (error) {
-                    // Parsing failed or the parsed result is not an array
-          }
 
-          return null;
+                    if (typeof initialValue === "function") {
+                              return (initialValue as () => T)()
+                    } else {
+                              return initialValue
+                    }
+          })
+
+          useEffect(() => {
+                    localStorage.setItem(key, JSON.stringify(value))
+          }, [key, value])
+
+          return [value, setValue] as [typeof value, typeof setValue]
 }

@@ -10,6 +10,7 @@ export const SearchBoxContainer = styled(Box)(() => ({
           height: "100%",
           background: Colors.primary,
           display: "flex",
+          flexDirection: 'column',
           justifyContent: "center",
           alignItems: "center",
           zIndex: 99999,
@@ -31,4 +32,13 @@ export const SearchField = styled(TextField)(({ theme }: any) => ({
                     borderBottom: `1px solid ${Colors.secondary}`,
           },
           padding: "0 0 0 40px",
+}));
+
+export const SearchResultsBox = styled(Box)(() => ({
+          width: "80%",
+          background: Colors.primary,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          opacity: 1,
 }));

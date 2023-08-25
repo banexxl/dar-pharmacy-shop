@@ -10,7 +10,7 @@ export default function LoadingWheel(props: any) {
                     <Box sx={{ color: Colors.primary, zIndex: '1000' }}>
                               <CircularProgress
                                         sx={{
-                                                  color: Colors.primary,
+                                                  color: Colors.dim_grey,
                                                   position: 'absolute',
                                                   top: '50%',
                                                   left: '50%',
