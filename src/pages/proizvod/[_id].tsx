@@ -76,16 +76,13 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-          const productsByCategory: any = await productsServices().getProductsByMainCategory('apoteka')
 
-          const productsOnDiscount: any = await productsServices().getProductsByDiscount()
 
-          const finalList = [
-                    ...productsByCategory,
-                    ...productsOnDiscount
-          ]
+          const allProducts: any = await productsServices().getAllProducts()
 
-          const paths = finalList.flatMap((product: any) =>
+
+
+          const paths = allProducts.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: { _id: product._id.toString() },
                               locale,
