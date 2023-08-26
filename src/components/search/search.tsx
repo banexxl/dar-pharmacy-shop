@@ -1,10 +1,11 @@
-import { Box, IconButton, List, ListItem, ListItemText, Slide, TextField, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
 import { SearchBoxContainer, SearchResultsBox } from "@/styles/search/search.style";
-import { useState } from "react";
-import Link from "next/link";
+import { KeyboardEvent, useState } from "react";
+import Image from 'mui-image'
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import IProduct from "@/interfaces/product/product.interface";
 import LoadingWheel from "../loading/loading";
 import { Colors } from "@/styles/theme";
@@ -64,8 +65,8 @@ export default function SearchBox() {
 
           return (
                     <Slide direction="down" in={showSearchBox} timeout={500}>
-                              <SearchBoxContainer>
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '70px' }}>
+                              <SearchBoxContainer >
+                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                   <TextField
                                                             label="Pronadji proizvod"
                                                             type="search"
@@ -75,8 +76,14 @@ export default function SearchBox() {
                                                             onChange={handleChange}
                                                             sx={{ width: '300px' }}
                                                             value={searchQuery}
+                                                            onKeyDown={(e: KeyboardEvent) => {
+                                                                      e.key === 'Enter' ?
+                                                                                handleSearchClick()
+                                                                                :
+                                                                                null
+                                                            }}
                                                   />
-                                                  <SearchIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, cursor: 'pointer' }} color="secondary" onClick={() => handleSearchClick()} />
+                                                  <SearchIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, cursor: 'pointer', marginBottom: '15px' }} color="secondary" onClick={() => handleSearchClick()} />
                                         </Box>
                                         <IconButton onClick={() => handleClearSearch()} sx={{ position: 'absolute', top: 10, right: 10, }} >
                                                   <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
@@ -84,17 +91,26 @@ export default function SearchBox() {
                                         <SearchResultsBox>
                                                   {
                                                             loading == true ?
-                                                                      <LoadingWheel loading={loading} />
+                                                                      <Box sx={{ display: loading ? 'none' : 'flex' }}>
+                                                                                <CircularProgress color="success" />
+                                                                      </Box>
                                                                       :
-                                                                      <List sx={{ overflow: 'auto', height: '200px' }}>
+                                                                      <List sx={{
+                                                                                overflow: 'auto', height: '300px', width: '60%', backgroundColor: 'rgba(198, 40, 40, 1)',
+                                                                                display: 'flex', flexDirection: 'column', justifyContent: 'space-around', border: `5px solid ${Colors.dim_grey}`,
+                                                                                borderRadius: '10px', boxShadow: `5px 10px 8px 10px ${Colors.secondary}`
+                                                                      }}>
                                                                                 {
                                                                                           searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length == 0 ?
                                                                                                     searchResults?.data?.map((product: IProduct) => (
-                                                                                                              <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}>
-                                                                                                                        <ListItemText
-                                                                                                                                  primary={product.name}
-                                                                                                                                  secondary={product.manufacturer}
-                                                                                                                        />
+                                                                                                              <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}
+                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between' }}
+                                                                                                              >
+                                                                                                                        <ListItemText primary={product.name} secondary={product.manufacturer} />
+                                                                                                                        <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100} />
+                                                                                                                        <Typography>
+                                                                                                                                  {product.price}RSD
+                                                                                                                        </Typography>
                                                                                                               </ListItem>
                                                                                                     ))
                                                                                                     :
