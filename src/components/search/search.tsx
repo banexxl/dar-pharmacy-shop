@@ -85,8 +85,8 @@ export default function SearchBox() {
                                                   />
                                                   <SearchIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, cursor: 'pointer', marginBottom: '15px' }} color="secondary" onClick={() => handleSearchClick()} />
                                         </Box>
-                                        <IconButton onClick={() => handleClearSearch()} sx={{ position: 'absolute' }} >
-                                                  <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
+                                        <IconButton onClick={() => handleClearSearch()} sx={{ position: 'absolute', top: '5px', right: '5px' }} >
+                                                  <CloseIcon sx={{ fontSize: '2rem' }} color="secondary" />
                                         </IconButton>
                                         <SearchResultsBox>
                                                   {
@@ -104,14 +104,17 @@ export default function SearchBox() {
                                                                                           searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length == 0 ?
                                                                                                     searchResults?.data?.map((product: IProduct) => (
                                                                                                               <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}
-                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '130px' }}
+                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}
                                                                                                                         onClick={() => setShowSearchBox(false)}
                                                                                                               >
                                                                                                                         <ListItemText primary={product.name} secondary={product.manufacturer} />
-                                                                                                                        <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100} />
-                                                                                                                        <Typography>
-                                                                                                                                  {product.price}RSD
-                                                                                                                        </Typography>
+                                                                                                                        <Box>
+
+                                                                                                                                  <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100} />
+                                                                                                                                  <Typography>
+                                                                                                                                            {product.price}RSD
+                                                                                                                                  </Typography>
+                                                                                                                        </Box>
                                                                                                               </ListItem>
                                                                                                     ))
                                                                                                     :
