@@ -36,7 +36,7 @@ export const SearchField = styled(TextField)(({ theme }: any) => ({
 
 export const SearchResultsBox = styled(Box)(() => ({
           width: "80%",
-          background: Colors.primary,
+          backgroundColor: Colors.primary,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

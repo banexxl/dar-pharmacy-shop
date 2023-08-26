@@ -82,28 +82,26 @@ export default function SearchBox() {
                                                   <CloseIcon sx={{ fontSize: '4rem' }} color="secondary" />
                                         </IconButton>
                                         <SearchResultsBox>
-                                                  <Box sx={{ display: 'flex', flexDirection: 'column', backgroundColor: Colors.dim_grey }}>
-                                                            {
-                                                                      loading == true ?
-                                                                                <LoadingWheel loading={loading} />
-                                                                                :
-                                                                                <List>
-                                                                                          {
-                                                                                                    searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length == 0 ?
-                                                                                                              searchResults?.data?.map((product: IProduct) => (
-                                                                                                                        <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}>
-                                                                                                                                  <ListItemText
-                                                                                                                                            primary={product.name}
-                                                                                                                                            secondary={product.manufacturer}
-                                                                                                                                  />
-                                                                                                                        </ListItem>
-                                                                                                              ))
-                                                                                                              :
-                                                                                                              null
-                                                                                          }
-                                                                                </List>
-                                                            }
-                                                  </Box>
+                                                  {
+                                                            loading == true ?
+                                                                      <LoadingWheel loading={loading} />
+                                                                      :
+                                                                      <List sx={{ overflow: 'auto', height: '200px' }}>
+                                                                                {
+                                                                                          searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length == 0 ?
+                                                                                                    searchResults?.data?.map((product: IProduct) => (
+                                                                                                              <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}>
+                                                                                                                        <ListItemText
+                                                                                                                                  primary={product.name}
+                                                                                                                                  secondary={product.manufacturer}
+                                                                                                                        />
+                                                                                                              </ListItem>
+                                                                                                    ))
+                                                                                                    :
+                                                                                                    null
+                                                                                }
+                                                                      </List>
+                                                  }
                                         </SearchResultsBox>
                               </SearchBoxContainer>
                     </Slide >

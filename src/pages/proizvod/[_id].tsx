@@ -76,11 +76,7 @@ export const getStaticPaths = async (context: any) => {
 
           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-
-
           const allProducts: any = await productsServices().getAllProducts()
-
-
 
           const paths = allProducts.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
