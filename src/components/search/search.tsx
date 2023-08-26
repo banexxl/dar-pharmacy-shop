@@ -12,7 +12,8 @@ import { Colors } from "@/styles/theme";
 
 type SearchResult = {
           message?: string,
-          data?: []
+          data?: [],
+          error?: string
 }
 
 export default function SearchBox() {
@@ -29,29 +30,36 @@ export default function SearchBox() {
           const handleSearchClick = async () => {
 
                     setLoading(true);
+                    console.log('searchQuery', searchQuery);
+                    console.log('searchResults', searchResults);
 
                     try {
-                              await fetch('/api/search/product-search-api', {
-                                        method: 'POST',
-                                        body: searchQuery,
-                                        headers: {
-                                                  'Content-Type': 'application/text',
-                                                  'Access-Control-Allow-Origin': '*',
-                                                  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                                                  'Cache-Control': 'no-store'
-                                        },
-                              }).then((response: Response) => {
-                                        !response.ok ?
-                                                  setSearchResults({ data: [] })
-                                                  :
-                                                  null
-                                        return response.json()
-                              }).then((data) => {
-                                        setSearchResults(data)
+                              if (/\S/.test(searchQuery)) {
+                                        await fetch('/api/search/product-search-api', {
+                                                  method: 'POST',
+                                                  body: searchQuery,
+                                                  headers: {
+                                                            'Content-Type': 'application/text',
+                                                            'Access-Control-Allow-Origin': '*',
+                                                            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                                                            'Cache-Control': 'no-store'
+                                                  },
+                                        }).then((response: Response) => {
+                                                  !response.ok ?
+                                                            setSearchResults({ data: [] })
+                                                            :
+                                                            null
+                                                  return response.json()
+                                        }).then((data) => {
+                                                  setSearchResults(data)
+                                                  setLoading(false)
+                                        }).catch((error) => {
+                                                  console.log(error);
+                                        })
+                              } else {
                                         setLoading(false)
-                              }).catch((error) => {
-                                        console.log(error);
-                              })
+                                        setSearchResults({ message: 'Navedeni termin nije pronadjen!', data: [] })
+                              }
 
                     } catch (error) {
                               console.error('Error searching products:', error);
@@ -72,7 +80,7 @@ export default function SearchBox() {
                                                             type="search"
                                                             variant='filled'
                                                             color='secondary'
-                                                            helperText="Pretraga proizvoda"
+                                                            helperText="Ukucajte zeljeni pojam za pretragu"
                                                             onChange={handleChange}
                                                             sx={{ width: '300px' }}
                                                             value={searchQuery}
@@ -97,14 +105,14 @@ export default function SearchBox() {
                                                                       :
                                                                       <List sx={{
                                                                                 overflow: 'auto', height: '500px', width: '60%', backgroundColor: 'rgba(198, 40, 40, 1)',
-                                                                                display: 'flex', flexDirection: 'column', justifyContent: 'space-around', border: `5px solid ${Colors.dim_grey}`,
-                                                                                borderRadius: '10px', boxShadow: `5px 10px 8px 10px ${Colors.secondary}`
+                                                                                display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: `5px solid ${Colors.dim_grey}`,
+                                                                                borderRadius: '10px', boxShadow: `5px 10px 8px 10px ${Colors.secondary}`, paddingTop: '20px'
                                                                       }}>
                                                                                 {
-                                                                                          searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length == 0 ?
+                                                                                          searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length !== 0 ?
                                                                                                     searchResults?.data?.map((product: IProduct) => (
                                                                                                               <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}
-                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}
+                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px' }}
                                                                                                                         onClick={() => setShowSearchBox(false)}
                                                                                                               >
                                                                                                                         <ListItemText primary={product.name} secondary={product.manufacturer} />
@@ -118,7 +126,15 @@ export default function SearchBox() {
                                                                                                               </ListItem>
                                                                                                     ))
                                                                                                     :
-                                                                                                    null
+                                                                                                    <Typography>
+                                                                                                              {
+                                                                                                                        searchResults.message == 'Navedeni termin nije pronadjen!' ?
+                                                                                                                                  "Za uneti termin ne postoje proizvodi!"
+                                                                                                                                  :
+                                                                                                                                  "ssssssssssss"
+                                                                                                              }
+                                                                                                    </Typography>
+
                                                                                 }
                                                                       </List>
                                                   }
