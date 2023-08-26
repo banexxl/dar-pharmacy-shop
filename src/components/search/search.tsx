@@ -120,7 +120,7 @@ export default function SearchBox() {
 
                                                                                                                                   <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100} />
                                                                                                                                   <Typography>
-                                                                                                                                            {product.price}RSD
+                                                                                                                                            {product.price} RSD
                                                                                                                                   </Typography>
                                                                                                                         </Box>
                                                                                                               </ListItem>
