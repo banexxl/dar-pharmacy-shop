@@ -104,7 +104,7 @@ export default function SearchBox() {
                                                                                           searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length == 0 ?
                                                                                                     searchResults?.data?.map((product: IProduct) => (
                                                                                                               <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}
-                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: '30px' }}
+                                                                                                                        sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '130px' }}
                                                                                                                         onClick={() => setShowSearchBox(false)}
                                                                                                               >
                                                                                                                         <ListItemText primary={product.name} secondary={product.manufacturer} />
