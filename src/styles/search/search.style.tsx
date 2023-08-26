@@ -14,7 +14,7 @@ export const SearchBoxContainer = styled(Box)(() => ({
           justifyContent: "center",
           alignItems: "center",
           zIndex: 99999,
-          opacity: .9,
+          opacity: 1,
 }));
 
 export const SearchField = styled(TextField)(({ theme }: any) => ({
