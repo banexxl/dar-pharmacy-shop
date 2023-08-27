@@ -88,7 +88,7 @@ export default function Home(props: any) {
 
 export async function getStaticProps({ locale }: any) {
 
-          const productsFromManufacturer: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
+          const productsFromManufacturerHerbalab: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
                     return data
           })
 
@@ -96,7 +96,7 @@ export async function getStaticProps({ locale }: any) {
                     return data
           })
 
-          const dataForGrid = productsFromManufacturer.concat(productsByName)
+          const dataForGrid = productsFromManufacturerHerbalab.concat(productsByName)
 
           const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount().then((data: any) => {
                     return data

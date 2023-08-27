@@ -30,8 +30,6 @@ export default function SearchBox() {
           const handleSearchClick = async () => {
 
                     setLoading(true);
-                    console.log('searchQuery', searchQuery);
-                    console.log('searchResults', searchResults);
 
                     try {
                               if (/\S/.test(searchQuery)) {

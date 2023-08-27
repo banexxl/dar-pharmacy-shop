@@ -14,6 +14,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
           const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
           const { t } = useTranslation('common')
 
+
           const handlePriceChange = (event: Event, newValue: number | number[]) => {
                     if (Array.isArray(newValue)) {
                               setPriceRange(newValue as [number, number]);

@@ -10,8 +10,6 @@ import FilteredProductsGrid from './filtered-products-grid'
 function ProductsFilter(props: any) {
 
           const { t } = useTranslation('common')
-          console.log('props is product filtera', props);
-
 
           return (
                     <ProductsFilterContainer>
@@ -22,7 +20,7 @@ function ProductsFilter(props: any) {
                                                   </Typography>
                                         </FilterTitleBox>
                                         <Divider />
-                                        <PriceFilterComponent products={[]} onPriceFilterChange={(filteredProducts: IProduct[]) => {
+                                        <PriceFilterComponent products={props.filteredProducts} onPriceFilterChange={(filteredProducts: IProduct[]) => {
                                                   throw new Error('Function not implemented.')
                                         }} />
                                         <Divider />

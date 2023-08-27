@@ -166,6 +166,33 @@ const productsServices = () => {
                     }
           }
 
+          const getAllManufacturers = async () => {
+                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+                    try {
+                              await client.connect();
+                              const db = client.db('DAR_DB');
+                              const productsCollection = db.collection('Products');
+
+                              const manufacturers = await new Promise((resolve, reject) => {
+                                        productsCollection.distinct("manufacturer", (error: any, manufacturers: any) => {
+                                                  if (error) {
+                                                            reject(error);
+                                                  } else {
+                                                            resolve(manufacturers);
+                                                  }
+                                        });
+                              });
+
+                              return manufacturers;
+                    } catch (error) {
+                              return { message: error };
+                    } finally {
+                              client.close();
+                    }
+          }
+
+
           return {
                     getAllProducts,
                     getProductsForHomePage,
@@ -176,7 +203,8 @@ const productsServices = () => {
                     getProductsByMainCategory,
                     getProductsByMainCategoryMidCategory,
                     getProductsByMainCategoryMidCategorySubCategory,
-                    getAllLogos
+                    getAllLogos,
+                    getAllManufacturers
           }
 }
 
