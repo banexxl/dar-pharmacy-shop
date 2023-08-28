@@ -7,9 +7,10 @@ import PriceFilterComponent from './product-filter-price'
 import IProduct from '@/interfaces/product/product.interface'
 import FilteredProductsGrid from './filtered-products-grid'
 
-function ProductsFilter(props: any) {
+function ProductsFilter({ filterObject, routerQuery }: any) {
 
           const { t } = useTranslation('common')
+          console.log('props iz filtera', filterObject, routerQuery);
 
           return (
                     <ProductsFilterContainer>
@@ -20,7 +21,7 @@ function ProductsFilter(props: any) {
                                                   </Typography>
                                         </FilterTitleBox>
                                         <Divider />
-                                        <PriceFilterComponent products={props.filteredProducts} onPriceFilterChange={(filteredProducts: IProduct[]) => {
+                                        <PriceFilterComponent products={filterObject} onPriceFilterChange={(filteredProducts: IProduct[]) => {
                                                   throw new Error('Function not implemented.')
                                         }} />
                                         <Divider />
@@ -30,30 +31,11 @@ function ProductsFilter(props: any) {
                               </ProductsFilters>
                               <FilteredProducts>
                                         <FilteredProductsTitle>
-                                                  {/* <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
-                                                            {
-                                                                      props.length !== 0 ?
-                                                                                (
-                                                                                          props[0].mainCategory !== "" ?
-                                                                                                    props[0].mainCategory + '/'
-                                                                                                    :
-                                                                                                    props[0].midCategory !== "" ?
-                                                                                                              props[0].midCategory + '/'
-                                                                                                              :
-                                                                                                              props[0].subCategory !== "" ?
-                                                                                                                        props[0].subCategory + '/'
-                                                                                                                        :
-                                                                                                                        ""
-
-
-
-                                                                                ).toUpperCase()
-                                                                                :
-                                                                                router.asPath.toUpperCase()
-                                                            }
-                                                  </Typography> */}
+                                                  <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
+                                                            {routerQuery}
+                                                  </Typography>
                                         </FilteredProductsTitle>
-                                        <FilteredProductsGrid data={props} />
+                                        <FilteredProductsGrid data={filterObject} />
                               </FilteredProducts>
                     </ProductsFilterContainer>
           )

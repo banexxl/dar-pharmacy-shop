@@ -19,7 +19,7 @@ export default function MainCategoryPage(props: any) {
           })
 
           const router = useRouter()
-          console.log('router sa stranice sa proizvodjacima', router);
+          console.log('router sa stranice sa proizvodjacima', router.query.proizvodjac);
 
 
           const [loading, setLoading] = useState(false)
@@ -59,7 +59,7 @@ export default function MainCategoryPage(props: any) {
                                                                       <Stack>
                                                                                 <UIProvider>
                                                                                           <SearchBox />
-                                                                                          <ProductsFilter filterObject={props.products} />
+                                                                                          <ProductsFilter filterObject={props.products} routerQuery={router.query.proizvodjac} />
                                                                                           <AppDrawer isScreenToMedium={false} />
                                                                                 </UIProvider>
                                                                       </Stack>
