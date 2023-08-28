@@ -72,31 +72,24 @@ export default function MainCategoryPage(props: any) {
 
 export async function getStaticProps(context: any) {
 
-          console.log('kontext iz getstaticprops', context);
+          const manufacturer = context.params.proizvodjac; // Access the manufacturer parameter
+          console.log('manufacturer from get static props');
 
-          const productsByManufacturer: any = await productsServices().getProductsByManufacturer('Herbalab')
-          const allManufacturers: any = await productsServices().getAllManufacturers()
-          // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-          // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-          // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-          // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-          // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-          // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-          // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
-          console.log('allManufacturers', allManufacturers);
+          const productsByManufacturer: any = await productsServices().getProductsByManufacturer(manufacturer)
 
+          const finalList = [
+                    ...productsByManufacturer
+          ]
 
-          // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
           redirect: {
                     destination: "/404"
           }
-          // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
-          // revalidate bi trebao da ponovo odradi getstaticprops logiku
+
 
           return {
                     props: {
-                              products: JSON.parse(JSON.stringify(productsByManufacturer)),
-                              // ...(await serverSideTranslations('sr-RS'))
+                              products: JSON.parse(JSON.stringify(finalList)),
+                              ...(await serverSideTranslations('sr-RS'))
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
           }
@@ -105,34 +98,16 @@ export async function getStaticProps(context: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          console.log('kontext iz getStaticPaths', context);
-
-          const productsByManufacturer: any = await productsServices().getProductsByManufacturer('apoteka')
-          const allManufacturers: any = await productsServices().getAllManufacturers()
-
-          //           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-          //           const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-          //           const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-          //           const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-          //           const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-          //           const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-          //           const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          const getAllProducts: any = await productsServices().getAllProducts()
 
           const finalList = [
-                    ...productsByManufacturer,
-                    // ...productsByMainCategoryPrirodnaKozmetika,
-                    // ...productsByMainCategoryLepotaNega,
-                    // ...productsByMainCategoryBebiProgram,
-                    // ...productsByMainCategoryMedicinskiAparatiOprema,
-                    // ...productsByMainCategoryOrtopedijaPomagala,
-                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-                    // ...productsByMainCategoryObucaCarapeUlosci,
+                    ...getAllProducts,
           ]
 
           const paths = finalList.flatMap((product: any) =>
                     context.locales.map((locale: any) => ({
                               params: {
-                                        maincategory: product.mainCategory.toString()
+                                        proizvodjac: product.manufacturer.toString()
                               },
                               locale,
                     }))

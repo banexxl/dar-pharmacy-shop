@@ -183,7 +183,6 @@ const productsServices = () => {
                                                   }
                                         });
                               });
-
                               return manufacturers;
                     } catch (error) {
                               return { message: error };
