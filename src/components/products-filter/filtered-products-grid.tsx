@@ -12,9 +12,12 @@ export default function FilteredProductsGrid(props: any) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
 
+          console.log('props is samog grida tj proizvodi', props);
+
+
           const renderProducts =
-                    props.data.filterObject !== 'undefined' || props.data.filterObject !== null || props.data.filterObject.length != 0 ?
-                              props.data.filterObject?.map((product: any) => (
+                    props.data !== 'undefined' || props.data !== null || props.data.length != 0 ?
+                              props.data?.map((product: any) => (
                                         <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                                                   {isScreenToMedium ? (
                                                             <FilteredSingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />

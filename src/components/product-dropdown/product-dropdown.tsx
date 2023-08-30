@@ -156,7 +156,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                                 color: Colors.dove_gray,
                                                                       }}
                                                             >
-                                                                      <InstagramIcon sx={{ pl: 2 }} />
+                                                                      <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                                                             </Box>
                                                   </ProductDetailInfoWrapper>
                                         </ProductDetailWrapper>

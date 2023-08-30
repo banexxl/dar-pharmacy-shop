@@ -19,11 +19,8 @@ export default function MainCategoryPage(props: any) {
           })
 
           const router = useRouter()
-          console.log('router sa stranice sa proizvodjacima', router.query.proizvodjac);
-
 
           const [loading, setLoading] = useState(false)
-          console.log('props sa stranice sa proizvodjacima', props);
 
           useEffect(() => {
                     const handleRouteChange = (url: any) => {
@@ -73,7 +70,6 @@ export default function MainCategoryPage(props: any) {
 export async function getStaticProps(context: any) {
 
           const manufacturer = context.params.proizvodjac; // Access the manufacturer parameter
-          console.log('manufacturer from get static props');
 
           const productsByManufacturer: any = await productsServices().getProductsByManufacturer(manufacturer)
 
@@ -98,10 +94,10 @@ export async function getStaticProps(context: any) {
 
 export const getStaticPaths = async (context: any) => {
 
-          const getAllProducts: any = await productsServices().getAllProducts()
+          const allProducts: any = await productsServices().getAllProducts()
 
           const finalList = [
-                    ...getAllProducts,
+                    ...allProducts
           ]
 
           const paths = finalList.flatMap((product: any) =>

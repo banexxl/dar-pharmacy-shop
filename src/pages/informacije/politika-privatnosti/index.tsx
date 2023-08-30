@@ -470,8 +470,8 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                                                                                                     {t('information.privacy-policy.p113')}
                                                                                           </Link>
                                                                                 </ListItem>
-                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                                                                          <Link href='https://help.instagram.com/519522125107875' target="_blank">
+                                                                                <ListItem sx={{ display: 'list-item', fontStyle: 'italic', cursor: 'pointer' }} >
+                                                                                          <Link href='https://help.instagram.com/519522125107875' target="_blank" >
                                                                                                     {t('information.privacy-policy.p114')}
                                                                                           </Link>
                                                                                 </ListItem>

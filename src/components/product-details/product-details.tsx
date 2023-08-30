@@ -25,6 +25,8 @@ function ProductDetails(product: IProduct) {
           const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
 
           const callCartAlert = () => {
+                    console.log('usao u call alert');
+
                     setAddedToCartAlert(true)
                     const timeId = setTimeout(() => {
                               // After X seconds set the show value to false
@@ -37,6 +39,8 @@ function ProductDetails(product: IProduct) {
           }
 
           const callWishlistAlert = () => {
+                    console.log('usao u wishlist alert');
+
                     setAddedToWishlistAlert(true)
                     const timeId = setTimeout(() => {
                               // After X seconds set the show value to false
@@ -49,6 +53,7 @@ function ProductDetails(product: IProduct) {
           }
 
           const callRemovedFromWishlistAlert = () => {
+                    console.log('usao u remove wishlist');
                     setRemovedFromWishlistAlert(true)
                     const timeId = setTimeout(() => {
                               setRemovedFromWishlistAlert(false)
@@ -119,19 +124,19 @@ function ProductDetails(product: IProduct) {
                                                             color: Colors.dove_gray,
                                                   }}
                                         >
-                                                  <InstagramIcon sx={{ pl: 2 }} />
+                                                  <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                                         </Box>
-                                        {addedToCartAlert && (
-                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.added-to-cart')}
-                                                  </Alert>
-                                        )}
-                                        {addedToWishlistAlert && (
-                                                  <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.added-to-wishlist')}
-                                                  </Alert>
-                                        )}
                               </ProductDetailInfoWrapper>
+                              {addedToCartAlert && (
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', marginTop: '500px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
+                                                  {t('product.added-to-cart')}
+                                        </Alert>
+                              )}
+                              {addedToWishlistAlert && (
+                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', marginTop: '500px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
+                                                  {t('product.added-to-wishlist')}
+                                        </Alert>
+                              )}
                     </ProductDetailWrapper>
           )
 }
