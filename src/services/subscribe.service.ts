@@ -3,7 +3,6 @@ import { MongoClient } from "mongodb";
 export const SubscribeClientService = async (data: any) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
-          console.log(client);
 
           try {
                     const db = client.db('DAR_DB');

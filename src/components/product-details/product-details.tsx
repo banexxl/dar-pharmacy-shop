@@ -25,7 +25,6 @@ function ProductDetails(product: IProduct) {
           const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
 
           const callCartAlert = () => {
-                    console.log('usao u call alert');
 
                     setAddedToCartAlert(true)
                     const timeId = setTimeout(() => {
@@ -39,8 +38,6 @@ function ProductDetails(product: IProduct) {
           }
 
           const callWishlistAlert = () => {
-                    console.log('usao u wishlist alert');
-
                     setAddedToWishlistAlert(true)
                     const timeId = setTimeout(() => {
                               // After X seconds set the show value to false
@@ -53,7 +50,6 @@ function ProductDetails(product: IProduct) {
           }
 
           const callRemovedFromWishlistAlert = () => {
-                    console.log('usao u remove wishlist');
                     setRemovedFromWishlistAlert(true)
                     const timeId = setTimeout(() => {
                               setRemovedFromWishlistAlert(false)

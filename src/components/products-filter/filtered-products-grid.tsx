@@ -14,8 +14,6 @@ export default function FilteredProductsGrid(props: any) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
 
-          console.log('props is samog grida tj proizvodi', props.data.length);
-
           const renderProducts =
                     props.data.length != 0 ?
                               props.data?.map((product: any) => (
