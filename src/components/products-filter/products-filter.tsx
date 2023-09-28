@@ -1,6 +1,6 @@
 import { FilterCategoryAccordionBox, FilterTitleBox, FilteredProducts, FilteredProductsTitle, ProductsFilterContainer, ProductsFilters } from '@/styles/products-filter/products-filter'
 import { Divider, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import ProductsAllCategories from './products-categories'
 import { useTranslation } from 'next-i18next'
 import PriceFilterComponent from './product-filter-price'
@@ -10,7 +10,14 @@ import FilteredProductsGrid from './filtered-products-grid'
 function ProductsFilter({ filterObject, routerQuery }: any) {
 
           const { t } = useTranslation('common')
-          console.log('props iz filtera', filterObject, routerQuery);
+          const [filteredProducts, setFilteredProducts] = useState();
+
+          console.log('routerQuery', routerQuery);
+          console.log('filterObject', filterObject);
+
+          const handlePriceFilterChange = (filteredProducts: any) => {
+                    setFilteredProducts(filteredProducts);
+          };
 
           return (
                     <ProductsFilterContainer>
@@ -21,18 +28,16 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                                                   </Typography>
                                         </FilterTitleBox>
                                         <Divider />
-                                        <PriceFilterComponent products={filterObject} onPriceFilterChange={(filteredProducts: IProduct[]) => {
-                                                  throw new Error('Function not implemented.')
-                                        }} />
+                                        <PriceFilterComponent products={filterObject} onPriceFilterChange={handlePriceFilterChange} />
                                         <Divider />
                                         <FilterCategoryAccordionBox>
-                                                  <ProductsAllCategories></ProductsAllCategories>
+                                                  <ProductsAllCategories />
                                         </FilterCategoryAccordionBox>
                               </ProductsFilters>
                               <FilteredProducts>
                                         <FilteredProductsTitle>
                                                   <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
-                                                            {routerQuery}
+                                                            {filterObject.length != 0 ? routerQuery : "Nije pronadjen ni jedan proizvod sa trenutnim filterom!"}
                                                   </Typography>
                                         </FilteredProductsTitle>
                                         <FilteredProductsGrid data={filterObject} />

@@ -39,6 +39,7 @@ import {
           getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo
 } from '../../../../../services/product-sub-category-helper.services';
 import IProduct from '@/interfaces/product/product.interface';
+import { useRouter } from 'next/router';
 
 export default function MainCategoryPage(props: any) {
 
@@ -46,6 +47,8 @@ export default function MainCategoryPage(props: any) {
                     loading: () => <LoadingWheel />,
                     ssr: true
           })
+
+          const router = useRouter()
 
           return (
                     <DynamicThemeProvider theme={theme}>
@@ -59,7 +62,7 @@ export default function MainCategoryPage(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <SearchBox />
-                                                            <ProductsFilter filterObject={props.products} />
+                                                            <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>

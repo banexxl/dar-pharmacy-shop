@@ -19,7 +19,7 @@ export default function MainCategoryPage(props: any) {
           })
 
           const router = useRouter()
-
+          const [filteredProducts, setFilteredProducts] = useState();
           const [loading, setLoading] = useState(false)
 
           useEffect(() => {

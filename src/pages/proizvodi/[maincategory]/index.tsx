@@ -29,7 +29,7 @@ export default function MainCategoryPage(props: any) {
 
           const router = useRouter()
           const [loading, setLoading] = useState(false)
-          console.log('props from main cat', props);
+
 
           useEffect(() => {
                     const handleRouteChange = (url: any) => {
@@ -65,7 +65,7 @@ export default function MainCategoryPage(props: any) {
                                                                       <Stack>
                                                                                 <UIProvider>
                                                                                           <SearchBox />
-                                                                                          <ProductsFilter filterObject={props.products} />
+                                                                                          <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
                                                                                           <AppDrawer isScreenToMedium={false} />
                                                                                 </UIProvider>
                                                                       </Stack>

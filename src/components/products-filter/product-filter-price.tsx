@@ -6,27 +6,26 @@ import { PriceRangeBox } from '@/styles/products-filter/products-filter';
 
 interface PriceFilterProps {
           products: IProduct[];
-          onPriceFilterChange: (filteredProducts: IProduct[]) => void;
+          onPriceFilterChange: (minPrice: any, maxPrice: any) => void;
 }
 
-const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFilterChange }) => {
+const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFilterChange }: any) => {
 
           const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
           const { t } = useTranslation('common')
 
 
-          const handlePriceChange = (event: Event, newValue: number | number[]) => {
-                    if (Array.isArray(newValue)) {
-                              setPriceRange(newValue as [number, number]);
-                    }
+          const handlePriceChange = (event: any, newPriceRange: any) => {
+                    setPriceRange(newPriceRange);
           };
 
-          const handleFilterProducts = () => {
-                    // Filtering products based on the selected price range
-                    const filteredProducts = products.filter(
-                              (product) => product.price >= priceRange[0] && product.price <= priceRange[1]
-                    );
-                    onPriceFilterChange(filteredProducts);
+          const filterProductsByPriceRange = () => {
+                    const [minPrice, maxPrice] = priceRange;
+                    const filtered = products.filter((product: any) => {
+                              const productPrice = product.price; // Adjust this according to your data structure
+                              return productPrice >= minPrice && productPrice <= maxPrice;
+                    });
+                    onPriceFilterChange(filtered);
           };
 
           return (
@@ -51,7 +50,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
                                                   <Typography variant="subtitle2" align="right">{`RSD ${priceRange[1]}`}</Typography>
                                         </Grid>
                               </Grid>
-                              <Button onClick={handleFilterProducts}>
+                              <Button onClick={filterProductsByPriceRange}>
                                         <Typography>
                                                   {t('filter-page.apply-filter')}
                                         </Typography>

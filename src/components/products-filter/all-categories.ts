@@ -1685,108 +1685,108 @@ export const AccordionPanels = [
                               // },
                               {
                                         id: 'prirodna-kozmetika',
-                                        link: 'proizvodi/prirodna-kozmetika',
+                                        link: '/proizvodi/prirodna-kozmetika',
                                         title: 'Prirodna kozmetika',
-                                        // children: [
-                                        //           {
-                                        //                     id: 'prirodna-kozmetika-lice',
-                                        //                     title: 'Lice',
-                                        //                     link: '/proizvodi/prirodna-kozmetika/lice',
-                                        //                     children: [
-                                        //                               {
-                                        //                                         id: 'higijena-lica',
-                                        //                                         title: 'Higijena lica',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/lice/higijena-lica',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'trepavice-i-obrve',
-                                        //                                         title: 'Trepavice i obrve',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/lice/trepavice-i-obrve',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'hidratacija',
-                                        //                                         title: 'Hidratacija',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/lice/hidratacija',
-                                        //                               },
-                                        //                     ],
-                                        //           },
-                                        //           {
-                                        //                     id: 'prirodna-kozmetika-telo',
-                                        //                     title: 'Telo',
-                                        //                     link: '/proizvodi/prirodna-kozmetika/telo',
-                                        //                     children: [
-                                        //                               {
-                                        //                                         id: 'ostecena-koza',
-                                        //                                         title: 'Oštećena koža',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/telo/ostecena-koza',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'pilinzi',
-                                        //                                         title: 'Pilinzi',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/telo/pilinzi',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'celulit-i-strije',
-                                        //                                         title: 'Celulit i strije',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/telo/celulit-i-strije',
-                                        //                               },
-                                        //                     ],
-                                        //           },
-                                        //           {
-                                        //                     id: 'prirodna-kozmetika-kosa-i-koza-glave',
-                                        //                     title: 'Kosa i koža glave',
-                                        //                     link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave',
-                                        //                     children: [
-                                        //                               {
-                                        //                                         id: 'opadanje-kose',
-                                        //                                         title: 'Opadanje kose',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/opadanje-kose',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'nega-kose-na-suncu',
-                                        //                                         title: 'Nega kose na suncu',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/nega-kose-na-suncu',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'osetljiva-koza-glave',
-                                        //                                         title: 'Osetljiva koža glave',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/osetljiva-koza-glave',
-                                        //                               },
-                                        //                     ],
-                                        //           },
-                                        //           {
-                                        //                     id: 'prirodna-kozmetika-bebe-i-deca',
-                                        //                     title: 'Bebe i deca',
-                                        //                     link: '/proizvodi/prirodna-kozmetika/bebe-i-deca',
-                                        //                     children: [
-                                        //                               {
-                                        //                                         id: 'pranje',
-                                        //                                         title: 'Pranje',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/pranje',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'prirodna-kozmetika-bebe-i-deca-nega',
-                                        //                                         title: 'Nega',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/nega',
-                                        //                               },
-                                        //                               {
-                                        //                                         id: 'suncanje',
-                                        //                                         title: 'Sunčanje',
-                                        //                                         link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/suncanje',
-                                        //                               },
-                                        //                     ],
-                                        //           },
-                                        //           {
-                                        //                     id: 'prirodna-kozmetika-muskarci',
-                                        //                     link: '/proizvodi/prirodna-kozmetika/muskarci',
-                                        //                     title: 'Muškarci'
-                                        //           },
-                                        //           {
-                                        //                     id: 'prirodna-kozmetika-zene',
-                                        //                     link: '/proizvodi/prirodna-kozmetika/zene',
-                                        //                     title: 'Žene'
-                                        //           },
-                                        // ]
+                                        children: [
+                                                  {
+                                                            id: 'prirodna-kozmetika-lice',
+                                                            title: 'Lice',
+                                                            link: '/proizvodi/prirodna-kozmetika/lice',
+                                                            children: [
+                                                                      {
+                                                                                id: 'higijena-lica',
+                                                                                title: 'Higijena lica',
+                                                                                link: '/proizvodi/prirodna-kozmetika/lice/higijena-lica',
+                                                                      },
+                                                                      {
+                                                                                id: 'trepavice-i-obrve',
+                                                                                title: 'Trepavice i obrve',
+                                                                                link: '/proizvodi/prirodna-kozmetika/lice/trepavice-i-obrve',
+                                                                      },
+                                                                      {
+                                                                                id: 'hidratacija',
+                                                                                title: 'Hidratacija',
+                                                                                link: '/proizvodi/prirodna-kozmetika/lice/hidratacija',
+                                                                      },
+                                                            ],
+                                                  },
+                                                  {
+                                                            id: 'prirodna-kozmetika-telo',
+                                                            title: 'Telo',
+                                                            link: '/proizvodi/prirodna-kozmetika/telo',
+                                                            children: [
+                                                                      {
+                                                                                id: 'ostecena-koza',
+                                                                                title: 'Oštećena koža',
+                                                                                link: '/proizvodi/prirodna-kozmetika/telo/ostecena-koza',
+                                                                      },
+                                                                      {
+                                                                                id: 'pilinzi',
+                                                                                title: 'Pilinzi',
+                                                                                link: '/proizvodi/prirodna-kozmetika/telo/pilinzi',
+                                                                      },
+                                                                      {
+                                                                                id: 'celulit-i-strije',
+                                                                                title: 'Celulit i strije',
+                                                                                link: '/proizvodi/prirodna-kozmetika/telo/celulit-i-strije',
+                                                                      },
+                                                            ],
+                                                  },
+                                                  {
+                                                            id: 'prirodna-kozmetika-kosa-i-koza-glave',
+                                                            title: 'Kosa i koža glave',
+                                                            link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave',
+                                                            children: [
+                                                                      {
+                                                                                id: 'opadanje-kose',
+                                                                                title: 'Opadanje kose',
+                                                                                link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/opadanje-kose',
+                                                                      },
+                                                                      {
+                                                                                id: 'nega-kose-na-suncu',
+                                                                                title: 'Nega kose na suncu',
+                                                                                link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/nega-kose-na-suncu',
+                                                                      },
+                                                                      {
+                                                                                id: 'osetljiva-koza-glave',
+                                                                                title: 'Osetljiva koža glave',
+                                                                                link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/osetljiva-koza-glave',
+                                                                      },
+                                                            ],
+                                                  },
+                                                  {
+                                                            id: 'prirodna-kozmetika-bebe-i-deca',
+                                                            title: 'Bebe i deca',
+                                                            link: '/proizvodi/prirodna-kozmetika/bebe-i-deca',
+                                                            children: [
+                                                                      {
+                                                                                id: 'pranje',
+                                                                                title: 'Pranje',
+                                                                                link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/pranje',
+                                                                      },
+                                                                      {
+                                                                                id: 'prirodna-kozmetika-bebe-i-deca-nega',
+                                                                                title: 'Nega',
+                                                                                link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/nega',
+                                                                      },
+                                                                      {
+                                                                                id: 'suncanje',
+                                                                                title: 'Sunčanje',
+                                                                                link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/suncanje',
+                                                                      },
+                                                            ],
+                                                  },
+                                                  {
+                                                            id: 'prirodna-kozmetika-muskarci',
+                                                            link: '/proizvodi/prirodna-kozmetika/muskarci',
+                                                            title: 'Muškarci'
+                                                  },
+                                                  {
+                                                            id: 'prirodna-kozmetika-zene',
+                                                            link: '/proizvodi/prirodna-kozmetika/zene',
+                                                            title: 'Žene'
+                                                  },
+                                        ]
                               },
                               {
                                         id: 'akcije',

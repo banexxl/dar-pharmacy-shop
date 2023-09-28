@@ -31,6 +31,7 @@ export default function MainCategoryPage(props: any) {
                     ssr: true
           })
 
+          const router = useRouter()
           const [isLoading, setIsLoading] = useState(true);
 
           useEffect(() => {
@@ -57,7 +58,7 @@ export default function MainCategoryPage(props: any) {
                                         <Stack>
                                                   <UIProvider>
                                                             <SearchBox />
-                                                            <ProductsFilter filterObject={props.products} />
+                                                            <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
                                                             <AppDrawer isScreenToMedium={false} />
                                                   </UIProvider>
                                         </Stack>

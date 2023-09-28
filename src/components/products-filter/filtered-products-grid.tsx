@@ -3,7 +3,9 @@ import FilteredSingleProductMobile from "./filtered-single-product-mobile";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import FilteredSingleProductDesktop from "./filtered-single-product-desktop";
+import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import { useTranslation } from "next-i18next";
+import { Colors } from "@/styles/theme";
 
 
 export default function FilteredProductsGrid(props: any) {
@@ -12,11 +14,10 @@ export default function FilteredProductsGrid(props: any) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
 
-          console.log('props is samog grida tj proizvodi', props);
-
+          console.log('props is samog grida tj proizvodi', props.data.length);
 
           const renderProducts =
-                    props.data !== 'undefined' || props.data !== null || props.data.length != 0 ?
+                    props.data.length != 0 ?
                               props.data?.map((product: any) => (
                                         <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                                                   {isScreenToMedium ? (
@@ -28,11 +29,11 @@ export default function FilteredProductsGrid(props: any) {
 
                               ))
                               :
-                              <Box sx={{ marginTop: '50px' }}>
-                                        <Typography>
-                                                  {t('filter-page.no-products')}
-                                        </Typography>
+                              <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary }}>
+                                        <DoNotDisturbIcon />
                               </Box>
+
+
 
           return (
                     <Container sx={{ paddingBottom: '100px' }}>

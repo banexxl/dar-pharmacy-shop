@@ -5,6 +5,7 @@ import { Colors } from "../theme";
 export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
           marginTop: '100px',
           minHeight: '100vh',
+          gap: '10px',
           width: '99%',
           [theme.breakpoints.up("md")]: {
                     padding: "5px 5px",
@@ -67,12 +68,12 @@ export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
 export const FilteredProducts = styled(Box)(({ theme }) => ({
           height: '100%',
           [theme.breakpoints.down("md")]: {
-                    padding: "20px 20px",
+                    padding: "20px",
                     width: '1000%',
                     borderRadius: '20px'
           },
           [theme.breakpoints.up("md")]: {
-                    padding: "0px 20px",
+                    padding: "20px",
                     width: '100%',
                     borderRadius: '20px'
           },
