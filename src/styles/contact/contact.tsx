@@ -15,6 +15,7 @@ export const ContactBox = styled(Box)(({ theme }: any) => ({
           padding: "20px 0px 20px 0px",
           overflow: "hidden",
           background: Colors.secondary,
+          borderRadius: '10px'
 }));
 
 export const ContactInfoBox = styled(Box)(({ theme }: any) => ({

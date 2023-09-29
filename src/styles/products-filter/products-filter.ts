@@ -67,16 +67,9 @@ export const FilterCategoryAccordionBox = styled(Box)(({ theme }) => ({
 
 export const FilteredProducts = styled(Box)(({ theme }) => ({
           height: '100%',
-          [theme.breakpoints.down("md")]: {
-                    padding: "20px",
-                    width: '1000%',
-                    borderRadius: '20px'
-          },
-          [theme.breakpoints.up("md")]: {
-                    padding: "20px",
-                    width: '100%',
-                    borderRadius: '20px'
-          },
+          padding: "20px",
+          width: '100%',
+          borderRadius: '20px',
           display: "flex",
           flexDirection: 'column',
           justifyContent: "start",
@@ -86,20 +79,20 @@ export const FilteredProducts = styled(Box)(({ theme }) => ({
 }));
 
 export const FilteredProductsTitle = styled(Box)(({ theme }) => ({
-          height: '1%',
+          height: '20%',
           [theme.breakpoints.down("md")]: {
-                    padding: "20px 20px",
-                    width: '100%',
-                    borderRadius: '20px'
+                    width: '350px'
           },
           [theme.breakpoints.up("md")]: {
-                    padding: "20px 20px",
-                    width: '100%',
-                    borderRadius: '20px'
+                    width: '600px',
           },
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          // padding: "20px 20px",
+          // [theme.breakpoints.up("md")]: {
+          //           padding: "20px 20px",
+          //           borderRadius: '20px'
+          // },
+          // transform: 'translateX(50%)',
+          marginBottom: '20px',
           background: Colors.light_gray,
 }));
 

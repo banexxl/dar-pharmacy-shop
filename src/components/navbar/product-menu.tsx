@@ -1879,92 +1879,63 @@ export const ProductsMenu = () => {
                                         </NestedMenuItem> */}
                                         {/* --------------------------Ortopedija i pomagala----------------------------------------- */}
                                         <NestedMenuItem
-                                                  label="Anatomska obuća" parentMenuOpen={open}>
+                                                  label="Ortopedija i pomagala" parentMenuOpen={open}>
                                                   <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography >
-                                                                                Jastuci
+                                                                                <Link href={'/proizvodi/antidekubitalna-pomagala/jastuci'}>
+                                                                                          Jastuci
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography >
-                                                                                Dušeci
+                                                                                <Link href={'/proizvodi/antidekubitalna-pomagala/duseci'}>
+                                                                                          Dušeci
+                                                                                </Link>
                                                                       </StyledNestedTypography>
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
-                                                                      Štake
+                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/stake'}>
+                                                                                Štake
+                                                                      </Link>
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
-                                                                      Štapovi
+                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/stapovi'}>
+                                                                                Štapovi
+                                                                      </Link>
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
-                                                                      Ortoze
+                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/ortoze'}>
+                                                                                Ortoze
+                                                                      </Link>
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
-                                                                      Kinezi trake
+                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/kinezi-trake'}>
+                                                                                Kinezi trake
+                                                                      </Link>
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
-                                                                      Hodalice
+                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/hodalice'}>
+                                                                                Hodalice
+                                                                      </Link>
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
-                                                                      Postoljni podmetači
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                        </NestedMenuItem>
-                                        <NestedMenuItem
-                                                  label="Ortopedska pomagala" parentMenuOpen={open}>
-                                                  <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Jastuci
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Dušeci
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Štake
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Štapovi
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Ortoze
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Kinezi trake
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Hodalice
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Postoljni podmetači
+                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/postoljni-podmetaci'}>
+                                                                                Postoljni podmetači
+                                                                      </Link>
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                         </NestedMenuItem>

@@ -8,7 +8,8 @@ export const WishListWrapper = styled(Box)(({ theme }: any) => ({
           padding: theme.spacing(4),
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          gap: '20px'
 }));
 
 export const ProductDetailInfoWrapper = styled(Box)(() => ({
@@ -58,7 +59,6 @@ export const WishlistProductActionButton = styled(IconButton)(() => ({
 }))
 
 export const WishlistTable = styled(Table)(({ theme }: any) => ({
-
 }))
 
 export const WishlistTableBody = styled(TableBody)(({ theme }: any) => ({

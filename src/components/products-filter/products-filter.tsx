@@ -33,7 +33,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               </ProductsFilters>
                               <FilteredProducts>
                                         <FilteredProductsTitle>
-                                                  <Typography sx={{ fontSize: '25px', fontWeight: 'bold' }}>
+                                                  <Typography sx={{ fontSize: '20px', fontWeight: 'bold', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                                                             {filterObject.length != 0 ? routerQuery : "Nije pronadjen ni jedan proizvod sa trenutnim filterom!"}
                                                   </Typography>
                                         </FilteredProductsTitle>
