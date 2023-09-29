@@ -37,15 +37,17 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
           />
 ))(({ theme }) => ({
 
-          backgroundColor: Colors.light_gray, // Set your desired background color here
+          backgroundColor: Colors.light_gray,
           flexDirection: 'row-reverse',
           '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
                     transform: 'rotate(90deg)',
+                    backgroundColor: Colors.secondary,
+                    borderRadius: '5px'
           },
 }));
 export const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
           borderTop: '1px solid rgba(0, 0, 0, .125)',
-          padding: '0px'
+          padding: '0px',
 }));
 
 export const AccordionBox = styled(Box)(({ theme }) => ({

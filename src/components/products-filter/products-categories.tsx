@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 import { AccordionPanels } from './all-categories'
 import Link from 'next/link';
 import { useState } from 'react';
+import { Colors } from '@/styles/theme';
 
 const transformToMuiAccordion = (data: any) => {
 
@@ -14,8 +15,8 @@ const transformToMuiAccordion = (data: any) => {
                     const { id, link, title, children } = item;
 
                     return children && children.length > 0 ?
-                              <Accordion key={id}>
-                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
+                              <Accordion key={id} >
+                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id} >
                                                   <Typography>{title}</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>

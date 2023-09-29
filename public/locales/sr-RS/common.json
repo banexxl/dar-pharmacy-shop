@@ -65,7 +65,7 @@
           },
           "confirmation": {
                     "total-with-tax": "Ukupno sa PDV-om",
-                    "to-payment": "POŠALJI NARUDŽBINU",
+                    "to-payment": "KREIRAJ PORUDŽBENICU",
                     "to-shop": "Nazad u apoteku",
                     "clear-cart": "Isprazni korpu"
           },
