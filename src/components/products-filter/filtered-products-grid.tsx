@@ -14,8 +14,14 @@ export default function FilteredProductsGrid(props: any) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
 
+          console.log('props from grid', props);
+
           const renderProducts =
-                    props.data.length != 0 ?
+                    props.data == undefined || props.data?.length == 0 ?
+                              <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary }}>
+                                        <DoNotDisturbIcon />
+                              </Box>
+                              :
                               props.data?.map((product: any) => (
                                         <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                                                   {isScreenToMedium ? (
@@ -26,12 +32,6 @@ export default function FilteredProductsGrid(props: any) {
                                         </Grid>
 
                               ))
-                              :
-                              <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary }}>
-                                        <DoNotDisturbIcon />
-                              </Box>
-
-
 
           return (
                     <Container sx={{ paddingBottom: '100px' }}>

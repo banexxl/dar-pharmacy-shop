@@ -14,7 +14,6 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
           const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
           const { t } = useTranslation('common')
 
-
           const handlePriceChange = (event: any, newPriceRange: any) => {
                     setPriceRange(newPriceRange);
           };
@@ -51,9 +50,9 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
                                         </Grid>
                               </Grid>
                               <Button onClick={filterProductsByPriceRange}>
-                                        <Typography>
-                                                  {t('filter-page.apply-filter')}
-                                        </Typography>
+
+                                        {t('filter-page.apply-filter')}
+
                               </Button>
                     </PriceRangeBox>
           );
