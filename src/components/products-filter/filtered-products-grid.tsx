@@ -14,8 +14,6 @@ export default function FilteredProductsGrid(props: any) {
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const { t } = useTranslation('common')
 
-          console.log('props from grid', props);
-
           const renderProducts =
                     props.data == undefined || props.data?.length == 0 ?
                               <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary }}>
