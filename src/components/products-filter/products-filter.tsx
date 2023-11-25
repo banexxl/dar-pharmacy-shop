@@ -11,6 +11,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
 
           const { t } = useTranslation('common')
           const [filteredProducts, setFilteredProducts] = useState<any>();
+          console.log('aaaaaa', filteredProducts, filterObject.length);
 
           const handlePriceFilterChange = (filteredProducts: any) => {
                     setFilteredProducts(filteredProducts);
@@ -34,7 +35,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               <FilteredProducts>
                                         <FilteredProductsTitle>
                                                   <Typography sx={{ fontSize: '20px', fontWeight: 'bold', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-                                                            {filterObject?.length == 0 || filteredProducts?.length == 0 || filteredProducts == undefined ? "Nije pronadjen ni jedan proizvod sa trenutnim filterom!" : routerQuery}
+                                                            {filterObject?.length == 0 || filteredProducts?.length == 0 ? "Nije pronadjen ni jedan proizvod sa trenutnim filterom!" : routerQuery}
                                                   </Typography>
                                         </FilteredProductsTitle>
                                         <FilteredProductsGrid data={filteredProducts != undefined ? filteredProducts : filterObject} />
