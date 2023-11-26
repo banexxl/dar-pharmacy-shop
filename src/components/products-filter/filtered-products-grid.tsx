@@ -23,9 +23,9 @@ export default function FilteredProductsGrid(props: any) {
                               props.data?.map((product: any) => (
                                         <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                                                   {isScreenToMedium ? (
-                                                            <FilteredSingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />
+                                                            <FilteredSingleProductMobile key={product._id} product={product} isScreenToMedium={isScreenToMedium} />
                                                   ) : (
-                                                            <FilteredSingleProductDesktop product={product} isScreenToMedium={isScreenToMedium} />
+                                                            <FilteredSingleProductDesktop key={product._id} product={product} isScreenToMedium={isScreenToMedium} />
                                                   )}
                                         </Grid>
 

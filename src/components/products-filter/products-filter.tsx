@@ -11,7 +11,6 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
 
           const { t } = useTranslation('common')
           const [filteredProducts, setFilteredProducts] = useState<any>();
-          console.log('aaaaaa', filteredProducts, filterObject.length);
 
           const handlePriceFilterChange = (filteredProducts: any) => {
                     setFilteredProducts(filteredProducts);
