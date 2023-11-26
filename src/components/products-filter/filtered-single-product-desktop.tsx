@@ -97,7 +97,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                                         <FilteredProductImage src={product.imageURL} />
                               </FilteredProductImageContainer>
                               <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
-                                        <Tooltip placement="left" title={t("product.add-to-wishlist")}>
+                                        <Tooltip placement="left" title={"Dodaj u listu želja"}>
                                                   <FavoriteIcon />
                                         </Tooltip>
                               </FilteredProductFavButton>
@@ -107,13 +107,13 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                                                   dispatch(addToCart(product))
                                         }}
                                         >
-                                                  {t('homepage.addtocart')}
+                                                  Dodaj u korpu
                                         </FilteredProductAddToCart>
                               )}
                               <FilteredProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
                                                   <FilteredProductActionButton>
-                                                            <Tooltip placement="left" title={t("product.share-product")}>
+                                                            <Tooltip placement="left" title={"Podeli proizvod"}>
                                                                       <ShareIcon color="primary" />
                                                             </Tooltip>
                                                   </FilteredProductActionButton>
@@ -128,12 +128,12 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               <ProductDetailDialog product={product} />
                               {addedToCartAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-cart')}
+                                                  Proizvod dodat u korpu
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-wishlist')}
+                                                  Proizvod dodat u listu želja
                                         </Alert>
                               )}
                     </FilteredProduct>

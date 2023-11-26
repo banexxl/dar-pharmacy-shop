@@ -14,7 +14,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
 
           const { setShowSearchBox } = useUIContext()
           const [isScrolled, setIsScrolled] = useState<Boolean>(false);
-          const { t } = useTranslation('common')
+
           const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 
 
@@ -55,7 +55,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                     <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
                               <AppbarTitle variant="h4">
                                         <Link href="/">
-                                                  {t('homepage.title')}
+                                                  Apoteka DAR
                                         </Link>
                               </AppbarTitle>
                               <ListItemButton sx={{

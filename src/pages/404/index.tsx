@@ -14,7 +14,7 @@ import React from 'react'
 
 const PageNotFount = () => {
 
-          const { t } = useTranslation('common')
+
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel />,
@@ -24,7 +24,7 @@ const PageNotFount = () => {
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('checkout.title')}</title>
+                                        <title>404</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -36,13 +36,13 @@ const PageNotFount = () => {
                                         <Stack>
                                                   <UIProvider>
                                                             <Container404>
-                                                                      <Heading404>{t('404.not-found')} {'\u{1F612}'}</Heading404>
+                                                                      <Heading404>404 - Stranica nije pronađena {'\u{1F612}'}</Heading404>
                                                                       <Message404 variant="body1">
-                                                                                {t('404.message')} {'\u{1F609}'}
+                                                                                UPS!....Stranica koju ste zahtevali je u izradi! Možda iznenadi i pojavi se posle osvežavanja stranice {'\u{1F609}'}
                                                                       </Message404>
                                                                       <Link href="/" passHref>
                                                                                 <StyledButton404 variant="contained" color="primary">
-                                                                                          {t('404.back-to-home')}
+                                                                                          Nazad na početnu
                                                                                 </StyledButton404>
                                                                       </Link>
                                                             </Container404>
@@ -58,7 +58,7 @@ const PageNotFount = () => {
 export async function getStaticProps({ locale }: any) {
           return {
                     props: {
-                              ...(await serverSideTranslations('sr-RS'))
+                              //...(await serverSideTranslations('sr-RS'))
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                               // Will be passed to the page component as props
                     },

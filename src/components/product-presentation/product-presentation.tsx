@@ -40,7 +40,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 export default function ProductCard() {
           const [expanded, setExpanded] = useState(false);
-          const { t } = useTranslation('common')
+
           const handleExpandClick = () => {
                     setExpanded(!expanded);
           };
@@ -70,8 +70,8 @@ export default function ProductCard() {
                                                             CC
                                                   </Avatar>
                                         }
-                                        title={t('homepage.popular-product-title')}
-                                        subheader={t('homepage.popular-product-description-short')}
+                                        title={"Crux Kolagen"}
+                                        subheader={"Hidrolizovani govedji kolagen (solugel), 10g u dnevnoj dozi"}
                               />
                               <CardMedia
                                         component="img"
@@ -82,7 +82,7 @@ export default function ProductCard() {
                               {
                                         addedToCartAlert && (
                                                   <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%, 300px)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.added-to-cart')}
+                                                            Dodato u korpu
                                                   </Alert>
                                         )
                               }
@@ -111,7 +111,7 @@ export default function ProductCard() {
                                                   }))
                                         }}
                                         >
-                                                  {t('homepage.addtocart')}
+                                                  Dodaj u korpu
                                         </PopularProductAddToCart>
                                         <ExpandMore
                                                   expand={expanded}
@@ -124,9 +124,9 @@ export default function ProductCard() {
                               </CardActions>
                               <Collapse in={expanded} timeout="auto" unmountOnExit>
                                         <CardContent>
-                                                  <Typography paragraph>{t('product.description')}</Typography>
+                                                  <Typography paragraph>Opis</Typography>
                                                   <Typography paragraph>
-                                                            {t('homepage.popular-product-description-long')}
+                                                            Crux Pure kolagen u prahu za zglobove, kosu, nokte, kožu. Bez aditiva, šećera, dodataka. Prednosti Crux kolagena:mlada i hidrirana koža, sjajna, duga kosa, zdravi nokti,jače kosti, hrskavica, zglobovi, rad creva, kvalitetniji san.
                                                   </Typography>
                                         </CardContent>
                               </Collapse>

@@ -9,7 +9,7 @@ export default function Banner() {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-          const { t } = useTranslation('common')
+
           const [loading, setLoading] = useState(false)
 
           return (
@@ -17,12 +17,12 @@ export default function Banner() {
                               <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
                               <BannerContent>
                                         <BannerTitle>
-                                                  {t('homepage.banner.title')}
+                                                  Apoteka DAR
                                         </BannerTitle>
-                                        {t('homepage.banner.banner-text')}
+                                        Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
                                         <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
                                                   <Link href={"/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima"}>
-                                                            {t('homepage.banner.banner-button')}
+                                                            Pogledajte ponudu
                                                   </Link>
                                         </BannerShopButton>
                               </BannerContent>

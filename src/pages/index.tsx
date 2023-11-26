@@ -24,7 +24,7 @@ import ProductCard from "@/components/product-presentation/product-presentation"
 export default function Home(props: any) {
 
           const { dataForGrid, productsOnDiscount, manufacturers } = props
-          const { t } = useTranslation('common')
+
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -35,7 +35,7 @@ export default function Home(props: any) {
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('homepage.title')}</title>
+                                        <title>Apoteka DAR</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -50,11 +50,11 @@ export default function Home(props: any) {
                                                             <Banner />
                                                             <Promotions />
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-                                                                      <MessageText variant="h4">{t('homepage.popular-product')}</MessageText>
+                                                                      <MessageText variant="h4">Popularno</MessageText>
                                                             </Box>
                                                             <ProductCard />
                                                             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-                                                                      <MessageText variant="h4">{t('homepage.featured-products')}</MessageText>
+                                                                      <MessageText variant="h4">Izdvajamo iz ponude</MessageText>
                                                             </Box>
                                                             <Products data={dataForGrid} />
                                                             <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
@@ -122,7 +122,7 @@ export async function getStaticProps({ locale }: any) {
                               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                               manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                               productsByMainCategoryApoteka: JSON.parse(JSON.stringify(productsByMainCategoryApoteka)),
-                              ...(await serverSideTranslations('sr-RS'))
+                              //...(await serverSideTranslations('sr-RS'))
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                               // ...(await serverSideTranslations(locale ?? 'sr-RS', [
                               //           'common',

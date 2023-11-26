@@ -12,7 +12,7 @@ interface PriceFilterProps {
 const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFilterChange }: any) => {
 
           const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
-          const { t } = useTranslation('common')
+
 
           const handlePriceChange = (event: any, newPriceRange: any) => {
                     setPriceRange(newPriceRange);
@@ -29,7 +29,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
 
           return (
                     <PriceRangeBox >
-                              <Typography gutterBottom>{t('filter-page.price-range')}</Typography>
+                              <Typography gutterBottom>Opseg cena</Typography>
                               <Grid container spacing={2} alignItems="center">
                                         <Grid item xs={10} marginLeft='6%'>
                                                   <Slider
@@ -51,7 +51,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
                               </Grid>
                               <Button onClick={filterProductsByPriceRange}>
 
-                                        {t('filter-page.apply-filter')}
+                                        Primeni filter
 
                               </Button>
                     </PriceRangeBox>

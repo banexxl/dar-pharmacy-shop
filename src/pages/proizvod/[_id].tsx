@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 
 const SingleProduct = (props: any) => {
 
-          const { t } = useTranslation('common')
+
 
           //this way next js does not try to render theme provider on server (no hydration error : )
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -28,7 +28,7 @@ const SingleProduct = (props: any) => {
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('homepage.title')}</title>
+                                        <title>Apoteka DAR</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -66,7 +66,7 @@ export async function getStaticProps(context: any) {
           return {
                     props: {
                               product: JSON.parse(JSON.stringify(product)),
-                              ...(await serverSideTranslations('sr-RS'))
+                              //...(await serverSideTranslations('sr-RS'))
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
           }

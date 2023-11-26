@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const ProductCarousel = (props: any) => {
 
-          const { t } = useTranslation('common')
+
 
           const responsive = {
                     desktop: {
@@ -57,7 +57,7 @@ const ProductCarousel = (props: any) => {
                                                                       </CarouselTitleBox>
                                                                       <CarouselButton >
                                                                                 <Link href={`/proizvod/${decodeURIComponent(product._id)}`}>
-                                                                                          {t('homepage.carousel-details')}
+                                                                                          Detalji
                                                                                 </Link>
                                                                       </CarouselButton>
                                                             </StyledCarouselCard>

@@ -52,7 +52,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                         background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px'
                               }}
                               >
-                                        <Typography variant="h5" component="legend">{t('checkout.payment-options')}</Typography>
+                                        <Typography variant="h5" component="legend">Način plaćanja</Typography>
                                         <RadioGroup
                                                   aria-labelledby="demo-controlled-radio-buttons-group"
                                                   name="controlled-radio-buttons-group"
@@ -60,22 +60,22 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                   onChange={(e: any) => setPaymentOption(e.target.value)}
                                                   sx={{ display: 'flex', flexDirection: 'row' }}
                                         >
-                                                  <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={t('checkout.on-delivery-payment')} />
-                                                  <FormControlLabel disabled value="cardPayment" control={<Radio />} label={t('checkout.card-payment') + " " + "(" + t('checkout.payment-comming-soon') + ")"} />
+                                                  <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
+                                                  <FormControlLabel disabled value="cardPayment" control={<Radio />} label={"Kartično plaćanje - Uskoro"} />
                                         </RadioGroup>
                                         {
                                                   paymentOption === 'cardPayment' ?
-                                                            <Formik initialValues={initialPaymentOptionsValues} onSubmit={(values: IPaymentOptionsForm) => handleSubmit(values)} validationSchema={creditCardSchema(t)}>
+                                                            <Formik initialValues={initialPaymentOptionsValues} onSubmit={(values: IPaymentOptionsForm) => handleSubmit(values)} validationSchema={creditCardSchema}>
                                                                       {
                                                                                 formik => (
                                                                                           <Form>
                                                                                                     <Typography variant="h6" component="legend" gutterBottom>
-                                                                                                              {t('credit-card.credit-card')}
+                                                                                                              Kartično plaćanje
                                                                                                     </Typography>
                                                                                                     <Grid container spacing={2}>
                                                                                                               <Grid item xs={12} sm={12}>
                                                                                                                         <TextField
-                                                                                                                                  label={t('credit-card.card-number')}
+                                                                                                                                  label={"Broj kartice"}
                                                                                                                                   variant="outlined"
                                                                                                                                   value={formik.values.cardNumber}
                                                                                                                                   error={formik.touched?.cardNumber && !!formik.errors?.cardNumber}
@@ -93,7 +93,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                                                                                                   <MobileDatePicker
                                                                                                                                             views={['year', 'month']}
-                                                                                                                                            label={t('credit-card.expiry-date')}
+                                                                                                                                            label={"Datum isteka kartice"}
                                                                                                                                             disablePast
                                                                                                                                             onAccept={(date: ChangeEvent<HTMLInputElement> | null) => formik.setFieldValue('expirationDate', date)}
                                                                                                                                             format='MM/YY'
@@ -109,7 +109,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                               </Grid>
                                                                                                               <Grid item xs={12} sm={6}>
                                                                                                                         <TextField
-                                                                                                                                  label={t('credit-card.security-code')}
+                                                                                                                                  label={"Sigurnosni kod"}
                                                                                                                                   variant="outlined"
                                                                                                                                   name="securityCode"
                                                                                                                                   value={formik.values.securityCode}
@@ -127,10 +127,10 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                                                               </Grid>
                                                                                                               < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
                                                                                                                         <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                                                                                                                  {t('checkout.previousbutton')}
+                                                                                                                                  Nazad
                                                                                                                         </CheckoutNextPrevButton>
                                                                                                                         <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
-                                                                                                                                  {t('checkout.nextbutton')}
+                                                                                                                                  Sledeća stranica
                                                                                                                         </CheckoutNextPrevButton>
                                                                                                               </Grid>
                                                                                                     </Grid>
@@ -141,10 +141,10 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                             :
                                                             < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
                                                                       <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                                                                {t('checkout.previousbutton')}
+                                                                                Nazad
                                                                       </CheckoutNextPrevButton>
                                                                       <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
-                                                                                {t('checkout.nextbutton')}
+                                                                                Dalje
                                                                       </CheckoutNextPrevButton>
                                                             </Grid>
                                         }

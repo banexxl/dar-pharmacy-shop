@@ -1,42 +1,42 @@
 import { TFunction } from 'i18next';
 import { object, string } from 'yup';
 
-export const userFormSchema = (t: any) => {
+export const userFormSchema = () => {
           return object().shape({
                     firstName: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.firstName') }))
-                              .max(30, t('errorMessages.tooLong', { max: 30 })),
+                              .required("Ovo polje je obavezno")
+                              .max(30, "Ovo polje je predugačko, max 30"),
 
                     lastName: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.lastName') }))
-                              .max(30, t('errorMessages.tooLong', { max: 30 })),
+                              .required("Ovo polje je obavezno")
+                              .max(30, "Ovo polje je predugačko, max 30"),
 
                     streetAddress: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.streetAddress') }))
-                              .max(100, t('errorMessages.tooLong', { max: 100 })),
+                              .required("Ovo polje je obavezno")
+                              .max(100, "Ovo polje je predugačko, max 100"),
 
                     phoneNumber: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.phoneNumber') }))
-                              .max(100, t('errorMessages.tooLong', { max: 100 })),
+                              .required("Ovo polje je obavezno")
+                              .max(25, "Ovo polje je predugačko, max 25"),
 
                     city: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.city') }))
-                              .max(30, t('errorMessages.tooLong', { max: 30 })),
+                              .required("Ovo polje je obavezno")
+                              .max(25, "Ovo polje je predugačko, max 25"),
 
                     provinceState: string()
                               .notRequired()
-                              .max(30, t('errorMessages.tooLong', { max: 30 })),
+                              .max(25, "Ovo polje je predugačko, max 25"),
 
                     country: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.country') }))
-                              .max(30, t('errorMessages.tooLong', { max: 30 })),
+                              .required("Ovo polje je obavezno")
+                              .max(25, "Ovo polje je predugačko, max 25"),
 
                     zipPostalCode: string()
-                              .required(t('errorMessages.required', { fieldName: t('userinfo.zipPostalCode') }))
-                              .min(5, t('errorMessages.tooShort', { min: 5 }))
-                              .max(7, t('errorMessages.tooLong', { max: 7 })),
-                    email: string().
-                              required(t('errorMessages.required', { fieldName: t('userinfo.email') }))
-                              .email(t('errorMessages.email', { fieldName: t('userinfo.email') })),
+                              .required("Ovo polje je obavezno")
+                              .min(1, "Ovo polje je prekratko, min 1")
+                              .max(10, "Ovo polje je predugačko, max 10"),
+                    email: string()
+                              .required("Ovo polje je obavezno")
+                              .email("Ovo polje mora biti email"),
           });
 };

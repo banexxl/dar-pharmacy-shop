@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
-          const { t } = useTranslation('common')
+
           const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
           const initialUserFormValues: IUserForm = {
                     firstName: userFormSelector.firstName,
@@ -52,18 +52,18 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                     <DynamicThemeProvider theme={theme}>
                               <Container disableGutters maxWidth="md">
 
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema(t)}>
+                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                                                   {
                                                             formik => (
                                                                       <Form>
                                                                                 <Typography variant="h5" component="legend" gutterBottom>
-                                                                                          {t('checkout.user-info')}
+                                                                                          Adresa za dostavu
                                                                                 </Typography>
                                                                                 <Grid container spacing={2}>
                                                                                           <Grid item xs={12} sm={6}>
                                                                                                     <TextField
                                                                                                               value={formik.values.firstName}
-                                                                                                              label={t('userinfo.firstName')}
+                                                                                                              label={"Ime"}
                                                                                                               name={'firstName'}
                                                                                                               variant="outlined"
                                                                                                               onChange={formik.handleChange('firstName')}
@@ -76,7 +76,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.lastName}
                                                                                                               onChange={formik.handleChange('lastName')}
-                                                                                                              label={t('userinfo.lastName')}
+                                                                                                              label={"Prezime"}
                                                                                                               name={'lastName'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.lastName && !!formik.errors?.lastName}
@@ -88,7 +88,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.phoneNumber}
                                                                                                               onChange={formik.handleChange('phoneNumber')}
-                                                                                                              label={t('userinfo.phoneNumber')}
+                                                                                                              label={"Broj telefona"}
                                                                                                               name={'phoneNumber'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
@@ -100,7 +100,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.streetAddress}
                                                                                                               onChange={formik.handleChange('streetAddress')}
-                                                                                                              label={t('userinfo.streetAddress')}
+                                                                                                              label={"Adresa"}
                                                                                                               name={'streetAddress'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.streetAddress && !!formik.errors?.streetAddress}
@@ -112,7 +112,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.city}
                                                                                                               onChange={formik.handleChange('city')}
-                                                                                                              label={t('userinfo.city')}
+                                                                                                              label={"Grad"}
                                                                                                               name={'city'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.city && !!formik.errors?.city}
@@ -124,7 +124,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.provinceState}
                                                                                                               onChange={formik.handleChange('provinceState')}
-                                                                                                              label={t('userinfo.provinceState')}
+                                                                                                              label={"Region"}
                                                                                                               name={'provinceState'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.provinceState && !!formik.errors?.provinceState}
@@ -136,7 +136,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.country}
                                                                                                               onChange={formik.handleChange('country')}
-                                                                                                              label={t('userinfo.country')}
+                                                                                                              label={"Država"}
                                                                                                               name={'country'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.country && !!formik.errors?.country}
@@ -148,7 +148,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.zipPostalCode}
                                                                                                               onChange={formik.handleChange('zipPostalCode')}
-                                                                                                              label={t('userinfo.zipPostalCode')}
+                                                                                                              label={"Poštanski broj"}
                                                                                                               name={'zipPostalCode'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.zipPostalCode && !!formik.errors?.zipPostalCode}
@@ -160,7 +160,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                                     <TextField
                                                                                                               value={formik.values.email}
                                                                                                               onChange={formik.handleChange('email')}
-                                                                                                              label={t('userinfo.email')}
+                                                                                                              label={"Email"}
                                                                                                               name={'email'}
                                                                                                               variant="outlined"
                                                                                                               error={formik.touched?.email && !!formik.errors?.email}
@@ -170,10 +170,10 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                                                           </Grid>
                                                                                           <PaymentOptionRadio>
                                                                                                     <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(), dispatch(clearUserForm()) }}                                                                                          >
-                                                                                                              {t('checkout.clearform')}
+                                                                                                              Obriši
                                                                                                     </ClearFormButton>
                                                                                                     <CheckoutNextPrevButton type='submit' endIcon={< NavigateNextIcon />}>
-                                                                                                              {t('checkout.nextbutton')}
+                                                                                                              Dalje
                                                                                                     </CheckoutNextPrevButton>
                                                                                           </PaymentOptionRadio>
                                                                                 </Grid>

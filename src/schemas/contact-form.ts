@@ -1,14 +1,14 @@
 import { object, string } from 'yup';
 
-export const contactFormSchema = (t: any) => {
+export const contactFormSchema = () => {
           return object().shape({
                     name: string()
-                              .required(t('errorMessages.required', { fieldName: t('contact.name') }))
-                              .max(30, t('errorMessages.tooLong', { max: 30 })),
+                              .required("Ovo polje je obavezno")
+                              .max(30, "Ovo polje je predugačko"),
                     email: string()
-                              .required(t('errorMessages.required', { fieldName: t('contact.email') }))
-                              .email(t('errorMessages.email', { fieldName: t('contact.email') })),
+                              .required("Ovo polje je obavezno")
+                              .email("Ovo polje mora biti email"),
                     message: string()
-                              .required(t('errorMessages.required', { fieldName: t('contact.message') }))
+                              .required("Ovo polje je obavezno")
           });
 };

@@ -9,7 +9,7 @@ import BlogCard from '../blog-card/blog-card';
 
 const CarouselBlog = (props: any) => {
 
-          const { t } = useTranslation('common')
+
 
           const responsive = {
                     desktop: {

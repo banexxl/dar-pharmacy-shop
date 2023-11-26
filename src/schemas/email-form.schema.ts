@@ -1,18 +1,18 @@
 import { boolean, object, string } from 'yup';
 
-export const userEmailSchema = (t: any) => {
+export const userEmailSchema = () => {
           return object().shape({
                     email: string().
-                              required(t('errorMessages.required', { fieldName: t('userinfo.email') }))
-                              .email(t('errorMessages.email', { fieldName: t('userinfo.email') })),
+                              required("Ovo polje je obavezno!")
+                              .email("Ovo polje mora biti email!"),
           })
 }
 
-export const subscriptionEmailSchema = (t: any) => {
+export const subscriptionEmailSchema = () => {
           return object().shape({
                     email: string().
-                              required(t('errorMessages.required', { fieldName: t('userinfo.email') }))
-                              .email(t('errorMessages.email', { fieldName: t('userinfo.email') })),
-                    agreedToTerms: boolean().required((t('errorMessages.required', { fieldName: t('userinfo.subscribeCheckbox') })))
+                              required("Ovo polje je obavezno!")
+                              .email("Ovo polje mora biti email!"),
+                    agreedToTerms: boolean().required("Ovo polje je obavezno!")
           })
 }

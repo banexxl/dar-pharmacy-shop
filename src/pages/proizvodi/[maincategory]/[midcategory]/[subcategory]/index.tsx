@@ -100,7 +100,7 @@ export async function getServerSideProps(context: any) {
           return {
                     props: {
                               products: JSON.parse(JSON.stringify(productsByMainMidSubCategory)),
-                              ...(await serverSideTranslations('sr-RS'))
+                              //...(await serverSideTranslations('sr-RS'))
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                     },
           }

@@ -99,7 +99,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                         <ProductImage src={product.imageURL} />
                               </FilteredProductImageContainer>
                               <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
-                                        <Tooltip placement="left" title={t("product.add-to-wishlist")}>
+                                        <Tooltip placement="left" title={"Dodaj u listu želja"}>
                                                   <FavoriteIcon />
                                         </Tooltip>
                               </ProductFavButton>
@@ -109,13 +109,13 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                                                   dispatch(addToCart(product))
                                         }}
                                         >
-                                                  {t('homepage.addtocart')}
+                                                  Ddoaj u korpu
                                         </ProductAddToCart>
                               )}
                               <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
                                         <Stack direction={isScreenToMedium ? "row" : "column"}>
                                                   <ProductActionButton>
-                                                            <Tooltip placement="left" title={t("product.share-product")}>
+                                                            <Tooltip placement="left" title={"Podeli proizvod"}>
                                                                       <ShareIcon color="primary" />
                                                             </Tooltip>
                                                   </ProductActionButton>
@@ -130,12 +130,12 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                               <ProductDetailDialog product={product} />
                               {addedToCartAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-cart')}
+                                                  Proizvod dodat u korpu
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-wishlist')}
+                                                  Proizvod dodat u listu želja
                                         </Alert>
                               )}
                     </Product>

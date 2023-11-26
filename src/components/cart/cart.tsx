@@ -45,7 +45,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   justifyContent={"space-between"}
                                         >
                                                   <Typography sx={{ color: Colors.primary, fontSize: '1.5rem', fontWeight: 'bold' }}>
-                                                            {t('cart.products')}
+                                                            Proizvodi u korpi:
                                                   </Typography>
                                                   <IconButton onClick={onClose}>
                                                             <CloseIcon />
@@ -57,13 +57,13 @@ export default function Cart({ open, onClose }: ICartProps) {
                                         <CartWrapper component={Paper}>
                                                   <StyledTable>
                                                             <StyledHeader>
-                                                                      <StyledHeaderCell>{t('cart.image')}</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">{t('cart.name')}</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">{t('cart.quantity')}</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">{t('cart.code')}</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">{t('cart.amount')}</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">{t('cart.price')}</StyledHeaderCell>
-                                                                      <StyledHeaderCell align="left">{t('cart.total')}</StyledHeaderCell>
+                                                                      <StyledHeaderCell>Slika</StyledHeaderCell>
+                                                                      <StyledHeaderCell align="left">Naziv</StyledHeaderCell>
+                                                                      <StyledHeaderCell align="left">Pakovanje</StyledHeaderCell>
+                                                                      <StyledHeaderCell align="left">Kod</StyledHeaderCell>
+                                                                      <StyledHeaderCell align="left">Količina</StyledHeaderCell>
+                                                                      <StyledHeaderCell align="left">Cena</StyledHeaderCell>
+                                                                      <StyledHeaderCell align="left">Ukupno sa PDV-om</StyledHeaderCell>
                                                             </StyledHeader>
                                                             <StyledTableBody>
                                                                       {cart.map((cartItem: ICartItem) => (

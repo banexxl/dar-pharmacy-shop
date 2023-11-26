@@ -18,7 +18,6 @@ const SlideTransition = (props: any) => {
 export default function WishList({ open, onClose, product }: any) {
 
           const theme = useTheme()
-          const { t } = useTranslation();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
           const wishlist = useSelector((state: any) => state.persistReduce.wishListReducer)
           const dispatch = useDispatch()
@@ -51,11 +50,11 @@ export default function WishList({ open, onClose, product }: any) {
                                         <WishListWrapper component={Paper}>
                                                   <WishlistTable>
                                                             <WishlistHeader>
-                                                                      <WishlistHeaderCell>{t('cart.image')}</WishlistHeaderCell>
-                                                                      <WishlistHeaderCell align="left">{t('cart.name')}</WishlistHeaderCell>
-                                                                      <WishlistHeaderCell align="left">{t('cart.quantity')}</WishlistHeaderCell>
-                                                                      <WishlistHeaderCell align="left">{t('cart.code')}</WishlistHeaderCell>
-                                                                      <WishlistHeaderCell align="left">{t('cart.price')}</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell>Slika</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">Naziv</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">Količina</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">Šifra</WishlistHeaderCell>
+                                                                      <WishlistHeaderCell align="left">Cena</WishlistHeaderCell>
                                                             </WishlistHeader>
                                                             <WishlistTableBody>
                                                                       {wishlist.map((cartItem: IWishlistItem) => (

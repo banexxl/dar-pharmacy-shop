@@ -21,7 +21,7 @@ import Swal from "sweetalert2";
 
 export default function Footer() {
 
-          const { t } = useTranslation('common');
+          ;
           const [agreedWarning, setAgreedWarning] = useState(false)
           const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
           const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
@@ -87,59 +87,59 @@ export default function Footer() {
                     <FooterContainer>
                               <FooterInfoAccount >
                                         <Box>
-                                                  <FooterTitle variant="body1">{t('footer.information')}</FooterTitle>
+                                                  <FooterTitle variant="body1">Informacije</FooterTitle>
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
                                                             <ListItemText>
                                                                       <Link href={"/"} >
                                                                                 <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          {t('footer.home')}
+                                                                                          Početna
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                             <ListItemText>
                                                                       <Link href='/informacije/o-nama' >
                                                                                 <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          {t('footer.about-us')}
+                                                                                          O nama
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                             <ListItemText>
                                                                       <Link href='/informacije/politika-privatnosti'>
                                                                                 <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          {t('footer.privacy-policy')}
+                                                                                          Politika privatnosti
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                             <ListItemText>
                                                                       <Link href='/informacije/uslovi-koriscenja'>
                                                                                 <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          {t('footer.terms-conditions')}
+                                                                                          Uslovi korišćenja
                                                                                 </Typography>
                                                                       </Link>
                                                             </ListItemText>
                                                   </List>
                                         </Box>
                                         <Box>
-                                                  <FooterTitle variant="body1">{t('footer.my-account')}</FooterTitle>
+                                                  <FooterTitle variant="body1">Nalog</FooterTitle>
                                                   <List sx={{ textAlign: 'center', color: Colors.secondary }}>
                                                             <ListItemText onClick={showLoginDialog}>
                                                                       <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                {t('footer.login')}
+                                                                                Prijava
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText onClick={showCartDialog}>
                                                                       <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                {t('footer.cart')}
+                                                                                Korpa
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText onClick={showLoginDialog}>
                                                                       <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                {t('footer.my-account')}
+                                                                                Moj profil
                                                                       </Typography>
                                                             </ListItemText>
                                                             <ListItemText onClick={showWishListDialog}>
                                                                       <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                {t('footer.wishlist')}
+                                                                                List želja
                                                                       </Typography>
                                                             </ListItemText>
                                                   </List>
@@ -150,16 +150,16 @@ export default function Footer() {
                                         <InstagramIcon onClick={() => window.open('https://instagram.com/apoteka_dar')} sx={{ cursor: 'pointer' }} />
                               </FooterSocial>
 
-                              <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema(t)}>
+                              <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema}>
                                         {
                                                   formik => (
                                                             <Form>
 
                                                                       <FooterSubscribe>
-                                                                                <FooterTitle variant="body1">{t('footer.newsletter')}</FooterTitle>
+                                                                                <FooterTitle variant="body1">Bilten</FooterTitle>
                                                                                 <SubscribeTf
                                                                                           color="secondary"
-                                                                                          label={t('footer.email')}
+                                                                                          label={"Email adresa"}
                                                                                           variant="filled"
                                                                                           value={formik.values.email}
                                                                                           onChange={formik.handleChange('email')}
@@ -172,14 +172,14 @@ export default function Footer() {
                                                                                           type="submit"
                                                                                 //disabled={formik.errors ? true : false}
                                                                                 >
-                                                                                          {t('footer.subscribe')}
+                                                                                          Prijavi se
                                                                                 </Button>
                                                                                 <FormControlLabel
                                                                                           control={<PrivacyPolicyCheckBox checked={formik.values.agreedToTerms} />}
                                                                                           onChange={
                                                                                                     formik.handleChange('agreedToTerms')
                                                                                           }
-                                                                                          label={t('information.privacy-policy.agree')}
+                                                                                          label={"Prihvatam uslove politike privatnosti"}
                                                                                           name="agreedToTerms"
                                                                                 />
                                                                       </FooterSubscribe>
@@ -191,7 +191,7 @@ export default function Footer() {
                               {
                                         agreedWarning && (
                                                   <Alert variant="filled" severity="error" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
-                                                            {t('information.privacy-policy.agree-warning')}
+                                                            Upozorenje: Morate prihvatiti Politiku privatnosti!
                                                   </Alert>
                                         )
                               }

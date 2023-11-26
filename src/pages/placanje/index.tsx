@@ -20,7 +20,7 @@ import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/check
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-          const { t } = useTranslation('common')
+
           const [tabIndex, setTabIndex] = useState(0)
           const setTab = (tabIndex: number) => {
                     setTabIndex(tabIndex)
@@ -33,12 +33,12 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     ssr: false
           })
 
-          const steps = [t("checkout.shippingAddress"), t("checkout.card-payment"), t("checkout.confirmation")];
+          const steps = ["Adresa za dostavu", "Način plaćanje", "Potvrda"];
 
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('checkout.title')}</title>
+                                        <title>Narudžbenica</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -59,9 +59,9 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                                                       </CheckoutStepper>
 
                                                                       <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}>
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.user-info')}</CheckoutTabText>} />
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.payment-options')}</CheckoutTabText>} />
-                                                                                <CheckoutTab label={<CheckoutTabText>{t('checkout.confirmation')}</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>Adresa za dostavu</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>Način plaćanja</CheckoutTabText>} />
+                                                                                <CheckoutTab label={<CheckoutTabText>Potvrda</CheckoutTabText>} />
                                                                       </CheckoutTabs>
 
                                                                       <TabPanel value={tabIndex} index={0}>
@@ -87,7 +87,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export async function getStaticProps({ locale }: any) {
           return {
                     props: {
-                              ...(await serverSideTranslations('sr-RS'))
+                              //...(await serverSideTranslations('sr-RS'))
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                               // Will be passed to the page component as props
                     },

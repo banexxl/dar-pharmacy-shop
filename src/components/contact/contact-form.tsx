@@ -13,9 +13,6 @@ import Link from 'next/link';
 
 const ContactForm = () => {
 
-          const { t } = useTranslation('common')
-
-
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel />,
                     ssr: false
@@ -28,7 +25,7 @@ const ContactForm = () => {
 
           return (
                     <DynamicThemeProvider theme={theme}>
-                              <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema(t)}>
+                              <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema}>
                                         {
                                                   formik => (
                                                             <Form style={{
@@ -37,7 +34,7 @@ const ContactForm = () => {
                                                                       borderRadius: '10px', gap: '10px', padding: '10px',
                                                             }}>
                                                                       <ContactTitle variant="h5" component="legend" gutterBottom>
-                                                                                {t('contact.contact-form')}
+                                                                                Kontakt forma
                                                                       </ContactTitle>
 
                                                                       <ContactText>
@@ -47,7 +44,7 @@ const ContactForm = () => {
                                                                       </ContactText>
                                                                       <TextField
                                                                                 value={formik.values.name}
-                                                                                label={t('contact.name')}
+                                                                                label={"Ime"}
                                                                                 name={'name'}
                                                                                 variant="outlined"
                                                                                 onChange={formik.handleChange('name')}
@@ -59,7 +56,7 @@ const ContactForm = () => {
                                                                       <TextField
                                                                                 value={formik.values.email}
                                                                                 onChange={formik.handleChange('email')}
-                                                                                label={t('contact.email')}
+                                                                                label={"Prezime"}
                                                                                 name={'email'}
                                                                                 variant="outlined"
                                                                                 error={formik.touched?.email && !!formik.errors?.email}
@@ -70,7 +67,7 @@ const ContactForm = () => {
                                                                       <TextField
                                                                                 value={formik.values.message}
                                                                                 onChange={formik.handleChange('message')}
-                                                                                label={t('contact.message')}
+                                                                                label={"Poruka"}
                                                                                 name={'message'}
                                                                                 variant="outlined"
                                                                                 error={formik.touched?.message && !!formik.errors?.message}
@@ -80,7 +77,7 @@ const ContactForm = () => {
                                                                                 minRows={5}
                                                                       />
                                                                       <ContactButton type='submit'>
-                                                                                {t('contact.send-message')}
+                                                                                {"Pošalji poruku"}
                                                                       </ContactButton>
                                                             </Form>
                                                   )

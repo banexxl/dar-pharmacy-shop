@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const CarouselLogo = (props: any) => {
 
-          const { t } = useTranslation('common')
+
 
           const responsive = {
                     desktop: {

@@ -18,7 +18,7 @@ function ProductDetails(product: IProduct) {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-          const { t } = useTranslation('common')
+
           const dispatch = useDispatch()
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
@@ -77,18 +77,18 @@ function ProductDetails(product: IProduct) {
                               </Product>
                               <ProductDetailInfoWrapper>
                                         <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
-                                        <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>
-                                        <Typography textAlign='center'>{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
+                                        <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
+                                        <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
                                         <Typography variant="h5">
-                                                  {t('product.description')}
+                                                  Opis
                                         </Typography>
                                         {product.description}
                                         <Typography variant="h5">
-                                                  {t('product.instructions')}
+                                                  Instrukcije
                                         </Typography>
                                         {product.instructions}
                                         <Typography variant="h5">
-                                                  {t('product.warning')}
+                                                  Upozorenje
                                         </Typography>
                                         {product.warning}
                                         <Typography>
@@ -99,7 +99,7 @@ function ProductDetails(product: IProduct) {
                                                   alignItems="center"
                                                   justifyContent="space-between"
                                         >
-                                                  <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>{t('product.add-to-cart')}</Button>
+                                                  <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
                                         </Box>
                                         <Box
                                                   display="flex"
@@ -112,7 +112,7 @@ function ProductDetails(product: IProduct) {
                                                                       :
                                                                       <FavoriteIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.secondary})` } }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
                                                   }
-                                                  {t('product.add-to-wishlist')}
+                                                  Dodaj u listu želja
                                         </Box>
                                         <Box
                                                   sx={{
@@ -125,12 +125,12 @@ function ProductDetails(product: IProduct) {
                               </ProductDetailInfoWrapper>
                               {addedToCartAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', marginTop: '500px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-cart')}
+                                                  Dodato u korpu
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', marginTop: '500px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  {t('product.added-to-wishlist')}
+                                                  Dodato u listu želja
                                         </Alert>
                               )}
                     </ProductDetailWrapper>

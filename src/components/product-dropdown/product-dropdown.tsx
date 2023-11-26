@@ -35,7 +35,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
 
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
-          const { t } = useTranslation('common')
+
           const dispatch = useDispatch()
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
@@ -113,18 +113,18 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                   </ProductDropdown>
                                                   <ProductDetailInfoWrapper>
                                                             <ProductMeta product={product} />
-                                                            <Typography textAlign='center'>{t('product.sku')}: {product._id.slice(-8)}</Typography>
-                                                            <Typography textAlign='center'>{t('product.availability')}: {product.availableStock} {t('product.in-stock')}</Typography>
+                                                            <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
+                                                            <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
                                                             <Typography variant="h5">
-                                                                      {t('product.description')}
+                                                                      Opis
                                                             </Typography>
                                                             {product.description}
                                                             <Typography variant="h5">
-                                                                      {t('product.instructions')}
+                                                                      Instrukcije
                                                             </Typography>
                                                             {product.instructions}
                                                             <Typography variant="h5">
-                                                                      {t('product.warning')}
+                                                                      Upozorenje
                                                             </Typography>
                                                             {product.warning}
                                                             <Typography>
@@ -135,7 +135,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                       alignItems="center"
                                                                       justifyContent="space-between"
                                                             >
-                                                                      <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>{t('product.add-to-cart')}</Button>
+                                                                      <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
                                                             </Box>
                                                             <Box
                                                                       display="flex"
@@ -148,7 +148,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                                                                           :
                                                                                           <FavoriteIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.secondary})` } }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
                                                                       }
-                                                                      {t('product.add-to-wishlist')}
+                                                                      Dodaj u listu želja
                                                             </Box>
                                                             <Box
                                                                       sx={{
@@ -162,17 +162,17 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                         </ProductDetailWrapper>
                                         {addedToCartAlert && (
                                                   <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.added-to-cart')}
+                                                            Dodato u korpu
                                                   </Alert>
                                         )}
                                         {addedToWishlistAlert && (
                                                   <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.added-to-wishlist')}
+                                                            Dodato u listu želja
                                                   </Alert>
                                         )}
                                         {removedFromWishlistAlert && (
                                                   <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                            {t('product.removed-from-wishlist')}
+                                                            Uklonjeno iz liste želja
                                                   </Alert>
                                         )}
                               </DialogContent>

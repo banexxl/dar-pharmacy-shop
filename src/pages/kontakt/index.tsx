@@ -14,7 +14,7 @@ import AppDrawer from "@/components/navbar/drawer/drawer";
 
 const ContactPage = (props: ContactPageProps) => {
 
-          const { t } = useTranslation('common')
+
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
                     loading: () => <LoadingWheel />,
                     ssr: false
@@ -23,7 +23,7 @@ const ContactPage = (props: ContactPageProps) => {
           return (
                     <DynamicThemeProvider theme={theme}>
                               <Head>
-                                        <title>{t('contact.contact-form')}</title>
+                                        <title>Kontakt forma</title>
                               </Head>
                               <Container
                                         disableGutters
@@ -39,48 +39,48 @@ const ContactPage = (props: ContactPageProps) => {
                                                                       <ContactMap mapApiKey={props.mapApiKey} />
                                                                       <ContactInfoBox >
                                                                                 <ContactText>
-                                                                                          {t('contact.street')}
+                                                                                          Adresa:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.actual-street')}
+                                                                                          Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9
                                                                                 </ContactStrongText>
                                                                                 <ContactText>
-                                                                                          {t('contact.phone-number')}
+                                                                                          Telefon:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.actual-phone-number')}
+                                                                                          +381 34 610 4222
                                                                                 </ContactStrongText>
                                                                                 <ContactText>
-                                                                                          {t('contact.mb')}
+                                                                                          Matični broj:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.actual-mb')}
+                                                                                          66597784
                                                                                 </ContactStrongText>
                                                                                 <ContactText>
-                                                                                          {t('contact.pib')}
+                                                                                          Poresko identifikacioni broj:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.actual-pib')}
+                                                                                          113127282
                                                                                 </ContactStrongText>
                                                                                 <ContactText>
-                                                                                          {t('contact.bussines-name')}
+                                                                                          Business name of the entrepreneur:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.actual-bussines-name')}
+                                                                                          Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac
                                                                                 </ContactStrongText>
                                                                                 <ContactText>
-                                                                                          {t('contact.work-days')}
+                                                                                          Radno vreme:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.working-days')}<br />
-                                                                                          {t('contact.saturday')}<br />
-                                                                                          {t('contact.sunday')}
+                                                                                          Radnim danima: 08 - 22h<br />
+                                                                                          Subota: 08 - 22h<br />
+                                                                                          Nedelja: 08 - 20h
                                                                                 </ContactStrongText>
                                                                                 <ContactText>
-                                                                                          {t('contact.company-activity')}
+                                                                                          Pretežna delatnost:
                                                                                 </ContactText>
                                                                                 <ContactStrongText>
-                                                                                          {t('contact.actual-company-activity')}
+                                                                                          4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama
                                                                                 </ContactStrongText>
                                                                       </ContactInfoBox>
                                                             </ContactBox>
@@ -97,7 +97,7 @@ export async function getStaticProps({ locale }: any) {
 
           return {
                     props: {
-                              ...(await serverSideTranslations('sr-RS')),
+                              //...(await serverSideTranslations('sr-RS')),
                               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
                               mapApiKey: process.env.GOOGLE_MAPS_API_KEY,
                     },

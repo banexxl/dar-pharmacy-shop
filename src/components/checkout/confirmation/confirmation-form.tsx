@@ -17,7 +17,7 @@ import Link from 'next/link'
 
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
-          const { t } = useTranslation('common')
+
           const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
           const totalItemPrice: any = useSelector(cartTotalPriceSelector)
           const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
@@ -33,13 +33,13 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               >
                                         <StyledHeader>
                                                   <StyledProductRow>
-                                                            <StyledProductCell>{t("cart.image")}</StyledProductCell>
-                                                            <StyledProductCell align="left">{t("cart.name")}</StyledProductCell>
-                                                            <StyledProductCell align="left">{t("cart.quantity")}</StyledProductCell>
-                                                            <StyledProductCell align="left">{t("cart.code")}</StyledProductCell>
-                                                            <StyledProductCell align="left">{t("cart.amount")}</StyledProductCell>
-                                                            <StyledProductCell align="left">{t("cart.price")}</StyledProductCell>
-                                                            <StyledProductCell align="left">{t("cart.total")}</StyledProductCell>
+                                                            <StyledProductCell>Slika</StyledProductCell>
+                                                            <StyledProductCell align="left">Naziv</StyledProductCell>
+                                                            <StyledProductCell align="left">Pakovanje</StyledProductCell>
+                                                            <StyledProductCell align="left">Sifra</StyledProductCell>
+                                                            <StyledProductCell align="left">Količina</StyledProductCell>
+                                                            <StyledProductCell align="left">Cena</StyledProductCell>
+                                                            <StyledProductCell align="left">Ukupno sa PDV</StyledProductCell>
                                                   </StyledProductRow>
                                         </StyledHeader>
                                         <TableBody>
@@ -53,11 +53,11 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                         </TableBody>
                               </Table>
                               <StyledTotalsTitle>
-                                        {t('confirmation.total-with-tax')}: {parseFloat(totalItemPrice).toFixed(2)} RSD
+                                        Ukupno sa PDV: {parseFloat(totalItemPrice).toFixed(2)} RSD
                               </StyledTotalsTitle>
 
                               <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
-                                        {t('checkout.previousbutton')}
+                                        Nazad
                               </CheckoutNextPrevButton>
 
                               <Button sx={{ color: 'white' }}
@@ -82,7 +82,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                             dispatch(clearPaymentOptionsForm())
                                         }}>
                                         <Link href={'/'}>
-                                                  {t('confirmation.to-payment')}
+                                                  Poruči
                                         </Link>
                               </Button>
                     </CartWrapper>

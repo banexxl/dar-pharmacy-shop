@@ -19,23 +19,23 @@ function CartTotals({ onClose }: ICartTotalsProps) {
           return (
                     <StyledTotalsBox>
                               <StyledTotalsTitle>
-                                        {t('confirmation.total-with-tax')}:
+                                        Ukupno sa PDV-om
                               </StyledTotalsTitle>
                               <StyledTotalsPrice>
                                         {parseFloat(totalItemPrice).toFixed(2)} RSD
                               </StyledTotalsPrice>
                               <StyledTotalsToShopButton onClick={onClose}>
                                         <Link href='/'>
-                                                  {t('confirmation.to-shop')}
+                                                  Nazad u apoteku
                                         </Link>
                               </StyledTotalsToShopButton>
                               <StyledTotalsToPaymentButton>
                                         <Link href='/placanje'>
-                                                  {t('confirmation.to-payment')}
+                                                  KREIRAJ PORUDŽBENICU
                                         </Link>
                               </StyledTotalsToPaymentButton>
                               <StyledTotalsToPaymentButton onClick={() => dispatch(clearCart())}>
-                                        {t('confirmation.clear-cart')}
+                                        Isprazni korpu
                               </StyledTotalsToPaymentButton>
                     </StyledTotalsBox>
           )

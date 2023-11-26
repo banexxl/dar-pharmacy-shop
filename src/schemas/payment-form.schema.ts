@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const creditCardSchema = (t: any) => yup.object().shape({
+export const creditCardSchema = () => yup.object().shape({
           cardNumber: yup
                     .string()
                     .required('Card number is required')

@@ -9,7 +9,7 @@ import FilteredProductsGrid from './filtered-products-grid'
 
 function ProductsFilter({ filterObject, routerQuery }: any) {
 
-          const { t } = useTranslation('common')
+
           const [filteredProducts, setFilteredProducts] = useState<any>();
 
           const handlePriceFilterChange = (filteredProducts: any) => {
@@ -21,7 +21,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               <ProductsFilters>
                                         <FilterTitleBox>
                                                   <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
-                                                            {t('filter-page.all-categories')}
+                                                            Sve kategorije
                                                   </Typography>
                                         </FilterTitleBox>
                                         <Divider />

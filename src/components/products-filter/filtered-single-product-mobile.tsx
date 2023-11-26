@@ -15,7 +15,6 @@ import FilteredProductMeta from "./filtered-products-meta";
 
 export default function FilteredSingleProductMobile({ product, isScreenToMedium }: any) {
 
-          const { t } = useTranslation();
           const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
           const [addedToCartAlert, setAddedToCartAlert] = useState(false)
           const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
@@ -112,15 +111,15 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                               </FilteredProductActionsWrapper>
                               {addedToCartAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
-                                                  {t('product.added-to-cart')}
+                                                  Proizvod dodat u korpu
                                         </Alert>
                               )}
                               {addedToWishlistAlert && (
                                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
-                                                  {t('product.added-to-wishlist')}
+                                                  Proizvod dodat u listu želja
                                         </Alert>
                               )}
-                              <FilteredProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>{t('homepage.addtocart')}</FilteredProductAddToCart >
+                              <FilteredProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Dodaj u korpu</FilteredProductAddToCart >
                               <ProductDetailDialog product={product} />
                     </FilteredProduct>
           )

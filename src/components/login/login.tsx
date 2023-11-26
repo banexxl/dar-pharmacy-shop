@@ -21,7 +21,7 @@ function SlideTransition(props: any) {
 export default function LoginRegister({ open, onClose }: any) {
 
           const { data: session } = useSession()
-          const { t } = useTranslation('common')
+
           const theme = useTheme();
           const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -109,7 +109,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                                                                 </Box> */}
                                                                       </CardContent>
                                                                       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                                                <Button onClick={() => signOut()}>{t('account.sign-out')}</Button>
+                                                                                <Button onClick={() => signOut()}>Odjavi se</Button>
                                                                       </Box>
                                                             </CardMedia>
                                                   </Card>
