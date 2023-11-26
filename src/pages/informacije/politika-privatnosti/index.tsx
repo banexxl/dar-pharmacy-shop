@@ -13,7 +13,7 @@ import AppDrawer from '@/components/navbar/drawer/drawer'
 import SpinningWheel from '@/components/circularprogress/circular-progress'
 import dynamic from 'next/dynamic'
 
-const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const PrivacyPolicy = () => {
 
 
           const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -824,16 +824,6 @@ const PrivacyPolicy = (props: InferGetStaticPropsType<typeof getStaticProps>) =>
                               </Container >
                     </DynamicThemeProvider>
           )
-}
-
-export async function getStaticProps({ locale }: any) {
-          return {
-                    props: {
-                              //...(await serverSideTranslations('sr-RS'))
-                              // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
-                              // Will be passed to the page component as props
-                    },
-          }
 }
 
 export default PrivacyPolicy

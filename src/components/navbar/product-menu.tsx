@@ -81,7 +81,7 @@ export const ProductsMenu = () => {
                                         </StyledMenuItem>
                                         <StyledMenuItem onClick={handleClose}>
                                                   <StyledNestedTypography >
-                                                            <Link href={'/proizvodi/ledene-kocke'}>
+                                                            <Link href={'/proizvodi/ledene-kocke-za-imunitet'}>
                                                                       Ledene kocke za imunitet
                                                             </Link>
                                                   </StyledNestedTypography>
