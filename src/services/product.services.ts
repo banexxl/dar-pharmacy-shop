@@ -20,18 +20,19 @@ const productsServices = () => {
                     }
           }
 
-          const getProductsForHomePage = async () => {
+          const getAllMainCategories = async () => {
 
-                    const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+                    const client = new MongoClient(process.env.MONGODB_URI!);
 
                     try {
-                              const db = client.db('DAR_DB')
-                              let data: IProduct[] = await db.collection('Products').find().toArray()
-                              return data
+                              await client.connect();
+                              const db = client.db('DAR_DB');
+                              const mainCategories = await db.collection('Products').distinct('mainCategory')
+                              return mainCategories;
                     } catch (error: any) {
-                              return { message: error.message }
-                    }
-                    finally {
+                              console.error('Error fetching main categories:', error);
+                              return { message: error.message };
+                    } finally {
                               await client.close();
                     }
           }
@@ -195,7 +196,7 @@ const productsServices = () => {
 
           return {
                     getAllProducts,
-                    getProductsForHomePage,
+                    getAllMainCategories,
                     getProductById,
                     getProductsByNameAndOrManufacturer,
                     getProductsByManufacturer,

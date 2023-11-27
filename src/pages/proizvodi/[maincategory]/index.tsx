@@ -76,13 +76,10 @@ export default function MainCategoryPage(props: any) {
           )
 }
 
-export async function getServerSideProps(context: any) {
+export async function getStaticProps({ params }: any) {
+          console.log('aaaa', params);
 
-          const { resolvedUrl } = context
-          const urlSplit = resolvedUrl.split('/');
-          const mainCategory = urlSplit[2];
-
-          const productsByMainCategory: any = await productsServices().getProductsByMainCategory(mainCategory)
+          const productsByMainCategory: any = await productsServices().getProductsByMainCategory(params.maincategory)
           // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
           // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
           // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
@@ -109,40 +106,40 @@ export async function getServerSideProps(context: any) {
 }
 
 
-// export const getStaticPaths = async (context: any) => {
+export const getStaticPaths = async () => {
 
-//           const productsByMainCategoryApoteka: any = await productsServices().getProductsByMainCategory('apoteka')
-//           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-//           const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-//           const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-//           const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-//           const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-//           const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-//           const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          // const { resolvedUrl } = context
+          // const urlSplit = resolvedUrl.split('/');
+          // const mainCategory = urlSplit[2];
 
-//           const finalList = [
-//                     ...productsByMainCategoryApoteka,
-//                     ...productsByMainCategoryPrirodnaKozmetika,
-//                     ...productsByMainCategoryLepotaNega,
-//                     ...productsByMainCategoryBebiProgram,
-//                     ...productsByMainCategoryMedicinskiAparatiOprema,
-//                     ...productsByMainCategoryOrtopedijaPomagala,
-//                     ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-//                     ...productsByMainCategoryObucaCarapeUlosci,
-//           ]
+          const allMainCategories: any = await productsServices().getAllMainCategories()
 
-//           const paths = finalList.flatMap((product: any) =>
-//                     context.locales.map((locale: any) => ({
-//                               params: {
-//                                         maincategory: product.mainCategory.toString()
-//                               },
-//                               locale,
-//                     }))
-//           );
+          //           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
+          //           const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
+          //           const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
+          //           const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
+          //           const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
+          //           const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
+          //           const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
-//           return {
-//                     paths,
-//                     fallback: false, // false or "blocking"
-//           };
-// }
+          const finalList = [
+                    ...allMainCategories,
+                    // ...productsByMainCategoryPrirodnaKozmetika,
+                    // ...productsByMainCategoryLepotaNega,
+                    // ...productsByMainCategoryBebiProgram,
+                    // ...productsByMainCategoryMedicinskiAparatiOprema,
+                    // ...productsByMainCategoryOrtopedijaPomagala,
+                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
+                    // ...productsByMainCategoryObucaCarapeUlosci,
+          ]
+
+          const paths = finalList.flatMap((mainCategory: any) => ({
+                    params: { maincategory: String(mainCategory) }
+          }))
+
+          return {
+                    paths,
+                    fallback: false, // false or "blocking"
+          };
+}
 
