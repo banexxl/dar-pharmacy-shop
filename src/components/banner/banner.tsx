@@ -21,7 +21,7 @@ export default function Banner() {
                                         </BannerTitle>
                                         Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
                                         <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
-                                                  <Link href={"/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima"}>
+                                                  <Link href={"/proizvodi/apoteka/"}>
                                                             Pogledajte ponudu
                                                   </Link>
                                         </BannerShopButton>
