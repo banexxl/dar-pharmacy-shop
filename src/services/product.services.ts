@@ -67,7 +67,6 @@ const productsServices = () => {
           }
 
           const getProductsByManufacturer = async (manufacturer: string) => {
-                    console.log(manufacturer);
 
                     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
                     try {
