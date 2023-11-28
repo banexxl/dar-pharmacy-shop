@@ -56,7 +56,7 @@ const ContactForm = () => {
                                                                       <TextField
                                                                                 value={formik.values.email}
                                                                                 onChange={formik.handleChange('email')}
-                                                                                label={"Prezime"}
+                                                                                label={"Email"}
                                                                                 name={'email'}
                                                                                 variant="outlined"
                                                                                 error={formik.touched?.email && !!formik.errors?.email}
