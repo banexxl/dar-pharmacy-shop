@@ -77,7 +77,6 @@ export default function MainCategoryPage(props: any) {
 }
 
 export async function getStaticProps({ params }: any) {
-          console.log('aaaa', params);
 
           const productsByMainCategory: any = await productsServices().getProductsByMainCategory(params.maincategory)
           // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
