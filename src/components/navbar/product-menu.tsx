@@ -13,851 +13,1053 @@ import { useUIContext } from '@/context/ui/ui.context';
 
 export const ProductsMenu = () => {
 
-          const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-          const open = Boolean(anchorEl);
-          const { drawerOpen, setDrawerOpen, showLoadingWheel, setShowLoadingWheel } = useUIContext()
-          const handleProductsClick = (event: React.MouseEvent<HTMLElement>) => {
-                    setAnchorEl(event.currentTarget)
-          };
+     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+     const open = Boolean(anchorEl);
+     const { drawerOpen, setDrawerOpen, showLoadingWheel, setShowLoadingWheel } = useUIContext()
+     const handleProductsClick = (event: React.MouseEvent<HTMLElement>) => {
+          setAnchorEl(event.currentTarget)
+     };
 
-          const handleClose = () => {
-                    setAnchorEl(null)
-                    setDrawerOpen(false)
-          };
+     const handleClose = () => {
+          setAnchorEl(null)
+          setDrawerOpen(false)
+     };
 
-          const onLinkClick = () => {
-                    setShowLoadingWheel('flex')
-                    setAnchorEl(null)
-                    setDrawerOpen(false)
-          }
+     const onLinkClick = () => {
+          setShowLoadingWheel('flex')
+          setAnchorEl(null)
+          setDrawerOpen(false)
+     }
 
-          return (
-                    <Box>
-                              <LoadingWheel showLoadingWheel={showLoadingWheel} />
-                              <Button
-                                        variant="contained"
-                                        onClick={handleProductsClick}
-                                        endIcon={<ArrowDownwardIcon />}
-                                        sx={{
-                                                  ':hover': {
-                                                            backgroundColor: Colors.primary,
-                                                            textEmphasisColor: Colors.dim_grey
-                                                  }
-                                        }}
-                              >
-                                        <StyledNestedTypography sx={{ textAlign: 'center' }}>
-                                                  Proizvodi
-                                        </StyledNestedTypography>
+     return (
+          <Box>
+               <LoadingWheel showLoadingWheel={showLoadingWheel} />
+               <Button
+                    variant="contained"
+                    onClick={handleProductsClick}
+                    endIcon={<ArrowDownwardIcon />}
+                    sx={{
+                         ':hover': {
+                              backgroundColor: Colors.primary,
+                              textEmphasisColor: Colors.dim_grey
+                         }
+                    }}
+               >
+                    <StyledNestedTypography sx={{ textAlign: 'center' }}>
+                         Proizvodi
+                    </StyledNestedTypography>
 
-                              </Button>
-                              <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography>
-                                                            <Link href={'/proizvodi/prirodna-kozmetika'}>
-                                                                      Prirodna kozmetika
-                                                            </Link>
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography >
-                                                            <Link href={'/proizvodi/bebi-prirodna-kozmetika'}>
-                                                                      Bebi prirodna kozmetika
-                                                            </Link>
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography >
-                                                            <Link href={'/proizvodi/kolagen'}>
-                                                                      Kolagen
-                                                            </Link>
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography >
-                                                            <Link href={'/proizvodi/suplementi'}>
-                                                                      Suplementi
-                                                            </Link>
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography >
-                                                            <Link href={'/proizvodi/ledene-kocke-za-imunitet'}>
-                                                                      Ledene kocke za imunitet
-                                                            </Link>
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        <StyledMenuItem onClick={handleClose}>
-                                                  <StyledNestedTypography >
-                                                            <Link href={'/proizvodi/prirodni-imunitet'}>
-                                                                      Prirodni imunitet
-                                                            </Link>
-                                                  </StyledNestedTypography>
-                                        </StyledMenuItem>
-                                        {/* --------------------------APOTEKA------------------------------------------ */}
-                                        <NestedMenuItem
-                                                  label="Apoteka"
-                                                  parentMenuOpen={open}
-                                                  ContainerProps={<Link href={"/proizvodi/apoteka"} />}
-                                        >
-                                                  <NestedMenuItem
-                                                            label="Alergije"
-                                                            parentMenuOpen={open}
-                                                            value={''}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/alergije/kapsule-i-tablete'}>
-                                                                                          Kapsule i tablete
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
+               </Button>
+               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography>
+                              <Link href={'/proizvodi/prirodna-kozmetika'}>
+                                   Prirodna kozmetika
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/bebi-prirodna-kozmetika'}>
+                                   Bebi prirodna kozmetika
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/kolagen'}>
+                                   Kolagen
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/suplementi'}>
+                                   Suplementi
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/ledene-kocke-za-imunitet'}>
+                                   Ledene kocke za imunitet
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/prirodni-imunitet'}>
+                                   Prirodni imunitet
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    {/* --------------------------APOTEKA------------------------------------------ */}
+                    <NestedMenuItem
+                         label="Apoteka"
+                         parentMenuOpen={open}
+                         ContainerProps={<Link href={"/proizvodi/apoteka"} />}
+                    >
+                         <NestedMenuItem
+                              label="Alergije"
+                              parentMenuOpen={open}
+                              value={''}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/alergije/kapsule-i-tablete'}>
+                                             Kapsule i tablete
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/alergije/sprejevi-za-nos'}>
+                                             Sprejevi za nos
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/alergije/masti-gelovi'}>
+                                             Masti, gelovi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/alergije/irigacioni-set'}>
+                                             Irigacioni set
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/alergije/sprejevi-za-nos'}>
-                                                                                          Sprejevi za nos
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/alergije/masti-gelovi'}>
-                                                                                          Masti, gelovi
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/alergije/irigacioni-set'}>
-                                                                                          Irigacioni set
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Anemije"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini'}>
+                                             Folna kiselina i vitamini
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/anemija/biljni-preparati'}>
+                                             Biljni preparati
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/anemija/preparati-gvozdja'}>
+                                             Preparati gvožđa
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Anemije"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini'}>
-                                                                                          Folna kiselina i vitamini
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/anemija/biljni-preparati'}>
-                                                                                          Biljni preparati
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/anemija/preparati-gvozdja'}>
-                                                                                          Preparati gvožđa
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Bol"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/bol/bol-u-grlu'}>
+                                             Bol u grlu
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/bol/menstrualni-bolovi'}>
+                                             Menstrualni bolovi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima'}>
+                                             Bolovi u zglobovima i mišićima
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Bol"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/bol/bol-u-grlu'}>
-                                                                                          Bol u grlu
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/bol/menstrualni-bolovi'}>
-                                                                                          Menstrualni bolovi
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima'}>
-                                                                                          Bolovi u zglobovima i mišićima
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Hemoroidi"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/hemoroidi/oralni-preparati'}>
+                                             Oralni preparati
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/hemoroidi/lokalna-primena'}>
+                                             Lokalna primena
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/hemoroidi/platforma'}>
+                                             Platforma
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Hemoroidi"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/hemoroidi/oralni-preparati'}>
-                                                                                          Oralni preparati
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/hemoroidi/lokalna-primena'}>
-                                                                                          Lokalna primena
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Holesterol i trigliceridi"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/omega-masne-kiseline'}>
+                                             Omega masne kiseline
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/ostalo'}>
+                                             Ostalo
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Holesterol i trigliceridi"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/omega-masne-kiseline'}>
-                                                                                          Omega masne kiseline
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/holesterol-i-trigliceridi/ostalo'}>
-                                                                                          Ostalo
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Imunitet, prehlada"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/deca'}>
+                                             Deca
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/vitamini-i-minerali'}>
+                                             Vitamini i minerali
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-nos'}>
+                                             Sprejevi za nos
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-grlo'}>
+                                             Sprejevi za grlo
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/irigacioni-set'}>
+                                             Irigacioni set
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/masti-gelovi'}>
+                                             Masti, gelovi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/biljne-kapi'}>
+                                             Biljne kapi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/med-maticni-mlec-i-propolis'}>
+                                             Med, matični mleč i propolis
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/pastile-za-grlo'}>
+                                             Pastile za grlo
+                                        </Link>
+                                   </StyledNestedTypography >
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/aloja-ehinacea-noni-aronija'}>
+                                             Aloja, ehinacea, noni, aronija
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/probiotici'}>
+                                             Probiotici
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/omega-masne-kiseline'}>
+                                             Omega masne kiseline
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/imunitet-prehlada/ostalo'}>
+                                             Ostalo
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Imunitet, prehlada"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/imunitet-prehlada/deca'}>
-                                                                                          Deca
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/imunitet-prehlada/vitamini-i-minerali'}>
-                                                                                          Vitamini i minerali
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-nos'}>
-                                                                                          Sprejevi za nos
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Sprejevi za grlo
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Irigacioni set
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Masti, gelovi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Biljne kapi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Med, matični mleč i propolis
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Pastile za grlo
-                                                                      </StyledNestedTypography >
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Aloja, ehinacea, noni, aronija
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Probiotici
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Omega masne kiseline
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Ostalo
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Kosa, koža i nokti"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/kosa-koza-nokti/oralni-preparati'}>
+                                             Oralni preparati
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/kosa-koza-nokti/lokalna-primena'}>
+                                             Lokalna primena
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Kosa, koža i nokti"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Oralni preparati
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Lokalna primena
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Kosti i zglobovi"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/kosti-i-zglobovi/oralni-preparati'}>
+                                             Oralni preparati
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/kosti-i-zglobovi/primena-na-kozi'}>
+                                             Primena na koži
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Kosti i zglobovi"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Oralni preparati
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Primena na koži
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Mršavljenje, celulit"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/mrsavljenje-celulit/oralni-preparati'}>
+                                             Oralni preparati
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/mrsavljenje-celulit/primena-na-kozi'}>
+                                             Primena na koži
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Mršavljenje, celulit"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Oralni preparati
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Primena na koži
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Posebna ishrana"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/posebna-ishrana/kase'}>
+                                             Kaše
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/posebna-ishrana/sejkovi'}>
+                                             Šejkovi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/posebna-ishrana/zasladjivaci'}>
+                                             Zaslađivači
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/posebna-ishrana/sportisti'}>
+                                             Sportisti
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/posebna-ishrana/bombone'}>
+                                             Bombone
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Posebna ishrana"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Kaše
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Šejkovi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Zaslađivači
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Sportisti
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Bombone
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Putna apoteka"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/putna-apoteka/dehidratacija'}>
+                                             Dehidratacija
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/putna-apoteka/dijareja'}>
+                                             Dijareja
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/putna-apoteka/mucnina'}>
+                                             Mučnina
+                                        </Link>
+                                   </StyledNestedTypography >
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/putna-apoteka/auto-apoteka'}>
+                                             Auto apoteka
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Putna apoteka"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Dehidratacija
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Dijareja
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Mučnina
-                                                                      </StyledNestedTypography >
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Auto apoteka
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Stomačne tekobe"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/nadutost-i-gasovi'}>
+                                             Nadutost i gasovi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/zatvor'}>
+                                             Zatvor
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/dijareja'}>
+                                             Dijareja
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/iritabilni-kolon'}>
+                                             Iritabilni kolon
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/otezano-varenje-i-gorusica'}>
+                                             Otežano varenje i gorušica
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Stomačne tekobe"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Nadutost i gasovi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Zatvor
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Dijareja
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Iritabilni kolon
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Otežan ovarenje i gorušica
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Zdravo srce i cirkulacija"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/oralni-preparati'}>
+                                             Oralni preparati
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/stomacne-tegobe/primena-na-kozi'}>
+                                             Primena na koži
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Zdravo srce i cirkulacija"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Oralni preparati
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Primena na koži
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Vitamini i mineralni"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/vitamin-a'}>
+                                             Vitamin A
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/vitamin-b'}>
+                                             Vitamin B
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/vitamin-c'}>
+                                             Vitamin C
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/vitamin-d'}>
+                                             Vitamin D
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/vitamin-k'}>
+                                             Vitamin K
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/cink'}>
+                                             Cink
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/kalijum'}>
+                                             Kalijum
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/kalijum'}>
+                                             Kalcijum
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/hrom'}>
+                                             Hrom
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/magnezijum'}>
+                                             Magnezijum
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/selen'}>
+                                             Selen
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/gvozdje'}>
+                                             Gvožđe
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/bakar'}>
+                                             Bakar
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/bor'}>
+                                             Bor
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/fluor'}>
+                                             Fluor
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/fosfor'}>
+                                             Fosfor
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/kompleksi-vitamina-i-minerala'}>
+                                             Kompleksi vitamina i minerala
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/riblja-ulja'}>
+                                             Riblja ulja
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/deca'}>
+                                             Deca
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/sportisti'}>
+                                             Sportisti
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/trudnice'}>
+                                             Trudnice
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/vitamini-i-minerali/stariji'}>
+                                             Stariji
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Vitamini i mineralni"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Vitamin A
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Vitamin B
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Vitamin C
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Vitamin D
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Vitamin K
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Cink
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Kalijum
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Kalcijum
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Hrom
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Magnezijum
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Selen
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Gvožđe
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <NestedMenuItem
-                                                                      label="Ostali minerali"
-                                                                      parentMenuOpen={open}
-                                                            >
-                                                                      <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography >
-                                                                                          Bakar
-                                                                                </StyledNestedTypography>
-                                                                      </StyledMenuItem>
-                                                                      <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography >
-                                                                                          Bor
-                                                                                </StyledNestedTypography>
-                                                                      </StyledMenuItem>
-                                                                      <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography >
-                                                                                          Fluor
-                                                                                </StyledNestedTypography>
-                                                                      </StyledMenuItem>
-                                                                      <StyledMenuItem onClick={handleClose}>
-                                                                                <StyledNestedTypography >
-                                                                                          Fosfor
-                                                                                </StyledNestedTypography>
-                                                                      </StyledMenuItem>
-                                                            </NestedMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Kompleksi vitamina i minerala
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Riblja ulja
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Deca
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Sportisti
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Trudnice
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Stariji
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Preparati za primenu na koži"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/iritacije'}>
+                                             Iritacije
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/oziljci-i-strije'}>
+                                             Ožiljci i strije
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/hemoroidi'}>
+                                             Hemoroidi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/problemi-sa-cirkulacijom'}>
+                                             Problemi sa cirkulacijom
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/intimna-nega'}>
+                                             Intimna nega
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/opekotine'}>
+                                             Opekotine
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/sportske-povrede'}>
+                                             Sportske povrede
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/reuma'}>
+                                             Reuma
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/antiseptici'}>
+                                             Antiseptici
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/gljivice'}>
+                                             Gljivice
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/rozacea'}>
+                                             Rozacea
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/vitiligo'}>
+                                             Vitiligo
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/boginje'}>
+                                             Boginje
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/herpes'}>
+                                             Herpes
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/seboreicni-dermatitis'}>
+                                             Seboreični dermatitis
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/zuljevi-kurje-oci-bradavice'}>
+                                             Žuljevi, kurje oči, bradavice
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/ekcem-psorijaza'}>
+                                             Ekcem, psorijaza
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/suva-atopijska-koza'}>
+                                             Suva, atopijska koža
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/lokalni-anestetici'}>
+                                             Lokalni anestetici
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/preparati-za-primenu-na-kozi/povrsinske-rane'}>
+                                             Površinske rane
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Preparati za primenu na koži"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Iritacije
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Ožiljci i strije
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Hemoroidi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Problemi sa cirkulacijom
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Intimna nega
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Opekotine
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Sportske povrede
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Reuma
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Antiseptici
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Gljivice
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Rozacea
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Vitligo
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Boginje
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Herpes
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Seboreični dermatitis
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Žuljevi, kurje oči, bradavice
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Ekcem, psorijaza
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Suva, atopijska koža
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Lokalni anestetici
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Površinske rane
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Oči i uši"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/tablete-kapsule-rastvori'}>
+                                             Tablete, kapsule, rastvori
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/higijena-nega'}>
+                                             Higijena, nega
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/kapi'}>
+                                             Kapi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/kapi'}>
+                                             Masti
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/kapi'}></Link>
+                                        Naočare
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        Tečnosti i kutije za sočiva<Link href={'/proizvodi/apoteka/oci-i-usi/kapi'}></Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/cepovi-za-usi'}>
+                                             Čepovi za uši
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/oci-i-usi/sprejevi'}>
+                                             Sprejevi
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Oči i uši"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Tablete, kapsule, rastvori
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Higijena, nega
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Kapi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Masti
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Naočare
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Tečnosti i kutije za sočiva
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Čepovi za uši
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Sprejevi
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <NestedMenuItem
+                              label="Prva pomoć"
+                              parentMenuOpen={open}
+                         >
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/prva-pomoc/antiseptici'}>
+                                             Antiseptici
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/prva-pomoc/flasteri'}>
+                                             Flasteri
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/apoteka/prva-pomoc/zavojni-materijal'}>
+                                             Zavojni materijal
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
 
-                                                  <NestedMenuItem
-                                                            label="Prva pomoć"
-                                                            parentMenuOpen={open}
-                                                  >
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Antiseptici
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Flasteri
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                Zavojni materijal
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/energija-i-umor'}>
+                                        Energija i umor
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Energija i umor
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/sokovi'}>
+                                        Sokovi
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Sokovi
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/antioksidansi-detoksikacija'}>
+                                        Antioksidansi, detoksikacija
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Antioksidansi, detoksikacija
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/biljne-kapi-biljna-i-etericna-ulja'}>
+                                        Biljne kapi, biljna i eterična ulja
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Biljne kapi, biljna i eterična ulja
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/bubrezi-mokracni-putevi'}>
+                                        Bubrezi i mokraćni putevi
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Bubrezi i mokraćni putevi
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/cajevi'}>
+                                        Čajevi
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Čajevi
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/dijabetes-i-insulinska-resistencija'}>
+                                        Dijabetes i insulinska resistencija
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Dijabetes i insulinska resistencija
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/jetra-i-zuc'}>
+                                        Jetra i žuč
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Jetra i žuč
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/kasalj'}>
+                                        Kašalj
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Kašalj
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/pms'}>
+                                        PMS
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      PMS
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/menopauza'}>
+                                        Menopauza
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Menopauza
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/odvikavanje-od-alkohola'}>
+                                        Odvikavanje od alkohola
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Odvikavanje od alkohola
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/pamcenje-i-koncentracija'}>
+                                        Pamćenje i koncentracija
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Pamćenje i koncentracija
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/poremecaj-fertiliteta'}>
+                                        Poremećaj fertiliteta
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Poremećaj fertiliteta
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/prostata-i-potencija'}>
+                                        Prostata i potencija
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Prostata i potencija
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/stres-depresija-nesanica'}>
+                                        Stres, depresija, nesanica
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Stres, depresija, nesanica
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/apoteka/dozatori-i-sekaci-za-lekove'}>
+                                        Dozatori i sekači za lekove
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
 
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      Dozatori i sekači za lekove
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
+                    </NestedMenuItem>
+                    {/* ------------------------------------------------------------------------------- */}
 
-                                        </NestedMenuItem>
-                                        {/* ------------------------------------------------------------------------------- */}
-
-                                        {/* <NestedMenuItem label='Lice' parentMenuOpen={open}>
+                    {/* <NestedMenuItem label='Lice' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
                                                                                 Higijena lica
@@ -1083,8 +1285,8 @@ export const ProductsMenu = () => {
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem> */}
 
-                                        {/* --------------------------Lepota i nega------------------------------------------ */}
-                                        {/* <NestedMenuItem label='Lepota i nega' parentMenuOpen={open}>
+                    {/* --------------------------Lepota i nega------------------------------------------ */}
+                    {/* <NestedMenuItem label='Lepota i nega' parentMenuOpen={open}>
 
                                                   <NestedMenuItem label='Pribor za negu' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
@@ -1338,7 +1540,7 @@ export const ProductsMenu = () => {
 
                                         </NestedMenuItem> */}
 
-                                        {/* <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
+                    {/* <NestedMenuItem label='Bebi program' parentMenuOpen={open}>
 
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography >
@@ -1798,8 +2000,8 @@ export const ProductsMenu = () => {
                                                   </NestedMenuItem>
 
                                         </NestedMenuItem> */}
-                                        {/* --------------------------Medicinski aparati i oprema----------------------------------------- */}
-                                        {/* <NestedMenuItem label='Medicinski aparati i oprema' parentMenuOpen={open}>
+                    {/* --------------------------Medicinski aparati i oprema----------------------------------------- */}
+                    {/* <NestedMenuItem label='Medicinski aparati i oprema' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Aparati za analizu sna
@@ -1877,70 +2079,70 @@ export const ProductsMenu = () => {
                                                             </StyledNestedTypography>
                                                   </StyledMenuItem>
                                         </NestedMenuItem> */}
-                                        {/* --------------------------Ortopedija i pomagala----------------------------------------- */}
-                                        <NestedMenuItem
-                                                  label="Ortopedija i pomagala" parentMenuOpen={open}>
-                                                  <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/antidekubitalna-pomagala/jastuci'}>
-                                                                                          Jastuci
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                            <StyledMenuItem onClick={handleClose}>
-                                                                      <StyledNestedTypography >
-                                                                                <Link href={'/proizvodi/antidekubitalna-pomagala/duseci'}>
-                                                                                          Dušeci
-                                                                                </Link>
-                                                                      </StyledNestedTypography>
-                                                            </StyledMenuItem>
-                                                  </NestedMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/stake'}>
-                                                                                Štake
-                                                                      </Link>
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/stapovi'}>
-                                                                                Štapovi
-                                                                      </Link>
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/ortoze'}>
-                                                                                Ortoze
-                                                                      </Link>
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/kinezi-trake'}>
-                                                                                Kinezi trake
-                                                                      </Link>
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/hodalice'}>
-                                                                                Hodalice
-                                                                      </Link>
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                                  <StyledMenuItem onClick={handleClose}>
-                                                            <StyledNestedTypography >
-                                                                      <Link href={'/proizvodi/ortopedija-i-pomagala/postoljni-podmetaci'}>
-                                                                                Postoljni podmetači
-                                                                      </Link>
-                                                            </StyledNestedTypography>
-                                                  </StyledMenuItem>
-                                        </NestedMenuItem>
-                                        {/* --------------------------Dezinfekcija, dezinsekcija, maske----------------------------------------- */}
-                                        {/* <NestedMenuItem label='Dezinfekcija, dezinsekcija, maske' parentMenuOpen={open}>
+                    {/* --------------------------Ortopedija i pomagala----------------------------------------- */}
+                    <NestedMenuItem
+                         label="Ortopedija i pomagala" parentMenuOpen={open}>
+                         <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/antidekubitalna-pomagala/jastuci'}>
+                                             Jastuci
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi/antidekubitalna-pomagala/duseci'}>
+                                             Dušeci
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/stake'}>
+                                        Štake
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/stapovi'}>
+                                        Štapovi
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/ortopedija-i-pomagala/ortoze'}>
+                                        Ortoze
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/ortopedija-i-pomagala/kinezi-trake'}>
+                                        Kinezi trake
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/ortopedija-i-pomagala/hodalice'}>
+                                        Hodalice
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/proizvodi/ortopedija-i-pomagala/postoljni-podmetaci'}>
+                                        Postoljni podmetači
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem>
+                    {/* --------------------------Dezinfekcija, dezinsekcija, maske----------------------------------------- */}
+                    {/* <NestedMenuItem label='Dezinfekcija, dezinsekcija, maske' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Sredstva za dezinfekciju
@@ -1964,8 +2166,8 @@ export const ProductsMenu = () => {
                                                             </StyledMenuItem>
                                                   </NestedMenuItem>
                                         </NestedMenuItem> */}
-                                        {/* --------------------------Obuca, carape, ulosci---------------------------------------- */}
-                                        {/* <NestedMenuItem label='Obuća, čarape, ulošci' parentMenuOpen={open}>
+                    {/* --------------------------Obuca, carape, ulosci---------------------------------------- */}
+                    {/* <NestedMenuItem label='Obuća, čarape, ulošci' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>
                                                             <StyledNestedTypography>
                                                                       Bebe
@@ -2013,7 +2215,7 @@ export const ProductsMenu = () => {
                                         </NestedMenuItem> */}
 
 
-                              </StyledProductMenu>
-                    </Box >
-          );
+               </StyledProductMenu>
+          </Box >
+     );
 }
