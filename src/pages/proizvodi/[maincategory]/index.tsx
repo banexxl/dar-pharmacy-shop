@@ -22,123 +22,123 @@ import { useEffect, useState } from 'react';
 
 export default function MainCategoryPage(props: any) {
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: true
-     })
+          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+                    loading: () => <LoadingWheel />,
+                    ssr: true
+          })
 
-     const router = useRouter()
-     const [loading, setLoading] = useState(false)
+          const router = useRouter()
+          const [loading, setLoading] = useState(false)
 
 
-     useEffect(() => {
-          const handleRouteChange = (url: any) => {
-               setLoading(true)
-          }
+          useEffect(() => {
+                    const handleRouteChange = (url: any) => {
+                              setLoading(true)
+                    }
 
-          const handleRouteChangeComplete = () => {
-               setLoading(false)
-          }
+                    const handleRouteChangeComplete = () => {
+                              setLoading(false)
+                    }
 
-          router.events.on('routeChangeStart', handleRouteChange)
-          router.events.on('routeChangeComplete', handleRouteChangeComplete)
+                    router.events.on('routeChangeStart', handleRouteChange)
+                    router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
-          return () => {
-               router.events.off('routeChangeStart', handleRouteChange)
-               router.events.off('routeChangeComplete', handleRouteChangeComplete)
-          }
-     }, [router.events])
+                    return () => {
+                              router.events.off('routeChangeStart', handleRouteChange)
+                              router.events.off('routeChangeComplete', handleRouteChangeComplete)
+                    }
+          }, [router.events])
 
-     return (
-          <>
-               {
-                    loading ?
-                         <LoadingWheel /> :
-                         <DynamicThemeProvider theme={theme}>
-                              <Container
-                                   disableGutters
-                                   maxWidth="lg"
-                                   sx={{
-                                        background: "#fff",
-                                   }}
-                              >
-                                   <Stack>
-                                        <UIProvider>
-                                             <SearchBox />
-                                             <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
-                                             <AppDrawer isScreenToMedium={false} />
-                                        </UIProvider>
-                                   </Stack>
-                              </Container>
-                         </DynamicThemeProvider>
-               }
-          </>
-     )
+          return (
+                    <>
+                              {
+                                        loading ?
+                                                  <LoadingWheel /> :
+                                                  <DynamicThemeProvider theme={theme}>
+                                                            <Container
+                                                                      disableGutters
+                                                                      maxWidth="lg"
+                                                                      sx={{
+                                                                                background: "#fff",
+                                                                      }}
+                                                            >
+                                                                      <Stack>
+                                                                                <UIProvider>
+                                                                                          <SearchBox />
+                                                                                          <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
+                                                                                          <AppDrawer isScreenToMedium={false} />
+                                                                                </UIProvider>
+                                                                      </Stack>
+                                                            </Container>
+                                                  </DynamicThemeProvider>
+                              }
+                    </>
+          )
 }
 
 export async function getStaticProps({ params }: any) {
 
-     const productsByMainCategory: any = await productsServices().getProductsByMainCategory(params.maincategory)
-     // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-     // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-     // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-     // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-     // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-     // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-     // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          const productsByMainCategory: any = await productsServices().getProductsByMainCategory(params.maincategory)
+          // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
+          // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
+          // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
+          // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
+          // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
+          // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
+          // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
 
-     // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
-     redirect: {
-          destination: "/404"
-     }
-     // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
-     // revalidate bi trebao da ponovo odradi getstaticprops logiku
+          // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
+          redirect: {
+                    destination: "/404"
+          }
+          // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
+          // revalidate bi trebao da ponovo odradi getstaticprops logiku
 
-     return {
-          props: {
-               products: JSON.parse(JSON.stringify(productsByMainCategory)),
-               //...(await serverSideTranslations('sr-RS'))
-               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
-          },
-     }
+          return {
+                    props: {
+                              products: JSON.parse(JSON.stringify(productsByMainCategory)),
+                              //...(await serverSideTranslations('sr-RS'))
+                              // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
+                    },
+          }
 }
 
 
 export const getStaticPaths = async () => {
 
-     // const { resolvedUrl } = context
-     // const urlSplit = resolvedUrl.split('/');
-     // const mainCategory = urlSplit[2];
+          // const { resolvedUrl } = context
+          // const urlSplit = resolvedUrl.split('/');
+          // const mainCategory = urlSplit[2];
 
-     const allMainCategories: any = await productsServices().getAllMainCategories()
+          const allMainCategories: any = await productsServices().getAllMainCategories()
 
-     //           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-     //           const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-     //           const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-     //           const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-     //           const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-     //           const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-     //           const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+          //           const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
+          //           const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
+          //           const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
+          //           const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
+          //           const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
+          //           const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
+          //           const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
 
-     const finalList = [
-          ...allMainCategories,
-          // ...productsByMainCategoryPrirodnaKozmetika,
-          // ...productsByMainCategoryLepotaNega,
-          // ...productsByMainCategoryBebiProgram,
-          // ...productsByMainCategoryMedicinskiAparatiOprema,
-          // ...productsByMainCategoryOrtopedijaPomagala,
-          // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
-          // ...productsByMainCategoryObucaCarapeUlosci,
-     ]
+          const finalList = [
+                    ...allMainCategories,
+                    // ...productsByMainCategoryPrirodnaKozmetika,
+                    // ...productsByMainCategoryLepotaNega,
+                    // ...productsByMainCategoryBebiProgram,
+                    // ...productsByMainCategoryMedicinskiAparatiOprema,
+                    // ...productsByMainCategoryOrtopedijaPomagala,
+                    // ...productsByMainCategoryDezinfekcijaDezinsekcijaMaske,
+                    // ...productsByMainCategoryObucaCarapeUlosci,
+          ]
 
-     const paths = finalList.flatMap((mainCategory: any) => ({
-          params: { maincategory: String(mainCategory) }
-     }))
+          const paths = finalList.flatMap((mainCategory: any) => ({
+                    params: { maincategory: String(mainCategory) }
+          }))
 
-     return {
-          paths,
-          fallback: false, // false or "blocking"
-     };
+          return {
+                    paths,
+                    fallback: false, // false or "blocking"
+          };
 }
 
