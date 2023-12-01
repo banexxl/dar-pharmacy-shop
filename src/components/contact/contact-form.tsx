@@ -13,79 +13,79 @@ import Link from 'next/link';
 
 const ContactForm = () => {
 
-          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
-                    ssr: false
-          })
+     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+          loading: () => <LoadingWheel />,
+          ssr: false
+     })
 
-          const handleSubmit = (values: IContactForm) => {
-                    SendContactEmail({ email: values.email, name: values.name, message: values.message })
-          }
+     const handleSubmit = (values: IContactForm) => {
+          SendContactEmail({ email: values.email, name: values.name, message: values.message })
+     }
 
 
-          return (
-                    <DynamicThemeProvider theme={theme}>
-                              <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema}>
-                                        {
-                                                  formik => (
-                                                            <Form style={{
-                                                                      width: '80%', display: 'flex', flexDirection: 'column',
-                                                                      marginBottom: '20px', alignItems: 'center', background: Colors.dove_gray,
-                                                                      borderRadius: '10px', gap: '10px', padding: '10px',
-                                                            }}>
-                                                                      <ContactTitle variant="h5" component="legend" gutterBottom>
-                                                                                Kontakt forma
-                                                                      </ContactTitle>
+     return (
+          <DynamicThemeProvider theme={theme}>
+               <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema}>
+                    {
+                         formik => (
+                              <Form style={{
+                                   width: '80%', display: 'flex', flexDirection: 'column',
+                                   marginBottom: '20px', alignItems: 'center', background: Colors.dove_gray,
+                                   borderRadius: '10px', gap: '10px', padding: '10px',
+                              }}>
+                                   <ContactTitle variant="h5" component="legend" gutterBottom>
+                                        Kontakt forma
+                                   </ContactTitle>
 
-                                                                      <ContactText>
-                                                                                Ako ste u potrazi za <Typography fontWeight={'bold'}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br /><br />
-                                                                                Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
-                                                                                Slobodno nas kontaktirajte!
-                                                                      </ContactText>
-                                                                      <TextField
-                                                                                value={formik.values.name}
-                                                                                label={"Ime"}
-                                                                                name={'name'}
-                                                                                variant="outlined"
-                                                                                onChange={formik.handleChange('name')}
-                                                                                error={formik.touched.name && !!formik.errors.name}
-                                                                                helperText={formik.touched.name && formik.errors.name}
-                                                                                fullWidth
-                                                                      />
+                                   <ContactText>
+                                        Ako ste u potrazi za <Typography fontWeight={'bold'}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br /><br />
+                                        Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
+                                        Slobodno nas kontaktirajte!
+                                   </ContactText>
+                                   <TextField
+                                        value={formik.values.name}
+                                        label={"Ime"}
+                                        name={'name'}
+                                        variant="outlined"
+                                        onChange={formik.handleChange('name')}
+                                        error={formik.touched.name && !!formik.errors.name}
+                                        helperText={formik.touched.name && formik.errors.name}
+                                        fullWidth
+                                   />
 
-                                                                      <TextField
-                                                                                value={formik.values.email}
-                                                                                onChange={formik.handleChange('email')}
-                                                                                label={"Email"}
-                                                                                name={'email'}
-                                                                                variant="outlined"
-                                                                                error={formik.touched?.email && !!formik.errors?.email}
-                                                                                helperText={formik.touched?.email && formik.errors?.email}
-                                                                                fullWidth
-                                                                      />
+                                   <TextField
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange('email')}
+                                        label={"Email"}
+                                        name={'email'}
+                                        variant="outlined"
+                                        error={formik.touched?.email && !!formik.errors?.email}
+                                        helperText={formik.touched?.email && formik.errors?.email}
+                                        fullWidth
+                                   />
 
-                                                                      <TextField
-                                                                                value={formik.values.message}
-                                                                                onChange={formik.handleChange('message')}
-                                                                                label={"Poruka"}
-                                                                                name={'message'}
-                                                                                variant="outlined"
-                                                                                error={formik.touched?.message && !!formik.errors?.message}
-                                                                                helperText={formik.touched?.message && formik.errors?.message}
-                                                                                fullWidth
-                                                                                multiline
-                                                                                minRows={5}
-                                                                      />
-                                                                      <ContactButton type='submit'>
-                                                                                {"Pošalji poruku"}
-                                                                      </ContactButton>
-                                                            </Form>
-                                                  )
-                                        }
-                              </Formik>
+                                   <TextField
+                                        value={formik.values.message}
+                                        onChange={formik.handleChange('message')}
+                                        label={"Poruka"}
+                                        name={'message'}
+                                        variant="outlined"
+                                        error={formik.touched?.message && !!formik.errors?.message}
+                                        helperText={formik.touched?.message && formik.errors?.message}
+                                        fullWidth
+                                        multiline
+                                        minRows={5}
+                                   />
+                                   <ContactButton type='submit'>
+                                        {"Pošalji poruku"}
+                                   </ContactButton>
+                              </Form>
+                         )
+                    }
+               </Formik>
 
-                    </DynamicThemeProvider >
-          );
+          </DynamicThemeProvider >
+     );
 };
 
 export default ContactForm
