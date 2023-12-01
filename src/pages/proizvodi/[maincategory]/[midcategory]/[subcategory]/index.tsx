@@ -16,94 +16,94 @@ import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
-          getAllSubCategoriesFromApotekaAlergije, getAllSubCategoriesFromApotekaAnemije, getAllSubCategoriesFromApotekaBol,
-          getAllSubCategoriesFromApotekaHemoroidi, getAllSubCategoriesFromApotekaHolesterol, getAllSubCategoriesFromApotekaImunitet,
-          getAllSubCategoriesFromApotekaKosaKozaNokti, getAllSubCategoriesFromApotekaKostiZglobovi,
-          getAllSubCategoriesFromApotekaMrsavljenjeCelulit, getAllSubCategoriesFromApotekaOciUsi, getAllSubCategoriesFromApotekaPosebnaIshrana,
-          getAllSubCategoriesFromApotekaPreparatiZaKozu, getAllSubCategoriesFromApotekaPrvaPomoc,
-          getAllSubCategoriesFromApotekaPutnaApoteka, getAllSubCategoriesFromApotekaStomacneTegobe,
-          getAllSubCategoriesFromApotekaVitaminiMinerali, getAllSubCategoriesFromApotekaZdravoSrceCirkulacija,
-          getAllSubCategoriesFromBebiProgramAparati, getAllSubCategoriesFromBebiProgramBebiApoteka,
-          getAllSubCategoriesFromBebiProgramBebiKozmetika, getAllSubCategoriesFromBebiProgramBebiOprema,
-          getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke, getAllSubCategoriesFromBebiProgramHrana,
-          getAllSubCategoriesFromBebiProgramPelene, getAllSubCategoriesFromBebiProgramTrudnice,
-          getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice, getAllSubCategoriesFromLepotaNegaBebe,
-          getAllSubCategoriesFromLepotaNegaIntimnaNega, getAllSubCategoriesFromLepotaNegaKosaKozaGlave,
-          getAllSubCategoriesFromLepotaNegaLice, getAllSubCategoriesFromLepotaNegaOralnaHigijena,
-          getAllSubCategoriesFromLepotaNegaPriborZaNegu, getAllSubCategoriesFromLepotaNegaRuke, getAllSubCategoriesFromLepotaNegaStopala,
-          getAllSubCategoriesFromLepotaNegaTelo, getAllSubCategoriesFromLepotaNegaZastitaOdSunca,
-          getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska,
-          getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera, getAllSubCategoriesFromObucaCarapeUlosciDeca,
-          getAllSubCategoriesFromObucaCarapeUlosciOdrasli, getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala,
-          getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca, getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave,
-          getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo
+     getAllSubCategoriesFromApotekaAlergije, getAllSubCategoriesFromApotekaAnemije, getAllSubCategoriesFromApotekaBol,
+     getAllSubCategoriesFromApotekaHemoroidi, getAllSubCategoriesFromApotekaHolesterol, getAllSubCategoriesFromApotekaImunitet,
+     getAllSubCategoriesFromApotekaKosaKozaNokti, getAllSubCategoriesFromApotekaKostiZglobovi,
+     getAllSubCategoriesFromApotekaMrsavljenjeCelulit, getAllSubCategoriesFromApotekaOciUsi, getAllSubCategoriesFromApotekaPosebnaIshrana,
+     getAllSubCategoriesFromApotekaPreparatiZaKozu, getAllSubCategoriesFromApotekaPrvaPomoc,
+     getAllSubCategoriesFromApotekaPutnaApoteka, getAllSubCategoriesFromApotekaStomacneTegobe,
+     getAllSubCategoriesFromApotekaVitaminiMinerali, getAllSubCategoriesFromApotekaZdravoSrceCirkulacija,
+     getAllSubCategoriesFromBebiProgramAparati, getAllSubCategoriesFromBebiProgramBebiApoteka,
+     getAllSubCategoriesFromBebiProgramBebiKozmetika, getAllSubCategoriesFromBebiProgramBebiOprema,
+     getAllSubCategoriesFromBebiProgramFlasiceCucleZvecke, getAllSubCategoriesFromBebiProgramHrana,
+     getAllSubCategoriesFromBebiProgramPelene, getAllSubCategoriesFromBebiProgramTrudnice,
+     getAllSubCategoriesFromDezinfekcijaDezinsekcijaMaskeMaskeZaLice, getAllSubCategoriesFromLepotaNegaBebe,
+     getAllSubCategoriesFromLepotaNegaIntimnaNega, getAllSubCategoriesFromLepotaNegaKosaKozaGlave,
+     getAllSubCategoriesFromLepotaNegaLice, getAllSubCategoriesFromLepotaNegaOralnaHigijena,
+     getAllSubCategoriesFromLepotaNegaPriborZaNegu, getAllSubCategoriesFromLepotaNegaRuke, getAllSubCategoriesFromLepotaNegaStopala,
+     getAllSubCategoriesFromLepotaNegaTelo, getAllSubCategoriesFromLepotaNegaZastitaOdSunca,
+     getAllSubCategoriesFromMedicinskiAparatiOpremaInhalatori, getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjePritiska,
+     getAllSubCategoriesFromMedicinskiAparatiOpremaMerenjeSecera, getAllSubCategoriesFromObucaCarapeUlosciDeca,
+     getAllSubCategoriesFromObucaCarapeUlosciOdrasli, getAllSubCategoriesFromOrtopedijaAntidekubitalnaPomagala,
+     getAllSubCategoriesFromPrirodnaKozmetikaBebeDeca, getAllSubCategoriesFromPrirodnaKozmetikaKosaKozaGlave,
+     getAllSubCategoriesFromPrirodnaKozmetikaLice, getAllSubCategoriesFromPrirodnaKozmetikaTelo
 } from '../../../../../services/product-sub-category-helper.services';
 import IProduct from '@/interfaces/product/product.interface';
 import { useRouter } from 'next/router';
 
 export default function MainCategoryPage(props: any) {
 
-          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
-                    ssr: true
-          })
+     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+          loading: () => <LoadingWheel />,
+          ssr: true
+     })
 
-          const router = useRouter()
+     const router = useRouter()
 
-          return (
-                    <DynamicThemeProvider theme={theme}>
-                              <Container
-                                        disableGutters
-                                        maxWidth="lg"
-                                        sx={{
-                                                  background: "#fff",
-                                        }}
-                              >
-                                        <Stack>
-                                                  <UIProvider>
-                                                            <SearchBox />
-                                                            <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
-                                                            <AppDrawer isScreenToMedium={false} />
-                                                  </UIProvider>
-                                        </Stack>
-                              </Container>
-                    </DynamicThemeProvider>
-          )
+     return (
+          <DynamicThemeProvider theme={theme}>
+               <Container
+                    disableGutters
+                    maxWidth="lg"
+                    sx={{
+                         background: "#fff",
+                    }}
+               >
+                    <Stack>
+                         <UIProvider>
+                              <SearchBox />
+                              <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
+                              <AppDrawer isScreenToMedium={false} />
+                         </UIProvider>
+                    </Stack>
+               </Container>
+          </DynamicThemeProvider>
+     )
 }
 
 
 export async function getServerSideProps(context: any) {
 
-          const { resolvedUrl } = context
-          const urlSplit = resolvedUrl.split('/');
-          const mainCategory = urlSplit[2];
-          const midCategory = urlSplit[3];
-          const subCategory = urlSplit[4];
+     const { resolvedUrl } = context
+     const urlSplit = resolvedUrl.split('/');
+     const mainCategory = urlSplit[2];
+     const midCategory = urlSplit[3];
+     const subCategory = urlSplit[4];
 
-          const productsByMainMidSubCategory: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory(mainCategory, midCategory, subCategory)
-          // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getProductsByMainCategory('prirodna-kozmetika')
-          // const productsByMainCategoryLepotaNega: any = await productsServices().getProductsByMainCategory('lepota-i-nega')
-          // const productsByMainCategoryBebiProgram: any = await productsServices().getProductsByMainCategory('bebi-program')
-          // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getProductsByMainCategory('medicinski-aparati-oprema')
-          // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getProductsByMainCategory('ortopedija-i-pomagala')
-          // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
-          // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getProductsByMainCategory('obuca-carape-ulosci')
+     const productsByMainMidSubCategory: any = await productsServices().getProductsByMainCategoryMidCategorySubCategory(mainCategory, midCategory, subCategory)
+     // const productsByMainCategoryPrirodnaKozmetika: any = await productsServices().getLimitedProductsByMainCategory('prirodna-kozmetika')
+     // const productsByMainCategoryLepotaNega: any = await productsServices().getLimitedProductsByMainCategory('lepota-i-nega')
+     // const productsByMainCategoryBebiProgram: any = await productsServices().getLimitedProductsByMainCategory('bebi-program')
+     // const productsByMainCategoryMedicinskiAparatiOprema: any = await productsServices().getLimitedProductsByMainCategory('medicinski-aparati-oprema')
+     // const productsByMainCategoryOrtopedijaPomagala: any = await productsServices().getLimitedProductsByMainCategory('ortopedija-i-pomagala')
+     // const productsByMainCategoryDezinfekcijaDezinsekcijaMaske: any = await productsServices().getLimitedProductsByMainCategory('dezinfekcija-dezinsekcija-maske')
+     // const productsByMainCategoryObucaCarapeUlosci: any = await productsServices().getLimitedProductsByMainCategory('obuca-carape-ulosci')
 
 
-          // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
-          redirect: {
-                    destination: "/404"
-          }
-          // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
-          // revalidate bi trebao da ponovo odradi getstaticprops logiku
+     // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
+     redirect: {
+          destination: "/404"
+     }
+     // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
+     // revalidate bi trebao da ponovo odradi getstaticprops logiku
 
-          return {
-                    props: {
-                              products: JSON.parse(JSON.stringify(productsByMainMidSubCategory)),
-                              //...(await serverSideTranslations('sr-RS'))
-                              // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
-                    },
-          }
+     return {
+          props: {
+               products: JSON.parse(JSON.stringify(productsByMainMidSubCategory)),
+               //...(await serverSideTranslations('sr-RS'))
+               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
+          },
+     }
 }
 
 
