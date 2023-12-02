@@ -86,7 +86,7 @@ export async function getServerSideProps({ query }: any) {
      if (!productsByMainCategoryLimited || productsByMainCategoryLimited.length === 0) {
           return {
                redirect: {
-                    destination: "/404",
+                    destination: `/proizvodi/${query.maincategory}?part=1`
                },
           };
      }
