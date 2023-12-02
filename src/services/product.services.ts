@@ -144,12 +144,16 @@ const productsServices = () => {
           }
      }
 
-     const getProductsByMainCategoryMidCategory = async (mainCategory: string, midCategory: string) => {
+     const getProductsByMainCategoryMidCategory = async (mainCategory: string, midCategory: string, loadedParts: any) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('DAR_DB')
-               let products: IProduct[] = await db.collection('Products').find({ mainCategory: mainCategory, midCategory: midCategory }).toArray()
+               let products: IProduct[] = await db.collection('Products').
+                    find({ mainCategory: mainCategory, midCategory: midCategory })
+                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+                    .limit(10)
+                    .toArray()
                return products
           } catch (error: any) {
                return { message: error.message }
@@ -159,11 +163,17 @@ const productsServices = () => {
           }
      }
 
-     const getProductsByMainCategoryMidCategorySubCategory = async (mainCategory: string, midCategory: string, subCategory: string) => {
+     const getProductsByMainCategoryMidCategorySubCategory = async (mainCategory: string, midCategory: string, subCategory: string, loadedParts: any) => {
+
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
           try {
                const db = client.db('DAR_DB')
-               let products: IProduct[] = await db.collection('Products').find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory }).toArray()
+               let products: IProduct[] = await db.collection('Products')
+                    .find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory })
+                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+                    .limit(10)
+                    .toArray()
                return products
           } catch (error: any) {
                return { message: error.message }

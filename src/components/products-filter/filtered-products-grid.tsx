@@ -17,11 +17,29 @@ export default function FilteredProductsGrid(props: any) {
      const [products, setProducts] = useState<any[]>(props.data || []);
 
      const onLoadMore = async () => {
-          const nextPart = parseInt(router.query.part as string) + 1 || 1
-          const maincategory = router.query.maincategory || 'prirodna-kozmetika';
 
-          await router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
-     };
+          const maincategory = router.query.maincategory || 'prirodna-kozmetika';
+          const midcategory = router.query.midcategory || 'alergija';
+          const subcategory = router.query.subcategory || 'ostalo';
+
+          const nextPart = parseInt(router.query.part as string) + 1 || 1
+
+
+          if (router.asPath.includes(maincategory.toString())) {
+               const paths = router.asPath.split('/').filter(Boolean);
+               console.log(paths);
+               if (paths.length === 2) {
+                    router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
+               } else if (paths.length === 3) {
+                    router.push(`/proizvodi/${maincategory}/${midcategory}?part=${nextPart}`);
+               } else if (paths.length === 4) {
+                    router.push(`/proizvodi/${maincategory}/${midcategory}/${subcategory}?part=${nextPart}`);
+               }
+
+          } else {
+               await router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
+          }
+     }
 
      const renderProducts =
           props.data == undefined || props.data?.length == 0 ?
@@ -63,4 +81,5 @@ export default function FilteredProductsGrid(props: any) {
           </Container >
      );
 }
+
 
