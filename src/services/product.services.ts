@@ -125,9 +125,9 @@ const productsServices = () => {
      }
 
      const getLimitedProductsByMainCategory = async (mainCategory: string, loadedParts: number) => {
-          console.log('aaaaaaaaa', mainCategory, loadedParts);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
@@ -135,7 +135,6 @@ const productsServices = () => {
                     .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(10)
                     .toArray()
-               console.log(products);
                return products
           } catch (error: any) {
                return { message: error.message }
