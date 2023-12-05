@@ -24,10 +24,6 @@ import ProductCard from "@/components/product-presentation/product-presentation"
 export default function Home(props: any) {
 
      const { dataForGrid, productsOnDiscount, manufacturers } = props
-     console.log(props);
-
-
-     //this way next js does not try to render theme provider on server (no hydration error : )
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
           ssr: false

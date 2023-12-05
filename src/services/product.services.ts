@@ -38,7 +38,7 @@ const productsServices = () => {
                let data: IProduct[] = await db.collection('Products')
                     .aggregate([
                          // { $match: { mainCategory: 'apoteka' } },
-                         { $sample: { size: 20 } }])
+                         { $sample: { size: 10 } }])
                     .toArray()
                return data
           } catch (error: any) {
@@ -63,9 +63,8 @@ const productsServices = () => {
                //      { $sample: { size: 1 } }
                // ])
                let data: IProduct[] = await db.collection('Products')
-                    .aggregate([
-                         // { $match: { manufacturer: 'herbalab' } },
-                         { $sample: { size: 20 } }])
+                    .find({ "manufacturer": "Herbalab" })
+                    .limit(10)
                     .toArray()
                return data
           } catch (error: any) {
@@ -174,9 +173,8 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .aggregate([
-                         // { $match: { discount: true } },
-                         { $sample: { size: 20 } }])
+                    .find({ "discount": true })
+                    .limit(10)
                     .toArray()
 
                return products
