@@ -11,8 +11,6 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let data: IProduct[] = await db.collection('Products').find({}).toArray()
-
-
                return data
           } catch (error: any) {
                return { message: error.message }
@@ -63,7 +61,7 @@ const productsServices = () => {
                //      { $sample: { size: 1 } }
                // ])
                let data: IProduct[] = await db.collection('Products')
-                    .find({ "manufacturer": "Herbalab" })
+                    .find({ "manufacturer": "herbalab" })
                     .limit(10)
                     .toArray()
                return data
