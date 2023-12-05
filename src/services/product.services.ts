@@ -12,6 +12,7 @@ const productsServices = () => {
                const db = client.db('DAR_DB')
                let data: IProduct[] = await db.collection('Products').find({}).toArray()
 
+
                return data
           } catch (error: any) {
                return { message: error.message }
