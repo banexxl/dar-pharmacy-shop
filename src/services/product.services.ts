@@ -11,6 +11,7 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let data: IProduct[] = await db.collection('Products').find({}).toArray()
+
                return data
           } catch (error: any) {
                return { message: error.message }
@@ -20,7 +21,7 @@ const productsServices = () => {
           }
      }
 
-     const getRandomProducts = async () => {
+     const getRandomApotekaProducts = async () => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
@@ -33,7 +34,38 @@ const productsServices = () => {
                //      { $match: { a: 10 } },
                //      { $sample: { size: 1 } }
                // ])
-               let data: IProduct[] = await db.collection('Products').aggregate([{ $sample: { size: 20 } }]).toArray()
+               let data: IProduct[] = await db.collection('Products')
+                    .aggregate([
+                         // { $match: { mainCategory: 'apoteka' } },
+                         { $sample: { size: 20 } }])
+                    .toArray()
+               return data
+          } catch (error: any) {
+               return { message: error.message }
+          }
+          finally {
+               await client.close();
+          }
+     }
+
+     const getRandomHerbalabProducts = async () => {
+
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+          try {
+               const db = client.db('DAR_DB')
+               // Get one random document from the mycoll collection.
+               //db.mycoll.aggregate([{ $sample: { size: 1 } }])
+               // Get one random document matching {a: 10} from the mycoll collection.
+               // db.mycoll.aggregate([
+               //      { $match: { a: 10 } },
+               //      { $sample: { size: 1 } }
+               // ])
+               let data: IProduct[] = await db.collection('Products')
+                    .aggregate([
+                         // { $match: { manufacturer: 'herbalab' } },
+                         { $sample: { size: 20 } }])
+                    .toArray()
                return data
           } catch (error: any) {
                return { message: error.message }
@@ -97,9 +129,9 @@ const productsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ "manufacturer": { $regex: `${manufacturer}`, $options: 'i' } })
-                    .aggregate([{ $sample: { size: 10 } }])
-                    .limit(10)
+                    .limit(2)
                     .toArray()
+
                return products
           } catch (error: any) {
                return { message: error.message }
@@ -141,9 +173,9 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ discount: true })
-                    .aggregate([{ $sample: { size: 10 } }])
-                    .limit(10)
+                    .aggregate([
+                         // { $match: { discount: true } },
+                         { $sample: { size: 20 } }])
                     .toArray()
 
                return products
@@ -252,7 +284,8 @@ const productsServices = () => {
           getProductsByMainCategoryMidCategorySubCategory,
           getAllLogos,
           getAllManufacturers,
-          getRandomProducts
+          getRandomHerbalabProducts,
+          getRandomApotekaProducts
      }
 }
 

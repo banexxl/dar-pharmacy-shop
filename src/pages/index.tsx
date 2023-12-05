@@ -24,6 +24,7 @@ import ProductCard from "@/components/product-presentation/product-presentation"
 export default function Home(props: any) {
 
      const { dataForGrid, productsOnDiscount, manufacturers } = props
+     console.log(props);
 
 
      //this way next js does not try to render theme provider on server (no hydration error : )
@@ -86,23 +87,17 @@ export default function Home(props: any) {
 }
 
 
-export async function getStaticProps({ locale }: any) {
+export async function getServerSideProps() {
 
-     const productsFromManufacturerHerbalab: IProduct[] = await productsServices().getProductsByManufacturer("Herbalab").then((data: any) => {
+     const productsFromManufacturerHerbalab: IProduct[] = await productsServices().getRandomHerbalabProducts().then((data: any) => {
           return data
      })
-
-     const productsByName: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer("Crux kolagen").then((data: any) => {
-          return data
-     })
-
-     const dataForGrid = productsFromManufacturerHerbalab.concat(productsByName)
 
      const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount().then((data: any) => {
           return data
      })
 
-     const productsByMainCategoryApoteka: IProduct[] = await productsServices().getLimitedProductsByMainCategory("apoteka", 10).then((data: any) => {
+     const productsByMainCategoryApoteka: IProduct[] = await productsServices().getRandomApotekaProducts().then((data: any) => {
           return data
      })
 
@@ -118,7 +113,7 @@ export async function getStaticProps({ locale }: any) {
 
      return {
           props: {
-               dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
+               dataForGrid: JSON.parse(JSON.stringify(productsFromManufacturerHerbalab)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                productsByMainCategoryApoteka: JSON.parse(JSON.stringify(productsByMainCategoryApoteka)),

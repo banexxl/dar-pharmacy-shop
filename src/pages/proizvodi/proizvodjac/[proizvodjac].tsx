@@ -13,105 +13,101 @@ import { useEffect, useState } from 'react';
 
 export default function MainCategoryPage(props: any) {
 
-          const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-                    loading: () => <LoadingWheel />,
-                    ssr: true
-          })
+     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+          loading: () => <LoadingWheel />,
+          ssr: true
+     })
 
-          const router = useRouter()
-          const [filteredProducts, setFilteredProducts] = useState();
-          const [loading, setLoading] = useState(false)
+     const router = useRouter()
+     const [filteredProducts, setFilteredProducts] = useState();
+     const [loading, setLoading] = useState(false)
 
-          useEffect(() => {
-                    const handleRouteChange = (url: any) => {
-                              setLoading(true)
-                    }
+     useEffect(() => {
+          const handleRouteChange = (url: any) => {
+               setLoading(true)
+          }
 
-                    const handleRouteChangeComplete = () => {
-                              setLoading(false)
-                    }
+          const handleRouteChangeComplete = () => {
+               setLoading(false)
+          }
 
-                    router.events.on('routeChangeStart', handleRouteChange)
-                    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+          router.events.on('routeChangeStart', handleRouteChange)
+          router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
-                    return () => {
-                              router.events.off('routeChangeStart', handleRouteChange)
-                              router.events.off('routeChangeComplete', handleRouteChangeComplete)
-                    }
-          }, [router.events])
+          return () => {
+               router.events.off('routeChangeStart', handleRouteChange)
+               router.events.off('routeChangeComplete', handleRouteChangeComplete)
+          }
+     }, [router.events])
 
-          return (
-                    <>
-                              {
-                                        loading ?
-                                                  <LoadingWheel /> :
-                                                  <DynamicThemeProvider theme={theme}>
-                                                            <Container
-                                                                      disableGutters
-                                                                      maxWidth="lg"
-                                                                      sx={{
-                                                                                background: "#fff",
-                                                                      }}
-                                                            >
-                                                                      <Stack>
-                                                                                <UIProvider>
-                                                                                          <SearchBox />
-                                                                                          <ProductsFilter filterObject={props.products} routerQuery={router.query.proizvodjac} />
-                                                                                          <AppDrawer isScreenToMedium={false} />
-                                                                                </UIProvider>
-                                                                      </Stack>
-                                                            </Container>
-                                                  </DynamicThemeProvider>
-                              }
-                    </>
-          )
+     return (
+          <>
+               {
+                    loading ?
+                         <LoadingWheel /> :
+                         <DynamicThemeProvider theme={theme}>
+                              <Container
+                                   disableGutters
+                                   maxWidth="lg"
+                                   sx={{
+                                        background: "#fff",
+                                   }}
+                              >
+                                   <Stack>
+                                        <UIProvider>
+                                             <SearchBox />
+                                             <ProductsFilter filterObject={props.products} routerQuery={router.query.proizvodjac} />
+                                             <AppDrawer isScreenToMedium={false} />
+                                        </UIProvider>
+                                   </Stack>
+                              </Container>
+                         </DynamicThemeProvider>
+               }
+          </>
+     )
 }
 
 export async function getStaticProps(context: any) {
 
-          const manufacturer = context.params.proizvodjac; // Access the manufacturer parameter
+     const manufacturer = context.params.proizvodjac; // Access the manufacturer parameter
 
-          const productsByManufacturer: any = await productsServices().getProductsByManufacturer(manufacturer)
+     const productsByManufacturer: any = await productsServices().getProductsByManufacturer(manufacturer)
 
-          const finalList = [
-                    ...productsByManufacturer
-          ]
+     const finalList = [
+          ...productsByManufacturer
+     ]
 
-          redirect: {
-                    destination: "/404"
-          }
+     redirect: {
+          destination: "/404"
+     }
 
 
-          return {
-                    props: {
-                              products: JSON.parse(JSON.stringify(finalList)),
-                              //...(await serverSideTranslations('sr-RS'))
-                              // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
-                    },
-          }
+     return {
+          props: {
+               products: JSON.parse(JSON.stringify(finalList)),
+               //...(await serverSideTranslations('sr-RS'))
+               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
+          },
+     }
 }
 
 
 export const getStaticPaths = async (context: any) => {
 
-          const allProducts: any = await productsServices().getAllProducts()
+     const allProducts: any = await productsServices().getAllProducts()
 
-          const finalList = [
-                    ...allProducts
-          ]
+     const paths = allProducts.flatMap((product: any) =>
+          context.locales.map((locale: any) => ({
+               params: {
+                    proizvodjac: product.manufacturer.toString()
+               },
+               locale,
+          }))
+     );
 
-          const paths = finalList.flatMap((product: any) =>
-                    context.locales.map((locale: any) => ({
-                              params: {
-                                        proizvodjac: product.manufacturer.toString()
-                              },
-                              locale,
-                    }))
-          );
-
-          return {
-                    paths,
-                    fallback: false, // false or "blocking"
-          };
+     return {
+          paths,
+          fallback: false, // false or "blocking"
+     };
 }
 
