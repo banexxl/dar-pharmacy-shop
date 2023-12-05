@@ -62,7 +62,7 @@ const productsServices = () => {
                // ])
                let data: IProduct[] = await db.collection('Products')
                     .find({ "manufacturer": "herbalab" })
-                    .limit(5)
+                    .limit(8)
                     .toArray()
                return data
           } catch (error: any) {
