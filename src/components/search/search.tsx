@@ -115,8 +115,9 @@ export default function SearchBox() {
                                                        >
                                                             <ListItemText primary={product.name} secondary={product.manufacturer} />
                                                             <Box>
-
-                                                                 <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100} />
+                                                                 <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100}
+                                                                      style={{ borderRadius: '5px' }}
+                                                                 />
                                                                  <Typography>
                                                                       {product.price} RSD
                                                                  </Typography>
