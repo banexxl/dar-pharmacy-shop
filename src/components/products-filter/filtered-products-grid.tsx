@@ -27,7 +27,7 @@ export default function FilteredProductsGrid(props: any) {
 
           if (router.asPath.includes(maincategory.toString())) {
                const paths = router.asPath.split('/').filter(Boolean);
-               console.log(paths);
+
                if (paths.length === 2) {
                     router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
                } else if (paths.length === 3) {

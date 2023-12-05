@@ -99,73 +99,63 @@ import nodemailer from "nodemailer"
 
 export const authOptions: NextAuthOptions = {
 
-          adapter: MongoDBAdapter(clientPromise),
-          providers: [
-                    GoogleProvider({
-                              clientId: process.env.GOOGLE_CLIENT_ID!,
-                              clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+     adapter: MongoDBAdapter(clientPromise),
+     providers: [
+          GoogleProvider({
+               clientId: process.env.GOOGLE_CLIENT_ID!,
+               clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
 
-                    }),
-                    // Passwordless / email sign in
-                    EmailProvider({
-                              server: {
-                                        host: process.env.EMAIL_SERVER_HOST,
-                                        port: 587,
-                                        auth: {
-                                                  user: process.env.EMAIL_SERVER_USER,
-                                                  pass: process.env.EMAIL_SERVER_PASSWORD,
-                                        },
-                              },
-                              from: process.env.EMAIL_FROM,
-                              normalizeIdentifier(identifier: string): string {
-                                        // Get the first two elements only,
-                                        // separated by `@` from user input.
-                                        let [local, domain] = identifier.toLowerCase().trim().split("@")
-                                        // The part before "@" can contain a ","
-                                        // but we remove it on the domain part
-                                        domain = domain.split(",")[0]
-                                        console.log(local, domain);
-
-                                        return `${local}@${domain}`
-
-                                        // You can also throw an error, which will redirect the user
-                                        // to the error page with error=EmailSignin in the URL
-                                        // if (identifier.split("@").length > 2) {
-                                        //   throw new Error("Only one email allowed")
-                                        // 
-                              }
-                    }),
-          ],
-          callbacks: {
-                    async jwt({ token }) {
-                              token.userRole = "admin"
-                              return token
+          }),
+          // Passwordless / email sign in
+          EmailProvider({
+               server: {
+                    host: process.env.EMAIL_SERVER_HOST,
+                    port: 587,
+                    auth: {
+                         user: process.env.EMAIL_SERVER_USER,
+                         pass: process.env.EMAIL_SERVER_PASSWORD,
                     },
-                    async signIn({ user, account, profile, email, credentials }) {
-                              console.log("user", user);
-                              console.log("account", account);
-                              console.log("profile", profile);
-                              console.log("email", email);
-                              console.log("credentials", credentials);
+               },
+               from: process.env.EMAIL_FROM,
+               normalizeIdentifier(identifier: string): string {
+                    // Get the first two elements only,
+                    // separated by `@` from user input.
+                    let [local, domain] = identifier.toLowerCase().trim().split("@")
+                    // The part before "@" can contain a ","
+                    // but we remove it on the domain part
+                    domain = domain.split(",")[0]
+                    return `${local}@${domain}`
 
-                              return account?.provider === "google" ?
-                                        profile?.email && profile.email.endsWith("@gmail.com") ? true : false
-                                        : email?.verificationRequest ? true : false
-
-                    },
-                    async redirect({ url, baseUrl }) {
-                              return baseUrl
-                    },
-                    async session({ session, user, token }) {
-                              console.log(session);
-
-                              return session
-                    },
+                    // You can also throw an error, which will redirect the user
+                    // to the error page with error=EmailSignin in the URL
+                    // if (identifier.split("@").length > 2) {
+                    //   throw new Error("Only one email allowed")
+                    // 
+               }
+          }),
+     ],
+     callbacks: {
+          async jwt({ token }) {
+               token.userRole = "admin"
+               return token
           },
-          secret: process.env.JWT_SECRET,
-          // pages: {
-          //           signIn: '/signin'
-          // }
+          async signIn({ user, account, profile, email, credentials }) {
+               return account?.provider === "google" ?
+                    profile?.email && profile.email.endsWith("@gmail.com") ? true : false
+                    : email?.verificationRequest ? true : false
+
+          },
+          async redirect({ url, baseUrl }) {
+               return baseUrl
+          },
+          async session({ session, user, token }) {
+               return session
+          },
+     },
+     secret: process.env.JWT_SECRET,
+     // pages: {
+     //           signIn: '/signin'
+     // }
 }
 
 export default NextAuth(authOptions)
