@@ -93,10 +93,6 @@ export async function getServerSideProps() {
           return data
      })
 
-     const productsByMainCategoryApoteka: IProduct[] = await productsServices().getRandomApotekaProducts().then((data: any) => {
-          return data
-     })
-
      const manufacturersLogos: string[] = await productsServices().getAllLogos().then((logos: any) => {
           return logos
      })
@@ -112,12 +108,6 @@ export async function getServerSideProps() {
                dataForGrid: JSON.parse(JSON.stringify(productsFromManufacturerHerbalab)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
-               productsByMainCategoryApoteka: JSON.parse(JSON.stringify(productsByMainCategoryApoteka)),
-               //...(await serverSideTranslations('sr-RS'))
-               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
-               // ...(await serverSideTranslations(locale ?? 'sr-RS', [
-               //           'common',
-               // ])),
           },
      }
 }
