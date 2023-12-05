@@ -163,8 +163,8 @@ const productsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ mainCategory: `${mainCategory}` })
-                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(10)
+                    .skip(20 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+                    .limit(20)
                     .toArray()
                return products
           } catch (error: any) {
