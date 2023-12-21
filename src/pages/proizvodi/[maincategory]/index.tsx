@@ -1,4 +1,3 @@
-import { Inter } from '@next/font/google'
 import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
 import Navbar from "../../../components/navbar/navbar";
 import { ThemeProvider } from "@mui/system";

@@ -1,15 +1,8 @@
-import { Inter } from '@next/font/google'
-import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material";
-import Navbar from "../../../../components/navbar/navbar";
-import { ThemeProvider } from "@mui/system";
+import { Container, Stack } from "@mui/material";
 import theme from "../../../../styles/theme";
-import Banner from "../../../../components/banner/banner";
-import Products from "../../../../components/products/products-grid";
 import { UIProvider } from "../../../../context/ui/ui.context";
-import Footer from "../../../../components/footer/footer";
 import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from "../../../../components/navbar/drawer/drawer";
-import Promotions from "../../../../components/promotions/promotions";
 import SearchBox from "../../../../components/search/search"
 import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
