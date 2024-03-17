@@ -100,7 +100,7 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                   <br>&nbsp;&nbsp;&nbsp;Poštovana/i ${data.name}, 
                                                             <br>
                                                                       <p class="message">
-                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu nedavnu kupovinu. <br>
+                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu kupovinu. <br>
                                                                                 <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em> <br>
                                                                                 <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje 
                                                                                 proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
