@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@mui/material"
+import { Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
 import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
@@ -19,7 +19,9 @@ export default function Banner() {
                     <BannerTitle>
                          Apoteka DAR
                     </BannerTitle>
-                    Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
+                    <Typography>
+                         Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
+                    </Typography>
                     <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
                          <Link href={"/proizvodi/apoteka?part=1"}>
                               Pogledajte ponudu
