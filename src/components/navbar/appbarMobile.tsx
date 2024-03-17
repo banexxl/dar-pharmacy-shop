@@ -1,10 +1,11 @@
-import { AppbarContainer, AppbarTitle } from "../../styles/appbar";
+import { AppbarContainer, AppbarContainerMobile, AppbarTitle, IconBox } from "../../styles/appbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import SvgIcon from "../svg/svg-icon";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
@@ -47,19 +48,23 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
      return (
 
-          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
-               <IconButton onClick={() => setDrawerOpen(true)} >
-                    <MenuIcon />
-               </IconButton>
-               <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}>
-                    <Link href="/">
-                         Dar
-                    </Link>
-               </AppbarTitle>
-               <IconButton onClick={() => setShowSearchBox(true)} >
-                    <SearchIcon />
-               </IconButton>
-          </AppbarContainer >
+          <AppbarContainerMobile sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+               <Link href="/">
+                    <IconBox sx={{ marginLeft: '10px' }}>
+                         <SvgIcon type={"logo"} />
+                    </IconBox>
+               </Link>
+               {/* <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}> */}
+               {/* </AppbarTitle> */}
+               <Box sx={{ display: 'flex', justifyContent: 'left' }}>
+                    <IconButton onClick={() => setShowSearchBox(true)} >
+                         <SearchIcon />
+                    </IconButton>
+                    <IconButton onClick={() => setDrawerOpen(true)} >
+                         <MenuIcon />
+                    </IconButton>
+               </Box>
+          </AppbarContainerMobile >
 
      );
 }

@@ -1,5 +1,5 @@
 import { Box, Divider, Grow, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography } from "@mui/material";
-import { AppbarContainer, AppbarTitle, MyList } from "../../styles/appbar"
+import { AppbarContainer, AppbarTitle, IconBox, MyList } from "../../styles/appbar"
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { useUIContext } from "../../context/ui/ui.context";
@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Colors } from "@/styles/theme";
 import Image from "next/image";
 import Logo from '../../../public/Logos/new_logos/rs_logo_1-fotor-bg-remover-20230424221111.png'
+import SvgIcon from "../svg/svg-icon";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
@@ -53,22 +54,27 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
 
      return (
           <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
-               <AppbarTitle variant="h4">
-                    <Link href="/">
-                         Apoteka Dar
-                    </Link>
-               </AppbarTitle>
-               <ListItemButton sx={{
+               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'left', width: '40%', marginLeft: '20px' }}>
+                    <IconBox>
+                         <SvgIcon type={"logo"} />
+                    </IconBox>
+                    <AppbarTitle variant="h4" sx={{ paddingTop: '10px' }}>
+                         <Link href="/">
+                              Apoteka DAR
+                         </Link>
+                    </AppbarTitle>
+               </Box>
+               {/* <ListItemButton sx={{
                     maxWidth: '200px',
                     borderRadius: '20px',
                     '&:hover': {
-                         backgroundColor: Colors.secondary,
+                         backgroundColor: Colors.primary.lighter,
                     },
                }} onClick={() => setShowSearchBox(true)}>
                     <ListItemIcon>
                          <SearchIcon />
                     </ListItemIcon>
-               </ListItemButton>
+               </ListItemButton> */}
                <Actions isScreenToMedium={isScreenToMedium} />
           </AppbarContainer>
      );

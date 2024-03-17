@@ -6,15 +6,26 @@ import { Colors } from "../theme";
 import { textPopUpTop } from "../animation";
 
 export const AppbarContainer = styled(Box)(({ theme }: any) => ({
-     [theme.breakpoints.down('md')]: {
-          marginLeft: '13%'
-     },
-     width: '61.5%',
+     // [theme.breakpoints.down('md')]: {
+     //      marginLeft: '13%'
+     // },
+     width: '70%',
      display: 'flex',
      justifyContent: 'space-between',
      alignItems: 'center',
      position: 'fixed',
      transition: '0.3s',
+     zIndex: '1000',
+     //backgroundColor: Colors.secondary,
+     //opacity: '0.8'
+})) as typeof Box
+
+export const AppbarContainerMobile = styled(Box)(({ theme }: any) => ({
+     width: '90%',
+     display: 'flex',
+     justifyContent: 'space-between',
+     alignItems: 'center',
+     position: 'fixed',
      zIndex: '1000',
      //backgroundColor: Colors.secondary,
      //opacity: '0.8'
@@ -32,6 +43,13 @@ export const AppbarTitle = styled(Typography)(({ theme }) => ({
      transition: '0.2s',
      cursor: 'pointer'
 })) as typeof Typography
+
+export const IconBox = styled(Box)(({ theme }: any) => ({
+     display: 'flex',
+     width: '48px',
+     height: '48px',
+     justifyContent: 'center',
+})) as typeof Box
 
 export const ActionIconsContainerMobile = styled(Box)(() => ({
      display: 'flex',
