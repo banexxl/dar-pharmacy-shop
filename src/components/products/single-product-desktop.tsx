@@ -15,129 +15,129 @@ import { FilteredProductImageContainer } from "@/styles/product/filtered-single-
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
-          const { t } = useTranslation();
-          const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
-          const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-          const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-          const [showOptions, setShowOptions] = useState(false)
-          const [loading, setLoading] = useState(false)
-          const [isVisible, setVisible] = useState(false)
-          const domRef = useRef<HTMLElement | null>(null)
-          const observerRef = useRef<IntersectionObserver | null>(null);
-          const dispatch = useDispatch();
+     const { t } = useTranslation();
+     const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
+     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
+     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
+     const [showOptions, setShowOptions] = useState(false)
+     const [loading, setLoading] = useState(false)
+     const [isVisible, setVisible] = useState(false)
+     const domRef = useRef<HTMLElement | null>(null)
+     const observerRef = useRef<IntersectionObserver | null>(null);
+     const dispatch = useDispatch();
 
-          useEffect(() => {
-                    observerRef.current = new IntersectionObserver(
-                              (entries) => {
-                                        entries.forEach((entry) => {
-                                                  if (entry.isIntersecting) {
-                                                            setVisible(true);
-                                                  } else {
-                                                            setVisible(false);
-                                                  }
-                                        });
-                              },
-                              { threshold: 1 } // Set your desired threshold value
-                    );
-
-                    const currentRef = domRef.current;
-
-
-                    if (currentRef && observerRef.current) {
-                              observerRef.current.observe(currentRef);
-                    }
-                    return () => {
-                              if (currentRef && observerRef.current) {
-                                        observerRef.current.unobserve(currentRef);
-                              }
-                    };
-          }, []);
-
-          function handleClick() {
-                    setLoading(true);
-          }
-
-
-          const handleMouseEnter = () => {
-                    setShowOptions(true);
-          };
-          const handleMouseLeave = () => {
-                    setShowOptions(false);
-          };
-
-          const callCartAlert = () => {
-                    setAddedToCartAlert(true)
-                    setLoading(true)
-                    const timeId = setTimeout(() => {
-                              // After X seconds set the show value to false
-                              setLoading(false)
-                              setAddedToCartAlert(false)
-                    }, 1500)
-
-                    return () => {
-                              clearTimeout(timeId)
-                    }
-          }
-
-          const callWishlistAlert = () => {
-                    setAddedToWishlistAlert(true)
-                    setLoading(true)
-                    const timeId = setTimeout(() => {
-                              // After X seconds set the show value to false
-                              setLoading(false)
-                              setAddedToWishlistAlert(false)
-                    }, 1500)
-
-                    return () => {
-                              clearTimeout(timeId)
-                    }
-          }
-
-          return (
-                    <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible}>
-                              <FilteredProductImageContainer>
-                                        <ProductImage src={product.imageURL} />
-                              </FilteredProductImageContainer>
-                              <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
-                                        <Tooltip placement="left" title={"Dodaj u listu želja"}>
-                                                  <FavoriteIcon />
-                                        </Tooltip>
-                              </ProductFavButton>
-                              {(showOptions || isScreenToMedium) && (
-                                        <ProductAddToCart show={showOptions} variant="contained" loading={loading} onClick={() => {
-                                                  callCartAlert()
-                                                  dispatch(addToCart(product))
-                                        }}
-                                        >
-                                                  Ddoaj u korpu
-                                        </ProductAddToCart>
-                              )}
-                              <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
-                                        <Stack direction={isScreenToMedium ? "row" : "column"}>
-                                                  <ProductActionButton>
-                                                            <Tooltip placement="left" title={"Podeli proizvod"}>
-                                                                      <ShareIcon color="primary" />
-                                                            </Tooltip>
-                                                  </ProductActionButton>
-                                                  <ProductActionButton onClick={() => showProductDetailDialog()}>
-                                                            <Tooltip placement="left" title="Full view">
-                                                                      <FitScreenIcon color="primary" />
-                                                            </Tooltip>
-                                                  </ProductActionButton>
-                                        </Stack>
-                              </ProductActionsWrapper>
-                              <ProductMeta product={product} />
-                              <ProductDetailDialog product={product} />
-                              {addedToCartAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  Proizvod dodat u korpu
-                                        </Alert>
-                              )}
-                              {addedToWishlistAlert && (
-                                        <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                                  Proizvod dodat u listu želja
-                                        </Alert>
-                              )}
-                    </Product>
+     useEffect(() => {
+          observerRef.current = new IntersectionObserver(
+               (entries) => {
+                    entries.forEach((entry) => {
+                         if (entry.isIntersecting) {
+                              setVisible(true);
+                         } else {
+                              setVisible(false);
+                         }
+                    });
+               },
+               { threshold: 1 } // Set your desired threshold value
           );
+
+          const currentRef = domRef.current;
+
+
+          if (currentRef && observerRef.current) {
+               observerRef.current.observe(currentRef);
+          }
+          return () => {
+               if (currentRef && observerRef.current) {
+                    observerRef.current.unobserve(currentRef);
+               }
+          };
+     }, []);
+
+     function handleClick() {
+          setLoading(true);
+     }
+
+
+     const handleMouseEnter = () => {
+          setShowOptions(true);
+     };
+     const handleMouseLeave = () => {
+          setShowOptions(false);
+     };
+
+     const callCartAlert = () => {
+          setAddedToCartAlert(true)
+          setLoading(true)
+          const timeId = setTimeout(() => {
+               // After X seconds set the show value to false
+               setLoading(false)
+               setAddedToCartAlert(false)
+          }, 1500)
+
+          return () => {
+               clearTimeout(timeId)
+          }
+     }
+
+     const callWishlistAlert = () => {
+          setAddedToWishlistAlert(true)
+          setLoading(true)
+          const timeId = setTimeout(() => {
+               // After X seconds set the show value to false
+               setLoading(false)
+               setAddedToWishlistAlert(false)
+          }, 1500)
+
+          return () => {
+               clearTimeout(timeId)
+          }
+     }
+
+     return (
+          <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible}>
+               <FilteredProductImageContainer>
+                    <ProductImage src={product.imageURL} />
+               </FilteredProductImageContainer>
+               <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
+                    <Tooltip placement="left" title={"Dodaj u listu želja"}>
+                         <FavoriteIcon />
+                    </Tooltip>
+               </ProductFavButton>
+               {(showOptions || isScreenToMedium) && (
+                    <ProductAddToCart show={showOptions} variant="contained" loading={loading} onClick={() => {
+                         callCartAlert()
+                         dispatch(addToCart(product))
+                    }}
+                    >
+                         Dodaj u korpu
+                    </ProductAddToCart>
+               )}
+               <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
+                    <Stack direction={isScreenToMedium ? "row" : "column"}>
+                         <ProductActionButton>
+                              <Tooltip placement="left" title={"Podeli proizvod"}>
+                                   <ShareIcon color="primary" />
+                              </Tooltip>
+                         </ProductActionButton>
+                         <ProductActionButton onClick={() => showProductDetailDialog()}>
+                              <Tooltip placement="left" title="Full view">
+                                   <FitScreenIcon color="primary" />
+                              </Tooltip>
+                         </ProductActionButton>
+                    </Stack>
+               </ProductActionsWrapper>
+               <ProductMeta product={product} />
+               <ProductDetailDialog product={product} />
+               {addedToCartAlert && (
+                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                         Proizvod dodat u korpu
+                    </Alert>
+               )}
+               {addedToWishlistAlert && (
+                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                         Proizvod dodat u listu želja
+                    </Alert>
+               )}
+          </Product>
+     );
 }
