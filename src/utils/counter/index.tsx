@@ -9,49 +9,49 @@ import { decrement, increment } from "@/store/cart/cart.slice";
 
 
 interface IProps {
-          _id: string;
-          count: number;
-          children: React.ReactNode
+     _id: string;
+     count: number;
+     children: React.ReactNode
 }
 
 const ProductCounter: FC<IProps> = ({ _id, count }) => {
 
-          const dispatch = useDispatch()
+     const dispatch = useDispatch()
 
-          return (
-                    <Box display="flex" >
-                              <IconButton
-                                        sx={{
-                                                  borderRadius: '10px',
-                                                  background: `${Colors.secondary}`,
-                                        }}
-                                        onClick={() => dispatch(decrement(_id))}
-                                        disabled={count <= 1 ? true : false}
-                              >
-                                        <RemoveIcon />
-                              </IconButton>
-                              <Typography
-                                        variant="h6"
-                                        sx={{
-                                                  border: `1px solid ${Colors.secondary}`,
-                                                  borderRadius: '10px',
-                                                  p: 2,
-                                        }}
-                              >
-                                        {count <= 1 ? 1 : count}
-                              </Typography>
-                              <IconButton
-                                        sx={{
-                                                  borderRadius: '10px',
-                                                  background: `${Colors.secondary}`,
-                                        }}
-                                        onClick={() => dispatch(increment(_id))}
-                                        disabled={count >= 100 ? true : false}
-                              >
-                                        <AddIcon />
-                              </IconButton>
-                    </Box>
-          );
+     return (
+          <Box display="flex" >
+               <IconButton
+                    sx={{
+                         borderRadius: '10px',
+                         background: `${Colors.primary.lighter}`,
+                    }}
+                    onClick={() => dispatch(decrement(_id))}
+                    disabled={count <= 1 ? true : false}
+               >
+                    <RemoveIcon />
+               </IconButton>
+               <Typography
+                    variant="h6"
+                    sx={{
+                         border: `1px solid ${Colors.primary.lighter}`,
+                         borderRadius: '10px',
+                         p: 2,
+                    }}
+               >
+                    {count <= 1 ? 1 : count}
+               </Typography>
+               <IconButton
+                    sx={{
+                         borderRadius: '10px',
+                         background: `${Colors.primary.lighter}`,
+                    }}
+                    onClick={() => dispatch(increment(_id))}
+                    disabled={count >= 100 ? true : false}
+               >
+                    <AddIcon />
+               </IconButton>
+          </Box>
+     );
 }
 
 export default ProductCounter

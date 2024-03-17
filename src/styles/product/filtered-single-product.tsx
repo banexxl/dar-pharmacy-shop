@@ -30,7 +30,7 @@ export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
           width: 'auto'
      },
      padding: '10px',
-     backgroundColor: Colors.secondary,
+     backgroundColor: Colors.primary.lighter,
      borderRadius: '5px',
      height: '150px',
      widthl: '100px',
@@ -95,20 +95,20 @@ export const FilteredProductActionButton = styled(IconButton)(() => ({
      background: Colors.white,
      margin: 4,
      '&:hover': {
-          backgroundColor: Colors.secondary,
+          backgroundColor: Colors.primary.lighter,
      },
 }))
 
 export const FilteredProductFavButton = styled(FilteredProductActionButton, { shouldForwardProp: (prop) => prop !== 'isfav' })
      (({ isfav, theme }: any) => ({
-          color: isfav ? Colors.primary : Colors.light,
+          color: isfav ? Colors.primary.main : Colors.primary.light,
           [theme.breakpoints.up("md")]: {
                position: "absolute",
                right: 0,
                top: 0,
           },
           '&:hover': {
-               backgroundColor: Colors.secondary,
+               backgroundColor: Colors.primary.lighter,
           },
      }));
 
@@ -126,9 +126,9 @@ export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardPro
                     `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
           },
           '&:hover': {
-               backgroundColor: Colors.secondary,
+               backgroundColor: Colors.primary.lighter,
           },
-          background: Colors.primary,
+          background: Colors.primary.main,
      }));
 
 export const FilteredProductMetaWrapper = styled(Box)(({ theme }: any) => ({
@@ -136,7 +136,7 @@ export const FilteredProductMetaWrapper = styled(Box)(({ theme }: any) => ({
      display: "flex",
      flexDirection: "column",
      alignItems: "center",
-     color: Colors.primary,
+     color: Colors.primary.main,
      fontStyle: 'italic',
      textAlign: 'center'
 }));
@@ -156,7 +156,7 @@ export const FilteredProductDiscountSticker = styled(Box)(() => ({
      position: 'absolute',
      right: '-20px',
      top: '10px',
-     background: Colors.primary,
+     background: Colors.primary.main,
      textAlign: 'center',
      width: '100 %',
      transition: '.5s ease',

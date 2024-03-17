@@ -14,7 +14,7 @@ export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
      display: "flex",
      justifyContent: "flex-start",
      overflow: "hidden",
-     background: Colors.secondary,
+     background: Colors.primary.lighter,
 }));
 
 export const ProductsFilters = styled(Box)(({ theme }) => ({

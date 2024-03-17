@@ -104,7 +104,7 @@ export default function SearchBox() {
                                    <List sx={{
                                         overflow: 'auto', height: '500px', width: '60%', backgroundColor: 'rgba(198, 40, 40, 1)',
                                         display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: `1px solid ${Colors.dim_grey}`,
-                                        borderRadius: '10px', boxShadow: `1px 2px 2px 2px ${Colors.secondary}`, paddingTop: '20px'
+                                        borderRadius: '10px', boxShadow: `1px 2px 2px 2px ${Colors.primary.lighter}`, paddingTop: '20px'
                                    }}>
                                         {
                                              searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length !== 0 ?

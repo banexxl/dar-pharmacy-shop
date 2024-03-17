@@ -21,183 +21,183 @@ import Swal from "sweetalert2";
 
 export default function Footer() {
 
-          ;
-          const [agreedWarning, setAgreedWarning] = useState(false)
-          const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
-          const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
-          const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
+     ;
+     const [agreedWarning, setAgreedWarning] = useState(false)
+     const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
+     const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
 
-          const callAlert = () => {
-                    setAgreedWarning(true)
-                    const timeId = setTimeout(() => {
-                              // After 3 seconds set the show value to false
-                              setAgreedWarning(false)
-                    }, 3000)
+     const callAlert = () => {
+          setAgreedWarning(true)
+          const timeId = setTimeout(() => {
+               // After 3 seconds set the show value to false
+               setAgreedWarning(false)
+          }, 3000)
 
-                    return () => {
-                              clearTimeout(timeId)
-                    }
+          return () => {
+               clearTimeout(timeId)
           }
+     }
 
-          const handleSubmit = async (data: any) => {
+     const handleSubmit = async (data: any) => {
 
-                    if (!data.agreedToTerms) {
-                              callAlert();
-                              return;
-                    } else {
-                              await fetch('/api/email/subscribe-user-api', {
-                                        method: "POST",
-                                        body: JSON.stringify(data),
-                                        headers: {
-                                                  'Content-Type': 'application/json',
-                                                  'Access-Control-Allow-Origin': '*',
-                                                  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-                                        },
-                              }).then((response: any) => response.json())
-                                        .then((response: any) => {
-                                                  if (response.message === "Email successfully registered!") {
-                                                            Swal.fire({
-                                                                      title: 'Hvala Vam puno na prijavi!',
-                                                                      text: 'Nećemo Vas puno gnjaviti :)',
-                                                                      icon: 'success',
-                                                                      background: Colors.secondary,
-                                                                      confirmButtonText: '<b >OK!</b> ',
-                                                                      showCloseButton: true,
-                                                                      timer: 3000
-                                                            });
-                                                  } else if (!response.ok) {
-                                                            Swal.fire({
-                                                                      title: 'Eh! Nismo uspeli da upišemo vaš email!',
-                                                                      text: 'Vaš email je već upisan kod nas :)',
-                                                                      icon: 'error',
-                                                                      confirmButtonText: 'OK!',
-                                                                      showCloseButton: true,
-                                                                      background: Colors.secondary,
-                                                                      timer: 3000
-                                                            });
-                                                  } else {
-                                                            console.error('Unexpected response:', response);
-                                                  }
-                                        })
-                    }
+          if (!data.agreedToTerms) {
+               callAlert();
+               return;
+          } else {
+               await fetch('/api/email/subscribe-user-api', {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                         'Content-Type': 'application/json',
+                         'Access-Control-Allow-Origin': '*',
+                         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                    },
+               }).then((response: any) => response.json())
+                    .then((response: any) => {
+                         if (response.message === "Email successfully registered!") {
+                              Swal.fire({
+                                   title: 'Hvala Vam puno na prijavi!',
+                                   text: 'Nećemo Vas puno gnjaviti :)',
+                                   icon: 'success',
+                                   background: Colors.primary.main, // Update the background property to a string value
+                                   confirmButtonText: '<b >OK!</b> ',
+                                   showCloseButton: true,
+                                   timer: 3000
+                              });
+                         } else if (!response.ok) {
+                              Swal.fire({
+                                   title: 'Eh! Nismo uspeli da upišemo vaš email!',
+                                   text: 'Vaš email je već upisan kod nas :)',
+                                   icon: 'error',
+                                   confirmButtonText: 'OK!',
+                                   showCloseButton: true,
+                                   background: Colors.primary.main, // Update the background property to a string value
+                                   timer: 3000
+                              });
+                         } else {
+                              console.error('Unexpected response:', response);
+                         }
+                    })
           }
+     }
 
 
-          return (
-                    <FooterContainer>
-                              <FooterInfoAccount >
-                                        <Box>
-                                                  <FooterTitle variant="body1">Informacije</FooterTitle>
-                                                  <List sx={{ textAlign: 'center', color: Colors.secondary }}>
-                                                            <ListItemText>
-                                                                      <Link href={"/"} >
-                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          Početna
-                                                                                </Typography>
-                                                                      </Link>
-                                                            </ListItemText>
-                                                            <ListItemText>
-                                                                      <Link href='/informacije/o-nama' >
-                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          O nama
-                                                                                </Typography>
-                                                                      </Link>
-                                                            </ListItemText>
-                                                            <ListItemText>
-                                                                      <Link href='/informacije/politika-privatnosti'>
-                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          Politika privatnosti
-                                                                                </Typography>
-                                                                      </Link>
-                                                            </ListItemText>
-                                                            <ListItemText>
-                                                                      <Link href='/informacije/uslovi-koriscenja'>
-                                                                                <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                          Uslovi korišćenja
-                                                                                </Typography>
-                                                                      </Link>
-                                                            </ListItemText>
-                                                  </List>
-                                        </Box>
-                                        <Box>
-                                                  <FooterTitle variant="body1">Nalog</FooterTitle>
-                                                  <List sx={{ textAlign: 'center', color: Colors.secondary }}>
-                                                            <ListItemText onClick={showLoginDialog}>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                Prijava
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                            <ListItemText onClick={showCartDialog}>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                Korpa
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                            <ListItemText onClick={showLoginDialog}>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                Moj profil
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                            <ListItemText onClick={showWishListDialog}>
-                                                                      <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
-                                                                                List želja
-                                                                      </Typography>
-                                                            </ListItemText>
-                                                  </List>
-                                        </Box>
-                              </FooterInfoAccount>
+     return (
+          <FooterContainer>
+               <FooterInfoAccount >
+                    <Box>
+                         <FooterTitle variant="body1">Informacije</FooterTitle>
+                         <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
+                              <ListItemText>
+                                   <Link href={"/"} >
+                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                             Početna
+                                        </Typography>
+                                   </Link>
+                              </ListItemText>
+                              <ListItemText>
+                                   <Link href='/informacije/o-nama' >
+                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                             O nama
+                                        </Typography>
+                                   </Link>
+                              </ListItemText>
+                              <ListItemText>
+                                   <Link href='/informacije/politika-privatnosti'>
+                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                             Politika privatnosti
+                                        </Typography>
+                                   </Link>
+                              </ListItemText>
+                              <ListItemText>
+                                   <Link href='/informacije/uslovi-koriscenja'>
+                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                             Uslovi korišćenja
+                                        </Typography>
+                                   </Link>
+                              </ListItemText>
+                         </List>
+                    </Box>
+                    <Box>
+                         <FooterTitle variant="body1">Nalog</FooterTitle>
+                         <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
+                              <ListItemText onClick={showLoginDialog}>
+                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                        Prijava
+                                   </Typography>
+                              </ListItemText>
+                              <ListItemText onClick={showCartDialog}>
+                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                        Korpa
+                                   </Typography>
+                              </ListItemText>
+                              <ListItemText onClick={showLoginDialog}>
+                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                        Moj profil
+                                   </Typography>
+                              </ListItemText>
+                              <ListItemText onClick={showWishListDialog}>
+                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                        List želja
+                                   </Typography>
+                              </ListItemText>
+                         </List>
+                    </Box>
+               </FooterInfoAccount>
 
-                              <FooterSocial>
-                                        <InstagramIcon onClick={() => window.open('https://instagram.com/apoteka_dar')} sx={{ cursor: 'pointer' }} />
-                              </FooterSocial>
+               <FooterSocial>
+                    <InstagramIcon onClick={() => window.open('https://instagram.com/apoteka_dar')} sx={{ cursor: 'pointer' }} />
+               </FooterSocial>
 
-                              <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema}>
-                                        {
-                                                  formik => (
-                                                            <Form>
+               <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema}>
+                    {
+                         formik => (
+                              <Form>
 
-                                                                      <FooterSubscribe>
-                                                                                <FooterTitle variant="body1">Bilten</FooterTitle>
-                                                                                <SubscribeTf
-                                                                                          color="secondary"
-                                                                                          label={"Email adresa"}
-                                                                                          variant="filled"
-                                                                                          value={formik.values.email}
-                                                                                          onChange={formik.handleChange('email')}
-                                                                                          error={formik.touched.email && !!formik.errors.email}
-                                                                                          helperText={formik.touched.email && formik.errors.email}
-                                                                                />
-                                                                                <Button
-                                                                                          startIcon={<SendIcon sx={{ color: Colors.white }} />}
-                                                                                          variant="contained"
-                                                                                          type="submit"
-                                                                                //disabled={formik.errors ? true : false}
-                                                                                >
-                                                                                          Prijavi se
-                                                                                </Button>
-                                                                                <FormControlLabel
-                                                                                          control={<PrivacyPolicyCheckBox checked={formik.values.agreedToTerms} />}
-                                                                                          onChange={
-                                                                                                    formik.handleChange('agreedToTerms')
-                                                                                          }
-                                                                                          label={"Prihvatam uslove politike privatnosti"}
-                                                                                          name="agreedToTerms"
-                                                                                />
-                                                                      </FooterSubscribe>
+                                   <FooterSubscribe>
+                                        <FooterTitle variant="body1">Bilten</FooterTitle>
+                                        <SubscribeTf
+                                             color="secondary"
+                                             label={"Email adresa"}
+                                             variant="filled"
+                                             value={formik.values.email}
+                                             onChange={formik.handleChange('email')}
+                                             error={formik.touched.email && !!formik.errors.email}
+                                             helperText={formik.touched.email && formik.errors.email}
+                                        />
+                                        <Button
+                                             startIcon={<SendIcon sx={{ color: Colors.white }} />}
+                                             variant="contained"
+                                             type="submit"
+                                        //disabled={formik.errors ? true : false}
+                                        >
+                                             Prijavi se
+                                        </Button>
+                                        <FormControlLabel
+                                             control={<PrivacyPolicyCheckBox checked={formik.values.agreedToTerms} />}
+                                             onChange={
+                                                  formik.handleChange('agreedToTerms')
+                                             }
+                                             label={"Prihvatam uslove politike privatnosti"}
+                                             name="agreedToTerms"
+                                        />
+                                   </FooterSubscribe>
 
-                                                            </Form>
-                                                  )
-                                        }
-                              </Formik>
-                              {
-                                        agreedWarning && (
-                                                  <Alert variant="filled" severity="error" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
-                                                            Upozorenje: Morate prihvatiti Politiku privatnosti!
-                                                  </Alert>
-                                        )
-                              }
-                              <WishListDialog />
-                              <CartDialog />
-                              <LoginDialog />
-                    </FooterContainer >
-          );
+                              </Form>
+                         )
+                    }
+               </Formik>
+               {
+                    agreedWarning && (
+                         <Alert variant="filled" severity="error" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
+                              Upozorenje: Morate prihvatiti Politiku privatnosti!
+                         </Alert>
+                    )
+               }
+               <WishListDialog />
+               <CartDialog />
+               <LoginDialog />
+          </FooterContainer >
+     );
 }

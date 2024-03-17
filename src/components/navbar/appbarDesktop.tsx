@@ -63,7 +63,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                     maxWidth: '200px',
                     borderRadius: '20px',
                     '&:hover': {
-                         backgroundColor: Colors.secondary,
+                         backgroundColor: Colors.primary.lighter,
                     },
                }} onClick={() => setShowSearchBox(true)}>
                     <ListItemIcon>

@@ -14,7 +14,7 @@ export const ContactBox = styled(Box)(({ theme }: any) => ({
      alignItems: "center",
      padding: "20px 0px 20px 0px",
      overflow: "hidden",
-     background: Colors.secondary,
+     background: Colors.primary.lighter,
      borderRadius: '10px'
 }));
 
@@ -59,11 +59,11 @@ export const ContactFormBox = styled(Box)(({ theme }: any) => ({
 }));
 
 export const ContactTitle = styled(Typography)(({ theme }: any) => ({
-     color: Colors.primary
+     color: Colors.primary.main
 }));
 
 export const ContactText = styled(Typography)(({ theme }: any) => ({
-     color: Colors.secondary,
+     color: Colors.primary.lighter,
      textAlign: 'center',
      alignItems: 'center',
 
@@ -72,7 +72,7 @@ export const ContactText = styled(Typography)(({ theme }: any) => ({
 export const ContactStrongText = styled(Typography)(({ theme }: any) => ({
      fontStyle: 'italic',
      fontWeight: 'bolder',
-     color: Colors.primary
+     color: Colors.primary.main
 }));
 
 export const ContactButton = styled(Button)(({ theme }: any) => ({

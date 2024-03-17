@@ -41,7 +41,7 @@ export const BannerContent = styled(Box)(({ theme }) => ({
      textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
      display: 'inline',
      fontWeight: 'bold',
-     color: Colors.secondary,
+     color: Colors.primary.lighter,
      backgroundImage: `url("/images/backgrounds/dar5.png")`,
      backgroundSize: "cover",
      backgroundPosition: "center",
@@ -71,7 +71,7 @@ export const BannerContent = styled(Box)(({ theme }) => ({
 export const BannerTitle = styled(Typography)(({ theme }) => ({
      textAlign: 'right',
      margin: "20px",
-     color: Colors.secondary,
+     color: Colors.primary.lighter,
      textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
      [theme.breakpoints.up("xl")]: {
           fontSize: '2.5rem',
@@ -99,7 +99,7 @@ export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
      transform: 'translateX(-50%)',
      margin: '20px 20px',
      '&:hover': {
-          backgroundColor: Colors.secondary,
+          backgroundColor: Colors.primary.lighter,
      },
      '& .MuiLoadingButton-loadingIndicator': {
           // You can adjust the size of the spinner here

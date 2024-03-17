@@ -82,20 +82,20 @@ export const ProductActionButton = styled(IconButton)(() => ({
      background: Colors.white,
      margin: 4,
      '&:hover': {
-          backgroundColor: Colors.secondary,
+          backgroundColor: Colors.primary.lighter,
      },
 }))
 
 export const ProductFavButton = styled(ProductActionButton, { shouldForwardProp: (prop) => prop !== 'isfav' })
      (({ isfav, theme }: any) => ({
-          color: isfav ? Colors.primary : Colors.light,
+          color: isfav ? Colors.primary.main : Colors.primary.light,
           [theme.breakpoints.up("md")]: {
                position: "absolute",
                right: 0,
                top: 0,
           },
           '&:hover': {
-               backgroundColor: Colors.secondary,
+               backgroundColor: Colors.primary.lighter,
           },
      }));
 
@@ -112,17 +112,17 @@ export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop
                     `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
           },
           '&:hover': {
-               backgroundColor: Colors.secondary,
+               backgroundColor: Colors.primary.lighter,
           },
-          background: Colors.primary,
+          background: Colors.primary.main,
      }));
 
 export const PopularProductAddToCart = styled(LoadingButton)({
      fontSize: "12px",
      '&:hover': {
-          backgroundColor: Colors.secondary,
+          backgroundColor: Colors.primary.lighter,
      },
-     background: Colors.primary,
+     background: Colors.primary.main,
 });
 
 export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
@@ -130,7 +130,7 @@ export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
      display: "flex",
      flexDirection: "column",
      alignItems: "center",
-     color: Colors.primary,
+     color: Colors.primary.main,
      fontStyle: 'italic',
      textAlign: 'center'
 }));
@@ -150,7 +150,7 @@ export const ProductDiscountSticker = styled(Box)(() => ({
      position: 'absolute',
      right: '-20px',
      top: '10px',
-     background: Colors.primary,
+     background: Colors.primary.main,
      textAlign: 'center',
      width: '100 %',
      transition: '.5s ease',

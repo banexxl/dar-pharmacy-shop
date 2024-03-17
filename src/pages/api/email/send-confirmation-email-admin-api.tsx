@@ -7,16 +7,16 @@ import { transporter } from '../../../services/email/email-config'
 
 const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
 
-          if (req.method === "POST") {
+     if (req.method === "POST") {
 
-                    const data: IEmailToFields = req.body;
+          const data: IEmailToFields = req.body;
 
-                    if (!data || !data.name || !data.email || !data.subject || !data.cart) {
-                              return res.status(400).send({ message: "Bad request, data missing" });
-                    }
+          if (!data || !data.name || !data.email || !data.subject || !data.cart) {
+               return res.status(400).send({ message: "Bad request, data missing" });
+          }
 
-                    const htmlForMaja =
-                              `
+          const htmlForMaja =
+               `
                               <html>
                               <head>
                                         <meta charset="UTF-8">
@@ -25,7 +25,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                   .container {
                                                             font-family: monospace, sans-serif;
                                                             display: grid;
-                                                            background-color: ${Colors.secondary};
+                                                            background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
                                                             height: auto,
                                                             width: 400px;
@@ -99,9 +99,9 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                   <p>Korisnik je poručio sledeće proizvode:</p>
                                                  <ul>
                                                   ${data.cart.map((cartItem: ICartItem) => `<li>` + cartItem._id.toString().slice(-8).toUpperCase()
-                                        + " " + cartItem.name
-                                        + " " + cartItem.quantity + " " + "*"
-                                        + " " + cartItem.count + " " + `</li>`).join('')}
+                    + " " + cartItem.name
+                    + " " + cartItem.quantity + " " + "*"
+                    + " " + cartItem.count + " " + `</li>`).join('')}
                                                   </ul>
                                                   </br>
                                                   <p>Ove proizvode je potrebno poslati na adresu:</p><br/>
@@ -114,21 +114,21 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                               </html>
                               `
 
-                    try {
-                              await transporter.sendMail({
-                                        from: process.env.EMAIL_SERVER_USER,
-                                        to: data.email,
-                                        subject: data.subject,
-                                        html: htmlForMaja
-                              });
+          try {
+               await transporter.sendMail({
+                    from: process.env.EMAIL_SERVER_USER,
+                    to: data.email,
+                    subject: data.subject,
+                    html: htmlForMaja
+               });
 
-                              return res.status(200).json({ success: true });
+               return res.status(200).json({ success: true });
 
-                    } catch (err: any) {
-                              return res.status(400).json({ message: err });
-                    }
-
+          } catch (err: any) {
+               return res.status(400).json({ message: err });
           }
+
+     }
 };
 
 export default SendConfirmMessageToAdminAPI

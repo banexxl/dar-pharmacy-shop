@@ -33,12 +33,12 @@ export const ShareButton = styled(Button)(
   color: white;
   transition: all 150ms ease;
   cursor: pointer;
-  border: 1px solid ${Colors.secondary};
+  border: 1px solid ${Colors.primary.lighter};
   box-shadow: 0 2px 1px ${theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(45, 45, 60, 0.2)'
-    }, inset 0 1.5px 1px ${Colors.secondary}, inset 0 -2px 1px ${Colors.secondary};
+    }, inset 0 1.5px 1px ${Colors.primary.lighter}, inset 0 -2px 1px ${Colors.primary.lighter};
 
   &:hover {
-    background-color: ${Colors.secondary};
+    background-color: ${Colors.primary.lighter};
   }
 
   &:active {
@@ -47,7 +47,7 @@ export const ShareButton = styled(Button)(
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 4px ${theme.palette.mode === 'dark' ? Colors.secondary : Colors.primary};
+    box-shadow: 0 0 0 4px ${theme.palette.mode === 'dark' ? Colors.primary.lighter : Colors.primary};
     outline: none;
   }
 
@@ -56,7 +56,7 @@ export const ShareButton = styled(Button)(
     cursor: not-allowed;
     box-shadow: none;
     &:hover {
-      background-color: ${Colors.secondary};
+      background-color: ${Colors.primary.lighter};
     }
   }
 `,

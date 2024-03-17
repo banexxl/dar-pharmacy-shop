@@ -14,7 +14,7 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
      justifyContent: "center",
      alignItems: "center",
      overflow: "hidden",
-     background: Colors.secondary,
+     background: Colors.primary.lighter,
      height: '70px'
 }));
 
@@ -25,5 +25,5 @@ export const MessageText = styled(Typography)(({ theme }) => ({
      [theme.breakpoints.down("md")]: {
           fontSize: "1.5rem",
      },
-     color: Colors.primary,
+     color: Colors.primary.main,
 }));
