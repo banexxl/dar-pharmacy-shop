@@ -1,5 +1,6 @@
 import { createTheme, Theme } from "@mui/material/styles";
 import { darken, lighten } from "polished";
+import NorthEastIcon from '@mui/icons-material/NorthEast';
 
 export const DrawerWidth = 250;
 
@@ -93,15 +94,17 @@ const theme: Theme = createTheme({
                },
                styleOverrides: {
                     root: {
-                         color: 'white',
                          background: Colors.primary.main,
                          '&:hover': {
                               background: Colors.primary.main
                          },
-                         cursor: 'pointer'
+                         cursor: 'pointer',
+                         borderRadius: '30px',
+                         // buttonIcon: NorthEastIcon
                     }
-               }
+               },
           },
+
           MuiTooltip: {
                defaultProps: {
                     arrow: true,

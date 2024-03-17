@@ -19,12 +19,14 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
      left: '0px',
      top: '0px',
      backgroundColor: Colors.white,
-     opacity: '0.8',
-     width: '70%'
+     // opacity: '0.8',
+     width: '70%',
+     zIndex: 1000,
 })) as typeof Box
 
 export const IconBox = styled(Box)(({ theme }: any) => ({
-     width: '48px',
+     display: 'flex',
+     width: '250px',
      height: '48px',
 })) as typeof Box
 

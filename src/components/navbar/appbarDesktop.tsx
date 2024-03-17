@@ -53,13 +53,13 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
           <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
                <IconBox>
                     <SvgIcon type={"logo"} />
+                    <AppbarTitle variant="h4" sx={{ paddingTop: '10px' }}>
+                         <Link href="/">
+                              Apoteka DAR
+                         </Link>
+                    </AppbarTitle>
                </IconBox>
-               <AppbarTitle variant="h4">
-                    <Link href="/">
-                         Apoteka DAR
-                    </Link>
-               </AppbarTitle>
-               <ListItemButton sx={{
+               {/* <ListItemButton sx={{
                     maxWidth: '200px',
                     borderRadius: '20px',
                     '&:hover': {
@@ -69,7 +69,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                     <ListItemIcon>
                          <SearchIcon />
                     </ListItemIcon>
-               </ListItemButton>
+               </ListItemButton> */}
                <Actions isScreenToMedium={isScreenToMedium} />
           </AppbarContainer>
      );
