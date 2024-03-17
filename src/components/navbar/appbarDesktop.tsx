@@ -12,64 +12,64 @@ import Logo from '../../../public/Logos/new_logos/rs_logo_1-fotor-bg-remover-202
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
-          const { setShowSearchBox } = useUIContext()
-          const [isScrolled, setIsScrolled] = useState<Boolean>(false);
+     const { setShowSearchBox } = useUIContext()
+     const [isScrolled, setIsScrolled] = useState<Boolean>(false);
 
-          const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
-
-
-          useEffect(() => {
-
-                    function handleScroll() {
-                              const scrolled = window.scrollY > 0;
-                              setIsScrolled(scrolled);
-                    }
-
-                    const isScrollHalfway = () => {
-                              const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-                              const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-                              const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
-
-                              setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
-                    }
-
-                    window.addEventListener('scroll', isScrollHalfway);
-                    window.addEventListener('scroll', handleScroll);
+     const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 
 
-                    return () => {
-                              window.removeEventListener('scroll', handleScroll);
-                              window.removeEventListener('scroll', isScrollHalfway);
-                    }
-          }, []);
+     useEffect(() => {
 
-          const getHeight = () => {
-                    if (isScrolled) {
-                              return '60px';
-                    } else {
-                              return '90px';
-                    }
-          };
+          function handleScroll() {
+               const scrolled = window.scrollY > 0;
+               setIsScrolled(scrolled);
+          }
 
-          return (
-                    <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
-                              <AppbarTitle variant="h4">
-                                        <Link href="/">
-                                                  Apoteka DAR
-                                        </Link>
-                              </AppbarTitle>
-                              <ListItemButton sx={{
-                                        maxWidth: '200px',
-                                        borderRadius: '20px',
-                                        '&:hover': {
-                                                  backgroundColor: Colors.secondary,
-                                        },
-                              }} onClick={() => setShowSearchBox(true)}>
-                                        <ListItemIcon>
-                                                  <SearchIcon />
-                                        </ListItemIcon>
-                              </ListItemButton>
-                              <Actions isScreenToMedium={isScreenToMedium} />
-                    </AppbarContainer>
-          );
+          const isScrollHalfway = () => {
+               const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+               const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+               const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+
+               setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
+          }
+
+          window.addEventListener('scroll', isScrollHalfway);
+          window.addEventListener('scroll', handleScroll);
+
+
+          return () => {
+               window.removeEventListener('scroll', handleScroll);
+               window.removeEventListener('scroll', isScrollHalfway);
+          }
+     }, []);
+
+     const getHeight = () => {
+          if (isScrolled) {
+               return '60px';
+          } else {
+               return '90px';
+          }
+     };
+
+     return (
+          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+               <AppbarTitle variant="h4">
+                    <Link href="/">
+                         Apoteka Dar
+                    </Link>
+               </AppbarTitle>
+               <ListItemButton sx={{
+                    maxWidth: '200px',
+                    borderRadius: '20px',
+                    '&:hover': {
+                         backgroundColor: Colors.secondary,
+                    },
+               }} onClick={() => setShowSearchBox(true)}>
+                    <ListItemIcon>
+                         <SearchIcon />
+                    </ListItemIcon>
+               </ListItemButton>
+               <Actions isScreenToMedium={isScreenToMedium} />
+          </AppbarContainer>
+     );
 }

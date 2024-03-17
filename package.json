@@ -11,7 +11,11 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/finger-paint": "^5.0.18",
+    "@fontsource/lobster": "^5.0.19",
+    "@fontsource/metal": "^5.0.19",
     "@fontsource/montez": "^4.5.10",
+    "@fontsource/swanky-and-moo-moo": "^5.0.8",
     "@googlemaps/js-api-loader": "^1.15.1",
     "@maptiler/sdk": "^1.0.11",
     "@mui/base": "^5.0.0-beta.26",
