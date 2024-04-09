@@ -18,7 +18,6 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
 
      const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 
-
      useEffect(() => {
 
           function handleScroll() {
@@ -53,7 +52,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
      };
 
      return (
-          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex', width: '1100px' }}>
                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'left', width: '40%', marginLeft: '20px' }}>
                     <IconBox>
                          <SvgIcon type={"logo"} />
