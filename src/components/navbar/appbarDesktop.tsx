@@ -23,21 +23,21 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                setIsScrolled(scrolled);
           }
 
-          const isScrollHalfway = () => {
-               const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-               const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-               const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+          // const isScrollHalfway = () => {
+          //      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          //      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+          //      const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
 
-               setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
-          }
+          //      setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
+          // }
 
-          window.addEventListener('scroll', isScrollHalfway);
+          // window.addEventListener('scroll', isScrollHalfway);
           window.addEventListener('scroll', handleScroll);
 
 
           return () => {
                window.removeEventListener('scroll', handleScroll);
-               window.removeEventListener('scroll', isScrollHalfway);
+               // window.removeEventListener('scroll', isScrollHalfway);
           }
      }, []);
 
@@ -50,10 +50,13 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
      };
 
      return (
-          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+          <AppbarContainer sx={{
+               height: getHeight(),
+               // display: isScrolledHalfway ? 'none' : 'flex'
+          }}>
                <IconBox>
                     <SvgIcon type={"logo"} />
-                    <AppbarTitle variant="h4" sx={{ paddingTop: '10px' }}>
+                    <AppbarTitle variant="h4" sx={{ paddingTop: '5px' }}>
                          <Link href="/">
                               Apoteka DAR
                          </Link>

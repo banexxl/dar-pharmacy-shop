@@ -26,25 +26,23 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
 
 export const IconBox = styled(Box)(({ theme }: any) => ({
      display: 'flex',
+     justifyContent: 'center',
      width: '250px',
      height: '48px',
 })) as typeof Box
 
 export const AppbarTitle = styled(Typography)(({ theme }) => ({
-     [theme.breakpoints.up("md")]: {
-          maxWwidth: '250px',
-     },
      [theme.breakpoints.down("md")]: {
-          maxWwidth: '250px',
+          maxWidth: '250px',
      },
      paddingLeft: '4px',
-     fontSize: "1rem",
+     fontSize: "1.5rem",
      fontFamily: 'Satisfy',
      color: Colors.primary.main,
      // "&:hover": {
      //      animation: `${textPopUpTop} 0.5s cubic-bezier(0.1, 0.030, 0.515, 0.955) both`,
      // },
-     transition: '0.2s',
+     // transition: '0.2s',
      cursor: 'pointer'
 })) as typeof Typography
 

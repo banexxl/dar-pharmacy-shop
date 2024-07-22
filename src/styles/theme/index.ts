@@ -58,8 +58,9 @@ const theme: Theme = createTheme({
                styleOverrides: {
                     root: {
                          fontFamily: 'monserrat',
-                         color: Colors.primary.main,
+                         color: Colors.primary.lighter,
                          textAlign: 'center',
+                         fontSize: '1.2rem',
                     }
                }
           },
