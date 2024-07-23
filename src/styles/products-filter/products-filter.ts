@@ -7,14 +7,14 @@ export const ProductsFilterContainer = styled(Box)(({ theme }) => ({
      minHeight: '100vh',
      gap: '10px',
      width: '99%',
-     borderRadius: '10px',
+     // borderRadius: '10px',
      [theme.breakpoints.up("md")]: {
           padding: "5px 5px",
      },
      display: "flex",
      justifyContent: "flex-start",
      overflow: "hidden",
-     background: Colors.secondary,
+     background: Colors.primary.lighter,
 }));
 
 export const ProductsFilters = styled(Box)(({ theme }) => ({

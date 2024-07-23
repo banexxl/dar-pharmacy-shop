@@ -1,7 +1,7 @@
-import { useMediaQuery } from "@mui/material"
+import { Box, Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
-import { BannerContainer, BannerContent, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner"
+import { BannerContainer, BannerLeftImageContent, BannerRightImageContent, BannerQuotaText, BannerShopButton, BannerTextContent, BannerTitle } from "../../styles/banner"
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
@@ -14,18 +14,27 @@ export default function Banner() {
 
      return (
           <BannerContainer>
-               <BannerImage src="/Logos/ailogo.png" alt={"banner"} />
-               <BannerContent>
+               {/* <BannerImage src="/images/home-page/darHeroPic.png" alt={"banner"} /> */}
+               <BannerLeftImageContent>
                     <BannerTitle>
                          Apoteka DAR
                     </BannerTitle>
-                    Dobro došli u našu i Vašu apoteku, gde se pružaju visokokvalitetni proizvodi i usluge. Mi smo tu da Vam pomognemo da pronađete ono što Vam je potrebno, bilo da se radi o lekovima ili osvežavajućim proizvodima za negu. Imamo stručan tim koji će Vam pružiti savet i pomoć u bilo kojem trenutku. Posetite nas i uverite se u naš kvalitet i uslugu. Hvala što ste nas odabrali!
+                    <BannerQuotaText>
+                         {'"Radosno srce je pola zdravlja!"'}
+                    </BannerQuotaText>
+                    <Typography>
+                         Kućna dostava lekova, utorkom i subotom, Kragujevac i Okolina...
+                    </Typography>
+                    <Typography>
+                         Nudimo pouzdane savete i širok asortiman proizvoda kako biste ostvarili svoje zdravstvene ciljeve.
+                    </Typography>
                     <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
                          <Link href={"/proizvodi/apoteka?part=1"}>
                               Pogledajte ponudu
                          </Link>
                     </BannerShopButton>
-               </BannerContent>
+                    <BannerRightImageContent />
+               </BannerLeftImageContent>
           </BannerContainer >
      )
 }

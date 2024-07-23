@@ -40,7 +40,7 @@ export const ProductsMenu = () => {
                     endIcon={<ArrowDownwardIcon />}
                     sx={{
                          ':hover': {
-                              backgroundColor: Colors.primary,
+                              backgroundColor: Colors.primary.main,
                               textEmphasisColor: Colors.dim_grey
                          }
                     }}

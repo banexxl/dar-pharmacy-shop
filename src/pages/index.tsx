@@ -20,6 +20,7 @@ import CarouselLogo from "@/components/carousel/carousel-logo";
 import CarouselBlog from "@/components/carousel/carousel-blog";
 import { useSelector } from "react-redux";
 import ProductCard from "@/components/product-presentation/product-presentation";
+import { BannerServices } from "@/components/banner/banner-services";
 
 export default function Home(props: any) {
 
@@ -50,6 +51,7 @@ export default function Home(props: any) {
                                    <MessageText variant="h4">Popularno</MessageText>
                               </Box>
                               <ProductCard />
+                              <BannerServices />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                    <MessageText variant="h4">Izdvajamo iz ponude</MessageText>
                               </Box>

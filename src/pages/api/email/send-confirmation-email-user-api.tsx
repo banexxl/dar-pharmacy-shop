@@ -7,18 +7,18 @@ import { transporter } from '../../../services/email/email-config'
 
 const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
 
-          if (req.method === "POST") {
+     if (req.method === "POST") {
 
-                    const data: IEmailToFields = req.body;
+          const data: IEmailToFields = req.body;
 
-                    if (!data || !data.name || !data.email || !data.subject || !data.cart) {
-                              return res.status(400).send({ message: "Bad request, data missing" });
-                    }
+          if (!data || !data.name || !data.email || !data.subject || !data.cart) {
+               return res.status(400).send({ message: "Bad request, data missing" });
+          }
 
-                    const products = data.cart.map((cartItem: ICartItem) => cartItem.name + " " + cartItem.quantity + " " + "*" + cartItem.count)
+          const products = data.cart.map((cartItem: ICartItem) => cartItem.name + " " + cartItem.quantity + " " + "*" + cartItem.count)
 
-                    const html =
-                              `
+          const html =
+               `
                               <html>
                               <head>
                                         <meta charset="UTF-8">
@@ -27,7 +27,7 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                   .container {
                                                             font-family: monospace, sans-serif;
                                                             display: grid;
-                                                            background-color: ${Colors.secondary};
+                                                            background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
                                                             width: 400px;
                                                             margin: 0 auto;
@@ -100,7 +100,7 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                   <br>&nbsp;&nbsp;&nbsp;Poštovana/i ${data.name}, 
                                                             <br>
                                                                       <p class="message">
-                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu nedavnu kupovinu. <br>
+                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu kupovinu. <br>
                                                                                 <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em> <br>
                                                                                 <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje 
                                                                                 proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
@@ -118,12 +118,12 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                                       
                                                                                 <ul>
                                                                       ${data.cart.map((cartItem: ICartItem) =>
-                                        `<li>`
-                                        + cartItem._id.toString().slice(-8).toUpperCase()
-                                        + " " + cartItem.name
-                                        + " " + cartItem.quantity + " "
-                                        + "*" + " " + cartItem.count
-                                        + " " + `</li>`).join('')}
+                    `<li>`
+                    + cartItem._id.toString().slice(-8).toUpperCase()
+                    + " " + cartItem.name
+                    + " " + cartItem.quantity + " "
+                    + "*" + " " + cartItem.count
+                    + " " + `</li>`).join('')}
                                                   </ul>
                                                                     
 
@@ -134,21 +134,21 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                               </html>
                               `
 
-                    try {
-                              await transporter.sendMail({
-                                        from: process.env.EMAIL_SERVER_USER,
-                                        to: data.email,
-                                        subject: data.subject,
-                                        html
-                              });
+          try {
+               await transporter.sendMail({
+                    from: process.env.EMAIL_SERVER_USER,
+                    to: data.email,
+                    subject: data.subject,
+                    html
+               });
 
-                              return res.status(200).json({ success: true });
+               return res.status(200).json({ success: true });
 
-                    } catch (err: any) {
-                              return res.status(400).json({ message: err });
-                    }
-
+          } catch (err: any) {
+               return res.status(400).json({ message: err });
           }
+
+     }
 };
 
 export default SendConfirmMessageToUserAPI

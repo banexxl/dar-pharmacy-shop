@@ -4,11 +4,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { useUIContext } from "../../context/ui/ui.context";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { Colors } from "@/styles/theme";
-import Image from "next/image";
-import Logo from '../../../public/Logos/new_logos/rs_logo_1-fotor-bg-remover-20230424221111.png'
 import SvgIcon from "../svg/svg-icon";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
@@ -18,6 +15,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
 
      const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 
+
      useEffect(() => {
 
           function handleScroll() {
@@ -25,21 +23,21 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                setIsScrolled(scrolled);
           }
 
-          const isScrollHalfway = () => {
-               const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-               const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-               const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+          // const isScrollHalfway = () => {
+          //      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          //      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+          //      const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
 
-               setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
-          }
+          //      setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
+          // }
 
-          window.addEventListener('scroll', isScrollHalfway);
+          // window.addEventListener('scroll', isScrollHalfway);
           window.addEventListener('scroll', handleScroll);
 
 
           return () => {
                window.removeEventListener('scroll', handleScroll);
-               window.removeEventListener('scroll', isScrollHalfway);
+               // window.removeEventListener('scroll', isScrollHalfway);
           }
      }, []);
 
@@ -47,22 +45,23 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
           if (isScrolled) {
                return '60px';
           } else {
-               return '90px';
+               return '100px';
           }
      };
 
      return (
-          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex', width: '1100px' }}>
-               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'left', width: '40%', marginLeft: '20px' }}>
-                    <IconBox>
-                         <SvgIcon type={"logo"} />
-                    </IconBox>
-                    <AppbarTitle variant="h4" sx={{ paddingTop: '10px' }}>
+          <AppbarContainer sx={{
+               height: getHeight(),
+               // display: isScrolledHalfway ? 'none' : 'flex'
+          }}>
+               <IconBox>
+                    <SvgIcon type={"logo"} />
+                    <AppbarTitle sx={{ paddingTop: '5px', fontSize: '1rem' }}>
                          <Link href="/">
                               Apoteka DAR
                          </Link>
                     </AppbarTitle>
-               </Box>
+               </IconBox>
                {/* <ListItemButton sx={{
                     maxWidth: '200px',
                     borderRadius: '20px',

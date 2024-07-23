@@ -18,86 +18,84 @@ import Link from "next/link";
 
 export default function Actions({ isScreenToMedium }: any) {
 
-          const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
+     const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
 
-          const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
 
-          const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
+     const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
 
-          const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
+     const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
-          const counter = useSelector(cartTotalSelector)
-          const router = useRouter()
+     const counter = useSelector(cartTotalSelector)
 
-
-          return (
-                    <Component>
-                              <ListItemButton onClick={showCartDialog} sx={{
-                                        justifyContent: "center", '&:hover': {
-                                                  backgroundColor: Colors.secondary,
-                                        },
-                              }}>
-                                        <ListItemIcon
-                                                  sx={{
-                                                            display: "flex",
-                                                            justifyContent: "space-around",
-                                                            alignItems: 'center',
-                                                            color: isScreenToMedium && Colors.secondary,
-                                                  }}
-                                        >
-                                                  <ShoppingCartIcon />
-                                                  <CartCounter>{counter}</CartCounter>
-                                        </ListItemIcon>
-                              </ListItemButton>
-                              <Divider orientation="vertical" flexItem />
-                              <ListItemButton
-                                        onClick={showWishListDialog}
+     return (
+          <Component>
+               <ListItemButton onClick={showCartDialog} sx={{
+                    justifyContent: "center", '&:hover': {
+                         backgroundColor: Colors.secondary.custom,
+                    },
+               }}>
+                    <ListItemIcon
+                         sx={{
+                              display: "flex",
+                              justifyContent: "space-around",
+                              alignItems: 'center',
+                              color: isScreenToMedium && Colors.secondary.custom,
+                         }}
+                    >
+                         <ShoppingCartIcon />
+                         <CartCounter>{counter}</CartCounter>
+                    </ListItemIcon>
+               </ListItemButton>
+               <Divider orientation="vertical" flexItem />
+               <ListItemButton
+                    onClick={showWishListDialog}
+                    sx={{
+                         justifyContent: "center",
+                         '&:hover': {
+                              backgroundColor: Colors.secondary.custom,
+                         },
+                    }}
+               >
+                    <ListItemIcon
+                         sx={{
+                              display: "flex",
+                              justifyContent: "center",
+                              color: isScreenToMedium && Colors.secondary.custom,
+                         }}
+                    >
+                         <FavoriteIcon />
+                    </ListItemIcon>
+               </ListItemButton>
+               <Divider orientation="vertical" flexItem />
+               <ListItemButton onClick={() => showLoginDialog()}
+                    sx={{
+                         justifyContent: "center",
+                         '&:hover': {
+                              backgroundColor: Colors.secondary.custom,
+                         },
+                    }}
+               >
+                    <ListItemIcon
+                         sx={{
+                              display: "flex",
+                              justifyContent: "center",
+                              color: isScreenToMedium && Colors.secondary.custom,
+                         }}
+                    >
+                         <PersonIcon />
+                    </ListItemIcon>
+               </ListItemButton>
+               <Divider orientation="vertical" flexItem />
+               {/* <ListItemButton
                                         sx={{
                                                   justifyContent: "center",
                                                   '&:hover': {
-                                                            backgroundColor: Colors.secondary,
-                                                  },
-                                        }}
-                              >
-                                        <ListItemIcon
-                                                  sx={{
-                                                            display: "flex",
-                                                            justifyContent: "center",
-                                                            color: isScreenToMedium && Colors.secondary,
-                                                  }}
-                                        >
-                                                  <FavoriteIcon />
-                                        </ListItemIcon>
-                              </ListItemButton>
-                              <Divider orientation="vertical" flexItem />
-                              <ListItemButton onClick={() => showLoginDialog()}
-                                        sx={{
-                                                  justifyContent: "center",
-                                                  '&:hover': {
-                                                            backgroundColor: Colors.secondary,
-                                                  },
-                                        }}
-                              >
-                                        <ListItemIcon
-                                                  sx={{
-                                                            display: "flex",
-                                                            justifyContent: "center",
-                                                            color: isScreenToMedium && Colors.secondary,
-                                                  }}
-                                        >
-                                                  <PersonIcon />
-                                        </ListItemIcon>
-                              </ListItemButton>
-                              <Divider orientation="vertical" flexItem />
-                              {/* <ListItemButton
-                                        sx={{
-                                                  justifyContent: "center",
-                                                  '&:hover': {
-                                                            backgroundColor: Colors.secondary,
+                                                            backgroundColor: Colors.primary.lighter,
                                                   },
                                         }}
                               > */}
-                              {/* <Select
+               {/* <Select
                                                   placeholder="Language"
                                                   IconComponent={(props) => (<Language sx={{ display: 'flex', left: '25px' }} {...props} />)}
                                                   sx={{ width: 75, height: 24, alignItems: 'center' }}
@@ -109,10 +107,10 @@ export default function Actions({ isScreenToMedium }: any) {
                                                             sr
                                                   </MenuItem>
                                         </Select> */}
-                              {/* </ListItemButton> */}
-                              <WishListDialog />
-                              <CartDialog />
-                              <LoginDialog />
-                    </Component >
-          );
+               {/* </ListItemButton> */}
+               <WishListDialog />
+               <CartDialog />
+               <LoginDialog />
+          </Component >
+     );
 }

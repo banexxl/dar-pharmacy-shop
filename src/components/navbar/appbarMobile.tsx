@@ -42,29 +42,25 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
           if (isScrolled) {
                return '40px';
           } else {
-               return '90px';
+               return '70px';
           }
      };
 
      return (
 
-          <AppbarContainerMobile sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
-               <Link href="/">
-                    <IconBox sx={{ marginLeft: '10px' }}>
-                         <SvgIcon type={"logo"} />
-                    </IconBox>
-               </Link>
-               {/* <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}> */}
-               {/* </AppbarTitle> */}
-               <Box sx={{ display: 'flex', justifyContent: 'left' }}>
-                    <IconButton onClick={() => setShowSearchBox(true)} >
-                         <SearchIcon />
-                    </IconButton>
-                    <IconButton onClick={() => setDrawerOpen(true)} >
-                         <MenuIcon />
-                    </IconButton>
-               </Box>
-          </AppbarContainerMobile >
+          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+               <IconButton onClick={() => setDrawerOpen(true)} >
+                    <MenuIcon />
+               </IconButton>
+               <AppbarTitle textAlign={"center"} variant="h6" sx={{ fontSize: getHeight() }}>
+                    <Link href="/">
+                         DAR
+                    </Link>
+               </AppbarTitle>
+               <IconButton onClick={() => setShowSearchBox(true)} >
+                    <SearchIcon />
+               </IconButton>
+          </AppbarContainer >
 
      );
 }

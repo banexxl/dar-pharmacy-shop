@@ -5,8 +5,12 @@ import { CarouselButton, CarouselImgBox, CarouselManufacturer, CarouselManufactu
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 const ProductCarousel = (props: any) => {
+
+     const theme = useTheme();
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      const responsive = {
           desktop: {
@@ -43,19 +47,23 @@ const ProductCarousel = (props: any) => {
                >
                     {
                          props.products.map((product: IProduct) => (
-                              <StyledCarouselCard key={product._id} >
+                              <StyledCarouselCard key={product._id} sx={{ display: 'flex', flexDirection: 'column' }}>
                                    <CarouselImgBox>
                                         <CarouselProductImage isOnDiscount={product.discount} src={product.imageURL} alt={product.name} height={200} width={200} />
                                    </CarouselImgBox>
                                    <CarouselManufacturerBox>
-                                        <CarouselManufacturer>{product.manufacturer}</CarouselManufacturer>
+                                        <CarouselManufacturer sx={{ textTransform: 'capitalize', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.3rem' }}>{product.manufacturer}</CarouselManufacturer>
                                    </CarouselManufacturerBox>
                                    <CarouselTitleBox>
-                                        <CarouselTitle>{product.name}</CarouselTitle>
+                                        <Tooltip title={product.name} placement="top">
+                                             <CarouselTitle sx={{ textTransform: 'capitalize', fontSize: isScreenToMedium ? '.8rem' : '1rem' }}>{product.name}</CarouselTitle>
+                                        </Tooltip>
                                    </CarouselTitleBox>
-                                   <CarouselButton >
+                                   <CarouselButton sx={{ marginBottom: '5px' }}>
                                         <Link href={`/proizvod/${decodeURIComponent(product._id)}`}>
-                                             Detalji
+                                             <Typography sx={{ textTransform: 'capitalize' }}>
+                                                  Detalji
+                                             </Typography>
                                         </Link>
                                    </CarouselButton>
                               </StyledCarouselCard>

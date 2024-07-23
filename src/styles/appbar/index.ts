@@ -1,15 +1,15 @@
 import { IconButton, List, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import "@fontsource/swanky-and-moo-moo";
 import { Colors } from "../theme";
+import "@fontsource/satisfy"
 import { textPopUpTop } from "../animation";
 
 export const AppbarContainer = styled(Box)(({ theme }: any) => ({
-     // [theme.breakpoints.down('md')]: {
-     //      marginLeft: '13%'
-     // },
-     width: '70%',
+     [theme.breakpoints.down('md')]: {
+          marginLeft: '13%'
+     },
+     width: '61.5%',
      display: 'flex',
      justifyContent: 'space-between',
      alignItems: 'center',
@@ -32,15 +32,16 @@ export const AppbarContainerMobile = styled(Box)(({ theme }: any) => ({
 })) as typeof Box
 
 export const AppbarTitle = styled(Typography)(({ theme }) => ({
-     maxWidth: '250px',
-     paddingLeft: '4px',
-     fontSize: "2.5rem",
-     fontFamily: 'Swanky and Moo Moo',
-     color: Colors.primary,
-     "&:hover": {
-          animation: `${textPopUpTop} 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both`,
+     [theme.breakpoints.down("md")]: {
+          maxWidth: '250px',
      },
-     transition: '0.2s',
+     paddingLeft: '4px',
+     fontSize: ".5rem",
+     color: Colors.primary.main,
+     // "&:hover": {
+     //      animation: `${textPopUpTop} 0.5s cubic-bezier(0.1, 0.030, 0.515, 0.955) both`,
+     // },
+     // transition: '0.2s',
      cursor: 'pointer'
 })) as typeof Typography
 
@@ -64,7 +65,7 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
 })) as typeof Box
 
 export const ActionIconsContainerDesktop = styled(Box)(() => ({
-     backgroundColor: Colors.primary,
+     backgroundColor: Colors.primary.main,
      display: 'flex',
 })) as typeof Box
 
@@ -76,7 +77,7 @@ export const MyList = styled(List)<ListType>(({ type }: any) => ({
 }))
 
 export const DrawerCloseButton = styled(IconButton)(() => ({
-     color: Colors.secondary,
+     color: Colors.secondary.custom,
      left: '-20px',
      zIndex: '100',
 })) as typeof IconButton

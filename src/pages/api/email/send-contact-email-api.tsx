@@ -6,16 +6,16 @@ import { NextApiRequest, NextApiResponse } from 'next/types';
 
 const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
-          if (req.method === "POST") {
+     if (req.method === "POST") {
 
-                    const data: IContactForm = req.body;
+          const data: IContactForm = req.body;
 
-                    if (!data || !data.name || !data.email || !data.message) {
-                              return res.status(400).send({ message: "Bad request, data missing" });
-                    }
+          if (!data || !data.name || !data.email || !data.message) {
+               return res.status(400).send({ message: "Bad request, data missing" });
+          }
 
-                    const html =
-                              `
+          const html =
+               `
                               <html>
                               <head>
                                         <meta charset="UTF-8">
@@ -24,7 +24,7 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
                                                   .container {
                                                             font-family: monospace, sans-serif;
                                                             display: grid;
-                                                            background-color: ${Colors.secondary};
+                                                            background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
                                                             width: 400px;
                                                             margin: 0 auto;
@@ -107,18 +107,18 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
                               </html>
                               `
 
-                    try {
-                              await transporter.sendMail({
-                                        from: process.env.EMAIL_FROM,
-                                        to: 'maja@apoteka-dar.rs',
-                                        subject: 'Poruka od klijenta',
-                                        html
-                              })
-                              return res.status(200).json({ success: true });
-                    } catch (err: any) {
-                              return res.status(400).json({ message: err });
-                    }
-
+          try {
+               await transporter.sendMail({
+                    from: process.env.EMAIL_FROM,
+                    to: 'maja@apoteka-dar.rs',
+                    subject: 'Poruka od klijenta',
+                    html
+               })
+               return res.status(200).json({ success: true });
+          } catch (err: any) {
+               return res.status(400).json({ message: err });
           }
+
+     }
 };
 export default ContactEmailHandler;
