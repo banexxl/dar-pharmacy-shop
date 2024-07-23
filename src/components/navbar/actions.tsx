@@ -27,14 +27,12 @@ export default function Actions({ isScreenToMedium }: any) {
      const Component = isScreenToMedium ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
      const counter = useSelector(cartTotalSelector)
-     const router = useRouter()
-
 
      return (
           <Component>
                <ListItemButton onClick={showCartDialog} sx={{
                     justifyContent: "center", '&:hover': {
-                         backgroundColor: Colors.primary.lighter,
+                         backgroundColor: Colors.secondary.custom,
                     },
                }}>
                     <ListItemIcon
@@ -42,7 +40,7 @@ export default function Actions({ isScreenToMedium }: any) {
                               display: "flex",
                               justifyContent: "space-around",
                               alignItems: 'center',
-                              color: isScreenToMedium && Colors.primary.lighter,
+                              color: isScreenToMedium && Colors.secondary.custom,
                          }}
                     >
                          <ShoppingCartIcon />
@@ -55,7 +53,7 @@ export default function Actions({ isScreenToMedium }: any) {
                     sx={{
                          justifyContent: "center",
                          '&:hover': {
-                              backgroundColor: Colors.primary.lighter,
+                              backgroundColor: Colors.secondary.custom,
                          },
                     }}
                >
@@ -63,7 +61,7 @@ export default function Actions({ isScreenToMedium }: any) {
                          sx={{
                               display: "flex",
                               justifyContent: "center",
-                              color: isScreenToMedium && Colors.primary.lighter,
+                              color: isScreenToMedium && Colors.secondary.custom,
                          }}
                     >
                          <FavoriteIcon />
@@ -74,7 +72,7 @@ export default function Actions({ isScreenToMedium }: any) {
                     sx={{
                          justifyContent: "center",
                          '&:hover': {
-                              backgroundColor: Colors.primary.lighter,
+                              backgroundColor: Colors.secondary.custom,
                          },
                     }}
                >
@@ -82,7 +80,7 @@ export default function Actions({ isScreenToMedium }: any) {
                          sx={{
                               display: "flex",
                               justifyContent: "center",
-                              color: isScreenToMedium && Colors.primary.lighter,
+                              color: isScreenToMedium && Colors.secondary.custom,
                          }}
                     >
                          <PersonIcon />

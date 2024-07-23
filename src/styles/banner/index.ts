@@ -3,18 +3,15 @@ import { styled } from "@mui/material/styles";
 import { Colors } from "../theme";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-export const BannerContainer = styled(Box)(({ theme }) => ({
+export const BannerContainer = styled(Box)(({ theme, sx }) => ({
      display: "flex",
-     justifyContent: "center",
+     justifyContent: "space-between",
+     flexDirection: 'column',
      width: "100%",
      height: "100%",
      // padding: "0px 0px",
      marginTop: '100px',
-     background: Colors.white,
-     [theme.breakpoints.down("sm")]: {
-          flexDirection: "column",
-          alignItems: "center",
-     },
+     background: Colors.secondary.custom,
      // backgroundImage: `url(/images/banner/banner.png)`,
      // backgroundRepeat: "no-repeat",
      // backgroundPosition: "center",
@@ -36,7 +33,7 @@ export const BannerContainer = styled(Box)(({ theme }) => ({
 
 export const BannerTextContent = styled(Box)(({ theme }) => ({
      boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
-     borderRadius: '10px',
+     // borderRadius: '10px',
      display: 'flex',
      flexDirection: 'column',
      justifyContent: 'flex-start',
@@ -79,7 +76,7 @@ export const BannerQuotaText = styled(Typography)(({ theme }) => ({
 
 export const BannerLeftImageContent = styled(Box)(({ theme }) => ({
      boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
-     borderRadius: '10px',
+     // borderRadius: '10px',
      display: 'flex',
      flexDirection: 'column',
      justifyContent: 'space-between',

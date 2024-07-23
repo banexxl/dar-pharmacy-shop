@@ -46,7 +46,16 @@ export const CarouselTitleBox = styled(Box)({
 export const CarouselTitle = styled(Typography)({
      color: Colors.primary.light,
      textAlign: 'center',
-     fontWeight: 'bold'
+     fontWeight: 'bold',
+     overflow: 'hidden',
+     textOverflow: 'ellipsis',
+     display: '-webkit-box',
+     WebkitBoxOrient: 'vertical',
+     WebkitLineClamp: 2, // Allows two lines of text
+     maxHeight: '3.6em', // Approximate height for two lines (1.8em per line)
+     lineHeight: '1.8em', // Adjust line height as needed
+     cursor: 'pointer',
+     maxWidth: '190px' // Adjust this value as needed
 });
 
 export const CarouselManufacturerBox = styled(Box)({
@@ -56,9 +65,19 @@ export const CarouselManufacturerBox = styled(Box)({
 });
 
 export const CarouselManufacturer = styled(Typography)({
-     color: Colors.primary.main,
+     color: Colors.primary.light,
      textAlign: 'center',
-     fontWeight: 'bold'
+     fontWeight: 'bold',
+     overflow: 'hidden',
+     textOverflow: 'ellipsis',
+     display: '-webkit-box',
+     WebkitBoxOrient: 'vertical',
+     WebkitLineClamp: 1, // Allows two lines of text
+     maxHeight: '3.6em', // Approximate height for two lines (1.8em per line)
+     lineHeight: '1.8em', // Adjust line height as needed
+     textTransform: 'uppercase',
+     cursor: 'pointer',
+     maxWidth: '200px' // Adjust this value as needed
 });
 
 export const CarouselImgBox = styled(Box)({

@@ -18,7 +18,7 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
      position: 'fixed',
      left: '0px',
      top: '0px',
-     backgroundColor: Colors.white,
+     backgroundColor: Colors.primary.lighter,
      // opacity: '0.8',
      width: '70%',
      zIndex: 1000,
@@ -36,8 +36,7 @@ export const AppbarTitle = styled(Typography)(({ theme }) => ({
           maxWidth: '250px',
      },
      paddingLeft: '4px',
-     fontSize: "1.5rem",
-     fontFamily: 'Satisfy',
+     fontSize: ".5rem",
      color: Colors.primary.main,
      // "&:hover": {
      //      animation: `${textPopUpTop} 0.5s cubic-bezier(0.1, 0.030, 0.515, 0.955) both`,
@@ -71,7 +70,7 @@ export const MyList = styled(List)<ListType>(({ type }: any) => ({
 }))
 
 export const DrawerCloseButton = styled(IconButton)(() => ({
-     color: Colors.primary.main,
+     color: Colors.secondary.custom,
      left: '-20px',
      zIndex: '100',
 })) as typeof IconButton

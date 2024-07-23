@@ -18,6 +18,7 @@ export const Colors = {
           darker: "#1E3A5C",
           light: "#5C8DDA",
           lighter: "#BBDEFB",
+          custom: "#ECF4FF"
      },
      success: "#4CAF50",
      info: "#00a2ff",
@@ -100,7 +101,7 @@ const theme: Theme = createTheme({
                               background: Colors.primary.main
                          },
                          cursor: 'pointer',
-                         borderRadius: '30px',
+                         // borderRadius: '30px',
                          // buttonIcon: NorthEastIcon
                     }
                },

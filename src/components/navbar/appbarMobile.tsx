@@ -41,7 +41,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
           if (isScrolled) {
                return '40px';
           } else {
-               return '90px';
+               return '70px';
           }
      };
 
@@ -51,7 +51,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                <IconButton onClick={() => setDrawerOpen(true)} >
                     <MenuIcon />
                </IconButton>
-               <AppbarTitle textAlign={"center"} variant="h4" sx={{ fontSize: getHeight() }}>
+               <AppbarTitle textAlign={"center"} variant="h6" sx={{ fontSize: getHeight() }}>
                     <Link href="/">
                          DAR
                     </Link>

@@ -60,7 +60,7 @@ export default function Footer() {
                                    title: 'Hvala Vam puno na prijavi!',
                                    text: 'Nećemo Vas puno gnjaviti :)',
                                    icon: 'success',
-                                   background: Colors.primary.main, // Update the background property to a string value
+                                   background: Colors.secondary.custom, // Update the background property to a string value
                                    confirmButtonText: '<b >OK!</b> ',
                                    showCloseButton: true,
                                    timer: 3000
