@@ -48,8 +48,8 @@ export const AppbarTitle = styled(Typography)(({ theme }) => ({
 
 export const IconBox = styled(Box)(({ theme }: any) => ({
      display: 'flex',
-     width: '48px',
-     height: '48px',
+     // width: '48px',
+     // height: '48px',
      justifyContent: 'center',
 })) as typeof Box
 
