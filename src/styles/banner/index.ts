@@ -12,9 +12,6 @@ export const BannerContainer = styled(Box)(({ theme, sx }) => ({
      // padding: "0px 0px",
      marginTop: '100px',
      background: Colors.secondary.custom,
-     // backgroundImage: `url(/images/banner/banner.png)`,
-     // backgroundRepeat: "no-repeat",
-     // backgroundPosition: "center",
 })) as typeof Box;
 
 // export const BannerImage = styled("img")(({ src, theme }) => ({
