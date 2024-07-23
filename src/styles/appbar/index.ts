@@ -6,18 +6,19 @@ import "@fontsource/satisfy"
 import { textPopUpTop } from "../animation";
 
 export const AppbarContainer = styled(Box)(({ theme }: any) => ({
-     [theme.breakpoints.down('md')]: {
-          marginLeft: '13%'
-     },
-     width: '61.5%',
      display: 'flex',
+     flexDirection: 'row',
      justifyContent: 'space-between',
      alignItems: 'center',
+     padding: '0 15% 0',
+     // gap: '93px',
      position: 'fixed',
-     transition: '0.3s',
-     zIndex: '1000',
-     //backgroundColor: Colors.secondary,
-     //opacity: '0.8'
+     left: '0px',
+     top: '0px',
+     backgroundColor: Colors.primary.lighter,
+     // opacity: '0.8',
+     width: '70%',
+     zIndex: 1000,
 })) as typeof Box
 
 export const AppbarContainerMobile = styled(Box)(({ theme }: any) => ({
