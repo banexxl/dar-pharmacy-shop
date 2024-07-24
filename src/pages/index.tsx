@@ -21,6 +21,7 @@ import CarouselBlog from "@/components/carousel/carousel-blog";
 import { useSelector } from "react-redux";
 import ProductCard from "@/components/product-presentation/product-presentation";
 import { BannerServices } from "@/components/banner/banner-services";
+import { BannerCountUp } from "@/components/banner/banner-counter";
 
 export default function Home(props: any) {
 
@@ -56,6 +57,7 @@ export default function Home(props: any) {
                                    <MessageText variant="h4">Izdvajamo iz ponude</MessageText>
                               </Box>
                               <Products data={dataForGrid} />
+                              <BannerCountUp />
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                    <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
