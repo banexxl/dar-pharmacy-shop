@@ -23,7 +23,7 @@ const ContactPage = (props: ContactPageProps) => {
      return (
           <DynamicThemeProvider theme={theme}>
                <Head>
-                    <title>Kontakt forma</title>
+                    <title>O nama</title>
                </Head>
                <Container
                     disableGutters
