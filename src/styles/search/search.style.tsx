@@ -8,7 +8,7 @@ export const SearchBoxContainer = styled(Box)(() => ({
      left: 0,
      width: "100%",
      height: "100%",
-     background: Colors.primary.main,
+     background: Colors.secondary.custom,
      display: "flex",
      flexDirection: 'column',
      justifyContent: "center",
@@ -29,14 +29,14 @@ export const SearchField = styled(TextField)(({ theme }: any) => ({
           color: Colors.primary.lighter,
      },
      ".MuiInput-root::before": {
-          borderBottom: `1px solid ${Colors.primary.lighter}`,
+          borderBottom: `1px solid ${Colors.secondary.custom}`,
      },
      padding: "0 0 0 40px",
 }));
 
 export const SearchResultsBox = styled(Box)(() => ({
      width: "130%",
-     backgroundColor: Colors.primary.main,
+     backgroundColor: Colors.secondary.custom,
      display: "flex",
      justifyContent: "center",
      alignItems: "center",

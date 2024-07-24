@@ -102,7 +102,7 @@ export default function SearchBox() {
                                    </Box>
                                    :
                                    <List sx={{
-                                        overflow: 'auto', height: '500px', width: '60%', backgroundColor: 'rgba(198, 40, 40, 1)',
+                                        overflow: 'auto', height: '500px', width: '60%', backgroundColor: Colors.secondary.custom,
                                         display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: `1px solid ${Colors.dim_grey}`,
                                         borderRadius: '10px', boxShadow: `1px 2px 2px 2px ${Colors.primary.lighter}`, paddingTop: '20px'
                                    }}>

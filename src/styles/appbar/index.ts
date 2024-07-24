@@ -43,7 +43,8 @@ export const AppbarTitle = styled(Typography)(({ theme }) => ({
      //      animation: `${textPopUpTop} 0.5s cubic-bezier(0.1, 0.030, 0.515, 0.955) both`,
      // },
      // transition: '0.2s',
-     cursor: 'pointer'
+     cursor: 'pointer',
+     fontFamily: 'serif',
 })) as typeof Typography
 
 export const IconBox = styled(Box)(({ theme }: any) => ({

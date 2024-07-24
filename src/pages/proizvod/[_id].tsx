@@ -15,16 +15,11 @@ import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 
 const SingleProduct = (props: any) => {
-
-
-
      //this way next js does not try to render theme provider on server (no hydration error : )
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
           ssr: false
      })
-
-
      return (
           <DynamicThemeProvider theme={theme}>
                <Head>
