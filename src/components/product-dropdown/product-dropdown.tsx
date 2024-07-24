@@ -115,19 +115,23 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               <ProductMeta product={product} />
                               <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
                               <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
-                              <Typography variant="h5">
+                              <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                                    Opis
                               </Typography>
-                              {product.description}
-                              <Typography variant="h5">
+                              <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center' }}>
+                                   {product.description}
+                              </Typography>
+                              <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                                    Instrukcije
                               </Typography>
-                              {product.instructions}
-                              <Typography variant="h5">
-                                   Upozorenje
+                              <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center' }}>
+                                   {product.instructions}
                               </Typography>
-                              {product.warning}
-                              <Typography>
+                              <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                   Upozorenje
+                              </Typography >
+                              <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center' }}>
+                                   {product.warning}
                               </Typography>
                               <Box
                                    sx={{ mt: 4 }}
@@ -176,7 +180,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                          </Alert>
                     )}
                </DialogContent>
-          </Dialog>
+          </Dialog >
      );
 }
 
