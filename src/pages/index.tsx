@@ -66,13 +66,13 @@ export default function Home(props: any) {
                               <ProductCarousel products={dataForGrid} />
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                   <Typography sx={{ fontSize: '2rem' }}>Brendovi</Typography>
+                                   <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Brendovi</Typography>
                               </Box>
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                               <CarouselLogo manufacturers={manufacturers} />
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                   <Typography sx={{ fontSize: '2rem' }}>Proizvodi na akciji</Typography>
+                                   <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Proizvodi na akciji</Typography>
                               </Box>
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                               <ProductCarousel products={productsOnDiscount} />

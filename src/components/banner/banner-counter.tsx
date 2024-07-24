@@ -34,15 +34,15 @@ export const BannerCountUp = () => {
                     {({ isVisible }: any) => (
                          <Box
                               sx={{
-                                   rowGap: 5,
-                                   columnGap: 3,
+                                   rowGap: 2,
+                                   columnGap: 1,
                                    display: 'grid',
                                    textAlign: 'center',
                                    gridTemplateColumns: {
                                         xs: 'repeat(2, 1fr)',
                                         md: 'repeat(4, 1fr)',
                                    },
-                                   pt: { xs: 5, md: 10 },
+                                   pt: { xs: 1, md: 5 },
                                    pb: 10,
                               }}
                          >
