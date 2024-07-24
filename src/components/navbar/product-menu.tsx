@@ -10,6 +10,7 @@ import LoadingWheel from '@/components/loading/loading';
 import { useState } from 'react';
 import { Colors } from '@/styles/theme';
 import { useUIContext } from '@/context/ui/ui.context';
+import { useRouter } from 'next/router';
 
 export const ProductsMenu = () => {
 
@@ -19,6 +20,8 @@ export const ProductsMenu = () => {
      const handleProductsClick = (event: React.MouseEvent<HTMLElement>) => {
           setAnchorEl(event.currentTarget)
      };
+
+     const router = useRouter()
 
      const handleClose = () => {
           setAnchorEl(null)

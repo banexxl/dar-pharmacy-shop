@@ -18,18 +18,18 @@ export default function MainCategoryPage(props: any) {
      })
 
      const router = useRouter()
-     const [isLoading, setIsLoading] = useState(true);
+     // const [isLoading, setIsLoading] = useState(true);
 
-     useEffect(() => {
-          // Simulate an asynchronous operation, like fetching data
-          setTimeout(() => {
-               setIsLoading(false);
-          }, 1000); // Adjust the duration as needed
-     }, []);
+     // useEffect(() => {
+     //      // Simulate an asynchronous operation, like fetching data
+     //      setTimeout(() => {
+     //           setIsLoading(false);
+     //      }, 1000); // Adjust the duration as needed
+     // }, []);
 
-     if (isLoading) {
-          return <LoadingWheel />;
-     }
+     // if (isLoading) {
+     //      return <LoadingWheel />;
+     // }
 
 
      return (
