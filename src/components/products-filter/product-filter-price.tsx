@@ -5,57 +5,57 @@ import { useTranslation } from 'next-i18next';
 import { PriceRangeBox } from '@/styles/products-filter/products-filter';
 
 interface PriceFilterProps {
-          products: IProduct[];
-          onPriceFilterChange: (minPrice: any, maxPrice: any) => void;
+     products: IProduct[];
+     onPriceFilterChange: (minPrice: any, maxPrice: any) => void;
 }
 
 const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFilterChange }: any) => {
 
-          const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
+     const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
 
 
-          const handlePriceChange = (event: any, newPriceRange: any) => {
-                    setPriceRange(newPriceRange);
-          };
+     const handlePriceChange = (event: any, newPriceRange: any) => {
+          setPriceRange(newPriceRange);
+     };
 
-          const filterProductsByPriceRange = () => {
-                    const [minPrice, maxPrice] = priceRange;
-                    const filtered = products.filter((product: any) => {
-                              const productPrice = product.price; // Adjust this according to your data structure
-                              return productPrice >= minPrice && productPrice <= maxPrice;
-                    });
-                    onPriceFilterChange(filtered);
-          };
+     const filterProductsByPriceRange = () => {
+          const [minPrice, maxPrice] = priceRange;
+          const filtered = products.filter((product: any) => {
+               const productPrice = product.price; // Adjust this according to your data structure
+               return productPrice >= minPrice && productPrice <= maxPrice;
+          });
+          onPriceFilterChange(filtered);
+     };
 
-          return (
-                    <PriceRangeBox >
-                              <Typography gutterBottom>Opseg cena</Typography>
-                              <Grid container spacing={2} alignItems="center">
-                                        <Grid item xs={10} marginLeft='6%'>
-                                                  <Slider
-                                                            value={priceRange}
-                                                            onChange={handlePriceChange}
-                                                            valueLabelDisplay="auto"
-                                                            min={0}
-                                                            max={10000}
-                                                            step={100}
-                                                            aria-labelledby="price-range-slider"
-                                                  />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                                  <Typography variant="subtitle2">{`RSD ${priceRange[0]}`}</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                                  <Typography variant="subtitle2" align="right">{`RSD ${priceRange[1]}`}</Typography>
-                                        </Grid>
-                              </Grid>
-                              <Button onClick={filterProductsByPriceRange}>
-
-                                        Primeni filter
-
-                              </Button>
-                    </PriceRangeBox>
-          );
+     return (
+          <PriceRangeBox >
+               <Typography gutterBottom>Opseg cena</Typography>
+               <Grid container spacing={2} alignItems="center">
+                    <Grid item xs={10} marginLeft='6%'>
+                         <Slider
+                              value={priceRange}
+                              onChange={handlePriceChange}
+                              valueLabelDisplay="auto"
+                              min={0}
+                              max={10000}
+                              step={100}
+                              aria-labelledby="price-range-slider"
+                         />
+                    </Grid>
+                    <Grid item xs={6}>
+                         <Typography variant="subtitle2">{`RSD ${priceRange[0]}`}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                         <Typography variant="subtitle2" align="right">{`RSD ${priceRange[1]}`}</Typography>
+                    </Grid>
+               </Grid>
+               <Button onClick={filterProductsByPriceRange}>
+                    <Typography variant="button">
+                         Primeni filter
+                    </Typography>
+               </Button>
+          </PriceRangeBox>
+     );
 };
 
 export default PriceFilterComponent;
