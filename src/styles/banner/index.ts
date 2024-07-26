@@ -4,9 +4,9 @@ import { Colors } from "../theme";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 export const BannerContainer = styled(Box)(({ theme, sx }) => ({
-     display: "flex",
-     justifyContent: "space-between",
-     flexDirection: 'column',
+     // display: "flex",
+     // justifyContent: "space-between",
+     // flexDirection: 'column',
      width: "100%",
      height: "100%",
      // padding: "0px 0px",
@@ -98,8 +98,14 @@ export const BannerLeftImageContent = styled(Box)(({ theme }) => ({
 
 export const BannerRightImageContent = styled(Box)(({ theme }) => ({
      position: 'absolute',
-     top: '150px',
-     right: '180px',
+     [theme.breakpoints.up("lg")]: {
+          top: '150px',
+          right: '180px',
+     },
+     [theme.breakpoints.up("xl")]: {
+          top: '220px',
+          right: '300px',
+     },
      width: '120px',
      height: '120px',
      borderRadius: '100%',
