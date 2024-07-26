@@ -144,7 +144,7 @@ export default function Footer() {
                               </ListItemText>
                          </List>
                     </Box>
-                    {/* <Box>
+                    <Box>
                          <FooterTitle variant="body1">Nalog</FooterTitle>
                          <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
                               <ListItemText onClick={showLoginDialog}>
@@ -168,7 +168,7 @@ export default function Footer() {
                                    </FooterItem>
                               </ListItemText>
                          </List>
-                    </Box> */}
+                    </Box>
                </FooterInfoAccount>
 
                <FooterSocial>
@@ -191,8 +191,8 @@ export default function Footer() {
                                              helperText={formik.touched.email && formik.errors.email}
                                         />
                                         <Button
-                                             startIcon={<SendIcon sx={{ color: Colors.white }} />}
-                                             variant="contained"
+                                             startIcon={<SendIcon />}
+                                             // variant="contained"
                                              type="submit"
                                         //disabled={formik.errors ? true : false}
                                         >

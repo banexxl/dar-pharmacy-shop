@@ -141,7 +141,6 @@ export const BannerTitle = styled(Typography)(({ theme }) => ({
 })) as typeof Typography
 
 export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
-     color: Colors.white,
      fontSize: "16px",
      width: '150px',
      display: 'flex',
@@ -151,7 +150,7 @@ export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
      // transform: 'translateX(-50%)',
      margin: '20px 20px',
      '&:hover': {
-          backgroundColor: Colors.primary.lighter,
+          backgroundColor: Colors.secondary.custom,
      },
      '& .MuiLoadingButton-loadingIndicator': {
           // You can adjust the size of the spinner here

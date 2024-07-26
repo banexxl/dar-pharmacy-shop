@@ -139,7 +139,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                    alignItems="center"
                                    justifyContent="space-between"
                               >
-                                   <Button variant="contained" onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
+                                   <Button onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
                               </Box>
                               <Box
                                    display="flex"

@@ -152,7 +152,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                               Proizvod dodat u listu želja
                          </Alert>
                     )}
-                    <ProductAddToCart variant="contained" onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Dodaj u korpu</ProductAddToCart >
+                    <ProductAddToCart onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Dodaj u korpu</ProductAddToCart >
                     <ProductDetailDialog product={product} />
                </Product>
           </Grow>

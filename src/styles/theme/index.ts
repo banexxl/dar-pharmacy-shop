@@ -59,7 +59,7 @@ const theme: Theme = createTheme({
                styleOverrides: {
                     root: {
                          fontFamily: 'monserrat',
-                         color: Colors.primary.lighter,
+                         color: Colors.primary.main,
                          textAlign: 'center',
                          fontSize: '1.2rem',
                     }
@@ -96,9 +96,9 @@ const theme: Theme = createTheme({
                },
                styleOverrides: {
                     root: {
-                         background: Colors.primary.main,
+                         background: Colors.primary.lighter,
                          '&:hover': {
-                              background: Colors.primary.main
+                              background: Colors.secondary.custom
                          },
                          cursor: 'pointer',
                          // borderRadius: '30px',

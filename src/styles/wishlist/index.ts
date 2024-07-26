@@ -54,7 +54,6 @@ export const WishlistProductName = styled(Typography)(() => ({
 }))
 
 export const WishlistProductActionButton = styled(IconButton)(() => ({
-     background: Colors.white,
      margin: 4,
 }))
 

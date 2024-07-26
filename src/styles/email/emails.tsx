@@ -47,7 +47,6 @@ export const EmailSignature = styled(Typography)(({ theme }) => ({
 
 export const EmailButton = styled(Button)(({ theme }) => ({
      backgroundColor: theme.palette.success.main,
-     color: theme.palette.common.white,
      textDecoration: 'none',
      padding: theme.spacing(1.5, 3),
      borderRadius: 3,

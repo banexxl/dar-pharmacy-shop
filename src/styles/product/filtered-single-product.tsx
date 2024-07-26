@@ -92,7 +92,6 @@ export const FilteredProductImageDropdown = styled(Image)(({ src, theme }: any) 
 }));
 
 export const FilteredProductActionButton = styled(IconButton)(() => ({
-     background: Colors.white,
      margin: 4,
      '&:hover': {
           backgroundColor: Colors.primary.lighter,

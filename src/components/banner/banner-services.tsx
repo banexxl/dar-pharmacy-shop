@@ -23,7 +23,7 @@ export const BannerServices = () => {
                <Box sx={{ display: 'flex', justifyContent: 'space-around', flexDirection: isScreenToMedium ? 'column' : 'row' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                          <PeopleAltIcon sx={{ color: Colors.primary.main }} />
-                         <Typography sx={{ maxWidth: '300px', fontWeight: 'bold', fontSize: isScreenToMedium ? '1.2rem' : '1.8rem' }}>
+                         <Typography sx={{ maxWidth: '400px', fontWeight: 'bold', fontSize: isScreenToMedium ? '1.2rem' : '1.8rem' }}>
                               Savetovanje farmaceuta
                          </Typography>
                          <Typography sx={{ maxWidth: '300px', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>

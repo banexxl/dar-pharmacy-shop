@@ -145,12 +145,5 @@ export const StyledTotalsPrice = styled(Typography)(({ theme }: any) => ({
      fontWeight: 'bold'
 }))
 
-export const StyledTotalsToShopButton = styled(Button)(({ theme }: any) => ({
-     color: Colors.light_gray,
-}))
-
-export const StyledTotalsToPaymentButton = styled(Button)(({ theme }: any) => ({
-     color: Colors.light_gray,
-}))
 
 

@@ -104,7 +104,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                     </Tooltip>
                </ProductFavButton>
                {(showOptions || isScreenToMedium) && (
-                    <ProductAddToCart show={showOptions} variant="contained" loading={loading} onClick={() => {
+                    <ProductAddToCart show={showOptions} loading={loading} onClick={() => {
                          callCartAlert()
                          dispatch(addToCart(product))
                     }}
