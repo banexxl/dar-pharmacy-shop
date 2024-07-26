@@ -110,18 +110,18 @@ export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop
                     show &&
                     `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
           },
-          '&:hover': {
-               backgroundColor: Colors.primary.lighter,
-          },
-          background: Colors.primary.main,
+          // '&:hover': {
+          //      backgroundColor: Colors.primary.lighter,
+          // },
+          // background: Colors.primary.main,
      }));
 
 export const PopularProductAddToCart = styled(LoadingButton)({
      fontSize: "12px",
-     '&:hover': {
-          backgroundColor: Colors.primary.lighter,
-     },
-     background: Colors.primary.main,
+     // '&:hover': {
+     //      backgroundColor: Colors.sec.light,
+     // },
+     // background: Colors.primary.lighter,
 });
 
 export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({

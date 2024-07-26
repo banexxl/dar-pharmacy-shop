@@ -144,7 +144,7 @@ export default function Footer() {
                               </ListItemText>
                          </List>
                     </Box>
-                    <Box>
+                    {/* <Box>
                          <FooterTitle variant="body1">Nalog</FooterTitle>
                          <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
                               <ListItemText onClick={showLoginDialog}>
@@ -168,7 +168,7 @@ export default function Footer() {
                                    </FooterItem>
                               </ListItemText>
                          </List>
-                    </Box>
+                    </Box> */}
                </FooterInfoAccount>
 
                <FooterSocial>

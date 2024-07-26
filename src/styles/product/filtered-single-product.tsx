@@ -124,10 +124,10 @@ export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardPro
                     show &&
                     `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
           },
-          '&:hover': {
-               backgroundColor: Colors.primary.lighter,
-          },
-          background: Colors.primary.main,
+          // '&:hover': {
+          //      backgroundColor: Colors.primary.lighter,
+          // },
+          // background: Colors.primary.main,
      }));
 
 export const FilteredProductMetaWrapper = styled(Box)(({ theme }: any) => ({

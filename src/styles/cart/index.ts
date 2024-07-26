@@ -40,8 +40,9 @@ export const CartProductImage = styled("img")(({ src, theme }: any) => ({
 }));
 
 export const StyledProductName = styled(Typography)(() => ({
-     textAlign: 'center',
-     width: '100px',
+     textAlign: 'left',
+     fontSize: '1rem',
+     width: '90px',
 }))
 
 export const CartProductActionButton = styled(IconButton)(() => ({
@@ -66,13 +67,14 @@ export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
      },
      [theme.breakpoints.up("sm")]: {
           display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'space-around',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           backgroundColor: Colors.primary.lighter
      }
 }))
 
 export const StyledHeaderCell = styled(TableCell)(({ theme }: any) => ({
+     width: '70px',
      display: 'flex',
      flexDirection: 'column',
 }));
@@ -97,7 +99,7 @@ export const StyledProductCell = styled(TableCell)(({ theme }: any) => ({
 
 export const StyledProductRow = styled(TableRow)(({ theme }: any) => ({
      display: 'flex',
-     justifyContent: 'space-around',
+     justifyContent: 'space-between',
      alignItems: 'center',
      '&:nth-of-type(odd)': {
           backgroundColor: Colors.dove_gray,

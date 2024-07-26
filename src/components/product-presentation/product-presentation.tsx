@@ -87,7 +87,7 @@ export default function ProductCard() {
                     )
                }
                <CardActions disableSpacing>
-                    <PopularProductAddToCart variant="contained" loading={loading} onClick={() => {
+                    <PopularProductAddToCart loading={loading} onClick={() => {
                          callCartAlert()
                          dispatch(addToCart({
                               "_id": "649bb58b8778015860236f6d",

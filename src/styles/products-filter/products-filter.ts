@@ -111,9 +111,9 @@ export const PriceRangeFilterButton = styled(Box)(({ theme }) => ({
      justifyContent: "center",
      alignItems: "center",
      margin: '20px 0 20px 0',
-     background: Colors.primary.main,
+     background: Colors.primary.lighter,
      ":hover": {
           cursor: 'pointer',
-          background: Colors.primary.light
+          background: Colors.primary.light,
      }
 }));   
