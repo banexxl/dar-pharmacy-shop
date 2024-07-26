@@ -103,3 +103,17 @@ export const PriceRangeBox = styled(Box)(({ theme }) => ({
      alignItems: "center",
      margin: '20px 0 20px 0'
 }));
+
+export const PriceRangeFilterButton = styled(Box)(({ theme }) => ({
+     display: "flex",
+     borderRadius: '10px',
+     flexDirection: 'column',
+     justifyContent: "center",
+     alignItems: "center",
+     margin: '20px 0 20px 0',
+     background: Colors.primary.main,
+     ":hover": {
+          cursor: 'pointer',
+          background: Colors.primary.light
+     }
+}));   
