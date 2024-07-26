@@ -26,8 +26,8 @@ export const FooterContainer = styled(Box)(({ theme }: any) => ({
 export const FooterInfoAccount = styled(Box)(({ theme }: any) => ({
      display: 'flex',
      flexDirection: 'row',
-     gap: '5rem',
-     marginBottom: '20px'
+     gap: '3rem',
+     marginBottom: '20px',
 })) as typeof Box
 
 export const FooterSocial = styled(Box)(({ theme }: any) => ({
@@ -48,16 +48,37 @@ export const FooterSubscribe = styled(Box)(({ theme }: any) => ({
      },
 })) as typeof Box
 
-export const FooterTitle = styled(Typography)(() => ({
+export const FooterTitle = styled(Typography)(({ theme }: any) => ({
      color: Colors.primary.main,
      textTransform: "uppercase",
-     textAlign: 'center'
+     textAlign: 'left',
+     fontWeight: 'bold',
+     align: 'left',
+     [theme.breakpoints?.down("md")]: {
+          fontSize: '1rem'
+     },
+     [theme.breakpoints?.up("md")]: {
+          fontSize: '1.2rem'
+     },
+})) as typeof Typography
+
+export const FooterItem = styled(Typography)(({ theme }: any) => ({
+     color: Colors.secondary.custom,
+     textTransform: "uppercase",
+     textAlign: 'left',
+     [theme.breakpoints?.down("md")]: {
+          fontSize: '.6rem'
+     },
+     [theme.breakpoints?.up("md")]: {
+          fontSize: '.8rem'
+     },
+     '&:hover': { color: Colors.secondary.main, cursor: 'pointer' }
 })) as typeof Typography
 
 export const PrivacyPolicyCheckBox = styled(Checkbox)(() => ({
-     backgroundColor: 'transparent',
      color: Colors.primary.lighter,
 }))
+
 export const SubscribeTf = styled(TextField)<TextFieldProps>(() => ({
      ".MuiInputLabel-root": {
           color: Colors.primary.lighter,
@@ -66,3 +87,11 @@ export const SubscribeTf = styled(TextField)<TextFieldProps>(() => ({
           borderBottom: `1px solid ${Colors.primary.lighter}`,
      },
 }))
+
+//place copyright text in the bottom right of the footer
+export const Copyright = styled(Typography)(({ theme }: any) => ({
+     color: Colors.primary.main,
+     fontSize: '.8rem',
+     bottom: '0',
+     right: '0',
+})) as typeof Typography

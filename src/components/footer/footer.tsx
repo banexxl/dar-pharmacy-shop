@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon, Box, FormControlLabel, Alert } from "@mui/material"
 import { Colors } from "../../styles/theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import { SubscribeTf, FooterTitle, FooterContainer, FooterInfoAccount, FooterSocial, FooterSubscribe, PrivacyPolicyCheckBox } from "../../styles/footer";
+import { SubscribeTf, FooterTitle, FooterContainer, FooterInfoAccount, FooterSocial, FooterSubscribe, PrivacyPolicyCheckBox, FooterItem, Copyright } from "../../styles/footer";
 import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import Link from "next/link";
@@ -86,35 +86,35 @@ export default function Footer() {
      return (
           <FooterContainer>
                <FooterInfoAccount >
-                    <Box>
-                         <FooterTitle variant="body1">Informacije</FooterTitle>
-                         <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
-                              <ListItemText>
-                                   <Link href={"/"} >
-                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                    <Box >
+                         <FooterTitle >Informacije</FooterTitle>
+                         <List sx={{ color: Colors.primary.lighter, display: 'flex', flexDirection: 'column' }}>
+                              <ListItemText >
+                                   <FooterItem lineHeight={2}>
+                                        <Link href={"/"} >
                                              Početna
-                                        </Typography>
-                                   </Link>
+                                        </Link>
+                                   </FooterItem>
                               </ListItemText>
-                              <ListItemText>
-                                   <Link href='/informacije/o-nama' >
-                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                              <ListItemText >
+                                   <Link href='/informacije/o-nama'  >
+                                        <FooterItem lineHeight={2} >
                                              O nama
-                                        </Typography>
+                                        </FooterItem>
                                    </Link>
                               </ListItemText>
                               <ListItemText>
                                    <Link href='/informacije/politika-privatnosti'>
-                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                        <FooterItem lineHeight={2} >
                                              Politika privatnosti
-                                        </Typography>
+                                        </FooterItem>
                                    </Link>
                               </ListItemText>
                               <ListItemText>
                                    <Link href='/informacije/uslovi-koriscenja'>
-                                        <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                        <FooterItem lineHeight={2} >
                                              Uslovi korišćenja
-                                        </Typography>
+                                        </FooterItem>
                                    </Link>
                               </ListItemText>
                          </List>
@@ -123,27 +123,52 @@ export default function Footer() {
                          <FooterTitle variant="body1">Nalog</FooterTitle>
                          <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
                               <ListItemText onClick={showLoginDialog}>
-                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                   <FooterItem lineHeight={2} >
                                         Prijava
-                                   </Typography>
+                                   </FooterItem>
                               </ListItemText>
                               <ListItemText onClick={showCartDialog}>
-                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                   <FooterItem lineHeight={2} >
                                         Korpa
-                                   </Typography>
+                                   </FooterItem>
                               </ListItemText>
                               <ListItemText onClick={showLoginDialog}>
-                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                   <FooterItem lineHeight={2} >
                                         Moj profil
-                                   </Typography>
+                                   </FooterItem>
                               </ListItemText>
                               <ListItemText onClick={showWishListDialog}>
-                                   <Typography lineHeight={2} variant="caption" sx={{ '&:hover': { color: 'white', cursor: 'pointer' } }}>
+                                   <FooterItem lineHeight={2} >
                                         List želja
-                                   </Typography>
+                                   </FooterItem>
                               </ListItemText>
                          </List>
                     </Box>
+                    {/* <Box>
+                         <FooterTitle variant="body1">Nalog</FooterTitle>
+                         <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
+                              <ListItemText onClick={showLoginDialog}>
+                                   <FooterItem lineHeight={2} >
+                                        Prijava
+                                   </FooterItem>
+                              </ListItemText>
+                              <ListItemText onClick={showCartDialog}>
+                                   <FooterItem lineHeight={2} >
+                                        Korpa
+                                   </FooterItem>
+                              </ListItemText>
+                              <ListItemText onClick={showLoginDialog}>
+                                   <FooterItem lineHeight={2} >
+                                        Moj profil
+                                   </FooterItem>
+                              </ListItemText>
+                              <ListItemText onClick={showWishListDialog}>
+                                   <FooterItem lineHeight={2} >
+                                        List želja
+                                   </FooterItem>
+                              </ListItemText>
+                         </List>
+                    </Box> */}
                </FooterInfoAccount>
 
                <FooterSocial>
@@ -154,7 +179,6 @@ export default function Footer() {
                     {
                          formik => (
                               <Form>
-
                                    <FooterSubscribe>
                                         <FooterTitle variant="body1">Bilten</FooterTitle>
                                         <SubscribeTf
@@ -183,7 +207,9 @@ export default function Footer() {
                                              name="agreedToTerms"
                                         />
                                    </FooterSubscribe>
-
+                                   <Copyright>
+                                        Copyright © Apoteka Dar | Sva prava zadržana.
+                                   </Copyright>
                               </Form>
                          )
                     }
