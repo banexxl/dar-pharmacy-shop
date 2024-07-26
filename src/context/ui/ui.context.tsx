@@ -9,21 +9,21 @@ export const useUIContext = () => useContext(UIContext)
 
 export const UIProvider = ({ children }: any) => {
 
-          const [drawerOpen, setDrawerOpen] = useState(false);
-          const [showSearchBox, setShowSearchBox] = useState(false);
-          const [showLoadingWheel, setShowLoadingWheel] = useState('none');
+     const [drawerOpen, setDrawerOpen] = useState(false);
+     const [showSearchBox, setShowSearchBox] = useState(false);
+     const [showLoadingWheel, setShowLoadingWheel] = useState('none');
 
-          const value = {
-                    drawerOpen, setDrawerOpen,
-                    showSearchBox, setShowSearchBox,
-                    showLoadingWheel, setShowLoadingWheel
-          };
+     const value = {
+          drawerOpen, setDrawerOpen,
+          showSearchBox, setShowSearchBox,
+          showLoadingWheel, setShowLoadingWheel
+     };
 
-          return (
-                    <UIContext.Provider value={value}>
-                              <NavBar />
-                              {children}
-                              <Footer />
-                    </UIContext.Provider>
-          )
+     return (
+          <UIContext.Provider value={value}>
+               <NavBar />
+               {children}
+               <Footer />
+          </UIContext.Provider>
+     )
 }

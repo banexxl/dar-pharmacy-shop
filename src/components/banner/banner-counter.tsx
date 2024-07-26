@@ -27,7 +27,7 @@ export const BannerCountUp = () => {
 
      return (
           <BannerContainer sx={{ marginTop: '0px' }}>
-               <Typography sx={{ fontSize: '2rem', margin: '20px' }}>
+               <Typography sx={{ marginTop: '20px', fontWeight: 'bold', fontSize: isScreenToMedium ? '1.8rem' : '2rem' }}>
                     Naši uspesi
                </Typography>
                <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
@@ -43,12 +43,13 @@ export const BannerCountUp = () => {
                                         md: 'repeat(4, 1fr)',
                                    },
                                    pt: { xs: 1, md: 5 },
-                                   pb: 10,
+                                   pl: '10px',
+                                   pb: '20px',
                               }}
                          >
                               {SUMMARY.map((value) => (
                                    <Stack key={value.name} spacing={1}>
-                                        <Typography variant="h2">
+                                        <Typography sx={{ textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>
                                              <CountUp
                                                   start={value.number / 5}
                                                   end={value.number}
@@ -63,7 +64,7 @@ export const BannerCountUp = () => {
                                              </Typography>
                                         </Typography>
 
-                                        <Typography variant="body2">
+                                        <Typography sx={{ maxWidth: '300px', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>
                                              {value.name}
                                         </Typography>
                                    </Stack>
