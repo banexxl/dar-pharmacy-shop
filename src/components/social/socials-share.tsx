@@ -48,7 +48,7 @@ export const SocialShare = ({ shareURL }: ShareProps) => {
           title={'Apoteka DAR'}
         >
           <Button
-            key={'fb'}
+            key={'tw'}
             size="small"
             variant="outlined"
             startIcon={<Iconify icon={'carbon:logo-twitter'} />}
@@ -66,7 +66,7 @@ export const SocialShare = ({ shareURL }: ShareProps) => {
         </TwitterShareButton>
         <LinkedinShareButton url={shareURL}>
           <Button
-            key={'fb'}
+            key={'li'}
             size="small"
             variant="outlined"
             startIcon={<Iconify icon={'carbon:logo-linkedin'} />}
@@ -87,7 +87,7 @@ export const SocialShare = ({ shareURL }: ShareProps) => {
           title={'Apoteka DAR'}
         >
           <Button
-            key={'fb'}
+            key={'vb'}
             size="small"
             variant="outlined"
             startIcon={<FaViber />}
@@ -109,7 +109,7 @@ export const SocialShare = ({ shareURL }: ShareProps) => {
           subject={'Apoteka DAR'}
         >
           <Button
-            key={'fb'}
+            key={'em'}
             size="small"
             variant="outlined"
             startIcon={<AlternateEmailIcon />}
@@ -124,7 +124,6 @@ export const SocialShare = ({ shareURL }: ShareProps) => {
               },
             }}
           />
-
         </EmailShareButton>
       </Stack>
     </Stack>

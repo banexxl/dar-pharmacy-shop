@@ -37,22 +37,27 @@ export const ProductsMenu = () => {
      return (
           <Box>
                <LoadingWheel showLoadingWheel={showLoadingWheel} />
-               <Button
+               {/* <Button
                     variant="contained"
                     onClick={handleProductsClick}
                     endIcon={<ArrowDownwardIcon />}
                     sx={{
                          ':hover': {
-                              backgroundColor: Colors.primary.main,
+                              backgroundColor: Colors.secondary.custom,
                               textEmphasisColor: Colors.dim_grey
                          }
                     }}
-               >
-                    <StyledNestedTypography sx={{ textAlign: 'center' }}>
-                         Proizvodi
-                    </StyledNestedTypography>
+               > */}
+               <Typography
+                    sx={{ textAlign: 'center', color: Colors.secondary.custom, cursor: 'pointer' }}
+                    onClick={handleProductsClick}
 
-               </Button>
+               // endIcon={<ArrowDownwardIcon />}
+               >
+                    Proizvodi
+               </Typography>
+
+               {/* </Button> */}
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography>

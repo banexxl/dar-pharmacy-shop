@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Product, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage } from "../../styles/product/single-product";
 import { Alert, Box, Button, Stack, Tooltip } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -70,6 +70,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
      const handleMouseEnter = () => {
           setShowOptions(true);
      };
+
      const handleMouseLeave = () => {
           setShowOptions(false);
           setShowShareOptions(false);

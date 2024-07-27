@@ -65,6 +65,24 @@ const theme: Theme = createTheme({
                     }
                }
           },
+          MuiListItemText: {
+               styleOverrides: {
+                    root: {
+                         '& .MuiTypography-root': {
+                              color: Colors.secondary.custom,
+                         },
+                    }
+               }
+          },
+          MuiListItemButton: {
+               styleOverrides: {
+                    root: {
+                         '&:hover': {
+                              background: Colors.primary.lighter,
+                         },
+                    }
+               }
+          },
           // MuiContainer: {
           //           styleOverrides: {
           //                     root: {
@@ -143,7 +161,8 @@ const theme: Theme = createTheme({
                          padding: '10px'
                     }
                }
-          }
+          },
+
      },
      breakpoints: {
           values: {
