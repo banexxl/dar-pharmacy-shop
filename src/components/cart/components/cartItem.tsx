@@ -1,5 +1,5 @@
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { CartProductImage, StyledProductCell, StyledProductName, StyledProductRow } from '@/styles/cart'
+import { CartProductImage, StyledHeaderCell, StyledProductCell, StyledProductName, StyledProductRow } from '@/styles/cart'
 import theme, { Colors } from '@/styles/theme'
 import Counter from '@/utils/counter'
 import React from 'react'

@@ -63,7 +63,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    <StyledHeaderCell theme={theme} align="left" >Kod</StyledHeaderCell>
                                    <StyledHeaderCell theme={theme} align="left" >Količina</StyledHeaderCell>
                                    <StyledHeaderCell theme={theme} align="left">Cena</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="right">Ukupno sa PDV-om</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="right">Ukupno sa PDV</StyledHeaderCell>
                               </StyledHeader>
                               <StyledTableBody theme={theme}>
                                    {cart.map((cartItem: ICartItem) => (

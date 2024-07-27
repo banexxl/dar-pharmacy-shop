@@ -3,10 +3,10 @@ import Link from 'next/link'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'next-i18next'
-import { StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle } from '@/styles/cart'
+import { StyledHeaderCell, StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle } from '@/styles/cart'
 import { clearCart } from '@/store/cart/cart.slice'
-import { Button } from '@mui/material'
-import theme from '@/styles/theme'
+import { Button, Typography } from '@mui/material'
+import theme, { Colors } from '@/styles/theme'
 
 interface ICartTotalsProps {
      onClose: () => void
@@ -26,6 +26,9 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                <StyledTotalsPrice>
                     {parseFloat(totalItemPrice).toFixed(2)} RSD
                </StyledTotalsPrice>
+               <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
+                    PDV uračunat u cenu i nema skrivenih troškova.
+               </Typography>
                <Button onClick={onClose}>
                     <Link href='/'>
                          Nazad u apoteku
