@@ -35,7 +35,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
                          <StyledHeaderCell align="left" theme={theme}>Naziv</StyledHeaderCell>
                          <StyledHeaderCell align="left" theme={theme}>Pakovanje</StyledHeaderCell>
-                         <StyledHeaderCell align="left" theme={theme}>Sifra</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Šifra</StyledHeaderCell>
                          <StyledHeaderCell align="left" theme={theme}>Količina</StyledHeaderCell>
                          <StyledHeaderCell align="left" theme={theme}>Cena</StyledHeaderCell>
                          <StyledHeaderCell align="left" theme={theme}>Ukupno sa PDV</StyledHeaderCell>
