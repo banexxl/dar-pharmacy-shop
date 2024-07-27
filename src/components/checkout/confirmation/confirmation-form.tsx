@@ -2,7 +2,7 @@ import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUser } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
-import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledTotalsTitle } from '@/styles/cart'
+import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledTotalsTitle, StyledTable, StyledHeaderCell } from '@/styles/cart'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
 import { Button, Paper, Table, TableBody } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -30,19 +30,17 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
 
      return (
           <CartWrapper component={Paper} theme={theme}>
-               <Table aria-label="customized table"
-               >
-                    <StyledHeader>
-                         <StyledProductRow theme={theme}>
-                              <StyledProductCell theme={theme}>Slika</StyledProductCell>
-                              <StyledProductCell align="left" theme={theme}>Naziv</StyledProductCell>
-                              <StyledProductCell align="left" theme={theme}>Pakovanje</StyledProductCell>
-                              <StyledProductCell align="left" theme={theme}>Sifra</StyledProductCell>
-                              <StyledProductCell align="left" theme={theme}>Količina</StyledProductCell>
-                              <StyledProductCell align="left" theme={theme}>Cena</StyledProductCell>
-                              <StyledProductCell align="left" theme={theme}>Ukupno sa PDV</StyledProductCell>
-                         </StyledProductRow>
+               <StyledTable>
+                    <StyledHeader theme={theme}>
+                         <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Naziv</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Pakovanje</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Sifra</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Količina</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Cena</StyledHeaderCell>
+                         <StyledHeaderCell align="left" theme={theme}>Ukupno sa PDV</StyledHeaderCell>
                     </StyledHeader>
+
                     <TableBody>
                          {cart.map((cartItem: ICartItem) => (
                               <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
@@ -52,7 +50,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                    warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} />
                          ))}
                     </TableBody>
-               </Table>
+               </StyledTable>
                <StyledTotalsTitle theme={theme}>
                     Ukupno sa PDV: {parseFloat(totalItemPrice).toFixed(2)} RSD
                </StyledTotalsTitle>
