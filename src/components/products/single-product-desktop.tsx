@@ -25,6 +25,8 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
      const domRef = useRef<HTMLElement | null>(null)
      const observerRef = useRef<IntersectionObserver | null>(null);
      const dispatch = useDispatch();
+     console.log('showOptions', showOptions);
+     console.log('isScreenToMedium', isScreenToMedium);
 
      useEffect(() => {
           observerRef.current = new IntersectionObserver(
@@ -98,11 +100,26 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                <FilteredProductImageContainer>
                     <ProductImage src={product.imageURL} />
                </FilteredProductImageContainer>
-               <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
-                    <Tooltip placement="left" title={"Dodaj u listu želja"}>
-                         <FavoriteIcon />
-                    </Tooltip>
-               </ProductFavButton>
+               {(showOptions || isScreenToMedium) && (
+                    <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
+                         <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert() }}>
+                              <Tooltip placement="left" title={"Dodaj u listu želja"}>
+                                   <FavoriteIcon />
+                              </Tooltip>
+                         </ProductFavButton>
+                         <ProductActionButton>
+                              <Tooltip placement="left" title={"Podeli proizvod"}>
+                                   <ShareIcon color="primary" />
+                              </Tooltip>
+                         </ProductActionButton>
+                         <ProductActionButton onClick={() => showProductDetailDialog()}>
+                              <Tooltip placement="left" title="Prikaži proizvod">
+                                   <FitScreenIcon color="primary" />
+                              </Tooltip>
+                         </ProductActionButton>
+
+                    </ProductActionsWrapper>
+               )}
                {(showOptions || isScreenToMedium) && (
                     <ProductAddToCart show={showOptions} loading={loading} onClick={() => {
                          callCartAlert()
@@ -112,20 +129,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                          Dodaj u korpu
                     </ProductAddToCart>
                )}
-               <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
-                    <Stack direction={isScreenToMedium ? "row" : "column"}>
-                         <ProductActionButton>
-                              <Tooltip placement="left" title={"Podeli proizvod"}>
-                                   <ShareIcon color="primary" />
-                              </Tooltip>
-                         </ProductActionButton>
-                         <ProductActionButton onClick={() => showProductDetailDialog()}>
-                              <Tooltip placement="left" title="Full view">
-                                   <FitScreenIcon color="primary" />
-                              </Tooltip>
-                         </ProductActionButton>
-                    </Stack>
-               </ProductActionsWrapper>
+
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
                {addedToCartAlert && (

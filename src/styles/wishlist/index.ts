@@ -65,7 +65,6 @@ export const WishlistTableBody = styled(TableBody)(({ theme }: any) => ({
 }))
 
 export const WishlistRemoveAllButton = styled(Button)(({ theme }: any) => ({
-     color: Colors.light_gray,
      maxWidth: '300px'
 }))
 

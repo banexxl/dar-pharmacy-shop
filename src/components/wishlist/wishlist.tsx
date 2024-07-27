@@ -67,7 +67,7 @@ export default function WishList({ open, onClose, product }: any) {
                               </WishlistTableBody>
                          </WishlistTable>
                          <WishlistRemoveAllButton onClick={() => dispatch(clearWishList())}>
-                              Obrisi listu omiljenih proizvoda
+                              Obriši listu omiljenih proizvoda
                          </WishlistRemoveAllButton>
                     </WishListWrapper>
                </DialogContent>

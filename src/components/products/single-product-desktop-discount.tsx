@@ -31,6 +31,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
      const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
      const [open, setOpen] = useState(false);
      const dispatch = useDispatch();
+     console.log('isScreenToMedium', isScreenToMedium);
+     console.log('showOptions', showOptions);
+
 
      const handleMouseEnter = () => {
           setShowOptions(true);
@@ -72,6 +75,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                          Dodaj u korpu
                     </ProductAddToCart>
                )}
+
                <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
                     <Stack direction={isScreenToMedium ? "row" : "column"}>
                          <ProductActionButton>

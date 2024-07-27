@@ -79,6 +79,7 @@ export const ProductImageDropdown = styled(Image)(({ src, theme }: any) => ({
 }));
 
 export const ProductActionButton = styled(IconButton)(() => ({
+
      margin: 4,
      '&:hover': {
           backgroundColor: Colors.primary.lighter,
@@ -88,11 +89,6 @@ export const ProductActionButton = styled(IconButton)(() => ({
 export const ProductFavButton = styled(ProductActionButton, { shouldForwardProp: (prop) => prop !== 'isfav' })
      (({ isfav, theme }: any) => ({
           color: isfav ? Colors.primary.main : Colors.primary.light,
-          [theme.breakpoints.up("md")]: {
-               position: "absolute",
-               right: 0,
-               top: 0,
-          },
           '&:hover': {
                backgroundColor: Colors.primary.lighter,
           },
@@ -137,12 +133,14 @@ export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
 export const ProductActionsWrapper = styled(Box, { shouldForwardProp: (prop) => prop !== 'show' })
      (({ show, theme }: any) => ({
           [theme.breakpoints.up("md")]: {
-               display: show ? 'visible' : 'none',
+               display: show ? 'flex' : 'none',
                position: "absolute",
                right: 0,
-               top: '20%',
+               top: '10%',
                animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
-          }
+               flexDirection: 'column',
+               justifyContent: 'space-around',
+          },
      }));
 
 export const ProductDiscountSticker = styled(Box)(() => ({
