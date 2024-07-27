@@ -1,4 +1,4 @@
-import { Container, Typography, Box, Stack, Divider } from "@mui/material";
+import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import theme from "../styles/theme";
 import Banner from "../components/banner/banner";
@@ -22,6 +22,7 @@ import { useSelector } from "react-redux";
 import ProductCard from "@/components/product-presentation/product-presentation";
 import { BannerServices } from "@/components/banner/banner-services";
 import { BannerCountUp } from "@/components/banner/banner-counter";
+import { useEffect, useState } from "react";
 
 export default function Home(props: any) {
 
@@ -30,6 +31,32 @@ export default function Home(props: any) {
           loading: () => <LoadingWheel />,
           ssr: false
      })
+
+     const [open, setOpen] = useState(false);
+
+     useEffect(() => {
+          // Check if the modal has been shown before
+          const hasSeenModal = localStorage.getItem('hasSeenModal');
+
+          if (!hasSeenModal || hasSeenModal !== 'true') {
+               setOpen(true);
+               localStorage.setItem('hasSeenModal', 'true');
+          }
+
+          const handleBeforeUnload = () => {
+               localStorage.removeItem('hasSeenModal');
+          };
+
+          window.addEventListener('beforeunload', handleBeforeUnload);
+
+          return () => {
+               window.removeEventListener('beforeunload', handleBeforeUnload);
+          };
+     }, []);
+
+     const handleClose = () => {
+          setOpen(false);
+     };
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -81,6 +108,27 @@ export default function Home(props: any) {
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>
                     </Stack>
+                    <Modal
+                         open={open}
+                         onClose={handleClose}
+                    >
+                         <Paper
+                              sx={{
+                                   position: 'fixed',
+                                   bottom: 0,
+                                   left: 0,
+                                   right: 0,
+                                   textAlign: 'center',
+                              }}
+                         >
+                              <Typography id="first-load-modal-description" sx={{ fontSize: '1rem' }}>
+                                   Ovaj sajt korsišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
+                              </Typography>
+                              <Button onClick={handleClose}>
+                                   U redu
+                              </Button>
+                         </Paper>
+                    </Modal>
                </Container>
           </DynamicThemeProvider>
      )
