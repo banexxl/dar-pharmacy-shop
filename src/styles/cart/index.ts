@@ -62,8 +62,15 @@ export const StyledTable = styled(Table)(({ theme }: any) => ({
 
 }))
 
-export const StyledTableBody = styled(TableBody)(({ theme }: any) => ({
+type StyledTableBodyProps = {
+     theme: Theme;
+}
 
+export const StyledTableBody = styled(TableBody)<StyledTableBodyProps>(({ theme }) => ({
+     display: 'flex',
+     flexDirection: 'column',
+     justifyContent: 'space-between',
+     gap: '20px',
 }))
 
 export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
@@ -75,7 +82,7 @@ export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
      },
      [theme.breakpoints.up("sm")]: {
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
           backgroundColor: Colors.primary.lighter
      }
@@ -86,9 +93,8 @@ type StyledHeaderCellProps = {
 }
 
 export const StyledHeaderCell = styled(TableCell)<StyledHeaderCellProps>(({ theme }) => ({
-     width: '70px',
+     maxWidth: '100px',
      display: 'flex',
-     flexDirection: 'column',
 }));
 
 type StyledProductCellProps = {
@@ -97,6 +103,7 @@ type StyledProductCellProps = {
 
 export const StyledProductCell = styled(TableCell)<StyledProductCellProps>(({ theme }) => ({
      wordWrap: 'break-word',
+     maxWidth: '50px',
      [`&.${tableCellClasses.head}`]: {
           backgroundColor: Colors.primary.lighter,
           color: Colors.white,
@@ -119,10 +126,15 @@ type StyledProductRowProps = {
 
 export const StyledProductRow = styled(TableRow)<StyledProductRowProps>(({ theme }) => ({
      display: 'flex',
-     justifyContent: 'space-between',
+     justifyContent: 'space-around',
      alignItems: 'center',
+     gap: '10px',
      '&:nth-of-type(odd)': {
-          backgroundColor: Colors.dove_gray,
+          backgroundColor: Colors.secondary.lighter,
+          borderRadius: '20px'
+     },
+     '&:nth-of-type(even)': {
+          backgroundColor: Colors.secondary.custom,
           borderRadius: '20px'
      },
      // hide last border

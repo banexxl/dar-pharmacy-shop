@@ -58,14 +58,14 @@ export default function Cart({ open, onClose }: ICartProps) {
                          <StyledTable>
                               <StyledHeader>
                                    <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left">Naziv</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left">Pakovanje</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left">Kod</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left">Količina</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left" >Naziv</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left" >Pakovanje</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left" >Kod</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left" >Količina</StyledHeaderCell>
                                    <StyledHeaderCell theme={theme} align="left">Cena</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left">Ukupno sa PDV-om</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="right">Ukupno sa PDV-om</StyledHeaderCell>
                               </StyledHeader>
-                              <StyledTableBody>
+                              <StyledTableBody theme={theme}>
                                    {cart.map((cartItem: ICartItem) => (
                                         <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                              name={cartItem.name} description={cartItem.description} category={cartItem.category}

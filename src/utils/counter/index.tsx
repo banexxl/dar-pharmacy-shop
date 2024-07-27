@@ -19,11 +19,12 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
      const dispatch = useDispatch()
 
      return (
-          <Box display="flex" >
+          <Box sx={{ display: 'flex', gap: '5px' }}>
                <IconButton
                     sx={{
                          borderRadius: '10px',
                          background: `${Colors.primary.lighter}`,
+                         width: '20px'
                     }}
                     onClick={() => dispatch(decrement(_id))}
                     disabled={count <= 1 ? true : false}
@@ -35,7 +36,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                     sx={{
                          border: `1px solid ${Colors.primary.lighter}`,
                          borderRadius: '10px',
-                         p: 2,
+                         width: '20px'
                     }}
                >
                     {count <= 1 ? 1 : count}
@@ -44,6 +45,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                     sx={{
                          borderRadius: '10px',
                          background: `${Colors.primary.lighter}`,
+                         width: '20px'
                     }}
                     onClick={() => dispatch(increment(_id))}
                     disabled={count >= 100 ? true : false}
