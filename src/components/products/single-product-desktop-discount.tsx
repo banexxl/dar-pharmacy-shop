@@ -13,26 +13,24 @@ import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../product-dropdown/product-dropdown";
 import ProductMeta from "./products-meta";
 import {
-     Unstable_Popup as BasePopup,
-     PopupChildrenProps,
+     Unstable_Popup as BasePopup
 } from '@mui/base/Unstable_Popup';
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
 import { PopupBody } from "@/styles/product/share-product";
+import theme from "@/styles/theme";
 
 export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
 
      const { t } = useTranslation();
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails)
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-     const [showOptions, setShowOptions] = useState(false);
+     const [showOptions, setShowOptions] = useState<boolean>(false);
      let buttonLoading: boolean = false
      const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
      const [open, setOpen] = useState(false);
      const dispatch = useDispatch();
-     console.log('isScreenToMedium', isScreenToMedium);
-     console.log('showOptions', showOptions);
 
 
      const handleMouseEnter = () => {
@@ -57,7 +55,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
      }
 
      return (
-          <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} theme={theme} isVisible={showOptions}>
                <ProductDiscountSticker>
                     <ProductImage src={product.imageURL} />
                </ProductDiscountSticker>
@@ -67,20 +65,19 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                     </Tooltip>
                </ProductFavButton>
                {(showOptions || isScreenToMedium) && (
-                    <ProductAddToCart show={showOptions.toString()} loading={buttonLoading} onClick={() => {
-                         callAlert()
-                         dispatch(addToCart(product))
-                    }}
-                    >
+                    <ProductAddToCart loading={buttonLoading} onClick={() => {
+                         callAlert();
+                         dispatch(addToCart(product));
+                    }} theme={theme} show={false}                    >
                          Dodaj u korpu
                     </ProductAddToCart>
                )}
 
-               <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium}>
+               <ProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
                     <Stack direction={isScreenToMedium ? "row" : "column"}>
                          <ProductActionButton>
                               <Tooltip placement="left" title={"Podeli proizvod"} ref={setAnchor} onClick={() => setOpen((o) => !o)} >
-                                   <BasePopup anchor={anchor} open={open} withTransition>
+                                   <BasePopup anchor={anchor} open={open}>
                                         <Grow
                                              in={open}
                                              style={{ transformOrigin: '0 0 0' }}

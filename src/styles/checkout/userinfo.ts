@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
-import { Box, Button, Checkbox, IconButton } from "@mui/material";
+import { Box, Button, Checkbox, IconButton, Theme } from "@mui/material";
 import { Colors } from "../theme";
 
+type UserInfoProps = {
+     theme: Theme
+}
 
-
-export const PaymentOptionRadio = styled(Box)(({ theme }: any) => ({
+export const PaymentOptionRadio = styled(Box)<UserInfoProps>(({ theme }) => ({
      display: 'flex',
      [theme.breakpoints.down("sm")]: {
           flexDirection: 'column',

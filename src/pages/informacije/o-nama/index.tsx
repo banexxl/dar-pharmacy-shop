@@ -34,8 +34,8 @@ const ContactPage = (props: ContactPageProps) => {
                >
                     <Stack>
                          <UIProvider>
-                              <ContactBox>
-                                   <ContactInfoBox >
+                              <ContactBox theme={theme}>
+                                   <ContactInfoBox theme={theme}>
                                         <ContactTitle>
                                              O nama
                                         </ContactTitle>

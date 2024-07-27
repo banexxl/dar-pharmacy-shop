@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import FilteredProductMeta from "./filtered-products-meta";
+import theme from "@/styles/theme";
 
 export default function FilteredSingleProductMobile({ product, isScreenToMedium }: any) {
 
@@ -85,14 +86,14 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      }
 
      return (
-          <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={undefined} isVisible={isVisible}>
+          <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={theme} isVisible={isVisible}>
                <FilteredProductImageContainer>
                     <FilteredProductImage src={product.imageURL} />
                </FilteredProductImageContainer>
                <FilteredProductMeta product={product} isScreenToMedium={isScreenToMedium} />
-               <FilteredProductActionsWrapper>
+               <FilteredProductActionsWrapper theme={theme} show={showOptions}>
                     <Stack direction={isScreenToMedium ? "row" : "column"}>
-                         <FilteredProductFavButton isfav={0} onClick={() => { callWishlistAlert(); dispatch(addToWishList(product)) }}>
+                         <FilteredProductFavButton isfav={0} onClick={() => { callWishlistAlert(); dispatch(addToWishList(product)); }} theme={theme}>
                               <Tooltip placement="left" title="Add to wishlist">
                                    <FavoriteIcon />
                               </Tooltip>
@@ -119,7 +120,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          Proizvod dodat u listu želja
                     </Alert>
                )}
-               <FilteredProductAddToCart onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Dodaj u korpu</FilteredProductAddToCart >
+               <FilteredProductAddToCart onClick={() => { callCartAlert(); dispatch(addToCart(product)); }} theme={theme} show={false}>Dodaj u korpu</FilteredProductAddToCart >
                <ProductDetailDialog product={product} />
           </FilteredProduct>
      )

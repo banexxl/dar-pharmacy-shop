@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
-import { Box, TextField } from "@mui/material";
+import { Box, TextField, Theme } from "@mui/material";
 import { Colors } from "../theme";
 
-export const SearchBoxContainer = styled(Box)(() => ({
+type SearchBoxContainerProps = {
+     theme: Theme
+}
+export const SearchBoxContainer = styled(Box)((theme) => ({
      position: "fixed",
      top: 0,
      left: 0,

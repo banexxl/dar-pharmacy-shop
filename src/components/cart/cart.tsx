@@ -54,16 +54,16 @@ export default function Cart({ open, onClose }: ICartProps) {
                </DialogTitle>
 
                <DialogContent sx={{ display: 'flex', flexDirection: { md: 'row', xs: 'column' } }}>
-                    <CartWrapper component={Paper}>
+                    <CartWrapper component={Paper} theme={theme}>
                          <StyledTable>
                               <StyledHeader>
-                                   <StyledHeaderCell>Slika</StyledHeaderCell>
-                                   <StyledHeaderCell align="left">Naziv</StyledHeaderCell>
-                                   <StyledHeaderCell align="left">Pakovanje</StyledHeaderCell>
-                                   <StyledHeaderCell align="left">Kod</StyledHeaderCell>
-                                   <StyledHeaderCell align="left">Količina</StyledHeaderCell>
-                                   <StyledHeaderCell align="left">Cena</StyledHeaderCell>
-                                   <StyledHeaderCell align="left">Ukupno sa PDV-om</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left">Naziv</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left">Pakovanje</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left">Kod</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left">Količina</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left">Cena</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} align="left">Ukupno sa PDV-om</StyledHeaderCell>
                               </StyledHeader>
                               <StyledTableBody>
                                    {cart.map((cartItem: ICartItem) => (

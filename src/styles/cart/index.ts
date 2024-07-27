@@ -1,8 +1,12 @@
-import { Box, Button, IconButton, Table, TableBody, TableCell, tableCellClasses, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Button, IconButton, Table, TableBody, TableCell, tableCellClasses, TableHead, TableRow, Theme, Typography } from "@mui/material";
 import { Colors } from "../theme";
 import styled from "@emotion/styled";
 
-export const CartWrapper = styled(Box)(({ theme }: any) => ({
+type CartProps = {
+     theme: Theme;
+}
+
+export const CartWrapper = styled(Box)<CartProps>(({ theme }) => ({
      gap: '20px',
      display: "flex",
      flexDirection: 'column',
@@ -39,7 +43,11 @@ export const CartProductImage = styled("img")(({ src, theme }: any) => ({
 
 }));
 
-export const StyledProductName = styled(Typography)(() => ({
+type ProductNameProps = {
+     theme: Theme;
+}
+
+export const StyledProductName = styled(Typography)<ProductNameProps>((theme) => ({
      textAlign: 'left',
      fontSize: '1rem',
      width: '90px',
@@ -73,13 +81,21 @@ export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
      }
 }))
 
-export const StyledHeaderCell = styled(TableCell)(({ theme }: any) => ({
+type StyledHeaderCellProps = {
+     theme: Theme;
+}
+
+export const StyledHeaderCell = styled(TableCell)<StyledHeaderCellProps>(({ theme }) => ({
      width: '70px',
      display: 'flex',
      flexDirection: 'column',
 }));
 
-export const StyledProductCell = styled(TableCell)(({ theme }: any) => ({
+type StyledProductCellProps = {
+     theme: Theme;
+}
+
+export const StyledProductCell = styled(TableCell)<StyledProductCellProps>(({ theme }) => ({
      wordWrap: 'break-word',
      [`&.${tableCellClasses.head}`]: {
           backgroundColor: Colors.primary.lighter,
@@ -97,7 +113,11 @@ export const StyledProductCell = styled(TableCell)(({ theme }: any) => ({
      }
 }));
 
-export const StyledProductRow = styled(TableRow)(({ theme }: any) => ({
+type StyledProductRowProps = {
+     theme: Theme;
+}
+
+export const StyledProductRow = styled(TableRow)<StyledProductRowProps>(({ theme }) => ({
      display: 'flex',
      justifyContent: 'space-between',
      alignItems: 'center',
@@ -118,7 +138,11 @@ export const StyledProductRow = styled(TableRow)(({ theme }: any) => ({
      }
 }))
 
-export const StyledTotalsBox = styled(Box)(({ theme }: any) => ({
+type StyledTotalsBoxProps = {
+     theme: Theme;
+}
+
+export const StyledTotalsBox = styled(Box)<StyledTotalsBoxProps>(({ theme }) => ({
      display: 'flex',
      flexDirection: 'column',
      gap: '10px',
@@ -133,7 +157,11 @@ export const StyledTotalsBox = styled(Box)(({ theme }: any) => ({
      }
 }))
 
-export const StyledTotalsTitle = styled(Typography)(({ theme }: any) => ({
+type StyledTotalsTitleProps = {
+     theme: Theme;
+}
+
+export const StyledTotalsTitle = styled(Typography)<StyledTotalsTitleProps>(({ theme }) => ({
      fontFamily: 'sans-serif',
      fontSize: '1.5rem',
      color: Colors.primary.lighter,

@@ -37,7 +37,7 @@ const ContactForm = () => {
                                         Kontakt forma
                                    </ContactTitle>
 
-                                   <ContactText>
+                                   <ContactText theme={theme}>
                                         Ako ste u potrazi za <Typography fontWeight={'bold'} color={Colors.primary.main}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br /><br />
                                         Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                         Slobodno nas kontaktirajte!

@@ -1,14 +1,19 @@
 import styled from "@emotion/styled";
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, Theme } from "@mui/material";
 import { Box } from "@mui/material";
 import { slideInBottom, slideInRight } from "../animation";
 import { Colors } from "../theme";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Image from 'mui-image'
 
+type ProductProps = {
+     isVisible: boolean;
+     theme: any;
+}
+
 export const Product = styled(Box, {
      shouldForwardProp: (prop) => prop !== "isVisible"
-})(({ isVisible, theme }: any) => ({
+})<ProductProps>(({ isVisible, theme }) => ({
      display: 'flex',
      justifyContent: "center",
      alignItems: "center",
@@ -36,9 +41,14 @@ export const ProductImage = styled(Image)(({ src, theme }: any) => ({
      },
 }));
 
+type ProductDropdownButtonProps = {
+     isVisible: boolean;
+     theme: any;
+}
+
 export const ProductDropdown = styled(Box, {
      shouldForwardProp: (prop) => prop !== "isVisible"
-})(({ isVisible, theme }: any) => ({
+})<ProductDropdownButtonProps>(({ isVisible, theme }) => ({
      display: 'flex',
      justifyContent: "center",
      alignItems: "center",
@@ -86,25 +96,29 @@ export const ProductActionButton = styled(IconButton)(() => ({
      },
 }))
 
-export const ProductFavButton = styled(ProductActionButton, { shouldForwardProp: (prop) => prop !== 'isfav' })
+export const ProductFavButton = styled(Button, { shouldForwardProp: (prop) => prop !== 'isfav' })
      (({ isfav, theme }: any) => ({
           color: isfav ? Colors.primary.main : Colors.primary.light,
-          '&:hover': {
-               backgroundColor: Colors.primary.lighter,
-          },
+          borderRadius: '100%',
+          backgroundColor: 'transparent',
      }));
 
+type ProductAddToCartProps = {
+     show: boolean;
+     theme: any;
+}
+
 export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== "show" })
-     (({ show, theme }: any) => ({
+     <ProductAddToCartProps>(({ show, theme }) => ({
           fontSize: "12px",
           [theme.breakpoints.up("md")]: {
                position: "absolute",
                bottom: "2%",
                width: "150px",
                padding: "10px 5px",
-               animation:
-                    show &&
-                    `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               ...(show && {
+                    animation: `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               })
           },
           // '&:hover': {
           //      backgroundColor: Colors.primary.lighter,
@@ -120,7 +134,11 @@ export const PopularProductAddToCart = styled(LoadingButton)({
      // background: Colors.primary.lighter,
 });
 
-export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
+type ProductMetaProps = {
+     theme: Theme;
+}
+
+export const ProductMetaWrapper = styled(Box)<ProductMetaProps>(({ theme }) => ({
      padding: 4,
      display: "flex",
      flexDirection: "column",
@@ -130,20 +148,31 @@ export const ProductMetaWrapper = styled(Box)(({ theme }: any) => ({
      textAlign: 'center'
 }));
 
+type ProductActionsWrapperProps = {
+     show: boolean;
+     theme: Theme;
+}
+
 export const ProductActionsWrapper = styled(Box, { shouldForwardProp: (prop) => prop !== 'show' })
-     (({ show, theme }: any) => ({
+     <ProductActionsWrapperProps>(({ show, theme }) => ({
           [theme.breakpoints.up("md")]: {
                display: show ? 'flex' : 'none',
                position: "absolute",
                right: 0,
                top: '10%',
-               animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               ...(show && {
+                    animation: `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               }),
                flexDirection: 'column',
                justifyContent: 'space-around',
           },
      }));
 
-export const ProductDiscountSticker = styled(Box)(() => ({
+type ProductDiscountStickerProps = {
+     theme: Theme;
+}
+
+export const ProductDiscountSticker = styled(Box)((theme) => ({
      position: 'absolute',
      right: '-20px',
      top: '10px',

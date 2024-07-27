@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle } from '@/styles/cart'
 import { clearCart } from '@/store/cart/cart.slice'
 import { Button } from '@mui/material'
+import theme from '@/styles/theme'
 
 interface ICartTotalsProps {
      onClose: () => void
@@ -18,8 +19,8 @@ function CartTotals({ onClose }: ICartTotalsProps) {
      const dispatch = useDispatch()
 
      return (
-          <StyledTotalsBox>
-               <StyledTotalsTitle>
+          <StyledTotalsBox theme={theme}>
+               <StyledTotalsTitle theme={theme}>
                     Ukupno sa PDV-om
                </StyledTotalsTitle>
                <StyledTotalsPrice>

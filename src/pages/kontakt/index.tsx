@@ -34,41 +34,41 @@ const ContactPage = (props: ContactPageProps) => {
                >
                     <Stack>
                          <UIProvider>
-                              <ContactBox>
+                              <ContactBox theme={theme}>
                                    <ContactForm />
                                    <ContactMap mapApiKey={props.mapApiKey} />
-                                   <ContactInfoBox >
-                                        <ContactText>
+                                   <ContactInfoBox theme={theme}>
+                                        <ContactText theme={theme}>
                                              Adresa:
                                         </ContactText>
                                         <ContactStrongText>
                                              Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9
                                         </ContactStrongText>
-                                        <ContactText>
+                                        <ContactText theme={theme}>
                                              Telefon:
                                         </ContactText>
                                         <ContactStrongText>
                                              +381 34 610 4222
                                         </ContactStrongText>
-                                        <ContactText>
+                                        <ContactText theme={theme}>
                                              Matični broj:
                                         </ContactText>
                                         <ContactStrongText>
                                              66597784
                                         </ContactStrongText>
-                                        <ContactText>
+                                        <ContactText theme={theme}>
                                              Poresko identifikacioni broj:
                                         </ContactText>
                                         <ContactStrongText>
                                              113127282
                                         </ContactStrongText>
-                                        <ContactText>
+                                        <ContactText theme={theme}>
                                              Business name of the entrepreneur:
                                         </ContactText>
                                         <ContactStrongText>
                                              Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac
                                         </ContactStrongText>
-                                        <ContactText>
+                                        <ContactText theme={theme}>
                                              Radno vreme:
                                         </ContactText>
                                         <ContactStrongText>
@@ -76,7 +76,7 @@ const ContactPage = (props: ContactPageProps) => {
                                              Subota: 08 - 22h<br />
                                              Nedelja: 08 - 20h
                                         </ContactStrongText>
-                                        <ContactText>
+                                        <ContactText theme={theme}>
                                              Pretežna delatnost:
                                         </ContactText>
                                         <ContactStrongText>

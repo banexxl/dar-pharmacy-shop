@@ -1,9 +1,12 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Theme } from "@mui/material";
 import styled from "@emotion/styled";
 import { Colors } from "../theme";
 
+type ContactProps = {
+     theme: Theme;
+}
 
-export const ContactBox = styled(Box)(({ theme }: any) => ({
+export const ContactBox = styled(Box)<ContactProps>(({ theme }) => ({
      [theme.breakpoints.up("md")]: {
           padding: "40px 0px 40px 0px",
      },
@@ -19,7 +22,11 @@ export const ContactBox = styled(Box)(({ theme }: any) => ({
      borderRadius: '10px'
 }));
 
-export const ContactInfoBox = styled(Box)(({ theme }: any) => ({
+type ContactInfoBoxProps = {
+     theme: Theme;
+}
+
+export const ContactInfoBox = styled(Box)<ContactInfoBoxProps>(({ theme }) => ({
      textAlign: 'center',
      padding: '15px'
 
@@ -47,7 +54,11 @@ export const ContactMapBox = styled(Box)(({ theme }: any) => ({
      },
 }));
 
-export const ContactFormBox = styled(Box)(({ theme }: any) => ({
+type ContactFormBoxProps = {
+     theme: Theme;
+}
+
+export const ContactFormBox = styled(Box)(({ theme }) => ({
      margin: '10px',
      borderRadius: '20px',
      padding: '10px',
@@ -63,7 +74,11 @@ export const ContactTitle = styled(Typography)(({ theme }: any) => ({
      color: Colors.primary.main
 }));
 
-export const ContactText = styled(Typography)(({ theme }: any) => ({
+type ContactTextProps = {
+     theme: Theme;
+}
+
+export const ContactText = styled(Typography)<ContactTextProps>(({ theme }) => ({
      color: Colors.primary.main,
      textAlign: 'center',
      alignItems: 'center',

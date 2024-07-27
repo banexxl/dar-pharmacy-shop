@@ -47,9 +47,9 @@ export default function WishList({ open, onClose, product }: any) {
                     </Box>
                </DialogTitle>
                <DialogContent>
-                    <WishListWrapper component={Paper}>
+                    <WishListWrapper component={Paper} theme={theme}>
                          <WishlistTable>
-                              <WishlistHeader>
+                              <WishlistHeader theme={theme}>
                                    <WishlistHeaderCell>Slika</WishlistHeaderCell>
                                    <WishlistHeaderCell align="left">Naziv</WishlistHeaderCell>
                                    <WishlistHeaderCell align="left">Količina</WishlistHeaderCell>

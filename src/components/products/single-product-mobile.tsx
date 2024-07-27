@@ -21,7 +21,7 @@ import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 import { PopAnimation, PopupBody } from "@/styles/product/share-product";
-import { Colors } from "@/styles/theme";
+import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 
 function useIsInViewport(ref: any) {
@@ -101,7 +101,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                          <ProductImage src={product.imageURL} />
                     </FilteredProductImageContainer>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
-                    <ProductActionsWrapper>
+                    <ProductActionsWrapper theme={theme} show={showOptions}>
                          <Stack direction={isScreenToMedium ? "row" : "column"}>
                               <ProductFavButton isfav={0} onClick={() => { callWishlistAlert(); dispatch(addToWishList(product)) }}>
                                    <Tooltip placement="left" title="Add to wishlist">
@@ -152,7 +152,13 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                               Proizvod dodat u listu želja
                          </Alert>
                     )}
-                    <ProductAddToCart onClick={() => { callCartAlert(); dispatch(addToCart(product)) }}>Dodaj u korpu</ProductAddToCart >
+                    <ProductAddToCart
+                         onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
+                         theme={theme}
+                         show={true}
+                    >
+                         Dodaj u korpu
+                    </ProductAddToCart >
                     <ProductDetailDialog product={product} />
                </Product>
           </Grow>

@@ -14,6 +14,7 @@ import { clearCart } from '@/store/cart/cart.slice'
 import { clearPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice'
 import { clearUserForm } from '@/store/checkout/user-info-form.slice'
 import Link from 'next/link'
+import theme from '@/styles/theme'
 
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
@@ -28,18 +29,18 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
      };
 
      return (
-          <CartWrapper component={Paper}>
+          <CartWrapper component={Paper} theme={theme}>
                <Table aria-label="customized table"
                >
                     <StyledHeader>
-                         <StyledProductRow>
-                              <StyledProductCell>Slika</StyledProductCell>
-                              <StyledProductCell align="left">Naziv</StyledProductCell>
-                              <StyledProductCell align="left">Pakovanje</StyledProductCell>
-                              <StyledProductCell align="left">Sifra</StyledProductCell>
-                              <StyledProductCell align="left">Količina</StyledProductCell>
-                              <StyledProductCell align="left">Cena</StyledProductCell>
-                              <StyledProductCell align="left">Ukupno sa PDV</StyledProductCell>
+                         <StyledProductRow theme={theme}>
+                              <StyledProductCell theme={theme}>Slika</StyledProductCell>
+                              <StyledProductCell align="left" theme={theme}>Naziv</StyledProductCell>
+                              <StyledProductCell align="left" theme={theme}>Pakovanje</StyledProductCell>
+                              <StyledProductCell align="left" theme={theme}>Sifra</StyledProductCell>
+                              <StyledProductCell align="left" theme={theme}>Količina</StyledProductCell>
+                              <StyledProductCell align="left" theme={theme}>Cena</StyledProductCell>
+                              <StyledProductCell align="left" theme={theme}>Ukupno sa PDV</StyledProductCell>
                          </StyledProductRow>
                     </StyledHeader>
                     <TableBody>
@@ -52,7 +53,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          ))}
                     </TableBody>
                </Table>
-               <StyledTotalsTitle>
+               <StyledTotalsTitle theme={theme}>
                     Ukupno sa PDV: {parseFloat(totalItemPrice).toFixed(2)} RSD
                </StyledTotalsTitle>
 

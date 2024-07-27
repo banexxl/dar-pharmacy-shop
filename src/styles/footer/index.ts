@@ -1,44 +1,52 @@
 import styled from "@emotion/styled";
-import { Box, TextField, Typography, Checkbox } from "@mui/material";
+import { Box, TextField, Typography, Checkbox, Theme } from "@mui/material";
 import { Colors } from "../theme";
 
 
 type TextFieldProps = {
-     color: string
+     theme: Theme
 }
 
-export const FooterContainer = styled(Box)(({ theme }: any) => ({
+export const FooterContainer = styled(Box)<TextFieldProps>(({ theme }) => ({
      alignItems: 'center',
      backgroundColor: Colors.shaft,
      color: Colors.white,
      padding: '2rem',
      display: 'flex',
      justifyContent: 'space-between',
-     [theme.breakpoints?.down("md")]: {
+     [theme.breakpoints.down("md")]: {
           flexDirection: 'column'
      },
-     [theme.breakpoints?.up("md")]: {
+     [theme.breakpoints.up("md")]: {
           flexDirection: 'row',
           justifyContent: 'space-around'
      },
-})) as typeof Box
+}))
 
-export const FooterInfoAccount = styled(Box)(({ theme }: any) => ({
+type FooterInfoProps = {
+     theme: Theme
+}
+
+export const FooterInfoAccount = styled(Box)<FooterInfoProps>(({ theme }) => ({
      display: 'flex',
      flexDirection: 'row',
      gap: '3rem',
      marginBottom: '20px',
-})) as typeof Box
+}))
 
-export const FooterSocial = styled(Box)(({ theme }: any) => ({
+export const FooterSocial = styled(Box)(({ theme }) => ({
      display: 'flex',
      justifyContent: 'center',
      gap: '2rem',
      color: Colors.primary.main,
      margin: '20px 40px'
-})) as typeof Box
+}))
 
-export const FooterSubscribe = styled(Box)(({ theme }: any) => ({
+type FooterSubscribeProps = {
+     theme: Theme
+}
+
+export const FooterSubscribe = styled(Box)<FooterSubscribeProps>(({ theme }) => ({
      display: 'flex',
      flexDirection: 'column',
      gap: '20px',
@@ -46,9 +54,13 @@ export const FooterSubscribe = styled(Box)(({ theme }: any) => ({
      [theme.breakpoints?.down("md")]: {
           marginBottom: '40px'
      },
-})) as typeof Box
+}))
 
-export const FooterTitle = styled(Typography)(({ theme }: any) => ({
+type FooterTitleProps = {
+     theme: Theme
+}
+
+export const FooterTitle = styled(Typography)<FooterTitleProps>(({ theme }) => ({
      color: Colors.primary.main,
      textTransform: "uppercase",
      textAlign: 'left',
@@ -60,9 +72,13 @@ export const FooterTitle = styled(Typography)(({ theme }: any) => ({
      [theme.breakpoints?.up("md")]: {
           fontSize: '1.2rem'
      },
-})) as typeof Typography
+}))
 
-export const FooterItem = styled(Typography)(({ theme }: any) => ({
+type FooterItemProps = {
+     theme: Theme
+}
+
+export const FooterItem = styled(Typography)<FooterItemProps>(({ theme }) => ({
      color: Colors.secondary.custom,
      textTransform: "uppercase",
      textAlign: 'left',
@@ -73,7 +89,7 @@ export const FooterItem = styled(Typography)(({ theme }: any) => ({
           fontSize: '.8rem'
      },
      '&:hover': { color: Colors.secondary.main, cursor: 'pointer' }
-})) as typeof Typography
+}))
 
 export const PrivacyPolicyCheckBox = styled(Checkbox)(() => ({
      color: Colors.primary.lighter,
@@ -89,9 +105,9 @@ export const SubscribeTf = styled(TextField)<TextFieldProps>(() => ({
 }))
 
 //place copyright text in the bottom right of the footer
-export const Copyright = styled(Typography)(({ theme }: any) => ({
+export const Copyright = styled(Typography)(({ theme }) => ({
      color: Colors.primary.main,
      fontSize: '.8rem',
      bottom: '0',
      right: '0',
-})) as typeof Typography
+})) 

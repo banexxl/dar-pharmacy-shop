@@ -1,9 +1,13 @@
 import styled from "@emotion/styled";
-import { Slide, Box, Typography, IconButton, Table, TableBody, TableHead, TableCell, tableCellClasses, TableRow, Button } from "@mui/material";
+import { Slide, Box, Typography, IconButton, Table, TableBody, TableHead, TableCell, tableCellClasses, TableRow, Button, Theme } from "@mui/material";
 import { Colors } from "../theme";
+import { type } from "os";
 
+type WishlistProps = {
+     theme: Theme
+}
 
-export const WishListWrapper = styled(Box)(({ theme }: any) => ({
+export const WishListWrapper = styled(Box)<WishlistProps>(({ theme }) => ({
      display: "flex",
      padding: theme.spacing(4),
      flexDirection: 'column',
@@ -12,7 +16,11 @@ export const WishListWrapper = styled(Box)(({ theme }: any) => ({
      gap: '20px'
 }));
 
-export const ProductDetailInfoWrapper = styled(Box)(() => ({
+type ProductDetailProps = {
+     theme: Theme
+}
+
+export const ProductDetailInfoWrapper = styled(Box)(({ theme }) => ({
      display: "flex",
      flexDirection: "column",
      maxWidth: 500,
@@ -20,13 +28,18 @@ export const ProductDetailInfoWrapper = styled(Box)(() => ({
 }));
 
 
-export const WishlistProduct = styled(Box)(({ theme }: any) => ({
+export const WishlistProduct = styled(Box)(({ theme }) => ({
      display: "flex",
      justifyContent: "space-around",
      alignItems: "center",
 }))
 
-export const WishlistProductImage = styled("img")(({ src, theme }: any) => ({
+type WishlistProductImageProps = {
+     src: string,
+     theme: Theme
+}
+
+export const WishlistProductImage = styled("img")<WishlistProductImageProps>(({ src, theme }) => ({
      src: `url(${src})`,
      borderRadius: '20px',
      [theme.breakpoints.up("xl")]: {
@@ -48,7 +61,11 @@ export const WishlistProductImage = styled("img")(({ src, theme }: any) => ({
 
 }));
 
-export const WishlistProductName = styled(Typography)(() => ({
+type WishlistProductInfoProps = {
+     theme: Theme
+}
+
+export const WishlistProductName = styled(Typography)<WishlistProductInfoProps>(({ theme }) => ({
      textAlign: 'center',
      width: '100px',
 }))
@@ -57,18 +74,22 @@ export const WishlistProductActionButton = styled(IconButton)(() => ({
      margin: 4,
 }))
 
-export const WishlistTable = styled(Table)(({ theme }: any) => ({
+export const WishlistTable = styled(Table)(({ theme }) => ({
 }))
 
-export const WishlistTableBody = styled(TableBody)(({ theme }: any) => ({
+export const WishlistTableBody = styled(TableBody)(({ theme }) => ({
 
 }))
 
-export const WishlistRemoveAllButton = styled(Button)(({ theme }: any) => ({
+export const WishlistRemoveAllButton = styled(Button)(({ theme }) => ({
      maxWidth: '300px'
 }))
 
-export const WishlistHeader = styled(TableHead)(({ theme }: any) => ({
+type WishlistHeaderProps = {
+     theme: Theme
+}
+
+export const WishlistHeader = styled(TableHead)<WishlistHeaderProps>(({ theme }) => ({
      borderRadius: '20px',
      marginBottom: '20px',
      [theme.breakpoints.up("xs")]: {
@@ -83,12 +104,16 @@ export const WishlistHeader = styled(TableHead)(({ theme }: any) => ({
      }
 }))
 
-export const WishlistHeaderCell = styled(TableCell)(({ theme }: any) => ({
+export const WishlistHeaderCell = styled(TableCell)(({ theme }) => ({
      display: 'flex',
      flexDirection: 'column',
 }));
 
-export const WishlistProductCell = styled(TableCell)(({ theme }: any) => ({
+type WishlistProductCellProps = {
+     theme: Theme
+}
+
+export const WishlistProductCell = styled(TableCell)<WishlistProductCellProps>(({ theme }) => ({
      wordWrap: 'break-word',
      [`&.${tableCellClasses.head}`]: {
           backgroundColor: Colors.primary.lighter,
@@ -106,7 +131,11 @@ export const WishlistProductCell = styled(TableCell)(({ theme }: any) => ({
      }
 }));
 
-export const WishlistProductRow = styled(TableRow)(({ theme }: any) => ({
+type WishlistProductRowProps = {
+     theme: Theme
+}
+
+export const WishlistProductRow = styled(TableRow)<WishlistProductRowProps>(({ theme }) => ({
      display: 'flex',
      justifyContent: 'space-around',
      alignItems: 'center',

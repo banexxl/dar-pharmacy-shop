@@ -1,31 +1,36 @@
-import styled from "@emotion/styled";
-import { Button, IconButton } from "@mui/material";
-import { Box } from "@mui/material";
-import { slideInBottom, slideInRight } from "../animation";
-import { Colors } from "../theme";
+import styled from '@emotion/styled';
+import { Button, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
+import { slideInBottom, slideInRight } from '../animation';
+import { Colors } from '../theme';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Image from 'mui-image'
+import { Theme } from '@mui/material';
+
+interface FilteredProductProps {
+     isVisible: boolean;
+     theme: Theme;
+}
 
 export const FilteredProduct = styled(Box, {
-     shouldForwardProp: (prop) => prop !== "isVisible"
-})(({ isVisible, theme }: any) => ({
+     shouldForwardProp: (prop) => prop !== 'isVisible'
+})<FilteredProductProps>(({ isVisible, theme }) => ({
      display: 'flex',
-     justifyContent: "center",
-     alignItems: "center",
-     flexDirection: "column",
-     [theme.breakpoints.up("md")]: {
-          position: "relative",
+     justifyContent: 'center',
+     alignItems: 'center',
+     flexDirection: 'column',
+     [theme.breakpoints.up('md')]: {
+          position: 'relative',
      },
      opacity: isVisible ? '1' : '0',
      transform: isVisible ? 'translateY(5px)' : 'none',
      visibility: isVisible ? 'visible' : 'hidden',
      transition: 'opacity 400ms ease-out, transform 300ms ease-out, visibility 400ms ease-out',
-     willChange: 'opacity, transform, visibility',
-
+     willChange: 'opacity, transform, visibility'
 }))
 
 export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
-     [theme.breakpoints.down("md")]: {
+     [theme.breakpoints.down('md')]: {
           maxHeight: '120px',
           width: 'auto'
      },
@@ -39,11 +44,11 @@ export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
 
 export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
      src: `${src}`,
-     [theme.breakpoints.up("md")]: {
+     [theme.breakpoints.up('md')]: {
           maxHeight: '150px',
           width: 'auto'
      },
-     [theme.breakpoints.down("md")]: {
+     [theme.breakpoints.down('md')]: {
           maxHeight: '120px',
           width: 'auto'
      },
@@ -56,31 +61,36 @@ export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
      },
 }));
 
+type FilteredProductDropdownProps = {
+     isVisible: boolean;
+     theme: Theme;
+}
+
 export const FilteredProductDropdown = styled(Box, {
-     shouldForwardProp: (prop) => prop !== "isVisible"
-})(({ isVisible, theme }: any) => ({
+     shouldForwardProp: (prop) => prop !== 'isVisible'
+})<FilteredProductDropdownProps>(({ isVisible, theme }) => ({
      display: 'flex',
-     justifyContent: "center",
-     alignItems: "center",
-     flexDirection: "column",
-     [theme.breakpoints.up("md")]: {
-          position: "relative",
+     justifyContent: 'center',
+     alignItems: 'center',
+     flexDirection: 'column',
+     [theme.breakpoints.up('md')]: {
+          position: 'relative',
      },
-     // opacity: isVisible ? '1' : '0',
-     // transform: isVisible ? 'translateY(50px)' : 'none',
-     // visibility: isVisible ? 'visible' : 'hidden',
-     // transition: 'opacity 1200ms ease-out, transform 600ms ease-out, visibility 1200ms ease-out',
-     // willChange: 'opacity, transform, visibility',
+     opacity: isVisible ? '1' : '0',
+     transform: isVisible ? 'translateY(50px)' : 'none',
+     visibility: isVisible ? 'visible' : 'hidden',
+     transition: 'opacity 1200ms ease-out, transform 600ms ease-out, visibility 1200ms ease-out',
+     willChange: 'opacity, transform, visibility',
 
 }))
 
 export const FilteredProductImageDropdown = styled(Image)(({ src, theme }: any) => ({
      src: `${src}`,
-     width: "50%",
+     width: '50%',
      background: Colors.light_gray,
      padding: '10px',
-     [theme.breakpoints.up("md")]: {
-          width: "80%",
+     [theme.breakpoints.up('md')]: {
+          width: '80%',
      },
      // cursor: 'pointer',
      // webkitTransition: '-webkit-transform 0.4s',
@@ -98,11 +108,16 @@ export const FilteredProductActionButton = styled(IconButton)(() => ({
      },
 }))
 
+type FilteredProductFavButtonProps = {
+     isfav: number;
+     theme: Theme;
+}
+
 export const FilteredProductFavButton = styled(FilteredProductActionButton, { shouldForwardProp: (prop) => prop !== 'isfav' })
-     (({ isfav, theme }: any) => ({
+     <FilteredProductFavButtonProps>(({ isfav, theme }) => ({
           color: isfav ? Colors.primary.main : Colors.primary.light,
-          [theme.breakpoints.up("md")]: {
-               position: "absolute",
+          [theme.breakpoints.up('md')]: {
+               position: 'absolute',
                right: 0,
                top: 0,
           },
@@ -111,47 +126,67 @@ export const FilteredProductFavButton = styled(FilteredProductActionButton, { sh
           },
      }));
 
-export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== "show" })
-     (({ show, theme }: any) => ({
-          fontSize: "12px",
-          width: "140px",
-          [theme.breakpoints.up("md")]: {
-               position: "absolute",
-               bottom: "2%",
-               width: "150px",
-               padding: "10px 5px",
-               animation:
-                    show &&
-                    `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+type FilteredProductAddToCartProps = {
+     show: boolean;
+     theme: Theme;
+}
+export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop) => prop !== 'show' })<FilteredProductAddToCartProps>(
+     ({ show, theme }) => ({
+          fontSize: '12px',
+          width: '140px',
+          [theme.breakpoints.up('md')]: {
+               position: 'absolute',
+               bottom: '2%',
+               width: '150px',
+               padding: '10px 5px',
+               ...(show && {
+                    animation: `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               }),
           },
-          '&:hover': {
-               backgroundColor: Colors.primary.lighter,
-          },
-          background: Colors.primary.main,
-     }));
+          // '&:hover': {
+          //      backgroundColor: Colors.primary.lighter,
+          // },
+          // background: Colors.primary.main,
+     })
+);
 
-export const FilteredProductMetaWrapper = styled(Box)(({ theme }: any) => ({
+type FilteredProductMetaProps = {
+     theme: Theme;
+}
+
+export const FilteredProductMetaWrapper = styled(Box)<FilteredProductMetaProps>(({ theme }) => ({
      padding: 4,
-     display: "flex",
-     flexDirection: "column",
-     alignItems: "center",
+     display: 'flex',
+     flexDirection: 'column',
+     alignItems: 'center',
      color: Colors.primary.main,
      fontStyle: 'italic',
      textAlign: 'center'
 }));
 
+type FilteredProductActionsWrapperProps = {
+     show: boolean;
+     theme: Theme;
+}
+
 export const FilteredProductActionsWrapper = styled(Box, { shouldForwardProp: (prop) => prop !== 'show' })
-     (({ show, theme }: any) => ({
-          [theme.breakpoints.up("md")]: {
+     <FilteredProductActionsWrapperProps>(({ show, theme }) => ({
+          [theme.breakpoints.up('md')]: {
                display: show ? 'visible' : 'none',
-               position: "absolute",
+               position: 'absolute',
                right: 0,
                top: '20%',
-               animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               ...(show && {
+                    animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               }),
           }
      }));
 
-export const FilteredProductDiscountSticker = styled(Box)(() => ({
+type FilteredProductDiscountStickerProps = {
+
+}
+
+export const FilteredProductDiscountSticker = styled(Box)((theme) => ({
      position: 'absolute',
      right: '-20px',
      top: '10px',

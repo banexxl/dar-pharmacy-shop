@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon, Box, FormControlLabel, Alert } from "@mui/material"
-import { Colors } from "../../styles/theme";
+import theme, { Colors } from "../../styles/theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { SubscribeTf, FooterTitle, FooterContainer, FooterInfoAccount, FooterSocial, FooterSubscribe, PrivacyPolicyCheckBox, FooterItem, Copyright } from "../../styles/footer";
 import SendIcon from "@mui/icons-material/Send";
@@ -84,13 +84,13 @@ export default function Footer() {
 
 
      return (
-          <FooterContainer>
-               <FooterInfoAccount >
+          <FooterContainer theme={theme}>
+               <FooterInfoAccount theme={theme}>
                     <Box >
-                         <FooterTitle >Informacije</FooterTitle>
+                         <FooterTitle theme={theme}>Informacije</FooterTitle>
                          <List sx={{ color: Colors.primary.lighter, display: 'flex', flexDirection: 'column' }}>
                               <ListItemText >
-                                   <FooterItem lineHeight={2}>
+                                   <FooterItem theme={theme} lineHeight={2}>
                                         <Link href={"/"} >
                                              Početna
                                         </Link>
@@ -98,21 +98,21 @@ export default function Footer() {
                               </ListItemText>
                               <ListItemText >
                                    <Link href='/informacije/o-nama'  >
-                                        <FooterItem lineHeight={2} >
+                                        <FooterItem theme={theme} lineHeight={2} >
                                              O nama
                                         </FooterItem>
                                    </Link>
                               </ListItemText>
                               <ListItemText>
                                    <Link href='/informacije/politika-privatnosti'>
-                                        <FooterItem lineHeight={2} >
+                                        <FooterItem theme={theme} lineHeight={2} >
                                              Politika privatnosti
                                         </FooterItem>
                                    </Link>
                               </ListItemText>
                               <ListItemText>
                                    <Link href='/informacije/uslovi-koriscenja'>
-                                        <FooterItem lineHeight={2} >
+                                        <FooterItem theme={theme} lineHeight={2} >
                                              Uslovi korišćenja
                                         </FooterItem>
                                    </Link>
@@ -120,25 +120,25 @@ export default function Footer() {
                          </List>
                     </Box>
                     <Box>
-                         <FooterTitle variant="body1">Nalog</FooterTitle>
+                         <FooterTitle theme={theme} variant="body1">Nalog</FooterTitle>
                          <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
                               <ListItemText onClick={showLoginDialog}>
-                                   <FooterItem lineHeight={2} >
+                                   <FooterItem theme={theme} lineHeight={2} >
                                         Prijava
                                    </FooterItem>
                               </ListItemText>
                               <ListItemText onClick={showCartDialog}>
-                                   <FooterItem lineHeight={2} >
+                                   <FooterItem theme={theme} lineHeight={2} >
                                         Korpa
                                    </FooterItem>
                               </ListItemText>
                               <ListItemText onClick={showLoginDialog}>
-                                   <FooterItem lineHeight={2} >
+                                   <FooterItem theme={theme} lineHeight={2} >
                                         Moj profil
                                    </FooterItem>
                               </ListItemText>
                               <ListItemText onClick={showWishListDialog}>
-                                   <FooterItem lineHeight={2} >
+                                   <FooterItem theme={theme} lineHeight={2} >
                                         List želja
                                    </FooterItem>
                               </ListItemText>
@@ -179,9 +179,10 @@ export default function Footer() {
                     {
                          formik => (
                               <Form>
-                                   <FooterSubscribe>
-                                        <FooterTitle variant="body1">Bilten</FooterTitle>
+                                   <FooterSubscribe theme={theme}>
+                                        <FooterTitle theme={theme} variant="body1">Bilten</FooterTitle>
                                         <SubscribeTf
+                                             theme={theme}
                                              color="secondary"
                                              label={"Email adresa"}
                                              variant="filled"
