@@ -12,18 +12,18 @@ import { Colors } from '@/styles/theme';
 
 type ShareProps = {
   shareURL: string;
+  flexDirection: 'row' | 'column';
 };
 
-export const SocialShare = ({ shareURL }: ShareProps) => {
-  console.log('shareURL', shareURL);
+export const SocialShare = ({ shareURL, flexDirection }: ShareProps) => {
 
   return (
-    <Stack sx={{ display: 'flex', width: '500px', position: 'absolute' }}>
+    <Stack sx={{ display: 'flex', width: '300px', position: 'absolute', }}>
       {/* <Typography variant="subtitle2" sx={{ mt: 0.75, mr: 1.5, color: theme.palette.text.primary }}>
         Share:
       </Typography> */}
 
-      <Stack direction="row" alignItems="center" flexWrap="wrap">
+      <Stack direction={flexDirection} alignItems="center" flexWrap="wrap">
         <FacebookShareButton
           url={shareURL}
           quote={'Apoteka DAR'}

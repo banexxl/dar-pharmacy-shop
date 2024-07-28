@@ -23,6 +23,7 @@ import { FilteredProductImageContainer } from "@/styles/product/filtered-single-
 import { PopAnimation, PopupBody } from "@/styles/product/share-product";
 import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
+import { SocialShare } from "../social/socials-share";
 
 function useIsInViewport(ref: any) {
      const [isIntersecting, setIsIntersecting] = useState(false);
@@ -52,8 +53,10 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false);
-     const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
-     const [open, setOpen] = useState(false);
+     const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
+     console.log('showOptions', showOptions);
+     console.log('openShareOption', openShareOption);
+
 
      const productRef = useRef<HTMLElement | null>(null)
      const isVisible = useIsInViewport(productRef)
@@ -64,6 +67,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
      };
      const handleMouseLeave = () => {
           setShowOptions(false);
+          setOpenShareOptions(false);
      };
 
      const callCartAlert = () => {
@@ -104,44 +108,25 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                     <ProductActionsWrapper theme={theme} show={showOptions}>
                          <Stack direction={isScreenToMedium ? "row" : "column"}>
                               <ProductFavButton isfav={0} onClick={() => { callWishlistAlert(); dispatch(addToWishList(product)) }}>
-                                   <Tooltip placement="left" title="Add to wishlist">
+                                   <Tooltip placement="left" title="Dodaj u listu želja">
                                         <FavoriteIcon />
                                    </Tooltip>
                               </ProductFavButton>
-                              <ProductActionButton>
-                                   <PopupState variant="popper" popupId="demo-popup-popper">
-                                        {(popupState) => (
-                                             <div>
-                                                  <Tooltip placement="top" title="Share this product" {...bindToggle(popupState)}>
-                                                       <ShareIcon color="primary" >
-                                                            <Button variant="contained" />
-                                                       </ShareIcon>
-                                                  </Tooltip>
-                                                  <Popper {...bindPopper(popupState)} transition>
-                                                       {({ TransitionProps }) => (
-                                                            <Fade {...TransitionProps} timeout={500}>
-                                                                 <Paper sx={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '10px', color: Colors.primary }}>
-                                                                      <FacebookIcon sx={{ cursor: 'pointer' }} >
-                                                                           <Link href={`https://www.facebook.com/sharer.php?u=${'www.apoteka-dar.rs'}`} {...bindToggle(popupState)} />
-                                                                      </FacebookIcon>
-                                                                      <InstagramIcon sx={{ cursor: 'pointer' }} />
-                                                                      <LinkedInIcon sx={{ cursor: 'pointer' }} />
-                                                                      <YouTubeIcon sx={{ cursor: 'pointer' }} />
-                                                                 </Paper>
-                                                            </Fade>
-                                                       )}
-                                                  </Popper>
-                                             </div>
-                                        )}
-                                   </PopupState>
+                              <ProductActionButton onClick={() => setOpenShareOptions(!openShareOption)} >
+                                   <Tooltip placement="top" title="Podeli" >
+                                        <ShareIcon color="primary" />
+                                   </Tooltip>
                               </ProductActionButton>
                               <ProductActionButton onClick={() => showProductDetailDialog()}>
-                                   <Tooltip placement="left" title="Full view">
+                                   <Tooltip placement="left" title="Pogledaj proizvod">
                                         <FitScreenIcon color="primary" />
                                    </Tooltip>
                               </ProductActionButton>
                          </Stack>
                     </ProductActionsWrapper>
+                    {openShareOption && showOptions && (
+                         < SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="column" />
+                    )}
                     {addedToCartAlert && (
                          <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
                               Proizvod dodat u korpu
@@ -159,6 +144,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
                     >
                          Dodaj u korpu
                     </ProductAddToCart >
+
                     <ProductDetailDialog product={product} />
                </Product>
           </Grow>

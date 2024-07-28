@@ -117,7 +117,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                          <Button
                               sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
                               onClick={() => setShowShareOptions(!showShareOptions)}
-                              ref={ref as React.RefObject<HTMLButtonElement>}>
+                         >
                               <Tooltip placement="left" title={"Podeli"}>
                                    <ShareIcon color="primary" />
                               </Tooltip>
@@ -145,6 +145,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
 
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
+               {showShareOptions && showOptions && (
+                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="row" />
+               )}
                {addedToCartAlert && (
                     <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                          Proizvod je dodat u korpu
@@ -155,9 +158,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
                          Proizvod je dodat u listu želja
                     </Alert>
                )}
-               {showShareOptions && showOptions && (
-                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} />
-               )}
+
           </Product>
      );
 }
