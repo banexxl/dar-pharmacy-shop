@@ -9,7 +9,6 @@
     "env": {
       "NEXT_PUBLIC_ENV_VARIABLE": "value"
     },
-    "outputDirectory": "out",
-    "postBuild": "next-sitemap"
+      "postBuild": "next-sitemap"
   }
 }
