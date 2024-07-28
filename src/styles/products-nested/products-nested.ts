@@ -10,7 +10,7 @@ export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
 export const StyledNestedTypography = styled(Typography)(({ theme }) => ({
      // fontSize: '1rem',
      ':hover': {
-          backgroundColor: Colors.primary.main,
+          backgroundColor: Colors.secondary.custom,
           textEmphasisColor: Colors.dim_grey
      }
 }));

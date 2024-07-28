@@ -11,9 +11,12 @@ import { PaymentOptionRadio } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { useSelector } from "react-redux";
+import useDialogModal from '@/hooks/useDialogModal';
+import Cart from '@/components/cart/cart';
 
 const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
@@ -43,6 +46,8 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
           dispatch(submitUserForm(values))
           props.tabIndex === 0 ? props.setTab?.(1) : null
      }
+
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
 
      const onSubmitEmailForm = (email: any) => {
           console.log(email);
@@ -172,6 +177,9 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                   <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(), dispatch(clearUserForm()) }}                                                                                          >
                                                        Obriši
                                                   </ClearFormButton>
+                                                  <CheckoutNextPrevButton sx={{ maxWidth: '200px' }} startIcon={<NavigateBeforeIcon />} onClick={() => showCartDialog()}>
+                                                       Proveri korpu
+                                                  </CheckoutNextPrevButton>
                                                   <CheckoutNextPrevButton type='submit' endIcon={< NavigateNextIcon />}>
                                                        Dalje
                                                   </CheckoutNextPrevButton>
@@ -182,6 +190,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                          }
                     </Formik>
                </Container>
+               <CartDialog />
           </DynamicThemeProvider >
      );
 };

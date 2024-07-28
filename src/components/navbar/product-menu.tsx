@@ -60,11 +60,11 @@ export const ProductsMenu = () => {
                {/* </Button> */}
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography>
-                              <Link href={'/proizvodi/prirodna-kozmetika'}>
+                         <Link href={'/proizvodi/prirodna-kozmetika'}>
+                              <StyledNestedTypography>
                                    Prirodna kozmetika
-                              </Link>
-                         </StyledNestedTypography>
+                              </StyledNestedTypography>
+                         </Link>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
