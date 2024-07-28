@@ -22,16 +22,16 @@ const SingleProduct = (props: any) => {
      })
      return (
           <DynamicThemeProvider theme={theme}>
-               <title>Apoteka DAR - Proizvod</title>
-               <meta name="description" content="Apoteka Dar Kragujevac" />
+               <title>Apoteka DAR - {`${props.product.name}`}</title>
+               <meta name="description" content={`${props.product.name}`} />
                <meta name="keywords" content="apoteka, dar, kragujevac" />
-               <meta property="og:title" content="Apoteka DAR" />
+               <meta property="og:title" content={`${props.product.name}`} />
                <meta property="og:description" content="Apoteka Dar Kragujevac" />
                <meta property="og:image" content="/public/images/home-page/apotekaDar.jpg" />
                <meta property="og:url" content="https://www.apoteka-dar.rs" />
                <meta name="twitter:card" content="/public/images/home-page/apotekaDar.jpg" />
-               <meta name="twitter:title" content="Apoteka DAR" />
-               <meta name="twitter:description" content="Apoteka DAR - Proizvod" />
+               <meta name="twitter:title" content={`${props.product.name}`} />
+               <meta name="twitter:description" content={`${props.product.name}`} />
                <meta name="twitter:image" content="/public/images/home-page/apotekaDar.jpg" />
                <Container
                     disableGutters
