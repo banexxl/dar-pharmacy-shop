@@ -4,38 +4,36 @@ import AccessDenied from "@/components/auth/access-denied"
 
 export default function ProtectedPage() {
 
-          const { data: session } = useSession()
-          const [content, setContent] = useState()
+     const { data: session } = useSession()
+     const [content, setContent] = useState()
 
-          // Fetch content from protected route
-          useEffect(() => {
-                    const fetchData = async () => {
-                              const res = await fetch("/api/helpers/protected")
-                              const json = await res.json()
-                              if (json.content) {
-                                        setContent(json.content)
-                              }
-                    }
-                    fetchData()
-          }, [session])
-
-
-          // If no session exists, display access denied message
-          if (!session) {
-                    return (
-
-                              <AccessDenied />
-
-                    )
+     // Fetch content from protected route
+     useEffect(() => {
+          const fetchData = async () => {
+               const res = await fetch("/api/helpers/protected")
+               const json = await res.json()
+               if (json.content) {
+                    setContent(json.content)
+               }
           }
+          fetchData()
+     }, [session])
 
-          // If session exists, display content
+
+     // If no session exists, display access denied message
+     if (!session) {
           return (
-                    <>
-                              <h1>Protected Page</h1>
-                              <p>
-                                        <strong>{content ?? "\u00a0"}</strong>
-                              </p>
-                    </>
+               <AccessDenied />
           )
+     }
+
+     // If session exists, display content
+     return (
+          <>
+               <h1>Protected Page</h1>
+               <p>
+                    <strong>{content ?? "\u00a0"}</strong>
+               </p>
+          </>
+     )
 }

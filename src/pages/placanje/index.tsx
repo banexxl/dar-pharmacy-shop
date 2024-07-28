@@ -37,9 +37,17 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Head>
-                    <title>Narudžbenica</title>
-               </Head>
+               <title>Apoteka DAR - Porudžbenica</title>
+               <meta name="description" content="Apoteka Dar Kragujevac" />
+               <meta name="keywords" content="apoteka, dar, kragujevac" />
+               <meta property="og:title" content="Apoteka DAR" />
+               <meta property="og:description" content="Apoteka Dar Kragujevac" />
+               <meta property="og:image" content="/public/images/home-page/apotekaDar.jpg" />
+               <meta property="og:url" content="https://www.apoteka-dar.rs" />
+               <meta name="twitter:card" content="/public/images/home-page/apotekaDar.jpg" />
+               <meta name="twitter:title" content="Apoteka DAR" />
+               <meta name="twitter:description" content="Apoteka DAR - Porudžbenica" />
+               <meta name="twitter:image" content="/public/images/home-page/apotekaDar.jpg" />
                <Container
                     disableGutters
                     maxWidth="lg"
