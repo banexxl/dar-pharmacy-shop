@@ -25,7 +25,6 @@
     "@mui/x-date-pickers": "^6.1.0",
     "@mui/x-date-pickers-pro": "^6.1.0",
     "@next-auth/mongodb-adapter": "^1.1.1",
-    "@next/font": "13.1.4",
     "@react-email/render": "^0.0.6",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/node": "18.11.18",
