@@ -103,23 +103,3 @@ export async function getServerSideProps(context: any) {
 }
 
 
-// export const getStaticPaths = async (context: any) => {
-//      console.log(context);
-
-//      const allProducts: any = await productsServices().getAllProducts()
-
-//      const paths = allProducts.flatMap((product: any) =>
-//           context.locales.map((locale: any) => ({
-//                params: {
-//                     proizvodjac: product.manufacturer.toString()
-//                },
-//                locale,
-//           }))
-//      );
-
-//      return {
-//           paths,
-//           fallback: false, // false or "blocking"
-//      };
-// }
-

@@ -11,7 +11,6 @@ export default function Products(props: any) {
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-     console.log('isScreenToMedium', isScreenToMedium);
 
      //const cart: ICartItem[] = useSelector((state: any) => state.cart)
 

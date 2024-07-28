@@ -54,9 +54,6 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false);
      const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
-     console.log('showOptions', showOptions);
-     console.log('openShareOption', openShareOption);
-
 
      const productRef = useRef<HTMLElement | null>(null)
      const isVisible = useIsInViewport(productRef)
