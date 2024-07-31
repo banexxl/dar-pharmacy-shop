@@ -15,7 +15,7 @@ export default function ProductMeta({ product, isScreenToMedium }: any) {
                </Typography>
                -----------------
                <Typography variant={isScreenToMedium ? "caption" : "body1"} textAlign='center'>
-                    Pakovanje: {product.quantity}
+                    Pakovanje: {product.quantity + " " + product.quantityUnit}
                </Typography>
           </ProductMetaWrapper>
      );

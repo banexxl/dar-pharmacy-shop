@@ -10,8 +10,7 @@ type TextFieldProps = {
 export const FooterContainer = styled(Box)<TextFieldProps>(({ theme }) => ({
      alignItems: 'center',
      backgroundColor: Colors.shaft,
-     color: Colors.white,
-     padding: '2rem',
+     padding: '1rem',
      display: 'flex',
      justifyContent: 'space-between',
      [theme.breakpoints.down("md")]: {

@@ -71,7 +71,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                              name={cartItem.name} description={cartItem.description} category={cartItem.category}
                                              availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
                                              instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                             warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} />
+                                             warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} />
                                    ))}
                               </StyledTableBody>
                          </StyledTable>

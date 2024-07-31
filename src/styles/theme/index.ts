@@ -83,6 +83,28 @@ const theme: Theme = createTheme({
                     }
                }
           },
+          MuiAccordion: {
+               styleOverrides: {
+                    root: {
+                         backgroundColor: Colors.primary.lighter,
+                    }
+               }
+          },
+          MuiAccordionSummary: {
+               styleOverrides: {
+                    root: {
+                         color: Colors.primary.main,
+                         fontWeight: 'bold',
+                    }
+               }
+          },
+          MuiAccordionDetails: {
+               styleOverrides: {
+                    root: {
+                         color: Colors.primary.main,
+                    }
+               }
+          },
           // MuiContainer: {
           //           styleOverrides: {
           //                     root: {
