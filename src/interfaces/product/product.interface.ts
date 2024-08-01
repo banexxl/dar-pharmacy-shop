@@ -17,3 +17,10 @@ export default interface IProduct {
      discountAmount?: number;
 }
 
+export type ProductQuantityType =
+     'briketa' | 'flastera' |
+     'g' | 'kapsula' |
+     'kesica' | 'komad' |
+     'komada' | 'kompresa' |
+     'ledenih kocki' | 'mg' |
+     'ml' | 'tableta'

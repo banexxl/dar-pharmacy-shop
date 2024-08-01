@@ -22,11 +22,11 @@ export const FilteredProduct = styled(Box, {
      [theme.breakpoints.up('md')]: {
           position: 'relative',
      },
-     opacity: isVisible ? '1' : '0',
-     transform: isVisible ? 'translateY(5px)' : 'none',
-     visibility: isVisible ? 'visible' : 'hidden',
-     transition: 'opacity 400ms ease-out, transform 300ms ease-out, visibility 400ms ease-out',
-     willChange: 'opacity, transform, visibility'
+     // opacity: isVisible ? '1' : '0',
+     // transform: isVisible ? 'translateY(5px)' : 'none',
+     // visibility: isVisible ? 'visible' : 'hidden',
+     // transition: 'opacity 400ms ease-out, transform 300ms ease-out, visibility 400ms ease-out',
+     // willChange: 'opacity, transform, visibility'
 }))
 
 export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
