@@ -22,12 +22,23 @@ export default function Banner() {
                     <BannerQuotaText>
                          {'"Radosno srce je pola zdravlja!"'}
                     </BannerQuotaText>
-                    <Typography>
+                    <BannerQuotaText>
                          Kućna dostava lekova, utorkom i subotom, Kragujevac i Okolina...
-                    </Typography>
-                    <Typography>
-                         Nudimo pouzdane savete i širok asortiman proizvoda kako biste ostvarili svoje zdravstvene ciljeve.
-                    </Typography>
+                    </BannerQuotaText>
+                    <BannerQuotaText>
+                         Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
+                         da nas kontaktirate putem <br />
+                         <Link href={"/kontakt"}>
+                              <Typography>
+                                   kontakt forme
+                              </Typography>
+                         </Link> ili pozivom na broj telefona<br />
+                         <Typography>
+                              <a href={`tel:${+381346104222}`}>
+                                   +381 34 610 4222
+                              </a>
+                         </Typography>
+                    </BannerQuotaText>
                     <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
                          <Link href={"/proizvodi/apoteka?part=1"}>
                               Pogledajte ponudu

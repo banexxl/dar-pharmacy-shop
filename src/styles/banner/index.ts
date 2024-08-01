@@ -10,7 +10,7 @@ export const BannerContainer = styled(Box)(({ theme, sx }) => ({
      width: "100%",
      height: "100%",
      // padding: "0px 0px",
-     marginTop: '100px',
+     // marginTop: '50px',
      background: Colors.secondary.custom,
 })) as typeof Box;
 
@@ -29,7 +29,7 @@ export const BannerContainer = styled(Box)(({ theme, sx }) => ({
 // }));
 
 export const BannerTextContent = styled(Box)(({ theme }) => ({
-     boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
+     //boxShadow: 'inset 6px 7px 20px 1px rgb(201 101 101 / 20%)',
      // borderRadius: '10px',
      display: 'flex',
      flexDirection: 'column',
@@ -52,22 +52,13 @@ export const BannerQuotaText = styled(Typography)(({ theme }) => ({
      textAlign: 'center',
      fontStyle: 'italic',
      margin: "20px",
-     color: Colors.primary.lighter,
+     color: Colors.secondary.custom,
      textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
-     [theme.breakpoints.up("xl")]: {
-          fontSize: '2.5rem',
-     },
-     [theme.breakpoints.down("xl")]: {
-          fontSize: '2.2rem',
-     },
-     [theme.breakpoints.down("lg")]: {
-          fontSize: '2.5rem',
-     },
      [theme.breakpoints.down("md")]: {
-          fontSize: '1.8rem'
+          fontSize: '1.3rem',
      },
-     [theme.breakpoints.down("sm")]: {
-          fontSize: '1.5rem',
+     [theme.breakpoints.up("md")]: {
+          fontSize: '2rem',
      },
 })) as typeof Typography
 
@@ -79,13 +70,13 @@ export const BannerLeftImageContent = styled(Box)(({ theme }) => ({
      justifyContent: 'space-between',
      alignItems: 'center',
      textShadow: '1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000',
-     backgroundImage: `url("/images/home-page/darHeroPic.png")`,
+     backgroundImage: `url("https://utfs.io/f/1d0a2c2a-46cd-43fd-b8eb-51140f034f7b-6qj3kd.jpg")`,
      backgroundSize: "cover",
      backgroundPosition: "center",
      backgroundRepeat: 'no-repeat',
-     padding: '10px',
+     //   padding: '10px',
      width: '100%',
-     height: '500px',
+     height: '100%',
      // [theme.breakpoints.up("lg")]: {
      //      width: '50%',
      //      height: '500px'
@@ -103,7 +94,7 @@ export const BannerRightImageContent = styled(Box)(({ theme }) => ({
           right: '180px',
      },
      [theme.breakpoints.up("xl")]: {
-          top: '220px',
+          top: '450px',
           right: '300px',
      },
      width: '120px',

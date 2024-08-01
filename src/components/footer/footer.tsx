@@ -103,6 +103,11 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
+                                        <Link href={"/kontakt"} >
+                                             Pitajte nas...
+                                        </Link>
+                                   </AccordionDetails>
+                                   <AccordionDetails>
                                         <Link href={"/o-nama"} >
                                              O nama
                                         </Link>

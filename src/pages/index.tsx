@@ -83,6 +83,7 @@ export default function Home(props: any) {
                >
                     <Stack>
                          <UIProvider>
+                              <CarouselLogo products={dataForGrid} />
                               <Banner />
                               <Promotions />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>

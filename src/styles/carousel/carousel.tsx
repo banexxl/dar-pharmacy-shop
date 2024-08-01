@@ -12,8 +12,8 @@ export const StyledCarouselBox = styled(Box)({
 export const StyledCarouselLogoBox = styled(Box)({
      display: 'block',
      marginTop: '50px',
-     height: '200px',
      justifyContent: 'center',
+     backgroundColor: Colors.secondary.custom,
 });
 
 export const StyledCarouselCard = styled(Box)({
@@ -105,7 +105,7 @@ export const CarouselLogoImgBox = styled(Box)({
      },
      maxWidth: '100%',
      height: '150px',
-     margin: '0px 50px',
+     margin: '20px 20px',
 })
 
 export const CarouselButton = styled(Button)({
