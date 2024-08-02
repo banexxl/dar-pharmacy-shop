@@ -6,6 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
 import { Tooltip, Typography, useMediaQuery } from '@mui/material';
+import { Colors } from '@/styles/theme';
 
 type CarouselProps = {
      products?: IProduct[];
@@ -69,10 +70,12 @@ const CarouselLogo = (props: CarouselProps) => {
                                         <Tooltip title={product.name} placement="top">
                                              <CarouselTitle sx={{
                                                   position: 'absolute',
+                                                  justifyContent: 'center',
+                                                  alignItems: 'center',
                                                   bottom: '10px',
                                                   left: '10px',
-                                                  color: 'white',
-                                                  padding: '5px'
+                                                  padding: '5px',
+                                                  color: Colors.primary.darker
                                              }}>
                                                   {product.name}
                                              </CarouselTitle>

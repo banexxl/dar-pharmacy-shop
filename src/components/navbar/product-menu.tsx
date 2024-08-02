@@ -94,13 +94,13 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
+                    {/* <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/prirodni-imunitet'}>
                                    Prirodni imunitet
                               </Link>
                          </StyledNestedTypography>
-                    </StyledMenuItem>
+                    </StyledMenuItem> */}
                     {/* --------------------------APOTEKA------------------------------------------ */}
                     {/* <NestedMenuItem
                          label="Apoteka"
