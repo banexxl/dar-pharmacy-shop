@@ -1,11 +1,11 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { CarouselManufacturerImage, CarouselProductImage } from './carousel-image-loader';
-import { CarouselLogoImgBox, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
+import { CarouselLogoImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
-import { useMediaQuery } from '@mui/material';
+import { Tooltip, Typography, useMediaQuery } from '@mui/material';
 
 type CarouselProps = {
      products?: IProduct[];
@@ -62,10 +62,21 @@ const CarouselLogo = (props: CarouselProps) => {
                               ))
                               :
                               props.products?.map((product: IProduct) => (
-                                   <CarouselLogoImgBox key={product._id} sx={{ marginTop: '60px', marginBottom: '50px', height: isScreenToMedium ? '200px' : '250px' }}>
+                                   <CarouselLogoImgBox key={product._id} sx={{ marginTop: '60px', marginBottom: '50px', height: isScreenToMedium ? '200px' : '250px', position: 'relative' }}>
                                         <Link href={`/proizvod/${product._id}`}>
                                              <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 200 : 250} width={300} isOnDiscount={product.discount} />
                                         </Link>
+                                        <Tooltip title={product.name} placement="top">
+                                             <CarouselTitle sx={{
+                                                  position: 'absolute',
+                                                  bottom: '10px',
+                                                  left: '10px',
+                                                  color: 'white',
+                                                  padding: '5px'
+                                             }}>
+                                                  {product.name}
+                                             </CarouselTitle>
+                                        </Tooltip>
                                    </CarouselLogoImgBox>
                               ))
                     }
