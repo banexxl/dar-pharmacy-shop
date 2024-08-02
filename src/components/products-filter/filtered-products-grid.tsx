@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Link, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, Container, Grid, Link, Typography } from "@mui/material";
 import FilteredSingleProductMobile from "./filtered-single-product-mobile";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
@@ -69,7 +69,6 @@ export default function FilteredProductsGrid(props: any) {
                     gridTemplateColumns={{ xs: '1fr 1fr', sm: '1fr 1fr 1fr', md: '1fr 1fr 1fr' }}
                >
                     {renderProducts}
-
                </Grid>
                <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'center' }}>
                     <Link onClick={() => onLoadMore()} >

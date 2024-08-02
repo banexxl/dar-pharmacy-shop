@@ -102,7 +102,7 @@ export const ProductsMenu = () => {
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     {/* --------------------------APOTEKA------------------------------------------ */}
-                    <NestedMenuItem
+                    {/* <NestedMenuItem
                          label="Apoteka"
                          parentMenuOpen={open}
                          ContainerProps={<Link href={"/proizvodi/apoteka"} />}
@@ -1064,7 +1064,7 @@ export const ProductsMenu = () => {
                               </StyledNestedTypography>
                          </StyledMenuItem>
 
-                    </NestedMenuItem>
+                    </NestedMenuItem> */}
                     {/* ------------------------------------------------------------------------------- */}
 
                     {/* <NestedMenuItem label='Lice' parentMenuOpen={open}>

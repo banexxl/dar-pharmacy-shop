@@ -109,727 +109,727 @@ export const AccordionPanels = [
                          },
                     ]
                },
-               {
-                    id: 'apoteka',
-                    link: '/proizvodi/apoteka',
-                    title: 'Apoteka',
-                    children: [
-                         {
-                              id: 'alergije',
-                              link: '/proizvodi/apoteka/alergije',
-                              title: 'Alergije',
-                              children: [
-                                   {
-                                        id: 'kapsule-i-tablete',
-                                        link: '/proizvodi/apoteka/alergije/kapsule-i-tablete',
-                                        title: 'Kapsule i tablete',
-                                   },
-                                   {
-                                        id: 'sprejevi-za-nos',
-                                        link: '/proizvodi/apoteka/alergije/sprejevi-za-nos',
-                                        title: 'Sprejevi za nos',
-                                   },
-                                   {
-                                        id: 'alergije-masti-gelovi',
-                                        link: '/proizvodi/apoteka/alergije/masti-gelovi',
-                                        title: 'Masti, gelovi',
-                                   },
-                                   {
-                                        id: 'alergije-irigacioni-set',
-                                        link: '/proizvodi/apoteka/alergije/irigacioni-set',
-                                        title: 'Irigacioni set',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'anemija',
-                              link: '/proizvodi/apoteka/anemija',
-                              title: 'Anemije',
-                              children: [
-                                   {
-                                        id: 'folna-kiselina-i-vitamini',
-                                        title: 'Folna kiselina i vitamini',
-                                        link: '/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini',
-                                   },
-                                   {
-                                        id: 'biljni-preparati',
-                                        title: 'Biljni preparati',
-                                        link: '/proizvodi/apoteka/anemija/biljni-preparati',
-                                   },
-                                   {
-                                        id: 'preparati-gvozda',
-                                        title: 'Preparati gvožđa',
-                                        link: '/proizvodi/apoteka/anemija/preparati-gvozdja',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'bol',
-                              title: 'Bol',
-                              link: '/proizvodi/apoteka/bol',
-                              children: [
-                                   {
-                                        id: 'bol-u-grlu',
-                                        title: 'Bol u grlu',
-                                        link: '/proizvodi/apoteka/bol/bol-u-grlu',
-                                   },
-                                   {
-                                        id: 'menstrualni-bolovi',
-                                        title: 'Menstrualni bolovi',
-                                        link: '/proizvodi/apoteka/bol/menstrualni-bolovi',
-                                   },
-                                   {
-                                        id: 'bolovi-u-zglobovima-i-misicima',
-                                        title: 'Bolovi u zglobovima i mišićima',
-                                        link: '/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'hemoroidi',
-                              title: 'Hemoroidi',
-                              link: '/proizvodi/apoteka/hemoroidi',
-                              children: [
-                                   {
-                                        id: 'hemoroidi-oralni-preparati',
-                                        title: 'Oralni preparati',
-                                        link: '/proizvodi/apoteka/hemoroidi/oralni-preparati',
-                                   },
-                                   {
-                                        id: 'hemoroidi-lokalna-primena',
-                                        title: 'Lokalna primena',
-                                        link: '/proizvodi/apoteka/hemoroidi/lokalna-primena',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'holesterol-i-trigliceridi',
-                              title: 'Holesterol i trigliceridi',
-                              link: '/proizvodi/apoteka/holesterol-i-trigliceridi',
-                              children: [
-                                   {
-                                        id: 'omega-masne-kiseline',
-                                        title: 'Omega masne kiseline',
-                                        link: '/proizvodi/apoteka/holesterol-i-trigliceridi/omega-masne-kiseline',
-                                   },
-                                   {
-                                        id: 'ostalo',
-                                        title: 'Ostalo',
-                                        link: '/proizvodi/apoteka/holesterol-i-trigliceridi/ostalo',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'imunitet-prehlada',
-                              title: 'Imunitet, prehlada',
-                              link: '/proizvodi/apoteka/imunitet-prehlada',
-                              children: [
-                                   {
-                                        id: 'imunitet-prehlada-deca',
-                                        title: 'Deca',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/deca',
-                                   },
-                                   {
-                                        id: 'imunitet-prehlada-vitamini-i-minerali',
-                                        title: 'Vitamini i minerali',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/vitamini-i-minerali',
-                                   },
-                                   {
-                                        id: 'sprejevi-za-nos',
-                                        title: 'Sprejevi za nos',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-nos',
-                                   },
-                                   {
-                                        id: 'sprejevi-za-grlo',
-                                        title: 'Sprejevi za grlo',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-grlo',
-                                   },
-                                   {
-                                        id: 'imunitet-prehlada-irigacioni-set',
-                                        title: 'Irigacioni set',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/irigacioni-set',
-                                   },
-                                   {
-                                        id: 'imunitet-prehlada-masti-gelovi',
-                                        title: 'Masti, gelovi',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/masti-gelovi',
-                                   },
-                                   {
-                                        id: 'imunitet-prehlada-biljne-kapi',
-                                        title: 'Biljne kapi',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/biljne-kapi',
-                                   },
-                                   {
-                                        id: 'med-maticni-mlec-i-propolis',
-                                        title: 'Med, matični mleč i propolis',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/med-maticni-mlec-i-propolis',
-                                   },
-                                   {
-                                        id: 'pastile-za-grlo',
-                                        title: 'Pastile za grlo',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/pastile-za-grlo',
-                                   },
-                                   {
-                                        id: 'aloja-ehinacea-noni-aronija',
-                                        title: 'Aloja, ehinacea, noni, aronija',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/aloja-ehinacea-noni-aronija',
-                                   },
-                                   {
-                                        id: 'probiotici',
-                                        title: 'Probiotici',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/probiotici',
-                                   },
-                                   {
-                                        id: 'omega-masne-kiseline',
-                                        title: 'Omega masne kiseline',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/omega-masne-kiseline',
-                                   },
-                                   {
-                                        id: 'ostalo',
-                                        title: 'Ostalo',
-                                        link: '/proizvodi/apoteka/imunitet-prehlada/ostalo',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'kosa-koza-i-nokti',
-                              title: 'Kosa, koža i nokti',
-                              link: '/proizvodi/apoteka/kosa-koza-i-nokti',
-                              children: [
-                                   {
-                                        id: 'kosa-koza-i-nokti-oralni-preparati',
-                                        title: 'Oralni preparati',
-                                        link: '/proizvodi/apoteka/kosa-koza-i-nokti/oralni-preparati',
-                                   },
-                                   {
-                                        id: 'lokalna-primena',
-                                        title: 'Lokalna primena',
-                                        link: '/proizvodi/apoteka/kosa-koza-i-nokti/lokalna-primena',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'kosti-i-zglobovi',
-                              title: 'Kosti i zglobovi',
-                              link: '/proizvodi/apoteka/kosti-i-zglobovi',
-                              children: [
-                                   {
-                                        id: 'kosti-i-zglobovi-oralni-preparati',
-                                        title: 'Oralni preparati',
-                                        link: '/proizvodi/apoteka/kosti-i-zglobovi/oralni-preparati',
-                                   },
-                                   {
-                                        id: 'kosti-i-zglobovi-primena-na-kozi',
-                                        title: 'Primena na koži',
-                                        link: '/proizvodi/apoteka/kosti-i-zglobovi/primena-na-kozi',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'mrsavljenje-celulit',
-                              title: 'Mršavljenje, celulit',
-                              link: '/proizvodi/apoteka/mrsavljenje-celulit',
-                              children: [
-                                   {
-                                        id: 'mrsavljenje-celulit-oralni-preparati',
-                                        title: 'Oralni preparati',
-                                        link: '/proizvodi/apoteka/mrsavljenje-celulit/oralni-preparati',
-                                   },
-                                   {
-                                        id: 'mrsavljenje-celulit-primena-na-kozi',
-                                        title: 'Primena na koži',
-                                        link: '/proizvodi/apoteka/mrsavljenje-celulit/primena-na-kozi',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'posebna-ishrana',
-                              title: 'Posebna ishrana',
-                              link: '/proizvodi/apoteka/posebna-ishrana',
-                              children: [
-                                   {
-                                        id: 'kase',
-                                        title: 'Kaše',
-                                        link: '/proizvodi/apoteka/posebna-ishrana/kase',
-                                   },
-                                   {
-                                        id: 'sejkovi',
-                                        title: 'Šejkovi',
-                                        link: '/proizvodi/apoteka/posebna-ishrana/sejkovi',
-                                   },
-                                   {
-                                        id: 'zasladjivaci',
-                                        title: 'Zaslađivači',
-                                        link: '/proizvodi/apoteka/posebna-ishrana/zasladjivaci',
-                                   },
-                                   {
-                                        id: 'posebna-ishrana-sportisti',
-                                        title: 'Sportisti',
-                                        link: '/proizvodi/apoteka/posebna-ishrana/sportisti',
-                                   },
-                                   {
-                                        id: 'bombone',
-                                        title: 'Bombone',
-                                        link: '/proizvodi/apoteka/posebna-ishrana/bombone',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'putna-apoteka',
-                              title: 'Putna apoteka',
-                              link: '/proizvodi/apoteka/putna-apoteka',
-                              children: [
-                                   {
-                                        id: 'dehidratacija',
-                                        title: 'Dehidratacija',
-                                        link: '/proizvodi/apoteka/putna-apoteka/dehidratacija',
-                                   },
-                                   {
-                                        id: 'dijareja',
-                                        title: 'Dijareja',
-                                        link: '/proizvodi/apoteka/putna-apoteka/dijareja',
-                                   },
-                                   {
-                                        id: 'mucnina',
-                                        title: 'Mučnina',
-                                        link: '/proizvodi/apoteka/putna-apoteka/mucnina',
-                                   },
-                                   {
-                                        id: 'auto-apoteka',
-                                        title: 'Auto apoteka',
-                                        link: '/proizvodi/apoteka/putna-apoteka/auto-apoteka',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'stomacne-tekobe',
-                              title: 'Stomačne tegobe',
-                              link: '/proizvodi/apoteka/stomacne-tekobe',
-                              children: [
-                                   {
-                                        id: 'nadutost-i-gasovi',
-                                        title: 'Nadutost i gasovi',
-                                        link: '/proizvodi/apoteka/stomacne-tekobe/nadutost-i-gasovi',
-                                   },
-                                   {
-                                        id: 'zatvor',
-                                        title: 'Zatvor',
-                                        link: '/proizvodi/apoteka/stomacne-tekobe/zatvor',
-                                   },
-                                   {
-                                        id: 'dijareja',
-                                        title: 'Dijareja',
-                                        link: '/proizvodi/apoteka/stomacne-tekobe/dijareja',
-                                   },
-                                   {
-                                        id: 'iritabilni-kolon',
-                                        title: 'Iritabilni kolon',
-                                        link: '/proizvodi/apoteka/stomacne-tekobe/iritabilni-kolon',
-                                   },
-                                   {
-                                        id: 'otezan-ovarenje-i-gorusica',
-                                        title: 'Otežan varenje i gorušica',
-                                        link: '/proizvodi/apoteka/stomacne-tekobe/otezano-varenje-i-gorusica',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'zdravo-srce-i-cirkulacija',
-                              title: 'Zdravo srce i cirkulacija',
-                              link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija',
-                              children: [
-                                   {
-                                        id: 'zdravo-srce-i-cirkulacija-oralni-preparati',
-                                        title: 'Oralni preparati',
-                                        link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija/oralni-preparati',
-                                   },
-                                   {
-                                        id: 'zdravo-srce-i-cirkulacija-primena-na-kozi',
-                                        title: 'Primena na koži',
-                                        link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija/primena-na-kozi',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'apoteka-vitamini-i-minerali',
-                              title: 'Vitamini i minerali',
-                              link: '/proizvodi/apoteka/vitamini-i-minerali',
-                              children: [
-                                   {
-                                        id: 'vitamin-a',
-                                        title: 'Vitamin A',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-a',
-                                   },
-                                   {
-                                        id: 'vitamin-b',
-                                        title: 'Vitamin B',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-b',
-                                   },
-                                   {
-                                        id: 'vitamin-c',
-                                        title: 'Vitamin C',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-c',
-                                   },
-                                   {
-                                        id: 'vitamin-d',
-                                        title: 'Vitamin D',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-d',
-                                   },
-                                   {
-                                        id: 'vitamin-k',
-                                        title: 'Vitamin K',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-k',
-                                   },
-                                   {
-                                        id: 'cink',
-                                        title: 'Cink',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/cink',
-                                   },
-                                   {
-                                        id: 'kalijum',
-                                        title: 'Kalijum',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/kalijum',
-                                   },
-                                   {
-                                        id: 'kalcijum',
-                                        title: 'Kalcijum',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/kalcijum',
-                                   },
-                                   {
-                                        id: 'hrom',
-                                        title: 'Hrom',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/hrom',
-                                   },
-                                   {
-                                        id: 'magnezijum',
-                                        title: 'Magnezijum',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/magnezijum',
-                                   },
-                                   {
-                                        id: 'selen',
-                                        title: 'Selen',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/selen',
-                                   },
-                                   {
-                                        id: 'gvozdje',
-                                        title: 'Gvožđe',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/gvozdje',
-                                   },
-                                   {
-                                        id: 'bakar',
-                                        title: 'Bakar',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/bakar',
-                                   },
-                                   {
-                                        id: 'bor',
-                                        title: 'Bor',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/bor',
-                                   },
-                                   {
-                                        id: 'fluor',
-                                        title: 'Fluor',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/fluor',
-                                   },
-                                   {
-                                        id: 'fosfor',
-                                        title: 'Fosfor',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/fosfor',
-                                   },
-                                   {
-                                        id: 'kompleksi-vitamina-i-minerala',
-                                        title: 'Kompleksi vitamina i minerala',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/kompleksi-vitamina-i-minerala',
-                                   },
-                                   {
-                                        id: 'riblja-ulja',
-                                        title: 'Riblja ulja',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/riblja-ulja',
-                                   },
-                                   {
-                                        id: 'vitamini-i-minerali-deca',
-                                        title: 'Deca',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/deca',
-                                   },
-                                   {
-                                        id: 'vitamini-i-minerali-sportisti',
-                                        title: 'Sportisti',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/sportisti',
-                                   },
-                                   {
-                                        id: 'trudnice',
-                                        title: 'Trudnice',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/trudnice',
-                                   },
-                                   {
-                                        id: 'stariji',
-                                        title: 'Stariji',
-                                        link: '/proizvodi/apoteka/vitamini-i-minerali/stariji',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'preparati-za-primenu-na-kozi',
-                              title: 'Preparati za primenu na koži',
-                              link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi',
-                              children: [
-                                   {
-                                        id: 'iritacije',
-                                        title: 'Iritacije',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/iritacije',
-                                   },
-                                   {
-                                        id: 'oziljci-i-strije',
-                                        title: 'Ožiljci i strije',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/oziljci-i-strije',
-                                   },
-                                   {
-                                        id: 'preparati-za-primenu-na-kozi-hemoroidi',
-                                        title: 'Hemoroidi',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/hemoroidi',
-                                   },
-                                   {
-                                        id: 'problemi-sa-cirkulacijom',
-                                        title: 'Problemi sa cirkulacijom',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/problemi-sa-cirkulacijom',
-                                   },
-                                   {
-                                        id: 'preparati-za-primenu-na-kozi-intimna-nega',
-                                        title: 'Intimna nega',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/intimna-nega',
-                                   },
-                                   {
-                                        id: 'opekotine',
-                                        title: 'Opekotine',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/opekotine',
-                                   },
-                                   {
-                                        id: 'sportske-povrede',
-                                        title: 'Sportske povrede',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/sportske-povrede',
-                                   },
-                                   {
-                                        id: 'reuma',
-                                        title: 'Reuma',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/reuma',
-                                   },
-                                   {
-                                        id: 'preparati-za-primenu-na-kozi-antiseptici',
-                                        title: 'Antiseptici',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/antiseptici',
-                                   },
-                                   {
-                                        id: 'gljivice',
-                                        title: 'Gljivice',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/gljivice',
-                                   },
-                                   {
-                                        id: 'rozacea',
-                                        title: 'Rozacea',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/rozacea',
-                                   },
-                                   {
-                                        id: 'vitligo',
-                                        title: 'Vitligo',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/vitligo',
-                                   },
-                                   {
-                                        id: 'preparati-za-primenu-na-kozi-boginje',
-                                        title: 'Boginje',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/boginje',
-                                   },
-                                   {
-                                        id: 'herpes',
-                                        title: 'Herpes',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/herpes',
-                                   },
-                                   {
-                                        id: 'seboreicni-dermatitis',
-                                        title: 'Seboreični dermatitis',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/seboreicni-dermatitis',
-                                   },
-                                   {
-                                        id: 'zuljevi-kurje-oci-bradavice',
-                                        title: 'Žuljevi, kurje oči, bradavice',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/zuljevi-kurje-oci-bradavice',
-                                   },
-                                   {
-                                        id: 'ekcem-psorijaza',
-                                        title: 'Ekcem, psorijaza',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/ekcem-psorijaza',
-                                   },
-                                   {
-                                        id: 'suva-atopijska-koza',
-                                        title: 'Suva, atopijska koža',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/suva-atopijska-koza',
-                                   },
-                                   {
-                                        id: 'lokalni-anestetici',
-                                        title: 'Lokalni anestetici',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/lokalni-anestetici',
-                                   },
-                                   {
-                                        id: 'povrsinske-rane',
-                                        title: 'Površinske rane',
-                                        link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/povrsinske-rane',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'oci-i-usi',
-                              title: 'Oči i uši',
-                              link: '/proizvodi/apoteka/oci-i-usi',
-                              children: [
-                                   {
-                                        id: 'tablete-kapsule-rastvori',
-                                        title: 'Tablete, kapsule, rastvori',
-                                        link: '/proizvodi/apoteka/oci-i-usi/tablete-kapsule-rastvori',
-                                   },
-                                   {
-                                        id: 'higijena-nega',
-                                        title: 'Higijena, nega',
-                                        link: '/proizvodi/apoteka/oci-i-usi/higijena-nega',
-                                   },
-                                   {
-                                        id: 'kapi',
-                                        title: 'Kapi',
-                                        link: '/proizvodi/apoteka/oci-i-usi/kapi',
-                                   },
-                                   {
-                                        id: 'masti',
-                                        title: 'Masti',
-                                        link: '/proizvodi/apoteka/oci-i-usi/masti',
-                                   },
-                                   {
-                                        id: 'naocare',
-                                        title: 'Naočare',
-                                        link: '/proizvodi/apoteka/oci-i-usi/naocare',
-                                   },
-                                   {
-                                        id: 'tecnosti-i-kutije-za-sociva',
-                                        title: 'Tečnosti i kutije za sočiva',
-                                        link: '/proizvodi/apoteka/oci-i-usi/tecnosti-i-kutije-za-sociva',
-                                   },
-                                   {
-                                        id: 'cepovi-za-usi',
-                                        title: 'Čepovi za uši',
-                                        link: '/proizvodi/apoteka/oci-i-usi/cepovi-za-usi',
-                                   },
-                                   {
-                                        id: 'sprejevi',
-                                        title: 'Sprejevi',
-                                        link: '/proizvodi/apoteka/oci-i-usi/sprejevi',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'prva-pomoc',
-                              title: 'Prva pomoć',
-                              link: '/proizvodi/apoteka/prva-pomoc',
-                              children: [
-                                   {
-                                        id: 'prva-pomoc-antiseptici',
-                                        title: 'Antiseptici',
-                                        link: '/proizvodi/apoteka/prva-pomoc/antiseptici',
-                                   },
-                                   {
-                                        id: 'flasteri',
-                                        title: 'Flasteri',
-                                        link: '/proizvodi/apoteka/prva-pomoc/flasteri',
-                                   },
-                                   {
-                                        id: 'zavojni-materijal',
-                                        title: 'Zavojni materijal',
-                                        link: '/proizvodi/apoteka/prva-pomoc/zavojni-materijal',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'energija-i-umor',
-                              title: 'Energija i umor',
-                              link: '/proizvodi/apoteka/energija-i-umor',
-                         },
-                         {
-                              id: 'sokovi',
-                              title: 'Sokovi',
-                              link: '/proizvodi/apoteka/sokovi',
-                         },
-                         {
-                              id: 'antioksidansi-i-detoksikacija',
-                              title: 'Antioksidansi, detoksikacija',
-                              link: '/proizvodi/apoteka/antioksidansi-detoksikacija',
-                         },
-                         {
-                              id: 'biljne-kapi-biljna-i-etericna-ulja',
-                              title: 'Biljne kapi, biljna i eterična ulja',
-                              link: '/proizvodi/apoteka/biljne-kapi-biljna-i-etericna-ulja',
-                         },
-                         {
-                              id: 'bubrezi-i-mokracni-putevi',
-                              title: 'Bubrezi i mokraćni putevi',
-                              link: '/proizvodi/apoteka/bubrezi-i-mokracni-putevi',
-                         },
-                         {
-                              id: 'cajevi',
-                              title: 'Čajevi',
-                              link: '/proizvodi/apoteka/cajevi',
-                         },
-                         {
-                              id: 'dijabetes-i-insulinska-resistencija',
-                              title: 'Dijabetes i insulinska resistencija',
-                              link: '/proizvodi/apoteka/dijabetes-i-insulinska-resistencija',
-                         },
-                         {
-                              id: 'jetra-i-zuc',
-                              title: 'Jetra i žuč',
-                              link: '/proizvodi/apoteka/jetra-i-zuc',
-                         },
-                         {
-                              id: 'kasalj',
-                              title: 'Kašalj',
-                              link: '/proizvodi/apoteka/kasalj',
-                         },
-                         {
-                              id: 'pms',
-                              title: 'PMS',
-                              link: '/proizvodi/apoteka/pms',
-                         },
-                         {
-                              id: 'menopauza',
-                              title: 'Menopauza',
-                              link: '/proizvodi/apoteka/menopauza',
-                         },
-                         {
-                              id: 'odvikavanje-od-alkohola',
-                              title: 'Odvikavanje od alkohola',
-                              link: '/proizvodi/apoteka/odvikavanje-od-alkohola',
-                         },
-                         {
-                              id: 'pamcenje-i-koncentracija',
-                              title: 'Pamćenje i koncentracija',
-                              link: '/proizvodi/apoteka/pamcenje-i-koncentracija',
-                         },
-                         {
-                              id: 'poremecaj-fertiliteta',
-                              title: 'Poremećaj fertiliteta',
-                              link: '/proizvodi/apoteka/poremecaj-fertiliteta',
-                         },
-                         {
-                              id: 'prostata-i-potencija',
-                              title: 'Prostata i potencija',
-                              link: '/proizvodi/apoteka/prostata-i-potencija',
-                         },
-                         {
-                              id: 'stres-depresija-nesanica',
-                              title: 'Stres, depresija, nesanica',
-                              link: '/proizvodi/apoteka/stres-depresija-nesanica',
-                         },
-                         {
-                              id: 'dozatori-i-sekaci-za-lekove',
-                              title: 'Dozatori i sekači za lekove',
-                              link: '/proizvodi/apoteka/dozatori-i-sekaci-za-lekove',
-                         },
-                    ]
-               },
+               // {
+               //      id: 'apoteka',
+               //      link: '/proizvodi/apoteka',
+               //      title: 'Apoteka',
+               //      children: [
+               //           {
+               //                id: 'alergije',
+               //                link: '/proizvodi/apoteka/alergije',
+               //                title: 'Alergije',
+               //                children: [
+               //                     {
+               //                          id: 'kapsule-i-tablete',
+               //                          link: '/proizvodi/apoteka/alergije/kapsule-i-tablete',
+               //                          title: 'Kapsule i tablete',
+               //                     },
+               //                     {
+               //                          id: 'sprejevi-za-nos',
+               //                          link: '/proizvodi/apoteka/alergije/sprejevi-za-nos',
+               //                          title: 'Sprejevi za nos',
+               //                     },
+               //                     {
+               //                          id: 'alergije-masti-gelovi',
+               //                          link: '/proizvodi/apoteka/alergije/masti-gelovi',
+               //                          title: 'Masti, gelovi',
+               //                     },
+               //                     {
+               //                          id: 'alergije-irigacioni-set',
+               //                          link: '/proizvodi/apoteka/alergije/irigacioni-set',
+               //                          title: 'Irigacioni set',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'anemija',
+               //                link: '/proizvodi/apoteka/anemija',
+               //                title: 'Anemije',
+               //                children: [
+               //                     {
+               //                          id: 'folna-kiselina-i-vitamini',
+               //                          title: 'Folna kiselina i vitamini',
+               //                          link: '/proizvodi/apoteka/anemija/folna-kiselina-i-vitamini',
+               //                     },
+               //                     {
+               //                          id: 'biljni-preparati',
+               //                          title: 'Biljni preparati',
+               //                          link: '/proizvodi/apoteka/anemija/biljni-preparati',
+               //                     },
+               //                     {
+               //                          id: 'preparati-gvozda',
+               //                          title: 'Preparati gvožđa',
+               //                          link: '/proizvodi/apoteka/anemija/preparati-gvozdja',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'bol',
+               //                title: 'Bol',
+               //                link: '/proizvodi/apoteka/bol',
+               //                children: [
+               //                     {
+               //                          id: 'bol-u-grlu',
+               //                          title: 'Bol u grlu',
+               //                          link: '/proizvodi/apoteka/bol/bol-u-grlu',
+               //                     },
+               //                     {
+               //                          id: 'menstrualni-bolovi',
+               //                          title: 'Menstrualni bolovi',
+               //                          link: '/proizvodi/apoteka/bol/menstrualni-bolovi',
+               //                     },
+               //                     {
+               //                          id: 'bolovi-u-zglobovima-i-misicima',
+               //                          title: 'Bolovi u zglobovima i mišićima',
+               //                          link: '/proizvodi/apoteka/bol/bolovi-u-zglobovima-i-misicima',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'hemoroidi',
+               //                title: 'Hemoroidi',
+               //                link: '/proizvodi/apoteka/hemoroidi',
+               //                children: [
+               //                     {
+               //                          id: 'hemoroidi-oralni-preparati',
+               //                          title: 'Oralni preparati',
+               //                          link: '/proizvodi/apoteka/hemoroidi/oralni-preparati',
+               //                     },
+               //                     {
+               //                          id: 'hemoroidi-lokalna-primena',
+               //                          title: 'Lokalna primena',
+               //                          link: '/proizvodi/apoteka/hemoroidi/lokalna-primena',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'holesterol-i-trigliceridi',
+               //                title: 'Holesterol i trigliceridi',
+               //                link: '/proizvodi/apoteka/holesterol-i-trigliceridi',
+               //                children: [
+               //                     {
+               //                          id: 'omega-masne-kiseline',
+               //                          title: 'Omega masne kiseline',
+               //                          link: '/proizvodi/apoteka/holesterol-i-trigliceridi/omega-masne-kiseline',
+               //                     },
+               //                     {
+               //                          id: 'ostalo',
+               //                          title: 'Ostalo',
+               //                          link: '/proizvodi/apoteka/holesterol-i-trigliceridi/ostalo',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'imunitet-prehlada',
+               //                title: 'Imunitet, prehlada',
+               //                link: '/proizvodi/apoteka/imunitet-prehlada',
+               //                children: [
+               //                     {
+               //                          id: 'imunitet-prehlada-deca',
+               //                          title: 'Deca',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/deca',
+               //                     },
+               //                     {
+               //                          id: 'imunitet-prehlada-vitamini-i-minerali',
+               //                          title: 'Vitamini i minerali',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/vitamini-i-minerali',
+               //                     },
+               //                     {
+               //                          id: 'sprejevi-za-nos',
+               //                          title: 'Sprejevi za nos',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-nos',
+               //                     },
+               //                     {
+               //                          id: 'sprejevi-za-grlo',
+               //                          title: 'Sprejevi za grlo',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/sprejevi-za-grlo',
+               //                     },
+               //                     {
+               //                          id: 'imunitet-prehlada-irigacioni-set',
+               //                          title: 'Irigacioni set',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/irigacioni-set',
+               //                     },
+               //                     {
+               //                          id: 'imunitet-prehlada-masti-gelovi',
+               //                          title: 'Masti, gelovi',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/masti-gelovi',
+               //                     },
+               //                     {
+               //                          id: 'imunitet-prehlada-biljne-kapi',
+               //                          title: 'Biljne kapi',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/biljne-kapi',
+               //                     },
+               //                     {
+               //                          id: 'med-maticni-mlec-i-propolis',
+               //                          title: 'Med, matični mleč i propolis',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/med-maticni-mlec-i-propolis',
+               //                     },
+               //                     {
+               //                          id: 'pastile-za-grlo',
+               //                          title: 'Pastile za grlo',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/pastile-za-grlo',
+               //                     },
+               //                     {
+               //                          id: 'aloja-ehinacea-noni-aronija',
+               //                          title: 'Aloja, ehinacea, noni, aronija',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/aloja-ehinacea-noni-aronija',
+               //                     },
+               //                     {
+               //                          id: 'probiotici',
+               //                          title: 'Probiotici',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/probiotici',
+               //                     },
+               //                     {
+               //                          id: 'omega-masne-kiseline',
+               //                          title: 'Omega masne kiseline',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/omega-masne-kiseline',
+               //                     },
+               //                     {
+               //                          id: 'ostalo',
+               //                          title: 'Ostalo',
+               //                          link: '/proizvodi/apoteka/imunitet-prehlada/ostalo',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'kosa-koza-i-nokti',
+               //                title: 'Kosa, koža i nokti',
+               //                link: '/proizvodi/apoteka/kosa-koza-i-nokti',
+               //                children: [
+               //                     {
+               //                          id: 'kosa-koza-i-nokti-oralni-preparati',
+               //                          title: 'Oralni preparati',
+               //                          link: '/proizvodi/apoteka/kosa-koza-i-nokti/oralni-preparati',
+               //                     },
+               //                     {
+               //                          id: 'lokalna-primena',
+               //                          title: 'Lokalna primena',
+               //                          link: '/proizvodi/apoteka/kosa-koza-i-nokti/lokalna-primena',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'kosti-i-zglobovi',
+               //                title: 'Kosti i zglobovi',
+               //                link: '/proizvodi/apoteka/kosti-i-zglobovi',
+               //                children: [
+               //                     {
+               //                          id: 'kosti-i-zglobovi-oralni-preparati',
+               //                          title: 'Oralni preparati',
+               //                          link: '/proizvodi/apoteka/kosti-i-zglobovi/oralni-preparati',
+               //                     },
+               //                     {
+               //                          id: 'kosti-i-zglobovi-primena-na-kozi',
+               //                          title: 'Primena na koži',
+               //                          link: '/proizvodi/apoteka/kosti-i-zglobovi/primena-na-kozi',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'mrsavljenje-celulit',
+               //                title: 'Mršavljenje, celulit',
+               //                link: '/proizvodi/apoteka/mrsavljenje-celulit',
+               //                children: [
+               //                     {
+               //                          id: 'mrsavljenje-celulit-oralni-preparati',
+               //                          title: 'Oralni preparati',
+               //                          link: '/proizvodi/apoteka/mrsavljenje-celulit/oralni-preparati',
+               //                     },
+               //                     {
+               //                          id: 'mrsavljenje-celulit-primena-na-kozi',
+               //                          title: 'Primena na koži',
+               //                          link: '/proizvodi/apoteka/mrsavljenje-celulit/primena-na-kozi',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'posebna-ishrana',
+               //                title: 'Posebna ishrana',
+               //                link: '/proizvodi/apoteka/posebna-ishrana',
+               //                children: [
+               //                     {
+               //                          id: 'kase',
+               //                          title: 'Kaše',
+               //                          link: '/proizvodi/apoteka/posebna-ishrana/kase',
+               //                     },
+               //                     {
+               //                          id: 'sejkovi',
+               //                          title: 'Šejkovi',
+               //                          link: '/proizvodi/apoteka/posebna-ishrana/sejkovi',
+               //                     },
+               //                     {
+               //                          id: 'zasladjivaci',
+               //                          title: 'Zaslađivači',
+               //                          link: '/proizvodi/apoteka/posebna-ishrana/zasladjivaci',
+               //                     },
+               //                     {
+               //                          id: 'posebna-ishrana-sportisti',
+               //                          title: 'Sportisti',
+               //                          link: '/proizvodi/apoteka/posebna-ishrana/sportisti',
+               //                     },
+               //                     {
+               //                          id: 'bombone',
+               //                          title: 'Bombone',
+               //                          link: '/proizvodi/apoteka/posebna-ishrana/bombone',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'putna-apoteka',
+               //                title: 'Putna apoteka',
+               //                link: '/proizvodi/apoteka/putna-apoteka',
+               //                children: [
+               //                     {
+               //                          id: 'dehidratacija',
+               //                          title: 'Dehidratacija',
+               //                          link: '/proizvodi/apoteka/putna-apoteka/dehidratacija',
+               //                     },
+               //                     {
+               //                          id: 'dijareja',
+               //                          title: 'Dijareja',
+               //                          link: '/proizvodi/apoteka/putna-apoteka/dijareja',
+               //                     },
+               //                     {
+               //                          id: 'mucnina',
+               //                          title: 'Mučnina',
+               //                          link: '/proizvodi/apoteka/putna-apoteka/mucnina',
+               //                     },
+               //                     {
+               //                          id: 'auto-apoteka',
+               //                          title: 'Auto apoteka',
+               //                          link: '/proizvodi/apoteka/putna-apoteka/auto-apoteka',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'stomacne-tekobe',
+               //                title: 'Stomačne tegobe',
+               //                link: '/proizvodi/apoteka/stomacne-tekobe',
+               //                children: [
+               //                     {
+               //                          id: 'nadutost-i-gasovi',
+               //                          title: 'Nadutost i gasovi',
+               //                          link: '/proizvodi/apoteka/stomacne-tekobe/nadutost-i-gasovi',
+               //                     },
+               //                     {
+               //                          id: 'zatvor',
+               //                          title: 'Zatvor',
+               //                          link: '/proizvodi/apoteka/stomacne-tekobe/zatvor',
+               //                     },
+               //                     {
+               //                          id: 'dijareja',
+               //                          title: 'Dijareja',
+               //                          link: '/proizvodi/apoteka/stomacne-tekobe/dijareja',
+               //                     },
+               //                     {
+               //                          id: 'iritabilni-kolon',
+               //                          title: 'Iritabilni kolon',
+               //                          link: '/proizvodi/apoteka/stomacne-tekobe/iritabilni-kolon',
+               //                     },
+               //                     {
+               //                          id: 'otezan-ovarenje-i-gorusica',
+               //                          title: 'Otežan varenje i gorušica',
+               //                          link: '/proizvodi/apoteka/stomacne-tekobe/otezano-varenje-i-gorusica',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'zdravo-srce-i-cirkulacija',
+               //                title: 'Zdravo srce i cirkulacija',
+               //                link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija',
+               //                children: [
+               //                     {
+               //                          id: 'zdravo-srce-i-cirkulacija-oralni-preparati',
+               //                          title: 'Oralni preparati',
+               //                          link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija/oralni-preparati',
+               //                     },
+               //                     {
+               //                          id: 'zdravo-srce-i-cirkulacija-primena-na-kozi',
+               //                          title: 'Primena na koži',
+               //                          link: '/proizvodi/apoteka/zdravo-srce-i-cirkulacija/primena-na-kozi',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'apoteka-vitamini-i-minerali',
+               //                title: 'Vitamini i minerali',
+               //                link: '/proizvodi/apoteka/vitamini-i-minerali',
+               //                children: [
+               //                     {
+               //                          id: 'vitamin-a',
+               //                          title: 'Vitamin A',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-a',
+               //                     },
+               //                     {
+               //                          id: 'vitamin-b',
+               //                          title: 'Vitamin B',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-b',
+               //                     },
+               //                     {
+               //                          id: 'vitamin-c',
+               //                          title: 'Vitamin C',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-c',
+               //                     },
+               //                     {
+               //                          id: 'vitamin-d',
+               //                          title: 'Vitamin D',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-d',
+               //                     },
+               //                     {
+               //                          id: 'vitamin-k',
+               //                          title: 'Vitamin K',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/vitamin-k',
+               //                     },
+               //                     {
+               //                          id: 'cink',
+               //                          title: 'Cink',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/cink',
+               //                     },
+               //                     {
+               //                          id: 'kalijum',
+               //                          title: 'Kalijum',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/kalijum',
+               //                     },
+               //                     {
+               //                          id: 'kalcijum',
+               //                          title: 'Kalcijum',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/kalcijum',
+               //                     },
+               //                     {
+               //                          id: 'hrom',
+               //                          title: 'Hrom',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/hrom',
+               //                     },
+               //                     {
+               //                          id: 'magnezijum',
+               //                          title: 'Magnezijum',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/magnezijum',
+               //                     },
+               //                     {
+               //                          id: 'selen',
+               //                          title: 'Selen',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/selen',
+               //                     },
+               //                     {
+               //                          id: 'gvozdje',
+               //                          title: 'Gvožđe',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/gvozdje',
+               //                     },
+               //                     {
+               //                          id: 'bakar',
+               //                          title: 'Bakar',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/bakar',
+               //                     },
+               //                     {
+               //                          id: 'bor',
+               //                          title: 'Bor',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/bor',
+               //                     },
+               //                     {
+               //                          id: 'fluor',
+               //                          title: 'Fluor',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/fluor',
+               //                     },
+               //                     {
+               //                          id: 'fosfor',
+               //                          title: 'Fosfor',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/fosfor',
+               //                     },
+               //                     {
+               //                          id: 'kompleksi-vitamina-i-minerala',
+               //                          title: 'Kompleksi vitamina i minerala',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/kompleksi-vitamina-i-minerala',
+               //                     },
+               //                     {
+               //                          id: 'riblja-ulja',
+               //                          title: 'Riblja ulja',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/riblja-ulja',
+               //                     },
+               //                     {
+               //                          id: 'vitamini-i-minerali-deca',
+               //                          title: 'Deca',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/deca',
+               //                     },
+               //                     {
+               //                          id: 'vitamini-i-minerali-sportisti',
+               //                          title: 'Sportisti',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/sportisti',
+               //                     },
+               //                     {
+               //                          id: 'trudnice',
+               //                          title: 'Trudnice',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/trudnice',
+               //                     },
+               //                     {
+               //                          id: 'stariji',
+               //                          title: 'Stariji',
+               //                          link: '/proizvodi/apoteka/vitamini-i-minerali/stariji',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'preparati-za-primenu-na-kozi',
+               //                title: 'Preparati za primenu na koži',
+               //                link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi',
+               //                children: [
+               //                     {
+               //                          id: 'iritacije',
+               //                          title: 'Iritacije',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/iritacije',
+               //                     },
+               //                     {
+               //                          id: 'oziljci-i-strije',
+               //                          title: 'Ožiljci i strije',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/oziljci-i-strije',
+               //                     },
+               //                     {
+               //                          id: 'preparati-za-primenu-na-kozi-hemoroidi',
+               //                          title: 'Hemoroidi',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/hemoroidi',
+               //                     },
+               //                     {
+               //                          id: 'problemi-sa-cirkulacijom',
+               //                          title: 'Problemi sa cirkulacijom',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/problemi-sa-cirkulacijom',
+               //                     },
+               //                     {
+               //                          id: 'preparati-za-primenu-na-kozi-intimna-nega',
+               //                          title: 'Intimna nega',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/intimna-nega',
+               //                     },
+               //                     {
+               //                          id: 'opekotine',
+               //                          title: 'Opekotine',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/opekotine',
+               //                     },
+               //                     {
+               //                          id: 'sportske-povrede',
+               //                          title: 'Sportske povrede',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/sportske-povrede',
+               //                     },
+               //                     {
+               //                          id: 'reuma',
+               //                          title: 'Reuma',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/reuma',
+               //                     },
+               //                     {
+               //                          id: 'preparati-za-primenu-na-kozi-antiseptici',
+               //                          title: 'Antiseptici',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/antiseptici',
+               //                     },
+               //                     {
+               //                          id: 'gljivice',
+               //                          title: 'Gljivice',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/gljivice',
+               //                     },
+               //                     {
+               //                          id: 'rozacea',
+               //                          title: 'Rozacea',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/rozacea',
+               //                     },
+               //                     {
+               //                          id: 'vitligo',
+               //                          title: 'Vitligo',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/vitligo',
+               //                     },
+               //                     {
+               //                          id: 'preparati-za-primenu-na-kozi-boginje',
+               //                          title: 'Boginje',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/boginje',
+               //                     },
+               //                     {
+               //                          id: 'herpes',
+               //                          title: 'Herpes',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/herpes',
+               //                     },
+               //                     {
+               //                          id: 'seboreicni-dermatitis',
+               //                          title: 'Seboreični dermatitis',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/seboreicni-dermatitis',
+               //                     },
+               //                     {
+               //                          id: 'zuljevi-kurje-oci-bradavice',
+               //                          title: 'Žuljevi, kurje oči, bradavice',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/zuljevi-kurje-oci-bradavice',
+               //                     },
+               //                     {
+               //                          id: 'ekcem-psorijaza',
+               //                          title: 'Ekcem, psorijaza',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/ekcem-psorijaza',
+               //                     },
+               //                     {
+               //                          id: 'suva-atopijska-koza',
+               //                          title: 'Suva, atopijska koža',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/suva-atopijska-koza',
+               //                     },
+               //                     {
+               //                          id: 'lokalni-anestetici',
+               //                          title: 'Lokalni anestetici',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/lokalni-anestetici',
+               //                     },
+               //                     {
+               //                          id: 'povrsinske-rane',
+               //                          title: 'Površinske rane',
+               //                          link: '/proizvodi/apoteka/preparati-za-primenu-na-kozi/povrsinske-rane',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'oci-i-usi',
+               //                title: 'Oči i uši',
+               //                link: '/proizvodi/apoteka/oci-i-usi',
+               //                children: [
+               //                     {
+               //                          id: 'tablete-kapsule-rastvori',
+               //                          title: 'Tablete, kapsule, rastvori',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/tablete-kapsule-rastvori',
+               //                     },
+               //                     {
+               //                          id: 'higijena-nega',
+               //                          title: 'Higijena, nega',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/higijena-nega',
+               //                     },
+               //                     {
+               //                          id: 'kapi',
+               //                          title: 'Kapi',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/kapi',
+               //                     },
+               //                     {
+               //                          id: 'masti',
+               //                          title: 'Masti',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/masti',
+               //                     },
+               //                     {
+               //                          id: 'naocare',
+               //                          title: 'Naočare',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/naocare',
+               //                     },
+               //                     {
+               //                          id: 'tecnosti-i-kutije-za-sociva',
+               //                          title: 'Tečnosti i kutije za sočiva',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/tecnosti-i-kutije-za-sociva',
+               //                     },
+               //                     {
+               //                          id: 'cepovi-za-usi',
+               //                          title: 'Čepovi za uši',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/cepovi-za-usi',
+               //                     },
+               //                     {
+               //                          id: 'sprejevi',
+               //                          title: 'Sprejevi',
+               //                          link: '/proizvodi/apoteka/oci-i-usi/sprejevi',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'prva-pomoc',
+               //                title: 'Prva pomoć',
+               //                link: '/proizvodi/apoteka/prva-pomoc',
+               //                children: [
+               //                     {
+               //                          id: 'prva-pomoc-antiseptici',
+               //                          title: 'Antiseptici',
+               //                          link: '/proizvodi/apoteka/prva-pomoc/antiseptici',
+               //                     },
+               //                     {
+               //                          id: 'flasteri',
+               //                          title: 'Flasteri',
+               //                          link: '/proizvodi/apoteka/prva-pomoc/flasteri',
+               //                     },
+               //                     {
+               //                          id: 'zavojni-materijal',
+               //                          title: 'Zavojni materijal',
+               //                          link: '/proizvodi/apoteka/prva-pomoc/zavojni-materijal',
+               //                     },
+               //                ],
+               //           },
+               //           {
+               //                id: 'energija-i-umor',
+               //                title: 'Energija i umor',
+               //                link: '/proizvodi/apoteka/energija-i-umor',
+               //           },
+               //           {
+               //                id: 'sokovi',
+               //                title: 'Sokovi',
+               //                link: '/proizvodi/apoteka/sokovi',
+               //           },
+               //           {
+               //                id: 'antioksidansi-i-detoksikacija',
+               //                title: 'Antioksidansi, detoksikacija',
+               //                link: '/proizvodi/apoteka/antioksidansi-detoksikacija',
+               //           },
+               //           {
+               //                id: 'biljne-kapi-biljna-i-etericna-ulja',
+               //                title: 'Biljne kapi, biljna i eterična ulja',
+               //                link: '/proizvodi/apoteka/biljne-kapi-biljna-i-etericna-ulja',
+               //           },
+               //           {
+               //                id: 'bubrezi-i-mokracni-putevi',
+               //                title: 'Bubrezi i mokraćni putevi',
+               //                link: '/proizvodi/apoteka/bubrezi-i-mokracni-putevi',
+               //           },
+               //           {
+               //                id: 'cajevi',
+               //                title: 'Čajevi',
+               //                link: '/proizvodi/apoteka/cajevi',
+               //           },
+               //           {
+               //                id: 'dijabetes-i-insulinska-resistencija',
+               //                title: 'Dijabetes i insulinska resistencija',
+               //                link: '/proizvodi/apoteka/dijabetes-i-insulinska-resistencija',
+               //           },
+               //           {
+               //                id: 'jetra-i-zuc',
+               //                title: 'Jetra i žuč',
+               //                link: '/proizvodi/apoteka/jetra-i-zuc',
+               //           },
+               //           {
+               //                id: 'kasalj',
+               //                title: 'Kašalj',
+               //                link: '/proizvodi/apoteka/kasalj',
+               //           },
+               //           {
+               //                id: 'pms',
+               //                title: 'PMS',
+               //                link: '/proizvodi/apoteka/pms',
+               //           },
+               //           {
+               //                id: 'menopauza',
+               //                title: 'Menopauza',
+               //                link: '/proizvodi/apoteka/menopauza',
+               //           },
+               //           {
+               //                id: 'odvikavanje-od-alkohola',
+               //                title: 'Odvikavanje od alkohola',
+               //                link: '/proizvodi/apoteka/odvikavanje-od-alkohola',
+               //           },
+               //           {
+               //                id: 'pamcenje-i-koncentracija',
+               //                title: 'Pamćenje i koncentracija',
+               //                link: '/proizvodi/apoteka/pamcenje-i-koncentracija',
+               //           },
+               //           {
+               //                id: 'poremecaj-fertiliteta',
+               //                title: 'Poremećaj fertiliteta',
+               //                link: '/proizvodi/apoteka/poremecaj-fertiliteta',
+               //           },
+               //           {
+               //                id: 'prostata-i-potencija',
+               //                title: 'Prostata i potencija',
+               //                link: '/proizvodi/apoteka/prostata-i-potencija',
+               //           },
+               //           {
+               //                id: 'stres-depresija-nesanica',
+               //                title: 'Stres, depresija, nesanica',
+               //                link: '/proizvodi/apoteka/stres-depresija-nesanica',
+               //           },
+               //           {
+               //                id: 'dozatori-i-sekaci-za-lekove',
+               //                title: 'Dozatori i sekači za lekove',
+               //                link: '/proizvodi/apoteka/dozatori-i-sekaci-za-lekove',
+               //           },
+               //      ]
+               // },
                {
                     id: 'bebi-program',
                     link: '/proizvodi/bebi-program',
