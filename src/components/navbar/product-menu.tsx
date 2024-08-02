@@ -2088,7 +2088,7 @@ export const ProductsMenu = () => {
                                                   </StyledMenuItem>
                                         </NestedMenuItem> */}
                     {/* --------------------------Ortopedija i pomagala----------------------------------------- */}
-                    <NestedMenuItem
+                    {/* <NestedMenuItem
                          label="Ortopedija i pomagala" parentMenuOpen={open}>
                          <NestedMenuItem label='Antidekubitalna pomagala' parentMenuOpen={open}>
                               <StyledMenuItem onClick={handleClose}>
@@ -2148,7 +2148,7 @@ export const ProductsMenu = () => {
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
-                    </NestedMenuItem>
+                    </NestedMenuItem> */}
                     {/* --------------------------Dezinfekcija, dezinsekcija, maske----------------------------------------- */}
                     {/* <NestedMenuItem label='Dezinfekcija, dezinsekcija, maske' parentMenuOpen={open}>
                                                   <StyledMenuItem onClick={handleClose}>

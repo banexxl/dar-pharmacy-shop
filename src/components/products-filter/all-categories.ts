@@ -1244,60 +1244,60 @@ export const AccordionPanels = [
                          }
                     ]
                },
-               {
-                    id: 'ortopedija-i-pomagala',
-                    link: '/proizvodi/ortopedija-i-pomagala',
-                    title: 'Ortopedija i pomagala',
-                    children: [
-                         {
-                              id: 'antidekubitalna-pomagala',
-                              title: 'Antidekubitalna pomagala',
-                              link: '/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala',
-                              children: [
-                                   {
-                                        id: 'jastuci',
-                                        title: 'Jastuci',
-                                        link: '/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/jastuci',
-                                   },
-                                   {
-                                        id: 'duseci',
-                                        title: 'Dušeci',
-                                        link: '/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/duseci',
-                                   }
-                              ]
-                         },
-                         {
-                              id: 'stake',
-                              title: 'Štake',
-                              link: '/proizvodi/ortopedija-i-pomagala/stake',
-                         },
-                         {
-                              id: 'stapovi',
-                              title: 'Štapovi',
-                              link: '/proizvodi/ortopedija-i-pomagala/stapovi',
-                         },
-                         {
-                              id: 'ortoze',
-                              title: 'Ortoze',
-                              link: '/proizvodi/ortopedija-i-pomagala/ortoze',
-                         },
-                         {
-                              id: 'kinezi-trake',
-                              title: 'Kinezi trake',
-                              link: '/proizvodi/ortopedija-i-pomagala/kinezi-trake',
-                         },
-                         {
-                              id: 'hodalice',
-                              title: 'Hodalice',
-                              link: '/proizvodi/ortopedija-i-pomagala/hodalice',
-                         },
-                         {
-                              id: 'postoljni-podmetaci',
-                              title: 'Postoljni podmetači',
-                              link: '/proizvodi/ortopedija-i-pomagala/postoljni-podmetaci',
-                         }
-                    ]
-               },
+               // {
+               //      id: 'ortopedija-i-pomagala',
+               //      link: '/proizvodi/ortopedija-i-pomagala',
+               //      title: 'Ortopedija i pomagala',
+               //      children: [
+               //           {
+               //                id: 'antidekubitalna-pomagala',
+               //                title: 'Antidekubitalna pomagala',
+               //                link: '/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala',
+               //                children: [
+               //                     {
+               //                          id: 'jastuci',
+               //                          title: 'Jastuci',
+               //                          link: '/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/jastuci',
+               //                     },
+               //                     {
+               //                          id: 'duseci',
+               //                          title: 'Dušeci',
+               //                          link: '/proizvodi/ortopedija-i-pomagala/antidekubitalna-pomagala/duseci',
+               //                     }
+               //                ]
+               //           },
+               //           {
+               //                id: 'stake',
+               //                title: 'Štake',
+               //                link: '/proizvodi/ortopedija-i-pomagala/stake',
+               //           },
+               //           {
+               //                id: 'stapovi',
+               //                title: 'Štapovi',
+               //                link: '/proizvodi/ortopedija-i-pomagala/stapovi',
+               //           },
+               //           {
+               //                id: 'ortoze',
+               //                title: 'Ortoze',
+               //                link: '/proizvodi/ortopedija-i-pomagala/ortoze',
+               //           },
+               //           {
+               //                id: 'kinezi-trake',
+               //                title: 'Kinezi trake',
+               //                link: '/proizvodi/ortopedija-i-pomagala/kinezi-trake',
+               //           },
+               //           {
+               //                id: 'hodalice',
+               //                title: 'Hodalice',
+               //                link: '/proizvodi/ortopedija-i-pomagala/hodalice',
+               //           },
+               //           {
+               //                id: 'postoljni-podmetaci',
+               //                title: 'Postoljni podmetači',
+               //                link: '/proizvodi/ortopedija-i-pomagala/postoljni-podmetaci',
+               //           }
+               //      ]
+               // },
                {
                     id: 'akcije',
                     link: '/proizvodi/akcije',
