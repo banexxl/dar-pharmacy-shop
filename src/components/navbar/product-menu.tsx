@@ -94,6 +94,41 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/ruska-apoteka'}>
+                                   Ruska Apoteka
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/prirodni-melemi'}>
+                                   Prirodni melemi
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/mast-od-jazavca'}>
+                                   Mast od Jazavca
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/ulje-za-masazu'}>
+                                   Ulja za masažu
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/biljne-tinkture'}>
+                                   Biljne Tinkture
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
                     {/* <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/prirodni-imunitet'}>
