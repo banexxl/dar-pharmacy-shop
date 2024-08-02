@@ -10,14 +10,16 @@ import Link from 'next/link'
 import { Colors } from '@/styles/theme'
 
 function ProductsFilter({ filterObject, routerQuery }: any) {
-
      console.log('routerQuery', routerQuery);
-     // Split the URL at the '?' to separate the path and the query string
-     const pageNumber = routerQuery.split('=')[1];
-     const routerQuerySplit = routerQuery.split('/');
 
-     // Split the path into segments
-     console.log('pathSegments', routerQuerySplit);
+     // Parse the URL
+     const [path, query] = routerQuery?.split('?');
+     const segments = path.split('/').filter((segment: any) => segment);
+     const queryParams = new URLSearchParams(query);
+
+     const manufacturerURL = segments[0];
+     const mainCategory = segments[1];
+     const part = queryParams.get('part');
 
      const [filteredProducts, setFilteredProducts] = useState<any>();
 
@@ -42,34 +44,32 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                </ProductsFilters>
                <FilteredProducts>
                     <FilteredProductsTitle>
-                         <Typography sx={{ fontSize: '20px', fontWeight: 'bold', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-                              {filterObject?.length == 0 || filteredProducts?.length == 0 ? "Nije pronadjen ni jedan proizvod sa trenutnim filterom!" :
-                                   <Breadcrumbs>
-                                        <Link
-                                             href="/proizvodi/prirodna-kozmetika"
-                                        >
+                         {filterObject?.length == 0 || filteredProducts?.length == 0 ? "Nije pronadjen ni jedan proizvod sa trenutnim filterom!" :
+                              <Breadcrumbs >
+                                   <Link
+                                        href={`/${manufacturerURL}`}
+                                   >
+                                        <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
+                                             {manufacturerURL}
+                                        </Typography>
+                                   </Link>
+                                   <Link href={`/${mainCategory}`}>
+                                        <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
+                                             {mainCategory}
+                                        </Typography>
+                                   </Link>
+                                   {/* <Link href="/proizvodi">
                                              <Typography>
-                                                  {routerQuerySplit[0]}
+                                                  {part}
                                              </Typography>
-                                        </Link>
-                                        <Link href="/proizvodi">
-                                             <Typography>
-                                                  {routerQuerySplit[1]}
-                                             </Typography>
-                                        </Link>
-                                        <Link href="/proizvodi">
-                                             <Typography>
-                                                  {routerQuerySplit[2]?.split('?')[0]}
-                                             </Typography>
-                                        </Link>
-                                        <Typography sx={{ color: Colors.dim_grey }}>{pageNumber}</Typography>
-                                   </Breadcrumbs>
-                              }
-                         </Typography>
+                                        </Link> */}
+                                   <Typography sx={{ color: Colors.dim_grey }}>{part}</Typography>
+                              </Breadcrumbs>
+                         }
                     </FilteredProductsTitle>
                     <FilteredProductsGrid data={filteredProducts != undefined ? filteredProducts : filterObject} />
                </FilteredProducts>
-          </ProductsFilterContainer>
+          </ProductsFilterContainer >
      )
 }
 

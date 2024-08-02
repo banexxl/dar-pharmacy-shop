@@ -223,6 +223,30 @@ const productsServices = () => {
           }
      }
 
+     const getProductsByMainCategoryAndManufacturer = async (mainCategory: string, manufacturerURL: string, loadedParts: any) => {
+
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+          try {
+               const db = client.db('DAR_DB')
+               let products: IProduct[] = await db.collection('Products').
+                    find({
+                         mainCategory: { $regex: new RegExp(`^${mainCategory}$`, 'i') },
+                         manufacturerURL: { $regex: new RegExp(`^${manufacturerURL}$`, 'i') }
+                    })
+                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+                    .limit(10)
+                    .toArray()
+
+               return products
+          } catch (error: any) {
+               return { message: error.message }
+          }
+          finally {
+               await client.close();
+          }
+     }
+
      const getProductsByMainCategoryMidCategorySubCategory = async (mainCategory: string, midCategory: string, subCategory: string, loadedParts: any) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
@@ -278,6 +302,7 @@ const productsServices = () => {
           getProductsByDiscount,
           getLimitedProductsByMainCategory,
           getProductsByMainCategoryMidCategory,
+          getProductsByMainCategoryAndManufacturer,
           getProductsByMainCategoryMidCategorySubCategory,
           getAllLogos,
           getAllManufacturers,

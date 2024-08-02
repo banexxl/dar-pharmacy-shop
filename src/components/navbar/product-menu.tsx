@@ -59,17 +59,91 @@ export const ProductsMenu = () => {
 
                {/* </Button> */}
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                    <StyledMenuItem onClick={handleClose}>
-                         <Link href={'/proizvodi/prirodna-kozmetika'}>
-                              <StyledNestedTypography>
-                                   Prirodna kozmetika
+                    <NestedMenuItem label='Prirodna kozmetika' parentMenuOpen={open}>
+                         <StyledMenuItem onClick={handleClose}>
+                              <Link href={'/gana/prirodna-kozmetika'}>
+                                   <StyledNestedTypography >
+                                        Gana
+                                   </StyledNestedTypography>
+                              </Link>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/majana/prirodna-kozmetika'}>
+                                        Majana
+                                   </Link>
                               </StyledNestedTypography>
-                         </Link>
-                    </StyledMenuItem>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/viviscal/prirodna-kozmetika'}>
+                                        Viviscal
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/herbalab/prirodna-kozmetika'}>
+                                        Herbalab
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/medical-plants/prirodna-kozmetika'}>
+                                        Medical plants
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/gamarde/prirodna-kozmetika'}>
+                                        Gamarde
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/aronica/prirodna-kozmetika'}>
+                                        Aronica
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/hederavita/prirodna-kozmetika'}>
+                                        Hederavita
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem>
+                    <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/fitaky/bebi-prirodna-kozmetika'}>
+                                        Fitaky
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/azeta-bio/bebi-prirodna-kozmetika'}>
+                                        Azeta bio
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/gamarde/bebi-prirodna-kozmetika'}>
+                                        Gamarde
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/proizvodi/bebi-prirodna-kozmetika'}>
-                                   Bebi prirodna kozmetika
+                              <Link href={'/zao-make-up/prirodna-kozmetika/'}>
+                                   Zao Make Up
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
@@ -104,7 +178,7 @@ export const ProductsMenu = () => {
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/prirodni-melemi'}>
-                                   Prirodni melemi
+                                   Domaći prirodni melemi
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
@@ -126,6 +200,20 @@ export const ProductsMenu = () => {
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/biljne-tinkture'}>
                                    Biljne Tinkture
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/imunitet-za-decu'}>
+                                   Imunitet za decu
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/todoxin'}>
+                                   Todoxin
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
@@ -1102,7 +1190,8 @@ export const ProductsMenu = () => {
                     </NestedMenuItem> */}
                     {/* ------------------------------------------------------------------------------- */}
 
-                    {/* <NestedMenuItem label='Lice' parentMenuOpen={open}>
+                    {/* 
+                    <NestedMenuItem label='Lice' parentMenuOpen={open}>
                                                             <StyledMenuItem onClick={handleClose}>
                                                                       <StyledNestedTypography>
                                                                                 Higijena lica

@@ -56,7 +56,7 @@ const CarouselLogo = (props: CarouselProps) => {
                          props.manufacturers ?
                               props.manufacturers.map((logo: any) => (
                                    <CarouselLogoImgBox key={logo}>
-                                        <Link href={`/proizvodi/proizvodjac/${logo.name}`}>
+                                        <Link href={`/proizvodjac/${logo.name}`}>
                                              <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={200} isOnDiscount={false} />
                                         </Link>
                                    </CarouselLogoImgBox>

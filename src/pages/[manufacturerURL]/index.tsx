@@ -1,9 +1,9 @@
 import { Container, Stack } from "@mui/material";
-import theme from "../../../styles/theme";
-import { UIProvider } from "../../../context/ui/ui.context";
+import theme from "../../styles/theme";
+import { UIProvider } from "../../context/ui/ui.context";
 import LoadingWheel from '@/components/loading/loading'
-import AppDrawer from "../../../components/navbar/drawer/drawer";
-import SearchBox from "../../../components/search/search"
+import AppDrawer from "../../components/navbar/drawer/drawer";
+import SearchBox from "../../components/search/search"
 import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
@@ -80,9 +80,9 @@ export default function MainCategoryPage(props: any) {
 
 export async function getServerSideProps(context: any) {
 
-     const manufacturer = context.params.proizvodjac; // Access the manufacturer parameter
+     const manufacturerURL = context.params.manufacturerURL; // Access the manufacturerURL parameter
 
-     const productsByManufacturer: any = await productsServices().getProductsByManufacturer(manufacturer)
+     const productsByManufacturer: any = await productsServices().getProductsByManufacturer(manufacturerURL)
 
      const finalList = [
           ...productsByManufacturer

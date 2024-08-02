@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Button, Container, Grid, Link, Typography } from "@mui/material";
+import { Box, Container, Grid, Link, Typography } from "@mui/material";
 import FilteredSingleProductMobile from "./filtered-single-product-mobile";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
@@ -7,6 +7,8 @@ import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import { Colors } from "@/styles/theme";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 export default function FilteredProductsGrid(props: any) {
@@ -15,8 +17,16 @@ export default function FilteredProductsGrid(props: any) {
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
      const router = useRouter();
      const [products, setProducts] = useState<any[]>(props.data || []);
+     const [hasMore, setHasMore] = useState(true);
+
+     useEffect(() => {
+          // Check if there are more products to load
+          setHasMore(props.data && props.data.length > 0);
+     }, [props.data]);
 
      const onLoadMore = async () => {
+
+          const isManufacturer = router.pathname.includes('manufacturerURL');
 
           const maincategory = router.query.maincategory || 'prirodna-kozmetika';
           const midcategory = router.query.midcategory || 'alergija';
@@ -25,8 +35,9 @@ export default function FilteredProductsGrid(props: any) {
           const nextPart = parseInt(router.query.part as string) + 1 || 1
 
 
-          if (router.asPath.includes(maincategory.toString())) {
+          if (!isManufacturer) {
                const paths = router.asPath.split('/').filter(Boolean);
+               console.log('paths', paths);
 
                if (paths.length === 2) {
                     router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
@@ -35,7 +46,8 @@ export default function FilteredProductsGrid(props: any) {
                } else if (paths.length === 4) {
                     router.push(`/proizvodi/${maincategory}/${midcategory}/${subcategory}?part=${nextPart}`);
                }
-
+          } else if (isManufacturer) {
+               await router.push(`/${router.query.manufacturerURL}/${router.query.maincategory}?part=${nextPart}`);
           } else {
                await router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
           }
@@ -55,7 +67,6 @@ export default function FilteredProductsGrid(props: any) {
                               <FilteredSingleProductDesktop key={product._id} product={product} isScreenToMedium={isScreenToMedium} />
                          )}
                     </Grid>
-
                ))
 
      return (
@@ -70,13 +81,36 @@ export default function FilteredProductsGrid(props: any) {
                >
                     {renderProducts}
                </Grid>
-               <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'center' }}>
-                    <Link onClick={() => onLoadMore()} >
-                         <Typography sx={{ cursor: 'pointer' }}>
-                              Učitaj još
-                         </Typography>
-                    </Link>
-               </Box>
+               {hasMore && (
+                    <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'space-between' }}>
+                         <Link onClick={() => router.back()} style={{ display: 'flex', alignItems: 'center' }}>
+                              <ArrowBackIosIcon />
+                              <Typography sx={{ cursor: 'pointer' }}>
+                                   Nazad
+                              </Typography>
+                         </Link>
+                         <Link onClick={() => onLoadMore()} style={{ display: 'flex', alignItems: 'center' }}>
+                              <Typography sx={{ cursor: 'pointer' }}>
+                                   Učitaj još
+                              </Typography>
+                              <ArrowForwardIosIcon />
+                         </Link>
+                    </Box>
+               )
+               }
+               {
+                    !hasMore && (
+                         <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'center' }}>
+                              <Link onClick={() => router.back()} style={{ display: 'flex', alignItems: 'center' }}>
+                                   <ArrowBackIosIcon />
+                                   <Typography sx={{ cursor: 'pointer' }}>
+                                        Nazad
+                                   </Typography>
+                              </Link>
+                         </Box>
+                    )
+               }
+
           </Container >
      );
 }
