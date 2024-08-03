@@ -27,6 +27,7 @@ import { useEffect, useState } from "react";
 export default function Home(props: any) {
 
      const { dataForGrid, productsOnDiscount, manufacturers } = props
+
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
           ssr: false

@@ -61,7 +61,7 @@ const productsServices = () => {
                //      { $sample: { size: 1 } }
                // ])
                let data: IProduct[] = await db.collection('Products')
-                    .find({ "manufacturer": "herbalab" })
+                    .find({ "manufacturerURL": "herbalab" })
                     .limit(8)
                     .toArray()
                return data

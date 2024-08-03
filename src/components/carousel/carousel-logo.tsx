@@ -72,7 +72,7 @@ const CarouselLogo = (props: CarouselProps) => {
                                                   position: 'absolute',
                                                   justifyContent: 'center',
                                                   alignItems: 'center',
-                                                  bottom: '10px',
+                                                  bottom: '50px',
                                                   left: '10px',
                                                   padding: '5px',
                                                   color: Colors.primary.darker

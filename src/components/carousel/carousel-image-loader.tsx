@@ -33,7 +33,7 @@ export const CarouselProductImage = (props: ProductImage) => {
                     height={props.height}
                     style={{
                          borderRadius: '20px',
-                         // maxHeight: '300px',
+                         height: 'auto',
                          width: '100%',
                          objectPosition: "center",
                          zIndex: '1000'
