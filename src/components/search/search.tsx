@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
@@ -22,6 +22,8 @@ export default function SearchBox() {
      const [searchQuery, setSearchQuery] = useState<string>('');
      const [loading, setLoading] = useState(false);
      const [searchResults, setSearchResults] = useState<SearchResult | undefined>();
+     const theme = useTheme();
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
           setSearchQuery(event.target.value);
@@ -102,7 +104,7 @@ export default function SearchBox() {
                                    </Box>
                                    :
                                    <List sx={{
-                                        overflow: 'auto', height: '500px', width: '60%', backgroundColor: Colors.secondary.custom,
+                                        overflow: 'auto', height: '500px', width: isScreenToMedium ? '60%' : '20%', backgroundColor: Colors.secondary.custom,
                                         display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: `1px solid ${Colors.dim_grey}`,
                                         borderRadius: '10px', boxShadow: `1px 2px 2px 2px ${Colors.primary.lighter}`, paddingTop: '20px'
                                    }}>
