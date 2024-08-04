@@ -10,7 +10,7 @@ const productsServices = () => {
 
           try {
                const db = client.db('DAR_DB')
-               let data: IProduct[] = await db.collection('Products').find({}).toArray()
+               let data: IProduct[] = await db.collection('Products').find({ isActive: true }).toArray()
                return data
           } catch (error: any) {
                return { message: error.message }
@@ -36,6 +36,7 @@ const productsServices = () => {
                let data: IProduct[] = await db.collection('Products')
                     .aggregate([
                          // { $match: { mainCategory: 'apoteka' } },
+                         { $match: { isActive: true } },
                          { $sample: { size: 10 } }])
                     .toArray()
                return data
@@ -61,7 +62,7 @@ const productsServices = () => {
                //      { $sample: { size: 1 } }
                // ])
                let data: IProduct[] = await db.collection('Products')
-                    .find({ "manufacturerURL": "herbalab" })
+                    .find({ manufacturerURL: "herbalab", isActive: true })
                     .limit(8)
                     .toArray()
                return data
@@ -110,7 +111,7 @@ const productsServices = () => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('DAR_DB')
-               let product: IProduct = await db.collection('Products').findOne({ _id: new ObjectId(_id) })
+               let product: IProduct = await db.collection('Products').findOne({ _id: new ObjectId(_id), isActive: true })
                return product
           } catch (error: any) {
                return { message: error.message }
@@ -126,7 +127,7 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ "manufacturer": { $regex: `${manufacturer}`, $options: 'i' } })
+                    .find({ manufacturer: { $regex: `${manufacturer}`, $options: 'i' }, isActive: true })
                     .limit(2)
                     .toArray()
 
@@ -152,8 +153,9 @@ const productsServices = () => {
                               { "name": { $regex: `${searchTermArray[0]}`, $options: 'i' } },
                               { "manufacturer": { $regex: `${searchTermArray[0]}`, $options: 'i' } },
                               { "name": { $regex: `${searchTermArray[1]}`, $options: 'i' } },
-                              { "manufacturer": { $regex: `${searchTermArray[1]}`, $options: 'i' } },
-                         ]
+                              { "manufacturer": { $regex: `${searchTermArray[1]}`, $options: 'i' } }
+                         ],
+                         $and: [{ isActive: true }]
                     }
                     ).toArray()
 
@@ -171,7 +173,7 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ "discount": true })
+                    .find({ discount: true, isActive: true })
                     .limit(10)
                     .toArray()
 
@@ -191,7 +193,7 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ mainCategory: `${mainCategory}` })
+                    .find({ mainCategory: `${mainCategory}`, isActive: true })
                     .skip(12 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(12)
                     .toArray()
@@ -210,7 +212,7 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products').
-                    find({ mainCategory: mainCategory, midCategory: midCategory })
+                    find({ mainCategory: mainCategory, midCategory: midCategory, isActive: true })
                     .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(10)
                     .toArray()
@@ -232,7 +234,8 @@ const productsServices = () => {
                let products: IProduct[] = await db.collection('Products').
                     find({
                          mainCategory: { $regex: new RegExp(`^${mainCategory}$`, 'i') },
-                         manufacturerURL: { $regex: new RegExp(`^${manufacturerURL}$`, 'i') }
+                         manufacturerURL: { $regex: new RegExp(`^${manufacturerURL}$`, 'i') },
+                         isActive: true
                     })
                     .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(10)
@@ -254,7 +257,7 @@ const productsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory })
+                    .find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory, isActive: true })
                     .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(10)
                     .toArray()
