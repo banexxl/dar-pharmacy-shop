@@ -71,7 +71,8 @@ export const ContactFormBox = styled(Box)(({ theme }) => ({
 }));
 
 export const ContactTitle = styled(Typography)(({ theme }: any) => ({
-     color: Colors.primary.main
+     color: Colors.primary.main,
+     fontSize: '1.5rem',
 }));
 
 type ContactTextProps = {

@@ -1,5 +1,5 @@
 import theme, { Colors } from '@/styles/theme';
-import { Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControlLabel, FormHelperText, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
@@ -19,9 +19,11 @@ const ContactForm = () => {
      })
 
      const handleSubmit = (values: IContactForm) => {
-          SendContactEmail({ email: values.email, name: values.name, message: values.message })
+          SendContactEmail({ email: values.email, name: values.name, message: values.message, dataProcessConsent: values.dataProcessConsent, questionSubmissionConsent: values.questionSubmissionConsent })
      }
 
+     const theme = useTheme();
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -76,17 +78,67 @@ const ContactForm = () => {
                                         multiline
                                         minRows={5}
                                    />
-                                   <Button type='submit' sx={{ color: Colors.primary.lighter }}>
+
+
+
+                                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        <FormControlLabel
+                                             sx={{ marginBottom: '10px', width: isScreenToMedium ? '100%' : '50%' }}
+                                             control={
+                                                  <Checkbox
+                                                       checked={formik.values.dataProcessConsent}
+                                                       onChange={formik.handleChange('dataProcessConsent')}
+                                                       name={'dataProcessConsent'}
+                                                       color="primary"
+                                                  />
+                                             }
+                                             label={<Typography sx={{ display: 'inline', textAlign: 'justify' }}>
+                                                  Saglasan/saglasna sam sa obradom mojih podataka o ličnosti navedenih za potrebe savetovanja, za vreme potrebno da se pitanje obradi i da se na njega odgovori. Više informacija možete naći na linku: <br />
+                                                  <Typography sx={{ color: Colors.link, display: 'inline', textAlign: 'justify' }}>
+                                                       <Link href="/informacije/politika-privatnosti">
+                                                            Politika privatnosti.
+                                                       </Link>
+                                                  </Typography>
+                                             </Typography>}
+                                        />
+                                        {formik.touched.dataProcessConsent && formik.errors.dataProcessConsent && (
+                                             <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.dataProcessConsent}</FormHelperText>
+                                        )}
+
+                                        <FormControlLabel
+                                             sx={{ width: isScreenToMedium ? '100%' : '50%', marginBottom: '10px' }}
+                                             control={
+                                                  <Checkbox
+                                                       checked={formik.values.questionSubmissionConsent}
+                                                       onChange={formik.handleChange('questionSubmissionConsent')}
+                                                       name={'questionSubmissionConsent'}
+                                                       color="primary"
+                                                  />
+                                             }
+                                             label={
+                                                  <Typography sx={{ textAlign: 'justify' }}>
+                                                       Postavljanjem pitanja potvrđujem da sam pročitao i da sam saglasan sa: <br />
+                                                       <Typography sx={{ color: Colors.link, display: 'inline' }}>
+                                                            <Link href="/informacije/politika-privatnosti">
+                                                                 Pravilima i uslovima korišćenja usluge: Pitajte farmaceuta.
+                                                            </Link>
+                                                       </Typography>
+                                                  </Typography>
+                                             }
+                                        />
+                                        {formik.touched.questionSubmissionConsent && formik.errors.questionSubmissionConsent && (
+                                             <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.questionSubmissionConsent}</FormHelperText>
+                                        )}
+                                   </Box>
+                                   <Button type='submit' sx={{ color: Colors.secondary.custom, backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}>
                                         Pošalji poruku
                                    </Button>
                               </Form>
                          )
                     }
                </Formik>
-
           </DynamicThemeProvider >
      );
 };
 
-export default ContactForm
-
+export default ContactForm;

@@ -108,7 +108,7 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/o-nama"} >
+                                        <Link href={"/informacije/o-nama"} >
                                              O nama
                                         </Link>
                                    </AccordionDetails>
@@ -171,7 +171,7 @@ export default function Footer() {
                                         Korisnički servis
                                    </AccordionSummary>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/izjava-o-odustanku"} >
                                              Izjava o odustanku
                                         </Link>
                                    </AccordionDetails>
@@ -216,6 +216,13 @@ export default function Footer() {
                                              <FooterItem theme={theme} lineHeight={2}>
                                                   <Link href={"/"} >
                                                        Početna
+                                                  </Link>
+                                             </FooterItem>
+                                        </ListItemText>
+                                        <ListItemText >
+                                             <FooterItem theme={theme} lineHeight={2}>
+                                                  <Link href={"/kontakt"} >
+                                                       Pitajte nas...
                                                   </Link>
                                              </FooterItem>
                                         </ListItemText>
@@ -282,11 +289,11 @@ export default function Footer() {
                               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                    <FooterTitle theme={theme} variant="body1">Korisnički servis</FooterTitle>
                                    <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
-                                        <ListItemText onClick={showCartDialog}>
+                                        <Link href='/informacije/izjava-o-odustanku'>
                                              <FooterItem theme={theme} lineHeight={2} >
                                                   Izjava o odustanku
                                              </FooterItem>
-                                        </ListItemText>
+                                        </Link>
                                         <ListItemText onClick={showLoginDialog}>
                                              <FooterItem theme={theme} lineHeight={2} >
                                                   Reklamacije

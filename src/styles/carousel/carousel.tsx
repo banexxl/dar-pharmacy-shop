@@ -7,6 +7,7 @@ export const StyledCarouselBox = styled(Box)({
      marginTop: '50px',
      height: '400px',
      justifyContent: 'center',
+     marginBottom: '50px',
 });
 
 export const StyledCarouselLogoBox = styled(Box)({
