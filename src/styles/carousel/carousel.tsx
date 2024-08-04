@@ -25,7 +25,7 @@ export const StyledCarouselCard = styled(Box)({
      border: '1px solid',
      borderRadius: '20px',
      borderColor: Colors.primary.lighter,
-     height: '350px',
+     height: '400px',
      maxWidth: '100%',
      color: 'black',
      cursor: 'pointer',
@@ -36,11 +36,11 @@ export const StyledCarouselCard = styled(Box)({
 })
 
 export const CarouselTitleBox = styled(Box)({
-     height: '100px',
+     // height: '100px',
      width: '90%',
-     paddingBottom: '30px',
+     padding: '0 10px 0 10px',
      justifyContent: 'center',
-     alignItems: 'center'
+     alignItems: 'center',
 });
 
 export const CarouselTitle = styled(Typography)({
@@ -59,8 +59,9 @@ export const CarouselTitle = styled(Typography)({
 });
 
 export const CarouselManufacturerBox = styled(Box)({
-     marginTop: '70px',
-     height: '200px',
+     marginTop: '10px',
+     display: 'flex',
+     justifyContent: 'center',
      width: '100%'
 });
 
@@ -81,13 +82,13 @@ export const CarouselManufacturer = styled(Typography)({
 });
 
 export const CarouselImgBox = styled(Box)({
+     flex: '0 0 50%',
      alignItem: 'center',
      cursor: 'pointer',
      webkitTransition: '-webkit-transform 0.4s',
      transition: 'transform 0.4s',
      ':hover': {
-          webkitTransform: 'scale(1.2) rotate(0.01deg)',
-          transform: 'scale(1.1) rotate(0.01deg)'
+          transform: 'scale(1.1) rotate(10deg)'
      },
      maxWidth: '100%',
      height: '100px',
