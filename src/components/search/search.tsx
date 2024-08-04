@@ -113,7 +113,12 @@ export default function SearchBox() {
                                                             sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px' }}
                                                             onClick={() => setShowSearchBox(false)}
                                                        >
-                                                            <ListItemText primary={product.name} secondary={product.manufacturer} />
+                                                            <ListItemText primary={product.name} secondary={product.manufacturer}
+                                                                 sx={{
+                                                                      '& .MuiTypography-root': {
+                                                                           color: `${Colors.primary.main} !important`,
+                                                                      },
+                                                                 }} />
                                                             <Box>
                                                                  <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100}
                                                                       style={{ borderRadius: '5px' }}
