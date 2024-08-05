@@ -197,6 +197,7 @@ const productsServices = () => {
                     .skip(12 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(12)
                     .toArray()
+
                return products
           } catch (error: any) {
                return { message: error.message }

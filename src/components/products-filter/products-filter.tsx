@@ -10,7 +10,6 @@ import Link from 'next/link'
 import { Colors } from '@/styles/theme'
 
 function ProductsFilter({ filterObject, routerQuery }: any) {
-     console.log('routerQuery', routerQuery);
 
      // Parse the URL
      const [path, query] = routerQuery?.split('?');

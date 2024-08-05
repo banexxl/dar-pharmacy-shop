@@ -116,6 +116,13 @@ export const ProductsMenu = () => {
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/zao-make-up/prirodna-kozmetika/'}>
+                                        Zao Make Up
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
                     </NestedMenuItem>
                     <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
@@ -140,13 +147,7 @@ export const ProductsMenu = () => {
                               </StyledNestedTypography>
                          </StyledMenuItem>
                     </NestedMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography >
-                              <Link href={'/zao-make-up/prirodna-kozmetika/'}>
-                                   Zao Make Up
-                              </Link>
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
+
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/kolagen'}>

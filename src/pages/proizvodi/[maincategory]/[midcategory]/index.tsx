@@ -71,13 +71,13 @@ export async function getServerSideProps({ query }: any) {
 
      const productsByMainMidCategory: any = await productsServices().getProductsByMainCategoryMidCategory(query.maincategory, query.midcategory, loadedParts)
 
-     if (!productsByMainMidCategory || productsByMainMidCategory.length === 0) {
-          return {
-               redirect: {
-                    destination: `/proizvodi/${query.maincategory}/${query.midcategory}/?part=1`
-               },
-          };
-     }
+     // if (!productsByMainMidCategory || productsByMainMidCategory.length === 0) {
+     //      return {
+     //           redirect: {
+     //                destination: `/proizvodi/${query.maincategory}/${query.midcategory}/?part=1`
+     //           },
+     //      };
+     // }
 
 
      return {

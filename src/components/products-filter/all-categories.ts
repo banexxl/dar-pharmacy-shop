@@ -117,6 +117,11 @@ export const AccordionPanels = [
                               link: '/hedera-vita/prirodna-kozmetika',
                               title: 'Hedera Vita'
                          },
+                         {
+                              id: 'zao-make-up',
+                              link: '/zao-make-up/prirodna-kozmetika/',
+                              title: 'Zao Make Up'
+                         },
                     ]
                },
                // {
@@ -1314,11 +1319,6 @@ export const AccordionPanels = [
                //           }
                //      ]
                // },
-               {
-                    id: 'zao-make-up',
-                    link: '/zao-make-up/prirodna-kozmetika/',
-                    title: 'Zao Make Up'
-               },
                {
                     id: 'kolagen',
                     link: '/proizvodi/kolagen/',

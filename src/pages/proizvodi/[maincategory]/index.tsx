@@ -84,13 +84,13 @@ export async function getServerSideProps({ query }: any) {
      const productsByMainCategoryLimited: any = await productsServices().getLimitedProductsByMainCategory(query.maincategory, loadedParts)
      // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
 
-     if (!productsByMainCategoryLimited || productsByMainCategoryLimited.length === 0) {
-          return {
-               redirect: {
-                    destination: `/proizvodi/${query.maincategory}?part=1`
-               },
-          };
-     }
+     // if (!productsByMainCategoryLimited || productsByMainCategoryLimited.length === 0) {
+     //      return {
+     //           redirect: {
+     //                destination: `/proizvodi/${query.maincategory}?part=1`
+     //           },
+     //      };
+     // }
      // mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
      // revalidate bi trebao da ponovo odradi getstaticprops logiku
 
