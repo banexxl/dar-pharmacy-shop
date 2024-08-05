@@ -10,102 +10,112 @@ export const AccordionPanels = [
                     title: 'Prirodna kozmetika',
                     children: [
                          {
-                              id: 'prirodna-kozmetika-lice',
-                              title: 'Lice',
-                              link: '/proizvodi/prirodna-kozmetika/lice',
-                              children: [
-                                   {
-                                        id: 'higijena-lica',
-                                        title: 'Higijena lica',
-                                        link: '/proizvodi/prirodna-kozmetika/lice/higijena-lica',
-                                   },
-                                   {
-                                        id: 'trepavice-i-obrve',
-                                        title: 'Trepavice i obrve',
-                                        link: '/proizvodi/prirodna-kozmetika/lice/trepavice-i-obrve',
-                                   },
-                                   {
-                                        id: 'hidratacija',
-                                        title: 'Hidratacija',
-                                        link: '/proizvodi/prirodna-kozmetika/lice/hidratacija',
-                                   },
-                              ],
+                              id: 'prirodna-kozmetika-gana',
+                              title: 'Gana',
+                              link: '/gana/prirodna-kozmetika',
+                              // children: [
+                              //      {
+                              //           id: 'higijena-lica',
+                              //           title: 'Higijena lica',
+                              //           link: '/proizvodi/prirodna-kozmetika/lice/higijena-lica',
+                              //      },
+                              //      {
+                              //           id: 'trepavice-i-obrve',
+                              //           title: 'Trepavice i obrve',
+                              //           link: '/proizvodi/prirodna-kozmetika/lice/trepavice-i-obrve',
+                              //      },
+                              //      {
+                              //           id: 'hidratacija',
+                              //           title: 'Hidratacija',
+                              //           link: '/proizvodi/prirodna-kozmetika/lice/hidratacija',
+                              //      },
+                              // ],
                          },
                          {
-                              id: 'prirodna-kozmetika-telo',
-                              title: 'Telo',
-                              link: '/proizvodi/prirodna-kozmetika/telo',
-                              children: [
-                                   {
-                                        id: 'ostecena-koza',
-                                        title: 'Oštećena koža',
-                                        link: '/proizvodi/prirodna-kozmetika/telo/ostecena-koza',
-                                   },
-                                   {
-                                        id: 'pilinzi',
-                                        title: 'Pilinzi',
-                                        link: '/proizvodi/prirodna-kozmetika/telo/pilinzi',
-                                   },
-                                   {
-                                        id: 'celulit-i-strije',
-                                        title: 'Celulit i strije',
-                                        link: '/proizvodi/prirodna-kozmetika/telo/celulit-i-strije',
-                                   },
-                              ],
+                              id: 'prirodna-kozmetika-majana',
+                              title: 'Majana',
+                              link: '/majana/prirodna-kozmetika',
+                              // children: [
+                              //      {
+                              //           id: 'ostecena-koza',
+                              //           title: 'Oštećena koža',
+                              //           link: '/proizvodi/prirodna-kozmetika/telo/ostecena-koza',
+                              //      },
+                              //      {
+                              //           id: 'pilinzi',
+                              //           title: 'Pilinzi',
+                              //           link: '/proizvodi/prirodna-kozmetika/telo/pilinzi',
+                              //      },
+                              //      {
+                              //           id: 'celulit-i-strije',
+                              //           title: 'Celulit i strije',
+                              //           link: '/proizvodi/prirodna-kozmetika/telo/celulit-i-strije',
+                              //      },
+                              // ],
                          },
                          {
-                              id: 'prirodna-kozmetika-kosa-i-koza-glave',
-                              title: 'Kosa i koža glave',
-                              link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave',
-                              children: [
-                                   {
-                                        id: 'opadanje-kose',
-                                        title: 'Opadanje kose',
-                                        link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/opadanje-kose',
-                                   },
-                                   {
-                                        id: 'nega-kose-na-suncu',
-                                        title: 'Nega kose na suncu',
-                                        link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/nega-kose-na-suncu',
-                                   },
-                                   {
-                                        id: 'osetljiva-koza-glave',
-                                        title: 'Osetljiva koža glave',
-                                        link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/osetljiva-koza-glave',
-                                   },
-                              ],
+                              id: 'prirodna-kozmetika-viviscal',
+                              title: 'Vivivscal',
+                              link: '/viviscal/prirodna-kozmetika',
+                              // children: [
+                              //      {
+                              //           id: 'opadanje-kose',
+                              //           title: 'Opadanje kose',
+                              //           link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/opadanje-kose',
+                              //      },
+                              //      {
+                              //           id: 'nega-kose-na-suncu',
+                              //           title: 'Nega kose na suncu',
+                              //           link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/nega-kose-na-suncu',
+                              //      },
+                              //      {
+                              //           id: 'osetljiva-koza-glave',
+                              //           title: 'Osetljiva koža glave',
+                              //           link: '/proizvodi/prirodna-kozmetika/kosa-i-koza-glave/osetljiva-koza-glave',
+                              //      },
+                              // ],
                          },
                          {
-                              id: 'prirodna-kozmetika-bebe-i-deca',
-                              title: 'Bebe i deca',
-                              link: '/proizvodi/prirodna-kozmetika/bebe-i-deca',
-                              children: [
-                                   {
-                                        id: 'pranje',
-                                        title: 'Pranje',
-                                        link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/pranje',
-                                   },
-                                   {
-                                        id: 'prirodna-kozmetika-bebe-i-deca-nega',
-                                        title: 'Nega',
-                                        link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/nega',
-                                   },
-                                   {
-                                        id: 'suncanje',
-                                        title: 'Sunčanje',
-                                        link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/suncanje',
-                                   },
-                              ],
+                              id: 'prirodna-kozmetika-herbalab',
+                              title: 'Herbalab',
+                              link: '/herbalab/prirodna-kozmetika',
+                              // children: [
+                              //      {
+                              //           id: 'pranje',
+                              //           title: 'Pranje',
+                              //           link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/pranje',
+                              //      },
+                              //      {
+                              //           id: 'prirodna-kozmetika-bebe-i-deca-nega',
+                              //           title: 'Nega',
+                              //           link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/nega',
+                              //      },
+                              //      {
+                              //           id: 'suncanje',
+                              //           title: 'Sunčanje',
+                              //           link: '/proizvodi/prirodna-kozmetika/bebe-i-deca/suncanje',
+                              //      },
+                              // ],
                          },
                          {
-                              id: 'prirodna-kozmetika-muskarci',
-                              link: '/proizvodi/prirodna-kozmetika/muskarci',
-                              title: 'Muškarci'
+                              id: 'prirodna-kozmetika-medical-plants',
+                              link: '/medical-plants/prirodna-kozmetika',
+                              title: 'Medical plants'
                          },
                          {
-                              id: 'prirodna-kozmetika-zene',
-                              link: '/proizvodi/prirodna-kozmetika/zene',
-                              title: 'Žene'
+                              id: 'prirodna-kozmetika-gamarde',
+                              link: '/gamarde/prirodna-kozmetika',
+                              title: 'Gamarde'
+                         },
+                         {
+                              id: 'prirodna-kozmetika-aronica',
+                              link: '/aronica/prirodna-kozmetika',
+                              title: 'Aronica'
+                         },
+                         {
+                              id: 'prirodna-kozmetika-hedera-vita',
+                              link: '/hedera-vita/prirodna-kozmetika',
+                              title: 'Hedera Vita'
                          },
                     ]
                },
@@ -831,417 +841,423 @@ export const AccordionPanels = [
                //      ]
                // },
                {
-                    id: 'bebi-program',
-                    link: '/proizvodi/bebi-program',
-                    title: 'Bebi program',
+                    id: 'bebi-prirodna-kozmetika',
+                    link: '/proizvodi/bebi-prirodna-kozmetika',
+                    title: 'Bebi prirodna kozmetika',
                     children: [
                          {
-                              id: 'pribor-za-kupanje',
-                              title: 'Pribor za kupanje',
-                              link: '/proizvodi/bebi-program/pribor-za-kupanje',
+                              id: 'bebi-prirodna-kozmetika-fitaky',
+                              title: 'Fitaky',
+                              link: '/fitaky/bebi-prirodna-kozmetika',
                          },
                          {
-                              id: 'bebi-cajevi',
-                              title: 'Bebi čajevi',
-                              link: '/proizvodi/bebi-program/bebi-cajevi',
+                              id: 'bebi-prirodna-kozmetika-azeta-bio',
+                              title: 'Azeta bio',
+                              link: '/azeta-bio/bebi-prirodna-kozmetika',
                          },
                          {
-                              id: 'bebi-apoteka',
-                              title: 'Bebi apoteka',
-                              link: '/proizvodi/bebi-program/bebi-apoteka',
-                              children: [
-                                   {
-                                        id: 'bebi-apoteka-boginje',
-                                        title: 'Boginje',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/boginje',
-                                   },
-                                   {
-                                        id: 'elektroliti',
-                                        title: 'Elektroliti',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/elektroliti',
-                                   },
-                                   {
-                                        id: 'grcevi',
-                                        title: 'Grčevi',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/grcevi',
-                                   },
-                                   {
-                                        id: 'higijena-nosica',
-                                        title: 'Higijena nosića',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/higijena-nosica',
-                                   },
-                                   {
-                                        id: 'grickanje-noktiju',
-                                        title: 'Grickanje noktiju',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/grickanje-noktiju',
-                                   },
-                                   {
-                                        id: 'higijena-ociju',
-                                        title: 'Higijena očiju',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/higijena-ociju',
-                                   },
-                                   {
-                                        id: 'imunitet-i-apetit',
-                                        title: 'Imunitet i apetit',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/imunitet-i-apetit',
-                                   },
-                                   {
-                                        id: 'vitamini',
-                                        title: 'Vitamini',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/vitamini',
-                                   },
-                                   {
-                                        id: 'zubici',
-                                        title: 'Zubići',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/zubici',
-                                   },
-                                   {
-                                        id: 'vaske',
-                                        title: 'Vaške',
-                                        link: '/proizvodi/bebi-program/bebi-apoteka/vaske',
-                                   },
-                              ],
+                              id: 'bebi-prirodna-kozmetika-gamarde',
+                              title: 'Gamarde',
+                              link: '/gamarde/bebi-prirodna-kozmetika',
                          },
-                         {
-                              id: 'bebi-kozmetika',
-                              title: 'Bebi kozmetika',
-                              children: [
-                                   {
-                                        id: 'deterdzenti-i-omeksivaci',
-                                        title: 'Deterdženti i omekšivači',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/deterdzenti-i-omeksivaci',
-                                   },
-                                   {
-                                        id: 'mleka-losioni-ulja',
-                                        title: 'Mleka, losioni, ulja',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/mleka-losioni-ulja',
-                                   },
-                                   {
-                                        id: 'kupke-i-samponi',
-                                        title: 'Kupke i šamponi',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/kupke-i-samponi',
-                                   },
-                                   {
-                                        id: 'micelarne-vode',
-                                        title: 'Micelarne vode',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/micelarne-vode',
-                                   },
-                                   {
-                                        id: 'puderi',
-                                        title: 'Puderi',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/puderi',
-                                   },
-                                   {
-                                        id: 'kreme-za-lice-i-telo',
-                                        title: 'Kreme za lice i telo',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/kreme-za-lice-i-telo',
-                                   },
-                                   {
-                                        id: 'kreme-protiv-ojeda',
-                                        title: 'Kreme protiv ojeda',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/kreme-protiv-ojeda',
-                                   },
-                                   {
-                                        id: 'sapuni',
-                                        title: 'Sapuni',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/sapuni',
-                                   },
-                                   {
-                                        id: 'balzami-za-usne',
-                                        title: 'Balzami za usne',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/balzami-za-usne',
-                                   },
-                                   {
-                                        id: 'toaletne-vode-dezodoransi',
-                                        title: 'Toaletne vode, dezodoransi',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/toaletne-vode-dezodoransi',
-                                   },
-                                   {
-                                        id: 'tuferi-i-vate',
-                                        title: 'Tuferi i vate',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/tuferi-i-vate',
-                                   },
-                                   {
-                                        id: 'stapici',
-                                        title: 'Štapići',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/stapici',
-                                   },
-                                   {
-                                        id: 'vlazne-maramice',
-                                        title: 'Vlažne maramice',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/vlazne-maramice',
-                                   },
-                                   {
-                                        id: 'paste-i-cetkice-za-zube',
-                                        title: 'Paste i četkice za zube',
-                                        link: '/proizvodi/bebi-program/bebi-kozmetika/paste-i-cetkice-za-zube',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'oprema-za-bebe',
-                              title: 'Oprema za bebe',
-                              children: [
-                                   {
-                                        id: 'oprema-za-kupatilo',
-                                        title: 'Oprema za kupatilo',
-                                        link: '/proizvodi/bebi-program/oprema-za-bebe/oprema-za-kupatilo',
-                                   },
-                                   {
-                                        id: 'oprema-za-previjanje',
-                                        title: 'Oprema za previjanje',
-                                        link: '/proizvodi/bebi-program/oprema-za-bebe/oprema-za-previjanje',
-                                   },
-                                   {
-                                        id: 'kolica-i-dodaci',
-                                        title: 'Kolica i dodaci',
-                                        link: '/proizvodi/bebi-program/oprema-za-bebe/kolica-i-dodaci',
-                                   },
-                                   {
-                                        id: 'sedista',
-                                        title: 'Sedišta',
-                                        link: '/proizvodi/bebi-program/oprema-za-bebe/sedista',
-                                   },
-                                   {
-                                        id: 'tricikli-i-guralice',
-                                        title: 'Tricikli i guralice',
-                                        link: '/proizvodi/bebi-program/oprema-za-bebe/tricikli-i-guralice',
-                                   },
-                                   {
-                                        id: 'nosiljke',
-                                        title: 'Nosiljke',
-                                        link: '/proizvodi/bebi-program/oprema-za-bebe/nosiljke',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'flasice-cucle-glodalice-zvecke',
-                              title: 'Flašice, cucle, glodalice, zvečke',
-                              children: [
-                                   {
-                                        id: 'cucle',
-                                        title: 'Cucle',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/cucle',
-                                   },
-                                   {
-                                        id: 'flasice',
-                                        title: 'Flašice',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/flasice',
-                                   },
-                                   {
-                                        id: 'dodaci-za-cucle-i-flasice',
-                                        title: 'Dodaci za cucle i flašice',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/dodaci-za-cucle-i-flasice',
-                                   },
-                                   {
-                                        id: 'termosi-i-termos-torbe',
-                                        title: 'Termosi i termos torbe',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/termosi-i-termos-torbe',
-                                   },
-                                   {
-                                        id: 'laze-i-dodaci',
-                                        title: 'Laže i dodaci',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/laze-i-dodaci',
-                                   },
-                                   {
-                                        id: 'glodalice',
-                                        title: 'Glođalice',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/glodalice',
-                                   },
-                                   {
-                                        id: 'zvecke',
-                                        title: 'Zvečke',
-                                        link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/zvecke',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'pelene',
-                              title: 'Pelene',
-                              children: [
-                                   {
-                                        id: 'pelene-za-jednokratnu-upotrebu',
-                                        title: 'Pelene za jednokratnu upotrebu',
-                                        link: '/proizvodi/bebi-program/pelene/pelene-za-jednokratnu-upotrebu',
-                                   },
-                                   {
-                                        id: 'pelene-za-odvikavanje',
-                                        title: 'Pelene za odvikavanje',
-                                        link: '/proizvodi/bebi-program/pelene/pelene-za-odvikavanje',
-                                   },
-                                   {
-                                        id: 'pelene-za-kupanje',
-                                        title: 'Pelene za kupanje',
-                                        link: '/proizvodi/bebi-program/pelene/pelene-za-kupanje',
-                                   },
-                                   {
-                                        id: 'tetra-pelene',
-                                        title: 'Tetra pelene',
-                                        link: '/proizvodi/bebi-program/pelene/tetra-pelene',
-                                   },
-                              ],
-                         },
-                         {
-                              id: 'hrana-za-bebe',
-                              link: '/proizvodi/bebi-program/hrana-za-bebe',
-                              title: 'Hrana za bebe',
-                              children: [
-                                   {
-                                        id: 'lino',
-                                        title: 'Lino',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/lino',
-                                   },
-                                   {
-                                        id: 'modilac',
-                                        title: 'Modilac',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/modilac',
-                                   },
-                                   {
-                                        id: 'nestle',
-                                        title: 'Nestle',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/nestle',
-                                   },
-                                   {
-                                        id: 'nutrino',
-                                        title: 'Nutrino',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/nutrino',
-                                   },
-                                   {
-                                        id: 'bebelac',
-                                        title: 'Bebelac',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/bebelac',
-                                   },
-                                   {
-                                        id: 'celia',
-                                        title: 'Celia',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/celia',
-                                   },
-                                   {
-                                        id: 'hipp',
-                                        title: 'Hipp',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/hipp',
-                                   },
-                                   {
-                                        id: 'humana',
-                                        title: 'Humana',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/humana',
-                                   },
-                                   {
-                                        id: 'novalac',
-                                        title: 'Novalac',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/novalac',
-                                   },
-                                   {
-                                        id: 'juvitana',
-                                        title: 'Juvitana',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/juvitana',
-                                   },
-                                   {
-                                        id: 'milupa',
-                                        title: 'Milupa',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/milupa',
-                                   },
-                                   {
-                                        id: 'aptamil',
-                                        title: 'Aptamil',
-                                        link: '/proizvodi/bebi-program/hrana-za-bebe/aptamil',
-                                   }
-                              ]
-                         },
-                         {
-                              id: 'trudnice-i-dojilje',
-                              link: '/proizvodi/bebi-program/trudnice-i-dojilje',
-                              title: 'Trudnice i dojilje',
-                              children: [
-                                   {
-                                        id: 'kozmetika-za-telo',
-                                        title: 'Kozmetika za telo',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/kozmetika-za-telo',
-                                   },
-                                   {
-                                        id: 'mrezaste-gacice',
-                                        title: 'Mrežaste gaćice',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/mrezaste-gacice',
-                                   },
-                                   {
-                                        id: 'nega-i-zastita-bradavica',
-                                        title: 'Nega i zaštita bradavica',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/nega-i-zastita-bradavica',
-                                   },
-                                   {
-                                        id: 'pojasevi-i-grudnjaci',
-                                        title: 'Pojasevi i grudnjaci',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/pojasevi-i-grudnjaci',
-                                   },
-                                   {
-                                        id: 'ulosci-za-grudi',
-                                        title: 'Ulošci za grudi',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/ulosci-za-grudi',
-                                   },
-                                   {
-                                        id: 'pumpice-za-izmlazavanje',
-                                        title: 'Pumpice za izmlazavanje',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/pumpice-za-izmlazavanje',
-                                   },
-                                   {
-                                        id: 'vestacke-bradavice-i-pumpice-za-bradavice',
-                                        title: 'Veštačke bradavice i pumpice za bradavice',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/vestacke-bradavice-i-pumpice-za-bradavice',
-                                   },
-                                   {
-                                        id: 'dozeri-za-mleko',
-                                        title: 'Dozeri za mleko',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/dozeri-za-mleko',
-                                   },
-                                   {
-                                        id: 'vitaminski-preparati',
-                                        title: 'Vitaminski preparati',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/vitaminski-preparati',
-                                   },
-                                   {
-                                        id: 'cajevi-i-napici-za-trudnice-i-dojilje',
-                                        title: 'Čajevi i napici za trudnice i dojilje',
-                                        link: '/proizvodi/bebi-program/trudnice-i-dojilje/cajevi-i-napici-za-trudnice-i-dojilje',
-                                   }
-                              ]
-                         },
-                         {
-                              id: 'bebi-program-aparati',
-                              link: '/proizvodi/bebi-program/aparati',
-                              title: 'Aparati',
-                              children: [
-                                   {
-                                        id: 'alarmi',
-                                        title: 'Alarmi',
-                                        link: '/proizvodi/bebi-program/aparati/alarmi',
-                                   },
-                                   {
-                                        id: 'termometri',
-                                        title: 'Termometri',
-                                        link: '/proizvodi/bebi-program/aparati/termometri',
-                                   },
-                                   {
-                                        id: 'blenderi',
-                                        title: 'Blenderi',
-                                        link: '/proizvodi/bebi-program/aparati/blenderi',
-                                   },
-                                   {
-                                        id: 'grejaci',
-                                        title: 'Grejači',
-                                        link: '/proizvodi/bebi-program/aparati/grejaci',
-                                   },
-                                   {
-                                        id: 'sterilizatori',
-                                        title: 'Sterilizatori',
-                                        link: '/proizvodi/bebi-program/aparati/sterilizatori',
-                                   },
-                                   {
-                                        id: 'aspiratori-za-nos',
-                                        title: 'Aspiratori za nos',
-                                        link: '/proizvodi/bebi-program/aparati/aspiratori-za-nos',
-                                   }
-                              ]
-                         }
+
+                         // {
+                         //      id: 'bebi-apoteka',
+                         //      title: 'Bebi apoteka',
+                         //      link: '/proizvodi/bebi-program/bebi-apoteka',
+                         //      children: [
+                         //           {
+                         //                id: 'bebi-apoteka-boginje',
+                         //                title: 'Boginje',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/boginje',
+                         //           },
+                         //           {
+                         //                id: 'elektroliti',
+                         //                title: 'Elektroliti',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/elektroliti',
+                         //           },
+                         //           {
+                         //                id: 'grcevi',
+                         //                title: 'Grčevi',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/grcevi',
+                         //           },
+                         //           {
+                         //                id: 'higijena-nosica',
+                         //                title: 'Higijena nosića',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/higijena-nosica',
+                         //           },
+                         //           {
+                         //                id: 'grickanje-noktiju',
+                         //                title: 'Grickanje noktiju',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/grickanje-noktiju',
+                         //           },
+                         //           {
+                         //                id: 'higijena-ociju',
+                         //                title: 'Higijena očiju',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/higijena-ociju',
+                         //           },
+                         //           {
+                         //                id: 'imunitet-i-apetit',
+                         //                title: 'Imunitet i apetit',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/imunitet-i-apetit',
+                         //           },
+                         //           {
+                         //                id: 'vitamini',
+                         //                title: 'Vitamini',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/vitamini',
+                         //           },
+                         //           {
+                         //                id: 'zubici',
+                         //                title: 'Zubići',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/zubici',
+                         //           },
+                         //           {
+                         //                id: 'vaske',
+                         //                title: 'Vaške',
+                         //                link: '/proizvodi/bebi-program/bebi-apoteka/vaske',
+                         //           },
+                         //      ],
+                         // },
+                         // {
+                         //      id: 'bebi-kozmetika',
+                         //      title: 'Bebi kozmetika',
+                         //      children: [
+                         //           {
+                         //                id: 'deterdzenti-i-omeksivaci',
+                         //                title: 'Deterdženti i omekšivači',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/deterdzenti-i-omeksivaci',
+                         //           },
+                         //           {
+                         //                id: 'mleka-losioni-ulja',
+                         //                title: 'Mleka, losioni, ulja',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/mleka-losioni-ulja',
+                         //           },
+                         //           {
+                         //                id: 'kupke-i-samponi',
+                         //                title: 'Kupke i šamponi',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/kupke-i-samponi',
+                         //           },
+                         //           {
+                         //                id: 'micelarne-vode',
+                         //                title: 'Micelarne vode',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/micelarne-vode',
+                         //           },
+                         //           {
+                         //                id: 'puderi',
+                         //                title: 'Puderi',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/puderi',
+                         //           },
+                         //           {
+                         //                id: 'kreme-za-lice-i-telo',
+                         //                title: 'Kreme za lice i telo',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/kreme-za-lice-i-telo',
+                         //           },
+                         //           {
+                         //                id: 'kreme-protiv-ojeda',
+                         //                title: 'Kreme protiv ojeda',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/kreme-protiv-ojeda',
+                         //           },
+                         //           {
+                         //                id: 'sapuni',
+                         //                title: 'Sapuni',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/sapuni',
+                         //           },
+                         //           {
+                         //                id: 'balzami-za-usne',
+                         //                title: 'Balzami za usne',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/balzami-za-usne',
+                         //           },
+                         //           {
+                         //                id: 'toaletne-vode-dezodoransi',
+                         //                title: 'Toaletne vode, dezodoransi',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/toaletne-vode-dezodoransi',
+                         //           },
+                         //           {
+                         //                id: 'tuferi-i-vate',
+                         //                title: 'Tuferi i vate',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/tuferi-i-vate',
+                         //           },
+                         //           {
+                         //                id: 'stapici',
+                         //                title: 'Štapići',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/stapici',
+                         //           },
+                         //           {
+                         //                id: 'vlazne-maramice',
+                         //                title: 'Vlažne maramice',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/vlazne-maramice',
+                         //           },
+                         //           {
+                         //                id: 'paste-i-cetkice-za-zube',
+                         //                title: 'Paste i četkice za zube',
+                         //                link: '/proizvodi/bebi-program/bebi-kozmetika/paste-i-cetkice-za-zube',
+                         //           },
+                         //      ],
+                         // },
+                         // {
+                         //      id: 'oprema-za-bebe',
+                         //      title: 'Oprema za bebe',
+                         //      children: [
+                         //           {
+                         //                id: 'oprema-za-kupatilo',
+                         //                title: 'Oprema za kupatilo',
+                         //                link: '/proizvodi/bebi-program/oprema-za-bebe/oprema-za-kupatilo',
+                         //           },
+                         //           {
+                         //                id: 'oprema-za-previjanje',
+                         //                title: 'Oprema za previjanje',
+                         //                link: '/proizvodi/bebi-program/oprema-za-bebe/oprema-za-previjanje',
+                         //           },
+                         //           {
+                         //                id: 'kolica-i-dodaci',
+                         //                title: 'Kolica i dodaci',
+                         //                link: '/proizvodi/bebi-program/oprema-za-bebe/kolica-i-dodaci',
+                         //           },
+                         //           {
+                         //                id: 'sedista',
+                         //                title: 'Sedišta',
+                         //                link: '/proizvodi/bebi-program/oprema-za-bebe/sedista',
+                         //           },
+                         //           {
+                         //                id: 'tricikli-i-guralice',
+                         //                title: 'Tricikli i guralice',
+                         //                link: '/proizvodi/bebi-program/oprema-za-bebe/tricikli-i-guralice',
+                         //           },
+                         //           {
+                         //                id: 'nosiljke',
+                         //                title: 'Nosiljke',
+                         //                link: '/proizvodi/bebi-program/oprema-za-bebe/nosiljke',
+                         //           },
+                         //      ],
+                         // },
+                         // {
+                         //      id: 'flasice-cucle-glodalice-zvecke',
+                         //      title: 'Flašice, cucle, glodalice, zvečke',
+                         //      children: [
+                         //           {
+                         //                id: 'cucle',
+                         //                title: 'Cucle',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/cucle',
+                         //           },
+                         //           {
+                         //                id: 'flasice',
+                         //                title: 'Flašice',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/flasice',
+                         //           },
+                         //           {
+                         //                id: 'dodaci-za-cucle-i-flasice',
+                         //                title: 'Dodaci za cucle i flašice',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/dodaci-za-cucle-i-flasice',
+                         //           },
+                         //           {
+                         //                id: 'termosi-i-termos-torbe',
+                         //                title: 'Termosi i termos torbe',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/termosi-i-termos-torbe',
+                         //           },
+                         //           {
+                         //                id: 'laze-i-dodaci',
+                         //                title: 'Laže i dodaci',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/laze-i-dodaci',
+                         //           },
+                         //           {
+                         //                id: 'glodalice',
+                         //                title: 'Glođalice',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/glodalice',
+                         //           },
+                         //           {
+                         //                id: 'zvecke',
+                         //                title: 'Zvečke',
+                         //                link: '/proizvodi/bebi-program/flasice-cucle-glodalice-zvecke/zvecke',
+                         //           },
+                         //      ],
+                         // },
+                         // {
+                         //      id: 'pelene',
+                         //      title: 'Pelene',
+                         //      children: [
+                         //           {
+                         //                id: 'pelene-za-jednokratnu-upotrebu',
+                         //                title: 'Pelene za jednokratnu upotrebu',
+                         //                link: '/proizvodi/bebi-program/pelene/pelene-za-jednokratnu-upotrebu',
+                         //           },
+                         //           {
+                         //                id: 'pelene-za-odvikavanje',
+                         //                title: 'Pelene za odvikavanje',
+                         //                link: '/proizvodi/bebi-program/pelene/pelene-za-odvikavanje',
+                         //           },
+                         //           {
+                         //                id: 'pelene-za-kupanje',
+                         //                title: 'Pelene za kupanje',
+                         //                link: '/proizvodi/bebi-program/pelene/pelene-za-kupanje',
+                         //           },
+                         //           {
+                         //                id: 'tetra-pelene',
+                         //                title: 'Tetra pelene',
+                         //                link: '/proizvodi/bebi-program/pelene/tetra-pelene',
+                         //           },
+                         //      ],
+                         // },
+                         // {
+                         //      id: 'hrana-za-bebe',
+                         //      link: '/proizvodi/bebi-program/hrana-za-bebe',
+                         //      title: 'Hrana za bebe',
+                         //      children: [
+                         //           {
+                         //                id: 'lino',
+                         //                title: 'Lino',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/lino',
+                         //           },
+                         //           {
+                         //                id: 'modilac',
+                         //                title: 'Modilac',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/modilac',
+                         //           },
+                         //           {
+                         //                id: 'nestle',
+                         //                title: 'Nestle',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/nestle',
+                         //           },
+                         //           {
+                         //                id: 'nutrino',
+                         //                title: 'Nutrino',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/nutrino',
+                         //           },
+                         //           {
+                         //                id: 'bebelac',
+                         //                title: 'Bebelac',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/bebelac',
+                         //           },
+                         //           {
+                         //                id: 'celia',
+                         //                title: 'Celia',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/celia',
+                         //           },
+                         //           {
+                         //                id: 'hipp',
+                         //                title: 'Hipp',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/hipp',
+                         //           },
+                         //           {
+                         //                id: 'humana',
+                         //                title: 'Humana',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/humana',
+                         //           },
+                         //           {
+                         //                id: 'novalac',
+                         //                title: 'Novalac',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/novalac',
+                         //           },
+                         //           {
+                         //                id: 'juvitana',
+                         //                title: 'Juvitana',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/juvitana',
+                         //           },
+                         //           {
+                         //                id: 'milupa',
+                         //                title: 'Milupa',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/milupa',
+                         //           },
+                         //           {
+                         //                id: 'aptamil',
+                         //                title: 'Aptamil',
+                         //                link: '/proizvodi/bebi-program/hrana-za-bebe/aptamil',
+                         //           }
+                         //      ]
+                         // },
+                         // {
+                         //      id: 'trudnice-i-dojilje',
+                         //      link: '/proizvodi/bebi-program/trudnice-i-dojilje',
+                         //      title: 'Trudnice i dojilje',
+                         //      children: [
+                         //           {
+                         //                id: 'kozmetika-za-telo',
+                         //                title: 'Kozmetika za telo',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/kozmetika-za-telo',
+                         //           },
+                         //           {
+                         //                id: 'mrezaste-gacice',
+                         //                title: 'Mrežaste gaćice',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/mrezaste-gacice',
+                         //           },
+                         //           {
+                         //                id: 'nega-i-zastita-bradavica',
+                         //                title: 'Nega i zaštita bradavica',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/nega-i-zastita-bradavica',
+                         //           },
+                         //           {
+                         //                id: 'pojasevi-i-grudnjaci',
+                         //                title: 'Pojasevi i grudnjaci',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/pojasevi-i-grudnjaci',
+                         //           },
+                         //           {
+                         //                id: 'ulosci-za-grudi',
+                         //                title: 'Ulošci za grudi',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/ulosci-za-grudi',
+                         //           },
+                         //           {
+                         //                id: 'pumpice-za-izmlazavanje',
+                         //                title: 'Pumpice za izmlazavanje',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/pumpice-za-izmlazavanje',
+                         //           },
+                         //           {
+                         //                id: 'vestacke-bradavice-i-pumpice-za-bradavice',
+                         //                title: 'Veštačke bradavice i pumpice za bradavice',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/vestacke-bradavice-i-pumpice-za-bradavice',
+                         //           },
+                         //           {
+                         //                id: 'dozeri-za-mleko',
+                         //                title: 'Dozeri za mleko',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/dozeri-za-mleko',
+                         //           },
+                         //           {
+                         //                id: 'vitaminski-preparati',
+                         //                title: 'Vitaminski preparati',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/vitaminski-preparati',
+                         //           },
+                         //           {
+                         //                id: 'cajevi-i-napici-za-trudnice-i-dojilje',
+                         //                title: 'Čajevi i napici za trudnice i dojilje',
+                         //                link: '/proizvodi/bebi-program/trudnice-i-dojilje/cajevi-i-napici-za-trudnice-i-dojilje',
+                         //           }
+                         //      ]
+                         // },
+                         // {
+                         //      id: 'bebi-program-aparati',
+                         //      link: '/proizvodi/bebi-program/aparati',
+                         //      title: 'Aparati',
+                         //      children: [
+                         //           {
+                         //                id: 'alarmi',
+                         //                title: 'Alarmi',
+                         //                link: '/proizvodi/bebi-program/aparati/alarmi',
+                         //           },
+                         //           {
+                         //                id: 'termometri',
+                         //                title: 'Termometri',
+                         //                link: '/proizvodi/bebi-program/aparati/termometri',
+                         //           },
+                         //           {
+                         //                id: 'blenderi',
+                         //                title: 'Blenderi',
+                         //                link: '/proizvodi/bebi-program/aparati/blenderi',
+                         //           },
+                         //           {
+                         //                id: 'grejaci',
+                         //                title: 'Grejači',
+                         //                link: '/proizvodi/bebi-program/aparati/grejaci',
+                         //           },
+                         //           {
+                         //                id: 'sterilizatori',
+                         //                title: 'Sterilizatori',
+                         //                link: '/proizvodi/bebi-program/aparati/sterilizatori',
+                         //           },
+                         //           {
+                         //                id: 'aspiratori-za-nos',
+                         //                title: 'Aspiratori za nos',
+                         //                link: '/proizvodi/bebi-program/aparati/aspiratori-za-nos',
+                         //           }
+                         //      ]
+                         // }
                     ]
                },
                // {
@@ -1299,15 +1315,61 @@ export const AccordionPanels = [
                //      ]
                // },
                {
-                    id: 'akcije',
-                    link: '/proizvodi/akcije',
-                    title: 'AKCIJE'
+                    id: 'zao-make-up',
+                    link: '/zao-make-up/prirodna-kozmetika/',
+                    title: 'Zao Make Up'
                },
                {
-                    id: 'promocije',
-                    link: '/proizvodi/promocije',
-                    title: 'PROMOCIJE'
-               }
+                    id: 'kolagen',
+                    link: '/proizvodi/kolagen/',
+                    title: 'Kolagen'
+               },
+               {
+                    id: 'suplementi',
+                    link: '/proizvodi/suplementi/',
+                    title: 'Suplementi'
+               },
+               {
+                    id: 'ledene-kocke',
+                    link: '/proizvodi/ledene-kocke-za-imunitet/',
+                    title: 'Ledene kocke za imunitet'
+               },
+               {
+                    id: 'ruska-apoteka',
+                    link: '/proizvodi/ruska-apoteka/',
+                    title: 'Ruska Apoteka'
+               },
+               {
+                    id: 'domaci-prirodni-melemi',
+                    link: '/proizvodi/domaci-prirodni-melemi/',
+                    title: 'Domaći prirodni melemi'
+               },
+               {
+                    id: 'mast-od-jazavca',
+                    link: '/proizvodi/mast-od-jazavca/',
+                    title: 'Mast od jazavca'
+               },
+               {
+                    id: 'ulja-za-masazu',
+                    link: '/proizvodi/ulja-za-masazu/',
+                    title: 'Ulja za masažu'
+               },
+               {
+                    id: 'biljne-tinkture',
+                    link: '/proizvodi/biljne-tinkture/',
+                    title: 'Biljne tinkture'
+               },
+               {
+                    id: 'imunitet-za-decu',
+                    link: '/proizvodi/imunitet-za-decu/',
+                    title: 'Imunitet za decu'
+               },
+               {
+                    id: 'todoxin',
+                    link: '/proizvodi/todoxin/',
+                    title: 'Todoxin'
+               },
+
           ]
      },
 
