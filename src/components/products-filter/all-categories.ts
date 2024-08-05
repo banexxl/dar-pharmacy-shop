@@ -1330,7 +1330,7 @@ export const AccordionPanels = [
                     title: 'Suplementi'
                },
                {
-                    id: 'ledene-kocke',
+                    id: 'ledene-kocke-za-imunitet',
                     link: '/proizvodi/ledene-kocke-za-imunitet/',
                     title: 'Ledene kocke za imunitet'
                },
