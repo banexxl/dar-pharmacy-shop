@@ -11,8 +11,8 @@ export const AccordionPanels = [
                     children: [
                          {
                               id: 'prirodna-kozmetika-gana',
-                              title: 'Gana',
-                              link: '/gana/prirodna-kozmetika',
+                              title: 'Gana kozmetika',
+                              link: '/gana-kozmetika/prirodna-kozmetika',
                               // children: [
                               //      {
                               //           id: 'higijena-lica',
