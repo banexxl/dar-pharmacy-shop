@@ -117,7 +117,6 @@ export const FilteredProductFavButton = styled(FilteredProductActionButton, { sh
      <FilteredProductFavButtonProps>(({ isfav, theme }) => ({
           color: isfav ? Colors.primary.main : Colors.primary.light,
           [theme.breakpoints.up('md')]: {
-               position: 'absolute',
                right: 0,
                top: 0,
           },

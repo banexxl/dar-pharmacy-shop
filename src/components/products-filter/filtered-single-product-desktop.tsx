@@ -106,11 +106,11 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          <FilteredProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>
-               <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} theme={theme}>
+               {/* <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} theme={theme}>
                     <Tooltip placement="left" title={"Dodaj u listu želja"}>
                          <FavoriteIcon />
                     </Tooltip>
-               </FilteredProductFavButton>
+               </FilteredProductFavButton> */}
                {(showOptions || isScreenToMedium) && (
                     <FilteredProductAddToCart
                          show={showOptions}
@@ -126,6 +126,11 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                )}
                <FilteredProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
                     <Stack direction={isScreenToMedium ? "row" : "column"}>
+                         <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} theme={theme}>
+                              <Tooltip placement="left" title={"Dodaj u listu želja"}>
+                                   <FavoriteIcon />
+                              </Tooltip>
+                         </FilteredProductFavButton>
                          <FilteredProductActionButton>
                               <Tooltip placement="left" title={"Podeli proizvod"}>
                                    <ShareIcon color="primary" />
