@@ -1373,7 +1373,7 @@ export const AccordionPanels = [
                },
                {
                     id: 'todoxin',
-                    link: '/proizvodi/todoxin/',
+                    link: '/todoxin/prirodni-imunitet/',
                     title: 'Todoxin'
                },
                {

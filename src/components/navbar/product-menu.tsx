@@ -205,7 +205,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/todoxin/todoxin'}>
+                              <Link href={'/todoxin/prirodni-imunitet'}>
                                    Todoxin
                               </Link>
                          </StyledNestedTypography>
