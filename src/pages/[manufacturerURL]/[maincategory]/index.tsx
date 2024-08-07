@@ -67,6 +67,9 @@ export default function MainCategoryAndManufacturerPage(props: any) {
 export async function getServerSideProps({ query }: any) {
 
      const loadedParts = parseInt(query?.part as string) || 1
+     console.log('query', query);
+     console.log('loadedParts', loadedParts);
+
 
      const productsByMainCategoryAndManufacturer: any = await productsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL, loadedParts)
 

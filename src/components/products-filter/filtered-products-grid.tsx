@@ -20,6 +20,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const router = useRouter();
+     console.log('router', router.query);
 
      const [products, setProducts] = useState<any[]>(props.data || []);
      const [hasMore, setHasMore] = useState(true);

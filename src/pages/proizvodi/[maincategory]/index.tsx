@@ -8,7 +8,7 @@ import productsServices from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function MainCategoryPage(props: any) {
 
@@ -19,25 +19,6 @@ export default function MainCategoryPage(props: any) {
 
      const router = useRouter()
      const [loading, setLoading] = useState(false)
-
-
-     // useEffect(() => {
-     //      const handleRouteChange = (url: any) => {
-     //           setLoading(true)
-     //      }
-
-     //      const handleRouteChangeComplete = () => {
-     //           setLoading(false)
-     //      }
-
-     //      router.events.on('routeChangeStart', handleRouteChange)
-     //      router.events.on('routeChangeComplete', handleRouteChangeComplete)
-
-     //      return () => {
-     //           router.events.off('routeChangeStart', handleRouteChange)
-     //           router.events.off('routeChangeComplete', handleRouteChangeComplete)
-     //      }
-     // }, [router.events])
 
      return (
           <>
@@ -78,6 +59,7 @@ export default function MainCategoryPage(props: any) {
 }
 
 export async function getServerSideProps({ query }: any) {
+     console.log('query', query);
 
      const loadedParts = parseInt(query?.part as string) || 1
 
