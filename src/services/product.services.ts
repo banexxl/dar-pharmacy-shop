@@ -228,9 +228,12 @@ const productsServices = () => {
      const getProductsByMainCategoryAndManufacturer = async (mainCategory: string, manufacturerURL: string, loadedParts: any) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+          console.log('mongodburi', process.env.MONGODB_URI);
 
           try {
                const db = client.db('DAR_DB')
+               console.log('db', db);
+
                let products: IProduct[] = await db.collection('Products').
                     find({
                          mainCategory: { $regex: new RegExp(`^${mainCategory}$`, 'i') },
