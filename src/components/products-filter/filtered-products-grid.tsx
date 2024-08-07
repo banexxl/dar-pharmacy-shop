@@ -9,11 +9,18 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import IProduct from "@/interfaces/product/product.interface";
 
-export default function FilteredProductsGrid(props: any) {
+type FilteredProductsGridProps = {
+     data: IProduct[]
+}
+
+export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
+
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const router = useRouter();
+
      const [products, setProducts] = useState<any[]>(props.data || []);
      const [hasMore, setHasMore] = useState(true);
 
@@ -25,13 +32,14 @@ export default function FilteredProductsGrid(props: any) {
 
      const onLoadMore = async () => {
           const manufacturerURL = router.query.manufacturerURL as string;
-          const mainCategory = router.query.mainCategory as string || 'prirodna-kozmetika';
-          const midCategory = router.query.midCategory as string || 'alergija';
-          const subCategory = router.query.subCategory as string || 'ostalo';
+          const mainCategory = router.query.mainCategory as string || '';
+          const midCategory = router.query.midCategory as string || '';
+          const subCategory = router.query.subCategory as string || '';
           const nextPart = parseInt(router.query.part as string) + 1 || 1;
 
           if (!manufacturerURL) {
                const paths = router.asPath.split('/').filter(Boolean);
+               console.log('paths', paths);
 
                if (paths.length === 2) {
                     router.push(`/proizvodi/${mainCategory}?part=${nextPart}`);
@@ -41,6 +49,10 @@ export default function FilteredProductsGrid(props: any) {
                     router.push(`/proizvodi/${mainCategory}/${midCategory}/${subCategory}?part=${nextPart}`);
                }
           } else {
+
+               console.log('manufacturerURL', manufacturerURL);
+               console.log('mainCategory', mainCategory);
+
                await router.push(`/${manufacturerURL}/${mainCategory}?part=${nextPart}`);
           }
      };

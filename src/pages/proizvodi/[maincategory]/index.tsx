@@ -81,13 +81,13 @@ export async function getServerSideProps({ query }: any) {
 
      const loadedParts = parseInt(query?.part as string) || 1
 
-     const productsByMainCategoryLimited: any = await productsServices().getLimitedProductsByMainCategory(query.maincategory, loadedParts)
+     const productsByMainCategoryLimited: any = await productsServices().getLimitedProductsByMainCategory(query.mainCategory, loadedParts)
      // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
 
      // if (!productsByMainCategoryLimited || productsByMainCategoryLimited.length === 0) {
      //      return {
      //           redirect: {
-     //                destination: `/proizvodi/${query.maincategory}?part=1`
+     //                destination: `/proizvodi/${query.mainCategory}?part=1`
      //           },
      //      };
      // }

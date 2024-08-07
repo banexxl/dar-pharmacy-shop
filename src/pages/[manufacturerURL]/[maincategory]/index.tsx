@@ -68,7 +68,7 @@ export async function getServerSideProps({ query }: any) {
 
      const loadedParts = parseInt(query?.part as string) || 1
 
-     const productsByMainCategoryAndManufacturer: any = await productsServices().getProductsByMainCategoryAndManufacturer(query.maincategory, query.manufacturerURL, loadedParts)
+     const productsByMainCategoryAndManufacturer: any = await productsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL, loadedParts)
 
      // if (!productsByMainCategoryAndManufacturer || productsByMainCategoryAndManufacturer.length === 0) {
      //      return {
