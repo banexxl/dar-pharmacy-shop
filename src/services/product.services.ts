@@ -121,14 +121,14 @@ const productsServices = () => {
           }
      }
 
-     const getProductsByManufacturer = async (manufacturer: string) => {
+     const getProductsByManufacturer = async (manufacturerURL: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ manufacturer: { $regex: `${manufacturer}`, $options: 'i' }, isActive: true })
-                    .limit(2)
+                    .find({ manufacturerURL: { $regex: `${manufacturerURL}` }, isActive: true })
+                    .limit(10)
                     .toArray()
 
                return products

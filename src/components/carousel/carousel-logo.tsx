@@ -10,7 +10,7 @@ import { Colors } from '@/styles/theme';
 
 type CarouselProps = {
      products?: IProduct[];
-     manufacturers?: { url: string, name: string }[];
+     manufacturers?: { url: string, name: string, value: string }[];
 }
 const CarouselLogo = (props: CarouselProps) => {
 
@@ -54,9 +54,9 @@ const CarouselLogo = (props: CarouselProps) => {
                >
                     {
                          props.manufacturers ?
-                              props.manufacturers.map((logo: any) => (
-                                   <CarouselLogoImgBox key={logo}>
-                                        <Link href={`/proizvodjac/${logo.name}`}>
+                              props.manufacturers.map((logo: { url: string, name: string, value: string }) => (
+                                   <CarouselLogoImgBox key={Math.random()}>
+                                        <Link href={`/${logo.value}`}>
                                              <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={200} isOnDiscount={false} />
                                         </Link>
                                    </CarouselLogoImgBox>

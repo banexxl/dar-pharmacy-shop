@@ -10,11 +10,9 @@ import { useEffect, useState } from "react";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-
 export default function FilteredProductsGrid(props: any) {
-
      const theme = useTheme();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const router = useRouter();
      const [products, setProducts] = useState<any[]>(props.data || []);
      const [hasMore, setHasMore] = useState(true);
@@ -22,43 +20,37 @@ export default function FilteredProductsGrid(props: any) {
      useEffect(() => {
           // Check if there are more products to load
           setHasMore(props.data && props.data.length > 0);
+          setProducts(props.data || []);
      }, [props.data]);
 
      const onLoadMore = async () => {
+          const manufacturerURL = router.query.manufacturerURL as string;
+          const mainCategory = router.query.mainCategory as string || 'prirodna-kozmetika';
+          const midCategory = router.query.midCategory as string || 'alergija';
+          const subCategory = router.query.subCategory as string || 'ostalo';
+          const nextPart = parseInt(router.query.part as string) + 1 || 1;
 
-          const isManufacturer = router.pathname.includes('manufacturerURL');
-
-          const maincategory = router.query.maincategory || 'prirodna-kozmetika';
-          const midcategory = router.query.midcategory || 'alergija';
-          const subcategory = router.query.subcategory || 'ostalo';
-
-          const nextPart = parseInt(router.query.part as string) + 1 || 1
-
-
-          if (!isManufacturer) {
+          if (!manufacturerURL) {
                const paths = router.asPath.split('/').filter(Boolean);
-               console.log('paths', paths);
 
                if (paths.length === 2) {
-                    router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
+                    router.push(`/proizvodi/${mainCategory}?part=${nextPart}`);
                } else if (paths.length === 3) {
-                    router.push(`/proizvodi/${maincategory}/${midcategory}?part=${nextPart}`);
+                    router.push(`/proizvodi/${mainCategory}/${midCategory}?part=${nextPart}`);
                } else if (paths.length === 4) {
-                    router.push(`/proizvodi/${maincategory}/${midcategory}/${subcategory}?part=${nextPart}`);
+                    router.push(`/proizvodi/${mainCategory}/${midCategory}/${subCategory}?part=${nextPart}`);
                }
-          } else if (isManufacturer) {
-               await router.push(`/${router.query.manufacturerURL}/${router.query.maincategory}?part=${nextPart}`);
           } else {
-               await router.push(`/proizvodi/${maincategory}?part=${nextPart}`);
+               await router.push(`/${manufacturerURL}/${mainCategory}?part=${nextPart}`);
           }
-     }
+     };
 
      const renderProducts =
-          props.data == undefined || props.data?.length == 0 ?
+          props.data == undefined || props.data?.length == 0 ? (
                <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary }}>
                     <DoNotDisturbIcon />
                </Box>
-               :
+          ) : (
                products?.map((product: any) => (
                     <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                          {isScreenToMedium ? (
@@ -68,6 +60,7 @@ export default function FilteredProductsGrid(props: any) {
                          )}
                     </Grid>
                ))
+          );
 
      return (
           <Container sx={{ paddingBottom: '100px' }}>
@@ -76,7 +69,6 @@ export default function FilteredProductsGrid(props: any) {
                     spacing={{ xs: 2, md: 3, lg: 4 }}
                     justifyContent="center"
                     sx={{ margin: `20px 4px 10px 4px` }}
-                    // columns={{ xs: 4, sm: 4, md: 6 }}
                     gridTemplateColumns={{ xs: '1fr 1fr', sm: '1fr 1fr 1fr', md: '1fr 1fr 1fr' }}
                >
                     {renderProducts}
@@ -96,23 +88,17 @@ export default function FilteredProductsGrid(props: any) {
                               <ArrowForwardIosIcon />
                          </Link>
                     </Box>
-               )
-               }
-               {
-                    !hasMore && (
-                         <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'center' }}>
-                              <Link onClick={() => router.back()} style={{ display: 'flex', alignItems: 'center' }}>
-                                   <ArrowBackIosIcon />
-                                   <Typography sx={{ cursor: 'pointer' }}>
-                                        Nazad
-                                   </Typography>
-                              </Link>
-                         </Box>
-                    )
-               }
-
-          </Container >
+               )}
+               {!hasMore && (
+                    <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'center' }}>
+                         <Link onClick={() => router.back()} style={{ display: 'flex', alignItems: 'center' }}>
+                              <ArrowBackIosIcon />
+                              <Typography sx={{ cursor: 'pointer' }}>
+                                   Nazad
+                              </Typography>
+                         </Link>
+                    </Box>
+               )}
+          </Container>
      );
 }
-
-
