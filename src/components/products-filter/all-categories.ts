@@ -117,6 +117,11 @@ export const AccordionPanels = [
                               link: '/hedera-vita/prirodna-kozmetika',
                               title: 'Hedera Vita'
                          },
+                         {
+                              id: 'prirodna-kozmetika-fitaky',
+                              link: '/fitaky/prirodna-kozmetika',
+                              title: 'Fitaky'
+                         },
                          // {
                          //      id: 'zao-make-up',
                          //      link: '/zao-make-up/prirodna-kozmetika/',
@@ -1265,6 +1270,18 @@ export const AccordionPanels = [
                          // }
                     ]
                },
+               {
+                    id: 'biljne-tinkture',
+                    link: '/proizvodi/biljne-tinkture/',
+                    title: 'Biljne tinkture',
+                    children: [
+                         {
+                              id: 'fantastik-fungi',
+                              title: 'Fantastik Fungi',
+                              link: '/fantastik-fungi/biljne-tinkture/',
+                         }
+                    ]
+               },
                // {
                //      id: 'ortopedija-i-pomagala',
                //      link: '/proizvodi/ortopedija-i-pomagala',
@@ -1319,18 +1336,11 @@ export const AccordionPanels = [
                //           }
                //      ]
                // },
-               {
-                    id: 'ruska-apoteka',
-                    link: '/proizvodi/ruska-apoteka/',
-                    title: 'Ruska Apoteka',
-                    // children: [
-                    //      {
-                    //           id: 'todoxin',
-                    //           link: '/todoxin/ruska-apoteka/',
-                    //           title: 'Todoxin'
-                    //      },
-                    // ]
-               },
+               // {
+               //      id: 'ruska-apoteka',
+               //      link: '/proizvodi/ruska-apoteka/',
+               //      title: 'Ruska Apoteka'
+               // },
                {
                     id: 'kolagen',
                     link: '/proizvodi/kolagen/',
@@ -1360,11 +1370,6 @@ export const AccordionPanels = [
                     id: 'ulja-za-masazu',
                     link: '/proizvodi/ulja-za-masazu/',
                     title: 'Ulja za masažu'
-               },
-               {
-                    id: 'biljne-tinkture',
-                    link: '/proizvodi/biljne-tinkture/',
-                    title: 'Biljne tinkture'
                },
                {
                     id: 'imunitet-za-decu',

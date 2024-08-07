@@ -68,6 +68,13 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
+                              <Link href={'/fitaky/prirodna-kozmetika'}>
+                                   <StyledNestedTypography >
+                                        Fitaky
+                                   </StyledNestedTypography>
+                              </Link>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
                                    <Link href={'/majana/prirodna-kozmetika'}>
                                         Majana
@@ -140,13 +147,24 @@ export const ProductsMenu = () => {
                               </StyledNestedTypography>
                          </StyledMenuItem>
                     </NestedMenuItem>
-                    {/* <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography >
-                              <Link href={'/ruska-apoteka/'}>
-                                   Ruska apoteka
-                              </Link>
-                         </StyledNestedTypography>
-                    </StyledMenuItem> */}
+                    <NestedMenuItem label='Biljne Tinkture' parentMenuOpen={open}>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/fantastik-fungi/biljne-tinkture'}>
+                                        Fantastik Fungi
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem>
+                    {/* <NestedMenuItem label='Ruska Apoteka' parentMenuOpen={open}>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/fantastik-fungi/biljne-tinkture'}>
+                                        Fantastik Fungi
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem> */}
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/kolagen'}>
@@ -186,13 +204,6 @@ export const ProductsMenu = () => {
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/ulje-za-masazu'}>
                                    Ulja za masažu
-                              </Link>
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography >
-                              <Link href={'/proizvodi/biljne-tinkture'}>
-                                   Biljne Tinkture
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>

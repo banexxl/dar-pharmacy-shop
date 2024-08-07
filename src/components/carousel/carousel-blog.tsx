@@ -1,9 +1,7 @@
-import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { StyledCarouselLogoBox } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
+
 import BlogCard from '../blog-card/blog-card';
 
 const CarouselBlog = (props: any) => {
