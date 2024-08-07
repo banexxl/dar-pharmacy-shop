@@ -61,9 +61,9 @@ export const ProductsMenu = () => {
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <NestedMenuItem label='Prirodna kozmetika' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link href={'/gana/prirodna-kozmetika'}>
+                              <Link href={'/gana-kozmetika/prirodna-kozmetika'}>
                                    <StyledNestedTypography >
-                                        Gana
+                                        Gana kozmetika
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
