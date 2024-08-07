@@ -40,7 +40,7 @@ export default function Banner() {
                          </Typography>
                     </BannerQuotaText>
                     <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
-                         <Link href={"/proizvodi/apoteka?part=1"}>
+                         <Link href={"/majana/prirodna-kozmetika"}>
                               Pogledajte ponudu
                          </Link>
                     </BannerShopButton>

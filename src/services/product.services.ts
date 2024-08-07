@@ -226,6 +226,9 @@ const productsServices = () => {
      }
 
      const getProductsByMainCategoryAndManufacturer = async (mainCategory: string, manufacturerURL: string, loadedParts: any) => {
+          console.log('mainCategory', mainCategory);
+          console.log('manufacturerURL', manufacturerURL);
+          console.log('loadedParts', loadedParts);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           console.log('mongodburi', process.env.MONGODB_URI);
