@@ -117,11 +117,11 @@ export const AccordionPanels = [
                               link: '/hedera-vita/prirodna-kozmetika',
                               title: 'Hedera Vita'
                          },
-                         {
-                              id: 'zao-make-up',
-                              link: '/zao-make-up/prirodna-kozmetika/',
-                              title: 'Zao Make Up'
-                         },
+                         // {
+                         //      id: 'zao-make-up',
+                         //      link: '/zao-make-up/prirodna-kozmetika/',
+                         //      title: 'Zao Make Up'
+                         // },
                     ]
                },
                // {
@@ -1323,13 +1323,13 @@ export const AccordionPanels = [
                     id: 'ruska-apoteka',
                     link: '/proizvodi/ruska-apoteka/',
                     title: 'Ruska Apoteka',
-                    children: [
-                         {
-                              id: 'todoxin',
-                              link: '/todoxin/ruska-apoteka/',
-                              title: 'Todoxin'
-                         },
-                    ]
+                    // children: [
+                    //      {
+                    //           id: 'todoxin',
+                    //           link: '/todoxin/ruska-apoteka/',
+                    //           title: 'Todoxin'
+                    //      },
+                    // ]
                },
                {
                     id: 'kolagen',
@@ -1370,6 +1370,16 @@ export const AccordionPanels = [
                     id: 'imunitet-za-decu',
                     link: '/proizvodi/imunitet-za-decu/',
                     title: 'Imunitet za decu'
+               },
+               {
+                    id: 'todoxin',
+                    link: '/proizvodi/todoxin/',
+                    title: 'Todoxin'
+               },
+               {
+                    id: 'zao-prirodna-kozmetika',
+                    link: '/proizvodi/zao-prirodna-kozmetika/',
+                    title: 'Zao prirodna kozmetika'
                },
           ]
      },
