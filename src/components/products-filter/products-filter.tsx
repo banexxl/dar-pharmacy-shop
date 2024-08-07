@@ -1,8 +1,7 @@
 import { FilterCategoryAccordionBox, FilterTitleBox, FilteredProducts, FilteredProductsTitle, ProductsFilterContainer, ProductsFilters } from '@/styles/products-filter/products-filter';
 import { Breadcrumbs, Divider, Typography } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ProductsAllCategories from './products-categories';
-import { useTranslation } from 'next-i18next';
 import PriceFilterComponent from './product-filter-price';
 import IProduct from '@/interfaces/product/product.interface';
 import FilteredProductsGrid from './filtered-products-grid';

@@ -66,7 +66,7 @@ export default function MainCategoryPage(props: any) {
                                    <Stack>
                                         <UIProvider>
                                              <SearchBox />
-                                             <ProductsFilter filterObject={props.products} routerQuery={router.asPath} />
+                                             <ProductsFilter filterObject={props.products} routerQuery={router.query} />
                                              <AppDrawer isScreenToMedium={false} />
                                         </UIProvider>
                                    </Stack>
