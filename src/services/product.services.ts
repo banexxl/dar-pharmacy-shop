@@ -121,13 +121,14 @@ const productsServices = () => {
           }
      }
 
-     const getProductsByManufacturer = async (manufacturerURL: string) => {
+     const getProductsByManufacturer = async (manufacturerURL: string, loadedParts: number) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ manufacturerURL: { $regex: `${manufacturerURL}` }, isActive: true })
+                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(10)
                     .toArray()
 
@@ -193,8 +194,8 @@ const productsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ mainCategory: `${mainCategory}`, isActive: true })
-                    .skip(12 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(12)
+                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+                    .limit(10)
                     .toArray()
 
                return products
@@ -226,9 +227,6 @@ const productsServices = () => {
      }
 
      const getProductsByMainCategoryAndManufacturer = async (mainCategory: string, manufacturerURL: string, loadedParts: any) => {
-          console.log('mainCategory', mainCategory);
-          console.log('manufacturerURL', manufacturerURL);
-          console.log('loadedParts', loadedParts);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 

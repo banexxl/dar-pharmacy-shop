@@ -137,7 +137,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               </Tooltip>
                          </FilteredProductActionButton>
                          <FilteredProductActionButton onClick={() => showProductDetailDialog()}>
-                              <Tooltip placement="left" title="Full view">
+                              <Tooltip placement="left" title="Brz pregled">
                                    <FitScreenIcon color="primary" />
                               </Tooltip>
                          </FilteredProductActionButton>

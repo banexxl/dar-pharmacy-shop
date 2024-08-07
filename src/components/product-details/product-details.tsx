@@ -7,18 +7,20 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IProduct from '@/interfaces/product/product.interface';
 import React, { useState } from 'react'
-import { useTranslation } from 'next-i18next';
+import Cart from "../cart/cart";
 import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch } from 'react-redux';
 import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.slice';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import ProductMeta from '../products/products-meta';
+import useDialogModal from '@/hooks/useDialogModal';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function ProductDetails(product: IProduct) {
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const dispatch = useDispatch()
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
@@ -101,9 +103,10 @@ function ProductDetails(product: IProduct) {
                          sx={{ mt: 4 }}
                          display="flex"
                          alignItems="center"
-                         justifyContent="space-between"
+                         justifyContent="space-evenly"
                     >
                          <Button onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
+                         <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} />
                     </Box>
                     <Box
                          display="flex"
@@ -137,6 +140,7 @@ function ProductDetails(product: IProduct) {
                          Dodato u listu želja
                     </Alert>
                )}
+               <CartDialog />
           </ProductDetailWrapper>
      )
 }

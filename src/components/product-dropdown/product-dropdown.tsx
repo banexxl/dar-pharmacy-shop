@@ -11,15 +11,15 @@ import { useMediaQuery } from "@mui/material";
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/productdetails";
 import { FC, useState } from "react";
 import ICartItem from "@/interfaces/cart/cart.interface";
-import { useTranslation } from "next-i18next";
+import Cart from "../cart/cart";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { LocalStorageStore } from "@/interfaces/local-storage";
-import { log } from "console";
 import IProduct from "@/interfaces/product/product.interface";
 import ProductMeta from "../products/products-meta";
+import useDialogModal from "@/hooks/useDialogModal";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function SlideTransition(props: any) {
      return <Slide direction="down" {...props} />;
@@ -35,7 +35,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
-
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const dispatch = useDispatch()
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
@@ -137,9 +137,10 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                    sx={{ mt: 4 }}
                                    display="flex"
                                    alignItems="center"
-                                   justifyContent="space-between"
+                                   justifyContent="space-evenly"
                               >
                                    <Button onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
+                                   <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} />
                               </Box>
                               <Box
                                    display="flex"
@@ -179,6 +180,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               Uklonjeno iz liste želja
                          </Alert>
                     )}
+                    <CartDialog />
                </DialogContent>
           </Dialog >
      );
