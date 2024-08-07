@@ -79,6 +79,9 @@ export const FilteredProducts = styled(Box)(({ theme }) => ({
 }));
 
 export const FilteredProductsTitle = styled(Box)(({ theme }) => ({
+     textAlign: 'center',
+     display: "flex",
+     justifyContent: "center",
      height: '20%',
      [theme.breakpoints.down("md")]: {
           width: '350px'
@@ -93,7 +96,7 @@ export const FilteredProductsTitle = styled(Box)(({ theme }) => ({
      // },
      // transform: 'translateX(50%)',
      marginBottom: '20px',
-     background: Colors.light_gray,
+     color: Colors.primary.main
 }));
 
 export const PriceRangeBox = styled(Box)(({ theme }) => ({

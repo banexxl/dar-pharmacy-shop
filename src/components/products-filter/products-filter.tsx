@@ -41,7 +41,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                <FilteredProducts>
                     <FilteredProductsTitle>
                          {filterObject?.length === 0 || filteredProducts?.length === 0 ? (
-                              "Nije pronadjen ni jedan proizvod sa trenutnim filterom!"
+                              "Nije pronađen ni jedan proizvod sa trenutnim filterom!"
                          ) : (
                               <Breadcrumbs>
                                    {manufacturerURL && (

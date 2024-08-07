@@ -5,7 +5,7 @@ import { Box, IconButton } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import SvgIcon from "../svg/svg-icon";
+import { Colors } from "@/styles/theme";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
@@ -50,7 +50,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
           <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
                <IconButton onClick={() => setDrawerOpen(true)} >
-                    <MenuIcon />
+                    <MenuIcon sx={{ color: Colors.primary.main }} />
                </IconButton>
                <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}>
                     <Link href="/">
@@ -58,7 +58,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                     </Link>
                </AppbarTitle>
                <IconButton onClick={() => setShowSearchBox(true)} >
-                    <SearchIcon />
+                    <SearchIcon sx={{ color: Colors.primary.main }} />
                </IconButton>
           </AppbarContainer >
 

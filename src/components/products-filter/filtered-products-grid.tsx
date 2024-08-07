@@ -20,7 +20,6 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const router = useRouter();
-     console.log('router', router.query);
 
      const [products, setProducts] = useState<any[]>(props.data || []);
      const [hasMore, setHasMore] = useState(true);
@@ -60,7 +59,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
 
      const renderProducts =
           props.data == undefined || props.data?.length == 0 ? (
-               <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary }}>
+               <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary.main }}>
                     <DoNotDisturbIcon />
                </Box>
           ) : (
