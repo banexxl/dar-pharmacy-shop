@@ -90,12 +90,12 @@ export const BannerLeftImageContent = styled(Box)(({ theme }) => ({
 export const BannerRightImageContent = styled(Box)(({ theme }) => ({
      position: 'absolute',
      [theme.breakpoints.up("lg")]: {
-          top: '150px',
+          top: '450px',
           right: '180px',
      },
      [theme.breakpoints.up("xl")]: {
           top: '450px',
-          right: '300px',
+          right: '400px',
      },
      width: '120px',
      height: '120px',
