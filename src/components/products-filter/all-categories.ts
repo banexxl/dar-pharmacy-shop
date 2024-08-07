@@ -1320,6 +1320,18 @@ export const AccordionPanels = [
                //      ]
                // },
                {
+                    id: 'ruska-apoteka',
+                    link: '/proizvodi/ruska-apoteka/',
+                    title: 'Ruska Apoteka',
+                    children: [
+                         {
+                              id: 'todoxin',
+                              link: '/todoxin/ruska-apoteka/',
+                              title: 'Todoxin'
+                         },
+                    ]
+               },
+               {
                     id: 'kolagen',
                     link: '/proizvodi/kolagen/',
                     title: 'Kolagen'
@@ -1333,11 +1345,6 @@ export const AccordionPanels = [
                     id: 'ledene-kocke-za-imunitet',
                     link: '/proizvodi/ledene-kocke-za-imunitet/',
                     title: 'Ledene kocke za imunitet'
-               },
-               {
-                    id: 'ruska-apoteka',
-                    link: '/proizvodi/ruska-apoteka/',
-                    title: 'Ruska Apoteka'
                },
                {
                     id: 'domaci-prirodni-melemi',
@@ -1364,12 +1371,6 @@ export const AccordionPanels = [
                     link: '/proizvodi/imunitet-za-decu/',
                     title: 'Imunitet za decu'
                },
-               {
-                    id: 'todoxin',
-                    link: '/proizvodi/todoxin/',
-                    title: 'Todoxin'
-               },
-
           ]
      },
 

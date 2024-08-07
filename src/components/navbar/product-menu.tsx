@@ -147,7 +147,15 @@ export const ProductsMenu = () => {
                               </StyledNestedTypography>
                          </StyledMenuItem>
                     </NestedMenuItem>
-
+                    <NestedMenuItem label='Ruska apoteka' parentMenuOpen={open}>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/todoxin/ruska-apoteka'}>
+                                        Todoxin
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/kolagen'}>
@@ -169,13 +177,7 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography >
-                              <Link href={'/proizvodi/ruska-apoteka'}>
-                                   Ruska Apoteka
-                              </Link>
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
+
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/prirodni-melemi'}>
@@ -208,13 +210,6 @@ export const ProductsMenu = () => {
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/imunitet-za-decu'}>
                                    Imunitet za decu
-                              </Link>
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography >
-                              <Link href={'/proizvodi/todoxin'}>
-                                   Todoxin
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
