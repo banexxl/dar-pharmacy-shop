@@ -14,9 +14,16 @@ import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 import { SocialShare } from "../social/socials-share";
 import theme from "@/styles/theme";
+import Link from "next/link";
+import IProduct from "@/interfaces/product/product.interface";
 
-export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
-     const { t } = useTranslation();
+type SingleProductDesktopProps = {
+     product: IProduct;
+     isScreenToMedium: boolean;
+}
+
+export default function SingleProductDesktop({ product, isScreenToMedium }: SingleProductDesktopProps) {
+
      const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails);
      const [addedToCartAlert, setAddedToCartAlert] = useState(false);
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false);
@@ -105,10 +112,12 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
      return (
           <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
                <FilteredProductImageContainer>
-                    <ProductImage src={product.imageURL} />
+                    <Link href={'/proizvod/' + product._id}>
+                         <ProductImage src={product.imageURL} />
+                    </Link>
                </FilteredProductImageContainer>
                {(showOptions || isScreenToMedium) && (
-                    <ProductActionsWrapper show={showOptions.toString() || isScreenToMedium} theme={theme}>
+                    <ProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
                          <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }}>
                               <Tooltip placement="left" title={'Dodaj u listu želja'}>
                                    <FavoriteIcon />

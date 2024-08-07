@@ -20,10 +20,16 @@ import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
 import { PopupBody } from "@/styles/product/share-product";
 import theme from "@/styles/theme";
+import Link from "next/link";
+import IProduct from "@/interfaces/product/product.interface";
 
-export default function SingleProductDesktop({ product, isScreenToMedium }: any) {
+type SingleProductDesktopProps = {
+     product: IProduct;
+     isScreenToMedium: boolean;
+}
 
-     const { t } = useTranslation();
+export default function SingleProductDesktop({ product, isScreenToMedium }: SingleProductDesktopProps) {
+
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails)
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [showOptions, setShowOptions] = useState<boolean>(false);
@@ -57,7 +63,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: any)
      return (
           <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} theme={theme} isVisible={showOptions}>
                <ProductDiscountSticker>
-                    <ProductImage src={product.imageURL} />
+                    <Link href={'/proizvod/' + product._id}>
+                         <ProductImage src={product.imageURL} />
+                    </Link>
                </ProductDiscountSticker>
                <ProductFavButton isfav={0}>
                     <Tooltip placement="left" title={"Dodaj u listu želja"}>

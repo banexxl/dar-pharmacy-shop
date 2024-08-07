@@ -13,8 +13,15 @@ import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import FilteredProductMeta from "./filtered-products-meta";
 import theme from "@/styles/theme";
+import Link from "next/link";
+import IProduct from "@/interfaces/product/product.interface";
 
-export default function FilteredSingleProductMobile({ product, isScreenToMedium }: any) {
+type FilteredSingleProductMobileProps = {
+     product: IProduct;
+     isScreenToMedium: boolean;
+}
+
+export default function FilteredSingleProductMobile({ product, isScreenToMedium }: FilteredSingleProductMobileProps) {
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
@@ -88,7 +95,9 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      return (
           <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={theme} isVisible={isVisible}>
                <FilteredProductImageContainer>
-                    <FilteredProductImage src={product.imageURL} />
+                    <Link href={'/proizvod/' + product._id}>
+                         <FilteredProductImage src={product.imageURL} />
+                    </Link>
                </FilteredProductImageContainer>
                <FilteredProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                <FilteredProductActionsWrapper theme={theme} show={showOptions}>

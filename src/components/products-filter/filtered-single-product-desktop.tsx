@@ -12,8 +12,15 @@ import { addToCart } from "@/store/cart/cart.slice";
 import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import theme from "@/styles/theme";
+import Link from "next/link";
+import IProduct from "@/interfaces/product/product.interface";
 
-export default function FilteredSingleProductDesktop({ product, isScreenToMedium }: any) {
+type FilteredSingleProductDesktopProps = {
+     product: IProduct;
+     isScreenToMedium: boolean;
+}
+
+export default function FilteredSingleProductDesktop({ product, isScreenToMedium }: FilteredSingleProductDesktopProps) {
 
      const { t } = useTranslation();
      const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
@@ -95,7 +102,9 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      return (
           <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
                <FilteredProductImageContainer>
-                    <FilteredProductImage src={product.imageURL} />
+                    <Link href={'/proizvod/' + product._id}>
+                         <FilteredProductImage src={product.imageURL} />
+                    </Link>
                </FilteredProductImageContainer>
                <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} theme={theme}>
                     <Tooltip placement="left" title={"Dodaj u listu želja"}>
@@ -115,7 +124,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          Dodaj u korpu
                     </FilteredProductAddToCart>
                )}
-               <FilteredProductActionsWrapper show={showOptions.toString() || isScreenToMedium} theme={theme}>
+               <FilteredProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
                     <Stack direction={isScreenToMedium ? "row" : "column"}>
                          <FilteredProductActionButton>
                               <Tooltip placement="left" title={"Podeli proizvod"}>

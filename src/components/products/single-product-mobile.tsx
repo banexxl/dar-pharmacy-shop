@@ -1,29 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, ProductMetaWrapper, } from "../../styles/product/single-product";
-import { Alert, Button, Card, Grow, Stack, Tooltip, Typography } from "@mui/material";
+import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, } from "../../styles/product/single-product";
+import { Alert, Grow, Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import ProductDetails from "../product-dropdown/product-dropdown";
-import Popper from '@mui/material/Popper';
-import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
-import Fade from '@mui/material/Fade';
-import Paper from '@mui/material/Paper';
 import ProductMeta from "./products-meta"
 import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch } from "react-redux";
-import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
-import { PopAnimation, PopupBody } from "@/styles/product/share-product";
 import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import { SocialShare } from "../social/socials-share";
+import IProduct from "@/interfaces/product/product.interface";
 
 function useIsInViewport(ref: any) {
      const [isIntersecting, setIsIntersecting] = useState(false);
@@ -47,7 +38,12 @@ function useIsInViewport(ref: any) {
      return isIntersecting;
 }
 
-export default function SingleProductMobile({ product, isScreenToMedium }: any) {
+type SingleProductMobileProps = {
+     product: IProduct;
+     isScreenToMedium: boolean;
+}
+
+export default function SingleProductMobile({ product, isScreenToMedium }: SingleProductMobileProps) {
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
@@ -99,7 +95,9 @@ export default function SingleProductMobile({ product, isScreenToMedium }: any) 
           >
                <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={productRef} theme={undefined} isVisible={isVisible}>
                     <FilteredProductImageContainer>
-                         <ProductImage src={product.imageURL} />
+                         <Link href={'/proizvod/' + product._id}>
+                              <ProductImage src={product.imageURL} />
+                         </Link>
                     </FilteredProductImageContainer>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                     <ProductActionsWrapper theme={theme} show={showOptions}>

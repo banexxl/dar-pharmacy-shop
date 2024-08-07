@@ -11,10 +11,12 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 import LoadingWheel from '@/components/loading/loading'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import { useTranslation } from 'next-i18next'
 
-const SingleProduct = (props: any) => {
+type SingleProductProps = {
+     product: IProduct
+}
+
+const SingleProduct = (props: SingleProductProps) => {
      //this way next js does not try to render theme provider on server (no hydration error : )
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -44,7 +46,7 @@ const SingleProduct = (props: any) => {
                          <UIProvider>
                               <ProductDetails discount={props.product.discount} _id={props.product._id} availableStock={props.product.availableStock} category={props.product.category} description={props.product.description}
                                    imageURL={props.product.imageURL} ingredients={props.product.ingredients} instructions={props.product.instructions} name={props.product.name}
-                                   price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} productURL={props.product.productURL} manufacturer={props.product.manufacturer} quantityUnit={props.product.quantityUnit} />
+                                   price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} manufacturer={props.product.manufacturer} quantityUnit={props.product.quantityUnit} />
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>
