@@ -10,30 +10,30 @@ import { Colors } from '@/styles/theme';
 
 const transformToMuiAccordion = (data: any) => {
 
-          return data.map((item: any) => {
+     return data.map((item: any) => {
 
-                    const { id, link, title, children } = item;
+          const { id, link, title, children } = item;
 
-                    return children && children.length > 0 ?
-                              <Accordion key={id} >
-                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id} >
-                                                  <Typography>{title}</Typography>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                                  {transformToMuiAccordion(children)}
-                                        </AccordionDetails>
-                              </Accordion>
-                              :
-                              <AccordionDetails>
-                                        <Typography>
-                                                  <Link href={`${link}`}>{title}</Link>
-                                        </Typography>
-                              </AccordionDetails>
-          });
+          return children && children.length > 0 ?
+               <Accordion key={id} >
+                    <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id} >
+                         <Typography>{title}</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                         {transformToMuiAccordion(children)}
+                    </AccordionDetails>
+               </Accordion>
+               :
+               <AccordionDetails>
+                    <Typography>
+                         <Link href={`${link}` + `?part=1`}>{title}</Link>
+                    </Typography>
+               </AccordionDetails>
+     });
 };
 export default function ProductsAllCategories() {
 
-          return (
-                    <AccordionBox>{transformToMuiAccordion(AccordionPanels)}</AccordionBox>
-          )
+     return (
+          <AccordionBox>{transformToMuiAccordion(AccordionPanels)}</AccordionBox>
+     )
 }

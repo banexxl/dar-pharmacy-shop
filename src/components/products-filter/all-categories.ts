@@ -1388,5 +1388,4 @@ export const AccordionPanels = [
                },
           ]
      },
-
 ]
