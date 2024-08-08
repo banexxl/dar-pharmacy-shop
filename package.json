@@ -51,6 +51,7 @@
     "next": "^14.2.5",
     "next-auth": "^4.19.2",
     "next-i18next": "^13.1.5",
+    "next-recaptcha-v3": "^1.4.1",
     "next-share": "^0.27.0",
     "next-sitemap": "^4.2.3",
     "node-libcurl": "^3.0.0",
