@@ -1,7 +1,7 @@
 import { AppbarContainer, AppbarContainerMobile, AppbarTitle, IconBox } from "../../styles/appbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, keyframes } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -12,6 +12,15 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
      const { setDrawerOpen, setShowSearchBox } = useUIContext();
      const [isScrolled, setIsScrolled] = useState<Boolean>(false);
      const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
+
+     const zoomInOut = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+`
 
      useEffect(() => {
 
@@ -50,7 +59,10 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
           <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
                <IconButton onClick={() => setDrawerOpen(true)} >
-                    <MenuIcon sx={{ color: Colors.primary.main }} />
+                    <MenuIcon sx={{
+                         color: Colors.primary.main,
+                         animation: `${zoomInOut} 2s infinite`
+                    }} />
                </IconButton>
                <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}>
                     <Link href="/">
