@@ -45,14 +45,14 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                          ) : (
                               <Breadcrumbs>
                                    {manufacturerURL && (
-                                        <Link href={`/${manufacturerURL}`}>
+                                        <Link href={`/${manufacturerURL}?part=1`}>
                                              <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
                                                   {manufacturerURL}
                                              </Typography>
                                         </Link>
                                    )}
                                    {mainCategory && (
-                                        <Link href={`/${mainCategory}`}>
+                                        <Link href={`/${mainCategory}?part=1`}>
                                              <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
                                                   {mainCategory}
                                              </Typography>
