@@ -24,6 +24,7 @@ const ContactForm = () => {
      const handleSubmit = async (values: IContactForm) => {
 
           const token = await executeRecaptcha("form_submit");
+          console.log('wwwwwwwwwww', token);
 
           SendContactEmail({
                email: values.email,
@@ -35,7 +36,7 @@ const ContactForm = () => {
           })
      }
 
-     const [submitEnabled, setSubmitEnabled] = useState(false)
+     const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
 
 
      const theme = useTheme();
