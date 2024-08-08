@@ -147,7 +147,7 @@ const ContactForm = () => {
                                                   <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.questionSubmissionConsent}</FormHelperText>
                                              )}
                                         </Box>
-                                        <ReCaptcha onValidate={() => setSubmitEnabled(true)} action={''} />
+                                        <ReCaptcha onValidate={() => setSubmitEnabled(true)} action={'form_submit'} />
                                         <Button type='submit' sx={{ color: Colors.secondary.custom, backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }} disabled={submitEnabled}>
                                              Pošalji poruku
                                         </Button>
