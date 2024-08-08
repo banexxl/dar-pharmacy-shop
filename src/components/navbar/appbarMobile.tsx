@@ -18,7 +18,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.4);
   }
 `
 
