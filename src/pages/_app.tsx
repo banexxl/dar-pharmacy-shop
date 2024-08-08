@@ -8,11 +8,12 @@ import { appWithTranslation } from 'next-i18next'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import { Analytics } from '@vercel/analytics/react';
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
      let persistor = persistStore(store)
+
 
      // useEffect(() => {
      //           // Initialize i18next
@@ -21,16 +22,16 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
      // }, []);
 
      return (
-          <ReCaptchaProvider reCaptchaKey={`${process.env.GOOGLE_CAPTCHA_SITE_KEY}`}>
-               <SessionProvider session={session}>
-                    <Provider store={store}>
-                         <PersistGate persistor={persistor}>
-                              <Component {...pageProps} />
-                         </PersistGate>
-                    </Provider>
-                    <Analytics />
-               </SessionProvider>
-          </ReCaptchaProvider>
+
+          <SessionProvider session={session}>
+               <Provider store={store}>
+                    <PersistGate persistor={persistor}>
+                         <Component {...pageProps} />
+                    </PersistGate>
+               </Provider>
+               <Analytics />
+          </SessionProvider>
+
      )
 }
 

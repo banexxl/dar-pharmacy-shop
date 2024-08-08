@@ -14,6 +14,10 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
                return res.status(400).send({ message: "Bad request, data missing" });
           }
 
+          if (!data.token || data.token !== process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+               return res.status(400).send({ message: "Bad request, invalid token" });
+          }
+
           const html =
                `
                               <html>

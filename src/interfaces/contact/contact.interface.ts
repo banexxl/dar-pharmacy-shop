@@ -4,6 +4,7 @@ export interface IContactForm {
      message: string,
      dataProcessConsent: boolean,
      questionSubmissionConsent: boolean
+     token: string
 }
 
 export const initialContactFormValues: IContactForm = {
@@ -11,5 +12,6 @@ export const initialContactFormValues: IContactForm = {
      email: '',
      message: '',
      dataProcessConsent: false,
-     questionSubmissionConsent: false
+     questionSubmissionConsent: false,
+     token: ''
 };
