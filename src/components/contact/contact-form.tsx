@@ -18,7 +18,7 @@ const ContactForm = () => {
           loading: () => <LoadingWheel />,
           ssr: false
      })
-
+     const { executeRecaptcha } = useReCaptcha();
 
 
      const handleSubmit = async (values: IContactForm) => {
@@ -36,7 +36,7 @@ const ContactForm = () => {
      }
 
      const [submitEnabled, setSubmitEnabled] = useState(false)
-     const { executeRecaptcha } = useReCaptcha();
+
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
