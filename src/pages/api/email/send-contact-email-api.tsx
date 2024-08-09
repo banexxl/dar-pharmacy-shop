@@ -14,12 +14,25 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
                return res.status(400).send({ message: "Bad request, data missing" });
           }
 
-          if (!data.token || data.token !== process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
-               return res.status(400).send({ message: "Bad request, invalid token" });
+          if (!data.token || data.token === "") {
+               return res.status(400).send({ message: "Bad request, NO TOKEN" });
           }
 
-          const html =
-               `
+          let captchaResponse: any;
+          try {
+               await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GOOGLE_CAPTCHA_SECRET_KEY}&response=${data.token}`, {})
+                    .then(res => res.json())
+                    .then(data => captchaResponse = data)
+                    .catch(err => console.error(err));
+          } catch (error) {
+               return res.status(400).send({ message: "Bad request, invalid token" });
+          }
+          console.log(captchaResponse);
+
+          if (captchaResponse && captchaResponse.success && captchaResponse?.score > 0.5) {
+
+               const html =
+                    `
                               <html>
                               <head>
                                         <meta charset="UTF-8">
@@ -111,17 +124,22 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
                               </html>
                               `
 
-          try {
-               await transporter.sendMail({
-                    from: process.env.EMAIL_FROM,
-                    to: 'maja@apoteka-dar.rs',
-                    subject: 'Poruka od klijenta',
-                    html
-               })
-               return res.status(200).json({ success: true });
-          } catch (err: any) {
-               return res.status(400).json({ message: err });
+               try {
+                    const response = await transporter.sendMail({
+                         from: process.env.EMAIL_FROM,
+                         to: 'maja@apoteka-dar.rs',
+                         subject: 'Poruka od klijenta',
+                         html
+                    })
+
+                    return res.status(200).json({ success: true });
+               } catch (err: any) {
+                    return res.status(400).json({ message: err });
+               }
+          } else {
+               return res.status(400).send({ message: "Bad request, invalid token" });
           }
+
 
      }
 };

@@ -113,7 +113,7 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/isporuka-i-placanje"} >
+                                        <Link href={"/informacije/isporuka-i-placanje"} >
                                              Isporuka i plaćanje
                                         </Link>
                                    </AccordionDetails>
@@ -235,7 +235,9 @@ export default function Footer() {
                                         </ListItemText>
                                         <ListItemText onClick={showLoginDialog}>
                                              <FooterItem theme={theme} lineHeight={2} >
-                                                  Isporuka i plaćanje
+                                                  <Link href={"/informacije/isporuka-i-placanje"} >
+                                                       Isporuka i plaćanje
+                                                  </Link>
                                              </FooterItem>
                                         </ListItemText>
                                         <ListItemText>

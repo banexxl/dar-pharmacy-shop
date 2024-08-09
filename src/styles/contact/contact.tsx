@@ -72,7 +72,20 @@ export const ContactFormBox = styled(Box)(({ theme }) => ({
 
 export const ContactTitle = styled(Typography)(({ theme }: any) => ({
      color: Colors.primary.main,
+     fontSize: '2rem',
+     fontWeight: 'bolder',
+     marginBottom: '20px',
+}));
+
+
+export const ContactSubTitle = styled(Typography)(({ theme }: any) => ({
+     display: 'flex',
+     justifyContent: 'flex-start',
+     marginLeft: '10px',
+     color: Colors.primary.main,
      fontSize: '1.5rem',
+     marginBottom: '20px',
+     fontWeight: 'bolder',
 }));
 
 type ContactTextProps = {
@@ -81,15 +94,19 @@ type ContactTextProps = {
 
 export const ContactText = styled(Typography)<ContactTextProps>(({ theme }) => ({
      color: Colors.primary.main,
-     textAlign: 'center',
+     textAlign: 'justify',
      alignItems: 'center',
-
+     marginLeft: '10px',
+     marginBottom: '20px',
 }));
 
-export const ContactStrongText = styled(Typography)(({ theme }: any) => ({
+export const ContactStrongText = styled(Typography)<ContactTextProps>(({ theme }) => ({
      fontStyle: 'italic',
      fontWeight: 'bolder',
-     color: Colors.primary.main
+     color: Colors.primary.main,
+     display: 'inline',
+     textAlign: 'justify',
+     marginBottom: '20px',
 }));
 
 // export const ContactButton = styled(Button)(({ theme }: any) => ({
