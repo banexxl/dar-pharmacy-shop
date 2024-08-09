@@ -22,16 +22,16 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
      // }, []);
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               <SessionProvider session={session}>
-                    <Provider store={store}>
-                         <PersistGate persistor={persistor}>
-                              <Component {...pageProps} />
-                         </PersistGate>
-                    </Provider>
-                    <Analytics />
-               </SessionProvider>
-          </ReCaptchaProvider>
+
+          <SessionProvider session={session}>
+               <Provider store={store}>
+                    <PersistGate persistor={persistor}>
+                         <Component {...pageProps} />
+                    </PersistGate>
+               </Provider>
+               <Analytics />
+          </SessionProvider>
+
      )
 }
 
