@@ -92,7 +92,7 @@ type ContactTextProps = {
      theme: Theme;
 }
 
-export const ContactText = styled(Typography)<ContactTextProps>(({ theme }) => ({
+export const ContactText = styled(Typography)<ContactTextProps>(({ theme, sx }) => ({
      color: Colors.primary.main,
      textAlign: 'justify',
      alignItems: 'center',
@@ -100,7 +100,7 @@ export const ContactText = styled(Typography)<ContactTextProps>(({ theme }) => (
      marginBottom: '20px',
 }));
 
-export const ContactStrongText = styled(Typography)<ContactTextProps>(({ theme }) => ({
+export const ContactStrongText = styled(Typography)<ContactTextProps>(({ theme, sx }) => ({
      fontStyle: 'italic',
      fontWeight: 'bolder',
      color: Colors.primary.main,

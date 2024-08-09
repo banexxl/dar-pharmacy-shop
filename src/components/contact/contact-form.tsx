@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { IContactForm, initialContactFormValues } from '@/interfaces/contact/contact.interface';
 import { contactFormSchema } from '@/schemas/contact-form';
-import { ContactText, ContactTitle } from '@/styles/contact/contact';
+import { ContactStrongText, ContactText, ContactTitle } from '@/styles/contact/contact';
 import { SendContactEmail } from '@/services/email/send-email';
 import Link from 'next/link';
 import { ReCaptcha, ReCaptchaProvider, useReCaptcha } from "next-recaptcha-v3";
@@ -66,7 +66,7 @@ const ContactForm = () => {
                                    </ContactTitle>
 
                                    <ContactText theme={theme}>
-                                        Ako ste u potrazi za <Typography fontWeight={'bold'} color={Colors.primary.main}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br /><br />
+                                        Ako ste u potrazi za <ContactStrongText theme={theme} >deficitarnim</ContactStrongText> lekovima, možemo vam pomoći.<br />
                                         Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                         Slobodno nas kontaktirajte!
                                    </ContactText>
