@@ -50,18 +50,18 @@ const ContactPage = (props: ContactPageProps) => {
                                              O nama
                                         </ContactTitle>
                                         <Box sx={{ width: '400px', textAlign: 'center' }}>
-                                             <ContactStrongText>
+                                             <ContactStrongText theme={theme}>
                                                   Naš moto: Radosno srce-pola Zdravlja!
                                              </ContactStrongText>
-                                             <ContactStrongText>
+                                             <ContactStrongText theme={theme}>
                                                   Kućna dostava Lekova ,Utorkom i Subotom,Kragujevac i Okolina.
                                              </ContactStrongText>
-                                             <ContactStrongText>
+                                             <ContactStrongText theme={theme}>
                                                   Radno Vreme :
                                                   Radni dani: od 08 do 22h
                                                   Nedelja: od 08 do 20h
-                                             </ContactStrongText>
-                                             <ContactStrongText>
+                                             </ContactStrongText >
+                                             <ContactStrongText theme={theme}>
                                                   Kralja Aleksnadra Prvog Kardjordjevica 102 lokal9,u sklopu Tc Prostor., Kragujevac 34000
                                              </ContactStrongText>
                                         </Box>
