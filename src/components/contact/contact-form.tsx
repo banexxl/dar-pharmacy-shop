@@ -1,8 +1,7 @@
 import theme, { Colors } from '@/styles/theme';
 import { Box, Button, Checkbox, FormControlLabel, FormHelperText, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Form, Formik, useFormikContext } from 'formik';
+import { Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { IContactForm, initialContactFormValues } from '@/interfaces/contact/contact.interface';
@@ -10,7 +9,7 @@ import { contactFormSchema } from '@/schemas/contact-form';
 import { ContactStrongText, ContactText, ContactTitle } from '@/styles/contact/contact';
 import { SendContactEmail } from '@/services/email/send-email';
 import Link from 'next/link';
-import { ReCaptcha, ReCaptchaProvider, useReCaptcha } from "next-recaptcha-v3";
+import { ReCaptcha, useReCaptcha } from "next-recaptcha-v3";
 
 const ContactForm = () => {
 
@@ -28,7 +27,6 @@ const ContactForm = () => {
      useEffect(() => {
           if (loaded) {
                const generateToken = async () => {
-                    console.log("Generating token");
                     const newToken = await executeRecaptcha("form_submit");
                     setToken(newToken);
                };
@@ -166,7 +164,6 @@ const ContactForm = () => {
                          )
                     }
                </Formik>
-               {/* </ReCaptchaProvider> */}
           </DynamicThemeProvider >
      );
 };

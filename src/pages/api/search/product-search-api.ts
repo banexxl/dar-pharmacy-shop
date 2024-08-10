@@ -17,8 +17,6 @@ const ProductSearchApi = async (request: NextApiRequest, response: NextApiRespon
                return response.status(500).json({ error: 'Internal server error!' });
           }
      } else {
-          console.log(response);
-
           return response.status(405).json({ error: 'Method not allowed!' });
      }
 };

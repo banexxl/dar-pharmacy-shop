@@ -242,7 +242,6 @@ const productsServices = () => {
                     .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                     .limit(10)
                     .toArray()
-               console.log('products', products);
 
                return products
           } catch (error: any) {

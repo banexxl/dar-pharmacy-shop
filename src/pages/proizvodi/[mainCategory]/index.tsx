@@ -59,7 +59,6 @@ export default function MainCategoryPage(props: any) {
 }
 
 export async function getServerSideProps({ query }: any) {
-     console.log('query', query);
 
      const loadedParts = parseInt(query?.part as string) || 1
 

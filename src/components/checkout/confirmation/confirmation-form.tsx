@@ -6,7 +6,7 @@ import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledT
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
 import { Button, Paper, Table, TableBody, Typography } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IConfirmationProps } from '@/interfaces/checkout/confirmation.interface'
 import { useTranslation } from 'next-i18next'
@@ -15,6 +15,7 @@ import { clearPaymentOptionsForm } from '@/store/checkout/payment-options-form.s
 import { clearUserForm } from '@/store/checkout/user-info-form.slice'
 import Link from 'next/link'
 import theme, { Colors } from '@/styles/theme'
+import { ReCaptcha, useReCaptcha } from 'next-recaptcha-v3'
 
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
@@ -23,6 +24,20 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
      const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
      const dispatch = useDispatch()
+
+     const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
+     const { executeRecaptcha, loaded } = useReCaptcha();
+     const [token, setToken] = useState<string>('');
+
+     useEffect(() => {
+          if (loaded) {
+               const generateToken = async () => {
+                    const newToken = await executeRecaptcha("form_submit");
+                    setToken(newToken);
+               };
+               generateToken();
+          }
+     }, [loaded, executeRecaptcha]);
 
      const handleBack = () => {
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
@@ -61,7 +76,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                </CheckoutNextPrevButton>
 
                <Button
-                    disabled={totalItemPrice === 0}
+                    disabled={totalItemPrice === 0 || !submitEnabled}
                     onClick={() => {
                          SendCheckoutConfirmationEmailToAdmin({
                               email: 'maja@apoteka-dar.rs', subject: 'Poružbenica',
@@ -85,6 +100,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          Poruči
                     </Link>
                </Button>
+               <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
           </CartWrapper>
      )
 }

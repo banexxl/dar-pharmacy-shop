@@ -34,7 +34,9 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                          Nazad u apoteku
                     </Link>
                </Button>
-               <Button>
+               <Button
+                    disabled={parseFloat(totalItemPrice) === 0}
+               >
                     <Link href='/placanje'>
                          KREIRAJ PORUDŽBENICU
                     </Link>
