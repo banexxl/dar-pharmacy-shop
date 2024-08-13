@@ -223,7 +223,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/proizvodi/ulje-za-masazu?part=1'}>
+                              <Link href={'/proizvodi/ulja-za-masazu?part=1'}>
                                    Ulja za masažu
                               </Link>
                          </StyledNestedTypography>
