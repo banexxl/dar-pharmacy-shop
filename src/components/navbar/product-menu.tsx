@@ -118,7 +118,7 @@ export const ProductsMenu = () => {
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/hederavita/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/hedera-vita/prirodna-kozmetika?part=1'}>
                                         Hederavita
                                    </Link>
                               </StyledNestedTypography>
