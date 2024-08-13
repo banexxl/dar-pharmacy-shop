@@ -68,6 +68,13 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
+                              <Link href={'/gloria/prirodna-kozmetika?part=1'}>
+                                   <StyledNestedTypography >
+                                        Gloria
+                                   </StyledNestedTypography>
+                              </Link>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
                               <Link href={'/fitaky/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Fitaky

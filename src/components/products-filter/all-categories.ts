@@ -32,6 +32,11 @@ export const AccordionPanels = [
                               // ],
                          },
                          {
+                              id: 'prirodna-kozmetika-gloria',
+                              title: 'Gloria',
+                              link: '/gloria/prirodna-kozmetika',
+                         },
+                         {
                               id: 'prirodna-kozmetika-majana',
                               title: 'Majana',
                               link: '/majana/prirodna-kozmetika',
