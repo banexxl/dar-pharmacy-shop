@@ -202,6 +202,13 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
+                              <Link href={'/proizvodi/guscija-mast'}>
+                                   Guščija mast
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
                               <Link href={'/proizvodi/ulje-za-masazu?part=1'}>
                                    Ulja za masažu
                               </Link>

@@ -1367,6 +1367,11 @@ export const AccordionPanels = [
                     title: 'Mast od jazavca'
                },
                {
+                    id: 'guscija-mast',
+                    link: '/proizvodi/guscija-mast/',
+                    title: 'Gusčija mast'
+               },
+               {
                     id: 'ulja-za-masazu',
                     link: '/proizvodi/ulja-za-masazu/',
                     title: 'Ulja za masažu'
