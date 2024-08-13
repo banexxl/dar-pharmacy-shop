@@ -75,6 +75,13 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
+                              <Link href={'/weleda/prirodna-kozmetika?part=1'}>
+                                   <StyledNestedTypography >
+                                        Weleda
+                                   </StyledNestedTypography>
+                              </Link>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
                                    <Link href={'/majana/prirodna-kozmetika?part=1'}>
                                         Majana
@@ -143,6 +150,13 @@ export const ProductsMenu = () => {
                               <StyledNestedTypography >
                                    <Link href={'/gamarde/bebi-prirodna-kozmetika?part=1'}>
                                         Gamarde
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/weleda/bebi-prirodna-kozmetika?part=1'}>
+                                        Weleda
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>

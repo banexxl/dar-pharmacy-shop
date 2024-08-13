@@ -122,6 +122,11 @@ export const AccordionPanels = [
                               link: '/fitaky/prirodna-kozmetika',
                               title: 'Fitaky'
                          },
+                         {
+                              id: 'prirodna-kozmetika-weleda',
+                              link: '/weleda/prirodna-kozmetika',
+                              title: 'Weleda'
+                         },
                          // {
                          //      id: 'zao-make-up',
                          //      link: '/zao-make-up/prirodna-kozmetika/',
@@ -870,7 +875,11 @@ export const AccordionPanels = [
                               title: 'Gamarde',
                               link: '/gamarde/bebi-prirodna-kozmetika',
                          },
-
+                         {
+                              id: 'bebi-prirodna-kozmetika-weleda',
+                              title: 'Weleda',
+                              link: '/weleda/bebi-prirodna-kozmetika'
+                         },
                          // {
                          //      id: 'bebi-apoteka',
                          //      title: 'Bebi apoteka',
