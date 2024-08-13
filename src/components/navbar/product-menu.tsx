@@ -230,7 +230,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/suplemania/suplemania?part=1'}>
+                              <Link href={'/proizvodi/suplemania?part=1'}>
                                    Suplemania
                               </Link>
                          </StyledNestedTypography>

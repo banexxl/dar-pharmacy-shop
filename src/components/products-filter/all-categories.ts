@@ -1388,7 +1388,7 @@ export const AccordionPanels = [
                },
                {
                     id: 'suplemania',
-                    link: '/suplemania/suplemania/',
+                    link: '/proizvodi/suplemania/',
                     title: 'Suplemania'
                },
                {
