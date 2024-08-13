@@ -230,6 +230,13 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
+                              <Link href={'/suplemania/suplemania?part=1'}>
+                                   Suplemania
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
                               <Link href={'/zao-prirodna-sminka/prirodna-kozmetika/?part=1'}>
                                    Zao prirodna šminka
                               </Link>

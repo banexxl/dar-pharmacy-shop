@@ -1387,6 +1387,11 @@ export const AccordionPanels = [
                     title: 'Todoxin'
                },
                {
+                    id: 'suplemania',
+                    link: '/suplemania/suplemania/',
+                    title: 'Suplemania'
+               },
+               {
                     id: 'zao-prirodna-kozmetika',
                     link: '/proizvodi/zao-prirodna-kozmetika/',
                     title: 'Zao prirodna kozmetika'
