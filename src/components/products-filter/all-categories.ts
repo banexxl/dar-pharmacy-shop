@@ -1285,16 +1285,6 @@ export const AccordionPanels = [
                     ]
                },
                {
-                    title: 'Prirodni imunitet',
-                    link: '/proizvodi/prirodni-imunitet',
-                    id: 'prirodni-imunitet'
-               },
-               {
-                    title: 'OKP Paket za čišćenje',
-                    link: '/proizvodi/okp-paket-za-ciscenje',
-                    id: 'okp-paket-za-ciscenje'
-               },
-               {
                     id: 'biljne-tinkture',
                     link: '/proizvodi/biljne-tinkture/',
                     title: 'Biljne tinkture',
@@ -1310,6 +1300,23 @@ export const AccordionPanels = [
                               link: '/priroda-na-dar/biljne-tinkture/',
                          }
                     ]
+               },
+               {
+                    id: 'ciscenje-organizma',
+                    link: '/proizvodi/ciscenje-organizma/',
+                    title: 'Čišćenje organizma',
+                    children: [
+                         {
+                              id: 'okp',
+                              title: 'OKP paket za čišćenje organizma',
+                              link: '/okp/ciscenje-organizma/',
+                         }
+                    ]
+               },
+               {
+                    title: 'Prirodni imunitet',
+                    link: '/proizvodi/prirodni-imunitet',
+                    id: 'prirodni-imunitet'
                },
                // {
                //      id: 'ortopedija-i-pomagala',

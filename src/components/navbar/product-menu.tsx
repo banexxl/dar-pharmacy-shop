@@ -184,6 +184,22 @@ export const ProductsMenu = () => {
                               </StyledNestedTypography>
                          </StyledMenuItem>
                     </NestedMenuItem>
+                    <NestedMenuItem label='Čišćenje organizma' parentMenuOpen={open}>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/okp/ciscenje-organizma?part=1'}>
+                                        OKP paket za čišćenje organizma
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/priroda-na-dar/biljne-tinkture?part=1'}>
+                                        Priroda na dar
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
+                    </NestedMenuItem>
                     {/* <NestedMenuItem label='Ruska Apoteka' parentMenuOpen={open}> */}
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
@@ -197,13 +213,6 @@ export const ProductsMenu = () => {
                          <StyledNestedTypography >
                               <Link href={'/proizvodi/prirodni-imunitet?part=1'}>
                                    Prirodni imunitet
-                              </Link>
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography >
-                              <Link href={'/proizvodi/okp-paket-za-ciscenje?part=1'}>
-                                   OKP paket za čišćenje
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
