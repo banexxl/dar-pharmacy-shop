@@ -176,6 +176,13 @@ export const ProductsMenu = () => {
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/priroda-na-dar/biljne-tinkture?part=1'}>
+                                        Priroda na dar
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
                     </NestedMenuItem>
                     {/* <NestedMenuItem label='Ruska Apoteka' parentMenuOpen={open}> */}
                     <StyledMenuItem onClick={handleClose}>

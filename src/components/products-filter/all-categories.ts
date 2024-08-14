@@ -1303,6 +1303,11 @@ export const AccordionPanels = [
                               id: 'fantastik-fungi',
                               title: 'Fantastik Fungi',
                               link: '/fantastik-fungi/biljne-tinkture/',
+                         },
+                         {
+                              id: 'priroda-na-dar',
+                              title: 'Priroda na dar',
+                              link: '/priroda-na-dar/biljne-tinkture/',
                          }
                     ]
                },
