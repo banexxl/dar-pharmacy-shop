@@ -1420,6 +1420,11 @@ export const AccordionPanels = [
                     link: '/proizvodi/zao-prirodna-kozmetika/',
                     title: 'Zao prirodna kozmetika'
                },
+               {
+                    id: 'proizvodi-za-zene',
+                    link: '/proizvodi/proizvodi-za-zene/',
+                    title: 'Proizvodi za žene'
+               },
           ]
      },
 ]
