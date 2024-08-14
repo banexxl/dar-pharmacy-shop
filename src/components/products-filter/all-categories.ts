@@ -1285,6 +1285,16 @@ export const AccordionPanels = [
                     ]
                },
                {
+                    title: 'Prirodni imunitet',
+                    link: '/proizvodi/prirodni-imunitet',
+                    id: 'prirodni-imunitet'
+               },
+               {
+                    title: 'OKP Paket za čišćenje',
+                    link: '/proizvodi/okp-paket-za-ciscenje',
+                    id: 'okp-paket-za-ciscenje'
+               },
+               {
                     id: 'biljne-tinkture',
                     link: '/proizvodi/biljne-tinkture/',
                     title: 'Biljne tinkture',
@@ -1350,11 +1360,11 @@ export const AccordionPanels = [
                //           }
                //      ]
                // },
-               // {
-               //      id: 'ruska-apoteka',
-               //      link: '/proizvodi/ruska-apoteka/',
-               //      title: 'Ruska Apoteka'
-               // },
+               {
+                    id: 'ruska-apoteka',
+                    link: '/proizvodi/ruska-apoteka/',
+                    title: 'Ruska Apoteka'
+               },
                {
                     id: 'kolagen',
                     link: '/proizvodi/kolagen/',
