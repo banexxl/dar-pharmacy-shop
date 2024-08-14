@@ -298,6 +298,13 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
+                    <StyledMenuItem onClick={handleClose}>
+                         <StyledNestedTypography >
+                              <Link href={'/proizvodi/homeopatija?part=1'}>
+                                   Homeopatija
+                              </Link>
+                         </StyledNestedTypography>
+                    </StyledMenuItem>
                </StyledProductMenu>
           </Box >
      );

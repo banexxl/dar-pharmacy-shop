@@ -1430,6 +1430,11 @@ export const AccordionPanels = [
                     link: '/proizvodi/proizvodi-za-zene/',
                     title: 'Proizvodi za žene'
                },
+               {
+                    id: 'homeopatija',
+                    link: '/proizvodi/homeopatija/',
+                    title: 'Homeopatija'
+               },
           ]
      },
 ]
