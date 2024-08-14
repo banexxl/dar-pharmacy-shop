@@ -131,13 +131,18 @@ function ProductDetails(product: IProduct) {
                     </Box>
                </ProductDetailInfoWrapper>
                {addedToCartAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', marginTop: '500px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
+                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
                          Dodato u korpu
                     </Alert>
                )}
                {addedToWishlistAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', marginTop: '500px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
+                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
                          Dodato u listu želja
+                    </Alert>
+               )}
+               {removedFromWishlistAlert && (
+                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                         Uklonjeno iz liste želja
                     </Alert>
                )}
                <CartDialog />
