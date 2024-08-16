@@ -137,6 +137,13 @@ export const ProductsMenu = () => {
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <Link href={'/phyto/prirodna-kozmetika?part=1'}>
+                                   <StyledNestedTypography >
+                                        Phyto
+                                   </StyledNestedTypography>
+                              </Link>
+                         </StyledMenuItem>
                     </NestedMenuItem>
                     <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>

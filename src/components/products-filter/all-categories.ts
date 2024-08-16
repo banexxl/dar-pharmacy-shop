@@ -132,6 +132,11 @@ export const AccordionPanels = [
                               link: '/weleda/prirodna-kozmetika',
                               title: 'Weleda'
                          },
+                         {
+                              id: 'prirodna-kozmetika-phyto',
+                              title: 'Phyto',
+                              link: '/phyto/prirodna-kozmetika',
+                         },
                          // {
                          //      id: 'zao-make-up',
                          //      link: '/zao-make-up/prirodna-kozmetika/',
