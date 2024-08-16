@@ -190,6 +190,13 @@ export const ProductsMenu = () => {
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
+                         <StyledMenuItem onClick={handleClose}>
+                              <StyledNestedTypography >
+                                   <Link href={'/bioteo/biljne-tinkture?part=1'}>
+                                        Bioteo
+                                   </Link>
+                              </StyledNestedTypography>
+                         </StyledMenuItem>
                     </NestedMenuItem>
                     <NestedMenuItem label='Čišćenje organizma' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>

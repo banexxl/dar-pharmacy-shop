@@ -1303,6 +1303,11 @@ export const AccordionPanels = [
                               id: 'priroda-na-dar',
                               title: 'Priroda na dar',
                               link: '/priroda-na-dar/biljne-tinkture/',
+                         },
+                         {
+                              id: 'bioteo',
+                              title: 'Bioteo',
+                              link: '/bioteo/biljne-tinkture/',
                          }
                     ]
                },
