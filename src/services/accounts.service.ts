@@ -94,7 +94,8 @@ export const AccountService = () => {
                          html
                     };
 
-                    await transporter.sendMail(mailOptions)
+                    const registerUserEmailSendResponse = await transporter.sendMail(mailOptions)
+                    console.log('registerUserEmailSendResponse', registerUserEmailSendResponse);
 
                     return { message: 'Email successfully registered and confirmation sent!', status: 200 };
                } else {
