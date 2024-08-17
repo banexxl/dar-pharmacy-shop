@@ -110,13 +110,13 @@ export default function LoginRegister({ open, onClose }: any) {
                                                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
                                                        <PersonIcon />
                                                        <Typography>
-                                                            {session.user?.name}
+                                                            {userData?.name}
                                                        </Typography>
                                                   </Box>
                                                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
                                                        <AlternateEmailIcon fontSize="small" />
                                                        <Typography>
-                                                            {session.user?.email}
+                                                            {userData?.email}
                                                        </Typography>
                                                   </Box>
                                                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
