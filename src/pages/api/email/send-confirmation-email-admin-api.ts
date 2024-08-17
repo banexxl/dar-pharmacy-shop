@@ -39,7 +39,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                             background-color: #f7e5e5;
                                                             border-radius: 15px;
                                                             width: 380px;
-			                              margin: 5px;
+			                                             margin: 5px;
                                                             align-items: center;
                                                   }
 
@@ -96,7 +96,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                               </head>
                               <body>
                                         <div class="container">
-                                                  <h1>Nova porudzbenica od korisnika  ${data.name + " " + data.surname}!</h1>
+                                                  <h1>Nova porudzbenica od korisnika  ${data.name}!</h1>
                                                   <p>Korisnik je poručio sledeće proizvode:</p>
                                                  <ul>
                                                   ${data.cart.map((cartItem: ICartItem) => `<li>` + cartItem._id.toString().slice(-8).toUpperCase()

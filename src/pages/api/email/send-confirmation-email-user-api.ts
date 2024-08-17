@@ -15,8 +15,6 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                return res.status(400).send({ message: "Bad request, data missing" });
           }
 
-          const products = data.cart.map((cartItem: ICartItem) => cartItem.name + " " + cartItem.quantity + " " + "*" + cartItem.count)
-
           const html =
                `
                               <html>
@@ -35,11 +33,6 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                             margin: 0 auto;
                                                             gap: 20px;
                                                             overflow-wrap: break-word;
-                                                  }
-
-                                                
-			                              margin: 5px;
-                                                            align-items: center;
                                                   }
 
                                                   .list-item {
@@ -85,6 +78,7 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                             width: 380px;
                                                             margin-right: 5px;
                                                   }
+                                                            
                                                   h1 {
                                                             text-align: center;
                                                             width: 380px;
