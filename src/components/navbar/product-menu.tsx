@@ -145,35 +145,46 @@ export const ProductsMenu = () => {
                               </Link>
                          </StyledMenuItem>
                     </NestedMenuItem>
-                    <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography >
-                                   <Link href={'/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika?part=1'}>
-                                        Fitaky
-                                   </Link>
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography >
-                                   <Link href={'/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika?part=1'}>
-                                        Azeta bio
-                                   </Link>
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography >
-                                   <Link href={'/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika?part=1'}>
-                                        Gamarde
-                                   </Link>
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography >
-                                   <Link href={'/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika?part=1'}>
-                                        Weleda
-                                   </Link>
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
+                    <NestedMenuItem label='Sve za bebe' parentMenuOpen={open}>
+                         <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika?part=1'}>
+                                             Fitaky
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika?part=1'}>
+                                             Azeta bio
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika?part=1'}>
+                                             Gamarde
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika?part=1'}>
+                                             Weleda
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
+                         <NestedMenuItem label='Bebi pelene' parentMenuOpen={open}>
+                              <StyledMenuItem onClick={handleClose}>
+                                   <StyledNestedTypography >
+                                        <Link href={'/proizvodi-proizvodjac-kategorija/eco-boom/bebi-pelene?part=1'}>
+                                             Eco Boom
+                                        </Link>
+                                   </StyledNestedTypography>
+                              </StyledMenuItem>
+                         </NestedMenuItem>
                     </NestedMenuItem>
                     <NestedMenuItem label='Biljne Tinkture' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>

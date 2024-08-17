@@ -1,3 +1,5 @@
+import { link } from "fs";
+
 export const AccordionPanels = [
      {
           id: 'svi-/proizvodi',
@@ -72,31 +74,53 @@ export const AccordionPanels = [
                     ]
                },
                {
-                    id: 'bebi-prirodna-kozmetika',
-                    link: '/proizvodi/bebi-prirodna-kozmetika',
-                    title: 'Bebi prirodna kozmetika',
+
+                    id: 'sve-za-bebe',
+                    title: 'Sve za bebe',
+                    link: '/proizvodi/sve-za-bebe',
                     children: [
                          {
-                              id: 'bebi-prirodna-kozmetika-fitaky',
-                              title: 'Fitaky',
-                              link: '/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika',
+                              id: 'bebi-prirodna-kozmetika',
+                              link: '/proizvodi/bebi-prirodna-kozmetika',
+                              title: 'Bebi prirodna kozmetika',
+                              children: [
+                                   {
+                                        id: 'bebi-prirodna-kozmetika-fitaky',
+                                        title: 'Fitaky',
+                                        link: '/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika',
+                                   },
+                                   {
+                                        id: 'bebi-prirodna-kozmetika-azeta-bio',
+                                        title: 'Azeta bio',
+                                        link: '/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika',
+                                   },
+                                   {
+                                        id: 'bebi-prirodna-kozmetika-gamarde',
+                                        title: 'Gamarde',
+                                        link: '/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika',
+                                   },
+                                   {
+                                        id: 'bebi-prirodna-kozmetika-weleda',
+                                        title: 'Weleda',
+                                        link: '/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika'
+                                   },
+                              ]
                          },
                          {
-                              id: 'bebi-prirodna-kozmetika-azeta-bio',
-                              title: 'Azeta bio',
-                              link: '/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika',
-                         },
-                         {
-                              id: 'bebi-prirodna-kozmetika-gamarde',
-                              title: 'Gamarde',
-                              link: '/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika',
-                         },
-                         {
-                              id: 'bebi-prirodna-kozmetika-weleda',
-                              title: 'Weleda',
-                              link: '/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika'
-                         },
+                              id: 'bebi-pelene',
+                              title: 'Bebi pelene',
+                              link: '/proizvodi/bebi-pelene',
+                              children: [
+                                   {
+                                        id: 'bebi-pelene-eco-boom',
+                                        title: 'Eco Boom',
+                                        link: '/proizvodi-proizvodjac-kategorija/eco-boom/bebi-pelene',
+                                   }
+                              ]
+                         }
                     ]
+
+
                },
                {
                     id: 'biljne-tinkture',

@@ -25,10 +25,10 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                  .container {
                                                             font-family: monospace, sans-serif;
                                                             display: grid;
-                                                            background-color: ${Colors.primary.lighter};
+                                                            background-color: red;
                                                             border-radius: 15px;
                                                             padding: 20px;
-                                                            height: auto,
+                                                            height: auto;
                                                             width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
@@ -76,7 +76,7 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                   .button:hover {
                                                             background-color: ${Colors.dove_gray};
                                                   }
-                                                            
+
                                                   .message{
                                                             text-align: center;
                                                             width: 380px;
@@ -105,7 +105,6 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                                                 <br><strong>DAR apoteka tim</strong>
                                                                       </p>
                                                             <table class="list">
-
                                                                       <tr class="list-item">
                                                                                 <strong>Vaši proizvodi u korpi, koji će uskoro biti na putu ka vama, su:</strong>
                                                                       </tr>

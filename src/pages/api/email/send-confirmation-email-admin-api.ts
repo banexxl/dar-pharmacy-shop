@@ -28,7 +28,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                             background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
                                                             padding: 20px;
-                                                            height: auto,
+                                                            height: auto;
                                                             width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
@@ -76,7 +76,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                   .button:hover {
                                                             background-color: ${Colors.dove_gray};
                                                   }
-                                                            
+
                                                   .message{
                                                             text-align: center;
                                                             width: 380px;
