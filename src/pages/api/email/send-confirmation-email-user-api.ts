@@ -29,16 +29,15 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                             display: grid;
                                                             background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
+                                                             padding: 20px;
+                                                            height: auto,
                                                             width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
                                                             overflow-wrap: break-word;
                                                   }
 
-                                                 .list {
-                                                            background-color: #f7e5e5;
-                                                            border-radius: 15px;
-                                                            width: 380px;
+                                                
 			                              margin: 5px;
                                                             align-items: center;
                                                   }
@@ -104,7 +103,7 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                                                 <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em> <br>
                                                                                 <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje 
                                                                                 proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
-                                                                                <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku</strong> 
+                                                                                <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku.</strong> 
                                                                                 <br>Radujemo se što ćemo vam i u budućnosti služiti. <br>
                                                                                 <br>Srdačni pozdravi,
                                                                                 <br><strong>DAR apoteka tim</strong>
@@ -112,19 +111,18 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                             <table class="list">
 
                                                                       <tr class="list-item">
-                                                                                <strong>Vaši proizvodi u korpi su:</strong>
+                                                                                <strong>Vaši proizvodi u korpi, koji će uskoro biti na putu ka vama, su:</strong>
                                                                       </tr>
-
-                                                                      
-                                                                                <ul>
+                                                             <ul>
                                                                       ${data.cart.map((cartItem: ICartItem) =>
                     `<li>`
                     + cartItem._id.toString().slice(-8).toUpperCase()
                     + " " + cartItem.name
                     + " " + cartItem.quantity + " "
                     + "*" + " " + cartItem.count
-                    + " " + `</li>`).join('')}
-                                                  </ul>
+                    + " " +
+                    `</li>`).join('')}
+                                                            </ul>
                                                                     
 
                                                             </table>

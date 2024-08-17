@@ -27,6 +27,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                             display: grid;
                                                             background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
+                                                            padding: 20px;
                                                             height: auto,
                                                             width: 400px;
                                                             margin: 0 auto;

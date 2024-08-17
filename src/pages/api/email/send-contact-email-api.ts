@@ -42,6 +42,7 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
                                                             display: grid;
                                                             background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
+                                                             padding: 20px;
                                                             width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
