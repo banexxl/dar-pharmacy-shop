@@ -12,7 +12,7 @@ export const generateVerificationToken = async (email: string) => {
           const existingToken = await getVerificationTokenByEmail(email);
 
           const client = await accountsDBPromise;
-          const db = client.db();
+          const db = client.db('ACCOUNTS_DB');
           const collection = db.collection("verification_tokens");
 
           if (existingToken) {

@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export const getVerificationTokenByEmail = async (email: string) => {
      try {
           const client = await accountsDBPromise;
-          const db = client.db();
+          const db = client.db('ACCOUNTS_DB');
           const verificationToken = await db.collection("verification_tokens").findOne({ email: email });
 
           return verificationToken;
@@ -16,7 +16,7 @@ export const getVerificationTokenByEmail = async (email: string) => {
 export const getVerificationTokenByToken = async (token: string) => {
      try {
           const client = await accountsDBPromise;
-          const db = client.db();
+          const db = client.db('ACCOUNTS_DB');
           const verificationToken = await db.collection("verification_tokens").findOne({ token: token });
 
           return verificationToken;
