@@ -61,9 +61,9 @@ const EmailAndCheckbox = ({ formik, session }: EmailAndCheckboxProps) => {
      return (
           <>
                <Grid item xs={12} sm={6}>
-                    {/* <Typography>
+                    <Typography>
                          {JSON.stringify(formik.errors)}
-                    </Typography> */}
+                    </Typography>
                     <TextField
                          value={session.data ? session.data.user.email : formik.values.email}
                          disabled={session.data ? true : false}
