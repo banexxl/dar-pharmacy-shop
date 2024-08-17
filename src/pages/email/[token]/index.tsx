@@ -1,9 +1,9 @@
-import { Box, Card, Container, Stack } from "@mui/material";
+import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import LoadingWheel from "@/components/loading/loading";
 import theme from "@/styles/theme";
 import Head from "next/head";
-import { ContactBox, ContactInfoBox, ContactTitle } from "@/styles/contact/contact";
+import { ContactBox, ContactInfoBox, ContactText, ContactTitle } from "@/styles/contact/contact";
 import { UIProvider } from "@/context/ui/ui.context";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
@@ -46,15 +46,28 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                     <Stack>
                          <UIProvider>
                               <ContactBox theme={theme}>
-                                   <ContactInfoBox theme={theme}>
-                                        <ContactTitle>
-                                             Ako želite, možete da se prijavite ovde. Ako ne, nastavite slobodno sa korišćenjem aplikacije.
-                                        </ContactTitle>
+                                   <ContactInfoBox theme={theme} >
+                                        {
+                                             success &&
+                                             <ContactText theme={theme} sx={{ display: 'inline-block' }}>
+                                                  Ako želite, možete da se prijavite
+                                                  <Typography variant="h6" sx={{ textAlign: 'justify' }}>Ovde.</Typography>
+                                             </ContactText>
+                                        }
+                                        {
+                                             error &&
+                                             <ContactText theme={theme} sx={{ display: 'inline-block' }}>
+                                                  {error}
+                                             </ContactText>
+                                        }
+                                        {
+                                             !success && !error &&
+                                             <Card sx={{ padding: '20px', borderRadius: '20px', background: '#f0f0f0' }}>
+                                                  <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bolder' }}>Verifikacija nije uspela, probajte ponovo.</Typography>
+                                             </Card>
+                                        }
                                    </ContactInfoBox>
                               </ContactBox>
-                              {success && <p>{success}</p>}
-                              {error && <p>{error}</p>}
-                              {!success && !error && <p>Loading</p>}
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>

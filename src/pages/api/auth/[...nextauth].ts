@@ -174,7 +174,9 @@ export const authOptions: NextAuthOptions = {
                          // Check if the email object and user object are defined
                          if (user?.email) {
                               const userFromDB = await AccountService().getUserByEmail(user.email);
-                              return userFromDB ? true : false;
+                              console.log("userFromDB", userFromDB.emailVerified);
+
+                              return userFromDB.emailVerified ? true : false;
                          } else {
                               console.log("Email sign-in attempt without verification or missing email:", email);
 
