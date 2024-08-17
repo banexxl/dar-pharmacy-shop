@@ -27,7 +27,6 @@ const ContactEmailHandler = async (req: NextApiRequest, res: NextApiResponse) =>
           } catch (error) {
                return res.status(400).send({ message: "Bad request, invalid token" });
           }
-          console.log(captchaResponse);
 
           if (captchaResponse && captchaResponse.success && captchaResponse?.score > 0.5) {
 

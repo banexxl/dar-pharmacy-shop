@@ -61,28 +61,28 @@ export const ProductsMenu = () => {
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <NestedMenuItem label='Prirodna kozmetika' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link href={'/gana-kozmetika/prirodna-kozmetika?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/gana-kozmetika/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Gana kozmetika
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link href={'/gloria/prirodna-kozmetika?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/gloria/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Gloria
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link href={'/fitaky/prirodna-kozmetika?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/fitaky/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Fitaky
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link href={'/weleda/prirodna-kozmetika?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/weleda/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Weleda
                                    </StyledNestedTypography>
@@ -90,55 +90,55 @@ export const ProductsMenu = () => {
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/majana/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika?part=1'}>
                                         Majana
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/viviscal/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/viviscal/prirodna-kozmetika?part=1'}>
                                         Viviscal
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/herbalab/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/herbalab/prirodna-kozmetika?part=1'}>
                                         Herbalab
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/medical-plants/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/medical-plants/prirodna-kozmetika?part=1'}>
                                         Medical plants
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/gamarde/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/gamarde/prirodna-kozmetika?part=1'}>
                                         Gamarde
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/aronica/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/aronica/prirodna-kozmetika?part=1'}>
                                         Aronica
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/hedera-vita/prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/hedera-vita/prirodna-kozmetika?part=1'}>
                                         Hederavita
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link href={'/phyto/prirodna-kozmetika?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/phyto/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Phyto
                                    </StyledNestedTypography>
@@ -148,28 +148,28 @@ export const ProductsMenu = () => {
                     <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/fitaky/bebi-prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika?part=1'}>
                                         Fitaky
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/azeta-bio/bebi-prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika?part=1'}>
                                         Azeta bio
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/gamarde/bebi-prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika?part=1'}>
                                         Gamarde
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/weleda/bebi-prirodna-kozmetika?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika?part=1'}>
                                         Weleda
                                    </Link>
                               </StyledNestedTypography>
@@ -178,21 +178,21 @@ export const ProductsMenu = () => {
                     <NestedMenuItem label='Biljne Tinkture' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/fantastik-fungi/biljne-tinkture?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/fantastik-fungi/biljne-tinkture?part=1'}>
                                         Fantastik Fungi
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/priroda-na-dar/biljne-tinkture?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture?part=1'}>
                                         Priroda na dar
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/bioteo/biljne-tinkture?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/bioteo/biljne-tinkture?part=1'}>
                                         Bioteo
                                    </Link>
                               </StyledNestedTypography>
@@ -201,14 +201,14 @@ export const ProductsMenu = () => {
                     <NestedMenuItem label='Čišćenje organizma' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/okp/ciscenje-organizma?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/okp/ciscenje-organizma?part=1'}>
                                         OKP paket za čišćenje organizma
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link href={'/priroda-na-dar/biljne-tinkture?part=1'}>
+                                   <Link href={'/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture?part=1'}>
                                         Priroda na dar
                                    </Link>
                               </StyledNestedTypography>
@@ -288,7 +288,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/todoxin/prirodni-imunitet?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/todoxin/prirodni-imunitet?part=1'}>
                                    Todoxin
                               </Link>
                          </StyledNestedTypography>
@@ -302,7 +302,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/zao-prirodna-sminka/prirodna-kozmetika/?part=1'}>
+                              <Link href={'/proizvodi-proizvodjac-kategorija/zao-prirodna-sminka/prirodna-kozmetika/?part=1'}>
                                    Zao prirodna šminka
                               </Link>
                          </StyledNestedTypography>

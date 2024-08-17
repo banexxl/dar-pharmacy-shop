@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Button, Checkbox, IconButton, Theme } from "@mui/material";
+import { Box, Button, Checkbox, Theme } from "@mui/material";
 import { Colors } from "../theme";
 
 type UserInfoProps = {
@@ -32,7 +32,7 @@ export const ClearFormButton = styled(Button)(() => ({
      height: '40px'
 }))
 
-export const ShouldCreateAccountButton = styled(Button)(() => ({
-     background: Colors.primary.lighter,
-     height: '40px'
+export const ShouldCreateAccountCheckBox = styled(Checkbox)(() => ({
+     color: Colors.primary.lighter,
 }))
+

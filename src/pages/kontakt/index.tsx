@@ -2,13 +2,10 @@ import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
 import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import { ContactBox, ContactFormBox, ContactInfoBox, ContactStrongText, ContactText } from "@/styles/contact/contact";
+import { ContactBox, ContactInfoBox, ContactStrongText, ContactText } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
 import { Container, Stack } from "@mui/material";
-import { useTranslation } from "next-i18next"
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -48,7 +45,7 @@ const ContactPage = (props: ContactPageProps) => {
                                         <ContactForm />
                                         <ContactMap mapApiKey={props.mapApiKey} />
                                         <ContactInfoBox theme={theme}>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around' }} theme={theme}>
+                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-arou|\\\nd' }} theme={theme}>
                                                   Adresa:
                                              </ContactText>
                                              <ContactStrongText theme={theme} >

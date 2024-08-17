@@ -19,6 +19,7 @@ const MiddleDivider = styled((props) => (
 
 export default function AppDrawer({ isScreenToMedium }: any) {
 
+
      const { drawerOpen, setDrawerOpen } = useUIContext();
 
      const [WishListDialog, showWishListDialog, closeWishListDialog] =
@@ -31,6 +32,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
           useDialogModal(LoginRegister)
 
      const { data: session } = useSession()
+
 
      return (
           <Box >

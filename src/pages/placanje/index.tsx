@@ -1,11 +1,7 @@
-import UserInfoForm from '@/components/checkout/userinfo/userinfo-form'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, Container, Stack } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Head from 'next/head'
 import React, { useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
 import dynamic from 'next/dynamic'
@@ -17,16 +13,16 @@ import { CreditCard } from '@/components/checkout/payment-options/payment-option
 import { CheckoutTabs, CheckoutTab, CheckoutTabText } from '@/styles/checkout/checkout-tabs'
 import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/checkout/checkout-stepper'
 import { ReCaptchaProvider } from "next-recaptcha-v3";
+import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-
      const [tabIndex, setTabIndex] = useState(0)
+
      const setTab = (tabIndex: number) => {
           setTabIndex(tabIndex)
           return 0
      }
-
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -74,7 +70,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                                         </CheckoutTabs>
 
                                         <TabPanel value={tabIndex} index={0}>
-                                             <UserInfoForm formName={'userinfo'} setTab={setTab} tabIndex={0} />
+                                             <UserInfoFormData formName={'user-form-name'} setTab={setTab} tabIndex={0} />
                                         </TabPanel>
                                         <TabPanel value={tabIndex} index={1} >
                                              <CreditCard setTab={setTab} formName='credit-card' tabIndex={1} />

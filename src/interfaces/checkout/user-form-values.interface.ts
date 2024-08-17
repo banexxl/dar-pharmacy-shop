@@ -1,42 +1,50 @@
-import { FormikErrors, FormikTouched } from "formik";
+import { FormikContextType, FormikErrors, FormikTouched } from "formik";
+import { Session } from "next-auth";
 
 export interface IUserForm {
-          firstName: string;
-          lastName: string;
-          streetAddress: string;
-          phoneNumber: string;
-          city: string;
-          provinceState?: string;
-          country: string;
-          zipPostalCode: string;
-          email: string;
+     name: string;
+     streetAddress: string;
+     phoneNumber: string;
+     city: string;
+     provinceState?: string;
+     country: string;
+     zipPostalCode: string;
+     email: string;
+     // password?: string;
+     // repeatPassword?: string;
+     shouldCreateAccount: boolean;
+     emailVerified?: Date | null;
+     image?: string;
 }
 
 export interface IEmailForm {
-          email: string
+     email: string
 }
 
 export const initialEmailFormValues: IEmailForm = {
-          email: ''
+     email: ''
 }
 
 export const initialUserFormValues: IUserForm = {
-          firstName: '',
-          lastName: '',
-          streetAddress: '',
-          phoneNumber: '',
-          city: '',
-          provinceState: '',
-          country: '',
-          zipPostalCode: '',
-          email: '',
+     name: '',
+     streetAddress: '',
+     phoneNumber: '',
+     city: '',
+     provinceState: '',
+     country: '',
+     zipPostalCode: '',
+     email: '',
+     // password: '',
+     // repeatPassword: '',
+     shouldCreateAccount: false
 };
 
 export interface IUserFormProps {
-          isLoading?: boolean;
-          tabIndex?: number
-          setTab?: (tabIndex: number) => number
-          formName: string
-          errors?: FormikErrors<IUserForm>
-          touched?: FormikTouched<IUserForm>
+     isLoading?: boolean;
+     tabIndex?: number
+     setTab?: (tabIndex: number) => number
+     formName: string
+     errors?: FormikErrors<IUserForm>
+     touched?: FormikTouched<IUserForm>
+     formik?: FormikContextType<IUserForm>
 }

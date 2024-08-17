@@ -1,8 +1,6 @@
-import theme from '@/styles/theme';
-import { Container, Grid, TextField, Typography } from '@mui/material';
-import { Form, Formik } from 'formik';
-import React, { FunctionComponent, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import { Container, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Form, Formik, useFormikContext } from 'formik';
+import React, { FunctionComponent } from 'react';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice'
@@ -11,31 +9,39 @@ import { PaymentOptionRadio } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { useSelector } from "react-redux";
 import useDialogModal from '@/hooks/useDialogModal';
 import Cart from '@/components/cart/cart';
+import { useSession } from 'next-auth/react';
+import UserInfoFormEmail from './user-info-form-email';
+import sweetalert2 from 'sweetalert2';
 
-const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
+const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
+     const theme = useTheme();
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
      const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
+     const session = useSession()
+     const dispatch = useDispatch()
+
      const initialUserFormValues: IUserForm = {
-          firstName: userFormSelector.firstName,
-          lastName: userFormSelector.lastName,
+          name: userFormSelector.name,
           streetAddress: userFormSelector.streetAddress,
           phoneNumber: userFormSelector.phoneNumber,
           city: userFormSelector.city,
           provinceState: userFormSelector.provinceState,
           country: userFormSelector.country,
           zipPostalCode: userFormSelector.zipPostalCode,
-          email: userFormSelector.email
+          image: userFormSelector.image,
+          email: userFormSelector.email,
+          shouldCreateAccount: false,
+          emailVerified: null
      };
 
 
-     const dispatch = useDispatch()
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -43,15 +49,43 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
      })
 
      const handleSubmit = (values: any) => {
+
           dispatch(submitUserForm(values))
           props.tabIndex === 0 ? props.setTab?.(1) : null
+
+          if (values.shouldCreateAccount) {
+               try {
+                    fetch('/api/register', {
+                         method: 'POST',
+                         headers: {
+                              'Content-Type': 'application/json',
+                         },
+                         body: JSON.stringify(values),
+                    }).then(response => {
+                         if (response.status === 409) {
+                              sweetalert2.fire({
+                                   title: 'Ovaj email je već registrovan!',
+                                   icon: 'warning',
+                                   showConfirmButton: false,
+                                   timer: 1500
+                              })
+                         } else if (response.status === 200) {
+                              sweetalert2.fire({
+                                   title: 'Poslat Vam je email za verifikaciju!',
+                                   icon: 'success',
+                                   showConfirmButton: false,
+                                   timer: 1500
+                              })
+                         }
+                    })
+
+               } catch (error) {
+                    console.error('Error:', error)
+               }
+          }
      }
 
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
-
-     const onSubmitEmailForm = (email: any) => {
-          console.log(email);
-     }
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -67,25 +101,14 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                         <Grid container spacing={2}>
                                              <Grid item xs={12} sm={6}>
                                                   <TextField
-                                                       value={formik.values.firstName}
-                                                       label={"Ime"}
-                                                       name={'firstName'}
+                                                       value={formik.values.name}
+                                                       label={"Ime i prezime"}
+
+                                                       name={'name'}
                                                        variant="outlined"
-                                                       onChange={formik.handleChange('firstName')}
-                                                       error={formik.touched.firstName && !!formik.errors.firstName}
-                                                       helperText={formik.touched.firstName && formik.errors.firstName}
-                                                       fullWidth
-                                                  />
-                                             </Grid>
-                                             <Grid item xs={12} sm={6}>
-                                                  <TextField
-                                                       value={formik.values.lastName}
-                                                       onChange={formik.handleChange('lastName')}
-                                                       label={"Prezime"}
-                                                       name={'lastName'}
-                                                       variant="outlined"
-                                                       error={formik.touched?.lastName && !!formik.errors?.lastName}
-                                                       helperText={formik.touched?.lastName && formik.errors?.lastName}
+                                                       onChange={formik.handleChange('name')}
+                                                       error={formik.touched.name && !!formik.errors.name}
+                                                       helperText={formik.touched.name && formik.errors.name}
                                                        fullWidth
                                                   />
                                              </Grid>
@@ -149,6 +172,7 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                        fullWidth
                                                   />
                                              </Grid>
+
                                              <Grid item xs={12} sm={6}>
                                                   <TextField
                                                        value={formik.values.zipPostalCode}
@@ -161,26 +185,31 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
                                                        fullWidth
                                                   />
                                              </Grid>
-                                             <Grid item xs={12} sm={6}>
-                                                  <TextField
-                                                       value={formik.values.email}
-                                                       onChange={formik.handleChange('email')}
-                                                       label={"Email"}
-                                                       name={'email'}
-                                                       variant="outlined"
-                                                       error={formik.touched?.email && !!formik.errors?.email}
-                                                       helperText={formik.touched?.email && formik.errors?.email}
-                                                       fullWidth
-                                                  />
-                                             </Grid>
+
+                                             {/* <Typography>
+                                                  {JSON.stringify(formik.errors)}
+                                             </Typography> */}
+                                             <UserInfoFormEmail formik={formik} session={session} />
+
                                              <PaymentOptionRadio theme={theme} >
-                                                  <ClearFormButton endIcon={<DeleteIcon />} type='reset' onClick={() => { formik.handleReset(), dispatch(clearUserForm()) }}                                                                                          >
+                                                  <ClearFormButton
+                                                       endIcon={<DeleteIcon />}
+                                                       type='reset'
+                                                       onClick={() => {
+                                                            formik.handleReset(), dispatch(clearUserForm())
+                                                       }}
+                                                  >
+
                                                        Obriši
                                                   </ClearFormButton>
-                                                  <CheckoutNextPrevButton sx={{ maxWidth: '200px' }} startIcon={<NavigateBeforeIcon />} onClick={() => showCartDialog()}>
+                                                  <CheckoutNextPrevButton
+                                                       sx={{ maxWidth: '200px' }}
+                                                       // startIcon={<NavigateBeforeIcon />}
+                                                       onClick={() => showCartDialog()}>
                                                        Proveri korpu
                                                   </CheckoutNextPrevButton>
-                                                  <CheckoutNextPrevButton type='submit' endIcon={< NavigateNextIcon />}>
+
+                                                  <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} endIcon={< NavigateNextIcon />} disabled={!formik.isValid}>
                                                        Dalje
                                                   </CheckoutNextPrevButton>
                                              </PaymentOptionRadio>
@@ -195,5 +224,5 @@ const UserInfoForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) 
      );
 };
 
-export default UserInfoForm
+export default UserInfoFormData
 

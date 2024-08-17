@@ -39,7 +39,6 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
 
           if (!manufacturerURL) {
                const paths = router.asPath.split('/').filter(Boolean);
-               console.log('paths', paths);
 
                if (paths.length === 2) {
                     router.push(`/proizvodi/${mainCategory}?part=${nextPart}`);
@@ -49,11 +48,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
                     router.push(`/proizvodi/${mainCategory}/${midCategory}/${subCategory}?part=${nextPart}`);
                }
           } else {
-
-               console.log('manufacturerURL', manufacturerURL);
-               console.log('mainCategory', mainCategory);
-
-               await router.push(`/${manufacturerURL}/${mainCategory}?part=${nextPart}`);
+               await router.push(`/proizvodi-proizvodjac-kategorija/${manufacturerURL}/${mainCategory}?part=${nextPart}`);
           }
      };
 

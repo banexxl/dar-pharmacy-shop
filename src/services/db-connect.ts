@@ -4,13 +4,13 @@ if (!process.env.MONGODB_URI) {
      throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
 }
 
-const uri = `${process.env.MONGODB_URI}/ACCOUNTS_DB`
+const uri = `${process.env.MONGODB_URI}`
 const options = {}
 
 let client
-let accountsDBPromise: Promise<MongoClient>
+let dbPromise: Promise<MongoClient>
 
 client = new MongoClient(uri, options)
-accountsDBPromise = client.connect()
+dbPromise = client.connect()
 
-export { accountsDBPromise }
+export { dbPromise }

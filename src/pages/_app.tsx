@@ -8,7 +8,6 @@ import { appWithTranslation } from 'next-i18next'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import { Analytics } from '@vercel/analytics/react';
-import { ReCaptchaProvider } from "next-recaptcha-v3";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 

@@ -1,0 +1,166 @@
+import { MongoClient } from "mongodb";
+import nodemailer from 'nodemailer';
+import { transporter } from "./email/email-config";
+import { Colors } from "@/styles/theme";
+import { generateVerificationToken } from "./token/generate-verification-token";
+import bcrypt from 'bcrypt';
+
+export const AccountService = () => {
+
+     const registerClient = async (data: any) => {
+
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
+
+          const verificationTokenObject = await generateVerificationToken(data.email);
+
+          try {
+               const db = client.db('ACCOUNTS_DB');
+
+               // Hash the password and remove the confirmPassword from the data
+               // const hashedPassword = await bcrypt.hash(data.password, 10);
+               // delete data.confirmPassword;
+
+               // Create a new data object with the hashed password
+               // const userData = {
+               //      ...data,
+               //      password: hashedPassword,
+               // };
+
+
+               // Insert or update the user in the 'users' collection
+               const insertUserResult = await db.collection('users').updateOne(
+                    { email: { $regex: `^${data.email}$`, $options: 'i' } }, // Case-insensitive email check
+                    { $setOnInsert: data }, // Only inserts if no document matches the query
+                    { upsert: true } // Create a new document if no matching document is found
+               );
+
+               const html = `
+                                        <html>
+                                        <head>
+                                             <meta charset="UTF-8">
+                                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                             <style>
+                                                  /* Add your styles here */
+                                                  .container {
+                                                  font-family: monospace, sans-serif;
+                                                  display: grid;
+                                                  background-color: ${Colors.primary.lighter};
+                                                  border-radius: 15px;
+                                                  width: 400px;
+                                                  margin: 0 auto;
+                                                  padding: 20px;
+                                                  gap: 20px;
+                                                  overflow-wrap: break-word;
+                                                  }
+
+                                                  .message {
+                                                  text-align: justify;
+                                                  width: 380px;
+                                                  margin: 10px;
+                                                  }
+
+                                                  a {
+                                                  cursor: pointer;
+                                                  color: blue;
+                                                  text-decoration: underline;
+                                                  }
+                                             </style>
+                                        </head>
+                                        <body>
+                                             <div class="container">
+                                                  <h1 style="text-align: justify;">Potvrda Vaše email adrese.</h1>
+                                                  <h3 style="text-align: justify;padding-left: 30px">${data.email}</h3>
+                                                  <br>
+                                                  <p class="message">
+                                                  Hvala Vam na uspešnoj registraciji u Apoteku DAR.
+                                                  Ostao je još jedan korak, a to je da potvrdite Vašu email adresu klikom na
+                                                       <a href="${process.env.BASE_URL! + '/email/' + verificationTokenObject?.token}" target="_blank" style="cursor: pointer; color: blue; text-decoration: underline;">
+                                                            ovaj link
+                                                       </a>.
+                                                  </p>
+                                                  <div style="justify-content: center; align-items: center"> 
+                                                  <a style="text-align: justify" href="apoteka-dar.rs" class="button">Apoteka DAR</a>
+                                                  </div>
+                                             </div>
+                                        </body>
+                                        </html>
+                                   `
+
+               if (insertUserResult.upsertedCount > 0) {
+                    const mailOptions = {
+                         from: process.env.EMAIL_FROM, // sender address
+                         to: data.email, // list of receivers
+                         subject: 'Potvrdite Vaš email', // Subject line
+                         html
+                    };
+
+                    await transporter.sendMail(mailOptions)
+
+                    return { message: 'Email successfully registered and confirmation sent!', status: 200 };
+               } else {
+                    return { message: 'Email already registered!', status: 409 };
+               }
+          } catch (error: any) {
+               return { message: error.message, status: 500 };
+          } finally {
+               await client.close();
+          }
+     };
+
+     const checkIfEmailExists = async (data: any) => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+          try {
+               const db = client.db('ACCOUNTS_DB');
+               const user = await db.collection('users').findOne({ email: data.email });
+
+               if (user.email !== data.email) {
+                    return { message: 'Email available!', status: 202 };
+               } else {
+                    return { message: 'Email found!', status: 200 };
+               }
+          } catch (error: any) {
+               return { message: error.message }
+          }
+          finally {
+               await client.close();
+          }
+     }
+
+     const getUserByEmail = async (email: string) => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
+
+          try {
+               const db = client.db('ACCOUNTS_DB');
+               const user = await db.collection('users').findOne({ email });
+
+               return user;
+          } catch (error: any) {
+               return { message: error.message }
+          } finally {
+               await client.close();
+          }
+     }
+
+     const getUserById = async (id: string) => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
+
+          try {
+               const db = client.db('ACCOUNTS_DB');
+               const user = await db.collection('users').findOne({ _id: id });
+
+               return user;
+          } catch (error: any) {
+               return { message: error.message }
+          } finally {
+               await client.close();
+          }
+     }
+
+     return {
+          getUserByEmail,
+          registerClient,
+          checkIfEmailExists,
+          getUserById
+     }
+}
