@@ -36,7 +36,6 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                   }
 
                                                  .list {
-                                                            background-color: #f7e5e5;
                                                             border-radius: 15px;
                                                             width: 380px;
 			                                             margin: 5px;
@@ -61,10 +60,6 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                             background-attachment: fixed;
                                                   }
 
-                                                  .list-item + .list-item {
-                                                            border-top: 1px solid rgba(255,255,255,0.2);
-                                                  }
-
                                                   .button {
                                                             padding: 8px 8px;
                                                             max-width: 150px;
@@ -81,6 +76,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
                                                   .button:hover {
                                                             background-color: ${Colors.dove_gray};
                                                   }
+                                                            
                                                   .message{
                                                             text-align: center;
                                                             width: 380px;

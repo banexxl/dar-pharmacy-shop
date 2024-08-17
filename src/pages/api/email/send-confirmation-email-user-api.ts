@@ -22,17 +22,24 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                         <meta charset="UTF-8">
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                         <style>
-                                                  .container {
+                                                 .container {
                                                             font-family: monospace, sans-serif;
                                                             display: grid;
                                                             background-color: ${Colors.primary.lighter};
                                                             border-radius: 15px;
-                                                             padding: 20px;
+                                                            padding: 20px;
                                                             height: auto,
                                                             width: 400px;
                                                             margin: 0 auto;
                                                             gap: 20px;
                                                             overflow-wrap: break-word;
+                                                  }
+
+                                                 .list {
+                                                            border-radius: 15px;
+                                                            width: 380px;
+			                                             margin: 5px;
+                                                            align-items: center;
                                                   }
 
                                                   .list-item {
@@ -53,10 +60,6 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                             background-attachment: fixed;
                                                   }
 
-                                                  .list-item + .list-item {
-                                                            border-top: 1px solid rgba(255,255,255,0.2);
-                                                  }
-
                                                   .button {
                                                             padding: 8px 8px;
                                                             max-width: 150px;
@@ -73,18 +76,17 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
                                                   .button:hover {
                                                             background-color: ${Colors.dove_gray};
                                                   }
+                                                            
                                                   .message{
                                                             text-align: center;
                                                             width: 380px;
                                                             margin-right: 5px;
                                                   }
-                                                            
                                                   h1 {
                                                             text-align: center;
                                                             width: 380px;
                                                             overflow-wrap: break-word;
                                                   }
-
                                         </style>
                               </head>
                               <body>
