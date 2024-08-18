@@ -41,7 +41,7 @@ export const AccountService = () => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .container {
-            background: linear-gradient(90deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
+            background: linear-gradient(70deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
             border-radius: 15px;
             width: 400px;
             height: auto;

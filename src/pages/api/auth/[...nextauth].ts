@@ -58,31 +58,47 @@ function html(params: { url: string; host: string; theme: Theme }) {
      const escapedHost = host.replace(/\./g, "&#8203;.")
 
      return `
-<!DOCTYPE html>
 <html>
 <head>
+     <meta name="viewport" content="width=device-width">
   <style>
-    body {
-      background: linear-gradient(90deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
-      border-radius: 20px;
-      margin: 0;
-      padding: 0;
-      font-family: Helvetica, Arial, sans-serif;
+    .container {
+            background: linear-gradient(70deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
+            display: flex;
+               flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            gap: 20px;
+            overflow-wrap: break-word;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+    .header {
+      padding: 10px 0;
+      font-size: 22px;
+      color: ${Colors.secondary.custom};
     }
-    
+
     .button-container {
-      text-align: center;
       padding: 20px 0;
     }
 
     .button {
+      display: inline-block;
       border-radius: 5px;
       background-color: ${Colors.primary.main};
       transition: transform 0.3s ease, background-color 0.3s ease;
+      padding: 10px 20px;
+      border: 1px solid ${Colors.primary.main};
     }
 
     .button:hover {
-      background-color: ${Colors.primary.lighter};
+      background-color: ${Colors.primary.light};
       transform: scale(1.05);
     }
 
@@ -90,52 +106,50 @@ function html(params: { url: string; host: string; theme: Theme }) {
       font-size: 18px;
       color: ${Colors.primary.lighter};
       text-decoration: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      border: 1px solid ${Colors.primary.lighter};
-      display: inline-block;
       font-weight: bold;
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .button a:hover {
-      color: ${Colors.primary.main};
+      color: ${Colors.secondary.custom};
       transform: scale(1.1);
+    }
+
+    .footer {
+      padding: 10px 0;
+      font-size: 16px;
+      line-height: 22px;
+      color: ${Colors.secondary.custom};
+    }
+
+    .image-container {
+      padding: 20px 0;
+    }
+
+    .image-container img {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
     }
   </style>
 </head>
 <body>
-  <div style="text-align: center; padding: 20px 0;">
-    <img src="https://apoteka-dar.rs/images/home-page/apotekaDar.jpg" alt="DAR image" style="width: 100px; height: auto; border-radius: 50%;"/>
+  <div class="container">
+    <div class="image-container">
+      <img src="https://apoteka-dar.rs/images/home-page/apotekaDar.jpg" alt="DAR image"/>
+    </div>
+    <div class="header">
+      Prijavi se na: <strong>${escapedHost}</strong>
+    </div>
+    <div class="button-container">
+      <div class="button">
+        <a href="${url}" target="_blank">Prijavi se</a>
+      </div>
+    </div>
+    <div class="footer">
+      Ako niste tražili prijavu, ignorišite ovaj email.
+    </div>
   </div>
-  <table width="100%" border="0" cellspacing="20" cellpadding="0"
-    style="max-width: 600px; margin: auto; border-radius: 10px;">
-    <tr>
-      <td align="center"
-        style="padding: 10px 0px; font-size: 22px; color: ${Colors.primary.main};">
-        Prijavi se na: <strong>${escapedHost}</strong>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" style="padding: 20px 0;">
-        <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="button">
-              <a href="${url}" target="_blank">
-                Prijavi se
-              </a>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td align="center"
-        style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; color: ${Colors.white};">
-        Ako niste tražili prijavu, ignorišite ovaj email.
-      </td>
-    </tr>
-  </table>
 </body>
 </html>
 `
