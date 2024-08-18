@@ -1,11 +1,11 @@
-import { Container, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Form, Formik, useFormikContext } from 'formik';
-import React, { FunctionComponent } from 'react';
+import { CircularProgress, Container, FormControlLabel, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Form, Formik, FormikContext, useFormikContext } from 'formik';
+import React, { FunctionComponent, use, useState } from 'react';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { PaymentOptionRadio } from '@/styles/checkout/userinfo';
+import { PaymentOptionRadio, ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import { CheckoutNextPrevButton, ClearFormButton } from '@/styles/checkout/userinfo'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
@@ -13,9 +13,9 @@ import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { useSelector } from "react-redux";
 import useDialogModal from '@/hooks/useDialogModal';
+import InputAdornment from '@mui/material/InputAdornment';
 import Cart from '@/components/cart/cart';
 import { useSession } from 'next-auth/react';
-import UserInfoFormEmail from './user-info-form-email';
 import sweetalert2 from 'sweetalert2';
 
 
@@ -23,9 +23,12 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
      const session = useSession()
      const dispatch = useDispatch()
+     const [loading, setLoading] = useState(false)
+
 
      const initialUserFormValues: IUserForm = {
           name: userFormSelector.name,
@@ -40,8 +43,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           shouldCreateAccount: false,
           emailVerified: null
      };
-
-
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -85,7 +86,25 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           }
      }
 
-     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
+     const onRegisterAccountCheck = async (email: string) => {
+          const response = await fetch('/api/email/check-if-email-exists', {
+               method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({ email }),
+          });
+
+          if (response.status === 200) {
+               // Email already registered
+               return true;
+          } else if (response.status === 202) {
+               // Email available
+               return false;
+          } else {
+               return null;
+          }
+     }
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -98,15 +117,18 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                         <Typography variant="h5" component="legend" gutterBottom>
                                              Adresa za dostavu
                                         </Typography>
+                                        <Typography>
+                                             {JSON.stringify(formik.errors)}
+                                        </Typography>
                                         <Grid container spacing={2}>
                                              <Grid item xs={12} sm={6}>
                                                   <TextField
-                                                       value={formik.values.name}
-                                                       label={"Ime i prezime"}
-
+                                                       label="Ime i prezime"
                                                        name={'name'}
-                                                       variant="outlined"
+                                                       value={formik.values.name}
                                                        onChange={formik.handleChange('name')}
+                                                       onBlur={() => formik.setFieldTouched('name', true)}
+                                                       variant="outlined"
                                                        error={formik.touched.name && !!formik.errors.name}
                                                        helperText={formik.touched.name && formik.errors.name}
                                                        fullWidth
@@ -118,6 +140,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        onChange={formik.handleChange('phoneNumber')}
                                                        label={"Broj telefona"}
                                                        name={'phoneNumber'}
+                                                       onBlur={() => formik.setFieldTouched('phoneNumber', true)}
                                                        variant="outlined"
                                                        error={formik.touched?.phoneNumber && !!formik.errors?.phoneNumber}
                                                        helperText={formik.touched?.phoneNumber && formik.errors?.phoneNumber}
@@ -128,6 +151,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   <TextField
                                                        value={formik.values.streetAddress}
                                                        onChange={formik.handleChange('streetAddress')}
+                                                       onBlur={() => formik.setFieldTouched('streetAddress', true)}
                                                        label={"Adresa"}
                                                        name={'streetAddress'}
                                                        variant="outlined"
@@ -140,6 +164,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   <TextField
                                                        value={formik.values.city}
                                                        onChange={formik.handleChange('city')}
+                                                       onBlur={() => formik.setFieldTouched('city', true)}
                                                        label={"Grad"}
                                                        name={'city'}
                                                        variant="outlined"
@@ -152,6 +177,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   <TextField
                                                        value={formik.values.provinceState}
                                                        onChange={formik.handleChange('provinceState')}
+                                                       onBlur={() => formik.setFieldTouched('provinceState', true)}
                                                        label={"Region"}
                                                        name={'provinceState'}
                                                        variant="outlined"
@@ -164,6 +190,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   <TextField
                                                        value={formik.values.country}
                                                        onChange={formik.handleChange('country')}
+                                                       onBlur={() => formik.setFieldTouched('country', true)}
                                                        label={"Država"}
                                                        name={'country'}
                                                        variant="outlined"
@@ -177,6 +204,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   <TextField
                                                        value={formik.values.zipPostalCode}
                                                        onChange={formik.handleChange('zipPostalCode')}
+                                                       onBlur={() => formik.setFieldTouched('zipPostalCode', true)}
                                                        label={"Poštanski broj"}
                                                        name={'zipPostalCode'}
                                                        variant="outlined"
@@ -186,10 +214,79 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
 
-                                             {/* <Typography>
-                                                  {JSON.stringify(formik.errors)}
-                                             </Typography> */}
-                                             <UserInfoFormEmail formik={formik} session={session} />
+                                             {/* <UserInfoFormEmail formik={formik} session={session} /> */}
+                                             <Grid item xs={12} sm={6}>
+
+                                                  <TextField
+                                                       value={session.data ? session.data?.user!.email : formik.values.email}
+                                                       disabled={session.data ? true : false}
+                                                       label="Email"
+                                                       name="email"
+                                                       variant="outlined"
+                                                       onBlur={async (e: any) => {
+                                                            formik.setFieldValue('email', e.target.value);
+                                                            console.log('email', formik.values.email);
+                                                            console.log('session', session.data);
+
+                                                            if (e.target.value) {
+                                                                 const emailExists = await onRegisterAccountCheck(e.target.value);
+                                                                 console.log('shouldCreateAccount', formik.values.shouldCreateAccount);
+
+                                                                 if (emailExists === true && formik.values.shouldCreateAccount) {
+                                                                      console.log('emailExists', emailExists);
+
+                                                                      formik.setFieldTouched('email', true); // Mark email as touched
+                                                                      formik.setFieldError('email', 'Email već postoji!');
+                                                                      // formik.validateForm();
+                                                                 } else {
+                                                                      formik.validateForm();
+                                                                 }
+                                                            }
+                                                       }}
+                                                       error={formik.touched?.email && !!formik.errors?.email}
+                                                       helperText={formik.touched?.email && formik.errors?.email}
+                                                       onChange={formik.handleChange('email')}
+                                                       fullWidth
+                                                  />
+                                             </Grid>
+
+
+                                             {!session.data && (
+                                                  <Grid item xs={12} sm={6}>
+                                                       <FormControlLabel
+                                                            sx={{ marginBottom: '10px', width: '100%' }}
+                                                            control={
+                                                                 <ShouldCreateAccountCheckBox
+                                                                      checked={formik.errors.email ? false : formik.values.shouldCreateAccount}
+                                                                      onChange={async (e: any) => {
+                                                                           formik.setFieldValue('shouldCreateAccount', e.target.checked);
+
+                                                                           if (e.target.checked && formik.values.email) {
+                                                                                await onRegisterAccountCheck(formik.values.email).then((res) => {
+                                                                                     if (res === false) {
+                                                                                          formik.setErrors({ email: 'Email već postoji!' });
+                                                                                          // formik.setFieldTouched('email', true);
+                                                                                          formik.validateForm();
+
+                                                                                     } else {
+                                                                                          formik.validateForm();
+                                                                                     }
+                                                                                })
+                                                                           }
+                                                                      }}
+                                                                      name={"shouldCreateAccount"}
+                                                                      color="primary"
+                                                                      disabled={formik.values.email === '' || formik.errors.email ? true : false}
+                                                                 />
+                                                            }
+                                                            label={
+                                                                 <Typography sx={{ display: 'inline', textAlign: 'justify', color: 'black' }}>
+                                                                      Kreiraj nalog sa navedenim podacima...
+                                                                 </Typography>
+                                                            }
+                                                       />
+                                                  </Grid>
+                                             )}
 
                                              <PaymentOptionRadio theme={theme} >
                                                   <ClearFormButton
