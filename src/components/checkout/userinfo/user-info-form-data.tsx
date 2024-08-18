@@ -235,7 +235,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                                  if (emailExists === true && formik.values.shouldCreateAccount) {
                                                                       console.log('emailExists', emailExists);
 
-                                                                      formik.setFieldTouched('email', true); // Mark email as touched
+                                                                      // formik.setFieldTouched('email', true); // Mark email as touched
                                                                       formik.setFieldError('email', 'Email već postoji!');
                                                                       // formik.validateForm();
                                                                  } else {
@@ -265,11 +265,12 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                                                 await onRegisterAccountCheck(formik.values.email).then((res) => {
                                                                                      if (res === false) {
                                                                                           formik.setErrors({ email: 'Email već postoji!' });
-                                                                                          // formik.setFieldTouched('email', true);
+                                                                                          formik.setFieldTouched('email', true);
                                                                                           formik.validateForm();
 
                                                                                      } else {
-                                                                                          formik.validateForm();
+                                                                                          // formik.validateForm();
+                                                                                          formik.setFieldTouched('email', true);
                                                                                      }
                                                                                 })
                                                                            }
