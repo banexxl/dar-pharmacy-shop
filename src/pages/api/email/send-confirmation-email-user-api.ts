@@ -17,114 +17,85 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
 
           const html =
                `
-                              <html>
-                              <head>
-                                        <meta charset="UTF-8">
-                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <style>
-                                                 .container {
-                                                            font-family: monospace, sans-serif;
-                                                            display: grid;
-                                                            background-color: red;
-                                                            border-radius: 15px;
-                                                            padding: 20px;
-                                                            height: auto;
-                                                            width: 400px;
-                                                            margin: 0 auto;
-                                                            gap: 20px;
-                                                            overflow-wrap: break-word;
-                                                  }
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div style="
+        background: linear-gradient(70deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
+        border-radius: 15px;
+        width: 400px;
+        height: auto;
+        margin: 50px auto;
+        padding: 20px;
+        gap: 20px;
+        overflow-wrap: break-word;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+        
+        <h1 style="
+            text-align: center;
+            width: 380px;
+            overflow-wrap: break-word;">
+            Vaša porudžbenica je primljena!
+        </h1>
+        <p>Poštovana/i ${data.name},</p>
+        <p style="
+            text-align: justify;
+            width: 380px;
+            margin-right: 5px;">
+            <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu kupovinu.
+            <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em>.
+            <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
+            <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku.</strong>
+            <br>Radujemo se što ćemo vam i u budućnosti služiti.
+            <br>Srdačni pozdravi,
+            <br><strong>DAR apoteka tim</strong>
+        </p>
 
-                                                 .list {
-                                                            border-radius: 15px;
-                                                            width: 380px;
-			                                             margin: 5px;
-                                                            align-items: center;
-                                                  }
-
-                                                  .list-item {
-                                                            display: flex;
-                                                            align-items: center;
-                                                            padding: 12px 0;
-                                                            box-sizing: border-box;
-                                                  }
-
-                                                  .list-item::before {
-                                                            font-size: 1.5rem;
-                                                            text-align: right;
-                                                            font-weight: bold;
-                                                            min-width: 50px;
-                                                            padding-right: 12px;
-                                                            align-self: flex-start;
-                                                            background-image: linear-gradient(to bottom, aquamarine, orangered);
-                                                            background-attachment: fixed;
-                                                  }
-
-                                                  .button {
-                                                            padding: 8px 8px;
-                                                            max-width: 150px;
-                                                            background-color: ${Colors.primary};
-                                                            font-size: 16px;
-                                                            text-align: center;
-                                                            text-decoration: none;
-                                                            border-radius: 4px;
-                                                            border: none;
-                                                            cursor: pointer;
-                                                            margin: 20px auto;
-                                                  }
-
-                                                  .button:hover {
-                                                            background-color: ${Colors.dove_gray};
-                                                  }
-
-                                                  .message{
-                                                            text-align: center;
-                                                            width: 380px;
-                                                            margin-right: 5px;
-                                                  }
-                                                  h1 {
-                                                            text-align: center;
-                                                            width: 380px;
-                                                            overflow-wrap: break-word;
-                                                  }
-                                        </style>
-                              </head>
-                              <body>
-                                        <div class="container">
-                                                  <h1>Vaša porudžbenica je primljena!</h1>
-                                                  <br>&nbsp;&nbsp;&nbsp;Poštovana/i ${data.name}, 
-                                                            <br>
-                                                                      <p class="message">
-                                                                                <br>Želimo da se zahvalimo što ste odabrali <strong>DAR apoteku</strong> za vašu kupovinu. <br>
-                                                                                <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em> <br>
-                                                                                <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje 
-                                                                                proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
-                                                                                <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku.</strong> 
-                                                                                <br>Radujemo se što ćemo vam i u budućnosti služiti. <br>
-                                                                                <br>Srdačni pozdravi,
-                                                                                <br><strong>DAR apoteka tim</strong>
-                                                                      </p>
-                                                            <table class="list">
-                                                                      <tr class="list-item">
-                                                                                <strong>Vaši proizvodi u korpi, koji će uskoro biti na putu ka vama, su:</strong>
-                                                                      </tr>
-                                                             <ul>
-                                                                      ${data.cart.map((cartItem: ICartItem) =>
-                    `<li>`
+        <div style="
+            border-radius: 15px;
+            width: 380px;
+            margin: 5px;
+            align-items: center;">
+            
+            <div style="
+                font-weight: bold;
+                font-size: 16px;">
+                Vaši proizvodi u korpi, koji će uskoro biti na putu ka vama, su:
+            </div>
+            
+            <ul style="padding-left: 20px;">
+                ${data.cart.map((cartItem: ICartItem) =>
+                    `<li style="margin-bottom: 8px;">`
                     + cartItem._id.toString().slice(-8).toUpperCase()
                     + " " + cartItem.name
                     + " " + cartItem.quantity + " "
                     + "*" + " " + cartItem.count
                     + " " +
                     `</li>`).join('')}
-                                                            </ul>
-                                                                    
+            </ul>
+        </div>
 
-                                                            </table>
-                                                  <a href="apoteka-dar.rs" class="button">Apoteka DAR</a>
-                                        </div>
-                              </body>
-                              </html>
+        <a href="https://apoteka-dar.rs" style="
+            display: block;
+            padding: 8px 8px;
+            max-width: 150px;
+            background-color: ${Colors.primary};
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            margin: 20px auto;
+            color: white;">
+            Apoteka DAR
+        </a>
+    </div>
+</body>
+</html>
                               `
 
           try {

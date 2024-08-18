@@ -18,97 +18,50 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
           const htmlForMaja =
                `
                               <html>
-                              <head>
-                                        <meta charset="UTF-8">
-                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <style>
-                                                  .container {
-                                                            font-family: monospace, sans-serif;
-                                                            display: grid;
-                                                            background-color: ${Colors.primary.lighter};
-                                                            border-radius: 15px;
-                                                            padding: 20px;
-                                                            height: auto;
-                                                            width: 400px;
-                                                            margin: 0 auto;
-                                                            gap: 20px;
-                                                            overflow-wrap: break-word;
-                                                  }
-
-                                                 .list {
-                                                            border-radius: 15px;
-                                                            width: 380px;
-			                                             margin: 5px;
-                                                            align-items: center;
-                                                  }
-
-                                                  .list-item {
-                                                            display: flex;
-                                                            align-items: center;
-                                                            padding: 12px 0;
-                                                            box-sizing: border-box;
-                                                  }
-
-                                                  .list-item::before {
-                                                            font-size: 1.5rem;
-                                                            text-align: right;
-                                                            font-weight: bold;
-                                                            min-width: 50px;
-                                                            padding-right: 12px;
-                                                            align-self: flex-start;
-                                                            background-image: linear-gradient(to bottom, aquamarine, orangered);
-                                                            background-attachment: fixed;
-                                                  }
-
-                                                  .button {
-                                                            padding: 8px 8px;
-                                                            max-width: 150px;
-                                                            background-color: ${Colors.primary};
-                                                            font-size: 16px;
-                                                            text-align: center;
-                                                            text-decoration: none;
-                                                            border-radius: 4px;
-                                                            border: none;
-                                                            cursor: pointer;
-                                                            margin: 20px auto;
-                                                  }
-
-                                                  .button:hover {
-                                                            background-color: ${Colors.dove_gray};
-                                                  }
-
-                                                  .message{
-                                                            text-align: center;
-                                                            width: 380px;
-                                                            margin-right: 5px;
-                                                  }
-                                                  h1 {
-                                                            text-align: center;
-                                                            width: 380px;
-                                                            overflow-wrap: break-word;
-                                                  }
-
-                                        </style>
-                              </head>
-                              <body>
-                                        <div class="container">
-                                                  <h1>Nova porudzbenica od korisnika  ${data.name}!</h1>
-                                                  <p>Korisnik je poručio sledeće proizvode:</p>
-                                                 <ul>
-                                                  ${data.cart.map((cartItem: ICartItem) => `<li>` + cartItem._id.toString().slice(-8).toUpperCase()
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div style="
+        font-family: monospace, sans-serif;
+        display: grid;
+        background-color: ${Colors.primary.lighter};
+        border-radius: 15px;
+        padding: 20px;
+        height: auto;
+        width: 400px;
+        margin: 0 auto;
+        gap: 20px;
+        overflow-wrap: break-word;">
+        
+        <h1 style="
+            text-align: center;
+            width: 380px;
+            overflow-wrap: break-word;">
+            Nova porudzbenica od korisnika ${data.name}!
+        </h1>
+        
+        <p>Korisnik je poručio sledeće proizvode:</p>
+        
+        <ul style="padding-left: 20px;">
+            ${data.cart.map((cartItem: ICartItem) =>
+                    `<li style="margin-bottom: 8px;">`
+                    + cartItem._id.toString().slice(-8).toUpperCase()
                     + " " + cartItem.name
-                    + " " + cartItem.quantity + " " + "*"
-                    + " " + cartItem.count + " " + `</li>`).join('')}
-                                                  </ul>
-                                                  </br>
-                                                  <p>Ove proizvode je potrebno poslati na adresu:</p><br/>
-                                                  ${data.country}
-                                                  ${data.city}
-                                                  ${data.streetAddress}
-                                                  ${data.phoneNumber}
-                                        </div>
-                              </body>
-                              </html>
+                    + " " + cartItem.quantity + " "
+                    + "*" + " " + cartItem.count
+                    + `</li>`).join('')}
+        </ul>
+        
+        <br/>
+        <p>Ove proizvode je potrebno poslati na adresu:</p>
+        <br/>
+        <p>${data.country}<br/>${data.city}<br/>${data.streetAddress}<br/>${data.phoneNumber}</p>
+    </div>
+</body>
+</html>
+
                               `
 
           try {
