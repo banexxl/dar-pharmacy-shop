@@ -117,9 +117,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                         <Typography variant="h5" component="legend" gutterBottom>
                                              Adresa za dostavu
                                         </Typography>
-                                        <Typography>
-                                             {JSON.stringify(formik.errors)}
-                                        </Typography>
                                         <Grid container spacing={2}>
                                              <Grid item xs={12} sm={6}>
                                                   <TextField
