@@ -64,10 +64,6 @@ function html(params: { url: string; host: string; theme: Theme }) {
   <style>
     .container {
             background: linear-gradient(70deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
-            display: flex;
-               flex-direction: column;
-            align-items: center;
-            justify-content: center;
             border-radius: 15px;
             width: 400px;
             height: 400px;
