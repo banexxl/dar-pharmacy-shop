@@ -1,13 +1,14 @@
 import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import LoadingWheel from "@/components/loading/loading";
-import theme from "@/styles/theme";
+import theme, { Colors } from "@/styles/theme";
 import Head from "next/head";
 import { ContactBox, ContactInfoBox, ContactText, ContactTitle } from "@/styles/contact/contact";
 import { UIProvider } from "@/context/ui/ui.context";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { GetServerSideProps } from "next";
+import { signIn } from "next-auth/react";
 
 interface VerifyEmailFormProps {
      success?: string;
@@ -49,10 +50,32 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                    <ContactInfoBox theme={theme} >
                                         {
                                              success &&
-                                             <ContactText theme={theme} sx={{ display: 'inline-block' }}>
-                                                  Ako želite, možete da se prijavite
-                                                  <Typography variant="h6" sx={{ textAlign: 'justify' }}>Ovde.</Typography>
-                                             </ContactText>
+                                             <Box>
+                                                  <ContactTitle theme={theme} >
+                                                       Uspešno ste izvršili registraciju!
+                                                       <br />
+                                                  </ContactTitle>
+                                                  <Box sx={{ display: 'flex' }}>
+                                                       <ContactText theme={theme} >
+                                                            Ako želite, možete da se prijavite &nbsp;
+                                                       </ContactText>
+                                                       <Typography variant="h6"
+                                                            sx={{
+                                                                 textAlign: 'justify',
+                                                                 cursor: 'pointer', // Hand cursor on hover
+                                                                 transition: 'transform 0.5s, color 0.2s',
+                                                                 transformOrigin: 'center', // Ensure zoom happens from the center
+                                                                 ":hover": {
+                                                                      color: 'red',
+                                                                      transform: 'scale(1.3)', // Slight zoom in
+                                                                 }
+                                                            }}
+                                                            onClick={() => signIn()}
+                                                       >
+                                                            Ovde.
+                                                       </Typography>
+                                                  </Box>
+                                             </Box>
                                         }
                                         {
                                              error &&

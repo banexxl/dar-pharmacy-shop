@@ -8,6 +8,7 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { accountsDBPromise } from "../../../services/usersdb-connect";
 import nodemailer from "nodemailer"
 import { AccountService } from "@/services/accounts.service";
+import { Colors } from "@/styles/theme";
 
 async function sendVerificationRequest(params: any) {
 
@@ -32,7 +33,7 @@ async function sendVerificationRequest(params: any) {
      const result = await transport.sendMail({
           to: identifier,
           from: provider.from,
-          subject: `Sign in to ${host}`,
+          subject: `Prijava na ${host}`,
           text: text({ url, host }),
           html: html({ url, host, theme }),
      })
@@ -54,49 +55,89 @@ async function sendVerificationRequest(params: any) {
  */
 function html(params: { url: string; host: string; theme: Theme }) {
      const { url, host, theme } = params
-
      const escapedHost = host.replace(/\./g, "&#8203;.")
 
-     const brandColor = theme.brandColor || "#346df1"
-     const color = {
-          background: "#f9f9f9",
-          text: "#444",
-          mainBackground: "#fff",
-          buttonBackground: brandColor,
-          buttonBorder: brandColor,
-          buttonText: theme.buttonText || "#fff",
-     }
-
      return `
-<body style="background: ${color.background};">
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: linear-gradient(90deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
+      border-radius: 20px;
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    
+    .button-container {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .button {
+      border-radius: 5px;
+      background-color: ${Colors.primary.main};
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: ${Colors.primary.lighter};
+      transform: scale(1.05);
+    }
+
+    .button a {
+      font-size: 18px;
+      color: ${Colors.primary.lighter};
+      text-decoration: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      border: 1px solid ${Colors.primary.lighter};
+      display: inline-block;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button a:hover {
+      color: ${Colors.primary.main};
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; padding: 20px 0;">
+    <img src="https://apoteka-dar.rs/images/home-page/apotekaDar.jpg" alt="DAR image" style="width: 100px; height: auto; border-radius: 50%;"/>
+  </div>
   <table width="100%" border="0" cellspacing="20" cellpadding="0"
-    style="background: ${color.mainBackground}; max-width: 600px; margin: auto; border-radius: 10px;">
+    style="max-width: 600px; margin: auto; border-radius: 10px;">
     <tr>
       <td align="center"
-        style="padding: 10px 0px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: ${color.text};">
-        Sign in to <strong>${escapedHost}</strong>
+        style="padding: 10px 0px; font-size: 22px; color: ${Colors.primary.main};">
+        Prijavi se na: <strong>${escapedHost}</strong>
       </td>
     </tr>
     <tr>
       <td align="center" style="padding: 20px 0;">
         <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td align="center" style="border-radius: 5px;" bgcolor="${color.buttonBackground}"><a href="${url}"
-                target="_blank"
-                style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${color.buttonText}; text-decoration: none; border-radius: 5px; padding: 10px 20px; border: 1px solid ${color.buttonBorder}; display: inline-block; font-weight: bold;">Sign
-                in</a></td>
+            <td class="button">
+              <a href="${url}" target="_blank">
+                Prijavi se
+              </a>
+            </td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
       <td align="center"
-        style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; font-family: Helvetica, Arial, sans-serif; color: ${color.text};">
-        If you did not request this email you can safely ignore it.
+        style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; color: ${Colors.white};">
+        Ako niste tražili prijavu, ignorišite ovaj email.
       </td>
     </tr>
   </table>
 </body>
+</html>
 `
 }
 

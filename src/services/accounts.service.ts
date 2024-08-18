@@ -36,55 +36,81 @@ export const AccountService = () => {
 
                const html = `
                                         <html>
-                                        <head>
-                                             <meta charset="UTF-8">
-                                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                             <style>
-                                                  /* Add your styles here */
-                                                  .container {
-                                                  font-family: monospace, sans-serif;
-                                                  display: grid;
-                                                  background-color: ${Colors.primary.lighter};
-                                                  border-radius: 15px;
-                                                  width: 400px;
-                                                  margin: 0 auto;
-                                                  padding: 20px;
-                                                  gap: 20px;
-                                                  overflow-wrap: break-word;
-                                                  }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            background: linear-gradient(90deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
+            border-radius: 15px;
+            width: 400px;
+            height: auto;
+            margin: 50px auto; /* Added margin for better centering */
+            padding: 20px;
+            gap: 20px;
+            overflow-wrap: break-word;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
+        }
 
-                                                  .message {
-                                                  text-align: justify;
-                                                  width: 380px;
-                                                  margin: 10px;
-                                                  }
+        .message {
+            text-align: justify;
+            margin: 10px 0;
+        }
 
-                                                  a {
-                                                  cursor: pointer;
-                                                  color: blue;
-                                                  text-decoration: underline;
-                                                  }
-                                             </style>
-                                        </head>
-                                        <body>
-                                             <div class="container">
-                                                  <h1 style="text-align: justify;">Potvrda Vaše email adrese.</h1>
-                                                  <h3 style="text-align: justify;padding-left: 30px">${data.email}</h3>
-                                                  <br>
-                                                  <p class="message">
-                                                  Hvala Vam na uspešnoj registraciji u Apoteku DAR.
-                                                  Ostao je još jedan korak, a to je da potvrdite Vašu email adresu klikom na
-                                                       <a href="${process.env.BASE_URL! + '/email/' + verificationTokenObject?.token}" target="_blank" style="cursor: pointer; color: blue; text-decoration: underline;">
-                                                            ovaj link
-                                                       </a>.
-                                                  </p>
-                                                  <div style="justify-content: center; align-items: center"> 
-                                                  <a style="text-align: justify" href="apoteka-dar.rs" class="button">Apoteka DAR</a>
-                                                  </div>
-                                             </div>
-                                        </body>
-                                        </html>
-                                   `
+        a {
+            cursor: pointer;
+            color: #de2626;
+            text-decoration: underline;
+        }
+
+        h1, h3 {
+            text-align: justify;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            color: #e53b2f;
+            text-decoration: underline;
+            font-size: 16px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px; /* Added margin to space out the image from the rest of the content */
+        }
+
+        .image-container img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://apoteka-dar.rs/images/home-page/apotekaDar.jpg" alt="Apoteka DAR">
+        </div>
+        <h1>Potvrda Vaše email adrese.</h1>
+        <h3>${data.email}</h3>
+        <p class="message">
+            Hvala Vam na uspešnoj registraciji u Apoteku DAR. Ostao je još jedan korak, a to je da potvrdite Vašu email adresu klikom na
+            <a href="${process.env.BASE_URL! + '/email/' + verificationTokenObject?.token}" target="_blank">ovaj link</a>.
+        </p>
+        <div class="button-container">
+            <a href="https://apoteka-dar.rs" class="button">Apoteka DAR</a>
+        </div>
+    </div>
+</body>
+</html>
+`
 
                if (insertUserResult.upsertedCount > 0) {
                     const mailOptions = {

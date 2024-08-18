@@ -53,6 +53,7 @@ const EmailAndCheckbox = ({ formik, session }: EmailAndCheckboxProps) => {
           if (email) {
                const emailExists = await onRegisterAccountCheck(email);
                if (emailExists === false) {
+                    formik.validateForm();
                     formik.setErrors({ email: 'Email već postoji!' });
                }
           }
@@ -61,9 +62,9 @@ const EmailAndCheckbox = ({ formik, session }: EmailAndCheckboxProps) => {
      return (
           <>
                <Grid item xs={12} sm={6}>
-                    {/* <Typography>
+                    <Typography>
                          {JSON.stringify(formik.errors)}
-                    </Typography> */}
+                    </Typography>
                     <TextField
                          value={session.data ? session.data.user.email : formik.values.email}
                          disabled={session.data ? true : false}
@@ -71,8 +72,8 @@ const EmailAndCheckbox = ({ formik, session }: EmailAndCheckboxProps) => {
                          name="email"
                          variant="outlined"
                          onBlur={handleEmailBlur}
-                         error={formik.touched.email && !!formik.errors.email}
-                         helperText={formik.touched.email && formik.errors.email ? formik.errors.email : null}
+                         error={formik.touched?.email && !!formik.errors?.email}
+                         helperText={formik.touched?.email && formik.errors?.email}
                          onChange={formik.handleChange('email')}
                          fullWidth
                     />
