@@ -1,3 +1,4 @@
+import Animate from "@/components/animate/animate";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/navbar/navbar";
 import { createContext, useContext, useState } from "react";
@@ -22,7 +23,9 @@ export const UIProvider = ({ children }: any) => {
      return (
           <UIContext.Provider value={value}>
                <NavBar />
-               {children}
+               <Animate>
+                    {children}
+               </Animate>
                <Footer />
           </UIContext.Provider>
      )
