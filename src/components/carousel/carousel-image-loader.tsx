@@ -34,7 +34,7 @@ export const CarouselProductImage = (props: ProductImage) => {
                     style={{
                          borderRadius: '20px',
                          objectPosition: "center",
-                         zIndex: '1000'
+                         zIndex: '1000',
                     }}
                />
           </Box>

@@ -4,33 +4,29 @@ import { Colors } from '../theme';
 
 export const StyledCarouselBox = styled(Box)({
      display: 'block',
-     marginTop: '50px',
+     marginTop: '20px',
      height: '400px',
      justifyContent: 'center',
-     marginBottom: '50px',
 });
 
 export const StyledCarouselLogoBox = styled(Box)({
      display: 'block',
      marginTop: '50px',
+     marginBottom: '10px',
      justifyContent: 'center',
      backgroundColor: Colors.secondary.custom,
 });
 
 export const StyledCarouselCard = styled(Box)({
      background: Colors.dove_gray,
-     display: 'flex',
-     flexDirection: 'column',
-     alignItem: 'center',
-     justifyContent: 'space-around',
      border: '1px solid',
      borderRadius: '20px',
      borderColor: Colors.primary.lighter,
-     height: '400px',
+     height: '300px',
      maxWidth: '100%',
      color: 'black',
      cursor: 'pointer',
-     margin: '0px 25px',
+     margin: '10px 25px',
      ':hover': {
           boxShadow: `0 0 11px ${Colors.primary.lighter}`
      },
@@ -83,7 +79,8 @@ export const CarouselManufacturer = styled(Typography)({
 });
 
 export const CarouselImgBox = styled(Box)({
-     flex: '0 0 50%',
+     display: 'flex',
+     justifyContent: 'center',
      alignItem: 'center',
      cursor: 'pointer',
      webkitTransition: '-webkit-transform 0.4s',
@@ -92,8 +89,22 @@ export const CarouselImgBox = styled(Box)({
           transform: 'scale(1.1) rotate(10deg)'
      },
      maxWidth: '100%',
-     height: '100px',
-     margin: '0px auto 0px auto',
+     height: '300px',
+})
+
+export const CarouselOnlyImgBox = styled(Box)({
+     display: 'flex',
+     alignItem: 'center',
+     justifyContent: 'space-around',
+     cursor: 'pointer',
+     webkitTransition: '-webkit-transform 0.4s',
+     transition: 'transform 0.4s',
+     ':hover': {
+          transform: 'scale(1.1) rotate(10deg)'
+     },
+     maxWidth: '100%',
+     height: '250px',
+     marginTop: '80px'
 })
 
 export const CarouselLogoImgBox = styled(Box)({

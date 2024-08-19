@@ -23,6 +23,7 @@ import ProductCard from "@/components/product-presentation/product-presentation"
 import { BannerServices } from "@/components/banner/banner-services";
 import { BannerCountUp } from "@/components/banner/banner-counter";
 import { useEffect, useState } from "react";
+import CarouselOnlyImageProduct from "@/components/carousel/carousel-only-image";
 
 export default function Home(props: any) {
 
@@ -84,7 +85,7 @@ export default function Home(props: any) {
                >
                     <Stack>
                          <UIProvider>
-                              <CarouselLogo products={dataForProductCarousel} />
+                              <CarouselOnlyImageProduct products={dataForProductCarousel} />
                               <Banner />
                               <Promotions />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
@@ -101,15 +102,15 @@ export default function Home(props: any) {
                               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                    <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
                               </Box>
-                              <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
+                              <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
                               <ProductCarousel products={dataForNewProducts} />
-                              <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
+                              <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
                               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                    <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Brendovi</Typography>
                               </Box>
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                               <CarouselLogo manufacturers={manufacturers} />
-                              <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
+                              <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
                               {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                    <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Proizvodi na akciji</Typography>
                               </Box>

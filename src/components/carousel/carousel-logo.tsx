@@ -1,7 +1,7 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { CarouselManufacturerImage, CarouselProductImage } from './carousel-image-loader';
-import { CarouselLogoImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
+import { CarouselImgBox, CarouselLogoImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
@@ -63,9 +63,9 @@ const CarouselLogo = (props: CarouselProps) => {
                               ))
                               :
                               props.products?.map((product: IProduct) => (
-                                   <CarouselLogoImgBox key={product._id} sx={{ marginTop: '100px', marginBottom: '50px', height: isScreenToMedium ? '150px' : '220px', position: 'relative' }}>
+                                   <CarouselImgBox key={product._id} >
                                         <Link href={`/proizvod/${product._id}`}>
-                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 100 : 220} width={200} isOnDiscount={product.discount} />
+                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 150 : 200} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
                                         </Link>
                                         <Tooltip title={product.name} placement="top">
                                              <CarouselTitle sx={{
@@ -77,10 +77,12 @@ const CarouselLogo = (props: CarouselProps) => {
                                                   padding: '5px',
                                                   color: Colors.primary.darker
                                              }}>
-                                                  {product.name}
+                                                  <Typography sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
+                                                       {product.name}
+                                                  </Typography>
                                              </CarouselTitle>
                                         </Tooltip>
-                                   </CarouselLogoImgBox>
+                                   </CarouselImgBox>
                               ))
                     }
                </Carousel>

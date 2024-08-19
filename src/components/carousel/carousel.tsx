@@ -47,9 +47,9 @@ const ProductCarousel = (props: any) => {
                >
                     {
                          props.products.map((product: IProduct) => (
-                              <StyledCarouselCard key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                              <StyledCarouselCard key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: isScreenToMedium ? 'space-around' : 'space-between' }}>
                                    <CarouselImgBox>
-                                        <CarouselProductImage isOnDiscount={product.discount} src={product.imageURL} alt={product.name} height={200} width={200} />
+                                        <CarouselProductImage isOnDiscount={product.discount} src={product.imageURL} alt={product.name} height={isScreenToMedium ? 160 : 230} width={isScreenToMedium ? 125 : 200} />
                                    </CarouselImgBox>
                                    <Box>
                                         <CarouselManufacturerBox>
