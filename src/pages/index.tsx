@@ -182,6 +182,8 @@ export async function getServerSideProps() {
           .concat(gloriaProducts)
           .concat(productsFromManufacturerFitaky)
 
+     const dataForCarouselProducts: IProduct[] = productsFromManufacturerGana.concat(gloriaProducts)
+
      const newProducts: IProduct[] = await productsServices().getNewProducts().then((data: any) => {
           return data
      })
@@ -194,7 +196,7 @@ export async function getServerSideProps() {
 
      return {
           props: {
-               dataForProductCarousel: JSON.parse(JSON.stringify(productsFromManufacturerGana)),
+               dataForProductCarousel: JSON.parse(JSON.stringify(dataForCarouselProducts)),
                dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
                dataForNewProducts: JSON.parse(JSON.stringify(newProducts)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
