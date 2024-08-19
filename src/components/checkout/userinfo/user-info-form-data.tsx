@@ -198,9 +198,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
 
-                                             <Typography>
-                                                  {JSON.stringify(formik.errors)}
-                                             </Typography>
                                              <Grid item xs={12} sm={6}>
 
                                                   <Field
