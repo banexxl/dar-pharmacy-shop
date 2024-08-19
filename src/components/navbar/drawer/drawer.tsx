@@ -11,6 +11,8 @@ import LoginRegister from "../../login/login"
 import Link from "next/link"
 import { ProductsMenu } from "../product-menu"
 import { useSession } from "next-auth/react"
+import { useSelector } from "react-redux"
+import { cartTotalSelector } from "@/store/cart/cart.selector"
 
 const MiddleDivider = styled((props) => (
      <Divider variant="middle" {...props} />
@@ -21,6 +23,8 @@ export default function AppDrawer({ isScreenToMedium }: any) {
 
 
      const { drawerOpen, setDrawerOpen } = useUIContext();
+
+     const counter = useSelector(cartTotalSelector)
 
      const [WishListDialog, showWishListDialog, closeWishListDialog] =
           useDialogModal(WishList)
@@ -54,7 +58,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                          </ListItemButton>
                          <MiddleDivider />
                          <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
-                              <ListItemText>Korpa</ListItemText>
+                              <ListItemText>Korpa: {counter} </ListItemText>
                          </ListItemButton>
                          <MiddleDivider />
                          <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }}>

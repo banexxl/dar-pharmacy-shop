@@ -10,14 +10,14 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
      flexDirection: 'row',
      justifyContent: 'space-between',
      alignItems: 'center',
-     padding: '0 15% 0',
+     padding: '0 10% 0',
      // gap: '93px',
      position: 'fixed',
      left: '0px',
      top: '0px',
      backgroundColor: Colors.primary.lighter,
      // opacity: '0.8',
-     width: '70%',
+     width: '80%',
      zIndex: 1000,
 })) as typeof Box
 

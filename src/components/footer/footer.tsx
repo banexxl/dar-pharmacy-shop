@@ -104,7 +104,7 @@ export default function Footer() {
                                    </AccordionDetails>
                                    <AccordionDetails>
                                         <Link href={"/kontakt"} >
-                                             Pitajte nas...
+                                             Kontakt
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
@@ -222,7 +222,7 @@ export default function Footer() {
                                         <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2}>
                                                   <Link href={"/kontakt"} >
-                                                       Pitajte nas...
+                                                       Kontakt
                                                   </Link>
                                              </FooterItem>
                                         </ListItemText>

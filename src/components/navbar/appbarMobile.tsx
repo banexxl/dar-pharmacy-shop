@@ -1,17 +1,25 @@
 import { AppbarContainer, AppbarContainerMobile, AppbarTitle, IconBox } from "../../styles/appbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Box, IconButton, keyframes } from "@mui/material";
+import { Badge, Box, IconButton, keyframes } from "@mui/material";
 import { useUIContext } from "../../context/ui/ui.context";
 import { useEffect, useState } from "react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Link from "next/link";
 import { Colors } from "@/styles/theme";
+import useDialogModal from "@/hooks/useDialogModal";
+import Cart from "../cart/cart";
+import { useSelector } from "react-redux";
+import { cartTotalSelector } from "@/store/cart/cart.selector";
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
 
      const { setDrawerOpen, setShowSearchBox } = useUIContext();
      const [isScrolled, setIsScrolled] = useState<Boolean>(false);
      const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
+     const counter = useSelector(cartTotalSelector)
+     const [CartDialog, showCartDialog, closeCartDialog] =
+          useDialogModal(Cart)
 
      const zoomInOut = keyframes`
   0%, 100% {
@@ -57,7 +65,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
      return (
 
-          <AppbarContainer sx={{ height: getHeight(), display: isScrolledHalfway ? 'none' : 'flex' }}>
+          <AppbarContainer sx={{ height: getHeight(), display: 'flex', justifyContent: 'space-between' }}>
                <IconButton onClick={() => setDrawerOpen(true)} >
                     <MenuIcon sx={{
                          color: Colors.primary.main,
@@ -72,6 +80,12 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                <IconButton onClick={() => setShowSearchBox(true)} >
                     <SearchIcon sx={{ color: Colors.primary.main }} />
                </IconButton>
+               <IconButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
+                    <Badge badgeContent={counter} color={'primary'} >
+                         <ShoppingCartIcon sx={{ color: Colors.primary.main }} />
+                    </Badge>
+               </IconButton>
+               <CartDialog />
           </AppbarContainer >
 
      );
