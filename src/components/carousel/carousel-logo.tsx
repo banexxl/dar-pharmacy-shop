@@ -57,7 +57,7 @@ const CarouselLogo = (props: CarouselProps) => {
                               props.manufacturers.map((logo: { url: string, name: string, value: string }) => (
                                    <CarouselLogoImgBox key={Math.random()}>
                                         <Link href={`/${logo.value}?part=1`}>
-                                             <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={200} isOnDiscount={false} />
+                                             <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={150} isOnDiscount={false} />
                                         </Link>
                                    </CarouselLogoImgBox>
                               ))
@@ -65,7 +65,7 @@ const CarouselLogo = (props: CarouselProps) => {
                               props.products?.map((product: IProduct) => (
                                    <CarouselLogoImgBox key={product._id} sx={{ marginTop: '60px', marginBottom: '50px', height: isScreenToMedium ? '200px' : '250px', position: 'relative' }}>
                                         <Link href={`/proizvod/${product._id}`}>
-                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 200 : 250} width={300} isOnDiscount={product.discount} />
+                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 100 : 280} width={200} isOnDiscount={product.discount} />
                                         </Link>
                                         <Tooltip title={product.name} placement="top">
                                              <CarouselTitle sx={{
