@@ -256,7 +256,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        Proveri korpu
                                                   </CheckoutNextPrevButton>
 
-                                                  <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} endIcon={< NavigateNextIcon />} disabled={!formik.isValid}>
+                                                  <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} endIcon={< NavigateNextIcon />} disabled={formik.values.shouldCreateAccount && !!formik.errors.email}>
                                                        Dalje
                                                   </CheckoutNextPrevButton>
                                              </PaymentOptionRadio>
