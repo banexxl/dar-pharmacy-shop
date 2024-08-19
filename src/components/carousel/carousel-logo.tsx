@@ -63,9 +63,9 @@ const CarouselLogo = (props: CarouselProps) => {
                               ))
                               :
                               props.products?.map((product: IProduct) => (
-                                   <CarouselLogoImgBox key={product._id} sx={{ marginTop: '60px', marginBottom: '50px', height: isScreenToMedium ? '200px' : '250px', position: 'relative' }}>
+                                   <CarouselLogoImgBox key={product._id} sx={{ marginTop: '100px', marginBottom: '50px', height: isScreenToMedium ? '150px' : '220px', position: 'relative' }}>
                                         <Link href={`/proizvod/${product._id}`}>
-                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 100 : 280} width={200} isOnDiscount={product.discount} />
+                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 100 : 220} width={200} isOnDiscount={product.discount} />
                                         </Link>
                                         <Tooltip title={product.name} placement="top">
                                              <CarouselTitle sx={{
