@@ -306,7 +306,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/proizvodi-proizvodjac-kategorija/zao-prirodna-sminka/prirodna-kozmetika/?part=1'}>
+                              <Link href={'/proizvodi/zao-prirodna-sminka?part=1'}>
                                    Zao prirodna šminka
                               </Link>
                          </StyledNestedTypography>

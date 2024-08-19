@@ -212,9 +212,9 @@ export const AccordionPanels = [
                     title: 'Suplemania'
                },
                {
-                    id: 'zao-prirodna-kozmetika',
-                    link: '/proizvodi/zao-prirodna-kozmetika/',
-                    title: 'Zao prirodna kozmetika'
+                    id: 'zao-prirodna-sminka',
+                    link: '/proizvodi/zao-prirodna-sminka/',
+                    title: 'Zao prirodna šminka'
                },
                {
                     id: '/proizvodi-za-zene',
