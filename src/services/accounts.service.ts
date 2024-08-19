@@ -134,14 +134,14 @@ export const AccountService = () => {
           }
      };
 
-     const checkIfEmailExists = async (data: any) => {
+     const checkIfEmailExists = async (email: string) => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
                const db = client.db('ACCOUNTS_DB');
-               const user = await db.collection('users').findOne({ email: data.email });
+               const user = await db.collection('users').findOne({ email: email });
 
-               if (user.email !== data.email) {
+               if (user.email !== email) {
                     return { message: 'Email available!', status: 202 };
                } else {
                     return { message: 'Email found!', status: 200 };

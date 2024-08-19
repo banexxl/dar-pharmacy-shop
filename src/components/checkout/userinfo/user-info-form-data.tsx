@@ -1,5 +1,5 @@
 import { CircularProgress, Container, FormControlLabel, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Form, Formik, FormikContext, useFormikContext } from 'formik';
+import { Field, Form, Formik, FormikContext, useFormikContext } from 'formik';
 import React, { FunctionComponent, use, useState } from 'react';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
@@ -86,26 +86,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           }
      }
 
-     const onRegisterAccountCheck = async (email: string) => {
-          const response = await fetch('/api/email/check-if-email-exists', {
-               method: 'POST',
-               headers: {
-                    'Content-Type': 'application/json',
-               },
-               body: JSON.stringify({ email }),
-          });
-
-          if (response.status === 200) {
-               // Email already registered
-               return true;
-          } else if (response.status === 202) {
-               // Email available
-               return false;
-          } else {
-               return null;
-          }
-     }
-
      return (
           <DynamicThemeProvider theme={theme}>
                <Container disableGutters maxWidth="md">
@@ -119,7 +99,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                         </Typography>
                                         <Grid container spacing={2}>
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        label="Ime i prezime"
                                                        name={'name'}
                                                        value={formik.values.name}
@@ -132,7 +113,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={formik.values.phoneNumber}
                                                        onChange={formik.handleChange('phoneNumber')}
                                                        label={"Broj telefona"}
@@ -145,7 +127,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={formik.values.streetAddress}
                                                        onChange={formik.handleChange('streetAddress')}
                                                        onBlur={() => formik.setFieldTouched('streetAddress', true)}
@@ -158,7 +141,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={formik.values.city}
                                                        onChange={formik.handleChange('city')}
                                                        onBlur={() => formik.setFieldTouched('city', true)}
@@ -171,7 +155,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={formik.values.provinceState}
                                                        onChange={formik.handleChange('provinceState')}
                                                        onBlur={() => formik.setFieldTouched('provinceState', true)}
@@ -184,7 +169,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={formik.values.country}
                                                        onChange={formik.handleChange('country')}
                                                        onBlur={() => formik.setFieldTouched('country', true)}
@@ -198,7 +184,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              </Grid>
 
                                              <Grid item xs={12} sm={6}>
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={formik.values.zipPostalCode}
                                                        onChange={formik.handleChange('zipPostalCode')}
                                                        onBlur={() => formik.setFieldTouched('zipPostalCode', true)}
@@ -211,35 +198,19 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   />
                                              </Grid>
 
-                                             {/* <UserInfoFormEmail formik={formik} session={session} /> */}
+                                             <Typography>
+                                                  {JSON.stringify(formik.errors)}
+                                             </Typography>
                                              <Grid item xs={12} sm={6}>
 
-                                                  <TextField
+                                                  <Field
+                                                       as={TextField}
                                                        value={session.data ? session.data?.user!.email : formik.values.email}
                                                        disabled={session.data ? true : false}
                                                        label="Email"
                                                        name="email"
                                                        variant="outlined"
-                                                       onBlur={async (e: any) => {
-                                                            formik.setFieldValue('email', e.target.value);
-                                                            console.log('email', formik.values.email);
-                                                            console.log('session', session.data);
-
-                                                            if (e.target.value) {
-                                                                 const emailExists = await onRegisterAccountCheck(e.target.value);
-                                                                 console.log('shouldCreateAccount', formik.values.shouldCreateAccount);
-
-                                                                 if (emailExists === true && formik.values.shouldCreateAccount) {
-                                                                      console.log('emailExists', emailExists);
-
-                                                                      // formik.setFieldTouched('email', true); // Mark email as touched
-                                                                      formik.setFieldError('email', 'Email već postoji!');
-                                                                      // formik.validateForm();
-                                                                 } else {
-                                                                      formik.validateForm();
-                                                                 }
-                                                            }
-                                                       }}
+                                                       onBlur={formik.handleBlur}
                                                        error={formik.touched?.email && !!formik.errors?.email}
                                                        helperText={formik.touched?.email && formik.errors?.email}
                                                        onChange={formik.handleChange('email')}
@@ -255,23 +226,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                             control={
                                                                  <ShouldCreateAccountCheckBox
                                                                       checked={formik.errors.email ? false : formik.values.shouldCreateAccount}
-                                                                      onChange={async (e: any) => {
-                                                                           formik.setFieldValue('shouldCreateAccount', e.target.checked);
-
-                                                                           if (e.target.checked && formik.values.email) {
-                                                                                await onRegisterAccountCheck(formik.values.email).then((res) => {
-                                                                                     if (res === false) {
-                                                                                          formik.setErrors({ email: 'Email već postoji!' });
-                                                                                          formik.setFieldTouched('email', true);
-                                                                                          formik.validateForm();
-
-                                                                                     } else {
-                                                                                          // formik.validateForm();
-                                                                                          formik.setFieldTouched('email', true);
-                                                                                     }
-                                                                                })
-                                                                           }
-                                                                      }}
+                                                                      onChange={formik.handleChange}
                                                                       name={"shouldCreateAccount"}
                                                                       color="primary"
                                                                       disabled={formik.values.email === '' || formik.errors.email ? true : false}

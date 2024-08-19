@@ -1,4 +1,4 @@
-import { bool, object, string, ref, date } from 'yup';
+import { bool, object, string, ref, date, ValidationError } from 'yup';
 
 
 export const userFormSchema = () => {
@@ -36,8 +36,46 @@ export const userFormSchema = () => {
                .min(1, "Ovo polje je prekratko, min 1")
                .max(10, "Ovo polje je predugačko, max 10"),
           email: string()
+               .email("Ovo polje mora biti email!")
                .required("Ovo polje je obavezno!")
-               .email("Ovo polje mora biti email!"),
+               .test(
+                    'checkUnique',
+                    'Ovaj email je već registrovan',
+                    async (value: any) => {
+                         if (!value) return true; // Skip validation if the email field is empty
+
+                         try {
+                              const response = await fetch('/api/email/check-if-email-exists', {
+                                   method: 'POST',
+                                   headers: {
+                                        'Content-Type': 'application/json',
+                                   },
+                                   body: JSON.stringify(value),
+                              });
+
+                              const data = await response.json();
+
+                              // Assuming 200 means the email is taken, and 202 means the email is available
+                              if (data.status === 200) {
+                                   return false; // Email already exists
+                              } else if (data.status === 202) {
+                                   return true; // Email is available
+                              } else {
+                                   return new ValidationError(
+                                        'Došlo je do greške pri proveri emaila',
+                                        value,
+                                        'email'
+                                   );
+                              }
+                         } catch (error) {
+                              return new ValidationError(
+                                   'Došlo je do greške pri proveri emaila',
+                                   value,
+                                   'email'
+                              );
+                         }
+                    }
+               ),
           shouldCreateAccount: bool(),
           // password: string()
           //      .when('shouldCreateAccount', (shouldCreateAccount, schema) => {
