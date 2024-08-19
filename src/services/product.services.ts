@@ -48,7 +48,7 @@ const productsServices = () => {
           }
      }
 
-     const getRandomHerbalabProducts = async () => {
+     const getRandomProductsFromManufacturerURL = async (manufacturerURL: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
@@ -62,8 +62,8 @@ const productsServices = () => {
                //      { $sample: { size: 1 } }
                // ])
                let data: IProduct[] = await db.collection('Products')
-                    .find({ manufacturerURL: "herbalab", isActive: true })
-                    .limit(8)
+                    .find({ manufacturerURL: manufacturerURL, isActive: true })
+                    .limit(10)
                     .toArray()
                return data
           } catch (error: any) {
@@ -297,9 +297,28 @@ const productsServices = () => {
           }
      }
 
+     const getNewProducts = async () => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+          try {
+               const db = client.db('DAR_DB')
+               let products: IProduct[] = await db.collection('Products')
+                    .find({ newArrival: true, isActive: true })
+                    // .limit(10)
+                    .toArray()
+
+               return products
+          } catch (error: any) {
+               return { message: error.message }
+          } finally {
+               await client.close();
+          }
+     }
+
 
      return {
           getAllProducts,
+          getNewProducts,
           getAllMainCategories,
           getProductById,
           getProductsByNameAndOrManufacturer,
@@ -311,7 +330,7 @@ const productsServices = () => {
           getProductsByMainCategoryMidCategorySubCategory,
           getAllLogos,
           getAllManufacturers,
-          getRandomHerbalabProducts,
+          getRandomProductsFromManufacturerURL,
           getRandomApotekaProducts
      }
 }

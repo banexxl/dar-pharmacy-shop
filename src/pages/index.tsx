@@ -26,7 +26,7 @@ import { useEffect, useState } from "react";
 
 export default function Home(props: any) {
 
-     const { dataForGrid, productsOnDiscount, manufacturers } = props
+     const { dataForGrid, dataForProductCarousel, manufacturers, dataForNewProducts } = props
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -84,7 +84,7 @@ export default function Home(props: any) {
                >
                     <Stack>
                          <UIProvider>
-                              <CarouselLogo products={dataForGrid} />
+                              <CarouselLogo products={dataForProductCarousel} />
                               <Banner />
                               <Promotions />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
@@ -102,7 +102,7 @@ export default function Home(props: any) {
                                    <Typography sx={{ fontSize: '2rem' }}>Novo u ponudi</Typography>
                               </Box>
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                              <ProductCarousel products={dataForGrid} />
+                              <ProductCarousel products={dataForNewProducts} />
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '30px' }} />
                               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                    <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Brendovi</Typography>
@@ -149,7 +149,11 @@ export default function Home(props: any) {
 
 export async function getServerSideProps() {
 
-     const productsFromManufacturerHerbalab: IProduct[] = await productsServices().getRandomHerbalabProducts().then((data: any) => {
+     const productsFromManufacturerGana: IProduct[] = await productsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
+          return data
+     })
+
+     const productsFromManufacturerFitaky: IProduct[] = await productsServices().getRandomProductsFromManufacturerURL('fitaky').then((data: any) => {
           return data
      })
 
@@ -161,6 +165,27 @@ export async function getServerSideProps() {
           return logos
      })
 
+     const gloriaProducts: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
+          return data
+     })
+
+     const searchedByNameORManufacturer: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
+          return data
+     })
+
+     const searchedByNameORManufacturerI: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
+          return data
+     })
+
+     const dataForGrid: IProduct[] = searchedByNameORManufacturer
+          .concat(searchedByNameORManufacturerI)
+          .concat(gloriaProducts)
+          .concat(productsFromManufacturerFitaky)
+
+     const newProducts: IProduct[] = await productsServices().getNewProducts().then((data: any) => {
+          return data
+     })
+
      //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
      //redirect: {
      //           destination: "/nodata"
@@ -169,7 +194,9 @@ export async function getServerSideProps() {
 
      return {
           props: {
-               dataForGrid: JSON.parse(JSON.stringify(productsFromManufacturerHerbalab)),
+               dataForProductCarousel: JSON.parse(JSON.stringify(productsFromManufacturerGana)),
+               dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
+               dataForNewProducts: JSON.parse(JSON.stringify(newProducts)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
           },
