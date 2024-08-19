@@ -257,7 +257,7 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link href={'/proizvodi/prirodni-melemi?part=1'}>
+                              <Link href={'/proizvodi/domaci-prirodni-melemi?part=1'}>
                                    Domaći prirodni melemi
                               </Link>
                          </StyledNestedTypography>
