@@ -13,6 +13,7 @@ import { ProductsMenu } from "../product-menu"
 import { useSession } from "next-auth/react"
 import { useSelector } from "react-redux"
 import { cartTotalSelector } from "@/store/cart/cart.selector"
+import { motion } from "framer-motion"
 
 const MiddleDivider = styled((props) => (
      <Divider variant="middle" {...props} />
@@ -37,49 +38,150 @@ export default function AppDrawer({ isScreenToMedium }: any) {
 
      const { data: session } = useSession()
 
+     const variants = {
+          open: {
+               y: 0,
+               opacity: 1,
+               transition: {
+                    y: { stiffness: 1000, velocity: -100 }
+               }
+          },
+          closed: {
+               y: 50,
+               opacity: 0,
+               transition: {
+                    y: { stiffness: 1000 }
+               }
+          }
+     };
+
+     const sidebar = {
+          open: (height = 1000) => ({
+               clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+               transition: {
+                    type: "spring",
+                    stiffness: 20,
+                    restDelta: 2
+               }
+          }),
+          closed: {
+               clipPath: "circle(30px at 40px 40px)",
+               transition: {
+                    delay: 0.5,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 40
+               }
+          }
+     };
 
      return (
           <Box >
                <Drawer open={drawerOpen} >
                     <List>
-                         <ListItemButton>
-                              <ListItemText onClick={() => { setDrawerOpen(false) }}>
-                                   <Link href={'/'}>
-                                        Početna
-                                   </Link>
-                              </ListItemText>
-                              <DrawerCloseButton onClick={() => setDrawerOpen(false)}>
-                                   <CloseIcon />
-                              </DrawerCloseButton>
-                         </ListItemButton>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <ListItemButton>
+
+                                   <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
+                                        '& .MuiTypography-root': {
+                                             color: Colors.white, // Override only for this instance
+                                        },
+                                   }}>
+                                        <Link href={'/'}>
+                                             Početna
+                                        </Link>
+                                   </ListItemText>
+                                   <DrawerCloseButton onClick={() => setDrawerOpen(false)} >
+                                        <CloseIcon />
+                                   </DrawerCloseButton>
+                              </ListItemButton>
+                         </motion.li>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <MiddleDivider />
+                         </motion.li>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <ListItemButton sx={{ justifyContent: 'center' }} >
+                                   <ProductsMenu />
+                              </ListItemButton>
+                         </motion.li>
                          <MiddleDivider />
-                         <ListItemButton sx={{ justifyContent: 'center' }} >
-                              <ProductsMenu />
-                         </ListItemButton>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
+                                   <ListItemText sx={{
+                                        '& .MuiTypography-root': {
+                                             color: Colors.white, // Override only for this instance
+                                        },
+                                   }}>Korpa: {counter} </ListItemText>
+                              </ListItemButton>
+                         </motion.li>
                          <MiddleDivider />
-                         <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
-                              <ListItemText>Korpa: {counter} </ListItemText>
-                         </ListItemButton>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }}>
+                                   <ListItemText sx={{
+                                        '& .MuiTypography-root': {
+                                             color: Colors.white, // Override only for this instance
+                                        },
+                                   }}>
+                                        Omiljeni
+                                   </ListItemText>
+                              </ListItemButton>
+                         </motion.li>
                          <MiddleDivider />
-                         <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }}>
-                              <ListItemText>Omiljeni</ListItemText>
-                         </ListItemButton>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <ListItemButton>
+                                   <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
+                                        '& .MuiTypography-root': {
+                                             color: Colors.white, // Override only for this instance
+                                        },
+                                   }}>
+                                        <Link href={'/kontakt'}>
+                                             Pitajte nas...
+                                        </Link>
+                                   </ListItemText>
+                              </ListItemButton>
+                         </motion.li>
                          <MiddleDivider />
-                         <ListItemButton>
-                              <ListItemText onClick={() => { setDrawerOpen(false) }}>
-                                   <Link href={'/kontakt'}>
-                                        Pitajte nas...
-                                   </Link>
-                              </ListItemText>
-                         </ListItemButton>
-                         <MiddleDivider />
-                         <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
-                              <ListItemText>
-                                   {
-                                        session ? 'Profil' : 'Prijava'
-                                   }
-                              </ListItemText>
-                         </ListItemButton>
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                         >
+                              <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
+                                   <ListItemText sx={{
+                                        '& .MuiTypography-root': {
+                                             color: Colors.white, // Override only for this instance
+                                        },
+                                   }}>
+                                        {
+                                             session ? 'Profil' : 'Prijava'
+                                        }
+                                   </ListItemText>
+                              </ListItemButton>
+                         </motion.li>
                          <MiddleDivider />
                     </List>
                </Drawer>
@@ -87,6 +189,6 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                <CartDialog />
                <LoginDialog />
                <Actions isScreenToMedium={isScreenToMedium} />
-          </Box>
+          </Box >
      );
 }

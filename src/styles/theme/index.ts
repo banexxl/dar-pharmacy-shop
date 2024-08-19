@@ -69,7 +69,7 @@ const theme: Theme = createTheme({
                styleOverrides: {
                     root: {
                          '& .MuiTypography-root': {
-                              color: Colors.secondary.custom,
+                              color: Colors.primary.main,
                          },
                     }
                }

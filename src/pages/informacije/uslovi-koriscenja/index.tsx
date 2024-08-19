@@ -64,15 +64,12 @@ const TermsConditions = () => {
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                         Apotekarska ustanova DAR Kragujevac vam omogućava korišćenje usluga i sadržaja svog portala koje je podložno niže navedenim Uslovima korišćenja. Uslovi korišćenja se primenjuju na sve sadržaje i usluge www.apoteka-dar.rs. Korišćenjem bilo kog dela portala, smatra se da su korisnici upoznati sa ovim uslovima, kao i da prihvataju korišćenje sadržaja ovog portala isključivo za ličnu upotrebu i na sopstvenu odgovornost
                                    </Typography>
+                                   <Typography sx={{ textAlign: 'justify', padding: '20px 20px' }}>
+                                        Apotekarska ustanova DAR Kragujevac svoje cenjene potrošače koji robu kupuju putem internet sajta www.apoteka-dar.rs obaveštava:
+                                   </Typography>
 
                                    <List sx={{ listStyleType: 'num', pl: 6 }}>
-                                        <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
-                                             <ListItemText>
-                                                  <Typography textAlign='justify' >
-                                                       Apotekarska ustanova DAR Kragujevac svoje cenjene potrošače koji robu kupuju putem internet sajta www.apoteka-dar.rs obaveštava:
-                                                  </Typography>
-                                             </ListItemText>
-                                        </ListItem>
+
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                              <ListItemText>
                                                   <Typography textAlign='justify' >
