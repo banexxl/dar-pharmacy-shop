@@ -89,14 +89,16 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                          DAR
                     </Link>
                </AppbarTitle>
-               <IconButton onClick={() => setShowSearchBox(true)} >
-                    <SearchIcon sx={{ color: Colors.primary.main }} />
-               </IconButton>
-               <IconButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
-                    <Badge badgeContent={counter} color={'primary'} >
-                         <ShoppingCartIcon sx={{ color: Colors.primary.main }} />
-                    </Badge>
-               </IconButton>
+               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <IconButton onClick={() => setShowSearchBox(true)} >
+                         <SearchIcon sx={{ color: Colors.primary.main }} />
+                    </IconButton>
+                    <IconButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
+                         <Badge badgeContent={counter} color={'primary'} >
+                              <ShoppingCartIcon sx={{ color: Colors.primary.main }} />
+                         </Badge>
+                    </IconButton>
+               </Box>
                <CartDialog />
           </AppbarContainer >
 
