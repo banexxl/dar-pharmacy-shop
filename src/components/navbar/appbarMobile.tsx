@@ -21,14 +21,26 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
      const [CartDialog, showCartDialog, closeCartDialog] =
           useDialogModal(Cart)
 
-     const zoomInOut = keyframes`
-  0%, 100% {
+     const heartbeat = keyframes`
+  0% {
     transform: scale(1);
   }
-  50% {
-    transform: scale(1.4);
+  20% {
+    transform: scale(1.3);
   }
-`
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 
      useEffect(() => {
 
@@ -57,7 +69,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
      const getHeight = () => {
           if (isScrolled) {
-               return '40px';
+               return '50px';
           } else {
                return '60px';
           }
@@ -69,7 +81,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                <IconButton onClick={() => setDrawerOpen(true)} >
                     <MenuIcon sx={{
                          color: Colors.primary.main,
-                         animation: `${zoomInOut} 2s infinite`
+                         animation: `${heartbeat} 2s infinite`
                     }} />
                </IconButton>
                <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}>
