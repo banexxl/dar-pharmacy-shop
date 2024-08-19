@@ -85,13 +85,13 @@ export default function Home(props: any) {
                >
                     <Stack>
                          <UIProvider>
-                              <CarouselOnlyImageProduct products={dataForProductCarousel} />
                               <Banner />
                               <Promotions />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                    <MessageText variant="h4">Popularno</MessageText>
                               </Box>
                               <ProductCard />
+                              <CarouselOnlyImageProduct products={dataForProductCarousel} />
                               <BannerServices />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                    <MessageText variant="h4">Izdvajamo iz ponude</MessageText>

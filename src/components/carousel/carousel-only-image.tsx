@@ -1,12 +1,13 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselManufacturerImage, CarouselProductImage } from './carousel-image-loader';
-import { CarouselImgBox, CarouselLogoImgBox, CarouselOnlyImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
+import { CarouselProductImage } from './carousel-image-loader';
+import { CarouselOnlyImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
-import { Tooltip, Typography, useMediaQuery } from '@mui/material';
-import { Colors } from '@/styles/theme';
+import { Typography, useMediaQuery } from '@mui/material';
+import theme, { Colors } from '@/styles/theme';
+import { StyledTotalsTitle } from '@/styles/cart';
 
 type CarouselProps = {
      products?: IProduct[];
@@ -14,7 +15,6 @@ type CarouselProps = {
 }
 const CarouselOnlyImageProduct = (props: CarouselProps) => {
 
-     const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      const responsive = {
@@ -36,7 +36,10 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
      };
 
      return (
-          <StyledCarouselLogoBox >
+          <StyledCarouselLogoBox sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginTop: '0px', paddingBottom: '30px' }}>
+               <StyledTotalsTitle theme={theme} sx={{ marginTop: '20px' }}>
+                    Deo asortimana
+               </StyledTotalsTitle>
                <Carousel
                     responsive={responsive}
                     swipeable={true}
