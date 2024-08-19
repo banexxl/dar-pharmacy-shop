@@ -131,13 +131,6 @@ export const ProductsMenu = () => {
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography >
-                                   <Link href={'/proizvodi-proizvodjac-kategorija/hedera-vita/prirodna-kozmetika?part=1'}>
-                                        Hederavita
-                                   </Link>
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
                               <Link href={'/proizvodi-proizvodjac-kategorija/phyto/prirodna-kozmetika?part=1'}>
                                    <StyledNestedTypography >
                                         Phyto

@@ -52,11 +52,6 @@ export const AccordionPanels = [
                               title: 'Aronica'
                          },
                          {
-                              id: 'prirodna-kozmetika-hedera-vita',
-                              link: '/proizvodi-proizvodjac-kategorija/hedera-vita/prirodna-kozmetika',
-                              title: 'Hedera Vita'
-                         },
-                         {
                               id: 'prirodna-kozmetika-fitaky',
                               link: '/proizvodi-proizvodjac-kategorija/fitaky/prirodna-kozmetika',
                               title: 'Fitaky'
