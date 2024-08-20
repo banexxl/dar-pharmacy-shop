@@ -40,7 +40,7 @@ export const userFormSchema = () => {
                .required("Ovo polje je obavezno!")
                .test(
                     'checkUnique',
-                    'Ovaj email je već registrovan',
+                    'Ovaj email je već registrovan!',
                     async (value: any) => {
                          if (!value) return true; // Skip validation if the email field is empty
 

@@ -17,6 +17,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Cart from '@/components/cart/cart';
 import { useSession } from 'next-auth/react';
 import sweetalert2 from 'sweetalert2';
+import { Colors } from '@/styles/theme';
 
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
@@ -66,17 +67,20 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                          if (response.status === 409) {
                               sweetalert2.fire({
                                    title: 'Ovaj email je već registrovan!',
+                                   text: 'Molimo Vas da unesete drugi email, ili nastavite kao gost!',
                                    icon: 'warning',
-                                   showConfirmButton: false,
-                                   timer: 2000
+                                   showConfirmButton: true,
+                                   confirmButtonText: 'U redu',
+                                   confirmButtonColor: Colors.primary.main
                               })
                          } else if (response.status === 200) {
                               sweetalert2.fire({
                                    title: 'Poslat Vam je email za verifikaciju!',
                                    text: 'Molimo Vas da proverite Vaš inbox, i potvrdite Vaš email!',
                                    icon: 'success',
-                                   showConfirmButton: false,
-                                   timer: 2500
+                                   showConfirmButton: true,
+                                   confirmButtonText: 'U redu',
+                                   confirmButtonColor: Colors.primary.main
                               })
                          }
                     })
@@ -223,12 +227,16 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                             sx={{ marginBottom: '10px', width: '100%' }}
                                                             control={
                                                                  <ShouldCreateAccountCheckBox
-                                                                      checked={formik.errors.email ? false : formik.values.shouldCreateAccount}
+                                                                      checked={!!formik.errors.email ? false : formik.values.shouldCreateAccount}
                                                                       onChange={formik.handleChange}
-                                                                      name={"shouldCreateAccount"}
+                                                                      name="shouldCreateAccount"
                                                                       color="primary"
-                                                                      disabled={formik.values.email === '' || formik.errors.email ? true : false}
+                                                                      disabled={
+                                                                           formik.values.email === '' ||
+                                                                           (Boolean(formik.errors.email) && formik.errors.email !== "Ovaj email je već registrovan!")
+                                                                      }
                                                                  />
+
                                                             }
                                                             label={
                                                                  <Typography sx={{ display: 'inline', textAlign: 'justify', color: 'black' }}>
@@ -256,8 +264,16 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        onClick={() => showCartDialog()}>
                                                        Proveri korpu
                                                   </CheckoutNextPrevButton>
-
-                                                  <CheckoutNextPrevButton onClick={() => handleSubmit(formik.values)} endIcon={< NavigateNextIcon />} disabled={formik.values.shouldCreateAccount && !!formik.errors.email}>
+                                                  <Typography>
+                                                  </Typography>
+                                                  <CheckoutNextPrevButton
+                                                       onClick={() => handleSubmit(formik.values)}
+                                                       endIcon={<NavigateNextIcon />}
+                                                       disabled={
+                                                            Boolean(formik.errors.email) &&
+                                                            formik.errors.email !== "Ovaj email je već registrovan!"
+                                                       }
+                                                  >
                                                        Dalje
                                                   </CheckoutNextPrevButton>
                                              </PaymentOptionRadio>

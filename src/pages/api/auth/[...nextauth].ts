@@ -220,7 +220,7 @@ export const authOptions: NextAuthOptions = {
                          if (user?.email) {
                               const userFromDB = await AccountService().getUserByEmail(user.email);
                               console.log("userFromDB", userFromDB.emailVerified);
-
+                              // Allow sign-in if the email is verified
                               return userFromDB.emailVerified ? true : false;
                          } else {
                               console.log("Email sign-in attempt without verification or missing email:", email);
@@ -239,8 +239,6 @@ export const authOptions: NextAuthOptions = {
                }
           },
           async redirect({ url, baseUrl }) {
-               console.log("redirect", url, baseUrl);
-
                // Allow relative URLs or external URLs that match the baseUrl
                if (url.startsWith(baseUrl) || url.startsWith("/")) {
                     return url; // Redirect to the original page if it’s within the same domain
