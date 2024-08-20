@@ -61,12 +61,13 @@ export const AccountService = () => {
 
         a {
             cursor: pointer;
-            color: #de2626;
+            color: #440101;
             text-decoration: underline;
         }
 
         h1, h3 {
             text-align: justify;
+            color: #4c0404;
         }
 
         .button-container {
