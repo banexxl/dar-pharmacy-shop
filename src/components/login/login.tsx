@@ -5,13 +5,14 @@ import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Image from 'next/image'
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PersonIcon from '@mui/icons-material/Person';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LoadingWheel from "../loading/loading";
+import { useRouter } from "next/router";
 
 
 
@@ -25,6 +26,7 @@ export default function LoginRegister({ open, onClose }: any) {
      const [loading, setLoading] = useState(false);
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+     const router = useRouter();
 
      const [userData, setUserData] = useState<any>(null);
      useEffect(() => {
@@ -145,6 +147,6 @@ export default function LoginRegister({ open, onClose }: any) {
                </Dialog >
           )
      } else {
-          signIn()
+          router.push('/auth/signin')
      }
 }

@@ -2,7 +2,7 @@ import { Box, styled } from "@mui/material"
 import { Colors } from "../theme";
 import Image from 'mui-image'
 
-export const Product = styled(Box)(({ theme }: any) => ({
+export const Product = styled(Box)(({ theme, sx }: any) => ({
      display: "flex",
      justifyContent: "center",
      alignItems: "center",
@@ -13,7 +13,7 @@ export const Product = styled(Box)(({ theme }: any) => ({
 }))
 
 
-export const ProductImage = styled(Image)(({ src, theme }: any) => ({
+export const ProductImage = styled(Image)(({ src, theme, sx }: any) => ({
      src: `${src}`,
      width: "50%",
      background: Colors.light_gray,

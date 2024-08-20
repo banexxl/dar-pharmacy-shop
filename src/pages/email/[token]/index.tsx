@@ -8,7 +8,7 @@ import { UIProvider } from "@/context/ui/ui.context";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { GetServerSideProps } from "next";
-import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 interface VerifyEmailFormProps {
      success?: string;
@@ -21,6 +21,8 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
           loading: () => <LoadingWheel />,
           ssr: false
      });
+
+     const router = useRouter();
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -70,7 +72,7 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                                                       transform: 'scale(1.3)', // Slight zoom in
                                                                  }
                                                             }}
-                                                            onClick={() => signIn()}
+                                                            onClick={() => router.push('/auth/signin')}
                                                        >
                                                             Ovde.
                                                        </Typography>
@@ -96,7 +98,7 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                          </UIProvider>
                     </Stack>
                </Container>
-          </DynamicThemeProvider>
+          </DynamicThemeProvider >
      );
 }
 

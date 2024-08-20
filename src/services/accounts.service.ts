@@ -29,7 +29,9 @@ export const AccountService = () => {
 
                // Insert or update the user in the 'users' collection
                const insertUserResult = await db.collection('users').updateOne(
-                    { email: { $regex: `^${data.email}$`, $options: 'i' } }, // Case-insensitive email check
+                    {
+                         email: { $regex: `^${data.email}$`, $options: 'i' },
+                    }, // Case-insensitive email check
                     { $setOnInsert: data }, // Only inserts if no document matches the query
                     { upsert: true } // Create a new document if no matching document is found
                );
@@ -113,10 +115,11 @@ export const AccountService = () => {
 `
 
                if (insertUserResult.upsertedCount > 0) {
+
                     const mailOptions = {
                          from: process.env.EMAIL_FROM, // sender address
                          to: data.email, // list of receivers
-                         subject: 'Potvrdite Vaš email', // Subject line
+                         subject: 'Potvrdite Vaš email!', // Subject line
                          html
                     };
 

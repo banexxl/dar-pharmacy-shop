@@ -2,7 +2,7 @@ import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography,
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
-import { ProductAddToCart, Product, ProductImage, ProductImageDropdown, ProductDropdown } from "../../styles/product/single-product";
+import { ProductImageDropdown, ProductDropdown } from "../../styles/product/single-product";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';

@@ -34,7 +34,6 @@ async function sendVerificationRequest(params: any) {
           to: identifier,
           from: provider.from,
           subject: `Prijava na ${host}`,
-          text: text({ url, host }),
           html: html({ url, host, theme }),
      })
 
@@ -151,11 +150,6 @@ function html(params: { url: string; host: string; theme: Theme }) {
 `
 }
 
-/** Email Text body (fallback for email clients that don't render HTML, e.g. feature phones) */
-function text({ url, host }: { url: string; host: string }) {
-     return `Sign in to ${host}\n${url}\n\n`
-}
-
 export const authOptions: NextAuthOptions = {
 
      adapter: MongoDBAdapter(accountsDBPromise),
@@ -234,29 +228,34 @@ export const authOptions: NextAuthOptions = {
                               // Reject sign-in if verification was not successful or email is missing
                               return false;
                          }
+                    } else {
+                         console.log("Sign-in with other provider:", account?.provider);
+                         return false;
                     }
-
-                    // In case other providers are added in the future, allow by default
-                    console.log("Sign-in with other provider:", account?.provider);
-                    return true;
-
                } catch (error) {
                     console.error("Error during sign-in:", error);
-
                     // Return false to deny the sign-in
                     return false;
                }
           },
           async redirect({ url, baseUrl }) {
-               return baseUrl
+               console.log("redirect", url, baseUrl);
+
+               // Allow relative URLs or external URLs that match the baseUrl
+               if (url.startsWith(baseUrl) || url.startsWith("/")) {
+                    return url; // Redirect to the original page if it’s within the same domain
+               }
+               return baseUrl; // Otherwise, redirect to the base URL (home page)
           },
           async session({ session, user, token }) {
                return session
           }
      },
-     // pages: {
-     //           signIn: '/signin'
-     // }
+     pages: {
+          signIn: '/auth/signin',
+          verifyRequest: '/auth/verify-request',
+          error: '/auth/error',
+     }
 }
 
 export default NextAuth(authOptions)

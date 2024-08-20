@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
-import AccessDenied from "@/components/auth/access-denied"
+// import AccessDenied from "../auth/access-denied"
 
 export default function ProtectedPage() {
 
@@ -23,7 +23,8 @@ export default function ProtectedPage() {
      // If no session exists, display access denied message
      if (!session) {
           return (
-               <AccessDenied />
+               <>   </>
+               // <AccessDenied />
           )
      }
 

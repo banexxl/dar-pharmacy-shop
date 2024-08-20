@@ -10,6 +10,7 @@ export default interface IProduct {
      quantityUnit: string;
      warning: string;
      imageURL: string;
+     mediaURLs: string[];
      price: number;
      manufacturer?: string;
      discount: boolean;

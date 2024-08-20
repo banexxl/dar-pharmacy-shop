@@ -68,14 +68,15 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                    title: 'Ovaj email je već registrovan!',
                                    icon: 'warning',
                                    showConfirmButton: false,
-                                   timer: 1500
+                                   timer: 2000
                               })
                          } else if (response.status === 200) {
                               sweetalert2.fire({
                                    title: 'Poslat Vam je email za verifikaciju!',
+                                   text: 'Molimo Vas da proverite Vaš inbox, i potvrdite Vaš email!',
                                    icon: 'success',
                                    showConfirmButton: false,
-                                   timer: 1500
+                                   timer: 2500
                               })
                          }
                     })

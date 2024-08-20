@@ -15,67 +15,85 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import ProductMeta from '../products/products-meta';
 import useDialogModal from '@/hooks/useDialogModal';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MediaCarousel from '../carousel/media-carousel';
 
 function ProductDetails(product: IProduct) {
 
      const theme = useTheme();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
-     const dispatch = useDispatch()
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-     const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
+     const dispatch = useDispatch();
+     const [addedToCartAlert, setAddedToCartAlert] = useState(false);
+     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false);
+     const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false);
+     const [isCarouselOpen, setCarouselOpen] = useState(false);
+     const [carouselIndex, setCarouselIndex] = useState(0);
+
+     const mediaItems = product.mediaURLs?.map((url) => ({
+          type: 'image' as const,
+          src: url,
+          alt: product.name,
+     }));
+
+     const handleOpenCarousel = (index: number) => {
+          setCarouselIndex(index);
+          setCarouselOpen(true);
+     };
+
+     const handleCloseCarousel = () => {
+          setCarouselOpen(false);
+     };
 
      const callCartAlert = () => {
-
-          setAddedToCartAlert(true)
+          setAddedToCartAlert(true);
           const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setAddedToCartAlert(false)
-          }, 1500)
+               setAddedToCartAlert(false);
+          }, 1500);
 
           return () => {
-               clearTimeout(timeId)
+               clearTimeout(timeId);
           }
      }
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true)
+          setAddedToWishlistAlert(true);
           const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setAddedToWishlistAlert(false)
-          }, 1500)
+               setAddedToWishlistAlert(false);
+          }, 1500);
 
           return () => {
-               clearTimeout(timeId)
+               clearTimeout(timeId);
           }
      }
 
      const callRemovedFromWishlistAlert = () => {
-          setRemovedFromWishlistAlert(true)
+          setRemovedFromWishlistAlert(true);
           const timeId = setTimeout(() => {
-               setRemovedFromWishlistAlert(false)
-          }, 1500)
+               setRemovedFromWishlistAlert(false);
+          }, 1500);
 
           return () => {
-               clearTimeout(timeId)
+               clearTimeout(timeId);
           }
      }
 
-     const localStorage: any = useLocalStorage('persist:root', {})
-     const localStorageReducers: any = localStorage[0]
-     const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
+     const localStorage: any = useLocalStorage('persist:root', {});
+     const localStorageReducers: any = localStorage[0];
+     const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer);
 
      const wishListProductID = localStorageWishList.find((el: IProduct) => {
-
-          return el._id == product._id
-
-     })
+          return el._id == product._id;
+     });
 
      return (
           <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-               <Product sx={{ mr: 4 }}>
-                    <ProductImage src={product.imageURL} />
+               <Product
+                    onClick={() => handleOpenCarousel(0)} // Open carousel on image click
+                    sx={{ mr: 10, cursor: 'pointer', }}>
+                    <ProductImage
+                         style={{ borderRadius: '20px', boxShadow: `10px 10px 10px ${Colors.primary.main}` }}
+                         src={product.imageURL}
+                    />
                </Product>
                <ProductDetailInfoWrapper>
                     <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
@@ -146,8 +164,14 @@ function ProductDetails(product: IProduct) {
                     </Alert>
                )}
                <CartDialog />
+               <MediaCarousel
+                    media={mediaItems}
+                    open={isCarouselOpen}
+                    initialIndex={carouselIndex}
+                    onClose={handleCloseCarousel}
+               />
           </ProductDetailWrapper>
      )
 }
 
-export default ProductDetails
+export default ProductDetails;
