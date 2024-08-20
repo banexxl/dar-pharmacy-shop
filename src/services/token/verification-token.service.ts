@@ -32,7 +32,6 @@ export const newVerification = async (token: string) => {
      try {
           // Fetch the existing verification token
           const existingToken = await db.collection('verification_tokens').findOne({ token });
-          console.log(existingToken);
 
           if (!existingToken) {
                return { error: "Invalid token" };
@@ -46,7 +45,6 @@ export const newVerification = async (token: string) => {
 
           // Fetch the associated user by email
           const existingUser = await db.collection('users').findOne({ email: existingToken.identifier });
-          console.log(existingUser);
 
           if (!existingUser) {
                return { error: "User not found" };
