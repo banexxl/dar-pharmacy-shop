@@ -57,7 +57,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
         <br/>
         <p>Ove proizvode je potrebno poslati na adresu:</p>
         <br/>
-        <p>${data.country}<br/>${data.city}<br/>${data.streetAddress}<br/>${data.phoneNumber}</p>
+        <p>${data.country}<br/>${data.city}<br/>${data.streetAddress}<br/>${data.phoneNumber}<br/>${data.email}</p>
     </div>
 </body>
 </html>
