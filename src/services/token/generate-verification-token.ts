@@ -16,7 +16,7 @@ export const generateVerificationToken = async (email: string) => {
           const collection = db.collection("verification_tokens");
 
           if (existingToken) {
-               const deleteResult = await collection.deleteOne({ _id: existingToken._id })
+               await collection.deleteOne({ _id: existingToken._id })
           }
 
           // Create a new verification token
