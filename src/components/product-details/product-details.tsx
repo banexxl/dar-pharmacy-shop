@@ -89,7 +89,7 @@ function ProductDetails(product: IProduct) {
           <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                <Product
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
-                    sx={{ mr: 10, cursor: 'pointer', }}>
+                    sx={{ cursor: 'pointer', }}>
                     <ProductImage
                          style={{ borderRadius: '20px', boxShadow: `10px 10px 10px ${Colors.primary.main}` }}
                          src={product.imageURL}
