@@ -54,7 +54,7 @@ const ContactPage = (props: ContactPageProps) => {
                                                   Naš moto: Radosno srce-pola Zdravlja!
                                              </ContactStrongText>
                                              <ContactStrongText theme={theme}>
-                                                  Kućna dostava Lekova ,Utorkom i Subotom,Kragujevac i Okolina.
+                                                  Kućna dostava lekova radnim danima po celoj Srbiji!
                                              </ContactStrongText>
                                              <ContactStrongText theme={theme}>
                                                   Radno Vreme :
