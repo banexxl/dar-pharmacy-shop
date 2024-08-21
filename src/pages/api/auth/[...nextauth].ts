@@ -64,68 +64,87 @@ function html(params: { url: string; host: string; theme: Theme }) {
     .container {
             background: linear-gradient(70deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
             border-radius: 15px;
-            width: 400px;
-            height: 400px;
-            margin: 50px auto;
+            max-width: 300px;
+            height: auto;
+            margin: 50px auto; /* Added margin for better centering */
             padding: 20px;
             gap: 20px;
             overflow-wrap: break-word;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
+            justify-content: center;    
         }
 
-    .header {
-      padding: 10px 0;
-      font-size: 22px;
-      color: ${Colors.secondary.custom};
-    }
+        .message {
+            text-align: justify;
+            margin: 10px 0;
+            max-width: 280px;
+        }
 
-    .button-container {
-      padding: 20px 0;
-    }
+        a {
+            cursor: pointer;
+            color: #440101;
+            text-decoration: underline;
+        }
 
-    .button {
-      display: inline-block;
-      border-radius: 5px;
-      background-color: ${Colors.primary.main};
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      padding: 10px 20px;
-      border: 1px solid ${Colors.primary.main};
-    }
+        h1, h3 {
+            text-align: center;
+            color: #4c0404;
+            max-width: 300px;
+        }
 
-    .button:hover {
-      background-color: ${Colors.primary.light};
-      transform: scale(1.05);
-    }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+            margin-left: 80px;
+        }
 
-    .button a {
-      font-size: 18px;
-      color: ${Colors.primary.lighter};
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
+        .button {
+            color: #5c0701;
+            text-decoration: underline;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    .button a:hover {
-      color: ${Colors.secondary.custom};
-      transform: scale(1.1);
-    }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px; /* Added margin to space out the image from the rest of the content */
+        }
 
-    .footer {
-      padding: 10px 0;
-      font-size: 16px;
-      line-height: 22px;
-      color: ${Colors.secondary.custom};
-    }
+        .image-container img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
+        }
 
-    .image-container {
-      padding: 20px 0;
-    }
+        .footer {
+            text-align: center;
+            color: #4c0404;
+            max-width: 300px;
+        }
 
-    .image-container img {
-      width: 100px;
-      height: auto;
-      border-radius: 50%;
-    }
+        .header {
+               font-size: 24px;
+               text-align: center;
+               color: #4c0404;
+               max-width: 300px;
+        }
+
+        .body {
+               font-size: 18px; 
+               text-align: center;
+               color: #4c0404;
+               max-width: 300px;
+        }
+
+        strong{
+               color: #881111;
+        }
   </style>
 </head>
 <body>
@@ -134,15 +153,18 @@ function html(params: { url: string; host: string; theme: Theme }) {
       <img src="https://apoteka-dar.rs/images/home-page/apotekaDar.jpg" alt="DAR image"/>
     </div>
     <div class="header">
-      Prijavi se na: <strong>${escapedHost}</strong>
+      Poslali ste zahteh na prijavu na: <br/><br/> <strong>${escapedHost}</strong><br/><br/>
+    </div>
+    <div class="body">
+      Možete iskoristiti link ispod za prijavu<br/>
     </div>
     <div class="button-container">
       <div class="button">
-        <a href="${url}" target="_blank">Prijavi se</a>
+        <a href="${url}" target="_blank">>>>Prijavi se<<<</a><br/><br/>
       </div>
     </div>
     <div class="footer">
-      Ako niste tražili prijavu, ignorišite ovaj email.
+      Ako niste tražili prijavu, ignorišite ovaj email, i posetite našu <a href="https://apoteka-dar.rs">stranicu</a>.
     </div>
   </div>
 </body>

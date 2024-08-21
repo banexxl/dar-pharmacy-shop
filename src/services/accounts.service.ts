@@ -45,7 +45,7 @@ export const AccountService = () => {
         .container {
             background: linear-gradient(70deg, ${Colors.primary.main} 0%, ${Colors.primary.light} 35%, ${Colors.primary.lighter} 100%);
             border-radius: 15px;
-            width: 400px;
+            max-width: 300px;
             height: auto;
             margin: 50px auto; /* Added margin for better centering */
             padding: 20px;
@@ -57,6 +57,7 @@ export const AccountService = () => {
         .message {
             text-align: justify;
             margin: 10px 0;
+            max-width: 280px;
         }
 
         a {
@@ -66,8 +67,9 @@ export const AccountService = () => {
         }
 
         h1, h3 {
-            text-align: justify;
+            text-align: center;
             color: #4c0404;
+            max-width: 300px;
         }
 
         .button-container {
@@ -78,7 +80,7 @@ export const AccountService = () => {
         }
 
         .button {
-            color: #e53b2f;
+            color: #5c0701;
             text-decoration: underline;
             font-size: 16px;
         }
@@ -105,11 +107,11 @@ export const AccountService = () => {
         <h3>${data.email}</h3>
         <p class="message">
             Hvala Vam na uspešnoj registraciji u Apoteku DAR. Ostao je još jedan korak, a to je da potvrdite Vašu email adresu klikom na
-            <a href="${process.env.BASE_URL! + '/email/' + verificationTokenObject?.token}" target="_blank">ovaj link</a>.
-        </p>
-        <div class="button-container">
+            <a href="${process.env.BASE_URL! + '/email/' + verificationTokenObject?.token}" target="_blank">ovaj link</a>.<br/><br/>
+            Vaša: <br/>
             <a href="https://apoteka-dar.rs" class="button">Apoteka DAR</a>
-        </div>
+            </p>
+        
     </div>
 </body>
 </html>
