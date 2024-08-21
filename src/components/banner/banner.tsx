@@ -23,7 +23,7 @@ export default function Banner() {
                          {'"Radosno srce je pola zdravlja!"'}
                     </BannerQuotaText>
                     <BannerQuotaText>
-                         Kućna dostava lekova radnim danima po celoj Srbiji!
+                         Dostava lekova radnim danima po celoj Srbiji!
                     </BannerQuotaText>
                     <BannerQuotaText>
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
