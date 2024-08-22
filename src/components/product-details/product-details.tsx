@@ -1,4 +1,4 @@
-import { Product, ProductImage } from '@/styles/productdetails';
+import { ProductImage, ProductImageBox } from '@/styles/productdetails';
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
 import { Colors } from '@/styles/theme';
 import { Alert, Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
@@ -88,14 +88,14 @@ function ProductDetails(product: IProduct) {
 
      return (
           <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
-               <Product
+               <ProductImageBox
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{ cursor: 'pointer', }}>
                     <Image
                          width={isScreenToMedium ? 300 : 500}
                          height={isScreenToMedium ? 300 : 500}
                          src={product.imageURL} alt={''} />
-               </Product>
+               </ProductImageBox>
                <ProductDetailInfoWrapper>
                     <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
                     <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>

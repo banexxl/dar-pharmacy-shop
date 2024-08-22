@@ -2,14 +2,11 @@ import { Box, styled } from "@mui/material"
 import { Colors } from "../theme";
 import Image from 'mui-image'
 
-export const Product = styled(Box)(({ theme, sx }: any) => ({
+export const ProductImageBox = styled(Box)(({ theme, sx }: any) => ({
      display: "flex",
      justifyContent: "center",
      alignItems: "center",
      flexDirection: "column",
-     [theme.breakpoints.up("md")]: {
-          position: "relative",
-     },
 }))
 
 

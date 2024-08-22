@@ -8,7 +8,7 @@ import { WishListWrapper, WishlistHeader, WishlistHeaderCell, WishlistRemoveAllB
 import { useTranslation } from "next-i18next";
 import IWishlistItem from "@/interfaces/wishlist/wishlist.interface";
 import WishlistItem from "./wishlist-item";
-import { clearWishList } from "@/store/wishlist/wishlist.slice";
+import { clearWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import { ProductActionButton, ProductAddToCart } from "@/styles/product/single-product";
 import { useState } from "react";
 import { addToCart } from "@/store/cart/cart.slice";
@@ -86,15 +86,26 @@ export default function WishList({ open, onClose, product }: any) {
                                                        availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
                                                        instructions={cartItem.instructions} quantity={cartItem.quantity}
                                                        warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
-                                                  <ProductActionButton
-                                                       sx={{ color: Colors.primary.main }}
-                                                       show={showOptions}
+                                                  <Button
+                                                       sx={{ color: Colors.primary.main, margin: '10px' }}
                                                        onClick={() => {
+                                                            showOptions ? setShowOptions(false) : setShowOptions(true);
                                                             callCartAlert();
                                                             dispatch(addToCart(cartItem));
-                                                       }} theme={theme}>
+                                                       }}
+                                                  >
                                                        Dodaj u korpu
-                                                  </ProductActionButton>
+                                                  </Button>
+                                                  <Button
+                                                       sx={{ color: Colors.primary.main, margin: '10px' }}
+                                                       onClick={() => {
+                                                            showOptions ? setShowOptions(false) : setShowOptions(true);
+                                                            callCartAlert();
+                                                            dispatch(removeFromWishList(cartItem));
+                                                       }}
+                                                  >
+                                                       Obriši
+                                                  </Button>
                                              </Box>
                                         ))
                                    }
