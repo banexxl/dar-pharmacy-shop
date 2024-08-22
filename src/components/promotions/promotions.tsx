@@ -6,6 +6,7 @@ import { MessageText, PromotionsContainer } from "../../styles/promotions";
 const messages = [
      "Mala apoteka VELIKOG srca!",
      "Besplatna poštarina za pakete preko 8000 dinara!",
+     "U slučaju da nemamo proizvod na sajtu,možete poslati Upit na mail",
      "Prijavite se na naše vesti i akcije!",
      "Nalazimo se u TC Prostor, Kragujevac!",
      "Kolagen Crux...Na 3 kutije dodatnih 10% popusta!",
