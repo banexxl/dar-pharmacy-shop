@@ -272,9 +272,9 @@ export const authOptions: NextAuthOptions = {
           }
      },
      pages: {
-          signIn: '/auth/signin',
-          verifyRequest: '/auth/verify-request',
-          error: '/auth/error',
+          signIn: '/autentifikacija/prijava',
+          verifyRequest: '/autentifikacija/verifikacija-zahteva',
+          error: '/autentifikacija/greska',
      }
 }
 

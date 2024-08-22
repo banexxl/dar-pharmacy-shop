@@ -36,7 +36,8 @@ export const initialUserFormValues: IUserForm = {
      email: '',
      // password: '',
      // repeatPassword: '',
-     shouldCreateAccount: false
+     shouldCreateAccount: false,
+     emailVerified: null
 };
 
 export interface IUserFormProps {

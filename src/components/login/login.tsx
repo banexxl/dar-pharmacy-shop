@@ -147,6 +147,6 @@ export default function LoginRegister({ open, onClose }: any) {
                </Dialog >
           )
      } else {
-          router.push('/auth/signin')
+          router.push('/autentifikacija/prijava')
      }
 }

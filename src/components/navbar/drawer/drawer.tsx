@@ -183,6 +183,27 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                               </ListItemButton>
                          </motion.li>
                          <MiddleDivider />
+                         {
+                              !session &&
+                              <motion.li
+                                   variants={variants}
+                                   whileHover={{ scale: 1.1 }}
+                                   whileTap={{ scale: 0.95 }}
+                              >
+                                   <ListItemButton>
+                                        <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
+                                             '& .MuiTypography-root': {
+                                                  color: Colors.white, // Override only for this instance
+                                             },
+                                        }}>
+                                             <Link href={'/registracija'}>
+                                                  Registracija
+                                             </Link>
+                                        </ListItemText>
+                                   </ListItemButton>
+                              </motion.li>
+                         }
+                         <MiddleDivider />
                     </List>
                </Drawer>
                <WishListDialog />

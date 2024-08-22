@@ -6,7 +6,7 @@ type UserInfoProps = {
      theme: Theme
 }
 
-export const PaymentOptionRadio = styled(Box)<UserInfoProps>(({ theme }) => ({
+export const PaymentOptionRadio = styled(Box)<UserInfoProps>(({ theme, sx }) => ({
      display: 'flex',
      [theme.breakpoints.down("sm")]: {
           flexDirection: 'column',
@@ -15,7 +15,7 @@ export const PaymentOptionRadio = styled(Box)<UserInfoProps>(({ theme }) => ({
      height: '50px',
      alignItems: 'center',
      justifyContent: 'space-between',
-     width: '90vw',
+     width: '100%',
      marginTop: '20px'
 }))
 

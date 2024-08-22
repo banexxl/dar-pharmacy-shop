@@ -84,6 +84,10 @@ const SignInPage = () => {
                                                   }
                                              </Formik>
                                         </AuthFormBox>
+                                        <AuthText theme={theme}>
+                                             Nemate nalog?
+                                        </AuthText>
+                                        <AuthButton href="/registracija">Registrujte se</AuthButton>
                                    </AuthBox>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
