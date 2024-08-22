@@ -16,6 +16,7 @@ import ProductMeta from '../products/products-meta';
 import useDialogModal from '@/hooks/useDialogModal';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MediaCarousel from '../carousel/media-carousel';
+import Image from 'next/image';
 
 function ProductDetails(product: IProduct) {
 
@@ -90,10 +91,10 @@ function ProductDetails(product: IProduct) {
                <Product
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{ cursor: 'pointer', }}>
-                    <ProductImage
-                         style={{ marginBottom: '40px', width: isScreenToMedium ? '80%' : '70%', borderRadius: '20px', boxShadow: `10px 10px 10px ${Colors.primary.main}` }}
-                         src={product.imageURL}
-                    />
+                    <Image
+                         width={isScreenToMedium ? 300 : 500}
+                         height={isScreenToMedium ? 300 : 500}
+                         src={product.imageURL} alt={''} />
                </Product>
                <ProductDetailInfoWrapper>
                     <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
