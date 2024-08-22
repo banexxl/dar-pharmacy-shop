@@ -9,9 +9,9 @@ const ProductSearchApi = async (request: NextApiRequest, response: NextApiRespon
           try {
                const searchedProducts: any = await productsServices().getProductsByNameAndOrManufacturer(request.body);
                if (searchedProducts.length > 0) {
-                    return response.status(200).json({ message: 'Products found!', data: searchedProducts })
+                    return response.status(200).json({ message: 'Artikli pronađeni!', data: searchedProducts })
                } else {
-                    return response.status(404).json({ error: 'Searched products not found!' });
+                    return response.status(404).json({ error: 'Vaša pretraga nije vratila ni jedan artikal. Molimo probajte ponovo...' });
                }
           } catch (error) {
                return response.status(500).json({ error: 'Internal server error!' });

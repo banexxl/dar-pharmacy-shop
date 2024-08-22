@@ -21,7 +21,7 @@ export default function SearchBox() {
      const { showSearchBox, setShowSearchBox } = useUIContext();
      const [searchQuery, setSearchQuery] = useState<string>('');
      const [loading, setLoading] = useState(false);
-     const [searchResults, setSearchResults] = useState<SearchResult | undefined>();
+     const [searchResults, setSearchResults] = useState<SearchResult>();
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
@@ -46,7 +46,7 @@ export default function SearchBox() {
                          },
                     }).then((response: Response) => {
                          !response.ok ?
-                              setSearchResults({ data: [] })
+                              setSearchResults({ message: 'Navedeni termin nije pronadjen!', data: [] })
                               :
                               null
                          return response.json()
@@ -72,8 +72,8 @@ export default function SearchBox() {
      };
 
      return (
-          <Slide direction="down" in={showSearchBox} timeout={500}>
-               <SearchBoxContainer >
+          <Slide direction="down" in={showSearchBox} timeout={500} >
+               <SearchBoxContainer theme={theme}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                          <TextField
                               label="Pronadji proizvod"
@@ -98,31 +98,51 @@ export default function SearchBox() {
                     </IconButton>
                     <SearchResultsBox>
                          {
-                              loading == true ?
-                                   <Box >
+                              loading ? (
+                                   <Box>
                                         <CircularProgress color="secondary" />
                                    </Box>
-                                   :
-                                   <List sx={{
-                                        overflow: 'auto', height: '500px', width: isScreenToMedium ? '60%' : '20%', backgroundColor: Colors.secondary.custom,
-                                        display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: `1px solid ${Colors.dim_grey}`,
-                                        borderRadius: '10px', boxShadow: `1px 2px 2px 2px ${Colors.primary.lighter}`, paddingTop: '20px'
-                                   }}>
-                                        {
-                                             searchResults?.data !== undefined || searchResults?.data !== null || Object.keys(searchResults.data).length !== 0 ?
-                                                  searchResults?.data?.map((product: IProduct) => (
+                              ) : (
+                                   searchResults && searchResults.data && searchResults.data.length > 0 ?
+                                        (
+                                             <List sx={{
+                                                  overflow: 'auto',
+                                                  height: '500px',
+                                                  width: isScreenToMedium ? '60%' : '20%',
+                                                  backgroundColor: Colors.secondary.custom,
+                                                  display: 'flex',
+                                                  flexDirection: 'column',
+                                                  justifyContent: 'space-between',
+                                                  border: `1px solid ${Colors.dim_grey}`,
+                                                  borderRadius: '10px',
+                                                  boxShadow: `1px 2px 2px 2px ${Colors.primary.lighter}`,
+                                                  paddingTop: '20px'
+                                             }}>
+                                                  {searchResults.data.map((product: IProduct) => (
                                                        <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}
-                                                            sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px' }}
+                                                            sx={{
+                                                                 display: 'flex',
+                                                                 justifyContent: 'space-between',
+                                                                 alignItems: 'center',
+                                                                 paddingTop: '20px'
+                                                            }}
                                                             onClick={() => setShowSearchBox(false)}
                                                        >
-                                                            <ListItemText primary={product.name} secondary={product.manufacturer}
+                                                            <ListItemText
+                                                                 primary={product.name}
+                                                                 secondary={product.manufacturer}
                                                                  sx={{
                                                                       '& .MuiTypography-root': {
                                                                            color: `${Colors.primary.main} !important`,
                                                                       },
-                                                                 }} />
+                                                                 }}
+                                                            />
                                                             <Box>
-                                                                 <Image src={`${product.imageURL}`} alt="DAR proizvodi" height={100} width={100}
+                                                                 <Image
+                                                                      src={`${product.imageURL}`}
+                                                                      alt="DAR proizvodi"
+                                                                      height={100}
+                                                                      width={100}
                                                                       style={{ borderRadius: '5px' }}
                                                                  />
                                                                  <Typography>
@@ -130,21 +150,17 @@ export default function SearchBox() {
                                                                  </Typography>
                                                             </Box>
                                                        </ListItem>
-                                                  ))
-                                                  :
-                                                  <Typography>
-                                                       {
-                                                            searchResults.message == 'Navedeni termin nije pronadjen!' ?
-                                                                 "Za uneti termin ne postoje proizvodi!"
-                                                                 :
-                                                                 "ssssssssssss"
-                                                       }
-                                                  </Typography>
-
-                                        }
-                                   </List>
+                                                  ))}
+                                             </List>
+                                        ) : (
+                                             <Typography sx={{ maxWidth: '350px' }}>
+                                                  {searchResults?.error}
+                                             </Typography>
+                                        )
+                              )
                          }
                     </SearchResultsBox>
+
                </SearchBoxContainer>
           </Slide >
      );
