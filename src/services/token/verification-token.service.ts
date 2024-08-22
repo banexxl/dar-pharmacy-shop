@@ -56,13 +56,13 @@ export const newVerification = async (token: string) => {
                {
                     $set: {
                          emailVerified: new Date(),
-                         email: existingToken.identifier
+                         // email: existingToken.identifier - ne znam da li je ovo potrebno
                     }
                }
           );
 
           // Delete the used verification token
-          await db.collection('verification_tokens').deleteOne({ _id: new ObjectId(existingToken._id) });
+          await db.collection('verification_tokens').deleteMany({ identifier: existingToken.identifier });
 
           return { success: "Email uspešno verifikovan" };
      } catch (error) {

@@ -92,5 +92,5 @@ export const AuthButton = styled(Button)(({ theme }: any) => ({
      ":hover": {
           transform: "scale(1.2)"
      },
-     marginbottom: '50px',
+     marginBottom: '50px',
 }));

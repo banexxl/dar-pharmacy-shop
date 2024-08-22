@@ -21,12 +21,10 @@ const ErrorPage = (props: any) => {
           ssr: false,
      });
 
-
-
      const getErrorMessage = (errorType: string | string[] | undefined) => {
           switch (errorType) {
                case "AccessDenied":
-                    return "Nevalidan email i/ili lozinka. Molimo pokušajte ponovo.";
+                    return "Nevalidan email ili niste verifikovali token koji smo Vam poslali na email adresu (proverite 'spam' folder, ili ponovo popunite formu za registraciju.).";
                case "Verification":
                     return "Verifikacija nije uspela. Molimo pokušajte ponovo.";
                case "Configuration":

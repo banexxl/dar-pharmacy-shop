@@ -31,7 +31,6 @@ const RegisterPage = () => {
      })
 
      const handleSubmit = (values: any) => {
-          console.log('values', values);
 
           // dispatch(submitUserForm(values))
 
@@ -60,9 +59,9 @@ const RegisterPage = () => {
                               showConfirmButton: true,
                               confirmButtonText: 'U redu',
                               confirmButtonColor: Colors.primary.main,
-                              didClose: () => {
-                                   router.push('/')
-                              }
+                              // didClose: () => {
+                              //      router.push('/')
+                              // }
                          })
                     } else if (response.status === 400) {
                          sweetalert2.fire({

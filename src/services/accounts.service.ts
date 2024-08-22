@@ -31,10 +31,14 @@ export const AccountService = () => {
                const insertUserResult = await db.collection('users').updateOne(
                     {
                          email: { $regex: `^${data.email}$`, $options: 'i' },
+                         emailVerified: { $eq: null }
                     }, // Case-insensitive email check
                     { $setOnInsert: data }, // Only inserts if no document matches the query
                     { upsert: true } // Create a new document if no matching document is found
                );
+
+               console.log('insertUserResult', insertUserResult);
+
 
                const html = `
                                         <html>
@@ -117,19 +121,29 @@ export const AccountService = () => {
 </html>
 `
 
+               const mailOptions = {
+                    from: process.env.EMAIL_FROM, // sender address
+                    to: data.email, // list of receivers
+                    subject: 'Potvrdite Vaš email!', // Subject line
+                    html
+               };
+
                if (insertUserResult.upsertedCount > 0) {
-
-                    const mailOptions = {
-                         from: process.env.EMAIL_FROM, // sender address
-                         to: data.email, // list of receivers
-                         subject: 'Potvrdite Vaš email!', // Subject line
-                         html
-                    };
-
                     const registerUserEmailSendResponse = await transporter.sendMail(mailOptions)
                     console.log('registerUserEmailSendResponse', registerUserEmailSendResponse);
-
-                    return { message: 'Email successfully registered and confirmation sent!', status: 200 };
+                    if (registerUserEmailSendResponse.accepted.length > 0) {
+                         return { message: 'Email successfully registered and confirmation sent!', status: 200 };
+                    } else {
+                         return { message: 'Email successfully registered, but confirmation email could not be sent!', status: 500 };
+                    }
+               } else if (insertUserResult.upsertedCount === 0 && insertUserResult.matchedCount > 0) {
+                    const registerUserEmailSendResponse = await transporter.sendMail(mailOptions)
+                    console.log('registerUserEmailSendResponse', registerUserEmailSendResponse);
+                    if (registerUserEmailSendResponse.accepted.length > 0) {
+                         return { message: 'Email not verified!', status: 200 };
+                    } else {
+                         return { message: 'Email already registered, but confirmation email could not be sent!', status: 500 };
+                    }
                } else {
                     return { message: 'Email already registered!', status: 409 };
                }
@@ -140,12 +154,12 @@ export const AccountService = () => {
           }
      };
 
-     const checkIfEmailExists = async (email: string) => {
+     const checkIfEmailIsVerified = async (email: string) => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
                const db = client.db('ACCOUNTS_DB');
-               const user = await db.collection('users').findOne({ email: email });
+               const user = await db.collection('users').findOne({ email: email, emailVerified: { $ne: null } });
 
                if (user.email !== email) {
                     return { message: 'Email available!', status: 202 };
@@ -193,7 +207,7 @@ export const AccountService = () => {
      return {
           getUserByEmail,
           registerClient,
-          checkIfEmailExists,
+          checkIfEmailIsVerified,
           getUserById
      }
 }

@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const FindClientEmail = async (request: NextApiRequest, response: NextApiResponse) => {
      if (request.method === 'POST') {
           try {
-               const emailFound = await AccountService().checkIfEmailExists(request.body);
+               const emailFound = await AccountService().checkIfEmailIsVerified(request.body);
                if (emailFound!.status === 200) {
                     return response.status(200).json({ error: 'Email already registered!', status: 200 });
                } else {

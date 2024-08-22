@@ -45,7 +45,7 @@ export const userFormSchema = () => {
                          if (!value) return true; // Skip validation if the email field is empty
 
                          try {
-                              const response = await fetch('/api/email/check-if-email-exists', {
+                              const response = await fetch('/api/email/check-if-email-is-verified', {
                                    method: 'POST',
                                    headers: {
                                         'Content-Type': 'application/json',
