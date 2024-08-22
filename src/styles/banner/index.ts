@@ -77,10 +77,12 @@ export const BannerLeftImageContent = styled(Box)(({ theme }) => ({
      //   padding: '10px',
      width: '100%',
      height: '100%',
-     // [theme.breakpoints.up("lg")]: {
-     //      width: '50%',
-     //      height: '500px'
-     // },
+     [theme.breakpoints.up("md")]: {
+          marginTop: '100px',
+     },
+     [theme.breakpoints.down("md")]: {
+          marginTop: '60px',
+     },
      // [theme.breakpoints.down("lg")]: {
      //      width: '100%',
      //      height: '400px'
@@ -90,12 +92,12 @@ export const BannerLeftImageContent = styled(Box)(({ theme }) => ({
 export const BannerRightImageContent = styled(Box)(({ theme }) => ({
      position: 'absolute',
      [theme.breakpoints.up("lg")]: {
-          top: '450px',
-          right: '180px',
+          top: '120px',
+          right: '150px',
      },
      [theme.breakpoints.up("xl")]: {
-          top: '450px',
-          right: '400px',
+          top: '120px',
+          right: '250px',
      },
      width: '120px',
      height: '120px',
