@@ -19,6 +19,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import sweetalert2 from 'sweetalert2'
 import { useRouter } from 'next/router'
+import { AuthFormBox } from '@/styles/auth/auth'
 
 const RegisterPage = () => {
 
@@ -99,8 +100,7 @@ const RegisterPage = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <Container disableGutters maxWidth="sm" sx={{ marginTop: '150px' }}>
-
+                                   <AuthFormBox>
                                         <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                                              {
                                                   formik => (
@@ -252,7 +252,7 @@ const RegisterPage = () => {
                                                   )
                                              }
                                         </Formik>
-                                   </Container>
+                                   </AuthFormBox>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

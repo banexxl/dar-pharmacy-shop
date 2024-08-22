@@ -30,13 +30,12 @@ type AuthInfoBoxProps = {
 export const AuthInfoBox = styled(Box)<AuthInfoBoxProps>(({ theme }) => ({
      textAlign: 'center',
      padding: '15px'
-
 }));
 
 export const AuthFormBox = styled(Box)(({ theme }) => ({
-     margin: '30px',
+     margin: '130px',
      borderRadius: '20px',
-     padding: '10px',
+     padding: '30px',
      background: Colors.dove_gray,
      display: 'flex',
      flexDirection: 'column',
