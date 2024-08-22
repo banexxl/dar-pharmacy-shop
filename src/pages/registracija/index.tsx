@@ -3,7 +3,6 @@
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, Container, Grid, Stack, TextField, Typography } from '@mui/material'
-import { InferGetStaticPropsType } from 'next'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import AppDrawer from '@/components/navbar/drawer/drawer'
@@ -18,7 +17,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import sweetalert2 from 'sweetalert2'
 import { useRouter } from 'next/router'
-import { AuthFormBox } from '@/styles/auth/auth'
+import { RegisterFormBox } from '@/styles/register'
 
 const RegisterPage = () => {
 
@@ -106,7 +105,7 @@ const RegisterPage = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <AuthFormBox>
+                                   <RegisterFormBox>
                                         <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                                              {
                                                   formik => (
@@ -258,7 +257,7 @@ const RegisterPage = () => {
                                                   )
                                              }
                                         </Formik>
-                                   </AuthFormBox>
+                                   </RegisterFormBox>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

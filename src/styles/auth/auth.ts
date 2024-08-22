@@ -43,7 +43,7 @@ export const AuthFormBox = styled(Box)(({ theme }) => ({
      justifyContent: 'center',
      gap: '50px',
      height: '100%',
-}));
+})) as typeof Box
 
 export const AuthTitle = styled(Typography)(({ theme }: any) => ({
      color: Colors.primary.main,
@@ -85,12 +85,12 @@ export const AuthStrongText = styled(Typography)<AuthTextProps>(({ theme, sx }) 
 }));
 
 export const AuthButton = styled(Button)(({ theme }: any) => ({
-     width: '150px',
+     width: '200px',
      color: Colors.primary.lighter,
      backgroundColor: Colors.primary.main,
      transition: "transform 0.3s",
      ":hover": {
           transform: "scale(1.2)"
      },
-     marginbottom: '40px',
+     marginbottom: '50px',
 }));

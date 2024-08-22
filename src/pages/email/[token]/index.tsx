@@ -9,6 +9,7 @@ import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface VerifyEmailFormProps {
      success?: string;
@@ -81,9 +82,21 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                         }
                                         {
                                              error &&
-                                             <ContactText theme={theme} sx={{ display: 'inline-block' }}>
-                                                  {error}
-                                             </ContactText>
+                                             <Box>
+                                                  <ContactTitle theme={theme} >
+                                                       Greška prilikom verifikacije!
+                                                  </ContactTitle>
+                                                  <ContactText theme={theme} sx={{ display: 'inline-block' }}>
+                                                       {error}
+                                                  </ContactText>
+                                                  <ContactText theme={theme}>
+                                                       Ako Vam je istekao token, ili ste izgubili email za verifikaciju istog, <br />
+                                                       možete zatražiti novi popunjavanjem registracione forme na sledećem linku: <br />
+                                                  </ContactText>
+                                                  <ContactText theme={theme} sx={{ display: 'inline-block', textAlign: 'center' }}>
+                                                       <Link href="/registracija" style={{ color: Colors.primary.main, textAlign: 'justify', textDecoration: 'underline' }}>Registrujte se</Link>
+                                                  </ContactText>
+                                             </Box>
                                         }
                                         {
                                              !success && !error &&

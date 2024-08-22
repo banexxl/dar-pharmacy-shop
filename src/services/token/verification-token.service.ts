@@ -34,20 +34,20 @@ export const newVerification = async (token: string) => {
           const existingToken = await db.collection('verification_tokens').findOne({ token });
 
           if (!existingToken) {
-               return { error: "Invalid token" };
+               return { error: "Nevalidan/nepostojeći token!" };
           }
 
           // Check if the token has expired
           const hasExpired = new Date(existingToken.expires) < new Date();
           if (hasExpired) {
-               return { error: "Token has expired" };
+               return { error: "Token je istekao!" };
           }
 
           // Fetch the associated user by email
           const existingUser = await db.collection('users').findOne({ email: existingToken.identifier });
 
           if (!existingUser) {
-               return { error: "User not found" };
+               return { error: "Korisnik nije pronađen!" };
           }
 
           // Update the user's email verification status
@@ -64,9 +64,9 @@ export const newVerification = async (token: string) => {
           // Delete the used verification token
           await db.collection('verification_tokens').deleteOne({ _id: new ObjectId(existingToken._id) });
 
-          return { success: "Email verified" };
+          return { success: "Email uspešno verifikovan" };
      } catch (error) {
           console.error('Error verifying email:', error);
-          return { error: "Something went wrong" };
+          return { error: "Nešto je pošlo po zlu!" };
      }
 };

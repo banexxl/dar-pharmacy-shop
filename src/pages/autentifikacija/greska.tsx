@@ -1,14 +1,15 @@
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme from "@/styles/theme";
-import { Container, Stack } from "@mui/material";
+import theme, { Colors } from "@/styles/theme";
+import { Button, Container, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-import { AuthBox, AuthFormBox, AuthText, AuthTitle } from "@/styles/auth/auth";
+import { AuthBox, AuthButton, AuthFormBox, AuthText, AuthTitle } from "@/styles/auth/auth";
 import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation'
+import Link from "next/link";
 
 const ErrorPage = (props: any) => {
 
@@ -25,7 +26,7 @@ const ErrorPage = (props: any) => {
      const getErrorMessage = (errorType: string | string[] | undefined) => {
           switch (errorType) {
                case "AccessDenied":
-                    return "Pristup odbijen. Nemate odgovarajuća prava za ovu akciju.";
+                    return "Nevalidan email i/ili lozinka. Molimo pokušajte ponovo.";
                case "Verification":
                     return "Verifikacija nije uspela. Molimo pokušajte ponovo.";
                case "Configuration":
@@ -69,6 +70,11 @@ const ErrorPage = (props: any) => {
                                                   {getErrorMessage(props.error)}
                                              </AuthText>
                                         </AuthFormBox>
+                                        <Link href="/autentifikacija/prijava">
+                                             <AuthButton theme={theme}>
+                                                  Povratak na prijavu
+                                             </AuthButton>
+                                        </Link>
                                    </AuthBox>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
