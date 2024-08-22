@@ -72,7 +72,7 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                                                       transform: 'scale(1.3)', // Slight zoom in
                                                                  }
                                                             }}
-                                                            onClick={() => router.push('/auth/signin')}
+                                                            onClick={() => router.push('/autentifikacija/prijava')}
                                                        >
                                                             Ovde.
                                                        </Typography>

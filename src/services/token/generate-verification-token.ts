@@ -16,6 +16,8 @@ export const generateVerificationToken = async (email: string) => {
           const collection = db.collection("verification_tokens");
 
           if (existingToken) {
+               console.log('existingToken', existingToken);
+
                await collection.deleteOne({ _id: existingToken._id })
           }
 

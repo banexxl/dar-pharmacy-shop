@@ -30,13 +30,12 @@ type AuthInfoBoxProps = {
 export const AuthInfoBox = styled(Box)<AuthInfoBoxProps>(({ theme }) => ({
      textAlign: 'center',
      padding: '15px'
-
 }));
 
 export const AuthFormBox = styled(Box)(({ theme }) => ({
-     margin: '10px',
+     margin: '130px',
      borderRadius: '20px',
-     padding: '10px',
+     padding: '30px',
      background: Colors.dove_gray,
      display: 'flex',
      flexDirection: 'column',
@@ -87,9 +86,11 @@ export const AuthStrongText = styled(Typography)<AuthTextProps>(({ theme, sx }) 
 
 export const AuthButton = styled(Button)(({ theme }: any) => ({
      width: '150px',
-     color: Colors.primary.main,
+     color: Colors.primary.lighter,
+     backgroundColor: Colors.primary.main,
+     transition: "transform 0.3s",
      ":hover": {
-          backgroundColor: Colors.primary.lighter,
           transform: "scale(1.2)"
-     }
+     },
+     marginbottom: '40px',
 }));
