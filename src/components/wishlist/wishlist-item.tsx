@@ -16,7 +16,7 @@ const WishlistItem = (props: IWishlistItem) => {
                     {props.name}
                </WishlistProductName>
                <WishlistProductCell theme={theme}>
-                    {props.quantity}
+                    {props.quantity} {' '} {props.quantityUnit}
                </WishlistProductCell>
                <WishlistProductCell align="left" theme={theme}>
                     {props._id.toString().slice(-8).toUpperCase()}

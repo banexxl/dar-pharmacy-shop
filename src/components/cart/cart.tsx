@@ -53,7 +53,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                     </Box>
                </DialogTitle>
 
-               <DialogContent sx={{ display: 'flex', flexDirection: { md: 'row', xs: 'column' } }}>
+               <DialogContent>
                     <CartWrapper component={Paper} theme={theme}>
                          <StyledTable>
                               <StyledHeader>

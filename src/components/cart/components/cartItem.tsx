@@ -19,25 +19,37 @@ const CartItem = (props: ICartItem) => {
                <StyledProductCell component="th" scope="row" theme={theme}>
                     <CartProductImage src={props.imageURL} />
                </StyledProductCell>
-               <StyledProductName theme={theme} sx={{ transform: isScreenToMedium ? 'none' : 'translateX(-20%)' }}>
-                    {props.name}
-               </StyledProductName>
-               <StyledProductCell align="left" theme={theme} sx={{ transform: isScreenToMedium ? 'none' : 'translateX(-90%)' }}>
-                    {props.quantity}
+               <StyledProductCell theme={theme}>
+                    <StyledProductName theme={theme} >
+                         {props.name}
+                    </StyledProductName>
                </StyledProductCell>
-               <StyledProductCell align="left" theme={theme} sx={{ transform: isScreenToMedium ? 'none' : 'translateX(-70%)' }}>
-                    {props._id.toString().slice(-8).toUpperCase()}
+               <StyledProductCell theme={theme} >
+                    <StyledProductName theme={theme} >
+                         {props.quantity} {' '} {props.quantityUnit}
+                    </StyledProductName>
                </StyledProductCell>
-               <StyledProductCell theme={theme} sx={{ transform: isScreenToMedium ? 'none' : 'translateX(-70%)' }}>
-                    <Counter _id={props._id} count={props.count}>
-                         {props.count}
-                    </Counter>
+               <StyledProductCell theme={theme} >
+                    <StyledProductName theme={theme} >
+                         {props._id.toString().slice(-8).toUpperCase()}
+                    </StyledProductName>
                </StyledProductCell>
-               <StyledProductCell align="left" theme={theme} sx={{ transform: isScreenToMedium ? 'none' : 'translateX(-70%)' }}>
-                    {props.price} rsd
+               <StyledProductCell theme={theme} >
+                    <StyledProductName theme={theme} >
+                         <Counter _id={props._id} count={props.count}>
+                              {props.count}
+                         </Counter>
+                    </StyledProductName>
                </StyledProductCell>
-               <StyledProductCell align="left" theme={theme} sx={{ transform: isScreenToMedium ? 'none' : 'translateX(-70%)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-                    {props.count * props.price} rsd
+               <StyledProductCell theme={theme} >
+                    <StyledProductName theme={theme} >
+                         {props.price} rsd
+                    </StyledProductName>
+               </StyledProductCell>
+               <StyledProductCell theme={theme} >
+                    <StyledProductName theme={theme} >
+                         {props.count * props.price} rsd
+                    </StyledProductName>
                     <Button
                          sx={{ backgroundColor: 'transparent' }}
                          onClick={() => dispatch(removeAllSingleItems(props._id))}
