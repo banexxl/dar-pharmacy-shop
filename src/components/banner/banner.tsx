@@ -29,14 +29,14 @@ export default function Banner() {
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
                          da nas kontaktirate putem {'  '}
                          <Link href={"/kontakt"}>
-                              <Typography sx={{ display: 'inline', fontSize: '2rem' }}>
+                              <Typography sx={{ display: 'inline', fontSize: isScreenToMedium ? '1.2rem' : '2rem' }}>
                                    kontakt forme
                               </Typography>
                          </Link>
                     </BannerQuotaText>
                     <BannerQuotaText>
                          ili pozivom na broj telefona {'  '}
-                         <Typography sx={{ display: 'inline', fontSize: '2rem' }}>
+                         <Typography sx={{ display: 'inline', fontSize: isScreenToMedium ? '1.2rem' : '2rem' }}>
                               <a href={`tel:${+381346104222}`} >
                                    +381 34 610 4222
                               </a>
