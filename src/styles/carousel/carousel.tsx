@@ -5,7 +5,6 @@ import { Colors } from '../theme';
 export const StyledCarouselBox = styled(Box)({
      display: 'block',
      marginTop: '20px',
-     height: '400px',
      justifyContent: 'center',
 });
 
