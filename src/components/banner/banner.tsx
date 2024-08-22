@@ -25,16 +25,19 @@ export default function Banner() {
                     <BannerQuotaText>
                          Dostava lekova radnim danima po celoj Srbiji!
                     </BannerQuotaText>
-                    <BannerQuotaText>
+                    <BannerQuotaText >
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
-                         da nas kontaktirate putem <br />
+                         da nas kontaktirate putem {'  '}
                          <Link href={"/kontakt"}>
-                              <Typography>
+                              <Typography sx={{ display: 'inline', fontSize: '2rem' }}>
                                    kontakt forme
                               </Typography>
-                         </Link> ili pozivom na broj telefona<br />
-                         <Typography>
-                              <a href={`tel:${+381346104222}`}>
+                         </Link>
+                    </BannerQuotaText>
+                    <BannerQuotaText>
+                         ili pozivom na broj telefona {'  '}
+                         <Typography sx={{ display: 'inline', fontSize: '2rem' }}>
+                              <a href={`tel:${+381346104222}`} >
                                    +381 34 610 4222
                               </a>
                          </Typography>

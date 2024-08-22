@@ -91,7 +91,7 @@ function ProductDetails(product: IProduct) {
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{ cursor: 'pointer', }}>
                     <ProductImage
-                         style={{ borderRadius: '20px', boxShadow: `10px 10px 10px ${Colors.primary.main}` }}
+                         style={{ marginBottom: '40px', width: isScreenToMedium ? '80%' : '70%', borderRadius: '20px', boxShadow: `10px 10px 10px ${Colors.primary.main}` }}
                          src={product.imageURL}
                     />
                </Product>

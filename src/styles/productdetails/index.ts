@@ -13,13 +13,13 @@ export const Product = styled(Box)(({ theme, sx }: any) => ({
 }))
 
 
-export const ProductImage = styled(Image)(({ src, theme, sx }: any) => ({
+export const ProductImage = styled(Image)(({ src, theme }: any) => ({
      src: `${src}`,
      width: "50%",
      background: Colors.light_gray,
      padding: '10px',
-     [theme.breakpoints.up("md")]: {
-          width: "80%",
+     [theme.breakpoints.down("md")]: {
+          width: "60%",
      },
      cursor: 'pointer',
      webkitTransition: '-webkit-transform 0.4s',

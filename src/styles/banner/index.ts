@@ -48,7 +48,7 @@ export const BannerTextContent = styled(Box)(({ theme }) => ({
      },
 })) as typeof Box
 
-export const BannerQuotaText = styled(Typography)(({ theme }) => ({
+export const BannerQuotaText = styled(Typography)(({ theme, sx }) => ({
      textAlign: 'center',
      fontStyle: 'italic',
      margin: "20px",

@@ -132,12 +132,13 @@ export default function Home(props: any) {
                                    left: 0,
                                    right: 0,
                                    textAlign: 'center',
+                                   padding: '10px',
                               }}
                          >
                               <Typography id="first-load-modal-description" sx={{ fontSize: '1rem' }}>
-                                   Ovaj sajt korsišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
+                                   Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
                               </Typography>
-                              <Button onClick={handleClose}>
+                              <Button onClick={handleClose} >
                                    U redu
                               </Button>
                          </Paper>

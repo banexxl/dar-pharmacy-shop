@@ -189,7 +189,7 @@ export const AccordionPanels = [
                {
                     id: 'guscija-mast',
                     link: '/proizvodi/guscija-mast/',
-                    title: 'Gusčija mast'
+                    title: 'Guščija mast'
                },
                {
                     id: 'ulja-za-masazu',

@@ -1,7 +1,7 @@
 import { Box, Stack, Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
-import { BannerContainer, BannerLeftImageContent, BannerRightImageContent, BannerQuotaText, BannerShopButton, BannerTextContent, BannerTitle } from "../../styles/banner"
+import { BannerContainer } from "../../styles/banner"
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
