@@ -93,7 +93,7 @@ export default function WishList({ open, onClose, product }: any) {
                                                             callCartAlert();
                                                             dispatch(addToCart(cartItem));
                                                        }} theme={theme}>
-                                                       Ubaci u korpu
+                                                       Dodaj u korpu
                                                   </ProductActionButton>
                                              </Box>
                                         ))

@@ -148,7 +148,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                               callCartAlert();
                               dispatch(addToCart(product));
                          }} theme={theme}>
-                         Ubaci u korpu
+                         Dodaj u korpu
                     </ProductAddToCart>
                )}
 
