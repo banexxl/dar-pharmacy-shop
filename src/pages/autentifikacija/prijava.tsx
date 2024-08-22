@@ -1,7 +1,7 @@
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme from "@/styles/theme";
-import { Button, Container, Stack, TextField } from "@mui/material";
+import { Box, Button, Container, Stack, TextField } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
@@ -83,11 +83,13 @@ const SignInPage = () => {
                                                        )
                                                   }
                                              </Formik>
+                                             <Box>
+                                                  <AuthText theme={theme}>
+                                                       Nemate nalog?
+                                                  </AuthText>
+                                                  <AuthButton href="/registracija">Registrujte se</AuthButton>
+                                             </Box>
                                         </AuthFormBox>
-                                        <AuthText theme={theme}>
-                                             Nemate nalog?
-                                        </AuthText>
-                                        <AuthButton href="/registracija">Registrujte se</AuthButton>
                                    </AuthBox>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />

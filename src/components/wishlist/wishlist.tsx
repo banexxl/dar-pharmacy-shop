@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, Alert, } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
@@ -9,6 +9,10 @@ import { useTranslation } from "next-i18next";
 import IWishlistItem from "@/interfaces/wishlist/wishlist.interface";
 import WishlistItem from "./wishlist-item";
 import { clearWishList } from "@/store/wishlist/wishlist.slice";
+import { ProductActionButton, ProductAddToCart } from "@/styles/product/single-product";
+import { useState } from "react";
+import { addToCart } from "@/store/cart/cart.slice";
+import { color } from "framer-motion";
 
 
 const SlideTransition = (props: any) => {
@@ -21,6 +25,23 @@ export default function WishList({ open, onClose, product }: any) {
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
      const wishlist = useSelector((state: any) => state.persistReduce.wishListReducer)
      const dispatch = useDispatch()
+     const [addedToCartAlert, setAddedToCartAlert] = useState(false);
+     const [showOptions, setShowOptions] = useState(false);
+     const [loading, setLoading] = useState(false);
+
+     const callCartAlert = () => {
+          setAddedToCartAlert(true);
+          setLoading(true);
+          const timeId = setTimeout(() => {
+               setLoading(false);
+               setAddedToCartAlert(false);
+          }, 1500);
+
+          return () => {
+               clearTimeout(timeId);
+          };
+     };
+
 
      return (
           <Dialog
@@ -57,20 +78,39 @@ export default function WishList({ open, onClose, product }: any) {
                                    <WishlistHeaderCell align="left">Cena</WishlistHeaderCell>
                               </WishlistHeader>
                               <WishlistTableBody>
-                                   {wishlist.map((cartItem: IWishlistItem) => (
-                                        <WishlistItem discount={cartItem.discount} key={cartItem._id} _id={cartItem._id}
-                                             name={cartItem.name} description={cartItem.description} category={cartItem.category}
-                                             availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
-                                             instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                             warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
-                                   ))}
+                                   {
+                                        wishlist.map((cartItem: IWishlistItem) => (
+                                             <Box key={Math.random()}>
+                                                  <WishlistItem discount={cartItem.discount} key={cartItem._id} _id={cartItem._id}
+                                                       name={cartItem.name} description={cartItem.description} category={cartItem.category}
+                                                       availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
+                                                       instructions={cartItem.instructions} quantity={cartItem.quantity}
+                                                       warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
+                                                  <ProductActionButton
+                                                       sx={{ color: Colors.primary.main }}
+                                                       show={showOptions}
+                                                       onClick={() => {
+                                                            callCartAlert();
+                                                            dispatch(addToCart(cartItem));
+                                                       }} theme={theme}>
+                                                       Ubaci u korpu
+                                                  </ProductActionButton>
+                                             </Box>
+                                        ))
+                                   }
                               </WishlistTableBody>
+
                          </WishlistTable>
                          <WishlistRemoveAllButton onClick={() => dispatch(clearWishList())}>
                               Obriši listu omiljenih proizvoda
                          </WishlistRemoveAllButton>
                     </WishListWrapper>
                </DialogContent>
+               {addedToCartAlert && (
+                    <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                         Proizvod dodat u korpu
+                    </Alert>
+               )}
           </Dialog>
      );
 }

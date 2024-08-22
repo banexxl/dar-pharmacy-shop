@@ -88,7 +88,7 @@ export const ProductImageDropdown = styled(Image)(({ src, theme }: any) => ({
      // },
 }));
 
-export const ProductActionButton = styled(IconButton)(() => ({
+export const ProductActionButton = styled(IconButton)(({ show, sx }: any) => ({
 
      margin: 4,
      '&:hover': {
