@@ -14,7 +14,6 @@ import { Field, Form, Formik } from 'formik'
 import { initialUserFormValues, IUserForm } from '@/interfaces/checkout/user-form-values.interface'
 import { userFormSchema } from '@/schemas/user-form.schema'
 import { useSession } from 'next-auth/react'
-import { useDispatch } from 'react-redux'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import sweetalert2 from 'sweetalert2'
@@ -45,8 +44,6 @@ const RegisterPage = () => {
                     },
                     body: JSON.stringify(values),
                }).then(response => {
-                    console.log(response);
-
                     if (response.status === 409) {
                          sweetalert2.fire({
                               title: 'Ovaj email je već registrovan!',
@@ -67,6 +64,15 @@ const RegisterPage = () => {
                               didClose: () => {
                                    router.push('/')
                               }
+                         })
+                    } else if (response.status === 400) {
+                         sweetalert2.fire({
+                              title: 'Došlo je do greške!',
+                              text: 'Molimo Vas da proverite unete podatke, i pokušajte ponovo!',
+                              icon: 'error',
+                              showConfirmButton: true,
+                              confirmButtonText: 'U redu',
+                              confirmButtonColor: Colors.primary.main
                          })
                     }
                })
@@ -242,7 +248,7 @@ const RegisterPage = () => {
                                                                       <CheckoutNextPrevButton
                                                                            onClick={() => handleSubmit(formik.values)}
                                                                            endIcon={<NavigateNextIcon />}
-                                                                           disabled={Object.keys(formik.errors).length > 0}
+                                                                           disabled={Object.keys(formik.errors).length > 0 || !formik.isValid || formik.isSubmitting}
                                                                       >
                                                                            Dalje
                                                                       </CheckoutNextPrevButton>
