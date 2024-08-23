@@ -59,9 +59,9 @@ const RegisterPage = () => {
                               showConfirmButton: true,
                               confirmButtonText: 'U redu',
                               confirmButtonColor: Colors.primary.main,
-                              // didClose: () => {
-                              //      router.push('/')
-                              // }
+                              didClose: () => {
+                                   router.push('/')
+                              }
                          })
                     } else if (response.status === 400) {
                          sweetalert2.fire({
