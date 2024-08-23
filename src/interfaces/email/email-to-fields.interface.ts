@@ -2,6 +2,7 @@ import ICartItem from "../cart/cart.interface"
 
 export interface IEmailToFields {
      email: string,
+     customerEmail?: string,
      subject: string,
      name?: string,
      title?: string

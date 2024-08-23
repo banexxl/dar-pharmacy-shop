@@ -79,12 +79,13 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     disabled={totalItemPrice === 0 || !submitEnabled}
                     onClick={() => {
                          SendCheckoutConfirmationEmailToAdmin({
-                              email: 'maja@apoteka-dar.rs', subject: 'Poružbenica',
+                              email: 'maja@apoteka-dar.rs',
+                              customerEmail: userFormSelector.email,
+                              subject: 'Poružbenica',
                               name: userFormSelector.name,
                               title: 'Potvrda porudzbenice',
                               cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                               country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
-
                          }),
                               SendCheckoutConfirmationEmailToUser({
                                    email: userFormSelector.email, subject: 'Poružbenica',

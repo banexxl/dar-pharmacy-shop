@@ -1,8 +1,6 @@
 import ICartItem from '@/interfaces/cart/cart.interface';
 import { IEmailToFields } from '@/interfaces/email/email-to-fields.interface';
-import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
 import { Colors } from '@/styles/theme';
-import { useSelector } from 'react-redux';
 import { transporter } from '../../../services/email/email-config'
 
 const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
@@ -57,7 +55,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
         <br/>
         <p>Ove proizvode je potrebno poslati na adresu:</p>
         <br/>
-        <p>${data.country}<br/>${data.city}<br/>${data.streetAddress}<br/>${data.phoneNumber}<br/>${data.email}</p>
+        <p>${data.country}<br/>${data.city}<br/>${data.streetAddress}<br/>${data.phoneNumber}<br/>${data.customerEmail}</p>
     </div>
 </body>
 </html>
