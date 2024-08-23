@@ -176,12 +176,6 @@ export const authOptions: NextAuthOptions = {
 
      adapter: MongoDBAdapter(accountsDBPromise),
      providers: [
-          // GoogleProvider({
-          //      clientId: process.env.GOOGLE_CLIENT_ID!,
-          //      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-          //      // checks: ['none']
-          // }),
-          // Passwordless / email sign in
           EmailProvider({
                server: {
                     host: process.env.EMAIL_SERVER_HOST,
@@ -220,38 +214,15 @@ export const authOptions: NextAuthOptions = {
           },
           async signIn({ account, profile, email, user }) {
                try {
-                    // // Check if the sign-in provider is Google
-                    // if (account?.provider === "google") {
-                    //      // Check if the Google email is a Gmail account
-                    //      if (profile?.email && profile.email.endsWith("@gmail.com")) {
-                    //           console.log("Google sign-in with Gmail:", profile.email);
-
-                    //           // Allow sign-in
-                    //           return true;
-                    //      } else {
-                    //           console.log("Google sign-in attempt with non-Gmail email:", profile?.email);
-
-                    //           // Reject sign-in for non-Gmail accounts
-                    //           return false;
-                    //      }
-                    // }
-
-                    // Check if the sign-in provider is Email
                     if (account?.provider === "email") {
                          // Check if the email object and user object are defined
                          if (user?.email) {
                               const userFromDB = await AccountService().getUserByEmail(user.email);
-                              console.log("userFromDB", userFromDB.emailVerified);
-                              // Allow sign-in if the email is verified
                               return userFromDB.emailVerified ? true : false;
                          } else {
-                              console.log("Email sign-in attempt without verification or missing email:", email);
-
-                              // Reject sign-in if verification was not successful or email is missing
                               return false;
                          }
                     } else {
-                         console.log("Sign-in with other provider:", account?.provider);
                          return false;
                     }
                } catch (error) {

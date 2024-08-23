@@ -13,9 +13,6 @@ import Link from "next/link";
 
 const ErrorPage = (props: any) => {
 
-     console.log("props", props);
-
-
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
           ssr: false,

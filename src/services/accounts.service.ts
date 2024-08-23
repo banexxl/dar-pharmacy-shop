@@ -37,9 +37,6 @@ export const AccountService = () => {
                     { upsert: true } // Create a new document if no matching document is found
                );
 
-               console.log('insertUserResult', insertUserResult);
-
-
                const html = `
                                         <html>
 <head>
@@ -130,7 +127,6 @@ export const AccountService = () => {
 
                if (insertUserResult.upsertedCount > 0) {
                     const registerUserEmailSendResponse = await transporter.sendMail(mailOptions)
-                    console.log('registerUserEmailSendResponse', registerUserEmailSendResponse);
                     if (registerUserEmailSendResponse.accepted.length > 0) {
                          return { message: 'Email successfully registered and confirmation sent!', status: 200 };
                     } else {
@@ -138,7 +134,6 @@ export const AccountService = () => {
                     }
                } else if (insertUserResult.upsertedCount === 0 && insertUserResult.matchedCount > 0) {
                     const registerUserEmailSendResponse = await transporter.sendMail(mailOptions)
-                    console.log('registerUserEmailSendResponse', registerUserEmailSendResponse);
                     if (registerUserEmailSendResponse.accepted.length > 0) {
                          return { message: 'Email not verified!', status: 200 };
                     } else {
