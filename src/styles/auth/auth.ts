@@ -1,6 +1,5 @@
-import { Box, Typography, Button, Theme } from "@mui/material";
-import styled from "@emotion/styled";
-import { Colors } from "../theme";
+import { Box, Typography, Button, styled, Theme } from "@mui/material";
+import { Colors } from '@/styles/theme';
 
 type AuthProps = {
      theme: Theme;
@@ -10,7 +9,7 @@ export const AuthBox = styled(Box)<AuthProps>(({ theme }) => ({
      [theme.breakpoints.up("md")]: {
           padding: "40px 0px 40px 0px",
      },
-     height: '500px',
+     height: '550px',
      marginTop: '130px',
      marginBottom: '100px',
      display: "flex",
@@ -33,7 +32,8 @@ export const AuthInfoBox = styled(Box)<AuthInfoBoxProps>(({ theme }) => ({
 }));
 
 export const AuthFormBox = styled(Box)(({ theme }) => ({
-     margin: '130px',
+     marginTop: '100px',
+     marginBottom: '100px',
      borderRadius: '20px',
      padding: '30px',
      background: Colors.dove_gray,
@@ -41,7 +41,7 @@ export const AuthFormBox = styled(Box)(({ theme }) => ({
      flexDirection: 'column',
      alignItems: 'center',
      justifyContent: 'center',
-     gap: '50px',
+     gap: '20px',
      height: '100%',
 })) as typeof Box
 
