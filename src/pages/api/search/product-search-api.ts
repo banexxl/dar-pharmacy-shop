@@ -11,7 +11,7 @@ const ProductSearchApi = async (request: NextApiRequest, response: NextApiRespon
                if (searchedProducts.length > 0) {
                     return response.status(200).json({ message: 'Artikli pronađeni!', data: searchedProducts })
                } else {
-                    return response.status(404).json({ error: 'Vaša pretraga nije vratila ni jedan artikal. Molimo probajte ponovo...' });
+                    return response.status(404).json({ error: 'Za datu pretragu nema prodnadjenih rezultata' });
                }
           } catch (error) {
                return response.status(500).json({ error: 'Internal server error!' });
