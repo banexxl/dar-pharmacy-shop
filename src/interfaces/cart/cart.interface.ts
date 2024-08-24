@@ -1,10 +1,10 @@
 import IProduct from "../product/product.interface";
 
 export default interface ICartItem extends IProduct {
-          count: number;
+     count: number;
 }
 
 export interface ICart {
-          cartItems: ICartItem[],
-          children?: JSX.IntrinsicElements
+     cartItems: ICartItem[],
+     children?: JSX.IntrinsicElements
 }

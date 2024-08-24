@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import moment from 'moment-timezone';
+import moment from 'moment';
 import ordersServices from "@/services/order-service";
 import { Order, OrderStatus, PaymentMethod } from "@/schemas/order";
 import { ICustomer } from "@/schemas/user";
