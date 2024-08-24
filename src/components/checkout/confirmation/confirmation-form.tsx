@@ -43,6 +43,20 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
      };
 
+     const onOrderItems = async () => {
+          try {
+               await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: {
+                         'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ cart, userFormSelector, totalItemPrice })
+               })
+          } catch (error) {
+
+          }
+     }
+
      return (
           <CartWrapper component={Paper} theme={theme}>
                <StyledTable>
@@ -86,16 +100,21 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               title: 'Potvrda porudzbenice',
                               cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                               country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
-                         }),
+                         }).then(() => {
                               SendCheckoutConfirmationEmailToUser({
                                    email: userFormSelector.email, subject: 'Poružbenica',
                                    name: userFormSelector.name, title: 'Potvrda porudzbenice',
                                    cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                                    country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
-                              }),
-                              dispatch(clearCart()),
-                              dispatch(clearUserForm()),
-                              dispatch(clearPaymentOptionsForm())
+                              }).then(() => {
+                                   dispatch(clearCart()),
+                                        dispatch(clearUserForm()),
+                                        dispatch(clearPaymentOptionsForm())
+                              }).then(() => {
+                                   onOrderItems()
+                              })
+                         })
+
                     }}>
                     <Link href={'/'}>
                          Poruči
