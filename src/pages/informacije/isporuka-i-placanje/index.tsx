@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
+import { Seo } from "@/components/seo";
 
 const DeliveryAndPaymentPage = () => {
 
@@ -22,19 +23,7 @@ const DeliveryAndPaymentPage = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Head>
-                    <title>Apoteka DAR - Isporuka i plaćanje</title>
-                    <meta name="description" content="Apoteka Dar Kragujevac" />
-                    <meta name="keywords" content="apoteka, dar, kragujevac" />
-                    <meta property="og:title" content="Apoteka DAR" />
-                    <meta property="og:description" content="Apoteka Dar Kragujevac" />
-                    <meta property="og:image" content="/public/images/home-page/apotekaDar.jpg" />
-                    <meta property="og:url" content="https://www.apoteka-dar.rs" />
-                    <meta name="twitter:card" content="/public/images/home-page/apotekaDar.jpg" />
-                    <meta name="twitter:title" content="Apoteka DAR" />
-                    <meta name="twitter:description" content="Apoteka DAR - Isporuka i plaćanje" />
-                    <meta name="twitter:image" content="/public/images/home-page/apotekaDar.jpg" />
-               </Head>
+               <Seo title={'Isporuka i plaćanje'} description={'Isporuka i plaćanje'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"
@@ -88,16 +77,6 @@ const DeliveryAndPaymentPage = () => {
                                                   8000 dinara isporuka je besplatna.
                                              </ContactStrongText>
                                         </ContactText>
-
-                                        {/* <ContactText theme={theme}>
-                                        UBACITI TEKST ZA PARCEL SHOP
-                                             Nudimo i mogućnost preuzimanja pošiljki na Parcel Shop-ovima,
-                                             ukoliko ne želite isporuku na kućnu adresu ili Vam vreme u kojem se isporuka vrši ne odgovara.
-                                             Cena dostave/isporuke je ista kao i prilikom dostave na kućnu adresu.
-                                             Mesta na kojima možete preuzeti pošiljku putem Parcel Shop opcije možete pogledati ovde.
-                                             Za više informacija, molimo Vas da nas kontaktirate putem besplatnog poziva na broj 0800 111113 ili putem e-mail-a na online@benu.rs
-                                        </ContactText> */}
-
                                         <ContactSubTitle>
                                              Plaćanje
                                         </ContactSubTitle>

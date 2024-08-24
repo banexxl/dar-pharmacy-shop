@@ -7,6 +7,7 @@ import React from 'react'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import dynamic from 'next/dynamic'
+import { Seo } from '@/components/seo'
 
 const PrivacyPolicy = () => {
 
@@ -18,19 +19,7 @@ const PrivacyPolicy = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Head>
-                    <title>Apoteka DAR - Politika privatnosti</title>
-                    <meta name="description" content="Apoteka Dar Kragujevac" />
-                    <meta name="keywords" content="apoteka, dar, kragujevac" />
-                    <meta property="og:title" content="Apoteka DAR" />
-                    <meta property="og:description" content="Apoteka Dar Kragujevac" />
-                    <meta property="og:image" content="/public/images/home-page/apotekaDar.jpg" />
-                    <meta property="og:url" content="https://www.apoteka-dar.rs" />
-                    <meta name="twitter:card" content="/public/images/home-page/apotekaDar.jpg" />
-                    <meta name="twitter:title" content="Apoteka DAR" />
-                    <meta name="twitter:description" content="Apoteka DAR - Politika privatnosti" />
-                    <meta name="twitter:image" content="/public/images/home-page/apotekaDar.jpg" />
-               </Head>
+               <Seo title={'Reklamacije'} description={'Reklamacije'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"
