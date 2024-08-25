@@ -12,9 +12,12 @@ type SeoProps = {
 export const Seo = (props: SeoProps) => {
      const { title, description, keywords, image, url } = props;
 
-     const fullTitle = title ? `${title} | Apoteka DAR` : 'Apoteka DAR';
-     const fullDescription = description || 'Apoteka DAR Kragujevac offers a wide range of natural products.';
-     const fullKeywords = keywords ? `${keywords}, apoteka, dar, kragujevac` : 'apoteka, dar, kragujevac, natural products, health';
+     const fullTitle = title ? `${title} | Apoteka DAR Kragujevac` : 'Apoteka DAR Kragujevac';
+     const fullDescription = description || 'Apoteka DAR Kragujevac nudimo prirodne proizvode za zdravlje i lepotu. Posetite nas i uverite se u kvalitet naših proizvoda.';
+     const fullKeywords = keywords ?
+          `${keywords}, apoteka, DAR, Kragujevac, prirodni proizvodi, zdravlje, nega, lek, rak, tumor, cancer, prirodna kozmetika, kozmetika, bebi kozmetika, bebi prirodna kozmetika, bebi nega, bebi, nega, zdravlje, zdrava hrana, zdrava ishrana, zdrav zivot, zdrav zivotni stil`
+          : 'apoteka, DAR, Kragujevac, prirodni proizvodi, zdravlje, nega, lek, rak, tumor, cancer, prirodna kozmetika, kozmetika, bebi kozmetika, bebi prirodna kozmetika, bebi nega, bebi, nega, zdravlje, zdrava hrana, zdrava ishrana, zdrav zivot, zdrav zivotni stil';
+
      const fullImage = image || '/public/images/home-page/apotekaDar.jpg';
      const fullUrl = url || 'https://www.apoteka-dar.rs';
 
