@@ -12,7 +12,7 @@ type SeoProps = {
 export const Seo = (props: SeoProps) => {
      const { title, description, keywords, image, url } = props;
 
-     const fullTitle = title ? `${title} | Apoteka DAR Kragujevac` : 'Apoteka DAR Kragujevac';
+     const fullTitle = title ? `${title} | Apoteke DAR Kragujevac` : 'Apoteke DAR Kragujevac';
      const fullDescription = description || 'Apoteka DAR Kragujevac nudimo prirodne proizvode za zdravlje i lepotu. Posetite nas i uverite se u kvalitet naših proizvoda.';
      const fullKeywords = keywords ?
           `${keywords}, apoteka, DAR, Kragujevac, prirodni proizvodi, zdravlje, nega, lek, rak, tumor, cancer, prirodna kozmetika, kozmetika, bebi kozmetika, bebi prirodna kozmetika, bebi nega, bebi, nega, zdravlje, zdrava hrana, zdrava ishrana, zdrav zivot, zdrav zivotni stil`
