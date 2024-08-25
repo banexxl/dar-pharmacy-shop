@@ -57,7 +57,7 @@ export default function Home(props: any) {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Priroda na dohvat ruke'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Početna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

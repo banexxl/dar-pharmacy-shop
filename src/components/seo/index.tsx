@@ -2,11 +2,11 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 type SeoProps = {
-     title: string;
-     description: string;
+     title?: string;
+     description?: string;
      keywords?: string;
      image?: string;
-     url: string;
+     url?: string;
 }
 
 export const Seo = (props: SeoProps) => {
