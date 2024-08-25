@@ -95,7 +95,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           <DynamicThemeProvider theme={theme}>
                <Container disableGutters maxWidth="md">
 
-                    <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
+                    <Formik validateOnMount initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                          {
                               formik => (
                                    <Form>
@@ -204,7 +204,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              </Grid>
 
                                              <Grid item xs={12} sm={6}>
-
                                                   <Field
                                                        as={TextField}
                                                        value={session.data ? session.data?.user!.email : formik.values.email}
@@ -212,14 +211,24 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        label="Email"
                                                        name="email"
                                                        variant="outlined"
-                                                       onBlur={formik.handleBlur}
+                                                       onBlur={(e: any) => {
+                                                            const fieldName = e.target.name;
+                                                            const fieldValue = e.target.value;
+
+                                                            if (fieldName === 'email') {
+                                                                 formik.validateField('email').then(() => {
+                                                                      if (formik.errors.email && fieldValue !== '') {
+                                                                           formik.setFieldValue('shouldCreateAccount', false);
+                                                                      }
+                                                                 })
+                                                            }
+                                                       }}
                                                        error={formik.touched?.email && !!formik.errors?.email}
                                                        helperText={formik.touched?.email && formik.errors?.email}
                                                        onChange={formik.handleChange('email')}
                                                        fullWidth
                                                   />
                                              </Grid>
-
 
                                              {!session.data && (
                                                   <Grid item xs={12} sm={6}>
@@ -233,7 +242,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                                       color="primary"
                                                                       disabled={
                                                                            formik.values.email === '' ||
-                                                                           (Boolean(formik.errors.email) && formik.errors.email !== "Ovaj email je već registrovan!")
+                                                                           (Boolean(formik.errors.email))
                                                                       }
                                                                  />
 
