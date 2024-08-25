@@ -87,14 +87,16 @@ function ProductDetails(product: IProduct) {
      });
 
      return (
-          <ProductDetailWrapper sx={{ marginTop: '100px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
+          <ProductDetailWrapper sx={{ marginTop: '100px', gap: '30px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                <ProductImageBox
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{ cursor: 'pointer', }}>
                     <Image
-                         width={isScreenToMedium ? 300 : 500}
-                         height={isScreenToMedium ? 300 : 500}
-                         src={product.imageURL} alt={''} />
+                         width={isScreenToMedium ? 300 : 400}
+                         height={isScreenToMedium ? 400 : 600}
+                         src={product.imageURL} alt={''}
+                         style={{ borderRadius: '10px' }}
+                    />
                </ProductImageBox>
                <ProductDetailInfoWrapper>
                     <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
