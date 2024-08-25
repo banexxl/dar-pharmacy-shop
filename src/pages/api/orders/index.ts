@@ -8,6 +8,7 @@ import { ICart } from "@/interfaces/cart/cart.interface";
 const OrdersAPI = async (request: NextApiRequest, response: NextApiResponse) => {
      const { cart, userFormSelector, totalItemPrice } = request.body;
 
+
      const order: Order = {
           orderNumber: moment().format('YYYYMMDD') + '-ID-' + Math.floor(Math.random() * 1000),
           createdAt: new Date(),
