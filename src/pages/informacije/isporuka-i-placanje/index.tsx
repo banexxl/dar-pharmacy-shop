@@ -12,6 +12,7 @@ import Head from "next/head";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { Seo } from "@/components/seo";
+import Link from "next/link";
 
 const DeliveryAndPaymentPage = () => {
 
@@ -53,29 +54,22 @@ const DeliveryAndPaymentPage = () => {
                                         <ContactText theme={theme}>
                                              Dostavu/isporuku za porudžbine do{" "}
                                              <ContactStrongText theme={theme}>
-                                                  3000 dinara{" "}
+                                                  8000 dinara plaća kupac. {" "}
                                              </ContactStrongText>
-                                             plaća kupac i ona iznosi{" "}
-                                             <ContactStrongText theme={theme}>
-                                                  291 dinar{" "}
-                                             </ContactStrongText>
-                                             ukoliko je kupac platio karticom,
-                                             odnosno{" "}
-                                             <ContactStrongText theme={theme}>
-                                                  341 dinar{" "}
-                                             </ContactStrongText>
-                                             ukoliko kupac plaća pouzećem. Naplata otkupnih iznosa vrši se po ceni od 50 dinara u slučaju
-                                             plaćanja dostave pouzećem i odatle razlika u ceni u odnosu na plaćanje karticom. Cena dostave/isporuke je do{" "}
-                                             <ContactStrongText theme={theme}>
-                                                  341 dinara za pakete do 5 kg,{" "}
-                                             </ContactStrongText>
-                                             za pakete mase preko 5 kg svaki dodatni kilogram se naplaćuje 28,13 dinara po kilogramu.
-                                        </ContactText>
-                                        <ContactText theme={theme}>
                                              Za sve porudžbine preko{" "}
                                              <ContactStrongText theme={theme}>
                                                   8000 dinara isporuka je besplatna.
                                              </ContactStrongText>
+                                        </ContactText>
+
+
+                                        <ContactText theme={theme}>
+                                             Za sve ostale detalje cenovnika možete se informisati na stranici Pošte Srbije: {" "}
+                                             <Link href={'http://www.postexpress.rs/struktura/lat/cenovnik/cenovnik-unutrasnji-saobracaj.asp'} target="_blank">
+                                                  <ContactStrongText theme={theme}>
+                                                       cenovnik
+                                                  </ContactStrongText>.
+                                             </Link>
                                         </ContactText>
                                         <ContactSubTitle>
                                              Plaćanje
@@ -108,9 +102,9 @@ const DeliveryAndPaymentPage = () => {
                                              kompletni proces naplate obavlja na stranicama banke. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem sistemu.
                                         </ContactText>
                                         <ContactText theme={theme}>
-                                             AU BENU je zabranjeno prodavanje, naručivanje, obezbeđivanje illi razmena podataka potrošača ili informacija o
+                                             Apotekarskoj ustanovi DAR je zabranjeno prodavanje, naručivanje, obezbeđivanje ili razmena podataka potrošača ili informacija o
                                              platnoj kartici u bilo kojoj formi trećoj strani, sem ako to nije Banka ili nadležni državni organi. Lični i adresni podaci
-                                             potrošača koji se predočavaju AU BENU prilikom procesa kupovine smatraju se poslovnom tajnom.
+                                             potrošača koji se predočavaju Apotekarskoj ustanovi DAR prilikom procesa kupovine smatraju se poslovnom tajnom.
                                         </ContactText>
                                    </ContactInfoBox>
                               </ContactBox>
