@@ -1,4 +1,4 @@
 #!/bin/bash
 
 npm run build
-npm run sitemap
+npm run site-map
