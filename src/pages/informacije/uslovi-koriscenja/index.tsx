@@ -25,7 +25,7 @@ const TermsConditions = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Uslovi korišćenja'} description={'Uslovi korišćenja'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Uslovi korišćenja'} description={'Uslovi korišćenja'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

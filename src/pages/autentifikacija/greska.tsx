@@ -37,7 +37,7 @@ const ErrorPage = (props: any) => {
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
                <DynamicThemeProvider theme={theme}>
-                    <Seo title={'Greska prilikom prijave'} description={'Greska priliko prijave'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+                    <Seo title={'Greska prilikom prijave'} description={'Greska priliko prijave'} url={'https://www.apoteka-dar.rs/'} />
                     <Container
                          disableGutters
                          maxWidth="lg"

@@ -23,7 +23,7 @@ const DeliveryAndPaymentPage = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Isporuka i plaćanje'} description={'Isporuka i plaćanje'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Isporuka i plaćanje'} description={'Isporuka i plaćanje'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

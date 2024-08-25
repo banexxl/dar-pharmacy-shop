@@ -29,7 +29,7 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
      return (
           <DynamicThemeProvider theme={theme}>
                <Head>
-                    <Seo title={'Verifikacija tokena'} description={'Verifikacija tokena'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+                    <Seo title={'Verifikacija tokena'} description={'Verifikacija tokena'} url={'https://www.apoteka-dar.rs/'} />
                </Head>
                <Container
                     disableGutters

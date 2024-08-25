@@ -19,7 +19,7 @@ const PageNotFount = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Stranica nije pronađena'} description={'Stranica nije pronađena'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Stranica nije pronađena'} description={'Stranica nije pronađena'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

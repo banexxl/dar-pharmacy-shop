@@ -26,7 +26,7 @@ const SignInPage = () => {
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
                <DynamicThemeProvider theme={theme}>
-                    <Seo title={'Greska prilikom verifikacije'} description={'Greska prilikom verifikacije'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+                    <Seo title={'Greska prilikom verifikacije'} description={'Greska prilikom verifikacije'} url={'https://www.apoteka-dar.rs/'} />
                     <Container
                          disableGutters
                          maxWidth="lg"

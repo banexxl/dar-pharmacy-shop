@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Reklamacije'} description={'Reklamacije'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Reklamacije'} description={'Reklamacije'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

@@ -1,5 +1,4 @@
 import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
-import { ThemeProvider } from "@mui/system";
 import theme from "../styles/theme";
 import Banner from "../components/banner/banner";
 import Products from "../components/products/products-grid";
@@ -8,17 +7,12 @@ import AppDrawer from "../components/navbar/drawer/drawer";
 import Promotions from "../components/promotions/promotions";
 import SearchBox from "../components/search/search"
 import productsServices from '@/services/product.services'
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Head from "next/head";
-import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import LoadingWheel from "@/components/loading/loading";
 import IProduct from "@/interfaces/product/product.interface";
 import ProductCarousel from "@/components/carousel/carousel";
 import { MessageText } from "@/styles/promotions";
 import CarouselLogo from "@/components/carousel/carousel-logo";
-import CarouselBlog from "@/components/carousel/carousel-blog";
-import { useSelector } from "react-redux";
 import ProductCard from "@/components/product-presentation/product-presentation";
 import { BannerServices } from "@/components/banner/banner-services";
 import { BannerCountUp } from "@/components/banner/banner-counter";
@@ -63,7 +57,7 @@ export default function Home(props: any) {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Priroda na dohvat ruke'} description={'Priroda na dohvat ruke'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Priroda na dohvat ruke'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

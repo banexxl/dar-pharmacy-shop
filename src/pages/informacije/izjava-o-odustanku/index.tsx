@@ -24,7 +24,7 @@ const ContactPage = (props: ContactPageProps) => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Izjava o odustanku'} description={'Izjava o odustanku'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Izjava o odustanku'} description={'Izjava o odustanku'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

@@ -23,7 +23,7 @@ const ContactPage = (props: ContactPageProps) => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'O nama'} description={'O nama'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'O nama'} description={'O nama'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"

@@ -21,7 +21,7 @@ export default function MainCategoryPage(props: any) {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Kategorija'} description={'Kategorija'} keywords={'apoteka, dar, kragujevac, prirodni proizvodi, zdravlje, rak, tumor, lek, ishrana, priroda'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Kategorija'} description={'Kategorija'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"
