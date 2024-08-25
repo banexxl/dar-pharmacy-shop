@@ -122,7 +122,7 @@ export default function Home(props: any) {
                                    Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
                               </Typography>
                               <Button onClick={handleClose} >
-                                   U redu
+                                   Prihvati sve
                               </Button>
                          </Paper>
                     </Modal>

@@ -2,15 +2,9 @@ import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, Container, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
-import Head from 'next/head'
-import { Suspense } from 'react'
 import React from 'react'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { InferGetStaticPropsType } from 'next'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
-import SpinningWheel from '@/components/circularprogress/circular-progress'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Seo } from '@/components/seo'
@@ -111,15 +105,15 @@ const TermsConditions = () => {
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                              <ListItemText>
                                                   <Typography textAlign='justify' >
-                                                       da u slučaju nesaobraznosti robe po ugovoru, potrošač ima pravo da izjavi reklamaciju na način kako je to definisano Pravilnikom o postupanju po reklamaciji potrošača za robu kupljenu putem ON LINE prodavnice, koji se može preuzeti <Link href={''}>OVDE.&nbsp;</Link>
-                                                       Obrazac Zahteva za reklamaciju potrošač može pronaći u odeljku Servis - <Link href={''}>REKLAMACIJE.</Link>
+                                                       da u slučaju nesaobraznosti robe po ugovoru, potrošač ima pravo da izjavi reklamaciju na način kako je to definisano Pravilnikom o postupanju po reklamaciji potrošača za robu kupljenu putem ONLINE prodavnice, koji se može preuzeti <Link href={'/docs/Zahtev_za_reklamaciju.pdf'}>OVDE.&nbsp;</Link>
+                                                       Obrazac Zahteva za reklamaciju potrošač može pronaći u odeljku Servis - <Link href={'/informacije/zahtev-za-reklamaciju'}>REKLAMACIJE.</Link>
                                                   </Typography>
                                              </ListItemText>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, textAlign: 'center', padding: '0px 20px 0px 20px' }}>
                                              <ListItemText>
                                                   <Typography textAlign='justify' >
-                                                       da potrošač ima pravo da odustane od ugovora (odustane od kupovine) u roku od 14 dana od dana isporuke, a bez navođenja razloga za odustanak. U slučaju odustanka, potrošač snosi troškove vraćanja robe. Bliža uputstva za odustanak od ugovora potrošač može pronaći u odeljku Servis - <Link href={''}>&nbsp;PRAVO NA ODUSTAJANJE.</Link>
+                                                       da potrošač ima pravo da odustane od ugovora (odustane od kupovine) u roku od 14 dana od dana isporuke, a bez navođenja razloga za odustanak. U slučaju odustanka, potrošač snosi troškove vraćanja robe. Bliža uputstva za odustanak od ugovora potrošač može pronaći u odeljku Servis - <Link href={'/informacije/pravo-na-odustajanje'}>&nbsp;PRAVO NA ODUSTAJANJE.</Link>
                                                   </Typography>
                                              </ListItemText>
                                         </ListItem>
@@ -242,7 +236,7 @@ const TermsConditions = () => {
                                    </Typography>
 
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                        Izjavu o odustanku od ugovora možete preuzeti - <Link href={''}>OVDE.</Link>
+                                        Izjavu o odustanku od ugovora možete preuzeti - <Link href={'/docs/Izjava_o_odustanku.pdf'}>OVDE.</Link>
                                    </Typography>
 
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>

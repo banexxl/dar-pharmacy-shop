@@ -118,17 +118,17 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/politika-privatnosti"} >
                                              Politika privatnosti
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/uslovi-koriscenja"} >
                                              Uslovi korišćenja
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/politika-kolacica"} >
                                              Politika kolačića
                                         </Link>
                                    </AccordionDetails>
@@ -142,23 +142,13 @@ export default function Footer() {
                                         Nalog
                                    </AccordionSummary>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/autentifikacija/prijava"} >
                                              Prijava
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
                                         <Link href={"/"} >
-                                             Korpa
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails>
-                                        <Link href={"/"} >
                                              Moj profil
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails>
-                                        <Link href={"/"} >
-                                             Lista želja
                                         </Link>
                                    </AccordionDetails>
                               </Accordion>
@@ -296,36 +286,48 @@ export default function Footer() {
                                                   Izjava o odustanku
                                              </FooterItem>
                                         </Link>
-                                        <ListItemText onClick={showLoginDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Reklamacije
-                                             </FooterItem>
-                                        </ListItemText>
-                                        <ListItemText onClick={showWishListDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Ugovor o prodaji na daljinu
-                                             </FooterItem>
-                                        </ListItemText>
-                                        <ListItemText onClick={showWishListDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Zahtev za reklamaciju
-                                             </FooterItem>
-                                        </ListItemText>
-                                        <ListItemText onClick={showWishListDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Odustanak
-                                             </FooterItem>
-                                        </ListItemText>
-                                        <ListItemText onClick={showWishListDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Pravila i uslovi korišćenja usluge PITAJTE DAR SAVETNIKA
-                                             </FooterItem>
-                                        </ListItemText>
-                                        <ListItemText onClick={showWishListDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Prijava neželjenih dejstava leka ili medicinskog sredstva
-                                             </FooterItem>
-                                        </ListItemText>
+                                        <Link href='/informacije/reklamacije'>
+                                             <ListItemText onClick={showLoginDialog}>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Reklamacije
+                                                  </FooterItem>
+                                             </ListItemText>
+                                        </Link>
+                                        <Link href='/informacije/ugovor-o-prodaji-na-daljinu'>
+                                             <ListItemText onClick={showWishListDialog}>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Ugovor o prodaji na daljinu
+                                                  </FooterItem>
+                                             </ListItemText>
+                                        </Link>
+                                        <Link href='/informacije/zahtev-za-reklamaciju'>
+                                             <ListItemText onClick={showWishListDialog}>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Zahtev za reklamaciju
+                                                  </FooterItem>
+                                             </ListItemText>
+                                        </Link>
+                                        <Link href='/informacije/odustanak'>
+                                             <ListItemText onClick={showWishListDialog}>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Odustanak
+                                                  </FooterItem>
+                                             </ListItemText>
+                                        </Link>
+                                        <Link href='/informacije/pitajte-dar-savetnika'>
+                                             <ListItemText onClick={showWishListDialog}>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Pravila i uslovi korišćenja usluge PITAJTE DAR SAVETNIKA
+                                                  </FooterItem>
+                                             </ListItemText>
+                                        </Link>
+                                        <Link href='/informacije/prijava-nezeljenih-dejstava'>
+                                             <ListItemText onClick={showWishListDialog}>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Prijava neželjenih dejstava leka ili medicinskog sredstva
+                                                  </FooterItem>
+                                             </ListItemText>
+                                        </Link>
                                    </List>
                               </Box>
                          </FooterInfoAccount>
