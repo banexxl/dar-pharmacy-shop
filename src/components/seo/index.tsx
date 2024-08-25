@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 type SeoProps = {
      title: string;
      description: string;
-     keywords: string;
+     keywords?: string;
      image?: string;
      url: string;
 }
