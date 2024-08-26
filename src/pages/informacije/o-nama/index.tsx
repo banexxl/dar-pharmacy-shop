@@ -40,10 +40,10 @@ const ContactPage = (props: ContactPageProps) => {
                                         </ContactTitle>
                                         <Box sx={{ width: '400px', textAlign: 'center' }}>
                                              <ContactStrongText theme={theme}>
-                                                  Naš moto: Radosno srce-pola Zdravlja!
+                                                  Naš moto: Radosno srce-pola Zdravlja! <br />
                                              </ContactStrongText>
                                              <ContactStrongText theme={theme}>
-                                                  Dostava lekova radnim danima po celoj Srbiji!
+                                                  Dostava lekova radnim danima po celoj Srbiji!<br />
                                              </ContactStrongText>
                                              <ContactStrongText theme={theme}>
                                                   Radno Vreme :
