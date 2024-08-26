@@ -161,13 +161,8 @@ export default function Footer() {
                                         Korisnički servis
                                    </AccordionSummary>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/izjava-o-odustanku"} >
-                                             Izjava o odustanku
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails>
                                         <Link href={"/informacije/odustanak"} >
-                                             Odustanak
+                                             Izjava o odustanku
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
@@ -271,7 +266,7 @@ export default function Footer() {
                               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                    <FooterTitle theme={theme} variant="body1">Korisnički servis</FooterTitle>
                                    <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
-                                        <Link href='/informacije/izjava-o-odustanku'>
+                                        <Link href='/informacije/odustanak'>
                                              <FooterItem theme={theme} lineHeight={2} >
                                                   Izjava o odustanku
                                              </FooterItem>
@@ -294,13 +289,6 @@ export default function Footer() {
                                              <ListItemText onClick={showWishListDialog}>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Zahtev za reklamaciju
-                                                  </FooterItem>
-                                             </ListItemText>
-                                        </Link>
-                                        <Link href='/informacije/odustanak'>
-                                             <ListItemText onClick={showWishListDialog}>
-                                                  <FooterItem theme={theme} lineHeight={2} >
-                                                       Odustanak
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
