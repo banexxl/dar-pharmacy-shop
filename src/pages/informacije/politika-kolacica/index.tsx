@@ -74,7 +74,7 @@ const PrivacyPolicy = () => {
 
                                    <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
                                         Saglasnost izražena biranjem opcije Prihvati sve, omogućava instaliranje svih vrsta kolačića na vaš uređaj.
-                                        U zavisnosti od toga kako odaberete, BENU može dobiti sledeće informacije:
+                                        U zavisnosti od toga kako odaberete, Apoteka DAR može dobiti sledeće informacije:
                                    </Typography>
 
                                    <List>
