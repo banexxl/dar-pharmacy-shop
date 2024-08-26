@@ -1,13 +1,14 @@
 import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Divider, Link, List, ListItem, Stack, Typography } from '@mui/material'
+import { Box, Container, Divider, List, ListItem, ListItemIcon, Stack, Typography } from '@mui/material'
 import Head from 'next/head'
 import React from 'react'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import dynamic from 'next/dynamic'
 import { Seo } from '@/components/seo'
+import Link from 'next/link'
 
 const PrivacyPolicy = () => {
 
@@ -30,39 +31,143 @@ const PrivacyPolicy = () => {
                     <Stack>
                          <UIProvider>
                               <Box sx={{ mt: '70px' }}>
-                                   <Typography marginTop='30px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
-                                        Politika privatnosti
+                                   <Typography marginTop='130px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
+                                        REKLAMACIJE
                                    </Typography>
 
                                    <Divider sx={{ marginBottom: '30px' }} variant="middle" />
 
                                    <Typography textAlign='justify' padding='0px 20px' sx={{ textAlignLast: 'left' }}>
-                                        Lični podaci su informacije koje se neposredno ili posredno odnose ili mogu da se odnose na vašu ličnost. Kao zakonski osnov koji uređuje zaštitu podataka i uslove za obradu vaših podataka primenjujem Zakon o zaštiti podataka o ličnosti <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>(&apos;Sl. glasnik RS&apos;, br. 87/2018).</Typography>
+                                        Potrošač ima pravo na podnošenje prigovora u skladu sa odredbama
+                                        Zakona o zaštiti potrošača i Pravilnika o postupku i načinu rešavanja reklamacija potrošača na robu.
                                    </Typography>
 
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
-                                        Zdravstvena ustanova: <Typography fontWeight='bold' sx={{ display: 'inline-block' }}> Apotekarska ustanova &rdquo;DAR&rdquo;</Typography>,
-                                        sa sedištem u ulici<Typography fontWeight='bold' sx={{ display: 'inline-block' }}>Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac</Typography>,
-                                        <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>( u daljem tekstu Apotekarska ustanova &rdquo;DAR&rdquo; ),</Typography>
-                                        kao rukovalac podataka, pre prikupljanja i obrade podataka o ličnosti u skladu sa članom 23. Zakona o zaštiti podtaka o ličnosti, ovim putem <Typography fontWeight='bold' sx={{ display: 'inline-block' }}>obaveštava o uslovima prikupljanja i obrade podataka o ličnosti.</Typography>
+                                        Potrošač svojim potpisom na dostavnom listu prilikom preuzimanja paketa potvrđuje da je robu primio u ispravnom stanju.
+                                        City Express, u slučaju da je sadržaj pošiljke oštećen, odnosno nepotpun daje rok za reklamaciju od 24h od trenutka kada je potrošač preuzeo pošiljku.
                                    </Typography>
 
-                                   <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='center' fontWeight='bold' >
-                                        Informacije koje prikljupamo
+                                   <Typography textAlign='justify' padding='20px 20px' sx={{ textAlign: 'left' }}>
+                                        Zakon ne predviđa povrat sledeće robe:
+                                        <Typography fontWeight='bold' sx={{ display: 'inline-block', textAlign: 'justify' }}>
+                                             robe koja je podložna pogoršanju kvaliteta ili ima kratak rok trajanja zapečaćene robe koja se ne može vratiti
+                                             zbog zaštite zdravlja ili higijenskih razloga i koja je otpečaćena nakon isporuke.
+                                        </Typography>
                                    </Typography>
 
-                                   <Typography alignContent='flex-start' variant='h6' padding='0px 20px' fontWeight='bold' >
-                                        1. Javni podaci
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        Svoj zahtev za reklamaciju na proizvode kupljene na internet sajtu potrošač može prijaviti AU Apoteka DAR
+                                        upućivanjem email poruke na adresu maja@apoteka-dar.rs. Obavezan deo sadržine Zahteva za reklamacije jeste broj transakcije
+                                        (broj pošiljke koji ste dobili u email poruci prilikom potvrde kupovine) i broj računa po kome je transakcija realizovana.
+                                        AU Apoteka DAR, Beograd će elektronskim ili pisanim putem potvrditi prijem reklamacije, odnosno saopštiti broj pod kojim je zavedena
+                                        reklamacija u evidenciji primljenih reklamacija i na upućen zahtev odgovoriti saglasno zakonski definisanim rokovima
+                                        (u roku od 8 dana od datuma podnošenja reklamacije), prosleđivanjem reklamacionog lista na email koji je potrošač označio kao
+                                        kontakt u kome će biti sadržana i odluka AU Apoteka DAR o daljem postupanju po pitanju prosleđene reklamacije.
                                    </Typography>
 
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        Rok za rešavanje reklamacije ne može da bude duži od 15 dana, odnosno 30 dana za tehničku robu, od dana podnošenja reklamacije.
+                                        Rok za rešavanje reklamacije prekida se kada potrošač primi odgovor prodavca i počinje da teče iznova kada prodavac
+                                        primi izjašnjenje potrošača na odgovor prodavca. Potrošač je dužan da se izjasni na odgovor prodavca najkasnije u roku od tri
+                                        dana od dana prijema odgovora prodavca. Smatraće se da potrošač nije saglasan sa predlogom prodavca ukoliko se ne izjasni u
+                                        roku od tri dana. Ukoliko AU Apoteka DAR, Beograd iz objektivnih razloga nije u mogućnosti da udovolji zahtevu potrošača u roku koji je
+                                        dogovoren, dužan je da o produžavanju roka za rešavanje reklamacije obavesti potrošača i navede rok u kome će je rešiti, kao i da
+                                        dobije njegovu saglasnost. Produžavanje roka za rešavanje reklamacija moguće je samo jednom.
+                                   </Typography>
 
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        Prodavac je, u slučaju da odbije reklamaciju:
+                                        <List >
+                                             <ListItem>
+                                                  <ListItemIcon>
+                                                       <Typography variant="body1">•</Typography>
+                                                  </ListItemIcon>
+                                                  dužan da pruži odgovarajuće obaveštenje potrošaču u slučaju odbijanja reklamacije
+                                                  (obrazloženje prodavca u slučaju neprihvatanja reklamacije)
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>
+                                                       <Typography variant="body1">•</Typography>
+                                                  </ListItemIcon>
+                                                  dužan da potrošača sveobuhvatno obavesti o mogućnosti rešavanja spora vansudskim putem,
+                                                  kao i o nadležnim telima za vansudsko rešavanje potrošačkih sporova
+                                             </ListItem>
+                                        </List>
+                                   </Typography>
+
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        Ukoliko je potrošač za kupljeni proizvod dobio garanciju i ako se reklamacija izjavljuje nakon proteka
+                                        2 godine od dana kupovine, potrošač je dužan da reklamaciju izjavi davaocu garancije.
+                                   </Typography>
+
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        AU Apoteka DAR je dužna da isporuči robu koja je saobrazna ugovoru. AU Apoteka DAR je odgovorna za nesaobraznost robe
+                                        ugovoru koja se pojavi u roku od dve godine od dana prelaska rizika na potrošača. Ako nesaobraznost nastane u
+                                        roku od šest meseci od dana prelaska rizika na potrošača, pretpostavlja se da je nesaobraznost postojala u trenutku
+                                        prelaska rizika, osim ako je to u suprotnosti sa prirodom robe i prirodom određene nesaobraznosti.
+                                   </Typography>
+
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        U slučaju utvrdene nesaobraznosti i usvajanja reklamacije Potrošač ima pravo da bira izmedu sledećih rešenja:
+                                        <List >
+                                             <ListItem>
+                                                  <ListItemIcon>
+                                                       <Typography variant="body1">•</Typography>
+                                                  </ListItemIcon>
+                                                  otklanjanje nesaobraznosti, bez naknade, opravkom ili zamenom kupljene robe za novu
+                                                  robu odgovarajuće marke (modela, tipa) ili
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>
+                                                       <Typography variant="body1">•</Typography>
+                                                  </ListItemIcon>
+                                                  umanjenje cene ili raskid ugovora i vraćanje plaćenog iznosa kuporodajne cene i to u visini
+                                                  maloprodajne cene robe na dan kupovine — pod uslovom da otklanjanje nesaobraznosti na
+                                                  navedeni način nije moguće ili nije izvršeno ili se ne može izvršiti u primerenom roku ili se ne
+                                                  može izvršiti bez značajnijih neugodnosti za Potrošača zbog prirode robe i njene namene ili ukoliko
+                                                  bi otklanjanje opravkom ili zamenom predstavijalo nesrazmerno opterećenje za Prodavca.
+                                             </ListItem>
+                                        </List>
+                                   </Typography>
+
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        Potrošač ima pravo da zahteva zamenu, odgovarajuće umanjenje cene ili da raskine ugovor zbog istog
+                                        ili drugog nedostatka saobraznosti koji se posle prve opravke pojavi, a ponovna opravka je moguća samo
+                                        uz izričitu saglasnost Potrošača. Uzimajući u obzir prirodu robe i svrhu zbog koje je potrošač nabavio, opravka
+                                        ili zamena mora se izvrsiti u primerenom roku bez značajnih neugodnosti za Potrošača i uz njegovu saglasnost.
+                                        Ako se nesaobraznost pojavi u roku od šest meseci od dana prelaska rizika na Potrošača, otklanjanje nesaobraznosti
+                                        moguće je opravkom uz izričitu saglasnost Potrošača. Sve troškove koji su neophodni da bi se roba saobrazila ugovoru,
+                                        a naročito troskove rada, materijala, preuzimanja i isporuke, snosi Prodavac. Potrošač ne moze da raskine ugovor ako je
+                                        nesaobraznost robe neznatna.
+                                   </Typography>
+
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        U slučaju reklamacije zbog nesaobraznosti, potrošač može da pošalje robu o trošku trgovca kurirskom službom
+                                        <Link href="http://www.postexpress.rs/" target='_blank' style={{ fontWeight: 'bold' }}> Post Express</Link> sa kojom imamo ugovorni odnos.
+                                   </Typography>
+
+                                   <Typography textAlign='left' fontSize='1rem' marginLeft='20px' fontWeight='bold' >
+                                        OTKLANJANJE NESAOBRAZNOSTI POSLE ISTEKA ZAKONSKOG ROKA
+                                   </Typography>
+
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        Posle isteka zakonskog roka saobraznosti robe (2 godine), potrošač je sam odgovoran za slanje robe na servis.
+                                        U tom slučaju samo on snosi troškove slanja i primanja robe i troškove popravke.
+                                        Spisak servisa  isporučuje se zajedno sa dokumentacijom koja ide uz robu, a pojedini proizvođači daju samo podatke o
+                                        centralnom ovlašćenom servisu koji kupca dalje preusmerava na njemu najbliži ovlašćeni servis. AU Apoteka DAR će rado
+                                        izaći u susret potrošačima i pomoći im oko informacija o dostupnim servisima posle isteka zakonskog perioda saobraznosti.
+                                   </Typography>
+
+                                   <Typography textAlign='left' fontSize='1rem' marginLeft='20px' marginBottom='50px' fontWeight='bold' >
+                                        Reklamacioni list možete preuzeti <Link href={'/docs/Zahtev_za_reklamaciju.pdf'} target='_blank'>ovde.</Link>
+                                   </Typography>
                               </Box>
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>
                     </Stack>
                </Container >
-          </DynamicThemeProvider>
+          </DynamicThemeProvider >
      )
 }
 

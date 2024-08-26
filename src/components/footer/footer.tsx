@@ -166,32 +166,32 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/odustanak"} >
                                              Odustanak
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/zahtev-za-reklamaciju"} >
                                              Zahtev za reklamaciju
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/reklamacije"} >
                                              Reklamacije
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/ugovor-o-prodaji-na-daljinu"} >
                                              Ugovor o prodaji na daljinu
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/pravila-i-uslovi-koriscenja-usluge-pitajte-dar-savetnika"} >
                                              Pravila i uslovi korišćenja usluge PITAJTE DAR SAVETNIKA
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/informacije/prijava-nezeljenih-dejstva-leka-ili-medicinskog-sredstva"} >
                                              Prijava neželjenih dejstava leka ili medicinskog sredstva
                                         </Link>
                                    </AccordionDetails>
@@ -304,14 +304,14 @@ export default function Footer() {
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/informacije/pitajte-dar-savetnika'>
+                                        <Link href='/informacije/pravila-i-uslovi-koriscenja-usluge-pitajte-dar-savetnika'>
                                              <ListItemText onClick={showWishListDialog}>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Pravila i uslovi korišćenja usluge PITAJTE DAR SAVETNIKA
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/informacije/prijava-nezeljenih-dejstava'>
+                                        <Link href='/informacije/prijava-nezeljenih-dejstva-leka-ili-medicinskog-sredstva'>
                                              <ListItemText onClick={showWishListDialog}>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Prijava neželjenih dejstava leka ili medicinskog sredstva
