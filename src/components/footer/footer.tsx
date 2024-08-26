@@ -218,7 +218,7 @@ export default function Footer() {
                                                   </FooterItem>
                                              </Link>
                                         </ListItemText>
-                                        <ListItemText onClick={showLoginDialog}>
+                                        <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2} >
                                                   <Link href={"/informacije/isporuka-i-placanje"} >
                                                        Isporuka i plaćanje
@@ -279,28 +279,28 @@ export default function Footer() {
                                              </ListItemText>
                                         </Link>
                                         <Link href='/informacije/ugovor-o-prodaji-na-daljinu'>
-                                             <ListItemText onClick={showWishListDialog}>
+                                             <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Ugovor o prodaji na daljinu
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
                                         <Link href='/informacije/zahtev-za-reklamaciju'>
-                                             <ListItemText onClick={showWishListDialog}>
+                                             <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Zahtev za reklamaciju
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
                                         <Link href='/informacije/dar-savetnik'>
-                                             <ListItemText onClick={showWishListDialog}>
+                                             <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        DAR Savetnik
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
                                         <Link href='/informacije/prijava-nezeljenih-dejstva-leka-ili-medicinskog-sredstva'>
-                                             <ListItemText onClick={showWishListDialog}>
+                                             <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Prijava neželjenih dejstava leka ili medicinskog sredstva
                                                   </FooterItem>
