@@ -4,7 +4,7 @@ import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import { ContactBox, ContactFormBox, ContactInfoBox, ContactStrongText, ContactSubTitle, ContactText, ContactTitle } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
@@ -39,6 +39,8 @@ const DeliveryAndPaymentPage = () => {
                                    <Typography marginTop='130px' textAlign='center' fontSize='2rem' fontWeight='bold' >
                                         Isporuka i plaćanje
                                    </Typography>
+
+                                   <Divider sx={{ mb: '20px' }} />
 
                                    <Typography textAlign='left' fontSize='2rem' fontWeight='bold' ml='20px' >
                                         Isporuka

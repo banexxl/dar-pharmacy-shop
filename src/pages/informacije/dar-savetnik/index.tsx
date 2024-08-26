@@ -68,49 +68,49 @@ const PrivacyPolicy = () => {
                                              </Typography>
                                         </ListItem>
                                         <ListItem>
-                                             <ListItemIcon>-</ListItemIcon>
-                                             <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                  Da biste dobili adekvatan savet, molimo vas da navedete:
+                                             <ListItemIcon sx={{ ml: '30px' }}>-</ListItemIcon>
+                                             <Typography alignContent='flex-start' variant='h5' textAlign='left'  >
+                                                  Da biste dobili adekvatan savet, molimo vas da navedete: <br />
                                              </Typography>
-                                             <List>
-                                                  <ListItem>
-                                                       <ListItemIcon>-</ListItemIcon>
-                                                       <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                            da li imate neku hroničnu bolest (hipertenziju, dijabetes, srčanu aritmiju itd.);
-                                                       </Typography>
-                                                  </ListItem>
-                                                  <ListItem>
-                                                       <ListItemIcon>-</ListItemIcon>
-                                                       <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                            da li već uzimate neke lekove (tačan naziv leka koji uzimate);
-                                                       </Typography>
-                                                  </ListItem>
-                                                  <ListItem>
-                                                       <ListItemIcon>-</ListItemIcon>
-                                                       <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                            da li ste alergični na neke lekove (npr. penicilin, acetilsalicilnu kiselinu…);
-                                                       </Typography>
-                                                  </ListItem>
-                                                  <ListItem>
-                                                       <ListItemIcon>-</ListItemIcon>
-                                                       <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                            da li ste trudni ili dojite;
-                                                       </Typography>
-                                                  </ListItem>
-                                                  <ListItem>
-                                                       <ListItemIcon>-</ListItemIcon>
-                                                       <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                            vaše godine i pol;
-                                                       </Typography>
-                                                  </ListItem>
-                                                  <ListItem>
-                                                       <ListItemIcon>-</ListItemIcon>
-                                                       <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
-                                                            sve ono što smatrate važnim, a tiče se postavljenog pitanja.
-                                                       </Typography>
-                                                  </ListItem>
-                                             </List>
                                         </ListItem>
+                                        <List>
+                                             <ListItem>
+                                                  <ListItemIcon>-</ListItemIcon>
+                                                  <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
+                                                       da li imate neku hroničnu bolest (hipertenziju, dijabetes, srčanu aritmiju itd.);
+                                                  </Typography>
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>-</ListItemIcon>
+                                                  <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
+                                                       da li već uzimate neke lekove (tačan naziv leka koji uzimate);
+                                                  </Typography>
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>-</ListItemIcon>
+                                                  <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
+                                                       da li ste alergični na neke lekove (npr. penicilin, acetilsalicilnu kiselinu…);
+                                                  </Typography>
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>-</ListItemIcon>
+                                                  <Typography alignContent='flex-start' variant='h5' textAlign='justify'  >
+                                                       da li ste trudni ili dojite;
+                                                  </Typography>
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>-</ListItemIcon>
+                                                  <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
+                                                       vaše godine i pol;
+                                                  </Typography>
+                                             </ListItem>
+                                             <ListItem>
+                                                  <ListItemIcon>-</ListItemIcon>
+                                                  <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >
+                                                       sve ono što smatrate važnim, a tiče se postavljenog pitanja.
+                                                  </Typography>
+                                             </ListItem>
+                                        </List>
                                         <ListItem>
                                              <ListItemIcon>-</ListItemIcon>
                                              <Typography alignContent='flex-start' variant='h5' padding='0px 20px' textAlign='justify'  >

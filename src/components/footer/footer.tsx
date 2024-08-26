@@ -166,28 +166,18 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/zahtev-za-reklamaciju"} >
-                                             Zahtev za reklamaciju
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails>
                                         <Link href={"/informacije/reklamacije"} >
                                              Reklamacije
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/ugovor-o-prodaji-na-daljinu"} >
+                                        <Link href={"/docs/Ugovor-o-prodaji-na-daljinu.docx"} >
                                              Ugovor o prodaji na daljinu
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
                                         <Link href={"/informacije/dar-savetnik"} >
                                              DAR savetnik
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails>
-                                        <Link href={"/informacije/prijava-nezeljenih-dejstva-leka-ili-medicinskog-sredstva"} >
-                                             Prijava neželjenih dejstava leka ili medicinskog sredstva
                                         </Link>
                                    </AccordionDetails>
                               </Accordion>
@@ -267,42 +257,31 @@ export default function Footer() {
                                    <FooterTitle theme={theme} variant="body1">Korisnički servis</FooterTitle>
                                    <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
                                         <Link href='/informacije/odustanak'>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Izjava o odustanku
-                                             </FooterItem>
+                                             <ListItemText>
+                                                  <FooterItem theme={theme} lineHeight={2} >
+                                                       Izjava o odustanku
+                                                  </FooterItem>
+                                             </ListItemText>
                                         </Link>
                                         <Link href='/informacije/reklamacije'>
-                                             <ListItemText onClick={showLoginDialog}>
+                                             <ListItemText>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Reklamacije
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/informacije/ugovor-o-prodaji-na-daljinu'>
+                                        <Link href='/docs/Ugovor-o-prodaji-na-daljinu.docx'>
                                              <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Ugovor o prodaji na daljinu
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/informacije/zahtev-za-reklamaciju'>
-                                             <ListItemText >
-                                                  <FooterItem theme={theme} lineHeight={2} >
-                                                       Zahtev za reklamaciju
-                                                  </FooterItem>
-                                             </ListItemText>
-                                        </Link>
+
                                         <Link href='/informacije/dar-savetnik'>
                                              <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        DAR Savetnik
-                                                  </FooterItem>
-                                             </ListItemText>
-                                        </Link>
-                                        <Link href='/informacije/prijava-nezeljenih-dejstva-leka-ili-medicinskog-sredstva'>
-                                             <ListItemText >
-                                                  <FooterItem theme={theme} lineHeight={2} >
-                                                       Prijava neželjenih dejstava leka ili medicinskog sredstva
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
