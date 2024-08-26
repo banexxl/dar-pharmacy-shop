@@ -38,7 +38,7 @@ const ContactPage = (props: ContactPageProps) => {
                               <ContactBox theme={theme}>
                                    <ContactInfoBox theme={theme} >
 
-                                        <Typography marginTop='30px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
+                                        <Typography marginTop='130px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                              ODUSTANAK
                                         </Typography>
 
