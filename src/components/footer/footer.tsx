@@ -261,19 +261,9 @@ export default function Footer() {
                                                   Prijava
                                              </FooterItem>
                                         </ListItemText>
-                                        <ListItemText onClick={showCartDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Korpa
-                                             </FooterItem>
-                                        </ListItemText>
                                         <ListItemText onClick={showLoginDialog}>
                                              <FooterItem theme={theme} lineHeight={2} >
                                                   Moj profil
-                                             </FooterItem>
-                                        </ListItemText>
-                                        <ListItemText onClick={showWishListDialog}>
-                                             <FooterItem theme={theme} lineHeight={2} >
-                                                  Lista želja
                                              </FooterItem>
                                         </ListItemText>
                                    </List>
