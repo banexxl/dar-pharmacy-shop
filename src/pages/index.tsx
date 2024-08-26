@@ -93,7 +93,7 @@ export default function Home(props: any) {
                               </Box>
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                               <CarouselLogo manufacturers={manufacturers} />
-                              <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
+                              <Divider variant="middle" sx={{ borderBottomWidth: 5, marginBottom: '20px', marginTop: '20px' }} />
                               {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                    <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Proizvodi na akciji</Typography>
                               </Box>
