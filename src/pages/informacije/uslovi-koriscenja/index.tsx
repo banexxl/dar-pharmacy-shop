@@ -30,7 +30,7 @@ const TermsConditions = () => {
                     <Stack>
                          <UIProvider>
                               <Box sx={{ mt: '70px' }}>
-                                   <Typography textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
+                                   <Typography marginTop='130px' textAlign='center' fontSize='2rem' fontWeight='bold' >
                                         Uslovi korišćenja
                                    </Typography>
 
