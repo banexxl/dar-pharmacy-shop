@@ -186,8 +186,8 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/pravila-i-uslovi-koriscenja-usluge-pitajte-dar-savetnika"} >
-                                             Pravila i uslovi korišćenja usluge PITAJTE DAR SAVETNIKA
+                                        <Link href={"/informacije/dar-savetnik"} >
+                                             DAR savetnik
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
@@ -304,10 +304,10 @@ export default function Footer() {
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/informacije/pravila-i-uslovi-koriscenja-usluge-pitajte-dar-savetnika'>
+                                        <Link href='/informacije/dar-savetnik'>
                                              <ListItemText onClick={showWishListDialog}>
                                                   <FooterItem theme={theme} lineHeight={2} >
-                                                       Pravila i uslovi korišćenja usluge PITAJTE DAR SAVETNIKA
+                                                       DAR Savetnik
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
