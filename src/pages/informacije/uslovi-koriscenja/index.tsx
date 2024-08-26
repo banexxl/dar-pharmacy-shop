@@ -31,7 +31,7 @@ const TermsConditions = () => {
                          <UIProvider>
                               <Box sx={{ mt: '70px' }}>
                                    <Typography textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
-                                        Uslovi prodaje
+                                        Uslovi korišćenja
                                    </Typography>
 
                                    <Divider sx={{ marginBottom: '30px' }} variant="middle" />
