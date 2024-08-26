@@ -44,6 +44,9 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                <Button onClick={() => dispatch(clearCart())}>
                     Isprazni korpu
                </Button>
+               <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '30px', mb: '30px' }}>
+                    Detalje isporuke i plaćanja možete pogledati <Link href='/informacije/isporuka-i-placanje'>OVDE!</Link>
+               </Typography>
           </StyledTotalsBox>
      )
 }

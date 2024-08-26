@@ -47,20 +47,20 @@ const DeliveryAndPaymentPage = () => {
                                    </Typography>
                                    <Typography textAlign='justify' padding='20px 20px'>
                                         Planirano vreme isporuke od trenutka kreiranja porudžbine je{" "}
-                                        <Typography component="span" sx={{ textAlignLast: 'left', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                                        <Typography component="span" sx={{ textAlignLast: 'left', fontWeight: 'bold', }}>
                                              1-5 radnih dana,{" "}
                                         </Typography>
                                         ne računajući vikend, na teritoriji Republike Srbije, putem kurirske službe Post Express.
                                         Isporuka se ne vrši tokom državnih praznika koji su definisani kao neradni dani, kao ni na adrese u inostranstvu.
                                    </Typography>
 
-                                   <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', whiteSpace: 'nowrap' }}>
+                                   <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', }}>
                                         Dostavu/isporuku za porudžbine do{" "}
                                         <Typography
                                              component="span"
                                              textAlign='justify'
 
-                                             sx={{ textAlignLast: 'left', fontWeight: 'bold', whiteSpace: 'nowrap' }}
+                                             sx={{ textAlignLast: 'left', fontWeight: 'bold', }}
                                         >
                                              8000 dinara plaća kupac. {" "}
                                         </Typography>
@@ -69,7 +69,7 @@ const DeliveryAndPaymentPage = () => {
                                              component="span"
                                              textAlign='justify'
 
-                                             sx={{ textAlignLast: 'left', fontWeight: 'bold', whiteSpace: 'nowrap' }}
+                                             sx={{ textAlignLast: 'left', fontWeight: 'bold', }}
                                         >
                                              8000 dinara isporuka je besplatna.
                                         </Typography>
@@ -77,7 +77,7 @@ const DeliveryAndPaymentPage = () => {
 
 
 
-                                   <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', whiteSpace: 'nowrap' }}>
+                                   <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', }}>
                                         Za sve ostale detalje cenovnika možete se informisati na stranici Pošte Srbije: {" "}
                                         <Link
                                              href={'http://www.postexpress.rs/struktura/lat/cenovnik/cenovnik-unutrasnji-saobracaj.asp'}
@@ -86,7 +86,7 @@ const DeliveryAndPaymentPage = () => {
                                              <Typography
                                                   component="span"
                                                   textAlign='justify'
-                                                  sx={{ textAlignLast: 'left', fontWeight: 'bold', whiteSpace: 'nowrap' }}
+                                                  sx={{ textAlignLast: 'left', fontWeight: 'bold', }}
                                              >
                                                   cenovnik
                                              </Typography>
