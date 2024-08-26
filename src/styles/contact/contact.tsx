@@ -32,7 +32,7 @@ export const ContactInfoBox = styled(Box)<ContactInfoBoxProps>(({ theme }) => ({
 
 }));
 
-export const ContactMapBox = styled(Box)(({ theme }: any) => ({
+export const ContactMapBox = styled(Box)(({ theme, sx }: any) => ({
      borderRadius: '20px',
      [theme.breakpoints.down("xs")]: {
           width: '310px'
@@ -70,7 +70,7 @@ export const ContactFormBox = styled(Box)(({ theme }) => ({
      gap: '20px',
 }));
 
-export const ContactTitle = styled(Typography)(({ theme }: any) => ({
+export const ContactTitle = styled(Typography)(({ theme, sx }: any) => ({
      color: Colors.primary.main,
      fontSize: '2rem',
      fontWeight: 'bolder',
@@ -78,7 +78,7 @@ export const ContactTitle = styled(Typography)(({ theme }: any) => ({
 }));
 
 
-export const ContactSubTitle = styled(Typography)(({ theme }: any) => ({
+export const ContactSubTitle = styled(Typography)(({ theme, sx }: any) => ({
      display: 'flex',
      justifyContent: 'flex-start',
      marginLeft: '10px',
@@ -94,7 +94,7 @@ type ContactTextProps = {
 
 export const ContactText = styled(Typography)<ContactTextProps>(({ theme, sx }) => ({
      color: Colors.primary.main,
-     textAlign: 'justify',
+     // textAlign: 'justify',
      alignItems: 'center',
      marginLeft: '10px',
      marginBottom: '20px',
@@ -109,6 +109,6 @@ export const ContactStrongText = styled(Typography)<ContactTextProps>(({ theme, 
      marginBottom: '20px',
 }));
 
-// export const ContactButton = styled(Button)(({ theme }: any) => ({
+// export const ContactButton = styled(Button)(({ theme, sx }: any) => ({
 //      width: '150px',
 // }));

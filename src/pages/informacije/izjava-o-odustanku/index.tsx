@@ -4,7 +4,7 @@ import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import { ContactBox, ContactFormBox, ContactInfoBox, ContactStrongText, ContactText, ContactTitle } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container, Stack, useMediaQuery } from "@mui/material";
 import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
@@ -21,6 +21,7 @@ const ContactPage = (props: ContactPageProps) => {
           loading: () => <LoadingWheel />,
           ssr: false
      })
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -35,17 +36,17 @@ const ContactPage = (props: ContactPageProps) => {
                     <Stack>
                          <UIProvider>
                               <ContactBox theme={theme}>
-                                   <ContactInfoBox theme={theme}>
+                                   <ContactInfoBox theme={theme} >
                                         <ContactTitle>
                                              Izjava o odustanku
                                         </ContactTitle>
-                                        <Box sx={{ width: '400px', textAlign: 'center' }}>
+                                        <Box sx={{ width: isScreenToMedium ? '400px' : '600px', textAlign: 'center' }}>
                                              <ContactStrongText theme={theme} >
-                                                  Izjava o odustanku od ugovora o prodaji zaključenog na daljinu možete preuzeti <br />
+                                                  Izjava o odustanku od ugovora o prodaji zaključenog na daljinu možete preuzeti:<br />
                                                   <a href='/docs/Izjava_o_odustanku.pdf' download={true}>OVDE!</a>
                                              </ContactStrongText>
-                                             <ContactInfoBox theme={theme}>
-                                                  <ContactText theme={theme}>
+                                             <ContactInfoBox theme={theme} >
+                                                  <ContactText theme={theme} sx={{ textAlign: 'center' }}>
                                                        Adresa:
                                                   </ContactText>
                                                   <ContactStrongText theme={theme} >
