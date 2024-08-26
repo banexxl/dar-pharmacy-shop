@@ -24,7 +24,7 @@ const SingleProduct = (props: SingleProductProps) => {
      })
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Artikal'} description={'Artikal'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={props.product.name} description={props.product.description} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     disableGutters
                     maxWidth="lg"
