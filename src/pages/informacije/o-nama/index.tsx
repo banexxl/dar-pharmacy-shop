@@ -42,6 +42,23 @@ const ContactPage = (props: ContactPageProps) => {
                                              <ContactStrongText theme={theme}>
                                                   Naš moto: Radosno srce-pola Zdravlja! <br />
                                              </ContactStrongText>
+                                             <ContactText theme={theme}>
+                                                  Dobrodošli u Apoteku DAR, vašu lokalnu apoteku u srcu Kragujevca, koja se ponosi
+                                                  ponudom isključivo prirodnih proizvoda. Naša misija je da vam obezbedimo najkvalitetnije
+                                                  proizvode za zdravlje, koristeći isključivo prirodne sastojke koji podržavaju vaše celokupno blagostanje.
+                                             </ContactText>
+                                             <ContactText theme={theme}>
+                                                  Naš tim stručnjaka posvećen je pružanju personalizovane usluge i savetovanja, kako bismo
+                                                  osigurali da svaki proizvod koji izaberete bude prilagođen vašim individualnim potrebama.
+                                                  Verujemo u snagu prirode i trudimo se da vam pružimo najbolje iz njenog bogatstva.
+                                             </ContactText>
+                                             <ContactText theme={theme}>
+                                                  Bilo da tražite prirodne dodatke ishrani, biljne čajeve, kozmetiku ili proizvode za negu tela,
+                                                  u Apoteci DAR ćete pronaći sve što vam je potrebno za zdrav i uravnotežen život.
+                                             </ContactText>
+                                             <ContactText theme={theme}>
+                                                  Posetite nas u Kragujevcu i otkrijte snagu prirodnih rešenja za vaše zdravlje!
+                                             </ContactText>
                                              <ContactStrongText theme={theme}>
                                                   Dostava lekova radnim danima po celoj Srbiji!<br />
                                              </ContactStrongText>
