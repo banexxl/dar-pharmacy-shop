@@ -19,6 +19,7 @@ import sweetalert2 from 'sweetalert2'
 import { useRouter } from 'next/router'
 import { RegisterFormBox } from '@/styles/register'
 import { Seo } from '@/components/seo'
+import Link from 'next/link'
 
 const RegisterPage = () => {
 
@@ -108,6 +109,7 @@ const RegisterPage = () => {
                                                                       display: 'flex',
                                                                       flexDirection: 'column',
                                                                       gap: '20px',
+                                                                      pb: '50px'
                                                                  }}
                                                             >
                                                                  <Box>
@@ -241,6 +243,12 @@ const RegisterPage = () => {
                                                                       >
                                                                            Dalje
                                                                       </CheckoutNextPrevButton>
+                                                                      <Typography variant="h5" component="legend" sx={{ mt: '50px' }} >
+                                                                           Imate nalog? <Link href="/autentifikacija/prijava" style={{
+                                                                                textDecoration: 'underline',
+                                                                                color: Colors.primary.light
+                                                                           }}>Prijavite se</Link>
+                                                                      </Typography>
                                                                  </PaymentOptionRadio>
                                                             </Container>
                                                        </Form>
