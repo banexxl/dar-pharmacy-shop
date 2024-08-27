@@ -29,7 +29,6 @@ type ContactInfoBoxProps = {
 export const ContactInfoBox = styled(Box)<ContactInfoBoxProps>(({ theme }) => ({
      textAlign: 'center',
      padding: '20px'
-
 }));
 
 export const ContactMapBox = styled(Box)(({ theme, sx }: any) => ({

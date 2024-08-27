@@ -16,8 +16,6 @@ export const BannerCountUp = () => {
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
-     const [loading, setLoading] = useState(false)
-
      const SUMMARY = [
           { name: 'Zadovoljnih potrošača', number: 3000 },
           { name: 'Proizvoda na raspolaganju', number: 5000 },
