@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BannerContainer, BannerLeftImageContent, BannerRightImageContent, BannerQuotaText, BannerShopButton, BannerTextContent, BannerTitle } from "../../styles/banner"
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { Colors } from "@/styles/theme";
 
 export default function Banner() {
 
@@ -16,15 +17,15 @@ export default function Banner() {
           <BannerContainer>
                {/* <BannerImage src="/images/home-page/darHeroPic.png" alt={"banner"} /> */}
                <BannerLeftImageContent>
-                    <BannerTitle>
+                    <h1 style={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
                          Apoteka DAR
-                    </BannerTitle>
-                    <BannerQuotaText>
+                    </h1>
+                    <h2 style={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
                          {'"Radosno srce je pola zdravlja!"'}
-                    </BannerQuotaText>
-                    <BannerQuotaText>
+                    </h2>
+                    <h3 style={{ color: Colors.primary.lighter, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
                          Dostava lekova radnim danima po celoj Srbiji!
-                    </BannerQuotaText>
+                    </h3>
                     <BannerQuotaText >
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
                          da nas kontaktirate putem {'  '}
