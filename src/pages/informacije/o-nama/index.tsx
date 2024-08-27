@@ -38,7 +38,7 @@ const ContactPage = (props: ContactPageProps) => {
                                         <ContactTitle>
                                              O nama
                                         </ContactTitle>
-                                        <Box sx={{ width: '400px', textAlign: 'center' }}>
+                                        <Box sx={{ width: '400px' }}>
                                              <ContactStrongText theme={theme}>
                                                   Naš moto: Radosno srce-pola Zdravlja! <br />
                                              </ContactStrongText>
@@ -63,7 +63,10 @@ const ContactPage = (props: ContactPageProps) => {
                                                   Dostava lekova radnim danima po celoj Srbiji!<br />
                                              </ContactStrongText>
                                              <ContactStrongText theme={theme}>
+
                                                   Radno Vreme :
+                                             </ContactStrongText>
+                                             <ContactStrongText theme={theme}>
                                                   Radni dani: od 08 do 22h
                                                   Nedelja: od 08 do 20h
                                              </ContactStrongText >

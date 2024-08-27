@@ -28,7 +28,7 @@ type ContactInfoBoxProps = {
 
 export const ContactInfoBox = styled(Box)<ContactInfoBoxProps>(({ theme }) => ({
      textAlign: 'center',
-     padding: '15px'
+     padding: '20px'
 
 }));
 
@@ -94,9 +94,15 @@ type ContactTextProps = {
 
 export const ContactText = styled(Typography)<ContactTextProps>(({ theme, sx }) => ({
      color: Colors.primary.main,
-     // textAlign: 'justify',
-     alignItems: 'center',
-     marginLeft: '10px',
+     textAlign: 'justify',
+     [theme.breakpoints.down("md")]: {
+          width: '300px',
+          marginLeft: '50px',
+     },
+     [theme.breakpoints.up("md")]: {
+          width: '500px',
+          marginLeft: '-60px',
+     },
      marginBottom: '20px',
 }));
 
@@ -104,9 +110,15 @@ export const ContactStrongText = styled(Typography)<ContactTextProps>(({ theme, 
      fontStyle: 'italic',
      fontWeight: 'bolder',
      color: Colors.primary.main,
-     display: 'inline',
-     textAlign: 'justify',
-     marginBottom: '20px',
+     textAlign: 'center',
+     [theme.breakpoints.down("md")]: {
+          width: '300px',
+          marginLeft: '50px',
+     },
+     [theme.breakpoints.up("md")]: {
+          width: '500px',
+          marginLeft: '-60px',
+     },
 }));
 
 // export const ContactButton = styled(Button)(({ theme, sx }: any) => ({

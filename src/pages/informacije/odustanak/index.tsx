@@ -101,50 +101,50 @@ const ContactPage = (props: ContactPageProps) => {
                                         <a href='/docs/Izjava_o_odustanku.pdf' download={true}>OVDE!</a>
                                    </Typography>
                                    <ContactInfoBox theme={theme} >
-                                        <ContactText theme={theme} sx={{ textAlign: 'center' }}>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Adresa:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
-                                             Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9
-                                        </ContactStrongText>
-                                        <ContactText theme={theme}>
+                                             <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                  Kragujevac, poštanski broj 34000, ulica Kralja Aleksandra I Karadjordjevica , broj 102, lokal 9
+                                             </Typography>
+                                        </Typography>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Telefon:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
-                                             +381 34 610 4222
-                                        </ContactStrongText>
-                                        <ContactText theme={theme}>
+                                             <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
+                                                  +381 34 610 4222
+                                             </Typography>
+                                        </Typography>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Matični broj:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
-                                             66597784
-                                        </ContactStrongText>
-                                        <ContactText theme={theme}>
+                                             <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', }}>
+                                                  66597784
+                                             </Typography>
+                                        </Typography>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Poresko identifikacioni broj:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
+                                        </Typography>
+                                        <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', }}>
                                              113127282
-                                        </ContactStrongText>
-                                        <ContactText theme={theme}>
-                                             Business name of the entrepreneur:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
+                                        </Typography>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
+                                             Poslovno ime preduzetnika:
+                                        </Typography>
+                                        <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left', }}>
                                              Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac
-                                        </ContactStrongText>
-                                        <ContactText theme={theme}>
+                                        </Typography>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Radno vreme:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
+                                        </Typography>
+                                        <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                              Radnim danima: 08 - 22h<br />
                                              Subota: 08 - 22h<br />
                                              Nedelja: 08 - 20h
-                                        </ContactStrongText>
-                                        <ContactText theme={theme}>
+                                        </Typography>
+                                        <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Pretežna delatnost:
-                                        </ContactText>
-                                        <ContactStrongText theme={theme} >
+                                        </Typography>
+                                        <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                              4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama
-                                        </ContactStrongText>
+                                        </Typography>
                                    </ContactInfoBox>
 
                               </Box>
