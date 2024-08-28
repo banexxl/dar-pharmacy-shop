@@ -1,5 +1,6 @@
 import { Box, Typography, Button, styled, Theme } from "@mui/material";
 import { Colors } from '@/styles/theme';
+import LoadingButton from "@mui/lab/LoadingButton";
 
 type AuthProps = {
      theme: Theme;
@@ -84,13 +85,13 @@ export const AuthStrongText = styled(Typography)<AuthTextProps>(({ theme, sx }) 
      marginBottom: '20px',
 }));
 
-export const AuthButton = styled(Button)(({ theme }: any) => ({
+export const AuthButton = styled(LoadingButton)(({ theme }: any) => ({
      width: '200px',
      color: Colors.primary.lighter,
      backgroundColor: Colors.primary.main,
-     transition: "transform 0.3s",
-     ":hover": {
-          transform: "scale(1.2)"
-     },
+     // transition: "transform 0.3s",
+     // ":hover": {
+     //      transform: "scale(1.2)"
+     // },
      marginBottom: '50px',
 }));

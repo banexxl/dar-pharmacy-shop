@@ -170,14 +170,12 @@ export const AccountService = () => {
      }
 
      const getUserByEmail = async (email: string) => {
-          console.log('getUserByEmail', email);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
 
           try {
                const db = client.db('ACCOUNTS_DB');
                const user = await db.collection('Users').findOne({ email, emailVerified: { $ne: null } });
-               console.log('user', user);
 
                return user;
           } catch (error: any) {
@@ -203,7 +201,6 @@ export const AccountService = () => {
      }
 
      const createSession = async (email: string, token: string) => {
-          console.log('createSession', email, token);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
 

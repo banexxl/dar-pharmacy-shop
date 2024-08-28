@@ -59,8 +59,6 @@ export default function ProtectedPage(props: any) {
 export async function getServerSideProps(context: any) {
 
      const sta = await getSession(context);
-     console.log('sta', sta);
-
 
      const userData = await AccountService().getUserByEmail(context.req.cookies['next-auth.session-token']);
      console.log('userData', userData);

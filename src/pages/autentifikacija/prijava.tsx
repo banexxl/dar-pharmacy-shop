@@ -12,8 +12,11 @@ import { Form, Formik } from 'formik';
 import { userEmailSchema } from "@/schemas/email-form.schema";
 import { useRouter } from "next/router";
 import { Seo } from "@/components/seo";
+import { useState } from "react";
 
 const SignInPage = () => {
+
+     const [loading, setLoading] = useState(false)
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -21,7 +24,12 @@ const SignInPage = () => {
      })
 
      const handleSubmit = (values: any) => {
+          setLoading(true)
           signIn('email', { email: values.email, redirect: true, callbackUrl: '/' })
+          const timeout = setTimeout(() => {
+               setLoading(false)
+          }, 3000);
+          clearTimeout(timeout)
      }
 
      return (
@@ -45,7 +53,11 @@ const SignInPage = () => {
                                              <AuthText theme={theme}>
                                                   Ako ne, možete nastaviti kao gost.
                                              </AuthText>
-                                             <Formik initialValues={{ email: '' }} onSubmit={(values: { email: string }) => handleSubmit(values)} validationSchema={userEmailSchema}>
+                                             <Formik
+                                                  initialValues={{ email: '' }}
+                                                  onSubmit={(values: { email: string }) => handleSubmit(values)}
+                                                  validationSchema={userEmailSchema}
+                                             >
                                                   {
                                                        formik =>
                                                        (
@@ -67,6 +79,7 @@ const SignInPage = () => {
                                                                       color="primary"
                                                                       fullWidth
                                                                       type="submit"
+                                                                      disabled={loading}
                                                                  >
                                                                       Prijava
                                                                  </AuthButton>
@@ -78,7 +91,12 @@ const SignInPage = () => {
                                                   <AuthText theme={theme}>
                                                        Nemate nalog?
                                                   </AuthText>
-                                                  <AuthButton href="/registracija">Registrujte se</AuthButton>
+                                                  <AuthButton
+                                                       href="/registracija"
+                                                       disabled={loading}
+                                                  >
+                                                       Registrujte se
+                                                  </AuthButton>
                                              </Box>
                                         </AuthFormBox>
                                    </AuthBox>

@@ -223,10 +223,6 @@ export const authOptions: NextAuthOptions = {
                return token
           },
           async signIn({ account, profile, email, user }) {
-               console.log("account:", account)
-               console.log("profile:", profile)
-               console.log("email:", email)
-               console.log("user:", user);
 
                try {
                     if (account?.provider === "email") {
