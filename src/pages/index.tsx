@@ -6,7 +6,7 @@ import { UIProvider } from "../context/ui/ui.context";
 import AppDrawer from "../components/navbar/drawer/drawer";
 import Promotions from "../components/promotions/promotions";
 import SearchBox from "../components/search/search"
-import productsServices from '@/services/product.services'
+import { ProductsServices } from '@/services/product.services'
 import dynamic from "next/dynamic";
 import LoadingWheel from "@/components/loading/loading";
 import IProduct from "@/interfaces/product/product.interface";
@@ -134,31 +134,31 @@ export default function Home(props: any) {
 
 export async function getServerSideProps() {
 
-     const productsFromManufacturerGana: IProduct[] = await productsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
+     const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
           return data
      })
 
-     const productsFromManufacturerFitaky: IProduct[] = await productsServices().getRandomProductsFromManufacturerURL('fitaky').then((data: any) => {
+     const productsFromManufacturerFitaky: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('fitaky').then((data: any) => {
           return data
      })
 
-     const productsOnDiscount: IProduct[] = await productsServices().getProductsByDiscount().then((data: any) => {
+     const productsOnDiscount: IProduct[] = await ProductsServices().getProductsByDiscount().then((data: any) => {
           return data
      })
 
-     const manufacturersLogos: string[] = await productsServices().getAllLogos().then((logos: any) => {
+     const manufacturersLogos: string[] = await ProductsServices().getAllLogos().then((logos: any) => {
           return logos
      })
 
-     const gloriaProducts: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
+     const gloriaProducts: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
           return data
      })
 
-     const searchedByNameORManufacturer: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
+     const searchedByNameORManufacturer: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
           return data
      })
 
-     const searchedByNameORManufacturerI: IProduct[] = await productsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
+     const searchedByNameORManufacturerI: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
           return data
      })
 
@@ -169,7 +169,7 @@ export async function getServerSideProps() {
 
      const dataForCarouselProducts: IProduct[] = productsFromManufacturerGana.concat(gloriaProducts)
 
-     const newProducts: IProduct[] = await productsServices().getNewProducts().then((data: any) => {
+     const newProducts: IProduct[] = await ProductsServices().getNewProducts().then((data: any) => {
           return data
      })
 

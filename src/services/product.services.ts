@@ -2,7 +2,7 @@ import IProduct from "@/interfaces/product/product.interface"
 import { MongoClient } from "mongodb"
 import { ObjectId } from "mongodb"
 
-const productsServices = () => {
+export const ProductsServices = () => {
 
      const getAllProducts = async () => {
 
@@ -334,5 +334,3 @@ const productsServices = () => {
           getRandomApotekaProducts
      }
 }
-
-export default productsServices

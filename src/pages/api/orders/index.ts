@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import moment from 'moment';
-import ordersServices from "@/services/order-service";
+import { OrdersServices } from "@/services/order-service";
 import { Order, OrderStatus, PaymentMethod } from "@/schemas/order";
 import { ICustomer } from "@/schemas/user";
 import { ICart } from "@/interfaces/cart/cart.interface";
@@ -28,7 +28,7 @@ const OrdersAPI = async (request: NextApiRequest, response: NextApiResponse) => 
 
      if (request.method === 'POST') {
           try {
-               const orderCreated = await ordersServices().createNewOrder(order);
+               const orderCreated = await OrdersServices().createNewOrder(order);
                if (orderCreated!.message === 'Order successfully created!') {
                     return response.status(200).json({ message: 'Order successfully created!' });
                } else {
@@ -42,17 +42,17 @@ const OrdersAPI = async (request: NextApiRequest, response: NextApiResponse) => 
 
           try {
                if (id) {
-                    const order = await ordersServices().getOrderById(id as string);
+                    const order = await OrdersServices().getOrderById(id as string);
                     if (order) {
                          return response.status(200).json(order);
                     } else {
                          return response.status(404).json({ message: 'Order not found' });
                     }
                } else if (userId) {
-                    const userOrders = await ordersServices().getOrdersByUserId(userId as string);
+                    const userOrders = await OrdersServices().getOrdersByUserId(userId as string);
                     return response.status(200).json(userOrders);
                } else {
-                    const orders = await ordersServices().getAllOrders();
+                    const orders = await OrdersServices().getAllOrders();
                     return response.status(200).json(orders);
                }
           } catch (error) {

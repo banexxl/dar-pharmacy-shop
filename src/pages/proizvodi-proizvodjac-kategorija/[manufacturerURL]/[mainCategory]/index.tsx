@@ -1,5 +1,5 @@
 import { Container, Stack } from "@mui/material";
-import productsServices from '@/services/product.services'
+import { ProductsServices } from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
@@ -59,7 +59,7 @@ export async function getServerSideProps({ query }: any) {
 
      const loadedParts = parseInt(query?.part as string) || 1
 
-     const productsByMainCategoryAndManufacturer: any = await productsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL, loadedParts)
+     const productsByMainCategoryAndManufacturer: any = await ProductsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL, loadedParts)
 
      // if (!productsByMainCategoryAndManufacturer || productsByMainCategoryAndManufacturer.length === 0) {
      //      return {

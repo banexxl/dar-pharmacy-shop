@@ -1,5 +1,5 @@
 // pages/api/search.js
-import productsServices from '../../../services/product.services'; // Import your MongoDB connection setup
+import { ProductsServices } from '../../../services/product.services'; // Import your MongoDB connection setup
 import IProduct from '../../../interfaces/product/product.interface'
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -7,7 +7,7 @@ const ProductSearchApi = async (request: NextApiRequest, response: NextApiRespon
 
      if (request.method === 'POST') {
           try {
-               const searchedProducts: any = await productsServices().getProductsByNameAndOrManufacturer(request.body);
+               const searchedProducts: any = await ProductsServices().getProductsByNameAndOrManufacturer(request.body);
                if (searchedProducts.length > 0) {
                     return response.status(200).json({ message: 'Artikli pronađeni!', data: searchedProducts })
                } else {

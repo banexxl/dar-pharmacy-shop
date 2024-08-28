@@ -1,71 +1,136 @@
-import { useState, useEffect } from "react"
-import { getSession, useSession } from "next-auth/react"
-import { useRouter } from "next/router"
-import { ReCaptchaProvider } from "next-recaptcha-v3"
-import { Seo } from "@/components/seo"
-import { Box, Container, Stack, Typography } from "@mui/material"
-import { UIProvider } from "@/context/ui/ui.context"
-import LoadingWheel from "@/components/loading/loading"
-import theme from "@/styles/theme"
-import dynamic from "next/dynamic"
-import { ProfileBox } from "@/styles/profile"
-import ErrorPage from "../autentifikacija/greska"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../api/auth/[...nextauth]"
-import { AccountService } from "@/services/accounts.service"
+import { useState } from "react";
+import { getSession, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { ReCaptchaProvider } from "next-recaptcha-v3";
+import { Seo } from "@/components/seo";
+import { Box, Container, Grid, Stack, Typography, Paper } from "@mui/material";
+import { UIProvider } from "@/context/ui/ui.context";
+import LoadingWheel from "@/components/loading/loading";
+import theme from "@/styles/theme";
+import dynamic from "next/dynamic";
+import { ProfileBox } from "@/styles/profile";
+import ErrorPage from "../autentifikacija/greska";
+import { AccountService } from "@/services/accounts.service";
+import { OrdersServices } from "@/services/order-service";
 
 export default function ProtectedPage(props: any) {
-     console.log('ProtectedPage', props);
+     const { data: session, status } = useSession();
+     const router = useRouter();
 
-     const { data: session, status } = useSession()
-     const router = useRouter()
+     // Deserialize props data
+     const userData = JSON.parse(props.userData);
+     const userOrders = JSON.parse(props.userOrders);
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
-          ssr: false
-     })
+          ssr: false,
+     });
 
      // If no session exists, display access denied message
      if (!session) {
-          return <ErrorPage error="ProtectedRoute" />
+          return <ErrorPage error="ProtectedRoute" />;
      }
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
                <DynamicThemeProvider theme={theme}>
-                    <Seo title={'DAR Profil'} description={'DAR profil'} url={'https://www.apoteka-dar.rs/'} />
+                    <Seo title={"DAR Profil"} description={"DAR profil"} url={"https://www.apoteka-dar.rs/"} />
                     <Container
                          disableGutters
                          maxWidth="lg"
                          sx={{
                               background: "#fff",
+                              padding: 2,
                          }}
                     >
                          <Stack>
                               <UIProvider>
-                                   <ProfileBox theme={theme}>
-                                        <Typography variant="h1" component="h1">
-                                             { }
-                                        </Typography>
-                                   </ProfileBox>
+                                   <Grid container spacing={4}>
+                                        {/* Left Side: User Information */}
+                                        <Grid item xs={12} md={4}>
+                                             <ProfileBox theme={theme}>
+                                                  <Typography variant="h4" gutterBottom>
+                                                       Korisnički Podaci
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Ime: </strong> {userData.name}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Email: </strong> {userData.email}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Telefon: </strong> {userData.phone || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Adresa: </strong> {userData.address || "Nije dostupno"}
+                                                  </Typography>
+                                                  {/* Add more user details here as needed */}
+                                             </ProfileBox>
+                                        </Grid>
+
+                                        {/* Right Side: User Orders */}
+                                        <Grid item xs={12} md={8}>
+                                             <Box
+                                                  sx={{
+                                                       maxHeight: '70vh',
+                                                       overflowY: 'auto',
+                                                       padding: 2,
+                                                       border: '1px solid #ddd',
+                                                       borderRadius: '8px',
+                                                       backgroundColor: '#f9f9f9',
+                                                  }}
+                                             >
+                                                  <Typography variant="h4" gutterBottom>
+                                                       Vaše Narudžbine
+                                                  </Typography>
+                                                  {userOrders.length === 0 ? (
+                                                       <Typography variant="body1">Nemate nijednu narudžbinu.</Typography>
+                                                  ) : (
+                                                       userOrders.map((order: any, index: number) => (
+                                                            <Paper
+                                                                 key={index}
+                                                                 sx={{
+                                                                      padding: 2,
+                                                                      marginBottom: 2,
+                                                                      border: '1px solid #ccc',
+                                                                      borderRadius: '8px',
+                                                                 }}
+                                                            >
+                                                                 <Typography variant="h6">Narudžbina #{order.orderNumber}</Typography>
+                                                                 <Typography variant="body1">
+                                                                      <strong>Datum: </strong> {new Date(order.date).toLocaleDateString()}
+                                                                 </Typography>
+                                                                 <Typography variant="body1">
+                                                                      <strong>Ukupan Iznos: </strong> {order.totalAmount} RSD
+                                                                 </Typography>
+                                                                 <Typography variant="body2">
+                                                                      <strong>Stavke: </strong> {order.items.map((item: any) => item.name).join(", ")}
+                                                                 </Typography>
+                                                            </Paper>
+                                                       ))
+                                                  )}
+                                             </Box>
+                                        </Grid>
+                                   </Grid>
                               </UIProvider>
                          </Stack>
                     </Container>
                </DynamicThemeProvider>
           </ReCaptchaProvider>
-     )
+     );
 }
 
 export async function getServerSideProps(context: any) {
+     const session = await getSession(context);
 
-     const sta = await getSession(context);
-
-     const userData = await AccountService().getUserByEmail(context.req.cookies['next-auth.session-token']);
-     console.log('userData', userData);
+     // Fetch user data and orders using the user's email
+     const userData = await AccountService().getUserByEmail(session?.user?.email!);
+     const userOrders = await OrdersServices().getOrdersByUSerEmail(session?.user?.email!);
 
      return {
           props: {
-
+               userData: JSON.stringify(userData),
+               userOrders: JSON.stringify(userOrders),
           },
-     }
+     };
 }

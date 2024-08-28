@@ -4,7 +4,7 @@ import { UIProvider } from "../../../../context/ui/ui.context";
 import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from "../../../../components/navbar/drawer/drawer";
 import SearchBox from "../../../../components/search/search"
-import productsServices from '@/services/product.services'
+import { ProductsServices } from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
@@ -60,7 +60,7 @@ export async function getServerSideProps({ query }: any) {
 
      const loadedParts = parseInt(query?.part as string) || 1
 
-     const productsByMainMidCategory: any = await productsServices().getProductsByMainCategoryMidCategory(query.mainCategory, query.midCategory, loadedParts)
+     const productsByMainMidCategory: any = await ProductsServices().getProductsByMainCategoryMidCategory(query.mainCategory, query.midCategory, loadedParts)
 
      // if (!productsByMainMidCategory || productsByMainMidCategory.length === 0) {
      //      return {

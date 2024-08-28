@@ -2,7 +2,7 @@ import { Order } from "@/schemas/order"
 import { MongoClient } from "mongodb"
 import { ObjectId } from "mongodb"
 
-const ordersServices = () => {
+export const OrdersServices = () => {
 
      const getAllOrders = async () => {
 
@@ -48,6 +48,20 @@ const ordersServices = () => {
           }
      }
 
+     const getOrdersByUSerEmail = async (email: string) => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+          try {
+               const db = client.db('ORDERS_DB')
+               let orders: Order[] = await db.collection('Orders').find({ 'customer.email': email }).toArray()
+               return orders
+          } catch (error: any) {
+               return { message: error.message }
+          }
+          finally {
+               await client.close();
+          }
+     }
+
      const createNewOrder = async (order: Order) => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
@@ -63,11 +77,10 @@ const ordersServices = () => {
      }
 
      return {
+          getOrdersByUSerEmail,
           getAllOrders,
           getOrderById,
           getOrdersByUserId,
           createNewOrder
      }
 }
-
-export default ordersServices

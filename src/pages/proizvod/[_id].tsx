@@ -3,7 +3,7 @@ import ProductDetails from '@/components/product-details/product-details'
 import SearchBox from '@/components/search/search'
 import { UIProvider } from '@/context/ui/ui.context'
 import IProduct from '@/interfaces/product/product.interface'
-import productsServices from '@/services/product.services'
+import { ProductsServices } from '@/services/product.services'
 import theme from '@/styles/theme'
 import { Container, Stack } from '@mui/material'
 import { _id } from '@next-auth/mongodb-adapter'
@@ -50,7 +50,7 @@ export default SingleProduct
 
 export async function getServerSideProps(context: any) {
 
-     const product: any = await productsServices().getProductById(context.params._id)
+     const product: any = await ProductsServices().getProductById(context.params._id)
      // context iz getstaticprops {
      //           params: { _id: '647660082a76d9e7aa674dc8' },
      //           locales: ['sr-RS', 'en-US'],
@@ -71,7 +71,7 @@ export async function getServerSideProps(context: any) {
 
 //           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
 
-//           const allProducts: any = await productsServices().getAllProducts()
+//           const allProducts: any = await ProductsServices().getAllProducts()
 
 //           const paths = allProducts.flatMap((product: any) =>
 //                     context.locales.map((locale: any) => ({

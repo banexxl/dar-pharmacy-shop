@@ -1,5 +1,5 @@
 import { Container, Stack } from "@mui/material";
-import productsServices from '@/services/product.services'
+import { ProductsServices } from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -73,7 +73,7 @@ export async function getServerSideProps({ query }: any) {
 
      const loadedParts = parseInt(query?.part as string) || 1
 
-     const productsByManufacturer: any = await productsServices().getProductsByManufacturer(query.manufacturerURL, loadedParts)
+     const productsByManufacturer: any = await ProductsServices().getProductsByManufacturer(query.manufacturerURL, loadedParts)
 
      const finalList = [
           ...productsByManufacturer
