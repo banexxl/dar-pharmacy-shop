@@ -7,10 +7,7 @@ type ProfileProps = {
 }
 
 export const ProfileBox = styled(Box)<ProfileProps>(({ theme }) => ({
-     [theme.breakpoints.up("md")]: {
-          padding: "40px 0px 40px 0px",
-     },
-     marginTop: '130px',
+     marginTop: '100px',
      marginBottom: '100px',
      display: "flex",
      flexDirection: 'column',

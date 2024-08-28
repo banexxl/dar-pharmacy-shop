@@ -47,9 +47,18 @@ export default function ProtectedPage(props: any) {
                               <UIProvider>
                                    <Grid container spacing={4}>
                                         {/* Left Side: User Information */}
-                                        <Grid item xs={12} md={4}>
-                                             <ProfileBox theme={theme}>
-                                                  <Typography variant="h4" gutterBottom>
+                                        <Grid item xs={12} md={4} >
+                                             <ProfileBox
+                                                  theme={theme}
+                                                  sx={{
+                                                       textAlign: 'left', // Align text to the left
+                                                       display: 'flex',
+                                                       flexDirection: 'column',
+                                                       alignItems: 'flex-start', // Align items to the left
+                                                       gap: 1, // Add some space between elements
+                                                  }}
+                                             >
+                                                  <Typography variant="h3" gutterBottom sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
                                                        Korisnički Podaci
                                                   </Typography>
                                                   <Typography variant="body1">
@@ -59,10 +68,13 @@ export default function ProtectedPage(props: any) {
                                                        <strong>Email: </strong> {userData.email}
                                                   </Typography>
                                                   <Typography variant="body1">
-                                                       <strong>Telefon: </strong> {userData.phone || "Nije dostupno"}
+                                                       <strong>Telefon: </strong> {userData.phoneNumber || "Nije dostupno"}
                                                   </Typography>
                                                   <Typography variant="body1">
-                                                       <strong>Adresa: </strong> {userData.address || "Nije dostupno"}
+                                                       <strong>Adresa: </strong> {userData.streetAddress || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Grad: </strong> {userData.city || "Nije dostupno"}
                                                   </Typography>
                                                   {/* Add more user details here as needed */}
                                              </ProfileBox>
@@ -72,12 +84,14 @@ export default function ProtectedPage(props: any) {
                                         <Grid item xs={12} md={8}>
                                              <Box
                                                   sx={{
+                                                       marginTop: '100px',
                                                        maxHeight: '70vh',
                                                        overflowY: 'auto',
                                                        padding: 2,
                                                        border: '1px solid #ddd',
                                                        borderRadius: '8px',
                                                        backgroundColor: '#f9f9f9',
+                                                       marginBottom: '100px'
                                                   }}
                                              >
                                                   <Typography variant="h4" gutterBottom>
@@ -104,7 +118,7 @@ export default function ProtectedPage(props: any) {
                                                                       <strong>Ukupan Iznos: </strong> {order.totalAmount} RSD
                                                                  </Typography>
                                                                  <Typography variant="body2">
-                                                                      <strong>Stavke: </strong> {order.items.map((item: any) => item.name).join(", ")}
+                                                                      <strong>Stavke: </strong> {order.items.map((item: any) => item.name + ' ' + `${('x' + item.count)}`).join(", ")}
                                                                  </Typography>
                                                             </Paper>
                                                        ))
