@@ -28,7 +28,7 @@ export const AccountService = () => {
 
 
                // Insert or update the user in the 'users' collection
-               const insertUserResult = await db.collection('users').updateOne(
+               const insertUserResult = await db.collection('Users').updateOne(
                     {
                          email: { $regex: `^${data.email}$`, $options: 'i' },
                          emailVerified: { $eq: null }
@@ -154,7 +154,7 @@ export const AccountService = () => {
 
           try {
                const db = client.db('ACCOUNTS_DB');
-               const user = await db.collection('users').findOne({ email: email, emailVerified: { $ne: null } });
+               const user = await db.collection('Users').findOne({ email: email, emailVerified: { $ne: null } });
 
                if (user.email !== email) {
                     return { message: 'Email available!', status: 202 };
@@ -170,11 +170,14 @@ export const AccountService = () => {
      }
 
      const getUserByEmail = async (email: string) => {
+          console.log('getUserByEmail', email);
+
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
 
           try {
                const db = client.db('ACCOUNTS_DB');
-               const user = await db.collection('users').findOne({ email });
+               const user = await db.collection('Users').findOne({ email, emailVerified: { $ne: null } });
+               console.log('user', user);
 
                return user;
           } catch (error: any) {
@@ -189,7 +192,24 @@ export const AccountService = () => {
 
           try {
                const db = client.db('ACCOUNTS_DB');
-               const user = await db.collection('users').findOne({ _id: id });
+               const user = await db.collection('Users').findOne({ _id: id });
+
+               return user;
+          } catch (error: any) {
+               return { message: error.message }
+          } finally {
+               await client.close();
+          }
+     }
+
+     const createSession = async (email: string, token: string) => {
+          console.log('createSession', email, token);
+
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
+
+          try {
+               const db = client.db('ACCOUNTS_DB');
+               const user = await db.collection('sessions').insertOne({ email: email, token: token, date: new Date() });
 
                return user;
           } catch (error: any) {
@@ -203,6 +223,7 @@ export const AccountService = () => {
           getUserByEmail,
           registerClient,
           checkIfEmailIsVerified,
-          getUserById
+          getUserById,
+          createSession
      }
 }

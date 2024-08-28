@@ -1,8 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getVerificationTokenByEmail } from './verification-token.service';
-import { accountsDBPromise } from '../usersdb-connect';
+import { MongoClient } from 'mongodb';
 
 export const generateVerificationToken = async (email: string) => {
+
+     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
      try {
           // Generate a random token
           const token = uuidv4();
@@ -10,10 +13,8 @@ export const generateVerificationToken = async (email: string) => {
 
           // Check if a token already exists for the user
           const existingToken = await getVerificationTokenByEmail(email);
-
-          const client = await accountsDBPromise;
           const db = client.db('ACCOUNTS_DB');
-          const collection = db.collection("verification_tokens");
+          const collection = db.collection("Verification_tokens");
 
           if (existingToken) {
                await collection.deleteOne({ _id: existingToken._id })
@@ -31,5 +32,7 @@ export const generateVerificationToken = async (email: string) => {
           return verificationToken;
      } catch (error) {
           console.log(error);
+     } finally {
+          client.close();
      }
 }

@@ -1,37 +1,39 @@
-import { accountsDBPromise } from "@/services/usersdb-connect";
-import { ObjectId } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 export const getVerificationTokenByEmail = async (email: string) => {
+     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
      try {
-          const client = await accountsDBPromise;
           const db = client.db('ACCOUNTS_DB');
-          const verificationToken = await db.collection("verification_tokens").findOne({ email: email });
+          const verificationToken = await db.collection("Verification_tokens").findOne({ email: email });
 
           return verificationToken;
      } catch (error) {
           console.log(error);
+     } finally {
+          client.close();
      }
 }
 
 export const getVerificationTokenByToken = async (token: string) => {
+     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
      try {
-          const client = await accountsDBPromise;
           const db = client.db('ACCOUNTS_DB');
-          const verificationToken = await db.collection("verification_tokens").findOne({ token: token });
+          const verificationToken = await db.collection("Verification_tokens").findOne({ token: token });
 
           return verificationToken;
      } catch (error) {
           console.log(error);
+     } finally {
+          client.close();
      }
 }
 
 export const newVerification = async (token: string) => {
-     const client = await accountsDBPromise;
-     const db = client.db('ACCOUNTS_DB');
+     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
      try {
-          // Fetch the existing verification token
-          const existingToken = await db.collection('verification_tokens').findOne({ token });
+          const db = client.db('ACCOUNTS_DB');
+          const existingToken = await db.collection('Verification_tokens').findOne({ token });
 
           if (!existingToken) {
                return { error: "Nevalidan/nepostojeći token!" };
@@ -44,14 +46,14 @@ export const newVerification = async (token: string) => {
           }
 
           // Fetch the associated user by email
-          const existingUser = await db.collection('users').findOne({ email: existingToken.identifier });
+          const existingUser = await db.collection('Users').findOne({ email: existingToken.identifier });
 
           if (!existingUser) {
                return { error: "Korisnik nije pronađen!" };
           }
 
           // Update the user's email verification status
-          await db.collection('users').updateOne(
+          await db.collection('Users').updateOne(
                { _id: new ObjectId(existingUser._id) },
                {
                     $set: {
@@ -62,11 +64,13 @@ export const newVerification = async (token: string) => {
           );
 
           // Delete the used verification token
-          await db.collection('verification_tokens').deleteMany({ identifier: existingToken.identifier });
+          await db.collection('Verification_tokens').deleteMany({ identifier: existingToken.identifier });
 
           return { success: "Email uspešno verifikovan" };
      } catch (error) {
           console.error('Error verifying email:', error);
           return { error: "Nešto je pošlo po zlu!" };
+     } finally {
+          client.close();
      }
 };

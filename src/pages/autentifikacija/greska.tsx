@@ -23,6 +23,8 @@ const ErrorPage = (props: any) => {
           switch (errorType) {
                case "AccessDenied":
                     return "Nevalidan email ili niste verifikovali token koji smo Vam poslali na email adresu (proverite 'spam' folder, ili ponovo popunite formu za registraciju.).";
+               case "ProtectedRoute":
+                    return "Za pristup ovoj stranici morate biti prijavljeni na sistem.";
                case "Verification":
                     return "Verifikacija nije uspela. Molimo pokušajte ponovo.";
                case "Configuration":
@@ -37,7 +39,7 @@ const ErrorPage = (props: any) => {
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
                <DynamicThemeProvider theme={theme}>
-                    <Seo title={'Greska prilikom prijave'} description={'Greska priliko prijave'} url={'https://www.apoteka-dar.rs/'} />
+                    <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
                     <Container
                          disableGutters
                          maxWidth="lg"

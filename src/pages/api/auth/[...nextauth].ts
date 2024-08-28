@@ -5,10 +5,11 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from 'next-auth/providers/email'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import { accountsDBPromise } from "../../../services/usersdb-connect";
+import { dbPromise } from "../../../services/db-connect";
 import nodemailer from "nodemailer"
 import { AccountService } from "@/services/accounts.service";
 import { Colors } from "@/styles/theme";
+import { Db, MongoClient } from "mongodb";
 
 async function sendVerificationRequest(params: any) {
 
@@ -174,7 +175,16 @@ function html(params: { url: string; host: string; theme: Theme }) {
 
 export const authOptions: NextAuthOptions = {
 
-     adapter: MongoDBAdapter(accountsDBPromise),
+     adapter: MongoDBAdapter(
+          dbPromise, {
+          databaseName: process.env.MONGODB_ACCOUNT_DB_NAME, collections: {
+               Users: 'Users', // Optional: Customize collection names
+               Sessions: 'Sessions',
+               Accounts: 'Accounts',
+               VerificationTokens: 'Verification_tokens',
+          }
+     }
+     ),
      providers: [
           EmailProvider({
                server: {
@@ -213,6 +223,11 @@ export const authOptions: NextAuthOptions = {
                return token
           },
           async signIn({ account, profile, email, user }) {
+               console.log("account:", account)
+               console.log("profile:", profile)
+               console.log("email:", email)
+               console.log("user:", user);
+
                try {
                     if (account?.provider === "email") {
                          // Check if the email object and user object are defined

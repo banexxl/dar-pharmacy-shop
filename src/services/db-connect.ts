@@ -7,7 +7,7 @@ if (!process.env.MONGODB_URI) {
 const uri = `${process.env.MONGODB_URI}`
 const options = {}
 
-let client
+let client: MongoClient
 let dbPromise: Promise<MongoClient>
 
 client = new MongoClient(uri, options)
