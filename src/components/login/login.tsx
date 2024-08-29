@@ -26,7 +26,7 @@ export default function LoginRegister({ open, onClose }: any) {
      const { data: session } = useSession()
      const [loading, setLoading] = useState(false);
      const theme = useTheme();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+
      const router = useRouter();
 
      const [userData, setUserData] = useState<any>(null);

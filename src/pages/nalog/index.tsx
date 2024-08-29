@@ -3,7 +3,7 @@ import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import { Seo } from "@/components/seo";
-import { Box, Container, Grid, Stack, Typography, Paper } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography, Paper, useMediaQuery } from "@mui/material";
 import { UIProvider } from "@/context/ui/ui.context";
 import LoadingWheel from "@/components/loading/loading";
 import theme from "@/styles/theme";
@@ -16,7 +16,7 @@ import { OrdersServices } from "@/services/order-service";
 export default function ProtectedPage(props: any) {
      const { data: session, status } = useSession();
      const router = useRouter();
-
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      // Deserialize props data
      const userData = JSON.parse(props.userData);
      const userOrders = JSON.parse(props.userOrders);
@@ -45,7 +45,7 @@ export default function ProtectedPage(props: any) {
                     >
                          <Stack>
                               <UIProvider>
-                                   <Grid container spacing={4}>
+                                   <Grid container spacing={2}>
                                         {/* Left Side: User Information */}
                                         <Grid item xs={12} md={4} >
                                              <ProfileBox
@@ -84,7 +84,7 @@ export default function ProtectedPage(props: any) {
                                         <Grid item xs={12} md={8}>
                                              <Box
                                                   sx={{
-                                                       marginTop: '100px',
+                                                       marginTop: isScreenToMedium ? '10px' : '100px',
                                                        maxHeight: '70vh',
                                                        overflowY: 'auto',
                                                        padding: 2,
