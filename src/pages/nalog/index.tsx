@@ -12,6 +12,8 @@ import { ProfileBox } from "@/styles/profile";
 import ErrorPage from "../autentifikacija/greska";
 import { AccountService } from "@/services/accounts.service";
 import { OrdersServices } from "@/services/order-service";
+import SearchBox from "@/components/search/search";
+import AppDrawer from "@/components/navbar/drawer/drawer";
 
 export default function ProtectedPage(props: any) {
      const { data: session, status } = useSession();
@@ -126,6 +128,8 @@ export default function ProtectedPage(props: any) {
                                              </Box>
                                         </Grid>
                                    </Grid>
+                                   <SearchBox />
+                                   <AppDrawer isScreenToMedium={false} />
                               </UIProvider>
                          </Stack>
                     </Container>
