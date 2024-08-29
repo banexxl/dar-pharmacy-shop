@@ -99,7 +99,7 @@ const RegisterPage = () => {
                          <Stack>
                               <UIProvider>
                                    <RegisterFormBox>
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
+                                        <Formik isInitialValid={false} initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                                              {
                                                   formik => (
                                                        <Form >
