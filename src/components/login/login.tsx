@@ -25,11 +25,11 @@ export default function LoginRegister({ open, onClose }: any) {
 
      const { data: session } = useSession()
      const [loading, setLoading] = useState(false);
-     const theme = useTheme();
 
      const router = useRouter();
 
      const [userData, setUserData] = useState<any>(null);
+
      useEffect(() => {
 
           setLoading(true);
@@ -108,7 +108,15 @@ export default function LoginRegister({ open, onClose }: any) {
                                         <LoadingWheel />
                                         :
                                         <CardMedia sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                                             <Image src={session.user?.image! ? session.user?.image! : '/images/avatars/avatar-marcus-finn.png'} alt={"Avatar"} width={100} height={100} style={{ borderRadius: '30px' }} />
+                                             <Image src={session.user?.image! ?
+                                                  session.user?.image! : userData?.gender === 'male' ?
+                                                       '/images/avatars/avatar-marcus-finn.png' : userData?.gender === 'female' ?
+                                                            '/images/avatars/avatar-neha-punita.png' : '/images/avatars/avatar-marcus-finn.png'
+                                             }
+                                                  alt={"Avatar"}
+                                                  width={100}
+                                                  height={100}
+                                                  style={{ borderRadius: '30px' }} />
                                              <CardContent sx={{ alignItems: 'center' }}>
                                                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
                                                        <PersonIcon />

@@ -15,6 +15,7 @@ export interface IUserForm {
      shouldCreateAccount?: boolean;
      emailVerified?: Date | null;
      image?: string;
+     gender?: 'male' | 'female'
 }
 
 export interface IEmailForm {

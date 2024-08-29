@@ -10,4 +10,5 @@ export interface ICustomer {
      shouldCreateAccount?: boolean;
      streetAddress: string;
      zipPostalCode: string;
+     gender?: 'male' | 'female'
 }

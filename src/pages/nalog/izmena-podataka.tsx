@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Box, Button, Container, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, Switch, TextField, Typography } from "@mui/material";
 import { UIProvider } from "@/context/ui/ui.context";
 import { useRouter } from "next/router";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -86,6 +86,7 @@ const UserUpdatePage = () => {
           country: '',
           zipPostalCode: '',
           email: session.data ? session.data?.user?.email! : '',
+          gender: 'male'
      }
 
      return (
@@ -215,7 +216,29 @@ const UserUpdatePage = () => {
                                                                            fullWidth
                                                                       />
                                                                  </Box>
-
+                                                                 <Box sx={{ alignItems: 'center' }}>
+                                                                      <FormControl component="fieldset">
+                                                                           <FormLabel component="legend" sx={{ color: Colors.dim_grey }}>Pol</FormLabel>
+                                                                           <RadioGroup
+                                                                                aria-label="gender"
+                                                                                name="gender"
+                                                                                value={formik.values.gender}
+                                                                                onChange={formik.handleChange}
+                                                                                row // This makes the radio buttons appear in a row
+                                                                           >
+                                                                                <FormControlLabel
+                                                                                     value="male"
+                                                                                     control={<Radio />}
+                                                                                     label="Muški"
+                                                                                />
+                                                                                <FormControlLabel
+                                                                                     value="female"
+                                                                                     control={<Radio />}
+                                                                                     label="Ženski"
+                                                                                />
+                                                                           </RadioGroup>
+                                                                      </FormControl>
+                                                                 </Box>
                                                                  <Box>
                                                                       <Field
                                                                            as={TextField}
@@ -231,6 +254,8 @@ const UserUpdatePage = () => {
                                                                            fullWidth
                                                                       />
                                                                  </Box>
+
+
 
                                                                  <PaymentOptionRadio theme={theme} sx={{ marginBottom: '50px', width: '50%' }}>
                                                                       <ClearFormButton
