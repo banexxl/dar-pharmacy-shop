@@ -94,7 +94,7 @@ export default function ProtectedPage(props: any) {
                                                        marginBottom: '100px'
                                                   }}
                                              >
-                                                  <Typography variant="h4" gutterBottom>
+                                                  <Typography variant="h3" gutterBottom sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
                                                        Vaše Narudžbine
                                                   </Typography>
                                                   {userOrders.length === 0 ? (

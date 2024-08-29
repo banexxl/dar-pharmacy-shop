@@ -147,7 +147,7 @@ export default function Footer() {
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link href={"/nalog"} >
                                              Moj profil
                                         </Link>
                                    </AccordionDetails>
@@ -246,9 +246,11 @@ export default function Footer() {
                                                   Prijava
                                              </FooterItem>
                                         </ListItemText>
-                                        <ListItemText onClick={showLoginDialog}>
+                                        <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2} >
-                                                  Moj profil
+                                                  <Link href={"/nalog"} >
+                                                       Moj profil
+                                                  </Link>
                                              </FooterItem>
                                         </ListItemText>
                                    </List>

@@ -216,11 +216,27 @@ export const AccountService = () => {
           }
      }
 
+     const updateUserByEmail = async (email: string, data: any) => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
+
+          try {
+               const db = client.db('ACCOUNTS_DB');
+               const user = await db.collection('Users').updateOne({ email: email }, { $set: data });
+
+               return user;
+          } catch (error: any) {
+               return { message: error.message }
+          } finally {
+               await client.close();
+          }
+     }
+
      return {
           getUserByEmail,
           registerClient,
           checkIfEmailIsVerified,
           getUserById,
-          createSession
+          createSession,
+          updateUserByEmail
      }
 }
