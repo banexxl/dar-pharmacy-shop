@@ -32,6 +32,8 @@ const RegisterPage = () => {
           ssr: false
      })
 
+     session ? router.push('/') : null
+
      const handleSubmit = (values: any) => {
 
           // dispatch(submitUserForm(values))
