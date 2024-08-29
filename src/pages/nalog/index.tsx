@@ -17,7 +17,6 @@ import AppDrawer from "@/components/navbar/drawer/drawer";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
-     console.log("ProtectedPage -> props", props);
 
      const { data: session, status } = useSession();
      const router = useRouter();
@@ -120,9 +119,9 @@ export default function ProtectedPage(props: any) {
                                                                       borderRadius: '8px',
                                                                  }}
                                                             >
-                                                                 <Typography variant="h6">Narudžbina #{order.orderNumber}</Typography>
+                                                                 <Typography variant="h6"><strong>Narudžbina: </strong>#{order.orderNumber}</Typography>
                                                                  <Typography variant="body1">
-                                                                      <strong>Datum: </strong> {new Date(order.date).toLocaleDateString()}
+                                                                      <strong>Datum: </strong> {new Date(order.createdAt).toLocaleDateString()}
                                                                  </Typography>
                                                                  <Typography variant="body1">
                                                                       <strong>Ukupan Iznos: </strong> {order.totalAmount} RSD

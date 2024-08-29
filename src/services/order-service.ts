@@ -52,7 +52,10 @@ export const OrdersServices = () => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('ORDERS_DB')
-               let orders: Order[] = await db.collection('Orders').find({ 'customer.email': email }).toArray()
+               let orders: Order[] = await db.collection('Orders')
+                    .find({ 'customer.email': email })
+                    .sort({ createdAt: -1 })
+                    .toArray()
                return orders
           } catch (error: any) {
                return { message: error.message }
