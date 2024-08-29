@@ -32,7 +32,7 @@ const RegisterPage = () => {
           ssr: false
      })
 
-     session ? router.push('/') : null
+     session.status === 'authenticated' ? router.push('/') : null
 
      const handleSubmit = (values: any) => {
 
