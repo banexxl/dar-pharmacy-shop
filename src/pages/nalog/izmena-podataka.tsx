@@ -102,7 +102,7 @@ const UserUpdatePage = () => {
                          <Stack>
                               <UIProvider>
                                    <RegisterFormBox>
-                                        <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userDataFormSchema}>
+                                        <Formik isInitialValid={false} initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userDataFormSchema}>
                                              {
                                                   formik => (
                                                        <Form>
