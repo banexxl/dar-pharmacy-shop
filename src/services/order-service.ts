@@ -48,7 +48,7 @@ export const OrdersServices = () => {
           }
      }
 
-     const getOrdersByUSerEmail = async (email: string) => {
+     const getOrdersByUserEmail = async (email: string) => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('ORDERS_DB')
@@ -77,7 +77,7 @@ export const OrdersServices = () => {
      }
 
      return {
-          getOrdersByUSerEmail,
+          getOrdersByUserEmail,
           getAllOrders,
           getOrderById,
           getOrdersByUserId,

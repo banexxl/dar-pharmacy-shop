@@ -17,6 +17,8 @@ import AppDrawer from "@/components/navbar/drawer/drawer";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
+     console.log("ProtectedPage -> props", props);
+
      const { data: session, status } = useSession();
      const router = useRouter();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
@@ -146,10 +148,11 @@ export default function ProtectedPage(props: any) {
 
 export async function getServerSideProps(context: any) {
      const session = await getSession(context);
+     console.log("ProtectedPage -> session", session);
 
      // Fetch user data and orders using the user's email
      const userData = await AccountService().getUserByEmail(session?.user?.email!);
-     const userOrders = await OrdersServices().getOrdersByUSerEmail(session?.user?.email!);
+     const userOrders = await OrdersServices().getOrdersByUserEmail(session?.user?.email!);
 
      return {
           props: {

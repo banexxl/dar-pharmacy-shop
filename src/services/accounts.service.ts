@@ -179,6 +179,7 @@ export const AccountService = () => {
      }
 
      const getUserByEmail = async (email: string) => {
+          console.log('email', email);
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!);
 
