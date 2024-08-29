@@ -107,7 +107,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                    loading ?
                                         <LoadingWheel />
                                         :
-                                        <CardMedia sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px', gap: '50px' }}>
+                                        <CardMedia sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                                              <Image src={session.user?.image! ? session.user?.image! : '/images/avatars/avatar-marcus-finn.png'} alt={"Avatar"} width={100} height={100} style={{ borderRadius: '30px' }} />
                                              <CardContent sx={{ alignItems: 'center' }}>
                                                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
