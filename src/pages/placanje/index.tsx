@@ -1,8 +1,8 @@
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Stack } from '@mui/material'
+import { Box, Container, Stack, useMediaQuery } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
@@ -19,6 +19,7 @@ import { Seo } from '@/components/seo'
 const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
      const [tabIndex, setTabIndex] = useState(0)
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      const setTab = (tabIndex: number) => {
           setTabIndex(tabIndex)
@@ -45,7 +46,7 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <Box sx={{ borderBottom: 3, borderColor: Colors.primary.lighter, marginTop: '100px' }}>
+                                   <Box sx={{ borderBottom: 3, borderColor: Colors.primary.lighter, marginTop: isScreenToMedium ? '100px' : '150px' }}>
                                         <CheckoutStepper activeStep={tabIndex}>
                                              {steps.map(label => (
                                                   <CheckoutStep key={label}>
