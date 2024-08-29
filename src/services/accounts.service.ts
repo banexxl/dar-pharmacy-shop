@@ -37,6 +37,9 @@ export const AccountService = () => {
                     { upsert: true } // Create a new document if no matching document is found
                );
 
+               console.log('insertNewRegisteredUserResult', insertUserResult);
+
+
                const html = `
                                         <html>
 <head>
@@ -133,7 +136,13 @@ export const AccountService = () => {
                          return { message: 'Email successfully registered, but confirmation email could not be sent!', status: 500 };
                     }
                } else if (insertUserResult.upsertedCount === 0 && insertUserResult.matchedCount > 0) {
-                    const registerUserEmailSendResponse = await transporter.sendMail(mailOptions)
+                    const registerUserEmailSendResponse = await transporter.sendMail(mailOptions).then((info) => {
+                         console.log('Message sent: %s', info.messageId);
+                         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                         return info
+                    });
+                    console.log('registerUserEmailSendResponse', registerUserEmailSendResponse);
+
                     if (registerUserEmailSendResponse.accepted.length > 0) {
                          return { message: 'Email not verified!', status: 200 };
                     } else {
@@ -176,6 +185,7 @@ export const AccountService = () => {
           try {
                const db = client.db('ACCOUNTS_DB');
                const user = await db.collection('Users').findOne({ email, emailVerified: { $ne: null } });
+               console.log('user', user);
 
                return user;
           } catch (error: any) {
@@ -206,7 +216,7 @@ export const AccountService = () => {
 
           try {
                const db = client.db('ACCOUNTS_DB');
-               const user = await db.collection('sessions').insertOne({ email: email, token: token, date: new Date() });
+               const user = await db.collection('Sessions').insertOne({ email: email, token: token, date: new Date() });
 
                return user;
           } catch (error: any) {

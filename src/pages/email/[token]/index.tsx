@@ -49,19 +49,19 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                                        Uspešno ste izvršili registraciju!
                                                        <br />
                                                   </ContactTitle>
-                                                  <Box sx={{ display: 'flex' }}>
-                                                       <ContactText theme={theme} >
-                                                            Ako želite, možete da se prijavite &nbsp;
-                                                       </ContactText>
+                                                  <Box >
+                                                       <Typography>
+                                                            Ako želite, možete da se prijavite<br />
+                                                       </Typography>
                                                        <Typography variant="h6"
                                                             sx={{
-                                                                 textAlign: 'justify',
+                                                                 textAlign: 'center',
                                                                  cursor: 'pointer', // Hand cursor on hover
                                                                  transition: 'transform 0.5s, color 0.2s',
                                                                  transformOrigin: 'center', // Ensure zoom happens from the center
                                                                  ":hover": {
                                                                       color: 'red',
-                                                                      transform: 'scale(1.3)', // Slight zoom in
+                                                                      transform: 'scale(1.1)', // Slight zoom in
                                                                  }
                                                             }}
                                                             onClick={() => router.push('/autentifikacija/prijava')}
