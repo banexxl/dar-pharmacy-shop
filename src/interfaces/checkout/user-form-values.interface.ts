@@ -12,7 +12,7 @@ export interface IUserForm {
      email: string;
      // password?: string;
      // repeatPassword?: string;
-     shouldCreateAccount: boolean;
+     shouldCreateAccount?: boolean;
      emailVerified?: Date | null;
      image?: string;
 }

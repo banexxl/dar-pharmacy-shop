@@ -17,11 +17,9 @@ const isValidUserForm = (data: any): data is IUserForm => {
 };
 
 const RegisterClientApi = async (request: NextApiRequest, response: NextApiResponse) => {
-
-     const { registerClient } = AccountService();
+     const { registerClient, updateUserByEmail } = AccountService();
 
      if (request.method === 'POST') {
-
           if (!isValidUserForm(request.body)) {
                return response.status(400).json({ error: 'Invalid data provided!' });
           }
@@ -32,6 +30,21 @@ const RegisterClientApi = async (request: NextApiRequest, response: NextApiRespo
                     return response.status(409).json({ error: 'Email already registered!' });
                } else {
                     return response.status(200).json({ message: 'Email successfully registered!' });
+               }
+          } catch (error) {
+               return response.status(500).json({ error: 'Internal server error!' });
+          }
+     } else if (request.method === 'PUT') {
+          if (!isValidUserForm(request.body)) {
+               return response.status(400).json({ error: 'Invalid data provided!' });
+          }
+
+          try {
+               const updated = await updateUserByEmail(request.body.email, request.body);
+               if (updated) {
+                    return response.status(200).json({ message: 'User data successfully updated!' });
+               } else {
+                    return response.status(404).json({ error: 'User not found!' });
                }
           } catch (error) {
                return response.status(500).json({ error: 'Internal server error!' });

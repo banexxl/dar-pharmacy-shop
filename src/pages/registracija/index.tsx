@@ -100,7 +100,7 @@ const RegisterPage = () => {
                                         <Formik initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                                              {
                                                   formik => (
-                                                       <Form>
+                                                       <Form >
                                                             <Typography variant="h5" component="legend" sx={{ marginBottom: '50px' }} >
                                                                  Molimo Vas da popunite podatke za registraciju
                                                             </Typography>
@@ -228,22 +228,25 @@ const RegisterPage = () => {
                                                                  {/* <Typography>
                                                                       {JSON.stringify(formik.errors)}
                                                                  </Typography> */}
-                                                                 <PaymentOptionRadio theme={theme} sx={{ marginBottom: '50px', width: '50%' }}>
-                                                                      <ClearFormButton
-                                                                           endIcon={<DeleteIcon />}
-                                                                           type='reset'
-                                                                           onClick={formik.handleReset}
-                                                                      >
-                                                                           Obriši
-                                                                      </ClearFormButton>
-                                                                      <CheckoutNextPrevButton
-                                                                           onClick={() => handleSubmit(formik.values)}
-                                                                           endIcon={<NavigateNextIcon />}
-                                                                           disabled={Object.keys(formik.errors).length > 0 || !formik.isValid || formik.isSubmitting}
-                                                                      >
-                                                                           Dalje
-                                                                      </CheckoutNextPrevButton>
-                                                                      <Typography variant="h5" component="legend" sx={{ mt: '50px' }} >
+                                                                 <PaymentOptionRadio theme={theme} sx={{ display: 'flex', flexDirection: 'column', marginBottom: '50px', width: '50%' }}>
+                                                                      <Box>
+                                                                           <ClearFormButton
+                                                                                endIcon={<DeleteIcon />}
+                                                                                type='reset'
+                                                                                onClick={formik.handleReset}
+                                                                           >
+                                                                                Obriši
+                                                                           </ClearFormButton>
+                                                                           <CheckoutNextPrevButton
+                                                                                onClick={() => handleSubmit(formik.values)}
+                                                                                endIcon={<NavigateNextIcon />}
+                                                                                disabled={Object.keys(formik.errors).length > 0 || !formik.isValid || formik.isSubmitting}
+                                                                           >
+                                                                                Dalje
+                                                                           </CheckoutNextPrevButton>
+                                                                      </Box>
+
+                                                                      <Typography variant="h5" component="legend" sx={{ mt: '90px', mb: '30px' }} >
                                                                            Imate nalog? <Link href="/autentifikacija/prijava" style={{
                                                                                 textDecoration: 'underline',
                                                                                 color: Colors.primary.light

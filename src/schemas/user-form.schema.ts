@@ -98,3 +98,47 @@ export const userFormSchema = () => {
           //      }),
      });
 };
+
+export const userDataFormSchema = () => {
+     return object().shape({
+          name: string()
+               .required("Ovo polje je obavezno")
+               .max(40, "Ovo polje je predugačko, max 40"),
+
+          streetAddress: string()
+               .required("Ovo polje je obavezno")
+               .max(100, "Ovo polje je predugačko, max 100"),
+
+          phoneNumber: string()
+               .required("Ovo polje je obavezno")
+               .max(25, "Ovo polje je predugačko, max 25"),
+
+          city: string()
+               .required("Ovo polje je obavezno")
+               .max(25, "Ovo polje je predugačko, max 25"),
+
+          provinceState: string()
+               .notRequired()
+               .max(25, "Ovo polje je predugačko, max 25"),
+
+          country: string()
+               .required("Ovo polje je obavezno")
+               .max(25, "Ovo polje je predugačko, max 25"),
+
+          image: string(),
+
+          emailVerified: date().nullable(),
+
+          zipPostalCode: string()
+               .required("Ovo polje je obavezno")
+               .min(1, "Ovo polje je prekratko, min 1")
+               .max(10, "Ovo polje je predugačko, max 10"),
+          email: string()
+               .email("Ovo polje mora biti email!")
+               .required("Ovo polje je obavezno!"),
+
+
+          shouldCreateAccount: bool(),
+
+     });
+};
