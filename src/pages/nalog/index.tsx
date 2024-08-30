@@ -124,7 +124,7 @@ export default function ProtectedPage(props: any) {
                                                                       <strong>Datum: </strong> {new Date(order.createdAt).toLocaleDateString()}
                                                                  </Typography>
                                                                  <Typography variant="body1">
-                                                                      <strong>Ukupan Iznos: </strong> {order.totalAmount} RSD
+                                                                      <strong>Ukupan Iznos: </strong> {order.total} RSD
                                                                  </Typography>
                                                                  <Typography variant="body2">
                                                                       <strong>Stavke: </strong> {order.items.map((item: any) => item.name + ' ' + `${('x' + item.count)}`).join(", ")}
