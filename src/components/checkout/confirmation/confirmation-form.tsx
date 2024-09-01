@@ -53,7 +53,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     body: JSON.stringify({ cart, userFormSelector, totalItemPrice })
                })
           } catch (error) {
-
+               console.log(error);
           }
      }
 

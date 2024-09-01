@@ -206,12 +206,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   endIcon={<DeleteIcon />}
                                                   type='reset'
                                                   onClick={() => {
-                                                       // Reset the form
-                                                       // formik.resetForm();
-
-
-
-                                                       // Validate the form
                                                        formik.validateForm().then(() => {
                                                             // formik.setFieldTouched('email', true);
                                                             formik.setFieldTouched('name', true);
@@ -224,10 +218,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                             dispatch(clearUserForm());
                                                        });
                                                   }}
-                                             // disabled={
-                                             //      !session.data?.user?.email && // No session
-                                             //      Object.values(formik.values).some(value => value !== '') // Any Formik values are populated
-                                             // }
                                              >
                                                   Obriši
                                              </ClearFormButton>

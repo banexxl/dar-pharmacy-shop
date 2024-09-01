@@ -8,9 +8,10 @@ import { ICart } from "@/interfaces/cart/cart.interface";
 const OrdersAPI = async (request: NextApiRequest, response: NextApiResponse) => {
      const { cart, userFormSelector, totalItemPrice } = request.body;
 
+     const orderNumber = moment().format('YYYYMMDD') + '-ID-' + Math.floor(Math.random() * 1000)
 
      const order: Order = {
-          orderNumber: moment().format('YYYYMMDD') + '-ID-' + Math.floor(Math.random() * 1000),
+          orderNumber: orderNumber,
           createdAt: new Date(),
           customer: userFormSelector as ICustomer,
           items: cart as ICart,
@@ -19,7 +20,7 @@ const OrdersAPI = async (request: NextApiRequest, response: NextApiResponse) => 
           status: 'pending' as OrderStatus,
           logs: [
                {
-                    _id: moment().format('YYYYMMDD') + '-ID-' + Math.floor(Math.random() * 1000),
+                    _id: orderNumber,
                     message: 'Order created',
                     createdAt: new Date()
                },
