@@ -16,7 +16,6 @@ export type Order = {
      total: number;
      status: OrderStatus;
      logs: {
-          _id: string;
           message: string;
           createdAt: Date;
      }[];

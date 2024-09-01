@@ -20,7 +20,6 @@ const OrdersAPI = async (request: NextApiRequest, response: NextApiResponse) => 
           status: 'pending' as OrderStatus,
           logs: [
                {
-                    _id: orderNumber,
                     message: 'Order created',
                     createdAt: new Date()
                },
