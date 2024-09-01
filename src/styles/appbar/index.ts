@@ -16,7 +16,7 @@ export const AppbarContainer = styled(Box)(({ theme }: any) => ({
      left: '0px',
      top: '0px',
      backgroundColor: Colors.primary.lighter,
-     // opacity: '0.8',
+     opacity: '0.8',
      width: '80%',
      zIndex: 1000,
 })) as typeof Box
