@@ -20,6 +20,96 @@ function generateSiteMap(products: IProduct[]) {
                })
                .join('')
           }
+           <url>
+<loc>https://www.apoteka-dar.rs</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/autentifikacija/greska</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/autentifikacija/prijava</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/autentifikacija/verifikacija-zahteva</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/dar-savetnik</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/isporuka-i-placanje</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/o-nama</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/odustanak</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/politika-kolacica</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/politika-privatnosti</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/reklamacije</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/informacije/uslovi-koriscenja</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/kontakt</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/placanje</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.apoteka-dar.rs/registracija</loc>
+<lastmod>${new Date()}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>
    </urlset>
  `;
 }
