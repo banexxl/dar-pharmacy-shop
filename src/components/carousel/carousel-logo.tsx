@@ -77,7 +77,7 @@ const CarouselLogo = (props: CarouselProps) => {
                                                   padding: '5px',
                                                   color: Colors.primary.darker
                                              }}>
-                                                  <Typography sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
+                                                  <Typography component={'span'} sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
                                                        {product.name}
                                                   </Typography>
                                              </CarouselTitle>

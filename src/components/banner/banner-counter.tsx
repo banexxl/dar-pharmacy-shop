@@ -1,14 +1,8 @@
 import { Box, Stack, Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
-import Link from "next/link";
 import { BannerContainer } from "../../styles/banner"
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
-import { useState } from "react";
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
-import { Colors } from "@/styles/theme";
 import { fShortenNumber } from "@/utils/format-number";
 
 export const BannerCountUp = () => {
@@ -47,7 +41,7 @@ export const BannerCountUp = () => {
                          >
                               {SUMMARY.map((value) => (
                                    <Stack key={value.name} spacing={1}>
-                                        <Typography sx={{ textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>
+                                        <Typography component={'span'} sx={{ textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>
                                              <CountUp
                                                   start={value.number / 5}
                                                   end={value.number}
@@ -62,7 +56,7 @@ export const BannerCountUp = () => {
                                              </Typography>
                                         </Typography>
 
-                                        <Typography sx={{ maxWidth: '300px', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>
+                                        <Typography component={'span'} sx={{ maxWidth: '300px', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.4rem' }}>
                                              {value.name}
                                         </Typography>
                                    </Stack>

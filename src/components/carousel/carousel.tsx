@@ -63,7 +63,7 @@ const ProductCarousel = (props: any) => {
                                    </Box>
                                    <CarouselButton sx={{ marginBottom: '5px' }}>
                                         <Link href={`/proizvod/${decodeURIComponent(product._id)}`}>
-                                             <Typography sx={{ textTransform: 'capitalize' }}>
+                                             <Typography component={'span'} sx={{ textTransform: 'capitalize' }}>
                                                   Detalji
                                              </Typography>
                                         </Link>
