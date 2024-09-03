@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, useMediaQuery } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { removeAllSingleItems } from '@/store/cart/cart.slice'
+import Link from 'next/link'
 
 
 const CartItem = (props: ICartItem) => {
@@ -17,7 +18,9 @@ const CartItem = (props: ICartItem) => {
      return (
           <StyledProductRow key={props._id} theme={theme} >
                <StyledProductCell component="th" scope="row" theme={theme}>
-                    <CartProductImage src={props.imageURL} />
+                    <Link href={`/proizvod/${props._id}`}>
+                         <CartProductImage src={props.imageURL} />
+                    </Link>
                </StyledProductCell>
                <StyledProductCell theme={theme}>
                     <StyledProductName theme={theme} >

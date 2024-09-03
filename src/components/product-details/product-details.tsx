@@ -56,6 +56,18 @@ function ProductDetails(product: IProduct) {
           }
      }
 
+     const handleAddToWishlist = () => {
+          dispatch(addToWishList(product));
+          callWishlistAlert();
+          // triggerIconBlink(); // Blink effect on click
+     };
+
+     const handleRemoveFromWishlist = () => {
+          dispatch(removeFromWishList(product));
+          callRemovedFromWishlistAlert();
+          // triggerIconBlink(); // Blink effect on click
+     };
+
      const callWishlistAlert = () => {
           setAddedToWishlistAlert(true);
           const timeId = setTimeout(() => {
@@ -134,12 +146,27 @@ function ProductDetails(product: IProduct) {
                          alignItems="center"
                          sx={{ mt: 4, color: Colors.primary.light }}
                     >
-                         {
-                              wishListProductID === null || wishListProductID === undefined ?
-                                   <FavoriteBorderIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.lighter})` } }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
-                                   :
-                                   <FavoriteIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.lighter})` } }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
-                         }
+                         {wishListProductID === null || wishListProductID === undefined ? (
+                              <FavoriteBorderIcon
+                                   id={`wishlist-icon-${product._id}`}
+                                   sx={{
+                                        mr: 1,
+                                        cursor: 'pointer',
+                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                   }}
+                                   onClick={handleAddToWishlist}
+                              />
+                         ) : (
+                              <FavoriteIcon
+                                   id={`wishlist-icon-${product._id}`}
+                                   sx={{
+                                        mr: 1,
+                                        cursor: 'pointer',
+                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                   }}
+                                   onClick={handleRemoveFromWishlist}
+                              />
+                         )}
                          Dodaj u listu želja
                     </Box>
                     <Box
@@ -149,23 +176,23 @@ function ProductDetails(product: IProduct) {
                          }}
                     >
                          <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
+                         {addedToCartAlert && (
+                              <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
+                                   Dodato u korpu
+                              </Alert>
+                         )}
+                         {addedToWishlistAlert && (
+                              <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
+                                   Dodato u listu želja
+                              </Alert>
+                         )}
+                         {removedFromWishlistAlert && (
+                              <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
+                                   Uklonjeno iz liste želja
+                              </Alert>
+                         )}
                     </Box>
                </ProductDetailInfoWrapper>
-               {addedToCartAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
-                         Dodato u korpu
-                    </Alert>
-               )}
-               {addedToWishlistAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
-                         Dodato u listu želja
-                    </Alert>
-               )}
-               {removedFromWishlistAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                         Uklonjeno iz liste želja
-                    </Alert>
-               )}
                <CartDialog />
                <MediaCarousel
                     media={mediaItems}

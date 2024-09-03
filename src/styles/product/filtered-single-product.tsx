@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, IconButton } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import { slideInBottom, slideInRight } from '../animation';
 import { Colors } from '../theme';
@@ -200,4 +200,13 @@ export const FilteredProductDiscountSticker = styled(Box)((theme) => ({
      fontSize: '20px'
 }));
 
-
+export const OverlayText = styled(Typography)((theme) => ({
+     position: 'absolute',
+     top: '50%', // Center the text vertically
+     left: '50%', // Center the text horizontally
+     transform: 'translate(-50%, -50%)', // Adjusts centering based on text size
+     color: 'white', // Text color
+     backgroundColor: Colors.primary.light, // Semi-transparent background
+     padding: '8px 16px', // Padding for the text box
+     borderRadius: '4px', // Optional: Rounded corners for the text box
+}));
