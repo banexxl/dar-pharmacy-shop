@@ -134,44 +134,65 @@ export default function Home(props: any) {
 
 export async function getServerSideProps() {
 
-     const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
-          return data
-     })
+     const [
+          productsFromManufacturerFitaky,
+          productsFromManufacturerGana,
+          productsOnDiscount,
+          manufacturersLogos,
+          customSearchedProducts,
+          customSearchedProducts1,
+          customSearchedProducts2,
+          newProducts
+     ] = await Promise.all([
+          ProductsServices().getRandomProductsFromManufacturerURL('fitaky'),
+          ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika'),
+          ProductsServices().getProductsByDiscount(),
+          ProductsServices().getAllLogos(),
+          ProductsServices().getProductsByNameAndOrManufacturer('Gloria'),
+          ProductsServices().getProductsByNameAndOrManufacturer('Lavlje'),
+          ProductsServices().getProductsByNameAndOrManufacturer('jazavca'),
+          ProductsServices().getNewProducts()
+     ])
 
-     const productsFromManufacturerFitaky: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('fitaky').then((data: any) => {
-          return data
-     })
+     // const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
+     //      return data
+     // })
 
-     const productsOnDiscount: IProduct[] = await ProductsServices().getProductsByDiscount().then((data: any) => {
-          return data
-     })
+     // const productsFromManufacturerFitaky: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('fitaky').then((data: any) => {
+     //      return data
+     // })
 
-     const manufacturersLogos: string[] = await ProductsServices().getAllLogos().then((logos: any) => {
-          return logos
-     })
+     // const productsOnDiscount: IProduct[] = await ProductsServices().getProductsByDiscount().then((data: any) => {
+     //      return data
+     // })
 
-     const gloriaProducts: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
-          return data
-     })
+     // const manufacturersLogos: string[] = await ProductsServices().getAllLogos().then((logos: any) => {
+     //      return logos
+     // })
 
-     const searchedByNameORManufacturer: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
-          return data
-     })
+     // const gloriaProducts: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
+     //      return data
+     // })
 
-     const searchedByNameORManufacturerI: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
-          return data
-     })
+     // const searchedByNameORManufacturer: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
+     //      return data
+     // })
 
-     const dataForGrid: IProduct[] = searchedByNameORManufacturer
-          .concat(searchedByNameORManufacturerI)
-          .concat(gloriaProducts)
-          .concat(productsFromManufacturerFitaky)
+     // const searchedByNameORManufacturerI: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
+     //      return data
+     // })
 
-     const dataForCarouselProducts: IProduct[] = productsFromManufacturerGana.concat(gloriaProducts)
+     const dataForGrid: IProduct[] = [
+          ...(Array.isArray(customSearchedProducts) ? customSearchedProducts : []),
+          ...(Array.isArray(customSearchedProducts1) ? customSearchedProducts1 : []),
+          ...(Array.isArray(customSearchedProducts2) ? customSearchedProducts2 : []),
+     ]
 
-     const newProducts: IProduct[] = await ProductsServices().getNewProducts().then((data: any) => {
-          return data
-     })
+     // const dataForCarouselProducts: IProduct[] = productsFromManufacturerGana.concat(gloriaProducts)
+
+     // const newProducts: IProduct[] = await ProductsServices().getNewProducts().then((data: any) => {
+     //      return data
+     // })
 
      //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
      //redirect: {
@@ -181,7 +202,7 @@ export async function getServerSideProps() {
 
      return {
           props: {
-               dataForProductCarousel: JSON.parse(JSON.stringify(dataForCarouselProducts)),
+               dataForProductCarousel: JSON.parse(JSON.stringify(productsFromManufacturerGana)),
                dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
                dataForNewProducts: JSON.parse(JSON.stringify(newProducts)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
