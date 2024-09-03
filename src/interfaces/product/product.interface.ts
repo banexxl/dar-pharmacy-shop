@@ -15,6 +15,7 @@ export default interface IProduct {
      manufacturer?: string;
      discount: boolean;
      discountAmount?: number;
+     promotionText?: string;
 }
 
 export type ProductQuantityType =

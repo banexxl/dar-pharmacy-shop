@@ -22,6 +22,7 @@ import { PopularProductAddToCart, ProductAddToCart } from '@/styles/product/sing
 import { useState } from 'react';
 import { addToCart } from '@/store/cart/cart.slice';
 import { useDispatch } from 'react-redux';
+import IProduct from '@/interfaces/product/product.interface';
 
 interface ExpandMoreProps extends IconButtonProps {
      expand: boolean;
@@ -38,7 +39,12 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
      }),
 }));
 
-export default function ProductCard() {
+type ProductCardProps = {
+     product: IProduct
+}
+
+export default function ProductCard(props: ProductCardProps) {
+
      const [expanded, setExpanded] = useState(false);
 
      const handleExpandClick = () => {
@@ -70,13 +76,13 @@ export default function ProductCard() {
                               CC
                          </Avatar>
                     }
-                    title={"Crux Kolagen"}
-                    subheader={"Hidrolizovani govedji kolagen (solugel), 10g u dnevnoj dozi"}
+                    title={props.product.name}
+                    subheader={props.product.promotionText}
                />
                <CardMedia
                     component="img"
                     height="400"
-                    image={"https://i.ibb.co/KFKjjnb/Crux-kutija-2.png"}
+                    image={props.product.imageURL}
                     alt="Paella dish"
                />
                {
@@ -89,26 +95,7 @@ export default function ProductCard() {
                <CardActions disableSpacing>
                     <PopularProductAddToCart loading={loading} onClick={() => {
                          callCartAlert()
-                         dispatch(addToCart({
-                              "_id": "649bb58b8778015860236f6d",
-                              "name": "Crux kolagen",
-                              "description": "Crux Pure kolagen u prahu za zglobove, kosu, nokte, kožu. Bez aditiva, šećera, dodataka.Prednosti Crux kolagena:mlada i hidrirana koža, sjajna, duga kosa, zdravi nokti,jače kosti, hrskavica, zglobovi, rad creva, kvalitetniji san.",
-                              "mainCategory": "apoteka",
-                              "midCategory": "kosa-koza-nokti",
-                              "subCategory": "",
-                              "ingredients": "hidrolizovani govedji kolagen (solugel), 10g u dnevnoj dozi",
-                              "instructions": "1 kesica dnevno. Sadrzaj kesice(10g) rastvoriti u casi toplog ili hladnog pica ili u porciji obroka. Za postizanje najboljih rezultata koristiti svakodnevno.",
-                              "quantity": "300g",
-                              "warning": "/",
-                              "imageURL": "https://i.ibb.co/KFKjjnb/Crux-kutija-2.png",
-                              "price": 3590,
-                              "availableStock": 44,
-                              "manufacturer": "Bio Solutions",
-                              "newArrival": false,
-                              "bestSeller": false,
-                              "discount": true,
-                              "discountamount": 5
-                         }))
+                         dispatch(addToCart(props.product))
                     }}
                     >
                          Dodaj u korpu
@@ -126,7 +113,7 @@ export default function ProductCard() {
                     <CardContent>
                          <Typography paragraph>Opis</Typography>
                          <Typography paragraph>
-                              Crux Pure kolagen u prahu za zglobove, kosu, nokte, kožu. Bez aditiva, šećera, dodataka. Prednosti Crux kolagena:mlada i hidrirana koža, sjajna, duga kosa, zdravi nokti,jače kosti, hrskavica, zglobovi, rad creva, kvalitetniji san.
+                              {props.product.description}
                          </Typography>
                     </CardContent>
                </Collapse>

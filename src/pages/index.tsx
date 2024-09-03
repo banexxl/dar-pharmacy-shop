@@ -73,7 +73,7 @@ export default function Home(props: any) {
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                    <MessageText variant="h4">Popularno</MessageText>
                               </Box>
-                              <ProductCard />
+                              <ProductCard product={props.promotionProduct} />
                               <CarouselOnlyImageProduct products={dataForProductCarousel} />
                               <BannerServices />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
@@ -142,7 +142,8 @@ export async function getServerSideProps() {
           customSearchedProducts,
           customSearchedProducts1,
           customSearchedProducts2,
-          newProducts
+          newProducts,
+          promotionProduct
      ] = await Promise.all([
           ProductsServices().getRandomProductsFromManufacturerURL('fitaky'),
           ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika'),
@@ -151,7 +152,8 @@ export async function getServerSideProps() {
           ProductsServices().getProductsByNameAndOrManufacturer('Gloria'),
           ProductsServices().getProductsByNameAndOrManufacturer('Lavlje'),
           ProductsServices().getProductsByNameAndOrManufacturer('jazavca'),
-          ProductsServices().getNewProducts()
+          ProductsServices().getNewProducts(),
+          ProductsServices().getProductById('65623269777d0eaba35c87ac'),
      ])
 
      // const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
@@ -207,6 +209,7 @@ export async function getServerSideProps() {
                dataForNewProducts: JSON.parse(JSON.stringify(newProducts)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
+               promotionProduct: JSON.parse(JSON.stringify(promotionProduct)),
           },
      }
 }
