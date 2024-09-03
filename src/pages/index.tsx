@@ -51,7 +51,6 @@ export default function Home(props: any) {
           };
      }, []);
 
-
      const handleClose = () => {
           setOpen(false);
      };
