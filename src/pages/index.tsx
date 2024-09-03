@@ -22,7 +22,7 @@ import { Seo } from "@/components/seo";
 
 export default function Home(props: any) {
 
-     const { dataForGrid, dataForProductCarousel, manufacturers, dataForNewProducts } = props
+     const { dataForProductCarousel, dataForGrid, dataForNewProducts, manufacturers, productsOnDiscount, promotionProduct } = props
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -73,7 +73,7 @@ export default function Home(props: any) {
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                    <MessageText variant="h4">Popularno</MessageText>
                               </Box>
-                              <ProductCard product={props.promotionProduct} />
+                              <ProductCard product={promotionProduct} />
                               <CarouselOnlyImageProduct products={dataForProductCarousel} />
                               <BannerServices />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
@@ -94,12 +94,17 @@ export default function Home(props: any) {
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
                               <CarouselLogo manufacturers={manufacturers} />
                               <Divider variant="middle" sx={{ borderBottomWidth: 5, marginBottom: '20px', marginTop: '20px' }} />
-                              {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                   <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Proizvodi na akciji</Typography>
-                              </Box>
-                              <Divider variant="middle" sx={{ borderBottomWidth: 5, marginTop: '10px' }} />
-                              <ProductCarousel products={productsOnDiscount} /> */}
-                              {/* <CarouselBlog /> */}
+                              {
+                                   productsOnDiscount.length > 0 &&
+                                   <Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                             <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Proizvodi na akciji</Typography>
+                                        </Box>
+                                        <ProductCarousel products={productsOnDiscount} />
+                                        <Divider variant="middle" sx={{ borderBottomWidth: 5, my: '10px' }} />
+                                   </Box>
+                              }
+
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>
@@ -153,7 +158,7 @@ export async function getServerSideProps() {
           ProductsServices().getProductsByNameAndOrManufacturer('Lavlje'),
           ProductsServices().getProductsByNameAndOrManufacturer('jazavca'),
           ProductsServices().getNewProducts(),
-          ProductsServices().getProductById('65623269777d0eaba35c87ac'),
+          ProductsServices().getProductById('649bb58b8778015860236f6d'),
      ])
 
      // const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
@@ -184,6 +189,11 @@ export async function getServerSideProps() {
      //      return data
      // })
 
+     const dataForCaruselTop: IProduct[] = [
+          ...(Array.isArray(productsFromManufacturerFitaky) ? productsFromManufacturerFitaky : []),
+          ...(Array.isArray(productsFromManufacturerGana) ? productsFromManufacturerGana : []),
+     ]
+
      const dataForGrid: IProduct[] = [
           ...(Array.isArray(customSearchedProducts) ? customSearchedProducts : []),
           ...(Array.isArray(customSearchedProducts1) ? customSearchedProducts1 : []),
@@ -204,11 +214,11 @@ export async function getServerSideProps() {
 
      return {
           props: {
-               dataForProductCarousel: JSON.parse(JSON.stringify(productsFromManufacturerGana)),
+               dataForProductCarousel: JSON.parse(JSON.stringify(dataForCaruselTop)),
                dataForGrid: JSON.parse(JSON.stringify(dataForGrid)),
                dataForNewProducts: JSON.parse(JSON.stringify(newProducts)),
-               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
+               productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                promotionProduct: JSON.parse(JSON.stringify(promotionProduct)),
           },
      }

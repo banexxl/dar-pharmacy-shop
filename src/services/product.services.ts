@@ -175,7 +175,6 @@ export const ProductsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ discount: true, isActive: true })
-                    .limit(10)
                     .toArray()
 
                return products
