@@ -44,8 +44,8 @@ const ContactPage = (props: ContactPageProps) => {
                                              </ContactStrongText>
                                              <ContactText theme={theme}>
                                                   Dobrodošli u Apoteku DAR, vašu lokalnu apoteku u srcu Kragujevca, koja se ponosi
-                                                  ponudom isključivo prirodnih proizvoda. Naša misija je da vam obezbedimo najkvalitetnije
-                                                  proizvode za zdravlje, koristeći isključivo prirodne sastojke koji podržavaju vaše celokupno blagostanje.
+                                                  velikom ponudom prirodnih proizvoda. Naša misija je da vam obezbedimo najkvalitetnije
+                                                  proizvode za zdravlje, koristeći prirodne sastojke koji podržavaju vaše celokupno blagostanje.
                                              </ContactText>
                                              <ContactText theme={theme}>
                                                   Naš tim stručnjaka posvećen je pružanju personalizovane usluge i savetovanja, kako bismo
