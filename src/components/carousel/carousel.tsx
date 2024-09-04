@@ -63,43 +63,14 @@ const ProductCarousel = (props: any) => {
                                              alignItems: 'center', // Center the content vertically
                                         }}
                                    >
-                                        {/* Typography is placed in the outer Box */}
-                                        <Typography
-                                             component="span"
-                                             sx={{
-                                                  fontSize: isScreenToMedium ? '1.2rem' : '2rem', // Set the font size to 1.2rem
-                                                  position: 'absolute', // Position it absolutely within the Box
-                                                  top: 5, // Position from the top
-                                                  right: isScreenToMedium ? 80 : 160, // Adjust position as needed
-                                                  textTransform: 'capitalize',
-                                                  color: Colors.primary.main, // Set the text color to white
-                                                  padding: '4px 8px', // Add some padding
-                                                  borderRadius: '4px', // Add some border radius for better styling
-                                                  transform: 'rotate(-45deg)', // Rotate the Typography 45 degrees
-                                                  zIndex: 1000, // Ensure it appears above other elements
-                                             }}
-                                        >
-                                             -{product.discount ? product.discountAmount + '%' : ''}
-                                        </Typography>
-
-                                        {/* Inner Box for Image */}
-                                        <Box
-                                             sx={{
-                                                  borderRadius: '10px', // Rounded corners
-                                                  overflow: 'hidden', // Clip any overflowing content (applies only to the image)
-                                             }}
-                                        >
-                                             <Image
-                                                  style={{ borderRadius: '10px' }}
-                                                  src={product.imageURL}
-                                                  alt={product.name}
-                                                  height={isScreenToMedium ? 160 : 230}
-                                                  width={isScreenToMedium ? 125 : 200}
-                                             />
-                                        </Box>
+                                        <Image
+                                             style={{ borderRadius: '10px' }}
+                                             src={product.imageURL}
+                                             alt={product.name}
+                                             height={isScreenToMedium ? 160 : 230}
+                                             width={isScreenToMedium ? 125 : 200}
+                                        />
                                    </Box>
-
-
                                    <Box>
                                         <CarouselManufacturerBox>
                                              <CarouselManufacturer sx={{ textTransform: 'capitalize', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.3rem' }}>{product.manufacturer}</CarouselManufacturer>
