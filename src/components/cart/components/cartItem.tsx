@@ -1,67 +1,93 @@
-import ICartItem from '@/interfaces/cart/cart.interface'
-import { CartProductImage, StyledHeaderCell, StyledProductCell, StyledProductName, StyledProductRow } from '@/styles/cart'
-import theme, { Colors } from '@/styles/theme'
-import Counter from '@/utils/counter'
-import React from 'react'
+import ICartItem from '@/interfaces/cart/cart.interface';
+import { CartProductImage, StyledProductCell, StyledProductName, StyledProductRow } from '@/styles/cart';
+import theme, { Colors } from '@/styles/theme';
+import Counter from '@/utils/counter';
+import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, useMediaQuery } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { removeAllSingleItems } from '@/store/cart/cart.slice'
-import Link from 'next/link'
-
+import { Button, useMediaQuery } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { removeAllSingleItems } from '@/store/cart/cart.slice';
+import Link from 'next/link';
 
 const CartItem = (props: ICartItem) => {
-
-     const dispatch = useDispatch()
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+     const dispatch = useDispatch();
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
 
      return (
-          <StyledProductRow key={props._id} theme={theme} >
-               <StyledProductCell component="th" scope="row" theme={theme}>
-                    <Link href={`/proizvod/${props._id}`}>
-                         <CartProductImage src={props.imageURL} />
-                    </Link>
-               </StyledProductCell>
-               <StyledProductCell theme={theme}>
-                    <StyledProductName theme={theme} >
-                         {props.name}
-                    </StyledProductName>
-               </StyledProductCell>
-               <StyledProductCell theme={theme} >
-                    <StyledProductName theme={theme} >
-                         {props.quantity} {' '} {props.quantityUnit}
-                    </StyledProductName>
-               </StyledProductCell>
-               <StyledProductCell theme={theme} >
-                    <StyledProductName theme={theme} >
-                         {props._id.toString().slice(-8).toUpperCase()}
-                    </StyledProductName>
-               </StyledProductCell>
-               <StyledProductCell theme={theme} >
-                    <StyledProductName theme={theme} >
-                         <Counter _id={props._id} count={props.count}>
-                              {props.count}
-                         </Counter>
-                    </StyledProductName>
-               </StyledProductCell>
-               <StyledProductCell theme={theme} >
-                    <StyledProductName theme={theme} >
-                         {props.price} rsd
-                    </StyledProductName>
-               </StyledProductCell>
-               <StyledProductCell theme={theme} >
-                    <StyledProductName theme={theme} >
-                         {props.count * props.price} rsd
-                    </StyledProductName>
-                    <Button
-                         sx={{ backgroundColor: 'transparent' }}
-                         onClick={() => dispatch(removeAllSingleItems(props._id))}
-                    >
-                         <DeleteIcon />
-                    </Button>
-               </StyledProductCell>
-          </StyledProductRow >
-     )
-}
+          <>
+               <StyledProductRow key={props._id} theme={theme}>
+                    {/* Product Image */}
+                    <StyledProductCell component="th" scope="row" theme={theme}>
+                         <Link href={`/proizvod/${props._id}`}>
+                              <CartProductImage src={props.imageURL} />
+                         </Link>
+                    </StyledProductCell>
 
-export default CartItem
+                    {/* Product Name */}
+                    <StyledProductCell theme={theme}>
+                         <StyledProductName theme={theme}>
+                              {props.name}
+                         </StyledProductName>
+                    </StyledProductCell>
+
+                    {/* Quantity and Unit */}
+                    <StyledProductCell theme={theme}>
+                         <StyledProductName theme={theme}>
+                              {props.quantity} {props.quantityUnit}
+                         </StyledProductName>
+                    </StyledProductCell>
+
+                    {/* Product ID (last 8 characters) */}
+                    <StyledProductCell theme={theme}>
+                         <StyledProductName theme={theme}>
+                              {props._id.toString().slice(-8).toUpperCase()}
+                         </StyledProductName>
+                    </StyledProductCell>
+
+                    {/* Product Counter */}
+                    <StyledProductCell theme={theme}>
+                         <StyledProductName theme={theme}>
+                              <Counter _id={props._id} count={props.count}>
+                                   {props.count}
+                              </Counter>
+                         </StyledProductName>
+                    </StyledProductCell>
+
+                    {/* Original Total Price (without discount) */}
+                    <StyledProductCell theme={theme}>
+                         <StyledProductName theme={theme}>
+                              {props.count * props.price} RSD
+                         </StyledProductName>
+                    </StyledProductCell>
+
+                    {/* Discount Percentage and Discounted Price */}
+                    {props.discount && props.discountAmount! > 0 ? (
+                         <StyledProductCell theme={theme}>
+                              <StyledProductName theme={theme} sx={{ color: Colors.primary.main, fontWeight: 'bold' }}>
+                                   (-{props.discountAmount}%) {((props.price - (props.price * (props.discountAmount! / 100))) * props.count).toFixed(2)} RSD
+                              </StyledProductName>
+                         </StyledProductCell>
+                    ) : (
+                         // Empty cell to maintain layout alignment with the header
+                         <StyledProductCell theme={theme} sx={{ visibility: 'hidden' }}>
+                              <StyledProductName theme={theme}>
+                                   {/* Empty for alignment purposes */}
+                              </StyledProductName>
+                         </StyledProductCell>
+                    )}
+
+                    {/* Remove Item Button */}
+                    <StyledProductCell theme={theme}>
+                         <Button
+                              sx={{ backgroundColor: 'transparent' }}
+                              onClick={() => dispatch(removeAllSingleItems(props._id))}
+                         >
+                              <DeleteIcon />
+                         </Button>
+                    </StyledProductCell>
+               </StyledProductRow>
+          </>
+     );
+};
+
+export default CartItem;

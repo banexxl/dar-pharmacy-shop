@@ -15,6 +15,8 @@ interface ICartTotalsProps {
 function CartTotals({ onClose }: ICartTotalsProps) {
 
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
+     console.log(totalItemPrice);
+
      const { t } = useTranslation();
      const dispatch = useDispatch()
 

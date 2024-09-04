@@ -322,8 +322,6 @@ export const ProductsServices = () => {
                let products: IProduct[] = await db.collection('Products')
                     .find({ promoting: true, promotionText: { $ne: '' }, isActive: true })
                     .toArray()
-               console.log(products);
-
                return products
           } catch (error: any) {
                return { message: error.message }

@@ -79,19 +79,19 @@ export default function WishList({ open, onClose, product }: any) {
                               </WishlistHeader>
                               <WishlistTableBody>
                                    {
-                                        wishlist.map((cartItem: IWishlistItem) => (
+                                        wishlist.map((wishListItem: IWishlistItem) => (
                                              <Box key={Math.random()}>
-                                                  <WishlistItem discount={cartItem.discount} key={cartItem._id} _id={cartItem._id}
-                                                       name={cartItem.name} description={cartItem.description} category={cartItem.category}
-                                                       availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
-                                                       instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                                       warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
+                                                  <WishlistItem discount={wishListItem.discount} key={wishListItem._id} _id={wishListItem._id}
+                                                       name={wishListItem.name} description={wishListItem.description} category={wishListItem.category}
+                                                       availableStock={wishListItem.availableStock} ingredients={wishListItem.ingredients}
+                                                       instructions={wishListItem.instructions} quantity={wishListItem.quantity}
+                                                       warning={wishListItem.warning} imageURL={wishListItem.imageURL} price={wishListItem.price} quantityUnit={wishListItem.quantityUnit} mediaURLs={[]} />
                                                   <Button
                                                        sx={{ color: Colors.primary.main, margin: '10px' }}
                                                        onClick={() => {
                                                             showOptions ? setShowOptions(false) : setShowOptions(true);
                                                             callCartAlert();
-                                                            dispatch(addToCart(cartItem));
+                                                            dispatch(addToCart(wishListItem));
                                                        }}
                                                   >
                                                        Dodaj u korpu
@@ -101,7 +101,7 @@ export default function WishList({ open, onClose, product }: any) {
                                                        onClick={() => {
                                                             showOptions ? setShowOptions(false) : setShowOptions(true);
                                                             callCartAlert();
-                                                            dispatch(removeFromWishList(cartItem));
+                                                            dispatch(removeFromWishList(wishListItem));
                                                        }}
                                                   >
                                                        Obriši

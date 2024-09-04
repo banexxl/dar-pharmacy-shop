@@ -58,16 +58,18 @@ export default function Cart({ open, onClose }: ICartProps) {
                          <StyledTable>
                               <StyledHeader>
                                    <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left" >Naziv</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left" >Pakovanje</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left" >Kod</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left" >Količina</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="left">Cena</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} align="right">Ukupno sa PDV</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme}  >Naziv</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme}  >Pakovanje</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme}  >Kod</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme}  >Količina</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} >Cena</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} >Ukupno sa PDV</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} >Ukupno sa popustom</StyledHeaderCell>
+                                   <StyledHeaderCell theme={theme} >Obriši</StyledHeaderCell>
                               </StyledHeader>
                               <StyledTableBody theme={theme}>
                                    {cart.map((cartItem: ICartItem) => (
-                                        <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
+                                        <CartItem discount={cartItem.discount} discountAmount={cartItem.discountAmount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                              name={cartItem.name} description={cartItem.description} category={cartItem.category}
                                              availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
                                              instructions={cartItem.instructions} quantity={cartItem.quantity}

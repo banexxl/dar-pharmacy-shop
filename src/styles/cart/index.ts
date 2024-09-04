@@ -70,7 +70,7 @@ type StyledTableBodyProps = {
 export const StyledTableBody = styled(TableBody)<StyledTableBodyProps>(({ theme }) => ({
      display: 'flex',
      flexDirection: 'column',
-     justifyContent: 'space-between',
+     justifyContent: 'space-evenly',
      gap: '20px',
 }))
 
@@ -95,7 +95,9 @@ type StyledHeaderCellProps = {
 
 export const StyledHeaderCell = styled(TableCell)<StyledHeaderCellProps>(({ theme }) => ({
      maxWidth: '100px',
-     display: 'flex',
+     // display: 'flex',
+     justifyContent: 'center',
+     alignItems: 'right',
 }));
 
 type StyledProductCellProps = {
@@ -105,6 +107,7 @@ type StyledProductCellProps = {
 export const StyledProductCell = styled(TableCell)<StyledProductCellProps>(({ theme }) => ({
      display: 'flex',
      alignItems: 'center',
+     justifyContent: 'start',
      maxWidth: '160px',
      [`&.${tableCellClasses.head}`]: {
           backgroundColor: Colors.primary.lighter,
