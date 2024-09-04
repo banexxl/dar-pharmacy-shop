@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 const CartItem = (props: ICartItem) => {
      const dispatch = useDispatch();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+     console.log('cartItem', props);
 
      return (
           <>

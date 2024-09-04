@@ -68,6 +68,8 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          <StyledHeaderCell theme={theme} align="left" >Količina</StyledHeaderCell>
                          <StyledHeaderCell theme={theme} align="left">Cena</StyledHeaderCell>
                          <StyledHeaderCell theme={theme} align="right">Ukupno sa PDV</StyledHeaderCell>
+                         <StyledHeaderCell theme={theme} align="right">Ukupno sa popustom</StyledHeaderCell>
+                         <StyledHeaderCell theme={theme} align="right">Obriši</StyledHeaderCell>
                     </StyledHeader>
                     <StyledTableBody theme={theme}>
                          {cart.map((cartItem: ICartItem) => (
@@ -120,6 +122,12 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          Poruči
                     </Link>
                </Button>
+               <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '30px', mb: '30px' }}>
+                    Detalje isporuke i plaćanja možete pogledati <Link href='/informacije/isporuka-i-placanje'>OVDE!</Link>
+               </Typography>
+               <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'justify', mt: '30px', mb: '30px', maxWidth: '500px' }}>
+                    Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
+               </Typography>
                <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
           </CartWrapper>
      )

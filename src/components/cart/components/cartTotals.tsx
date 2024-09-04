@@ -49,6 +49,9 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '30px', mb: '30px' }}>
                     Detalje isporuke i plaćanja možete pogledati <Link href='/informacije/isporuka-i-placanje'>OVDE!</Link>
                </Typography>
+               <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'justify', mt: '30px', mb: '30px', maxWidth: '500px' }}>
+                    Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
+               </Typography>
           </StyledTotalsBox>
      )
 }

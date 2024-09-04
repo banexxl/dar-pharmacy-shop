@@ -5,19 +5,39 @@ import { CarouselButton, CarouselImgBox, CarouselManufacturer, CarouselManufactu
 import 'react-multi-carousel/lib/styles.css';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { Box, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { OverlayText } from '@/styles/product/filtered-single-product';
 import Image from 'next/image';
 import { Colors } from '@/styles/theme';
+import { ProductAddToCart } from '@/styles/product/single-product';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/store/cart/cart.slice';
 
 const ProductCarousel = (props: any) => {
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-
+     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
+     const dispatch = useDispatch();
+     const [loading, setLoading] = useState(false)
      const calculateDiscountedPrice = (oldPrice: number, discount: number) => {
           return oldPrice - (oldPrice * (discount / 100))
      };
+
+     const callCartAlert = () => {
+          setAddedToCartAlert(true)
+          setLoading(true)
+          const timeId = setTimeout(() => {
+               // After X seconds set the show value to false
+               setLoading(false)
+               setAddedToCartAlert(false)
+          }, 1500)
+
+          return () => {
+               clearTimeout(timeId)
+          }
+     }
 
      const responsive = {
           desktop: {
@@ -105,13 +125,14 @@ const ProductCarousel = (props: any) => {
                                              </Tooltip>
                                         </CarouselTitleBox>
                                    </Box>
-                                   <CarouselButton sx={{ marginBottom: '5px' }}>
-                                        <Link href={`/proizvod/${decodeURIComponent(product._id)}`}>
-                                             <Typography component={'span'} sx={{ textTransform: 'capitalize' }}>
-                                                  Detalji
-                                             </Typography>
-                                        </Link>
-                                   </CarouselButton>
+                                   <ProductAddToCart
+                                        show={true}
+                                        onClick={() => {
+                                             callCartAlert();
+                                             dispatch(addToCart(product));
+                                        }} theme={theme}>
+                                        Dodaj u korpu
+                                   </ProductAddToCart>
                               </StyledCarouselCard>
                          ))
                     }
