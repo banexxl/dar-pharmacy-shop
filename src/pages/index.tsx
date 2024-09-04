@@ -158,7 +158,7 @@ export async function getServerSideProps() {
           ProductsServices().getProductsByNameAndOrManufacturer('Lavlje'),
           ProductsServices().getProductsByNameAndOrManufacturer('jazavca'),
           ProductsServices().getNewProducts(),
-          ProductsServices().getProductById('649bb58b8778015860236f6d'),
+          ProductsServices().getProductById('65623269777d0eaba35c87ac'),
      ])
 
      // const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
