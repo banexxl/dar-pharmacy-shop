@@ -38,17 +38,17 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
      const responsive = {
           desktop: {
                breakpoint: { max: 3000, min: 1024 },
-               items: 4,
+               items: 3,
                partialVisibilityGutter: 40 // this is optional if you are not using partialVisible props
           },
           tablet: {
                breakpoint: { max: 1024, min: 600 },
-               items: 3,
+               items: 2,
                partialVisibilityGutter: 30 // this is optional if you are not using partialVisible props
           },
           mobile: {
                breakpoint: { max: 600, min: 0 },
-               items: 2,
+               items: 1,
                partialVisibilityGutter: 30 // this is optional if you are not using partialVisible props
           }
      };

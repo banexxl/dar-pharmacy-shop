@@ -78,11 +78,11 @@ const ProductCarousel = (props: any) => {
                                         <CarouselTitleBox>
                                              {
                                                   product.discount && product.discountAmount && (
-                                                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1, justifyContent: 'center' }}>
+                                                       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                                                             {/* Old Price with Strikethrough */}
                                                             {product.price && (
                                                                  <Typography
-                                                                      variant="body2"
+                                                                      fontSize={'.8rem'}
                                                                       color="textSecondary"
                                                                       sx={{ textDecoration: 'line-through' }}
                                                                  >
@@ -101,7 +101,7 @@ const ProductCarousel = (props: any) => {
                                              }
 
                                              <Tooltip title={product.name} placement="top">
-                                                  <CarouselTitle sx={{ textTransform: 'capitalize', fontSize: isScreenToMedium ? '.8rem' : '1rem' }}>{product.name}</CarouselTitle>
+                                                  <CarouselTitle sx={{ fontSize: isScreenToMedium ? '.8rem' : '1rem', textAlign: 'center' }}>{product.name}</CarouselTitle>
                                              </Tooltip>
                                         </CarouselTitleBox>
                                    </Box>
