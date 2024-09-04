@@ -314,8 +314,27 @@ export const ProductsServices = () => {
           }
      }
 
+     const getAllProductsOnPromotion = async () => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+
+          try {
+               const db = client.db('DAR_DB')
+               let products: IProduct[] = await db.collection('Products')
+                    .find({ promoting: true, promotionText: { $ne: '' }, isActive: true })
+                    .toArray()
+               console.log(products);
+
+               return products
+          } catch (error: any) {
+               return { message: error.message }
+          } finally {
+               await client.close();
+          }
+     }
+
 
      return {
+          getAllProductsOnPromotion,
           getAllProducts,
           getNewProducts,
           getAllMainCategories,

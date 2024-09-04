@@ -19,10 +19,11 @@ import { BannerCountUp } from "@/components/banner/banner-counter";
 import { useEffect, useState } from "react";
 import CarouselOnlyImageProduct from "@/components/carousel/carousel-only-image";
 import { Seo } from "@/components/seo";
+import CarouselPresentationContainer from "@/components/carousel/carousel-presentation-container";
 
 export default function Home(props: any) {
 
-     const { dataForProductCarousel, dataForGrid, dataForNewProducts, manufacturers, productsOnDiscount, promotionProduct } = props
+     const { dataForProductCarousel, dataForGrid, dataForNewProducts, manufacturers, productsOnDiscount, promotionProduct, promotionProducts } = props
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
@@ -104,6 +105,16 @@ export default function Home(props: any) {
                                         <Divider variant="middle" sx={{ borderBottomWidth: 5, my: '10px' }} />
                                    </Box>
                               }
+                              {
+                                   promotionProducts.length > 0 &&
+                                   <Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                             <Typography sx={{ fontSize: '2rem', marginTop: '5px' }}>Promocije</Typography>
+                                        </Box>
+                                        <CarouselPresentationContainer products={promotionProducts} />
+                                        <Divider variant="middle" sx={{ borderBottomWidth: 5, my: '10px' }} />
+                                   </Box>
+                              }
 
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
@@ -148,7 +159,8 @@ export async function getServerSideProps() {
           customSearchedProducts1,
           customSearchedProducts2,
           newProducts,
-          promotionProduct
+          promotionProduct,
+          promotionProducts
      ] = await Promise.all([
           ProductsServices().getRandomProductsFromManufacturerURL('fitaky'),
           ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika'),
@@ -159,6 +171,7 @@ export async function getServerSideProps() {
           ProductsServices().getProductsByNameAndOrManufacturer('jazavca'),
           ProductsServices().getNewProducts(),
           ProductsServices().getProductById('65623269777d0eaba35c87ac'),
+          ProductsServices().getAllProductsOnPromotion()
      ])
 
      // const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
@@ -220,6 +233,7 @@ export async function getServerSideProps() {
                manufacturers: JSON.parse(JSON.stringify(manufacturersLogos)),
                productsOnDiscount: JSON.parse(JSON.stringify(productsOnDiscount)),
                promotionProduct: JSON.parse(JSON.stringify(promotionProduct)),
+               promotionProducts: JSON.parse(JSON.stringify(promotionProducts)),
           },
      }
 }
