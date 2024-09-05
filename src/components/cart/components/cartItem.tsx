@@ -10,8 +10,8 @@ import { removeAllSingleItems } from '@/store/cart/cart.slice';
 import Link from 'next/link';
 
 const CartItem = (props: ICartItem) => {
+
      const dispatch = useDispatch();
-     console.log('cartItem', props);
 
      return (
           <>

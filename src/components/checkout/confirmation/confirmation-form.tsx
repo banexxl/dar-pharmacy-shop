@@ -19,10 +19,10 @@ import { ReCaptcha, useReCaptcha } from 'next-recaptcha-v3'
 
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
-
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
      const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
+
      const dispatch = useDispatch()
 
      const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
@@ -76,6 +76,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                    name={cartItem.name} description={cartItem.description} category={cartItem.category}
                                    availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
+                                   discountAmount={cartItem.discountAmount}
                                    instructions={cartItem.instructions} quantity={cartItem.quantity}
                                    warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
                          ))}
