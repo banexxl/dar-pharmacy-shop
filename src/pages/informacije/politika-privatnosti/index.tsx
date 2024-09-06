@@ -1,7 +1,7 @@
 import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Divider, Link, List, ListItem, Stack, Typography } from '@mui/material'
+import { Box, Container, Divider, Link, List, ListItem, Stack, Typography, useMediaQuery } from '@mui/material'
 import Head from 'next/head'
 import React from 'react'
 import SearchBox from '@/components/search/search'
@@ -16,6 +16,8 @@ const PrivacyPolicy = () => {
           loading: () => <LoadingWheel />,
           ssr: false
      })
+
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      return (
           <DynamicThemeProvider theme={theme}>
@@ -522,12 +524,12 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>Detaljnije informacije o obradi podataka od strane operatera platforma društvenih mreža i o mogućnostima prigovora možete pronaći u njihovim pravilima o zaštiti podataka:</Typography>
 
                                    <List sx={{ listStyleType: 'disc' }}>
-                                        <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
+                                        <ListItem sx={{ display: 'list-item', ml: isScreenToMedium ? '5px' : '50px', fontStyle: 'italic' }} >
                                              <Link href='https://www.facebook.com/privacy/explanation' target="_blank" style={{ wordBreak: 'break-all' }}>
                                                   Facebook: https://www.facebook.com/privacy/explanation
                                              </Link>
                                         </ListItem>
-                                        <ListItem sx={{ display: 'list-item', fontStyle: 'italic', cursor: 'pointer' }} >
+                                        <ListItem sx={{ display: 'list-item', ml: isScreenToMedium ? '5px' : '50px', fontStyle: 'italic', cursor: 'pointer' }} >
                                              <Link href='https://help.instagram.com/519522125107875' target="_blank" style={{ wordBreak: 'break-all' }}>
                                                   Instagram: https://help.instagram.com/519522125107875
                                              </Link>
