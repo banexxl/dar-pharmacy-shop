@@ -521,14 +521,14 @@ const PrivacyPolicy = () => {
 
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify'>Detaljnije informacije o obradi podataka od strane operatera platforma društvenih mreža i o mogućnostima prigovora možete pronaći u njihovim pravilima o zaštiti podataka:</Typography>
 
-                                   <List sx={{ listStyleType: 'disc', pl: 6 }}>
+                                   <List sx={{ listStyleType: 'disc' }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Link href='https://www.facebook.com/privacy/explanation' target="_blank">
+                                             <Link href='https://www.facebook.com/privacy/explanation' target="_blank" style={{ wordBreak: 'break-all' }}>
                                                   Facebook: https://www.facebook.com/privacy/explanation
                                              </Link>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic', cursor: 'pointer' }} >
-                                             <Link href='https://help.instagram.com/519522125107875' target="_blank" >
+                                             <Link href='https://help.instagram.com/519522125107875' target="_blank" style={{ wordBreak: 'break-all' }}>
                                                   Instagram: https://help.instagram.com/519522125107875
                                              </Link>
                                         </ListItem>
