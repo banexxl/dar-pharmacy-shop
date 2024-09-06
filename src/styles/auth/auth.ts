@@ -89,9 +89,8 @@ export const AuthButton = styled(LoadingButton)(({ theme }: any) => ({
      width: '200px',
      color: Colors.primary.lighter,
      backgroundColor: Colors.primary.main,
-     // transition: "transform 0.3s",
-     // ":hover": {
-     //      transform: "scale(1.2)"
-     // },
      marginBottom: '50px',
+     '&:hover': {
+          backgroundColor: Colors.primary.dark,
+     },
 }));
