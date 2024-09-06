@@ -23,14 +23,18 @@ const SignInPage = () => {
           ssr: false
      })
 
-     const handleSubmit = (values: any) => {
-          setLoading(true)
-          signIn('email', { email: values.email, redirect: true, callbackUrl: '/' })
-          const timeout = setTimeout(() => {
-               setLoading(false)
-          }, 3000);
-          clearTimeout(timeout)
-     }
+     const handleSubmit = async (values: any) => {
+          setLoading(true); // Disable button when loading starts
+
+          try {
+               // Await for the sign-in process to complete
+               await signIn('email', { email: values.email, redirect: true, callbackUrl: '/' });
+          } catch (error) {
+               console.error('Error during sign-in:', error);
+          } finally {
+               setLoading(false); // Re-enable button after process completes
+          }
+     };
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
