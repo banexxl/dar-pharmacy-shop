@@ -34,7 +34,7 @@ const PageNotFount = () => {
                                    <Message404 variant="body1">
                                         UPS!....Stranica koju ste zahtevali je u izradi! Možda iznenadi i pojavi se posle osvežavanja stranice {'\u{1F609}'}
                                    </Message404>
-                                   <Link href="/" passHref>
+                                   <Link rel='canonical' href="/" passHref>
                                         <StyledButton404 variant="contained" color="primary">
                                              Nazad na početnu
                                         </StyledButton404>

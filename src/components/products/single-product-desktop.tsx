@@ -112,7 +112,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      return (
           <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
                <FilteredProductImageContainer>
-                    <Link href={'/proizvod/' + product._id}>
+                    <Link rel='canonical' href={'/proizvod/' + product._id}>
                          <ProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>

@@ -98,37 +98,37 @@ export default function Footer() {
                                         Informacije
                                    </AccordionSummary>
                                    <AccordionDetails>
-                                        <Link href={"/"} >
+                                        <Link rel='canonical' href={"/"} >
                                              Početna
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/kontakt"} >
+                                        <Link rel='canonical' href={"/kontakt"} >
                                              Kontakt
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/o-nama"} >
+                                        <Link rel='canonical' href={"/informacije/o-nama"} >
                                              O nama
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/isporuka-i-placanje"} >
+                                        <Link rel='canonical' href={"/informacije/isporuka-i-placanje"} >
                                              Isporuka i plaćanje
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/politika-privatnosti"} >
+                                        <Link rel='canonical' href={"/informacije/politika-privatnosti"} >
                                              Politika privatnosti
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/uslovi-koriscenja"} >
+                                        <Link rel='canonical' href={"/informacije/uslovi-koriscenja"} >
                                              Uslovi korišćenja
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/politika-kolacica"} >
+                                        <Link rel='canonical' href={"/informacije/politika-kolacica"} >
                                              Politika kolačića
                                         </Link>
                                    </AccordionDetails>
@@ -142,12 +142,12 @@ export default function Footer() {
                                         Nalog
                                    </AccordionSummary>
                                    <AccordionDetails>
-                                        <Link href={"/autentifikacija/prijava"} >
+                                        <Link rel='canonical' href={"/autentifikacija/prijava"} >
                                              Prijava
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/nalog"} >
+                                        <Link rel='canonical' href={"/nalog"} >
                                              Moj profil
                                         </Link>
                                    </AccordionDetails>
@@ -161,22 +161,22 @@ export default function Footer() {
                                         Korisnički servis
                                    </AccordionSummary>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/odustanak"} >
+                                        <Link rel='canonical' href={"/informacije/odustanak"} >
                                              Izjava o odustanku
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/reklamacije"} >
+                                        <Link rel='canonical' href={"/informacije/reklamacije"} >
                                              Reklamacije
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/docs/Ugovor-o-prodaji-na-daljinu.docx"} >
+                                        <Link rel='canonical' href={"/docs/Ugovor-o-prodaji-na-daljinu.docx"} >
                                              Ugovor o prodaji na daljinu
                                         </Link>
                                    </AccordionDetails>
                                    <AccordionDetails>
-                                        <Link href={"/informacije/dar-savetnik"} >
+                                        <Link rel='canonical' href={"/informacije/dar-savetnik"} >
                                              DAR savetnik
                                         </Link>
                                    </AccordionDetails>
@@ -189,20 +189,20 @@ export default function Footer() {
                                    <List sx={{ color: Colors.primary.lighter, display: 'flex', flexDirection: 'column' }}>
                                         <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2}>
-                                                  <Link href={"/"} >
+                                                  <Link rel='canonical' href={"/"} >
                                                        Početna
                                                   </Link>
                                              </FooterItem>
                                         </ListItemText>
                                         <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2}>
-                                                  <Link href={"/kontakt"} >
+                                                  <Link rel='canonical' href={"/kontakt"} >
                                                        Kontakt
                                                   </Link>
                                              </FooterItem>
                                         </ListItemText>
                                         <ListItemText >
-                                             <Link href='/informacije/o-nama'  >
+                                             <Link rel='canonical' href='/informacije/o-nama'  >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        O nama
                                                   </FooterItem>
@@ -210,27 +210,27 @@ export default function Footer() {
                                         </ListItemText>
                                         <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2} >
-                                                  <Link href={"/informacije/isporuka-i-placanje"} >
+                                                  <Link rel='canonical' href={"/informacije/isporuka-i-placanje"} >
                                                        Isporuka i plaćanje
                                                   </Link>
                                              </FooterItem>
                                         </ListItemText>
                                         <ListItemText>
-                                             <Link href='/informacije/politika-privatnosti'>
+                                             <Link rel='canonical' href='/informacije/politika-privatnosti'>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Politika privatnosti
                                                   </FooterItem>
                                              </Link>
                                         </ListItemText>
                                         <ListItemText>
-                                             <Link href='/informacije/uslovi-koriscenja'>
+                                             <Link rel='canonical' href='/informacije/uslovi-koriscenja'>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Uslovi korišćenja
                                                   </FooterItem>
                                              </Link>
                                         </ListItemText>
                                         <ListItemText>
-                                             <Link href='/informacije/politika-kolacica'>
+                                             <Link rel='canonical' href='/informacije/politika-kolacica'>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Politika kolačića
                                                   </FooterItem>
@@ -248,7 +248,7 @@ export default function Footer() {
                                         </ListItemText>
                                         <ListItemText >
                                              <FooterItem theme={theme} lineHeight={2} >
-                                                  <Link href={"/nalog"} >
+                                                  <Link rel='canonical' href={"/nalog"} >
                                                        Moj profil
                                                   </Link>
                                              </FooterItem>
@@ -258,21 +258,21 @@ export default function Footer() {
                               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                    <FooterTitle theme={theme} variant="body1">Korisnički servis</FooterTitle>
                                    <List sx={{ textAlign: 'center', color: Colors.primary.lighter }}>
-                                        <Link href='/informacije/odustanak'>
+                                        <Link rel='canonical' href='/informacije/odustanak'>
                                              <ListItemText>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Izjava o odustanku
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/informacije/reklamacije'>
+                                        <Link rel='canonical' href='/informacije/reklamacije'>
                                              <ListItemText>
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Reklamacije
                                                   </FooterItem>
                                              </ListItemText>
                                         </Link>
-                                        <Link href='/docs/Ugovor-o-prodaji-na-daljinu.docx'>
+                                        <Link rel='canonical' href='/docs/Ugovor-o-prodaji-na-daljinu.docx'>
                                              <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        Ugovor o prodaji na daljinu
@@ -280,7 +280,7 @@ export default function Footer() {
                                              </ListItemText>
                                         </Link>
 
-                                        <Link href='/informacije/dar-savetnik'>
+                                        <Link rel='canonical' href='/informacije/dar-savetnik'>
                                              <ListItemText >
                                                   <FooterItem theme={theme} lineHeight={2} >
                                                        DAR Savetnik

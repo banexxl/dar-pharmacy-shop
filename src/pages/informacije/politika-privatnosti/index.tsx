@@ -486,13 +486,13 @@ const PrivacyPolicy = () => {
                                         <Typography display='inline' textAlign='justify' fontWeight='bold'> sa sedištem u Kragujevcu, poštanski broj 34000, u ulici Kralja Aleksandra I Karađorđevića 102, lokal 9, MB: 66597784 , Tel.</Typography>
 
                                         <Typography display='inline' textAlign='justify'>
-                                             <Link href={`tel:${+381640172227}`} sx={{ color: Colors.primary }}> +381640172227</Link>
+                                             <Link rel='canonical' href={`tel:${+381640172227}`} sx={{ color: Colors.primary }}> +381640172227</Link>
                                         </Typography>
 
                                         <Typography display='inline' textAlign='justify'>, E-mail: </Typography>
 
                                         <Typography display='inline' textAlign='justify'>
-                                             <Link href={`mailto:${'maja@apoteka-dar.rs'}`} sx={{ color: Colors.primary }}> maja@apoteka-dar.rs.</Link>
+                                             <Link rel='canonical' href={`mailto:${'maja@apoteka-dar.rs'}`} sx={{ color: Colors.primary }}> maja@apoteka-dar.rs.</Link>
                                         </Typography>
                                    </Typography>
 
@@ -525,12 +525,12 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'disc' }}>
                                         <ListItem sx={{ display: 'list-item', ml: isScreenToMedium ? '5px' : '50px', fontStyle: 'italic' }} >
-                                             <Link href='https://www.facebook.com/privacy/explanation' target="_blank" style={{ wordBreak: 'break-all' }}>
+                                             <Link rel='canonical' href='https://www.facebook.com/privacy/explanation' target="_blank" style={{ wordBreak: 'break-all' }}>
                                                   Facebook: https://www.facebook.com/privacy/explanation
                                              </Link>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', ml: isScreenToMedium ? '5px' : '50px', fontStyle: 'italic', cursor: 'pointer' }} >
-                                             <Link href='https://help.instagram.com/519522125107875' target="_blank" style={{ wordBreak: 'break-all' }}>
+                                             <Link rel='canonical' href='https://help.instagram.com/519522125107875' target="_blank" style={{ wordBreak: 'break-all' }}>
                                                   Instagram: https://help.instagram.com/519522125107875
                                              </Link>
                                         </ListItem>
@@ -639,7 +639,7 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 20px 20px' display='block' textAlign='justify' >
                                         U te svrhe, na raspolaganju Vam stoji lice za zaštitu ličnih podataka u Apotekarska ustanova DAR koga možete da kontaktirate pisanim putem ili putem emaila: Apotekarska ustanova DAR, Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac, Zaštita ličnih podataka, E-Mail:
                                         <Typography display='inline'>
-                                             <Link href={`mailto:${'maja@apoteka-dar.rs'}`} sx={{ color: Colors.primary }}> maja@apoteka-dar.rs.</Link>
+                                             <Link rel='canonical' href={`mailto:${'maja@apoteka-dar.rs'}`} sx={{ color: Colors.primary }}> maja@apoteka-dar.rs.</Link>
                                         </Typography>
                                    </Typography>
 

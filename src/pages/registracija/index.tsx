@@ -249,7 +249,7 @@ const RegisterPage = () => {
                                                                       </Box>
 
                                                                       <Typography variant="h5" component="legend" sx={{ mt: '90px', mb: '30px' }} >
-                                                                           Imate nalog? <Link href="/autentifikacija/prijava" style={{
+                                                                           Imate nalog? <Link rel='canonical' href="/autentifikacija/prijava" style={{
                                                                                 textDecoration: 'underline',
                                                                                 color: Colors.primary.light
                                                                            }}>Prijavite se</Link>

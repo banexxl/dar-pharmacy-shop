@@ -18,7 +18,7 @@ const CartItem = (props: ICartItem) => {
                <StyledProductRow key={props._id} theme={theme}>
                     {/* Product Image */}
                     <StyledProductCell component="th" scope="row" theme={theme}>
-                         <Link href={`/proizvod/${props._id}`}>
+                         <Link rel='canonical' href={`/proizvod/${props._id}`}>
                               <CartProductImage src={props.imageURL} />
                          </Link>
                     </StyledProductCell>

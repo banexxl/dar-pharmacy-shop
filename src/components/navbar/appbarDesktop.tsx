@@ -57,7 +57,7 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                <IconBox>
                     <SvgIcon type={"logo"} />
                     <AppbarTitle sx={{ paddingTop: '5px', fontSize: '1.2rem' }}>
-                         <Link href="/">
+                         <Link rel='canonical' href="/">
                               Apoteka DAR
                          </Link>
                     </AppbarTitle>

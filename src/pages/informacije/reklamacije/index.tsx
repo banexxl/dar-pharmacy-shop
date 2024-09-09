@@ -143,7 +143,7 @@ const PrivacyPolicy = () => {
 
                                    <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
                                         U slučaju reklamacije zbog nesaobraznosti, potrošač može da pošalje robu o trošku trgovca kurirskom službom
-                                        <Link href="http://www.postexpress.rs/" target='_blank' style={{ fontWeight: 'bold' }}> Post Express</Link> sa kojom imamo ugovorni odnos.
+                                        <Link rel='canonical' href="http://www.postexpress.rs/" target='_blank' style={{ fontWeight: 'bold' }}> Post Express</Link> sa kojom imamo ugovorni odnos.
                                    </Typography>
 
                                    <Typography textAlign='left' fontSize='1rem' marginLeft='20px' fontWeight='bold' >
@@ -159,7 +159,7 @@ const PrivacyPolicy = () => {
                                    </Typography>
 
                                    <Typography textAlign='left' fontSize='1rem' marginLeft='20px' marginBottom='50px' fontWeight='bold' >
-                                        Reklamacioni list možete preuzeti <Link href={'/docs/Zahtev_za_reklamaciju.pdf'} target='_blank'>ovde.</Link>
+                                        Reklamacioni list možete preuzeti <Link rel='canonical' href={'/docs/Zahtev_za_reklamaciju.pdf'} target='_blank'>ovde.</Link>
                                    </Typography>
                               </Box>
                               <SearchBox />

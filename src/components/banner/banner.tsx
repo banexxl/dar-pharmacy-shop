@@ -29,7 +29,7 @@ export default function Banner() {
                     <BannerQuotaText >
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
                          da nas kontaktirate putem {'  '}
-                         <Link href={"/kontakt"}>
+                         <Link rel='canonical' href={"/kontakt"}>
                               <Typography component={'span'} sx={{ display: 'inline', fontSize: isScreenToMedium ? '1.2rem' : '2rem' }}>
                                    kontakt forme
                               </Typography>
@@ -44,7 +44,7 @@ export default function Banner() {
                          </Typography>
                     </BannerQuotaText>
                     <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
-                         <Link href={"/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika"}>
+                         <Link rel='canonical' href={"/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika"}>
                               Pogledajte ponudu
                          </Link>
                     </BannerShopButton>

@@ -95,7 +95,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
           >
                <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={productRef} theme={undefined} isVisible={isVisible}>
                     <FilteredProductImageContainer>
-                         <Link href={'/proizvod/' + product._id}>
+                         <Link rel='canonical' href={'/proizvod/' + product._id}>
                               <ProductImage src={product.imageURL} />
                          </Link>
                     </FilteredProductImageContainer>

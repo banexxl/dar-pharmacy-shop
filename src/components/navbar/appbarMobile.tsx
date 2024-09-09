@@ -85,7 +85,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                     }} />
                </IconButton>
                <AppbarTitle textAlign={"center"} sx={{ fontSize: getHeight() }}>
-                    <Link href="/">
+                    <Link rel='canonical' href="/">
                          DAR
                     </Link>
                </AppbarTitle>

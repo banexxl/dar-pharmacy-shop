@@ -26,7 +26,7 @@ const transformToMuiAccordion = (data: any) => {
                :
                <AccordionDetails>
                     <Typography>
-                         <Link href={`${link}` + `?part=1`}>{title}</Link>
+                         <Link rel='canonical' href={`${link}` + `?part=1`}>{title}</Link>
                     </Typography>
                </AccordionDetails>
      });

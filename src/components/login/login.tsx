@@ -143,7 +143,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                                             {userData?.city}
                                                        </Typography>
                                                   </Box>
-                                                  <Link href='/nalog' >
+                                                  <Link rel='canonical' href='/nalog' >
                                                        <Typography sx={{ marginTop: '20px', textDecoration: 'underline' }}>
                                                             Profil
                                                        </Typography>

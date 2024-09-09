@@ -58,7 +58,7 @@ const ErrorPage = (props: any) => {
                                                   {getErrorMessage(props.error)}
                                              </AuthText>
                                         </AuthFormBox>
-                                        <Link href="/autentifikacija/prijava">
+                                        <Link rel='canonical' href="/autentifikacija/prijava">
                                              <AuthButton theme={theme}>
                                                   Povratak na prijavu
                                              </AuthButton>

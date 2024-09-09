@@ -119,7 +119,7 @@ const ContactForm = () => {
                                              label={<Typography sx={{ display: 'inline', textAlign: 'justify' }}>
                                                   Saglasan/saglasna sam sa obradom mojih podataka o ličnosti navedenih za potrebe savetovanja, za vreme potrebno da se pitanje obradi i da se na njega odgovori. Više informacija možete naći na linku: <br />
                                                   <Typography sx={{ color: Colors.link, display: 'inline', textAlign: 'justify' }}>
-                                                       <Link href="/informacije/politika-privatnosti">
+                                                       <Link rel='canonical' href="/informacije/politika-privatnosti">
                                                             Politika privatnosti.
                                                        </Link>
                                                   </Typography>
@@ -143,7 +143,7 @@ const ContactForm = () => {
                                                   <Typography sx={{ textAlign: 'justify' }}>
                                                        Postavljanjem pitanja potvrđujem da sam pročitao i da sam saglasan sa: <br />
                                                        <Typography sx={{ color: Colors.link, display: 'inline' }}>
-                                                            <Link href="/informacije/politika-privatnosti">
+                                                            <Link rel='canonical' href="/informacije/politika-privatnosti">
                                                                  Pravilima i uslovima korišćenja usluge: Pitajte farmaceuta.
                                                             </Link>
                                                        </Typography>

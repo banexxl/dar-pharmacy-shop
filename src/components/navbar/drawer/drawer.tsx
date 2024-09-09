@@ -91,7 +91,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                              color: Colors.white, // Override only for this instance
                                         },
                                    }}>
-                                        <Link href={'/'}>
+                                        <Link rel='canonical' href={'/'}>
                                              Početna
                                         </Link>
                                    </ListItemText>
@@ -158,7 +158,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                              color: Colors.white, // Override only for this instance
                                         },
                                    }}>
-                                        <Link href={'/kontakt'}>
+                                        <Link rel='canonical' href={'/kontakt'}>
                                              Pitajte nas...
                                         </Link>
                                    </ListItemText>
@@ -196,7 +196,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                                   color: Colors.white, // Override only for this instance
                                              },
                                         }}>
-                                             <Link href={'/registracija'}>
+                                             <Link rel='canonical' href={'/registracija'}>
                                                   Registracija
                                              </Link>
                                         </ListItemText>

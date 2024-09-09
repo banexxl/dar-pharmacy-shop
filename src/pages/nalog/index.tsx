@@ -80,7 +80,7 @@ export default function ProtectedPage(props: any) {
                                                   <Typography variant="body1">
                                                        <strong>Grad: </strong> {userData.city || "Nije dostupno"}
                                                   </Typography>
-                                                  <Link href="/nalog/izmena-podataka">
+                                                  <Link rel='canonical' href="/nalog/izmena-podataka">
                                                        <Typography variant="body1" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
                                                             Izmeni Podatke
                                                        </Typography>

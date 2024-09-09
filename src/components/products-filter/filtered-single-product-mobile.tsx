@@ -95,7 +95,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      return (
           <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={theme} isVisible={isVisible}>
                <FilteredProductImageContainer>
-                    <Link href={'/proizvod/' + product._id}>
+                    <Link rel='canonical' href={'/proizvod/' + product._id}>
                          <FilteredProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>

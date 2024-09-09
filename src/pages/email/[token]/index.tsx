@@ -85,7 +85,7 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                                        možete zatražiti novi popunjavanjem registracione forme na sledećem linku: <br />
                                                   </ContactText>
                                                   <ContactText theme={theme} sx={{ display: 'inline-block', textAlign: 'center' }}>
-                                                       <Link href="/registracija" style={{ color: Colors.primary.main, textAlign: 'justify', textDecoration: 'underline' }}>Registrujte se</Link>
+                                                       <Link rel='canonical' href="/registracija" style={{ color: Colors.primary.main, textAlign: 'justify', textDecoration: 'underline' }}>Registrujte se</Link>
                                                   </ContactText>
                                              </Box>
                                         }
