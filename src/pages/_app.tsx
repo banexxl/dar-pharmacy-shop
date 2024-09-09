@@ -8,6 +8,7 @@ import { appWithTranslation } from 'next-i18next'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import { Analytics } from '@vercel/analytics/react';
+import Head from 'next/head'
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
@@ -24,6 +25,15 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
 
           <SessionProvider session={session}>
                <Provider store={store}>
+                    <Head>
+                         <title>
+                              Apoteka DAR
+                         </title>
+                         <meta
+                              name="google-site-verification"
+                              content="google"
+                         />
+                    </Head>
                     <PersistGate persistor={persistor}>
                          <Component {...pageProps} />
                     </PersistGate>
