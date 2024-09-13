@@ -50,7 +50,7 @@ const ContactForm = () => {
 
      return (
           <DynamicThemeProvider theme={theme}>
-               {/* <ReCaptchaProvider reCaptchaKey={process.env.RECAPTCHA_SITE_KEY}> */}
+               {/* <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}> */}
                <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema}>
                     {
                          formik => (
@@ -154,7 +154,7 @@ const ContactForm = () => {
                                              <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.questionSubmissionConsent}</FormHelperText>
                                         )}
                                    </Box>
-                                   <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.RECAPTCHA_SITE_KEY} />
+                                   <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
                                    <Button type='submit'
                                         sx={{ color: Colors.secondary.custom, backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
                                         disabled={submitEnabled && Object.keys(formik.errors).length > 0 && loaded}>
