@@ -64,7 +64,7 @@ const ContactForm = () => {
                                    </ContactTitle>
 
                                    <ContactText theme={theme}>
-                                        Ako ste u potrazi za <ContactStrongText theme={theme} >deficitarnim</ContactStrongText> lekovima, možemo vam pomoći.<br />
+                                        Ako ste u potrazi za <Typography sx={{ fontWeight: 'bold' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
                                         Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                         Slobodno nas kontaktirajte!
                                    </ContactText>
