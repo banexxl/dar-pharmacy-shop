@@ -63,11 +63,11 @@ const ContactForm = () => {
                                         Kontakt forma
                                    </ContactTitle>
 
-                                   <ContactText theme={theme}>
+                                   <Typography>
                                         Ako ste u potrazi za <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
                                         Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                         Slobodno nas kontaktirajte!
-                                   </ContactText>
+                                   </Typography>
                                    <TextField
                                         value={formik.values.name}
                                         label={"Ime"}
