@@ -114,7 +114,12 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                          <ProductDetailInfoWrapper>
                               <ProductMeta product={product} />
                               <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
-                              <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
+                              {
+                                   product.availableStock == 0 ?
+                                        <Typography textAlign='center' sx={{ fontWeight: 'bold' }}>Nema na stanju!</Typography>
+                                        :
+                                        <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
+                              }
                               <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                                    Opis
                               </Typography>
