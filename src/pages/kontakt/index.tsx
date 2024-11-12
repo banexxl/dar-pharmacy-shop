@@ -36,7 +36,7 @@ const ContactPage = (props: ContactPageProps) => {
                                         <ContactForm />
                                         <ContactMap mapApiKey={props.mapApiKey} />
                                         <ContactInfoBox theme={theme}>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-arou|\\\nd' }} theme={theme}>
+                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around' }} theme={theme}>
                                                   Adresa:
                                              </ContactText>
                                              <ContactStrongText theme={theme} >
