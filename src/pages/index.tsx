@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import CarouselOnlyImageProduct from "@/components/carousel/carousel-only-image";
 import { Seo } from "@/components/seo";
 import CarouselPresentationContainer from "@/components/carousel/carousel-presentation-container";
+import Paralax from "@/components/paralax/paralax";
 
 export default function Home(props: any) {
 
@@ -69,7 +70,8 @@ export default function Home(props: any) {
                >
                     <Stack>
                          <UIProvider>
-                              <Banner />
+                              <Paralax />
+                              {/* <Banner /> */}
                               <Promotions />
                               <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
                                    <MessageText variant="h4">Popularno</MessageText>

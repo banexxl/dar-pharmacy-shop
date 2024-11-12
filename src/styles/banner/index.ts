@@ -139,8 +139,8 @@ export const BannerShopButton = styled(LoadingButton)(({ theme }) => ({
      display: 'flex',
      flexDirection: 'column',
      justifyContent: 'flex-end',
-     // left: '50%',
-     // transform: 'translateX(-50%)',
+     left: '50%',
+     transform: 'translateX(-50%)',
      margin: '20px 20px',
      '&:hover': {
           backgroundColor: Colors.secondary.custom,
