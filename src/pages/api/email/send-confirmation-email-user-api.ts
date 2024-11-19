@@ -7,16 +7,16 @@ import { transporter } from '../../../services/email/email-config'
 
 const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
 
-     if (req.method === "POST") {
+    if (req.method === "POST") {
 
-          const data: IEmailToFields = req.body;
+        const data: IEmailToFields = req.body;
 
-          if (!data || !data.name || !data.email || !data.subject || !data.cart) {
-               return res.status(400).send({ message: "Bad request, data missing" });
-          }
+        if (!data || !data.name || !data.email || !data.subject || !data.cart) {
+            return res.status(400).send({ message: "Bad request, data missing" });
+        }
 
-          const html =
-               `
+        const html =
+            `
 <html>
 <head>
     <meta charset="UTF-8">
@@ -49,8 +49,10 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
             <br>Razumemo da imate mnogo opcija na raspolaganju i čast nam je što ste nam poverili svoje <em>zdravstvene potrebe</em>.
             <br>Kao mala kompanija, zaista cenimo vašu podršku i lojalnost. Trudimo se da našim klijentima pružimo najbolje proizvode i izuzetnu uslugu, i nadamo se da je vaše iskustvo sa nama ispunilo ili čak premašilo vaša očekivanja.
             <br><br>Još jednom vam se zahvaljujemo što ste odabrali <strong>DAR apoteku.</strong>
-            <br>Radujemo se što ćemo vam i u budućnosti služiti.
-            <br>Srdačni pozdravi,
+            <br><br>Ukoliko imate bilo kakve pitanje, ne bojte se da nas kontaktirate.<br>
+            <br><strong>Očekujte uskoro kontakt od strane našeg tima, i potvrdu tj. potvrdu statusa porudžbine.</strong><br>
+            <br>Radujemo se što ćemo vam i u budućnosti služiti.<br>
+            <br>Srdačni pozdravi,<br>
             <br><strong>DAR apoteka tim</strong>
         </p>
 
@@ -68,13 +70,13 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
             
             <ul style="padding-left: 20px;">
                 ${data.cart.map((cartItem: ICartItem) =>
-                    `<li style="margin-bottom: 8px;">`
-                    + cartItem._id.toString().slice(-8).toUpperCase()
-                    + " " + cartItem.name
-                    + " " + cartItem.quantity + " "
-                    + "*" + " " + cartItem.count
-                    + " " +
-                    `</li>`).join('')}
+                `<li style="margin-bottom: 8px;">`
+                + cartItem._id.toString().slice(-8).toUpperCase()
+                + " " + cartItem.name
+                + " " + cartItem.quantity + " "
+                + "*" + " " + cartItem.count
+                + " " +
+                `</li>`).join('')}
             </ul>
         </div>
 
@@ -98,21 +100,21 @@ const SendConfirmMessageToUserAPI = async (req: any, res: any) => {
 </html>
                               `
 
-          try {
-               await transporter.sendMail({
-                    from: process.env.EMAIL_SERVER_USER,
-                    to: data.email,
-                    subject: data.subject,
-                    html
-               });
+        try {
+            await transporter.sendMail({
+                from: process.env.EMAIL_SERVER_USER,
+                to: data.email,
+                subject: data.subject,
+                html
+            });
 
-               return res.status(200).json({ success: true });
+            return res.status(200).json({ success: true });
 
-          } catch (err: any) {
-               return res.status(400).json({ message: err });
-          }
+        } catch (err: any) {
+            return res.status(400).json({ message: err });
+        }
 
-     }
+    }
 };
 
 export default SendConfirmMessageToUserAPI
