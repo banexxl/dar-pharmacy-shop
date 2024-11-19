@@ -36,7 +36,7 @@ const SingleProduct = (props: SingleProductProps) => {
                          <UIProvider>
                               <ProductDetails discount={props.product.discount} _id={props.product._id} availableStock={props.product.availableStock} category={props.product.category} description={props.product.description}
                                    imageURL={props.product.imageURL} ingredients={props.product.ingredients} instructions={props.product.instructions} name={props.product.name}
-                                   price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} manufacturer={props.product.manufacturer} quantityUnit={props.product.quantityUnit} mediaURLs={props.product.mediaURLs} />
+                                   price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} manufacturer={props.product.manufacturer} quantityUnit={props.product.quantityUnit} mediaURLs={props.product.mediaURLs} discountAmount={props.product.discountAmount} />
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>

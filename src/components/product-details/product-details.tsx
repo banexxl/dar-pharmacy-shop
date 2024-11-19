@@ -93,7 +93,7 @@ function ProductDetails(product: IProduct) {
      const localStorage: any = useLocalStorage('persist:root', {});
      const localStorageReducers: any = localStorage[0];
      const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer);
-
+     const showSticker = product.discount && product.discountAmount! > 0;
      const wishListProductID = localStorageWishList.find((el: IProduct) => {
           return el._id == product._id;
      });
@@ -102,13 +102,41 @@ function ProductDetails(product: IProduct) {
           <ProductDetailWrapper sx={{ marginTop: '100px', gap: '30px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
                <ProductImageBox
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
-                    sx={{ cursor: 'pointer', }}>
+                    sx={{
+                         position: 'relative',
+                         cursor: 'pointer',
+                         width: isScreenToMedium ? 300 : 400,
+                         height: isScreenToMedium ? 400 : 600,
+                    }}>
                     <Image
-                         width={isScreenToMedium ? 300 : 400}
-                         height={isScreenToMedium ? 400 : 600}
-                         src={product.imageURL} alt={''}
-                         style={{ borderRadius: '10px' }}
+                         fill
+                         src={product.imageURL}
+                         alt="Product image"
+                         style={{
+                              borderRadius: theme.shape.borderRadius,
+                              objectFit: 'cover',
+                         }}
                     />
+                    {showSticker && (
+                         <Box
+                              sx={{
+                                   position: 'absolute',
+                                   top: theme.spacing(2),
+                                   right: theme.spacing(2),
+                                   backgroundColor: Colors.primary.main,
+                                   color: 'white',
+                                   padding: theme.spacing(1, 2),
+                                   borderRadius: '50%',
+                                   transform: 'rotate(12deg)',
+                                   zIndex: 1,
+                                   boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+                              }}
+                         >
+                              <Typography variant="caption" fontWeight="bold" color={Colors.primary.lighter}>
+                                   -{product.discountAmount}% popusta
+                              </Typography>
+                         </Box>
+                    )}
                </ProductImageBox>
                <ProductDetailInfoWrapper>
                     <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
