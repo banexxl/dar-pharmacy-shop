@@ -35,7 +35,7 @@ const EmailAndAccountCreation: React.FC = () => {
                <Grid item xs={12} sm={6}>
                     <Field
                          as={TextField}
-                         value={values.email}
+                         value={values.email.toLowerCase()}
                          disabled={!!session?.user?.email}
                          label="Email"
                          name="email"
