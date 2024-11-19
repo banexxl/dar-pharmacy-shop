@@ -97,7 +97,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     onClick={() => {
                          SendCheckoutConfirmationEmailToAdmin({
                               email: 'maja@apoteka-dar.rs',
-                              customerEmail: userFormSelector.email,
+                              customerEmail: userFormSelector.email.toLowerCase(),
                               subject: 'Poružbenica',
                               name: userFormSelector.name,
                               title: 'Potvrda porudzbenice',
@@ -105,7 +105,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
                          }).then(() => {
                               SendCheckoutConfirmationEmailToUser({
-                                   email: userFormSelector.email, subject: 'Poružbenica',
+                                   email: userFormSelector.email.toLowerCase(), subject: 'Poružbenica',
                                    name: userFormSelector.name, title: 'Potvrda porudzbenice',
                                    cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
                                    country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
