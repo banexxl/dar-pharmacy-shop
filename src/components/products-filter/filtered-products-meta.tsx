@@ -1,12 +1,9 @@
 
 import { Typography } from "@mui/material";
 import { ProductMetaWrapper } from "../../styles/product/single-product";
-import { useTranslation } from "next-i18next";
 import theme from "@/styles/theme";
 
 export default function FilteredProductMeta({ product, isScreenToMedium }: any) {
-
-
 
      return (
           <ProductMetaWrapper theme={theme}>

@@ -5,19 +5,13 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { WishListWrapper, WishlistHeader, WishlistHeaderCell, WishlistRemoveAllButton, WishlistTable, WishlistTableBody } from "@/styles/wishlist";
-import { useTranslation } from "next-i18next";
 import IWishlistItem from "@/interfaces/wishlist/wishlist.interface";
 import WishlistItem from "./wishlist-item";
 import { clearWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
-import { ProductActionButton, ProductAddToCart } from "@/styles/product/single-product";
 import { useState } from "react";
 import { addToCart } from "@/store/cart/cart.slice";
-import { color } from "framer-motion";
+import SlideTransition from "@/hooks/use-slide-transition";
 
-
-const SlideTransition = (props: any) => {
-     return <Slide direction="down" {...props} />;
-}
 
 export default function WishList({ open, onClose, product }: any) {
 

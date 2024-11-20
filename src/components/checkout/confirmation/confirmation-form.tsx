@@ -9,7 +9,6 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IConfirmationProps } from '@/interfaces/checkout/confirmation.interface'
-import { useTranslation } from 'next-i18next'
 import { clearCart } from '@/store/cart/cart.slice'
 import { clearPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice'
 import { clearUserForm } from '@/store/checkout/user-info-form.slice'

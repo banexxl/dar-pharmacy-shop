@@ -9,7 +9,6 @@ import ProductDetails from "../product-dropdown/product-dropdown";
 import ProductMeta from "./products-meta";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
-import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 import { SocialShare } from "../social/socials-share";

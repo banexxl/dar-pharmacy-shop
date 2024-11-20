@@ -8,11 +8,8 @@ import { useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart/cart.interface";
 import CartItem from "./components/cartItem";
 import CartTotals from "./components/cartTotals";
-import { useTranslation } from "next-i18next";
+import SlideTransition from "@/hooks/use-slide-transition";
 
-function SlideTransition(props: any) {
-     return <Slide direction="down" {...props} />;
-}
 
 interface ICartProps extends ICartItem {
      open: boolean
@@ -24,7 +21,6 @@ interface ICartProps extends ICartItem {
 export default function Cart({ open, onClose }: ICartProps) {
 
      const theme = useTheme()
-     const { t } = useTranslation();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
 
@@ -57,23 +53,21 @@ export default function Cart({ open, onClose }: ICartProps) {
                     <CartWrapper component={Paper} theme={theme}>
                          <StyledTable>
                               <StyledHeader>
-                                   <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme}  >Naziv</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme}  >Pakovanje</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme}  >Kod</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme}  >Količina</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} >Cena</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} >Ukupno sa PDV</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} >Ukupno sa popustom</StyledHeaderCell>
-                                   <StyledHeaderCell theme={theme} >Obriši</StyledHeaderCell>
+                                   <TableRow>
+                                        <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Cena</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Ukupno sa PDV</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
+                                        <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
+                                   </TableRow>
                               </StyledHeader>
                               <StyledTableBody theme={theme}>
                                    {cart.map((cartItem: ICartItem) => (
-                                        <CartItem discount={cartItem.discount} discountAmount={cartItem.discountAmount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
-                                             name={cartItem.name} description={cartItem.description} category={cartItem.category}
-                                             availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
-                                             instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                             warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
+                                        <CartItem key={cartItem._id} {...cartItem} />
                                    ))}
                               </StyledTableBody>
                          </StyledTable>

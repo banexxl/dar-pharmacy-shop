@@ -1,8 +1,7 @@
-import { Box, Typography, useMediaQuery } from "@mui/material"
+import { Typography, useMediaQuery } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
 import { BannerContainer, BannerLeftImageContent, BannerRightImageContent, BannerQuotaText, BannerShopButton, BannerTextContent, BannerTitle } from "../../styles/banner"
-import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import { Colors } from "@/styles/theme";
 

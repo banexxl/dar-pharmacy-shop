@@ -1,14 +1,8 @@
-import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
-import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import { ContactBox, ContactFormBox, ContactInfoBox, ContactStrongText, ContactSubTitle, ContactText, ContactTitle } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
-import { useTranslation } from "next-i18next"
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { Seo } from "@/components/seo";

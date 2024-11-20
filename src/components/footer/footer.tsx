@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { List, ListItemText, Typography, Button, Stack, Container, ListItemButton, ListItemIcon, Box, FormControlLabel, Alert, useMediaQuery, Accordion, AccordionDetails, AccordionSummary, AccordionActions } from "@mui/material"
 import theme, { Colors } from "../../styles/theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -6,18 +5,14 @@ import { SubscribeTf, FooterTitle, FooterContainer, FooterInfoAccount, FooterSoc
 import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 import useDialogModal from "@/hooks/useDialogModal";
 import WishList from "../wishlist/wishlist";
 import Cart from "../cart/cart";
 import LoginRegister from "../login/login";
-import { useRouter } from "next/router";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Form, Formik } from "formik";
 import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
 import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
-import SubscribeClientService from "@/pages/api/email/subscribe-user-api";
-import { NextResponse } from "next/server";
 import Swal from "sweetalert2";
 
 export default function Footer() {

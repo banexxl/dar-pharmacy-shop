@@ -1,14 +1,10 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselProductImage } from './carousel-image-loader';
-import { CarouselButton, CarouselImgBox, CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import { CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { Box, Button, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { OverlayText } from '@/styles/product/filtered-single-product';
 import Image from 'next/image';
-import { Colors } from '@/styles/theme';
 import { ProductAddToCart } from '@/styles/product/single-product';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';

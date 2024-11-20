@@ -6,10 +6,8 @@ import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../product-dropdown/product-dropdown";
-import ProductMeta from "./filtered-products-meta"
 import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch } from "react-redux";
-import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import FilteredProductMeta from "./filtered-products-meta";
 import theme from "@/styles/theme";

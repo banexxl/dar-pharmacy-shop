@@ -14,12 +14,8 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LoadingWheel from "../loading/loading";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import SlideTransition from "@/hooks/use-slide-transition";
 
-
-
-function SlideTransition(props: any) {
-     return <Slide direction="down" {...props} />;
-}
 
 export default function LoginRegister({ open, onClose }: any) {
 

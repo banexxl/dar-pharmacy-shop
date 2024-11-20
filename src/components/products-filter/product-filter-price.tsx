@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Slider, Typography, Grid, Box, Button } from '@mui/material';
 import IProduct from '@/interfaces/product/product.interface';
-import { useTranslation } from 'next-i18next';
 import { PriceRangeBox, PriceRangeFilterButton } from '@/styles/products-filter/products-filter';
 
 interface PriceFilterProps {

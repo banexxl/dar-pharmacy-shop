@@ -2,7 +2,6 @@ import { Container, Stack } from "@mui/material";
 import { ProductsServices } from '@/services/product.services'
 import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import LoadingWheel from "@/components/loading/loading";
@@ -20,7 +19,6 @@ export default function MainCategoryPage(props: any) {
      })
 
      const router = useRouter()
-     const [filteredProducts, setFilteredProducts] = useState();
      const [loading, setLoading] = useState(false)
 
      useEffect(() => {

@@ -20,10 +20,7 @@ import IProduct from "@/interfaces/product/product.interface";
 import ProductMeta from "../products/products-meta";
 import useDialogModal from "@/hooks/useDialogModal";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
-function SlideTransition(props: any) {
-     return <Slide direction="down" {...props} />;
-}
+import SlideTransition from "@/hooks/use-slide-transition";
 
 interface IProductDetailProps {
      open: boolean,

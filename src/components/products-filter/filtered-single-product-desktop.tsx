@@ -9,7 +9,6 @@ import ProductDetails from "../product-dropdown/product-dropdown";
 import ProductMeta from "./filtered-products-meta";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
-import { useTranslation } from "next-i18next";
 import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import theme from "@/styles/theme";
 import Link from "next/link";
@@ -22,7 +21,6 @@ type FilteredSingleProductDesktopProps = {
 
 export default function FilteredSingleProductDesktop({ product, isScreenToMedium }: FilteredSingleProductDesktopProps) {
 
-     const { t } = useTranslation();
      const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
