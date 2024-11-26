@@ -123,14 +123,26 @@ const ProductCarousel = (props: any) => {
                                              </Tooltip>
                                         </CarouselTitleBox>
                                    </Box>
-                                   <ProductAddToCart
-                                        show={true}
-                                        onClick={() => {
-                                             callCartAlert();
-                                             dispatch(addToCart(product));
-                                        }} theme={theme}>
-                                        Dodaj u korpu
-                                   </ProductAddToCart>
+                                   {
+                                        product.availableStock > 0 ? (
+                                             <ProductAddToCart
+                                                  show={true}
+                                                  onClick={() => {
+                                                       callCartAlert();
+                                                       dispatch(addToCart(product));
+                                                  }} theme={theme}>
+                                                  Dodaj u korpu
+                                             </ProductAddToCart>
+                                        )
+                                             :
+                                             <ProductAddToCart
+                                                  show={true}
+                                                  disabled
+                                                  theme={theme}>
+                                                  Nema na stanju
+                                             </ProductAddToCart>
+                                   }
+
                               </StyledCarouselCard>
                          ))
                     }

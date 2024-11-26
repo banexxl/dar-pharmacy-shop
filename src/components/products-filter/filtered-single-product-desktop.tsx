@@ -118,7 +118,9 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               callCartAlert();
                               dispatch(addToCart(product));
                          }}
-                         theme={theme}                    >
+                         theme={theme}
+                         disabled={product.availableStock <= 0}
+                    >
                          Dodaj u korpu
                     </FilteredProductAddToCart>
                )}

@@ -86,13 +86,27 @@ export default function ProductCard(props: ProductCardProps) {
                     )
                }
                <CardActions disableSpacing>
-                    <PopularProductAddToCart loading={loading} onClick={() => {
-                         callCartAlert()
-                         dispatch(addToCart(props.product))
-                    }}
-                    >
-                         Dodaj u korpu
-                    </PopularProductAddToCart>
+                    {
+                         props.product.availableStock > 0 ? (
+                              <PopularProductAddToCart loading={loading} onClick={() => {
+                                   callCartAlert()
+                                   dispatch(addToCart(props.product))
+                              }}
+                              >
+                                   Dodaj u korpu
+                              </PopularProductAddToCart>
+                         ) : (
+                              <PopularProductAddToCart loading={loading} onClick={() => {
+                                   callCartAlert()
+                                   dispatch(addToCart(props.product))
+                              }}
+                                   sx={{ backgroundColor: Colors.dim_grey }}
+                                   disabled
+                              >
+                                   Nema na stanju
+                              </PopularProductAddToCart>
+                         )
+                    }
                     <ExpandMore
                          expand={expanded}
                          onClick={handleExpandClick}

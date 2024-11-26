@@ -171,7 +171,12 @@ function ProductDetails(product: IProduct) {
                          alignItems="center"
                          justifyContent="space-evenly"
                     >
-                         <Button onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
+                         <Button
+                              onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}
+                              disabled={product.availableStock <= 0}
+                         >
+                              Dodaj u korpu
+                         </Button>
                          <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} />
                     </Box>
                     <Box

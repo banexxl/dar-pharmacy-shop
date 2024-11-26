@@ -132,13 +132,28 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                               Proizvod dodat u listu želja
                          </Alert>
                     )}
-                    <ProductAddToCart
-                         onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
-                         theme={theme}
-                         show={true}
-                    >
-                         Dodaj u korpu
-                    </ProductAddToCart >
+                    {
+                         product.availableStock > 0 ?
+                              (
+                                   <ProductAddToCart
+                                        onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
+                                        theme={theme}
+                                        show={true}
+                                   >
+                                        Dodaj u korpu
+                                   </ProductAddToCart >
+                              )
+                              :
+                              (
+                                   <ProductAddToCart
+                                        theme={theme}
+                                        show={true}
+                                   >
+                                        Nema na stanju
+                                   </ProductAddToCart >
+                              )
+                    }
+
 
                     <ProductDetailDialog product={product} />
                </Product>

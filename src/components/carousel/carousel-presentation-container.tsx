@@ -112,13 +112,27 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
                                         )
                                    }
                                    <CardActions disableSpacing>
-                                        <PopularProductAddToCart loading={loading} onClick={() => {
-                                             callCartAlert()
-                                             dispatch(addToCart(product))
-                                        }}
-                                        >
-                                             Dodaj u korpu
-                                        </PopularProductAddToCart>
+                                        {
+                                             product.availableStock > 0 ? (
+                                                  <PopularProductAddToCart loading={loading} onClick={() => {
+                                                       callCartAlert()
+                                                       dispatch(addToCart(product))
+                                                  }}
+                                                  >
+                                                       Dodaj u korpu
+                                                  </PopularProductAddToCart>
+                                             ) : (
+                                                  <PopularProductAddToCart loading={loading} onClick={() => {
+                                                       callCartAlert()
+                                                       dispatch(addToCart(product))
+                                                  }}
+                                                       sx={{ backgroundColor: Colors.dim_grey }}
+                                                       disabled
+                                                  >
+                                                       Nema na stanju
+                                                  </PopularProductAddToCart>
+                                             )
+                                        }
                                         {/* <ExpandMore
                                              expand={expanded}
                                              onClick={handleExpandClick}

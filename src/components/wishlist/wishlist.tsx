@@ -87,6 +87,7 @@ export default function WishList({ open, onClose, product }: any) {
                                                             callCartAlert();
                                                             dispatch(addToCart(wishListItem));
                                                        }}
+                                                       disabled={product.availableStock <= 0}
                                                   >
                                                        Dodaj u korpu
                                                   </Button>

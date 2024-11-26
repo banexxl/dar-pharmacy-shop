@@ -127,7 +127,14 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          Proizvod dodat u listu želja
                     </Alert>
                )}
-               <FilteredProductAddToCart onClick={() => { callCartAlert(); dispatch(addToCart(product)); }} theme={theme} show={false}>Dodaj u korpu</FilteredProductAddToCart >
+               <FilteredProductAddToCart
+                    onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
+                    theme={theme}
+                    show={false}
+                    disabled={product.availableStock <= 0}
+               >
+                    Dodaj u korpu
+               </FilteredProductAddToCart >
                <ProductDetailDialog product={product} />
           </FilteredProduct>
      )
