@@ -23,8 +23,6 @@ type FilteredSingleProductDesktopProps = {
 export default function FilteredSingleProductDesktop({ product, isScreenToMedium }: FilteredSingleProductDesktopProps) {
 
      const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails)
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false)
      const [loading, setLoading] = useState(false)
      const [isVisible, setVisible] = useState(false)
@@ -78,17 +76,10 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      }
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true)
-          setLoading(true)
-          const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setLoading(false)
-               setAddedToWishlistAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u listu zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      return (
@@ -98,11 +89,6 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          <FilteredProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>
-               {/* <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} theme={theme}>
-                    <Tooltip placement="left" title={"Dodaj u listu želja"}>
-                         <FavoriteIcon />
-                    </Tooltip>
-               </FilteredProductFavButton> */}
                {(showOptions || isScreenToMedium) && (
                     <FilteredProductAddToCart
                          show={showOptions}
@@ -139,11 +125,6 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                </FilteredProductActionsWrapper>
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
-               {addedToWishlistAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                         Proizvod dodat u listu želja
-                    </Alert>
-               )}
           </FilteredProduct>
      );
 }

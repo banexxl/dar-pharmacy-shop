@@ -14,10 +14,10 @@ import SlideTransition from "@/hooks/use-slide-transition";
 import toast from "react-hot-toast";
 
 
-export default function WishList({ open, onClose, product }: any) {
-
+export default function WishList({ open, onClose }: any) {
      const theme = useTheme()
      const wishlist = useSelector((state: any) => state.persistReduce.wishListReducer)
+
      const dispatch = useDispatch()
      const [showOptions, setShowOptions] = useState(false);
 
@@ -79,7 +79,7 @@ export default function WishList({ open, onClose, product }: any) {
                                                             callCartAlert();
                                                             dispatch(addToCart(wishListItem));
                                                        }}
-                                                       disabled={product.availableStock <= 0}
+                                                       disabled={wishListItem.availableStock <= 0}
                                                   >
                                                        Dodaj u korpu
                                                   </Button>

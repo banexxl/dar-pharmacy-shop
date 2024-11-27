@@ -47,7 +47,6 @@ type SingleProductMobileProps = {
 export default function SingleProductMobile({ product, isScreenToMedium }: SingleProductMobileProps) {
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false);
      const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
 
@@ -71,15 +70,10 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
      }
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true)
-          const timeId = setTimeout(() => {
-               // After 3 seconds set the show value to false
-               setAddedToWishlistAlert(false)
-          }, 2000)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u listu zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      return (
@@ -116,11 +110,6 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                     </ProductActionsWrapper>
                     {openShareOption && showOptions && (
                          < SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="column" />
-                    )}
-                    {addedToWishlistAlert && (
-                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
-                              Proizvod dodat u listu želja
-                         </Alert>
                     )}
                     {
                          product.availableStock > 0 ?

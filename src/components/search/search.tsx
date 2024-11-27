@@ -1,4 +1,4 @@
-import { Alert, Box, Button, CircularProgress, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Alert, Box, Button, CircularProgress, Divider, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
@@ -119,53 +119,87 @@ export default function SearchBox() {
                                                   border: `1px solid ${Colors.dim_grey}`,
                                                   borderRadius: '10px',
                                                   boxShadow: `1px 2px 2px 2px ${Colors.primary.lighter}`,
-                                                  paddingTop: '20px'
+                                                  paddingTop: '20px',
+                                                  paddingBottom: '20px',
                                              }}>
-                                                  {searchResults.data.map((product: IProduct) => (
-                                                       <ListItem key={product._id}
-                                                            sx={{
-                                                                 display: 'flex',
-                                                                 justifyContent: 'space-between',
-                                                                 alignItems: 'center',
-                                                                 paddingTop: '20px'
-                                                            }}
-                                                       // onClick={() => setShowSearchBox(false)}
-                                                       >
-                                                            <Box>
-                                                                 <ListItemText
-                                                                      primary={product.name}
-                                                                      secondary={product.manufacturer}
+                                                  {searchResults.data.map((product: IProduct, index) => (
+                                                       <Box key={product._id}>
+                                                            <ListItem
+                                                                 sx={{
+                                                                      display: 'flex',
+                                                                      justifyContent: 'space-between',
+                                                                      alignItems: 'center',
+                                                                      paddingTop: '20px',
+                                                                      paddingBottom: '20px',
+                                                                 }}
+                                                            >
+                                                                 <Box
                                                                       sx={{
-                                                                           '& .MuiTypography-root': {
-                                                                                color: `${Colors.primary.main} !important`,
-                                                                           },
+                                                                           display: 'flex',
+                                                                           flexDirection: 'row',
+                                                                           alignItems: 'center',
+                                                                           justifyContent: 'space-between',
+                                                                           width: '100%',
+                                                                      }}
+                                                                 >
+                                                                      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'space-between', gap: '10px' }}>
+                                                                           <ListItemText
+                                                                                primary={product.name}
+                                                                                secondary={product.manufacturer}
+                                                                                sx={{
+                                                                                     '& .MuiTypography-root': {
+                                                                                          color: `${Colors.primary.main} !important`,
+                                                                                     },
+                                                                                }}
+                                                                           />
+                                                                           <Button
+                                                                                onClick={() => {
+                                                                                     toast.success('Item added to cart!', {
+                                                                                          duration: 1500,
+                                                                                          position: 'top-center'
+                                                                                     });
+                                                                                     dispatch(addToCart(product));
+                                                                                }}
+                                                                                disabled={product.availableStock <= 0}
+                                                                           >
+                                                                                Dodaj u korpu
+                                                                           </Button>
+                                                                      </Box>
+                                                                      <Box
+                                                                           component={'a'}
+                                                                           href={`/proizvod/${product._id}`}
+                                                                           sx={{
+                                                                                display: 'flex',
+                                                                                flexDirection: 'column',
+                                                                                alignItems: 'center',
+                                                                                textDecoration: 'none',
+                                                                                color: 'inherit',
+                                                                           }}
+                                                                      >
+                                                                           <Image
+                                                                                src={product.imageURL}
+                                                                                alt="DAR proizvodi"
+                                                                                height={100}
+                                                                                width={100}
+                                                                                style={{ borderRadius: '5px' }}
+                                                                           />
+                                                                           <Typography sx={{ marginTop: '8px' }}>
+                                                                                {product.price} RSD
+                                                                           </Typography>
+                                                                      </Box>
+                                                                 </Box>
+                                                            </ListItem>
+                                                            {index < searchResults.data!.length - 1 && (
+                                                                 <Divider
+                                                                      sx={{
+                                                                           borderColor: Colors.primary.main,
+                                                                           borderWidth: '1px',
+                                                                           width: '90%',
+                                                                           margin: '0 auto',
                                                                       }}
                                                                  />
-                                                                 <Button onClick={() => {
-                                                                      toast.success('Item added to cart!', {
-                                                                           duration: 1500,
-                                                                           position: 'top-center'
-                                                                      })
-                                                                      dispatch(addToCart(product))
-                                                                 }} disabled={product.availableStock <= 0}>
-                                                                      Dodaj u korpu
-                                                                 </Button>
-                                                            </Box>
-                                                            <Box
-                                                                 component={'a'} href={`/proizvod/${product._id}`}
-                                                            >
-                                                                 <Image
-                                                                      src={`${product.imageURL}`}
-                                                                      alt="DAR proizvodi"
-                                                                      height={100}
-                                                                      width={100}
-                                                                      style={{ borderRadius: '5px' }}
-                                                                 />
-                                                                 <Typography>
-                                                                      {product.price} RSD
-                                                                 </Typography>
-                                                            </Box>
-                                                       </ListItem>
+                                                            )}
+                                                       </Box>
                                                   ))}
                                              </List>
                                         ) : (

@@ -25,8 +25,6 @@ type SingleProductDesktopProps = {
 export default function SingleProductDesktop({ product, isScreenToMedium }: SingleProductDesktopProps) {
 
      const [ProductDetailDialog, showProductDetailDialog] = useDialogModal(ProductDetails);
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false);
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false);
      const [showOptions, setShowOptions] = useState(false);
      const [loading, setLoading] = useState(false);
      const [isVisible, setVisible] = useState(false);
@@ -91,16 +89,10 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      };
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true);
-          setLoading(true);
-          const timeId = setTimeout(() => {
-               setLoading(false);
-               setAddedToWishlistAlert(false);
-          }, 1500);
-
-          return () => {
-               clearTimeout(timeId);
-          };
+          toast.success("Proizvod je dodat u listu zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      };
 
      return (
@@ -151,17 +143,6 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                {showShareOptions && showOptions && (
                     <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="row" />
                )}
-               {addedToCartAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                         Proizvod je dodat u korpu
-                    </Alert>
-               )}
-               {addedToWishlistAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                         Proizvod je dodat u listu želja
-                    </Alert>
-               )}
-
           </Product>
      );
 }

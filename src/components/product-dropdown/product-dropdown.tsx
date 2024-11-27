@@ -35,9 +35,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const dispatch = useDispatch()
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
-     const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
 
      const callCartAlert = () => {
           toast.success("Proizvod je dodat u korpu", {
@@ -47,25 +44,17 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
      }
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true)
-          const timeId = setTimeout(() => {
-               setAddedToWishlistAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u listu zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const callRemovedFromWishlistAlert = () => {
-          setRemovedFromWishlistAlert(true)
-          const timeId = setTimeout(() => {
-               setRemovedFromWishlistAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je uklonjen iz liste zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const localStorage: any = useLocalStorage('persist:root', {})
@@ -163,16 +152,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               </Box>
                          </ProductDetailInfoWrapper>
                     </ProductDetailWrapper>
-                    {addedToWishlistAlert && (
-                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                              Dodato u listu želja
-                         </Alert>
-                    )}
-                    {removedFromWishlistAlert && (
-                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                              Uklonjeno iz liste želja
-                         </Alert>
-                    )}
                     <CartDialog />
                </DialogContent>
           </Dialog >

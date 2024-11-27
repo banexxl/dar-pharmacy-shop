@@ -23,7 +23,6 @@ type FilteredSingleProductMobileProps = {
 export default function FilteredSingleProductMobile({ product, isScreenToMedium }: FilteredSingleProductMobileProps) {
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false);
 
      const [isVisible, setVisible] = useState(false)
@@ -74,15 +73,10 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      }
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true)
-          const timeId = setTimeout(() => {
-               // After 3 seconds set the show value to false
-               setAddedToWishlistAlert(false)
-          }, 2000)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u listu zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      return (
@@ -112,11 +106,6 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          </FilteredProductActionButton>
                     </Stack>
                </FilteredProductActionsWrapper>
-               {addedToWishlistAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
-                         Proizvod dodat u listu želja
-                    </Alert>
-               )}
                <FilteredProductAddToCart
                     onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
                     theme={theme}

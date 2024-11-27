@@ -25,9 +25,6 @@ function ProductDetails(product: IProduct) {
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
      const dispatch = useDispatch();
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false);
-     const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false);
-     const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false);
      const [isCarouselOpen, setCarouselOpen] = useState(false);
      const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -66,25 +63,17 @@ function ProductDetails(product: IProduct) {
      };
 
      const callWishlistAlert = () => {
-          setAddedToWishlistAlert(true);
-          const timeId = setTimeout(() => {
-               setAddedToWishlistAlert(false);
-          }, 1500);
-
-          return () => {
-               clearTimeout(timeId);
-          }
+          toast.success("Proizvod je dodat u listu zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const callRemovedFromWishlistAlert = () => {
-          setRemovedFromWishlistAlert(true);
-          const timeId = setTimeout(() => {
-               setRemovedFromWishlistAlert(false);
-          }, 1500);
-
-          return () => {
-               clearTimeout(timeId);
-          }
+          toast.success("Proizvod je uklonjen iz liste zelja", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const localStorage: any = useLocalStorage('persist:root', {});
@@ -211,16 +200,6 @@ function ProductDetails(product: IProduct) {
                          }}
                     >
                          <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
-                         {addedToWishlistAlert && (
-                              <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
-                                   Dodato u listu želja
-                              </Alert>
-                         )}
-                         {removedFromWishlistAlert && (
-                              <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                                   Uklonjeno iz liste želja
-                              </Alert>
-                         )}
                     </Box>
                </ProductDetailInfoWrapper>
                <CartDialog />
