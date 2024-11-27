@@ -17,6 +17,7 @@ import useDialogModal from '@/hooks/useDialogModal';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MediaCarousel from '../carousel/media-carousel';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 function ProductDetails(product: IProduct) {
 
@@ -46,14 +47,10 @@ function ProductDetails(product: IProduct) {
      };
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true);
-          const timeId = setTimeout(() => {
-               setAddedToCartAlert(false);
-          }, 1500);
-
-          return () => {
-               clearTimeout(timeId);
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const handleAddToWishlist = () => {
@@ -214,11 +211,6 @@ function ProductDetails(product: IProduct) {
                          }}
                     >
                          <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
-                         {addedToCartAlert && (
-                              <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
-                                   Dodato u korpu
-                              </Alert>
-                         )}
                          {addedToWishlistAlert && (
                               <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: isScreenToMedium ? '-900px' : '0px', left: '50%', transform: 'translate(-50%)', width: '250px', zIndex: '1000' }}>
                                    Dodato u listu želja

@@ -13,6 +13,7 @@ import FilteredProductMeta from "./filtered-products-meta";
 import theme from "@/styles/theme";
 import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
+import toast from "react-hot-toast";
 
 type FilteredSingleProductMobileProps = {
      product: IProduct;
@@ -22,7 +23,6 @@ type FilteredSingleProductMobileProps = {
 export default function FilteredSingleProductMobile({ product, isScreenToMedium }: FilteredSingleProductMobileProps) {
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false);
 
@@ -67,15 +67,10 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      };
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true)
-          const timeId = setTimeout(() => {
-               // After 3 seconds set the show value to false
-               setAddedToCartAlert(false)
-          }, 2000)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               duration: 1500,
+               position: "top-center"
+          })
      }
 
      const callWishlistAlert = () => {
@@ -117,11 +112,6 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          </FilteredProductActionButton>
                     </Stack>
                </FilteredProductActionsWrapper>
-               {addedToCartAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
-                         Proizvod dodat u korpu
-                    </Alert>
-               )}
                {addedToWishlistAlert && (
                     <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
                          Proizvod dodat u listu želja

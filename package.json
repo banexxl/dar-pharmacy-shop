@@ -63,6 +63,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "18.2.0",
     "react-google-button": "^0.7.2",
+    "react-hot-toast": "^2.4.1",
     "react-i18next": "^12.1.5",
     "react-icons": "^4.9.0",
     "react-input-mask": "^2.0.4",

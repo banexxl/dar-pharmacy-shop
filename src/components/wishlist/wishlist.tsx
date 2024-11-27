@@ -11,29 +11,21 @@ import { clearWishList, removeFromWishList } from "@/store/wishlist/wishlist.sli
 import { useState } from "react";
 import { addToCart } from "@/store/cart/cart.slice";
 import SlideTransition from "@/hooks/use-slide-transition";
+import toast from "react-hot-toast";
 
 
 export default function WishList({ open, onClose, product }: any) {
 
      const theme = useTheme()
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
      const wishlist = useSelector((state: any) => state.persistReduce.wishListReducer)
      const dispatch = useDispatch()
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false);
      const [showOptions, setShowOptions] = useState(false);
-     const [loading, setLoading] = useState(false);
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true);
-          setLoading(true);
-          const timeId = setTimeout(() => {
-               setLoading(false);
-               setAddedToCartAlert(false);
-          }, 1500);
-
-          return () => {
-               clearTimeout(timeId);
-          };
+          toast.success("Proizvod je dodat u korpu", {
+               duration: 1500,
+               position: "top-center"
+          })
      };
 
 
@@ -112,11 +104,6 @@ export default function WishList({ open, onClose, product }: any) {
                          </WishlistRemoveAllButton>
                     </WishListWrapper>
                </DialogContent>
-               {addedToCartAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                         Proizvod dodat u korpu
-                    </Alert>
-               )}
           </Dialog>
      );
 }

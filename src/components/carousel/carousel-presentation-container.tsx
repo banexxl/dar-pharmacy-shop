@@ -9,6 +9,7 @@ import { Colors } from "@/styles/theme";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "@/store/cart/cart.slice";
+import toast from "react-hot-toast";
 
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -63,17 +64,10 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
      const [addedToCartAlert, setAddedToCartAlert] = useState(false)
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true)
-          setLoading(true)
-          const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setLoading(false)
-               setAddedToCartAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      return (
@@ -104,13 +98,6 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
                                         image={product.imageURL}
                                         alt="Paella dish"
                                    />
-                                   {
-                                        addedToCartAlert && (
-                                             <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translate(-50%, 300px)', width: '250px', zIndex: '1000' }}>
-                                                  Dodato u korpu
-                                             </Alert>
-                                        )
-                                   }
                                    <CardActions disableSpacing>
                                         {
                                              product.availableStock > 0 ? (

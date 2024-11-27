@@ -9,6 +9,7 @@ import { ProductAddToCart } from '@/styles/product/single-product';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/cart/cart.slice';
+import toast from 'react-hot-toast';
 
 const ProductCarousel = (props: any) => {
 
@@ -22,17 +23,10 @@ const ProductCarousel = (props: any) => {
      };
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true)
-          setLoading(true)
-          const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setLoading(false)
-               setAddedToCartAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const responsive = {

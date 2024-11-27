@@ -13,6 +13,7 @@ import { addToWishList } from "@/store/wishlist/wishlist.slice";
 import theme from "@/styles/theme";
 import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
+import toast from "react-hot-toast";
 
 type FilteredSingleProductDesktopProps = {
      product: IProduct;
@@ -70,17 +71,10 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      };
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true)
-          setLoading(true)
-          const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setLoading(false)
-               setAddedToCartAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const callWishlistAlert = () => {
@@ -145,11 +139,6 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                </FilteredProductActionsWrapper>
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
-               {addedToCartAlert && (
-                    <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                         Proizvod dodat u korpu
-                    </Alert>
-               )}
                {addedToWishlistAlert && (
                     <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                          Proizvod dodat u listu želja

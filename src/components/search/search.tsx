@@ -1,14 +1,15 @@
-import { Box, Button, CircularProgress, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Alert, Box, Button, CircularProgress, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
 import { SearchBoxContainer, SearchResultsBox } from "@/styles/search/search.style";
 import { KeyboardEvent, useState } from "react";
 import Image from 'mui-image'
-import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import IProduct from "@/interfaces/product/product.interface";
-import LoadingWheel from "../loading/loading";
 import { Colors } from "@/styles/theme";
+import { addToCart } from "@/store/cart/cart.slice";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 type SearchResult = {
      message?: string,
@@ -24,6 +25,8 @@ export default function SearchBox() {
      const [searchResults, setSearchResults] = useState<SearchResult>();
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+     const dispatch = useDispatch()
+     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
 
      const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
           setSearchQuery(event.target.value);
@@ -119,25 +122,38 @@ export default function SearchBox() {
                                                   paddingTop: '20px'
                                              }}>
                                                   {searchResults.data.map((product: IProduct) => (
-                                                       <ListItem key={product._id} component={'a'} href={`/proizvod/${product._id}`}
+                                                       <ListItem key={product._id}
                                                             sx={{
                                                                  display: 'flex',
                                                                  justifyContent: 'space-between',
                                                                  alignItems: 'center',
                                                                  paddingTop: '20px'
                                                             }}
-                                                            onClick={() => setShowSearchBox(false)}
+                                                       // onClick={() => setShowSearchBox(false)}
                                                        >
-                                                            <ListItemText
-                                                                 primary={product.name}
-                                                                 secondary={product.manufacturer}
-                                                                 sx={{
-                                                                      '& .MuiTypography-root': {
-                                                                           color: `${Colors.primary.main} !important`,
-                                                                      },
-                                                                 }}
-                                                            />
                                                             <Box>
+                                                                 <ListItemText
+                                                                      primary={product.name}
+                                                                      secondary={product.manufacturer}
+                                                                      sx={{
+                                                                           '& .MuiTypography-root': {
+                                                                                color: `${Colors.primary.main} !important`,
+                                                                           },
+                                                                      }}
+                                                                 />
+                                                                 <Button onClick={() => {
+                                                                      toast.success('Item added to cart!', {
+                                                                           duration: 1500,
+                                                                           position: 'top-center'
+                                                                      })
+                                                                      dispatch(addToCart(product))
+                                                                 }} disabled={product.availableStock <= 0}>
+                                                                      Dodaj u korpu
+                                                                 </Button>
+                                                            </Box>
+                                                            <Box
+                                                                 component={'a'} href={`/proizvod/${product._id}`}
+                                                            >
                                                                  <Image
                                                                       src={`${product.imageURL}`}
                                                                       alt="DAR proizvodi"
@@ -160,7 +176,6 @@ export default function SearchBox() {
                               )
                          }
                     </SearchResultsBox>
-
                </SearchBoxContainer>
           </Slide >
      );

@@ -15,6 +15,7 @@ import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import { SocialShare } from "../social/socials-share";
 import IProduct from "@/interfaces/product/product.interface";
+import toast from "react-hot-toast";
 
 function useIsInViewport(ref: any) {
      const [isIntersecting, setIsIntersecting] = useState(false);
@@ -46,7 +47,6 @@ type SingleProductMobileProps = {
 export default function SingleProductMobile({ product, isScreenToMedium }: SingleProductMobileProps) {
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
      const [addedToWishlistAlert, setAddedToWishlistAlert] = useState(false)
      const [showOptions, setShowOptions] = useState(false);
      const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
@@ -64,15 +64,10 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
      };
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true)
-          const timeId = setTimeout(() => {
-               // After 3 seconds set the show value to false
-               setAddedToCartAlert(false)
-          }, 2000)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               duration: 1500,
+               position: "top-center"
+          })
      }
 
      const callWishlistAlert = () => {
@@ -121,11 +116,6 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                     </ProductActionsWrapper>
                     {openShareOption && showOptions && (
                          < SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="column" />
-                    )}
-                    {addedToCartAlert && (
-                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>
-                              Proizvod dodat u korpu
-                         </Alert>
                     )}
                     {addedToWishlistAlert && (
                          <Alert variant="filled" severity="success" sx={{ position: 'absolute', width: '120px' }}>

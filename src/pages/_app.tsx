@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head'
+import { Toaster } from 'react-hot-toast';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
@@ -31,6 +32,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
                     </PersistGate>
                </Provider>
                <Analytics />
+               <Toaster />
           </SessionProvider>
 
      )

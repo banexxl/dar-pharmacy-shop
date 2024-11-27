@@ -15,6 +15,7 @@ import { SocialShare } from "../social/socials-share";
 import theme from "@/styles/theme";
 import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
+import toast from "react-hot-toast";
 
 type SingleProductDesktopProps = {
      product: IProduct;
@@ -83,16 +84,10 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      };
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true);
-          setLoading(true);
-          const timeId = setTimeout(() => {
-               setLoading(false);
-               setAddedToCartAlert(false);
-          }, 1500);
-
-          return () => {
-               clearTimeout(timeId);
-          };
+          toast.success("Proizvod je dodat u korpu", {
+               duration: 1500,
+               position: "top-center"
+          })
      };
 
      const callWishlistAlert = () => {

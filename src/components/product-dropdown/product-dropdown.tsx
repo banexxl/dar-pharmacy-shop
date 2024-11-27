@@ -21,6 +21,7 @@ import ProductMeta from "../products/products-meta";
 import useDialogModal from "@/hooks/useDialogModal";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SlideTransition from "@/hooks/use-slide-transition";
+import toast from "react-hot-toast";
 
 interface IProductDetailProps {
      open: boolean,
@@ -39,15 +40,10 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
      const [removedFromWishlistAlert, setRemovedFromWishlistAlert] = useState(false)
 
      const callCartAlert = () => {
-          setAddedToCartAlert(true)
-          const timeId = setTimeout(() => {
-               // After X seconds set the show value to false
-               setAddedToCartAlert(false)
-          }, 1500)
-
-          return () => {
-               clearTimeout(timeId)
-          }
+          toast.success("Proizvod je dodat u korpu", {
+               position: "top-center",
+               duration: 1500
+          })
      }
 
      const callWishlistAlert = () => {
@@ -167,11 +163,6 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               </Box>
                          </ProductDetailInfoWrapper>
                     </ProductDetailWrapper>
-                    {addedToCartAlert && (
-                         <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
-                              Dodato u korpu
-                         </Alert>
-                    )}
                     {addedToWishlistAlert && (
                          <Alert variant="filled" severity="success" sx={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '250px', zIndex: '1000' }}>
                               Dodato u listu želja
