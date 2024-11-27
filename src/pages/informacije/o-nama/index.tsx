@@ -67,7 +67,7 @@ const ContactPage = (props: ContactPageProps) => {
                                                   Nedelja: od 08 do 20h
                                              </ContactStrongText >
                                              <ContactStrongText theme={theme}>
-                                                  Kralja Aleksnadra Prvog Kardjordjevica 102 lokal9,u sklopu Tc Prostor., Kragujevac 34000
+                                                  Kralja Aleksnadra Prvog Kardjordjevica 102 lokal 9,u sklopu Tc Prostor., Kragujevac 34000
                                              </ContactStrongText>
                                         </Box>
                                    </ContactInfoBox>
