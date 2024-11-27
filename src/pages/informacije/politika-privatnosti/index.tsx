@@ -71,27 +71,27 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'num', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   LIČNI PODACI: za kontakt kao što su ime, prezime, adresa, elektronska pošta, broj telefona
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   PODACI O POSLOVNIM KONTAKTIMA: kao što su adresa privrednog subjekta, poslovna elektronska pošta
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   OSETLJIVI LIČNI PODACI: pol, datum rođenja
                                              </Typography>
                                         </ListItem >
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   PODACI O UGOVORU: kao što je sadržaj ugovora o poslovnoj saradnji
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   INFORMACIJE O PLAĆANJU: kao što su broj tekućeg računa, zahtevi za nadoknadu štete, plaćanje obaveza iz ugovora
                                              </Typography>
                                         </ListItem>
@@ -103,27 +103,27 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'num', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem www.apoteka-dar.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke, kako bismo Vam isporučili robu na željenu adresu;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Izvršavanje zahteva - rešavanje reklamacija, primedbi: nastojimo da ih rešimo na odgovoarajući način u skladu sa Zakonom. Kako bismo imali dovoljno informacija da sprovedemo ovaj postupak i donesemo pravilnu odluku, kao i da dostavimo povratnu informaciju u vezi reklamacije – potrebno je da prikupljamo određene podatke o Vama. Takođe, ukoliko želite povraćaj novca biće neophodno da se popuni propisani formular-takozvani NI obrazac, u koji se unosi vaš jmbg, jer tako nalažu važeći propisi.
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Ugovaranje – da bismo zaključili ugovor potrebno je da proverimo da li je lice sa kojim stupamo u ugovorni odnos za to ovlašćeno. Isti je slučaj sa izvršenjem pojedinih ugovornih odredbi od strane lica koja su za to određena. Ponekad je potrebno da proverimo identitet ovih lica, kako bismo bili sigurni da postupamo na ispravan način. Ove aktivnosti preduzimamo za potrebe postupanja po osnovu ugovora koji smo sklopili sa Vama da bismo ispunili zakonske obaveze.
                                              </Typography>
                                         </ListItem >
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Obaveštenje o ponudama – ako ste se prijavili da povremeno dobijate obaveštenja o akcijama i drugim pogodnostima, tom prilikom ste nam podelili neke vase podatke koje možemo koristiti za slanje ovih obaveštenja – dok Vi to želite.
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} disablePadding>
-                                             <Typography>
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Preduzimamo mere bezbednosti – kao što su CCTV kamere i imamo pristup bezbednosnim podacima o našim kancelarijskim prostorijama da bismo bili sigurni da su naši saradnici, kupci posetioci i imovina zaštićeni.
                                              </Typography>
                                         </ListItem>
@@ -135,7 +135,7 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Podaci o vašem zdravstvenom stanju, gde spada evidencija o vašem odsustvovanju sa rada iz zdravstvenih razloga; medicinska dokumentacija, lekarski nalazi i sl. radi obrade eventualnih zahteva za naknadu štete koja se desila u našem maloprodajnom objektu ili poslovnom prostoru. Nećemo evidentirati vaše podatke, iz zdravstvenog kartona, osim kada je to izričito neophodno. Moguće je da će ovi podaci biti prosleđeni našoj osiguravajućoj kući, radi postupanja po vašem zahtevu za naknadu štete. U slučaju da protiv nas pokrenete sudski postupak, predmetni podaci mogu biti dostavljeni na uvid nadležnom sudu u toku postupka.
                                              </Typography>
                                         </ListItem>
@@ -151,27 +151,27 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Trećim licima koji nastupaju u naše ime (obrađivačima). U ovim slučajevima, takva treća lica mogu da koriste vaše lične podatke isključivo za potrebe koje su gore navedene i isključivo u skladu sa našim instrukcijama
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Saradnici u sektorima koji se bave gore navedenim uslugama mogu imati pristup vašim ličnim podacima, ali samo kada je to strogo neophodno da bi obavili svoje radne zadatke, i kada je saradnik obavezan da čuva poverljivost informacija;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Osiguravajuća društva koja pružaju usluge preduzeću Apotekarska ustanova DAR i saradnicima
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Treća lica koja su odgovorna za čuvanje vaših ličnih podataka, nezavisno od Apotekarska ustanova DAR (to su lica angažovana spolja, nezavisni revizori, advokati, poreski savetnici i sl.)
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Ukoliko to bude zahtevao zakon ili sudski nalog, na primer organi za sprovođenje zakona ili drugi državni organi.
                                              </Typography>
                                         </ListItem>
@@ -187,17 +187,17 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Dužina trajanja vašeg ugovornog odnosa;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Sve dok imamo uspostavljene odnose sa Vama;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Prema zakonskim uslovima koji se primenjuju na nas.
                                              </Typography>
                                         </ListItem>
@@ -217,27 +217,27 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   IP adresu uređaja sa kog je poslat upit i koji ima pristup internetu
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Datum i vreme pristupa
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Ime i URL preuzete datoteke
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Internet stranicu /aplikaciju sa koje se pristupa (referrer URL)
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Pretraživač koji koristite i, ako je potrebno, operativni sistem računara koji podržava internet, kao i ime vašeg provajdera
                                              </Typography>
                                         </ListItem>
@@ -249,17 +249,17 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Obezbeđivanje uspostavljanja nesmetane veze
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Obezbeđivanje komfornog korišćenja naše internet stranice/aplikacije
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Procena bezbednosti i stabilnosti sistema
                                              </Typography>
                                         </ListItem>
@@ -305,32 +305,32 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'circle', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Nedozvoljen pristup u prostore i objekte;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Iznošenje, odnosno otuđenje i neovlašćeno korišćenje štićenih predmeta;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Unošenje oružja, eksplozivnih, radioaktivnih i drugih opasnih predmeta i materija;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Provale, diverzije i nasilan napad na objekat ili oduzimanje predmeta;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Neovlašćen pristup podacima i dokumentaciji;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Zaštita vozila za transport novca i drugih prevoznih sredstava.
                                              </Typography>
                                         </ListItem>
@@ -504,12 +504,12 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Facebook
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Instagram
                                              </Typography>
                                         </ListItem>
@@ -654,32 +654,32 @@ const PrivacyPolicy = () => {
 
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   pravo na informisanje o vašim ličnim podacima koje obrađujemo, u skladu sa članom 26 Zakona o zaštiti podataka o ličnosti,
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   pravo na ispravku netačnih ili nepotpunih podataka, u skladu sa članom 29 Zakona o zaštiti podataka o ličnosti,
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   pravo na brisanje vaših sačuvanih podataka, u skladu sa članom 30 Zakona o zaštiti podataka o ličnosti,
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   pravo na ograničenje obrade podataka, u skladu sa članom 31 Zakona o zaštiti podataka o ličnosti,
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   pravo na prenosivost podataka, u skladu sa članom 36 Zakona o zaštiti podataka o ličnosti,
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   pravo na prigovor, u skladu sa članom 37 Zakona o zaštiti podataka o ličnosti.
                                              </Typography>
                                         </ListItem>
@@ -691,27 +691,27 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >U skladu sa članom 26 Zakona o zaštiti podataka o ličnosti imate pravo da od nas besplatno zahtevate informaciju o tome da li obrađujemo vaše podatke o ličnosti, pristup tim podacima, kao i informacije:</Typography>
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   o svrsi obrade;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   o vrstama podataka o ličnosti koji se obrađuju;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   o primaocima ili vrstama primaoca kojima su podaci o ličnosti otkriveni ili će im biti otkriveni, a posebno primaocima u drugim državama ili međunarodnim organizacijama;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   o predviđenom roku čuvanja podataka o ličnosti, ili ako to nije moguće, o kriterijumima za određivanje tog roka;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   o postojanju prava da se od rukovaoca ( Apotekarska ustanova DAR ) zahteva ispravka ili brisanje podataka o ličnosti, prava na ograničenje obrade i prava na prigovor na obradu;o pravu da se podnese pritužba državnom organu (Poverenik za informacije od javnog značaja i zaštitu podataka o ličnosti); o izvoru podataka o ličnosti (dostupne informacije), ako podaci o ličnosti nisu prikupljeni od lica na koje se odnose (od vas); o postojanju postupka automatizovanog donošenja odluke, uključujući profilisanje iz člana 38 stav 1 i 4 Zakona o zaštiti podataka o ličnosti, i, najmanje u tim slučajevima, svrsishodne informacije o logici koja se pri tome koristi, kao i o značaju i očekivanim posledicama te obrade po lice na koje se podaci odnose (po vas).
                                              </Typography>
                                         </ListItem>
@@ -723,7 +723,7 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontStyle='italic'>3. Pravo na ispravku u skladu sa članom 29 Zakona o zaštiti podataka o ličnosti</Typography>
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   Imate pravo da zahtevate da se vaši netačni podaci o ličnosti, bez nepotrebnog odlaganja, isprave. U zavisnosti od svrhe obrade, imate pravo da svoje nepotpune podatke o ličnosti dopunite, što uključuje i davanje dodatne izjave.
                                              </Typography>
                                         </ListItem>
@@ -735,32 +735,32 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >Imate pravo da zahtevate da se vaši podaci o ličnosti izbrišu sa naše strane u sledećim slučajevima:</Typography>
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   podaci o ličnosti više nisu neophodni za ostvarivanje svrhe zbog koje su prikupljeni ili na drugi način obrađivani;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   vi ste opozvali pristanak na osnovu kojeg se obrada vršila, u skladu sa članom 12 stav 1 tačka 1) ili članom 17 stav 2 tačka 1) Zakona o zaštiti podataka o ličnosti, a nema drugog pravnog osnova za obradu;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   kada podnesete prigovor na obradu u skladu sa članom 37 stav 1 ili 2 Zakona o zaštiti podataka o ličnosti, a nema drugog pravnog osnova za obradu koji preteže nad legitimnim interesom, pravom ili slobodom lica na koje se podaci odnose;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   podaci o ličnosti su nezakonito obrađivani;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   podaci o ličnosti moraju biti izbrisani u cilju izvršenja naših zakonskih obaveza;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   podaci o ličnosti su prikupljeni u vezi sa korišćenjem usluga informacionog društva iz člana16, stav 1 Zakona o zaštiti podataka o ličnosti.
                                              </Typography>
                                         </ListItem>
@@ -773,22 +773,22 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >Imate pravo da zahtevate da ograničimo obradu vaših podataka o ličnosti ako je ispunjen jedan od sledećih slučajeva:</Typography>
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   osporavate tačnost podataka o ličnosti, u roku koji nam omogućava proveru tačnosti podataka o ličnosti;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   obrada je nezakonita, a protivite se brisanju podataka o ličnosti i umesto brisanja zahtevate ograničenje upotrebe podataka;
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   rukovaocu (nama) više nisu potrebni podaci o ličnosti za ostvarivanje svrhe obrade, ali su vama potrebni u cilju podnošenja, ostvarivanja ili odbrane pravnog zahteva; ili
                                              </Typography>
                                         </ListItem>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   ste vi podneli prigovor na obradu u skladu sa članom 37, stav 1 Zakona o zaštiti podataka o ličnosti, a u toku je procenjivanje da li pravni osnov za obradu od strane rukovaoca (nas) preteže nad vašim interesima.
                                              </Typography>
                                         </ListItem>
@@ -798,7 +798,7 @@ const PrivacyPolicy = () => {
                                    <Typography padding='20px 20px 0px 20px' display='block' textAlign='justify' fontWeight='bold' >Imate pravo da vaše podatke o ličnosti, koje ste nam prethodno dostavili, primite u strukturisanom, uobičajeno korišćenom i elektronski čitljivom obliku i imate pravo da te podatke prenesete drugom rukovaocu bez ometanja sa naše strane, ako su kumulativno ispunjeni sledeći uslovi:</Typography>
                                    <List sx={{ listStyleType: 'disc', pl: 6 }}>
                                         <ListItem sx={{ display: 'list-item', fontStyle: 'italic' }} >
-                                             <Typography >
+                                             <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>
                                                   obrada je zasnovana na pristanku u skladu sa članom 12 stav, 1 tačka 1) ili članom 17 stav2, tačka 1) Zakona o zaštiti podataka o ličnosti ili na osnovu ugovora, u skladu sa članom 12 stav, 1 tačka 2) istog Zakona;obrada se vrši automatizovano.
                                              </Typography>
                                         </ListItem>
