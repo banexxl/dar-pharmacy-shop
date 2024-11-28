@@ -292,9 +292,7 @@ export default function Footer() {
                                              startIcon={<SendIcon />}
                                              // variant="contained"
                                              type="submit"
-                                             //disabled={formik.errors ? true : false}
-                                             //wait 1 second and clear the formik email field
-                                             onClick={() => setTimeout(() => formik.setFieldValue('email', ''), 500)}
+                                        //disabled={formik.errors ? true : false}
                                         >
                                              Prijavi se
                                         </Button>
