@@ -14,31 +14,22 @@ import { Form, Formik } from "formik";
 import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
 import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 export default function Footer() {
 
-     const [agreedWarning, setAgreedWarning] = useState(false)
      const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList)
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister)
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
-     const callAlert = () => {
-          setAgreedWarning(true)
-          const timeId = setTimeout(() => {
-               // After 3 seconds set the show value to false
-               setAgreedWarning(false)
-          }, 3000)
-
-          return () => {
-               clearTimeout(timeId)
-          }
-     }
-
      const handleSubmit = async (data: any) => {
 
           if (!data.agreedToTerms) {
-               callAlert();
+               toast.error('Morate prihvatiti uslove koriscenja!', {
+                    duration: 3000,
+                    position: "top-center"
+               })
                return;
           } else {
                await fetch('/api/email/subscribe-user-api', {
@@ -52,24 +43,14 @@ export default function Footer() {
                }).then((response: any) => response.json())
                     .then((response: any) => {
                          if (response.message === "Email successfully registered!") {
-                              Swal.fire({
-                                   title: 'Hvala Vam puno na prijavi!',
-                                   text: 'Nećemo Vas puno gnjaviti :)',
-                                   icon: 'success',
-                                   background: Colors.secondary.custom, // Update the background property to a string value
-                                   confirmButtonText: '<b >OK!</b> ',
-                                   showCloseButton: true,
-                                   timer: 3000
+                              toast.success('Vaš mejl je uspešno registrovan!', {
+                                   duration: 3000,
+                                   position: "top-center"
                               });
                          } else if (!response.ok) {
-                              Swal.fire({
-                                   title: 'Eh! Nismo uspeli da upišemo vaš email!',
-                                   text: 'Vaš email je već upisan kod nas :)',
-                                   icon: 'error',
-                                   confirmButtonText: 'OK!',
-                                   showCloseButton: true,
-                                   background: Colors.primary.main, // Update the background property to a string value
-                                   timer: 3000
+                              toast.error('Vaš mejl je već registrovan!', {
+                                   duration: 3000,
+                                   position: "top-center"
                               });
                          } else {
                               console.error('Unexpected response:', response);
@@ -311,7 +292,9 @@ export default function Footer() {
                                              startIcon={<SendIcon />}
                                              // variant="contained"
                                              type="submit"
-                                        //disabled={formik.errors ? true : false}
+                                             //disabled={formik.errors ? true : false}
+                                             //wait 1 second and clear the formik email field
+                                             onClick={() => setTimeout(() => formik.setFieldValue('email', ''), 500)}
                                         >
                                              Prijavi se
                                         </Button>
@@ -331,13 +314,6 @@ export default function Footer() {
                          )
                     }
                </Formik>
-               {
-                    agreedWarning && (
-                         <Alert variant="filled" severity="error" sx={{ position: 'fixed', bottom: '0px', left: '50%', transform: 'translateX(-50%)', width: '250px' }}>
-                              Upozorenje: Morate prihvatiti Politiku privatnosti!
-                         </Alert>
-                    )
-               }
                <WishListDialog />
                <CartDialog />
                <LoginDialog />
