@@ -8,6 +8,7 @@ import { Button, useMediaQuery } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { removeAllSingleItems } from '@/store/cart/cart.slice';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 const CartItem = (props: ICartItem) => {
 
@@ -80,7 +81,10 @@ const CartItem = (props: ICartItem) => {
                     <StyledProductCell theme={theme}>
                          <Button
                               sx={{ backgroundColor: 'transparent' }}
-                              onClick={() => dispatch(removeAllSingleItems(props._id))}
+                              onClick={() => {
+                                   toast.success("Proizvod je uklonjen iz korpe", { position: "top-center", duration: 1500 })
+                                   dispatch(removeAllSingleItems(props._id))
+                              }}
                          >
                               <DeleteIcon />
                          </Button>

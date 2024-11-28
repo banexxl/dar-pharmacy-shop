@@ -6,6 +6,7 @@ import { StyledHeaderCell, StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle
 import { clearCart } from '@/store/cart/cart.slice'
 import { Button, Typography } from '@mui/material'
 import theme, { Colors } from '@/styles/theme'
+import toast from 'react-hot-toast'
 
 interface ICartTotalsProps {
      onClose: () => void
@@ -40,7 +41,10 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                          KREIRAJ PORUDŽBENICU
                     </Link>
                </Button>
-               <Button onClick={() => dispatch(clearCart())}>
+               <Button onClick={() => {
+                    toast.success("Korpa je prazna", { duration: 1500, position: "top-center" })
+                    dispatch(clearCart())
+               }}>
                     Isprazni korpu
                </Button>
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '30px', mb: '30px' }}>

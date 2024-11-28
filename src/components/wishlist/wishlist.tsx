@@ -100,7 +100,6 @@ export default function WishList({ open, onClose }: any) {
                                         ))
                                    }
                               </WishlistTableBody>
-
                          </WishlistTable>
                          <WishlistRemoveAllButton onClick={() => {
                               toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda", {
