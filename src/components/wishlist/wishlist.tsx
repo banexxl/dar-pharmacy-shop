@@ -87,7 +87,10 @@ export default function WishList({ open, onClose }: any) {
                                                        sx={{ color: Colors.primary.main, margin: '10px' }}
                                                        onClick={() => {
                                                             showOptions ? setShowOptions(false) : setShowOptions(true);
-                                                            callCartAlert();
+                                                            toast.success("Proizvod je uklonjen iz omiljenih proizvoda", {
+                                                                 duration: 1500,
+                                                                 position: "top-center"
+                                                            });
                                                             dispatch(removeFromWishList(wishListItem));
                                                        }}
                                                   >
@@ -99,11 +102,18 @@ export default function WishList({ open, onClose }: any) {
                               </WishlistTableBody>
 
                          </WishlistTable>
-                         <WishlistRemoveAllButton onClick={() => dispatch(clearWishList())}>
+                         <WishlistRemoveAllButton onClick={() => {
+                              toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda", {
+                                   duration: 1500,
+                                   position: "top-center"
+                              })
+                              dispatch(clearWishList())
+                         }}
+                         >
                               Obriši listu omiljenih proizvoda
                          </WishlistRemoveAllButton>
                     </WishListWrapper>
                </DialogContent>
-          </Dialog>
+          </Dialog >
      );
 }
