@@ -63,7 +63,7 @@ export default function Chatbot() {
                     setStep(3);
                     setMessages((prev) => [
                          ...prev,
-                         `Apoteka DAR: Hvala Vam na kontaku. Uskoro će Vam se javiti neko od zaposlenih :)`,
+                         `Apoteka DAR: Hvala Vam na kontaku. Ako su kontakt podaci validni, neko će Vam se uskoro javiti :)`,
                     ]);
                     sendEmail(input.contact, input.question)
                }
