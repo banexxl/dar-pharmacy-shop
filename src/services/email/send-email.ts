@@ -86,5 +86,3 @@ export const SendContactEmail = async (data: IContactForm) => {
           }
      })
 }
-
-

@@ -21,6 +21,7 @@ import CarouselOnlyImageProduct from "@/components/carousel/carousel-only-image"
 import { Seo } from "@/components/seo";
 import CarouselPresentationContainer from "@/components/carousel/carousel-presentation-container";
 import Paralax from "@/components/paralax/paralax";
+import Chatbot from "@/chatbot/chatbot";
 
 export default function Home(props: any) {
 
@@ -117,7 +118,7 @@ export default function Home(props: any) {
                                         <Divider variant="middle" sx={{ borderBottomWidth: 5, my: '10px' }} />
                                    </Box>
                               }
-
+                              <Chatbot />
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>
