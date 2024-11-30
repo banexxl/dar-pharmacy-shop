@@ -35,7 +35,7 @@ export default function Chatbot() {
                // Reset state when drawer is opened
                setMessages([
                     "Apoteka DAR: Ćao! 😊",
-                    "Apoteka DAR: Pošaljite nam vaše pitanje!",
+                    "Apoteka DAR: Unesite nam vaše pitanje!",
                ]);
                setStep(1);
                setInput({
@@ -150,7 +150,7 @@ export default function Chatbot() {
                               <IconButton onClick={() => {
                                    setMessages([
                                         "Apoteka DAR: Ćao! 😊",
-                                        "Apoteka DAR: Pošaljite nam vaše pitanje, kontakt telefon ili email, i šaljemo vam odgovor u najkraćem mogućem roku!",
+                                        "Apoteka DAR: Unesite nam vaše pitanje!",
                                    ])
                                    setInput({
                                         question: "",
