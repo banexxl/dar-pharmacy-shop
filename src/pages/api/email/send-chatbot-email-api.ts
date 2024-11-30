@@ -8,7 +8,12 @@ const SendChatBotMessage = async (request: NextApiRequest, response: NextApiResp
                from: process.env.EMAIL_SERVER_USER,
                to: 'maja@apoteka-dar.rs',
                subject: 'Poruka sa sajta!',
-               text: `Poruka korisnika: ${request.body.question} \n Kontakt korisnika: ${request.body.contact}`
+               html: `
+        <p><strong>Poruka korisnika:</strong></p>
+        <p>${request.body.question}</p>
+        <p><strong>Kontakt korisnika:</strong></p>
+        <p>${request.body.contact}</p>
+    `
           }
           try {
                const emailSentResponse: any = await transporter.sendMail(mailOptions);
