@@ -101,7 +101,7 @@ export default function Chatbot() {
           <>
                <Fab
                     aria-label="chat"
-                    style={{ position: "fixed", bottom: 16, right: 16 }}
+                    style={{ position: "fixed", bottom: 86, right: 16 }}
                     onClick={toggleDrawer}
                     sx={{
                          bgcolor: Colors.primary.light,
