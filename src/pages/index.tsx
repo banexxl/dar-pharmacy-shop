@@ -22,6 +22,7 @@ import { Seo } from "@/components/seo";
 import CarouselPresentationContainer from "@/components/carousel/carousel-presentation-container";
 import Paralax from "@/components/paralax/paralax";
 import Chatbot from "@/chatbot/chatbot";
+import PaymentStrip from "@/payment-strip/payment-strip";
 
 export default function Home(props: any) {
 
@@ -118,6 +119,7 @@ export default function Home(props: any) {
                                         <Divider variant="middle" sx={{ borderBottomWidth: 5, my: '10px' }} />
                                    </Box>
                               }
+                              {/* <PaymentStrip /> */}
                               <Chatbot />
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
