@@ -150,7 +150,7 @@ export default function Chatbot() {
                               <IconButton onClick={() => {
                                    setMessages([
                                         "Apoteka DAR: Ćao! 😊",
-                                        "Apoteka DAR: Unesite nam vaše pitanje!",
+                                        "Apoteka DAR: Unesite Vaše pitanje!",
                                    ])
                                    setInput({
                                         question: "",
