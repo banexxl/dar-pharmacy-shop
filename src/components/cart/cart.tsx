@@ -51,26 +51,35 @@ export default function Cart({ open, onClose }: ICartProps) {
 
                <DialogContent>
                     <CartWrapper component={Paper} theme={theme}>
-                         <StyledTable>
-                              <StyledHeader>
-                                   <TableRow>
-                                        <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Cena</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Ukupno sa PDV</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
-                                        <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
-                                   </TableRow>
-                              </StyledHeader>
-                              <StyledTableBody theme={theme}>
-                                   {cart.map((cartItem: ICartItem) => (
-                                        <CartItem key={cartItem._id} {...cartItem} />
-                                   ))}
-                              </StyledTableBody>
-                         </StyledTable>
+                         {
+                              cart.length === 0 ? (
+                                   <Typography variant="h6" align="center" sx={{ color: Colors.primary.main }}>
+                                        Korpa je prazna
+                                   </Typography>
+                              )
+                                   :
+                                   <StyledTable>
+                                        <StyledHeader>
+                                             <TableRow>
+                                                  <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Cena</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Ukupno sa PDV</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
+                                             </TableRow>
+                                        </StyledHeader>
+                                        <StyledTableBody theme={theme}>
+                                             {cart.map((cartItem: ICartItem) => (
+                                                  <CartItem key={cartItem._id} {...cartItem} />
+                                             ))}
+                                        </StyledTableBody>
+                                   </StyledTable>
+                         }
+
                     </CartWrapper>
                     <CartTotals onClose={onClose} />
                </DialogContent>

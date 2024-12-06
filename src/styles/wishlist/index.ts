@@ -70,6 +70,22 @@ export const WishlistProductName = styled(Typography)<WishlistProductInfoProps>(
      width: '100px',
 }))
 
+type WishlistProductDetailsProps = {
+     theme: Theme
+}
+
+export const WishListProductDetails = styled(Typography)<WishlistProductDetailsProps>(({ theme }) => ({
+     wordWrap: 'break-word',
+     fontSize: 14,
+     [theme.breakpoints.up("xs")]: {
+          padding: '2px'
+     },
+     [theme.breakpoints.down("sm")]: {
+          flexDirection: "column",
+          alignItems: "center",
+     }
+}))
+
 export const WishlistProductActionButton = styled(IconButton)(() => ({
      margin: 4,
 }))

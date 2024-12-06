@@ -1,6 +1,6 @@
 import IWishlistItem from '@/interfaces/wishlist/wishlist.interface'
 import theme from '@/styles/theme'
-import { WishlistProductImage, WishlistProductCell, WishlistProductName, WishlistProductRow } from '@/styles/wishlist'
+import { WishlistProductImage, WishlistProductCell, WishlistProductName, WishlistProductRow, WishListProductDetails } from '@/styles/wishlist'
 import Counter from '@/utils/counter'
 import Link from 'next/link'
 import React from 'react'
@@ -18,15 +18,15 @@ const WishlistItem = (props: IWishlistItem) => {
                <WishlistProductName theme={theme}>
                     {props.name}
                </WishlistProductName>
-               <WishlistProductCell theme={theme}>
-                    {props.quantity} {' '} {props.quantityUnit}
-               </WishlistProductCell>
-               <WishlistProductCell align="left" theme={theme}>
-                    {props._id.toString().slice(-8).toUpperCase()}
-               </WishlistProductCell>
-               <WishlistProductCell align="left" theme={theme}>
-                    {props.price} rsd
-               </WishlistProductCell>
+               <WishListProductDetails theme={theme}>
+                    Količina: {props.quantity} {' '} {props.quantityUnit}
+               </WishListProductDetails>
+               <WishListProductDetails align="left" theme={theme}>
+                    Šifra: {props._id.toString().slice(-8).toUpperCase()}
+               </WishListProductDetails>
+               <WishListProductDetails align="left" theme={theme}>
+                    Cena: {props.price} rsd
+               </WishListProductDetails>
           </WishlistProductRow >
      )
 }

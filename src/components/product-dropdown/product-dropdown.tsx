@@ -159,15 +159,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                              onClick={handleRemoveFromWishlist}
                                         />
                                    )}
-                                   Dodaj u listu želja
-                              </Box>
-                              <Box
-                                   sx={{
-                                        mt: 4,
-                                        color: Colors.dove_gray,
-                                   }}
-                              >
-                                   <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
+                                   <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.light }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                               </Box>
                          </ProductDetailInfoWrapper>
                     </ProductDetailWrapper>
