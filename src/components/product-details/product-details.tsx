@@ -9,7 +9,7 @@ import IProduct from '@/interfaces/product/product.interface';
 import React, { useState } from 'react'
 import Cart from "../cart/cart";
 import { addToCart } from '@/store/cart/cart.slice'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.slice';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import ProductMeta from '../products/products-meta';
@@ -18,6 +18,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MediaCarousel from '../carousel/media-carousel';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
+import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
 
 function ProductDetails(product: IProduct) {
 
@@ -25,6 +26,7 @@ function ProductDetails(product: IProduct) {
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
      const dispatch = useDispatch();
+     const wishListState = useSelector(wishListSelectorState)
      const [isCarouselOpen, setCarouselOpen] = useState(false);
      const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -76,6 +78,7 @@ function ProductDetails(product: IProduct) {
           })
      }
 
+     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
      const localStorage: any = useLocalStorage('persist:root', {});
      const localStorageReducers: any = localStorage[0];
      const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer);
@@ -170,7 +173,7 @@ function ProductDetails(product: IProduct) {
                          alignItems="center"
                          sx={{ mt: 4, color: Colors.primary.light }}
                     >
-                         {wishListProductID === null || wishListProductID === undefined ? (
+                         {!isInWishlist ? (
                               <FavoriteBorderIcon
                                    id={`wishlist-icon-${product._id}`}
                                    sx={{

@@ -12,7 +12,7 @@ import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/product
 import { FC, useState } from "react";
 import ICartItem from "@/interfaces/cart/cart.interface";
 import Cart from "../cart/cart";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
@@ -22,6 +22,7 @@ import useDialogModal from "@/hooks/useDialogModal";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SlideTransition from "@/hooks/use-slide-transition";
 import toast from "react-hot-toast";
+import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 
 interface IProductDetailProps {
      open: boolean,
@@ -35,7 +36,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const dispatch = useDispatch()
-
+     const wishListState = useSelector(wishListSelectorState)
+     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
      const callCartAlert = () => {
           toast.success("Proizvod je dodat u korpu", {
                position: "top-center",
@@ -43,19 +45,23 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
           })
      }
 
-     const callWishlistAlert = () => {
+     const handleAddToWishlist = () => {
+          dispatch(addToWishList(product));
           toast.success("Proizvod je dodat u listu zelja", {
                position: "top-center",
                duration: 1500
           })
-     }
+          // triggerIconBlink(); // Blink effect on click
+     };
 
-     const callRemovedFromWishlistAlert = () => {
+     const handleRemoveFromWishlist = () => {
+          dispatch(removeFromWishList(product));
           toast.success("Proizvod je uklonjen iz liste zelja", {
                position: "top-center",
                duration: 1500
           })
-     }
+          // triggerIconBlink(); // Blink effect on click
+     };
 
      const localStorage: any = useLocalStorage('persist:root', {})
      const localStorageReducers: any = localStorage[0]
@@ -134,12 +140,27 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                    alignItems="center"
                                    sx={{ mt: 4, color: Colors.primary.light }}
                               >
-                                   {
-                                        wishListProductID === null || wishListProductID === undefined ?
-                                             <FavoriteBorderIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.lighter})` } }} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} />
-                                             :
-                                             <FavoriteIcon sx={{ mr: 1, cursor: 'pointer', ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.lighter})` } }} onClick={() => { dispatch(removeFromWishList(product)); callRemovedFromWishlistAlert(); }} />
-                                   }
+                                   {!isInWishlist ? (
+                                        <FavoriteBorderIcon
+                                             id={`wishlist-icon-${product._id}`}
+                                             sx={{
+                                                  mr: 1,
+                                                  cursor: 'pointer',
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                             }}
+                                             onClick={handleAddToWishlist}
+                                        />
+                                   ) : (
+                                        <FavoriteIcon
+                                             id={`wishlist-icon-${product._id}`}
+                                             sx={{
+                                                  mr: 1,
+                                                  cursor: 'pointer',
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                             }}
+                                             onClick={handleRemoveFromWishlist}
+                                        />
+                                   )}
                                    Dodaj u listu želja
                               </Box>
                               <Box

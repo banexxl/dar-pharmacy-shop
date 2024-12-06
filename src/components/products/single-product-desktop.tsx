@@ -3,19 +3,21 @@ import { Product, ProductActionsWrapper, ProductAddToCart, ProductFavButton, Pro
 import { Alert, Box, Button, Stack, Tooltip } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../product-dropdown/product-dropdown";
 import ProductMeta from "./products-meta";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
-import { addToWishList } from "@/store/wishlist/wishlist.slice";
+import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 import { SocialShare } from "../social/socials-share";
-import theme from "@/styles/theme";
+import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
+import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 
 type SingleProductDesktopProps = {
      product: IProduct;
@@ -33,6 +35,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      const dispatch = useDispatch();
      const [showShareOptions, setShowShareOptions] = useState(false);
      const ref = useRef<HTMLDivElement | null>(null);
+     const wishListState = useSelector(wishListSelectorState)
+     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+
 
      const handleClickOutside = (event: any) => {
           if (ref.current && !ref.current.contains(event.target)) {
@@ -88,11 +93,22 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
           })
      };
 
-     const callWishlistAlert = () => {
+     const handleAddToWishlist = () => {
+          dispatch(addToWishList(product));
           toast.success("Proizvod je dodat u listu zelja", {
                position: "top-center",
                duration: 1500
           })
+          // triggerIconBlink(); // Blink effect on click
+     };
+
+     const handleRemoveFromWishlist = () => {
+          dispatch(removeFromWishList(product));
+          toast.success("Proizvod je uklonjen iz liste zelja", {
+               position: "top-center",
+               duration: 1500
+          })
+          // triggerIconBlink(); // Blink effect on click
      };
 
      return (
@@ -104,11 +120,34 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                </FilteredProductImageContainer>
                {(showOptions || isScreenToMedium) && (
                     <ProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
-                         <ProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }}>
-                              <Tooltip placement="left" title={'Dodaj u listu želja'}>
-                                   <FavoriteIcon />
-                              </Tooltip>
-                         </ProductFavButton>
+                         <Box
+                              display="flex"
+                              alignItems="center"
+                              sx={{ mt: 4, color: Colors.primary.light }}
+                         >
+                              {!isInWishlist ? (
+                                   <FavoriteBorderIcon
+                                        id={`wishlist-icon-${product._id}`}
+                                        sx={{
+                                             mr: 1,
+                                             cursor: 'pointer',
+                                             ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                        }}
+                                        onClick={handleAddToWishlist}
+                                   />
+                              ) : (
+                                   <FavoriteIcon
+                                        id={`wishlist-icon-${product._id}`}
+                                        sx={{
+                                             mr: 1,
+                                             cursor: 'pointer',
+                                             ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                        }}
+                                        onClick={handleRemoveFromWishlist}
+                                   />
+                              )}
+                              Dodaj u listu želja
+                         </Box>
                          <Button
                               sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
                               onClick={() => setShowShareOptions(!showShareOptions)}
