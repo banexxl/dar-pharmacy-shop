@@ -3,17 +3,19 @@ import { FilteredProduct, FilteredProductActionButton, FilteredProductActionsWra
 import { Alert, Box, Stack, Tooltip } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import useDialogModal from "../../hooks/useDialogModal";
 import ProductDetails from "../product-dropdown/product-dropdown";
 import ProductMeta from "./filtered-products-meta";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
-import { addToWishList } from "@/store/wishlist/wishlist.slice";
-import theme from "@/styles/theme";
+import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
+import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
+import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 
 type FilteredSingleProductDesktopProps = {
      product: IProduct;
@@ -28,7 +30,8 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      const [isVisible, setVisible] = useState(false)
      const domRef = useRef<HTMLElement | null>(null)
      const observerRef = useRef<IntersectionObserver | null>(null);
-
+     const wishListState = useSelector(wishListSelectorState)
+     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
      useEffect(() => {
           observerRef.current = new IntersectionObserver(
                (entries) => {
@@ -75,12 +78,23 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
           })
      }
 
-     const callWishlistAlert = () => {
+     const handleAddToWishlist = () => {
+          dispatch(addToWishList(product));
           toast.success("Proizvod je dodat u listu zelja", {
                position: "top-center",
                duration: 1500
           })
-     }
+          // triggerIconBlink(); // Blink effect on click
+     };
+
+     const handleRemoveFromWishlist = () => {
+          dispatch(removeFromWishList(product));
+          toast.success("Proizvod je uklonjen iz liste zelja", {
+               position: "top-center",
+               duration: 1500
+          })
+          // triggerIconBlink(); // Blink effect on click
+     };
 
      return (
           <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
@@ -105,12 +119,40 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                     </FilteredProductAddToCart>
                )}
                <FilteredProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
-                    <Stack direction={isScreenToMedium ? "row" : "column"}>
-                         <FilteredProductFavButton isfav={0} onClick={() => { dispatch(addToWishList(product)); callWishlistAlert(); }} theme={theme}>
-                              <Tooltip placement="left" title={"Dodaj u listu želja"}>
-                                   <FavoriteIcon />
-                              </Tooltip>
-                         </FilteredProductFavButton>
+                    <Stack direction={isScreenToMedium ? "row" : "column"} sx={{
+                         alignItems: 'center',
+                         justifyContent: 'center',
+                    }}>
+                         <Tooltip
+                              title={isInWishlist ? "Ukloni iz liste želja" : "Dodaj u listu želja"}
+                              sx={{
+                                   cursor: 'pointer',
+                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                   backgroundColor: isInWishlist ? Colors.primary.main : Colors.primary.light,
+                              }}
+                         >
+                              {!isInWishlist ? (
+                                   <FavoriteBorderIcon
+                                        id={`wishlist-icon-${product._id}`}
+                                        sx={{
+                                             cursor: 'pointer',
+                                             ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                             color: Colors.primary.main,
+                                        }}
+                                        onClick={handleAddToWishlist}
+                                   />
+                              ) : (
+                                   <FavoriteIcon
+                                        id={`wishlist-icon-${product._id}`}
+                                        sx={{
+                                             cursor: 'pointer',
+                                             ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                             color: Colors.primary.main,
+                                        }}
+                                        onClick={handleRemoveFromWishlist}
+                                   />
+                              )}
+                         </Tooltip>
                          <FilteredProductActionButton>
                               <Tooltip placement="left" title={"Podeli proizvod"}>
                                    <ShareIcon color="primary" />
