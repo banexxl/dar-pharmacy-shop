@@ -37,7 +37,7 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
 
      return (
           <StyledCarouselLogoBox sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginTop: '0px', paddingBottom: '30px' }}>
-               <StyledTotalsTitle theme={theme} sx={{ marginTop: '20px' }}>
+               <StyledTotalsTitle theme={theme} sx={{ marginTop: '20px', color: Colors.primary.main }}>
                     Deo asortimana
                </StyledTotalsTitle>
                <Carousel
