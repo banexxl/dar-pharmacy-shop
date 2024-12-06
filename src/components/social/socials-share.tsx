@@ -13,12 +13,13 @@ import { Colors } from '@/styles/theme';
 type ShareProps = {
   shareURL: string;
   flexDirection: 'row' | 'column';
+  sx?: object;
 };
 
-export const SocialShare = ({ shareURL, flexDirection }: ShareProps) => {
+export const SocialShare = ({ shareURL, flexDirection, sx }: ShareProps) => {
 
   return (
-    <Stack sx={{ display: 'flex', width: '300px', position: 'absolute', }}>
+    <Stack sx={{ display: 'flex', width: '300px', position: 'absolute', ...sx }}>
       {/* <Typography variant="subtitle2" sx={{ mt: 0.75, mr: 1.5, color: theme.palette.text.primary }}>
         Share:
       </Typography> */}

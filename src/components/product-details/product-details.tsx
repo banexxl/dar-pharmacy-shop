@@ -1,7 +1,8 @@
 import { ProductImage, ProductImageBox } from '@/styles/productdetails';
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
 import { Colors } from '@/styles/theme';
-import { Alert, Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
+import ShareIcon from "@mui/icons-material/Share";
+import { Alert, Box, Button, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -19,6 +20,7 @@ import MediaCarousel from '../carousel/media-carousel';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
+import { SocialShare } from '../social/socials-share';
 
 function ProductDetails(product: IProduct) {
 
@@ -29,6 +31,17 @@ function ProductDetails(product: IProduct) {
      const wishListState = useSelector(wishListSelectorState)
      const [isCarouselOpen, setCarouselOpen] = useState(false);
      const [carouselIndex, setCarouselIndex] = useState(0);
+     const [showShareOptions, setShowShareOptions] = useState(false);
+     const [showOptions, setShowOptions] = useState(false);
+
+     const handleMouseEnter = () => {
+          setShowShareOptions(true);
+     };
+
+     const handleMouseLeave = () => {
+          setShowShareOptions(false);
+     };
+
 
      const mediaItems = product.mediaURLs?.map((url) => ({
           type: 'image' as const,
@@ -173,7 +186,7 @@ function ProductDetails(product: IProduct) {
                     <Box
                          display="flex"
                          alignItems="center"
-                         sx={{ m: 4, color: Colors.primary.light }}
+                         sx={{ m: 4, color: Colors.primary.main }}
                     >
                          {!isInWishlist ? (
                               <FavoriteBorderIcon
@@ -194,16 +207,40 @@ function ProductDetails(product: IProduct) {
                                    onClick={handleRemoveFromWishlist}
                               />
                          )}
-                         <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.light }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
+                         <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.main }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
+                         <Button
+                              sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
+                              // onClick={() => setShowShareOptions(!showShareOptions)}
+                              onMouseEnter={handleMouseEnter}
+                              onMouseLeave={handleMouseLeave}
+                         >
+                              <Tooltip placement="left" title={"Podeli"}>
+                                   <ShareIcon color="primary" />
+                              </Tooltip>
+                         </Button>
+                         {
+                              showShareOptions ? (
+                                   <SocialShare
+                                        shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
+                                        flexDirection="row"
+                                        sx={{
+                                             mt: '100px'
+                                        }}
+                                   />
+                              )
+                                   : null
+                         }
                     </Box>
                </ProductDetailInfoWrapper>
                <CartDialog />
+
                <MediaCarousel
                     media={mediaItems}
                     open={isCarouselOpen}
                     initialIndex={carouselIndex}
                     onClose={handleCloseCarousel}
                />
+
           </ProductDetailWrapper>
      )
 }
