@@ -3,12 +3,11 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import { Colors } from "../theme";
 import "@fontsource/satisfy"
-import { textPopUpTop } from "../animation";
 
 export const AppbarContainer = styled(Box)(({ theme }: any) => ({
      display: 'flex',
      flexDirection: 'row',
-     justifyContent: 'space-between',
+     justifyContent: 'space-around',
      alignItems: 'center',
      padding: '0 10% 0',
      // gap: '93px',
