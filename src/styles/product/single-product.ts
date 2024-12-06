@@ -89,7 +89,7 @@ export const ProductActionButton = styled(IconButton)(({ show, sx }: any) => ({
 
      margin: 4,
      '&:hover': {
-          backgroundColor: Colors.primary.lighter,
+          filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})`
      },
 }))
 

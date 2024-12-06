@@ -54,6 +54,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
      const wishListState = useSelector(wishListSelectorState)
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
 
+
      const productRef = useRef<HTMLElement | null>(null)
      const isVisible = useIsInViewport(productRef)
      const dispatch = useDispatch();
@@ -105,19 +106,23 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                     </FilteredProductImageContainer>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                     <ProductActionsWrapper theme={theme} show={showOptions}>
-                         <Stack direction={isScreenToMedium ? "row" : "column"}>
+                         <Stack direction={isScreenToMedium ? "row" : "column"}
+                              sx={{
+                                   alignItems: 'center',
+                                   justifyContent: 'center',
+                              }}
+                         >
                               <Box
                                    display="flex"
                                    alignItems="center"
-                                   sx={{ mt: 4, color: Colors.primary.light }}
+                                   sx={{ color: Colors.primary.main }}
                               >
                                    {!isInWishlist ? (
                                         <FavoriteBorderIcon
                                              id={`wishlist-icon-${product._id}`}
                                              sx={{
-                                                  mr: 1,
                                                   cursor: 'pointer',
-                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              }}
                                              onClick={handleAddToWishlist}
                                         />
@@ -125,14 +130,12 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                                         <FavoriteIcon
                                              id={`wishlist-icon-${product._id}`}
                                              sx={{
-                                                  mr: 1,
                                                   cursor: 'pointer',
-                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              }}
                                              onClick={handleRemoveFromWishlist}
                                         />
                                    )}
-                                   Dodaj u listu želja
                               </Box>
                               <ProductActionButton onClick={() => setOpenShareOptions(!openShareOption)} >
                                    <Tooltip placement="top" title="Podeli" >

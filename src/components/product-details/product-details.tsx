@@ -179,9 +179,8 @@ function ProductDetails(product: IProduct) {
                               <FavoriteBorderIcon
                                    id={`wishlist-icon-${product._id}`}
                                    sx={{
-                                        mr: 1,
                                         cursor: 'pointer',
-                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                    }}
                                    onClick={handleAddToWishlist}
                               />
@@ -189,9 +188,8 @@ function ProductDetails(product: IProduct) {
                               <FavoriteIcon
                                    id={`wishlist-icon-${product._id}`}
                                    sx={{
-                                        mr: 1,
                                         cursor: 'pointer',
-                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                    }}
                                    onClick={handleRemoveFromWishlist}
                               />
