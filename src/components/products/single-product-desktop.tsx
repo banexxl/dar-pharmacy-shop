@@ -120,34 +120,41 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                </FilteredProductImageContainer>
                {(showOptions || isScreenToMedium) && (
                     <ProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
-                         <Box
-                              display="flex"
-                              alignItems="center"
-                              sx={{ mt: 4, color: Colors.primary.light }}
-                         >
-                              {!isInWishlist ? (
-                                   <FavoriteBorderIcon
-                                        id={`wishlist-icon-${product._id}`}
-                                        sx={{
-                                             mr: 1,
-                                             cursor: 'pointer',
-                                             ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
-                                        }}
-                                        onClick={handleAddToWishlist}
-                                   />
-                              ) : (
-                                   <FavoriteIcon
-                                        id={`wishlist-icon-${product._id}`}
-                                        sx={{
-                                             mr: 1,
-                                             cursor: 'pointer',
-                                             ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
-                                        }}
-                                        onClick={handleRemoveFromWishlist}
-                                   />
-                              )}
-                              Dodaj u listu želja
-                         </Box>
+                         <Stack direction={isScreenToMedium ? "row" : "column"} sx={{
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                         }}>
+                              <Tooltip
+                                   title={isInWishlist ? "Ukloni iz liste želja" : "Dodaj u listu želja"}
+                                   placement="left"
+                                   sx={{
+                                        cursor: 'pointer',
+                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                   }}
+                              >
+                                   {!isInWishlist ? (
+                                        <FavoriteBorderIcon
+                                             id={`wishlist-icon-${product._id}`}
+                                             sx={{
+                                                  cursor: 'pointer',
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                                  color: Colors.primary.main,
+                                             }}
+                                             onClick={handleAddToWishlist}
+                                        />
+                                   ) : (
+                                        <FavoriteIcon
+                                             id={`wishlist-icon-${product._id}`}
+                                             sx={{
+                                                  cursor: 'pointer',
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                                  color: Colors.primary.main,
+                                             }}
+                                             onClick={handleRemoveFromWishlist}
+                                        />
+                                   )}
+                              </Tooltip>
+                         </Stack>
                          <Button
                               sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
                               onClick={() => setShowShareOptions(!showShareOptions)}

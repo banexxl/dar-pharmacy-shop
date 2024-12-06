@@ -166,12 +166,14 @@ function ProductDetails(product: IProduct) {
                          >
                               Dodaj u korpu
                          </Button>
-                         <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} />
+                         <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} >
+                              Korpa
+                         </Button>
                     </Box>
                     <Box
                          display="flex"
                          alignItems="center"
-                         sx={{ mt: 4, color: Colors.primary.light }}
+                         sx={{ m: 4, color: Colors.primary.light }}
                     >
                          {!isInWishlist ? (
                               <FavoriteBorderIcon
@@ -194,15 +196,7 @@ function ProductDetails(product: IProduct) {
                                    onClick={handleRemoveFromWishlist}
                               />
                          )}
-                         Dodaj u listu želja
-                    </Box>
-                    <Box
-                         sx={{
-                              mt: 4,
-                              color: Colors.dove_gray,
-                         }}
-                    >
-                         <InstagramIcon sx={{ pl: 2, cursor: 'pointer' }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
+                         <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.light }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                     </Box>
                </ProductDetailInfoWrapper>
                <CartDialog />

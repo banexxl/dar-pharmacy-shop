@@ -269,7 +269,7 @@ export default function Footer() {
                }
 
                <FooterSocial>
-                    <InstagramIcon onClick={() => window.open('https://instagram.com/apoteka_dar')} sx={{ cursor: 'pointer' }} />
+                    <InstagramIcon onClick={() => window.open('https://instagram.com/apoteka_dar')} sx={{ cursor: 'pointer', color: Colors.primary.main }} />
                </FooterSocial>
 
                <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema}>

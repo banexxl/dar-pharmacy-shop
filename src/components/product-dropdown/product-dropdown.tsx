@@ -144,9 +144,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                         <FavoriteBorderIcon
                                              id={`wishlist-icon-${product._id}`}
                                              sx={{
-                                                  mr: 1,
                                                   cursor: 'pointer',
-                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              }}
                                              onClick={handleAddToWishlist}
                                         />
@@ -154,9 +153,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                         <FavoriteIcon
                                              id={`wishlist-icon-${product._id}`}
                                              sx={{
-                                                  mr: 1,
                                                   cursor: 'pointer',
-                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.dark})` },
+                                                  ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              }}
                                              onClick={handleRemoveFromWishlist}
                                         />
