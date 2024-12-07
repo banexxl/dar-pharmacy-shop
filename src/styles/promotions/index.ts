@@ -21,6 +21,7 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
 export const MessageText = styled(Typography)(({ theme }) => ({
      [theme.breakpoints.up("md")]: {
           fontSize: "2.2rem",
+          fontWeight: "bold",
      },
      [theme.breakpoints.down("md")]: {
           fontSize: "1.5rem",

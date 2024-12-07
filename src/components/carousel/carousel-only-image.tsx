@@ -37,9 +37,9 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
 
      return (
           <StyledCarouselLogoBox sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginTop: '0px', paddingBottom: '30px' }}>
-               <StyledTotalsTitle theme={theme} sx={{ marginTop: '20px', color: 'red' }}>
+               <Typography sx={{ marginTop: '20px', fontSize: isScreenToMedium ? '1.8rem' : '2rem', fontWeight: 'bold' }}>
                     Deo asortimana
-               </StyledTotalsTitle>
+               </Typography>
                <Carousel
                     responsive={responsive}
                     swipeable={true}
