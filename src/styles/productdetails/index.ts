@@ -27,7 +27,14 @@ export const ProductImage = styled(Image)(({ src, theme }: any) => ({
      },
 }));
 
-export const ProductDetailWrapper = styled(Box)(({ theme }: any) => ({
+type ProductDetailWrapperProps = {
+     isVisible: boolean;
+     theme: any;
+}
+
+export const ProductDetailWrapper = styled(Box, {
+     shouldForwardProp: (prop) => prop !== 'isVisible'
+})<ProductDetailWrapperProps>(({ isVisible, theme }) => ({
      display: "flex",
      padding: theme.spacing(4),
 }))

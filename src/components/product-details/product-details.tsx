@@ -1,13 +1,13 @@
 import { ProductImage, ProductImageBox } from '@/styles/productdetails';
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
-import { Colors } from '@/styles/theme';
+import theme, { Colors } from '@/styles/theme';
 import ShareIcon from "@mui/icons-material/Share";
 import { Alert, Box, Button, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IProduct from '@/interfaces/product/product.interface';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Cart from "../cart/cart";
 import { addToCart } from '@/store/cart/cart.slice'
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,12 +32,42 @@ function ProductDetails(product: IProduct) {
      const [isCarouselOpen, setCarouselOpen] = useState(false);
      const [carouselIndex, setCarouselIndex] = useState(0);
      const [showShareOptions, setShowShareOptions] = useState(false);
+     const [isVisible, setVisible] = useState(false)
+     const domRef = useRef<HTMLElement | null>(null)
+     const observerRef = useRef<IntersectionObserver | null>(null);
 
      const mediaItems = product.mediaURLs?.map((url) => ({
           type: 'image' as const,
           src: url,
           alt: product.name,
      }));
+
+     useEffect(() => {
+          observerRef.current = new IntersectionObserver(
+               (entries) => {
+                    entries.forEach((entry) => {
+                         if (entry.isIntersecting) {
+                              setShowShareOptions(true);
+                         } else {
+                              setShowShareOptions(false);
+                         }
+                    });
+               },
+               { threshold: 1 } // Set your desired threshold value
+          );
+
+          const currentRef = domRef.current;
+
+
+          if (currentRef && observerRef.current) {
+               observerRef.current.observe(currentRef);
+          }
+          return () => {
+               if (currentRef && observerRef.current) {
+                    observerRef.current.unobserve(currentRef);
+               }
+          };
+     }, []);
 
      const handleOpenCarousel = (index: number) => {
           setCarouselIndex(index);
@@ -81,6 +111,10 @@ function ProductDetails(product: IProduct) {
           })
      }
 
+     const handleMouseLeave = () => {
+          setShowShareOptions(false);
+     };
+
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
      const localStorage: any = useLocalStorage('persist:root', {});
      const localStorageReducers: any = localStorage[0];
@@ -91,7 +125,7 @@ function ProductDetails(product: IProduct) {
      });
 
      return (
-          <ProductDetailWrapper sx={{ marginTop: '100px', gap: '30px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
+          <ProductDetailWrapper sx={{ marginTop: '100px', gap: '30px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"} ref={domRef} isVisible={isVisible} theme={theme}>
                <ProductImageBox
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{
@@ -207,16 +241,16 @@ function ProductDetails(product: IProduct) {
                               </Tooltip>
                          </Button>
                          {
-                              showShareOptions ? (
+                              showShareOptions && (
                                    <SocialShare
                                         shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
                                         flexDirection="row"
                                         sx={{
                                              mt: '100px',
+                                             display: showShareOptions ? 'flex' : 'none',
                                         }}
                                    />
                               )
-                                   : null
                          }
                     </Box>
                </ProductDetailInfoWrapper>
