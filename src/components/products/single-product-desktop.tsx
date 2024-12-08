@@ -32,9 +32,9 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      const [isVisible, setVisible] = useState(false);
      const domRef = useRef<HTMLElement | null>(null);
      const observerRef = useRef<IntersectionObserver | null>(null);
+     const ref = useRef<HTMLDivElement | null>(null);
      const dispatch = useDispatch();
      const [showShareOptions, setShowShareOptions] = useState(false);
-     const ref = useRef<HTMLDivElement | null>(null);
      const wishListState = useSelector(wishListSelectorState)
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
 

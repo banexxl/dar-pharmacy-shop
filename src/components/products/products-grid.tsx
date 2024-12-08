@@ -3,8 +3,6 @@ import SingleProductMobile from "./single-product-mobile";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./single-product-desktop";
-import ICartItem from "@/interfaces/cart/cart.interface";
-import { useSelector } from "react-redux";
 
 
 export default function Products(props: any) {

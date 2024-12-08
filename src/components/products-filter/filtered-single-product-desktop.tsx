@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react"
 import { FilteredProduct, FilteredProductActionButton, FilteredProductActionsWrapper, FilteredProductAddToCart, FilteredProductFavButton, FilteredProductImage, FilteredProductImageContainer } from "../../styles/product/filtered-single-product";
-import { Alert, Box, Stack, Tooltip } from "@mui/material";
+import { Alert, Box, Button, Stack, Tooltip } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -16,6 +16,7 @@ import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
+import { SocialShare } from "../social/socials-share";
 
 type FilteredSingleProductDesktopProps = {
      product: IProduct;
@@ -28,11 +29,21 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      const [showOptions, setShowOptions] = useState(false)
      const [loading, setLoading] = useState(false)
      const [isVisible, setVisible] = useState(false)
-     const domRef = useRef<HTMLElement | null>(null)
+     const domRef = useRef<HTMLElement | null>(null);
      const observerRef = useRef<IntersectionObserver | null>(null);
+     const ref = useRef<HTMLDivElement | null>(null);
      const wishListState = useSelector(wishListSelectorState)
+     const [showShareOptions, setShowShareOptions] = useState(false);
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+
+     const handleClickOutside = (event: any) => {
+          if (ref.current && !ref.current.contains(event.target)) {
+               setShowShareOptions(false);
+          }
+     };
+
      useEffect(() => {
+          document.addEventListener('mousedown', handleClickOutside);
           observerRef.current = new IntersectionObserver(
                (entries) => {
                     entries.forEach((entry) => {
@@ -48,7 +59,6 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
 
           const currentRef = domRef.current;
 
-
           if (currentRef && observerRef.current) {
                observerRef.current.observe(currentRef);
           }
@@ -56,6 +66,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                if (currentRef && observerRef.current) {
                     observerRef.current.unobserve(currentRef);
                }
+               document.removeEventListener('mousedown', handleClickOutside);
           };
      }, []);
 
@@ -69,6 +80,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      };
      const handleMouseLeave = () => {
           setShowOptions(false);
+          setShowShareOptions(false);
      };
 
      const callCartAlert = () => {
@@ -153,11 +165,15 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                                    />
                               )}
                          </Tooltip>
-                         <FilteredProductActionButton>
-                              <Tooltip placement="left" title={"Podeli proizvod"}>
+                         <Button
+                              sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
+                              onClick={() => setShowShareOptions(!showShareOptions)}
+                         >
+                              <Tooltip placement="left" title={"Podeli"}>
                                    <ShareIcon color="primary" />
                               </Tooltip>
-                         </FilteredProductActionButton>
+                         </Button>
+
                          <FilteredProductActionButton onClick={() => showProductDetailDialog()}>
                               <Tooltip placement="left" title="Brz pregled">
                                    <FitScreenIcon color="primary" />
@@ -167,6 +183,17 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                </FilteredProductActionsWrapper>
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
+               {
+                    showShareOptions && showOptions && (
+                         <SocialShare
+                              shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
+                              flexDirection="row"
+                              sx={{
+                                   mt: '100px',
+                              }}
+                         />
+                    )
+               }
           </FilteredProduct>
      );
 }

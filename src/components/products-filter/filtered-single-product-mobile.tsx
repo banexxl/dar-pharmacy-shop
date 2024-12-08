@@ -16,6 +16,8 @@ import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
+import { SocialShare } from "../social/socials-share";
+import { ProductAddToCart } from "@/styles/product/single-product";
 
 type FilteredSingleProductMobileProps = {
      product: IProduct;
@@ -26,6 +28,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
 
      const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] = useDialogModal(ProductDetails);
      const [showOptions, setShowOptions] = useState(false);
+     const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
      const wishListState = useSelector(wishListSelectorState)
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
      const [isVisible, setVisible] = useState(false)
@@ -66,6 +69,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      };
      const handleMouseLeave = () => {
           setShowOptions(false);
+          setOpenShareOptions(false);
      };
 
      const callCartAlert = () => {
@@ -139,25 +143,41 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                               )}
                          </Tooltip>
                          <FilteredProductActionButton>
-                              <Tooltip placement="left" title="Share this product">
+                              <Tooltip placement="top" title="Share this product" onClick={() => setOpenShareOptions(!openShareOption)}>
                                    <ShareIcon color="primary" />
                               </Tooltip>
                          </FilteredProductActionButton>
                          <FilteredProductActionButton onClick={() => showProductDetailDialog()}>
-                              <Tooltip placement="left" title="Brz pregled">
+                              <Tooltip placement="bottom" title="Brz pregled">
                                    <FitScreenIcon color="primary" />
                               </Tooltip>
                          </FilteredProductActionButton>
                     </Stack>
                </FilteredProductActionsWrapper>
-               <FilteredProductAddToCart
-                    onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
-                    theme={theme}
-                    show={false}
-                    disabled={product.availableStock <= 0}
-               >
-                    Dodaj u korpu
-               </FilteredProductAddToCart >
+               {openShareOption && showOptions && (
+                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="column" />
+               )}
+               {
+                    product.availableStock > 0 ?
+                         (
+                              <ProductAddToCart
+                                   onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
+                                   theme={theme}
+                                   show={true}
+                              >
+                                   Dodaj u korpu
+                              </ProductAddToCart >
+                         )
+                         :
+                         (
+                              <ProductAddToCart
+                                   theme={theme}
+                                   show={true}
+                              >
+                                   Nema na stanju
+                              </ProductAddToCart >
+                         )
+               }
                <ProductDetailDialog product={product} />
           </FilteredProduct>
      )

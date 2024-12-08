@@ -32,16 +32,6 @@ function ProductDetails(product: IProduct) {
      const [isCarouselOpen, setCarouselOpen] = useState(false);
      const [carouselIndex, setCarouselIndex] = useState(0);
      const [showShareOptions, setShowShareOptions] = useState(false);
-     const [showOptions, setShowOptions] = useState(false);
-
-     const handleMouseEnter = () => {
-          setShowShareOptions(true);
-     };
-
-     const handleMouseLeave = () => {
-          setShowShareOptions(false);
-     };
-
 
      const mediaItems = product.mediaURLs?.map((url) => ({
           type: 'image' as const,
@@ -210,9 +200,7 @@ function ProductDetails(product: IProduct) {
                          <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.main }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                          <Button
                               sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
-                              // onClick={() => setShowShareOptions(!showShareOptions)}
-                              onMouseEnter={handleMouseEnter}
-                              onMouseLeave={handleMouseLeave}
+                              onClick={() => setShowShareOptions(!showShareOptions)}
                          >
                               <Tooltip placement="left" title={"Podeli"}>
                                    <ShareIcon color="primary" />
@@ -224,7 +212,7 @@ function ProductDetails(product: IProduct) {
                                         shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
                                         flexDirection="row"
                                         sx={{
-                                             mt: '100px'
+                                             mt: '100px',
                                         }}
                                    />
                               )
