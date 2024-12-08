@@ -95,7 +95,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                </DialogTitle>
 
                <DialogContent>
-                    <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"}>
+                    <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"} theme={theme} isVisible={false}>
                          <ProductDropdown sx={{ mr: 4 }} theme={theme} isVisible={open}>
                               <ProductImageDropdown src={product.imageURL} />
                          </ProductDropdown>
