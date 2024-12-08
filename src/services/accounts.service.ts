@@ -186,8 +186,6 @@ export const AccountService = () => {
           try {
                const db = client.db('ACCOUNTS_DB');
                const user = await db.collection('Users').findOne({ email, emailVerified: { $ne: null } });
-               console.log('user', user);
-
                return user;
           } catch (error: any) {
                return { message: error.message }

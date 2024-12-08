@@ -17,8 +17,6 @@ type ShareProps = {
 };
 
 export const SocialShare = ({ shareURL, flexDirection, sx }: ShareProps) => {
-  console.log('sx', sx);
-
   return (
     <Stack sx={{ width: '300px', position: 'absolute', ...sx }}>
       {/* <Typography variant="subtitle2" sx={{ mt: 0.75, mr: 1.5, color: theme.palette.text.primary }}>
