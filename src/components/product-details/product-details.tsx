@@ -242,27 +242,27 @@ function ProductDetails(product: IProduct) {
                          </Button>
                          {
                               showShareOptions && (
-                                   <SocialShare
-                                        shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
-                                        flexDirection="row"
-                                        sx={{
-                                             mt: '100px',
-                                             display: showShareOptions ? 'flex' : 'none',
-                                        }}
-                                   />
+                                   <Box onMouseLeave={() => setShowShareOptions(false)} sx={{ transform: 'translate(-100px, -80px)' }}>
+                                        <SocialShare
+                                             shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
+                                             flexDirection="row"
+                                             sx={{
+                                                  mt: '100px',
+                                                  display: showShareOptions ? 'flex' : 'none',
+                                             }}
+                                        />
+                                   </Box>
                               )
                          }
                     </Box>
                </ProductDetailInfoWrapper>
                <CartDialog />
-
                <MediaCarousel
                     media={mediaItems}
                     open={isCarouselOpen}
                     initialIndex={carouselIndex}
                     onClose={handleCloseCarousel}
                />
-
           </ProductDetailWrapper>
      )
 }
