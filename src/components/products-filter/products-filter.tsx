@@ -3,10 +3,7 @@ import { Breadcrumbs, Divider, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import ProductsAllCategories from './products-categories';
 import PriceFilterComponent from './product-filter-price';
-import IProduct from '@/interfaces/product/product.interface';
 import FilteredProductsGrid from './filtered-products-grid';
-import Link from 'next/link';
-import { Colors } from '@/styles/theme';
 
 function ProductsFilter({ filterObject, routerQuery }: any) {
 
@@ -26,11 +23,11 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                <ProductsFilters>
                     <FilterTitleBox>
                          <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
-                              Sve kategorije
+                              Izaberi iz liste proizvoda
                          </Typography>
                     </FilterTitleBox>
                     <Divider />
-                    <PriceFilterComponent products={filterObject} onPriceFilterChange={handlePriceFilterChange} />
+                    {/* <PriceFilterComponent products={filterObject} onPriceFilterChange={handlePriceFilterChange} /> */}
                     <Divider />
                     <FilterCategoryAccordionBox>
                          <ProductsAllCategories />
