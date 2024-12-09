@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FilteredProduct, FilteredProductActionButton, FilteredProductActionsWrapper, FilteredProductAddToCart, FilteredProductFavButton, FilteredProductImage, FilteredProductImageContainer } from "../../styles/product/filtered-single-product";
+import { FilteredProduct, FilteredProductActionButton, FilteredProductActionsWrapper, FilteredProductImage, FilteredProductImageContainer } from "../../styles/product/filtered-single-product";
 import { Alert, Box, Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';

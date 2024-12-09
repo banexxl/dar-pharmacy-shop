@@ -133,6 +133,7 @@ export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardPro
      ({ show, theme }) => ({
           fontSize: '12px',
           width: '140px',
+          backgroundColor: Colors.primary.main,
           [theme.breakpoints.up('md')]: {
                position: 'absolute',
                bottom: '2%',
@@ -142,10 +143,9 @@ export const FilteredProductAddToCart = styled(LoadingButton, { shouldForwardPro
                     animation: `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
                }),
           },
-          // '&:hover': {
-          //      backgroundColor: Colors.primary.lighter,
-          // },
-          // background: Colors.primary.main,
+          '&:hover': {
+               backgroundColor: Colors.primary.light,
+          },
      })
 );
 
