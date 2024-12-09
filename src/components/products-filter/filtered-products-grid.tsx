@@ -51,7 +51,12 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      useEffect(() => {
           setProducts(props.data || []);
           updateDisplayedProducts(0);
-     }, [props.data, products]);
+     }, [props.data]);
+
+     useEffect(() => {
+          updateDisplayedProducts(0);
+     }, [products]);
+
 
      const onShowNext = () => {
           if ((currentPage + 1) * 10 < products.length) {
