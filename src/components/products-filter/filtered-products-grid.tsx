@@ -88,6 +88,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
           });
 
           setProducts(filteredProducts);
+          updateDisplayedProducts(0);
           setIsFilterDialogOpen(false);
      };
      // New function for handling sorting
@@ -105,6 +106,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
           }
 
           setProducts(sortedProducts);
+          updateDisplayedProducts(0);
           setIsSortDialogOpen(false);
      };
 
@@ -155,6 +157,13 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
                     >
                          Nazad
                     </Button>
+                    <Typography sx={{
+                         color: Colors.primary.main,
+                         alignSelf: 'center',
+                         fontSize: '.8rem'
+                    }}>
+                         {Math.min((currentPage + 1) * 10, products.length)} od {products.length}
+                    </Typography>
                     <Button
                          onClick={onShowNext}
                          disabled={(currentPage + 1) * 10 >= products.length}

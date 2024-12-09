@@ -56,11 +56,6 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                                              </Typography>
                                         </Link>
                                    )}
-                                   {part && (
-                                        <Typography sx={{ color: Colors.dim_grey }}>
-                                             {part}
-                                        </Typography>
-                                   )}
                               </Breadcrumbs>
                          )}
                     </FilteredProductsTitle>
