@@ -23,11 +23,11 @@ type FilteredProductsGridProps = {
 export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
-     const router = useRouter();
 
      const [products, setProducts] = useState<IProduct[]>(props.data || []);
-     const [hasMore, setHasMore] = useState(true);
-
+     const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
+     const [hasMore, setHasMore] = useState(props?.data.length >= 10);
+     const [currentPage, setCurrentPage] = useState(0);
      // New state for filtering and sorting
      const [isFilterDialogOpen, setIsFilterDialogOpen] = useState(false);
      const [isSortDialogOpen, setIsSortDialogOpen] = useState(false);
@@ -35,13 +35,37 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      const [discountOnly, setDiscountOnly] = useState(false);
      const [sortOption, setSortOption] = useState('');
 
+     const scrollToTop = () => {
+          window.scrollTo({
+               top: 0,
+               behavior: 'smooth'
+          });
+     };
+
+     const updateDisplayedProducts = (page: number) => {
+          const start = page * 10;
+          const end = start + 10;
+          setDisplayedProducts(products.slice(start, end));
+          setCurrentPage(page);
+     };
+
      useEffect(() => {
-          setHasMore(props.data && props.data.length > 0);
           setProducts(props.data || []);
+          updateDisplayedProducts(0);
      }, [props.data]);
 
-     const onLoadMore = async () => {
-          // Your existing onLoadMore logic here
+     const onShowNext = () => {
+          if ((currentPage + 1) * 10 < products.length) {
+               updateDisplayedProducts(currentPage + 1);
+               scrollToTop();
+          }
+     };
+
+     const onShowPrevious = () => {
+          if (currentPage > 0) {
+               updateDisplayedProducts(currentPage - 1);
+               scrollToTop();
+          }
      };
 
      // New function for handling filtering
@@ -67,7 +91,6 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
           setProducts(filteredProducts);
           setIsFilterDialogOpen(false);
      };
-
      // New function for handling sorting
      const handleSort = () => {
           let sortedProducts = [...products];
@@ -87,12 +110,12 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      };
 
      const renderProducts =
-          products.length === 0 ? (
+          displayedProducts.length === 0 ? (
                <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary.main }}>
                     <DoNotDisturbIcon />
                </Box>
           ) : (
-               products.map((product: IProduct) => (
+               displayedProducts.map((product: IProduct) => (
                     <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                          {isScreenToMedium ? (
                               <FilteredSingleProductMobile key={product._id} product={product} isScreenToMedium={isScreenToMedium} />
@@ -122,42 +145,25 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
                     </Button>
                </Box>
 
-               <Grid
-                    container
-                    spacing={{ xs: 2, md: 3, lg: 4 }}
-                    justifyContent="center"
-                    sx={{ margin: `20px 4px 10px 4px` }}
-                    gridTemplateColumns={{ xs: '1fr 1fr', sm: '1fr 1fr 1fr', md: '1fr 1fr 1fr' }}
-               >
+               <Grid container spacing={2}>
                     {renderProducts}
                </Grid>
-
-               {hasMore && (
-                    <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'space-between' }}>
-                         <Link onClick={() => router.back()} style={{ display: 'flex', alignItems: 'center' }}>
-                              <ArrowBackIosIcon />
-                              <Typography sx={{ cursor: 'pointer' }}>
-                                   Nazad
-                              </Typography>
-                         </Link>
-                         <Link onClick={() => onLoadMore()} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Typography sx={{ cursor: 'pointer' }}>
-                                   Učitaj još
-                              </Typography>
-                              <ArrowForwardIosIcon />
-                         </Link>
-                    </Box>
-               )}
-               {!hasMore && (
-                    <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'center' }}>
-                         <Link onClick={() => router.back()} style={{ display: 'flex', alignItems: 'center' }}>
-                              <ArrowBackIosIcon />
-                              <Typography sx={{ cursor: 'pointer' }}>
-                                   Nazad
-                              </Typography>
-                         </Link>
-                    </Box>
-               )}
+               <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'space-between' }}>
+                    <Button
+                         onClick={onShowPrevious}
+                         disabled={currentPage === 0}
+                         startIcon={<ArrowBackIosIcon />}
+                    >
+                         Nazad
+                    </Button>
+                    <Button
+                         onClick={onShowNext}
+                         disabled={(currentPage + 1) * 10 >= products.length}
+                         endIcon={<ArrowForwardIosIcon />}
+                    >
+                         Učitaj još
+                    </Button>
+               </Box>
 
 
                <Dialog open={isFilterDialogOpen} onClose={() => setIsFilterDialogOpen(false)}>

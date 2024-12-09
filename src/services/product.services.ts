@@ -128,9 +128,9 @@ export const ProductsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ manufacturerURL: { $regex: `${manufacturerURL}` }, isActive: true })
-                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(10)
-                    .toArray()
+               //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+               //                 .limit(10)
+               //              .toArray()
 
                return products
           } catch (error: any) {
@@ -185,17 +185,18 @@ export const ProductsServices = () => {
           }
      }
 
-     const getLimitedProductsByMainCategory = async (mainCategory: string, loadedParts: number) => {
+     const getLimitedProductsByMainCategory = async (mainCategory: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ mainCategory: `${mainCategory}`, isActive: true })
-                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(10)
-                    .toArray()
+                    .find({ mainCategory: `${mainCategory}`, isActive: true }).toArray()
+               //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+               //                 .limit(10)
+               //              .toArray()
+               console.log('products', products);
 
                return products
           } catch (error: any) {
@@ -213,9 +214,9 @@ export const ProductsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products').
                     find({ mainCategory: mainCategory, midCategory: midCategory, isActive: true })
-                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(10)
-                    .toArray()
+               //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+               //                 .limit(10)
+               //              .toArray()
                return products
           } catch (error: any) {
                return { message: error.message }
@@ -238,9 +239,9 @@ export const ProductsServices = () => {
                          manufacturerURL: { $regex: new RegExp(`^${manufacturerURL}$`, 'i') },
                          isActive: true
                     })
-                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(10)
-                    .toArray()
+               //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+               //                 .limit(10)
+               //              .toArray()
 
                return products
           } catch (error: any) {
@@ -259,9 +260,9 @@ export const ProductsServices = () => {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
                     .find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory, isActive: true })
-                    .skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
-                    .limit(10)
-                    .toArray()
+               //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
+               //                 .limit(10)
+               //              .toArray()
                return products
           } catch (error: any) {
                return { message: error.message }
