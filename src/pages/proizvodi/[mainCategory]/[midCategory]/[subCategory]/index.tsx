@@ -44,9 +44,7 @@ export default function MainCategoryPage(props: any) {
 
 export async function getServerSideProps({ query }: any) {
 
-     const loadedParts = parseInt(query?.part as string) || 1
-
-     const productsByMainMidSubCategory: any = await ProductsServices().getProductsByMainCategoryMidCategorySubCategory(query.mainCategory, query.midCategory, query.subCategory, loadedParts)
+     const productsByMainMidSubCategory: any = await ProductsServices().getProductsByMainCategoryMidCategorySubCategory(query.mainCategory, query.midCategory, query.subCategory)
 
      // if (!productsByMainMidSubCategory || productsByMainMidSubCategory.length === 0) {
      //      return {

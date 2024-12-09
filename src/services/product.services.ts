@@ -121,7 +121,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getProductsByManufacturer = async (manufacturerURL: string, loadedParts: number) => {
+     const getProductsByManufacturer = async (manufacturerURL: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
@@ -207,7 +207,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getProductsByMainCategoryMidCategory = async (mainCategory: string, midCategory: string, loadedParts: any) => {
+     const getProductsByMainCategoryMidCategory = async (mainCategory: string, midCategory: string) => {
 
           const client: any = (await MongoClient.connect(process.env.MONGODB_URI!))
           try {
@@ -226,7 +226,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getProductsByMainCategoryAndManufacturer = async (mainCategory: string, manufacturerURL: string, loadedParts: any) => {
+     const getProductsByMainCategoryAndManufacturer = async (mainCategory: string, manufacturerURL: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
@@ -252,7 +252,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getProductsByMainCategoryMidCategorySubCategory = async (mainCategory: string, midCategory: string, subCategory: string, loadedParts: any) => {
+     const getProductsByMainCategoryMidCategorySubCategory = async (mainCategory: string, midCategory: string, subCategory: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 

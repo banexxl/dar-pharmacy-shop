@@ -44,9 +44,7 @@ export default function MainCategoryAndManufacturerPage(props: any) {
 
 export async function getServerSideProps({ query }: any) {
 
-     const loadedParts = parseInt(query?.part as string) || 1
-
-     const productsByMainCategoryAndManufacturer: any = await ProductsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL, loadedParts)
+     const productsByMainCategoryAndManufacturer: any = await ProductsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL)
 
      // if (!productsByMainCategoryAndManufacturer || productsByMainCategoryAndManufacturer.length === 0) {
      //      return {
