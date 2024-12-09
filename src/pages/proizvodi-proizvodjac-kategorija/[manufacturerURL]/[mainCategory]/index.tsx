@@ -49,7 +49,7 @@ export async function getServerSideProps({ query }: any) {
      // if (!productsByMainCategoryAndManufacturer || productsByMainCategoryAndManufacturer.length === 0) {
      //      return {
      //           redirect: {
-     //                destination: `/${query.manufacturerURL}/?part=1`
+     //                destination: `/${query.manufacturerURL}/`
      //           },
      //      };
      // }

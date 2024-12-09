@@ -56,7 +56,7 @@ const CarouselLogo = (props: CarouselProps) => {
                          props.manufacturers ?
                               props.manufacturers.map((logo: { url: string, name: string, value: string }) => (
                                    <CarouselLogoImgBox key={Math.random()}>
-                                        <Link rel='canonical' href={`/proizvodi-proizvodjac-kategorija/${logo.value}?part=1`}>
+                                        <Link rel='canonical' href={`/proizvodi-proizvodjac-kategorija/${logo.value}`}>
                                              <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={150} isOnDiscount={false} />
                                         </Link>
                                    </CarouselLogoImgBox>

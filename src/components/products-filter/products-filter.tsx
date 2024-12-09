@@ -43,18 +43,18 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                          ) : (
                               <Breadcrumbs>
                                    {manufacturerURL && (
-                                        <Link rel='canonical' href={`/${manufacturerURL}?part=1`}>
-                                             <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
-                                                  {manufacturerURL}
-                                             </Typography>
-                                        </Link>
+
+                                        <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
+                                             {manufacturerURL}
+                                        </Typography>
+
                                    )}
                                    {mainCategory && (
-                                        <Link rel='canonical' href={`/${mainCategory}?part=1`}>
-                                             <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
-                                                  {mainCategory}
-                                             </Typography>
-                                        </Link>
+
+                                        <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
+                                             {mainCategory}
+                                        </Typography>
+
                                    )}
                               </Breadcrumbs>
                          )}

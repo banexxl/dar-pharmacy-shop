@@ -63,7 +63,7 @@ export async function getServerSideProps({ query }: any) {
      // if (!productsByMainMidCategory || productsByMainMidCategory.length === 0) {
      //      return {
      //           redirect: {
-     //                destination: `/proizvodi/${query.mainCategory}/${query.midCategory}/?part=1`
+     //                destination: `/proizvodi/${query.mainCategory}/${query.midCategory}/`
      //           },
      //      };
      // }

@@ -61,28 +61,28 @@ export const ProductsMenu = () => {
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <NestedMenuItem label='Prirodna kozmetika' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gana-kozmetika/prirodna-kozmetika?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gana-kozmetika/prirodna-kozmetika'}>
                                    <StyledNestedTypography >
                                         Gana kozmetika
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gloria/prirodna-kozmetika?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gloria/prirodna-kozmetika'}>
                                    <StyledNestedTypography >
                                         Gloria
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/fitaky/prirodna-kozmetika?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/fitaky/prirodna-kozmetika'}>
                                    <StyledNestedTypography >
                                         Fitaky
                                    </StyledNestedTypography>
                               </Link>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/weleda/prirodna-kozmetika?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/weleda/prirodna-kozmetika'}>
                                    <StyledNestedTypography >
                                         Weleda
                                    </StyledNestedTypography>
@@ -90,48 +90,48 @@ export const ProductsMenu = () => {
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika'}>
                                         Majana
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/viviscal/prirodna-kozmetika?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/viviscal/prirodna-kozmetika'}>
                                         Viviscal
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/herbalab/prirodna-kozmetika?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/herbalab/prirodna-kozmetika'}>
                                         Herbalab
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/medical-plants/prirodna-kozmetika?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/medical-plants/prirodna-kozmetika'}>
                                         Medical plants
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gamarde/prirodna-kozmetika?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gamarde/prirodna-kozmetika'}>
                                         Gamarde
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/aronica/prirodna-kozmetika?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/aronica/prirodna-kozmetika'}>
                                         Aronica
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
-                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/phyto/prirodna-kozmetika?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/phyto/prirodna-kozmetika'}>
                                    <StyledNestedTypography >
                                         Phyto
                                    </StyledNestedTypography>
@@ -142,28 +142,28 @@ export const ProductsMenu = () => {
                          <NestedMenuItem label='Bebi prirodna kozmetika' parentMenuOpen={open}>
                               <StyledMenuItem onClick={handleClose}>
                                    <StyledNestedTypography >
-                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika?part=1'}>
+                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika'}>
                                              Fitaky
                                         </Link>
                                    </StyledNestedTypography>
                               </StyledMenuItem>
                               <StyledMenuItem onClick={handleClose}>
                                    <StyledNestedTypography >
-                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika?part=1'}>
+                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika'}>
                                              Azeta bio
                                         </Link>
                                    </StyledNestedTypography>
                               </StyledMenuItem>
                               <StyledMenuItem onClick={handleClose}>
                                    <StyledNestedTypography >
-                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika?part=1'}>
+                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika'}>
                                              Gamarde
                                         </Link>
                                    </StyledNestedTypography>
                               </StyledMenuItem>
                               <StyledMenuItem onClick={handleClose}>
                                    <StyledNestedTypography >
-                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika?part=1'}>
+                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika'}>
                                              Weleda
                                         </Link>
                                    </StyledNestedTypography>
@@ -172,7 +172,7 @@ export const ProductsMenu = () => {
                          <NestedMenuItem label='Bebi pelene' parentMenuOpen={open}>
                               <StyledMenuItem onClick={handleClose}>
                                    <StyledNestedTypography >
-                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/eco-boom/bebi-pelene?part=1'}>
+                                        <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/eco-boom/bebi-pelene'}>
                                              Eco Boom
                                         </Link>
                                    </StyledNestedTypography>
@@ -182,21 +182,21 @@ export const ProductsMenu = () => {
                     <NestedMenuItem label='Biljne Tinkture' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/fantastik-fungi/biljne-tinkture?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/fantastik-fungi/biljne-tinkture'}>
                                         Fantastik Fungi
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture'}>
                                         Priroda na dar
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/bioteo/biljne-tinkture?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/bioteo/biljne-tinkture'}>
                                         Bioteo
                                    </Link>
                               </StyledNestedTypography>
@@ -205,14 +205,14 @@ export const ProductsMenu = () => {
                     <NestedMenuItem label='Čišćenje organizma' parentMenuOpen={open}>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/okp/ciscenje-organizma?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/okp/ciscenje-organizma'}>
                                         OKP paket za čišćenje organizma
                                    </Link>
                               </StyledNestedTypography>
                          </StyledMenuItem>
                          <StyledMenuItem onClick={handleClose}>
                               <StyledNestedTypography >
-                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture?part=1'}>
+                                   <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture'}>
                                         Priroda na dar
                                    </Link>
                               </StyledNestedTypography>
@@ -221,7 +221,7 @@ export const ProductsMenu = () => {
                     {/* <NestedMenuItem label='Ruska Apoteka' parentMenuOpen={open}> */}
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/ruska-apoteka?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/ruska-apoteka'}>
                                    Ruska Apoteka
                               </Link>
                          </StyledNestedTypography>
@@ -229,42 +229,42 @@ export const ProductsMenu = () => {
                     {/* </NestedMenuItem> */}
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/prirodni-imunitet?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/prirodni-imunitet'}>
                                    Prirodni imunitet
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/kolagen?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/kolagen'}>
                                    Kolagen
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/suplementi?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/suplementi'}>
                                    Suplementi
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/ledene-kocke-za-imunitet?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/ledene-kocke-za-imunitet'}>
                                    Ledene kocke za imunitet
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/domaci-prirodni-melemi?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/domaci-prirodni-melemi'}>
                                    Domaći prirodni melemi
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/mast-od-jazavca?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/mast-od-jazavca'}>
                                    Mast od Jazavca
                               </Link>
                          </StyledNestedTypography>
@@ -278,56 +278,56 @@ export const ProductsMenu = () => {
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/ulja-za-masazu?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/ulja-za-masazu'}>
                                    Ulja za masažu
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/imunitet-za-decu?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/imunitet-za-decu'}>
                                    Imunitet za decu
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/todoxin/prirodni-imunitet?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi-proizvodjac-kategorija/todoxin/prirodni-imunitet'}>
                                    Todoxin
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/suplemania?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/suplemania'}>
                                    Suplemania
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/zao-prirodna-sminka?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/zao-prirodna-sminka'}>
                                    Zao prirodna šminka
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/prirodni-imunitet?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/prirodni-imunitet'}>
                                    Prirodni imunitet
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/proizvodi-za-zene?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/proizvodi-za-zene'}>
                                    Proizvodi za žene
                               </Link>
                          </StyledNestedTypography>
                     </StyledMenuItem>
                     <StyledMenuItem onClick={handleClose}>
                          <StyledNestedTypography >
-                              <Link rel='canonical' href={'/proizvodi/homeopatija?part=1'}>
+                              <Link rel='canonical' href={'/proizvodi/homeopatija'}>
                                    Homeopatija
                               </Link>
                          </StyledNestedTypography>

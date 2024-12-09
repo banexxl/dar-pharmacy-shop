@@ -49,7 +49,7 @@ export async function getServerSideProps({ query }: any) {
      // if (!productsByMainMidSubCategory || productsByMainMidSubCategory.length === 0) {
      //      return {
      //           redirect: {
-     //                destination: `/proizvodi/${query.mainCategory}/${query.midCategory}/${query.subCategory}/?part=1`
+     //                destination: `/proizvodi/${query.mainCategory}/${query.midCategory}/${query.subCategory}/`
      //           },
      //      };
      // }
