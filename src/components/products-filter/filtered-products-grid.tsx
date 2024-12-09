@@ -26,7 +26,6 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
 
      const [products, setProducts] = useState<IProduct[]>(props.data || []);
      const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
-     const [hasMore, setHasMore] = useState(props?.data.length >= 10);
      const [currentPage, setCurrentPage] = useState(0);
      // New state for filtering and sorting
      const [isFilterDialogOpen, setIsFilterDialogOpen] = useState(false);

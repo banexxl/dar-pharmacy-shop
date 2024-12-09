@@ -127,7 +127,7 @@ export const ProductsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ manufacturerURL: { $regex: `${manufacturerURL}` }, isActive: true })
+                    .find({ manufacturerURL: { $regex: `${manufacturerURL}` }, isActive: true }).toArray()
                //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                //                 .limit(10)
                //              .toArray()
@@ -213,7 +213,7 @@ export const ProductsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products').
-                    find({ mainCategory: mainCategory, midCategory: midCategory, isActive: true })
+                    find({ mainCategory: mainCategory, midCategory: midCategory, isActive: true }).toArray()
                //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                //                 .limit(10)
                //              .toArray()
@@ -238,7 +238,7 @@ export const ProductsServices = () => {
                          mainCategory: { $regex: new RegExp(`^${mainCategory}$`, 'i') },
                          manufacturerURL: { $regex: new RegExp(`^${manufacturerURL}$`, 'i') },
                          isActive: true
-                    })
+                    }).toArray()
                //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                //                 .limit(10)
                //              .toArray()
@@ -259,7 +259,7 @@ export const ProductsServices = () => {
           try {
                const db = client.db('DAR_DB')
                let products: IProduct[] = await db.collection('Products')
-                    .find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory, isActive: true })
+                    .find({ mainCategory: mainCategory, midCategory: midCategory, subCategory: subCategory, isActive: true }).toArray()
                //.skip(10 * (loadedParts - 1)) // Adjust the skip based on loadedParts
                //                 .limit(10)
                //              .toArray()
