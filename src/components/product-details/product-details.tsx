@@ -233,7 +233,7 @@ function ProductDetails(product: IProduct) {
                          )}
                          <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.main }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                          <Button
-                              sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
+                              sx={{ width: '30px', height: '30px', backgroundColor: 'transparent', }}
                               onClick={() => setShowShareOptions(!showShareOptions)}
                          >
                               <Tooltip placement="left" title={"Podeli"}>

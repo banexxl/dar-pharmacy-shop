@@ -107,7 +107,7 @@ export default function Chatbot() {
                          bgcolor: Colors.primary.light,
                          color: "white",
                          "&:hover": {
-                              bgcolor: Colors.primary.dark,
+                              bgcolor: Colors.primary.main,
                          },
                     }}
                >

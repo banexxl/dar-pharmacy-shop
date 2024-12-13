@@ -70,9 +70,9 @@ const CartItem = (props: ICartItem) => {
                          </StyledProductCell>
                     ) : (
                          // Empty cell to maintain layout alignment with the header
-                         <StyledProductCell theme={theme} sx={{ visibility: 'hidden' }}>
+                         <StyledProductCell theme={theme}>
                               <StyledProductName theme={theme}>
-                                   {/* Empty for alignment purposes */}
+                                   {props.count * props.price} RSD
                               </StyledProductName>
                          </StyledProductCell>
                     )}

@@ -166,7 +166,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               )}
                          </Tooltip>
                          <Button
-                              sx={{ borderRadius: '100%', width: '40px', height: '40px', padding: '0', backgroundColor: 'transparent', }}
+                              sx={{ width: '30px', height: '30px', backgroundColor: 'transparent', }}
                               onClick={() => setShowShareOptions(!showShareOptions)}
                          >
                               <Tooltip placement="left" title={"Podeli"}>

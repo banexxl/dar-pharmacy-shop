@@ -64,7 +64,7 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
                                    <CarouselTitle sx={{
                                         justifyContent: 'center',
                                         alignItems: 'center',
-                                        color: Colors.primary.darker
+                                        color: Colors.primary.main
                                    }}>
                                         <Typography component={'span'} sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
                                              {product.name}

@@ -232,9 +232,9 @@ const theme: Theme = createTheme({
           MuiSvgIcon: {
                styleOverrides: {
                     root: {
-                         color: Colors.primary.darker,
+                         color: Colors.primary.lighter,
                          '&:hover': {
-                              color: Colors.primary.darker,
+                              color: Colors.primary.main,
                               //zoomin
                               transform: 'scale(1.2)',
                          }

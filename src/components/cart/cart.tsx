@@ -60,17 +60,17 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    :
                                    <StyledTable>
                                         <StyledHeader>
-                                             <TableRow>
-                                                  <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Cena</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Ukupno sa PDV</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
-                                             </TableRow>
+
+                                             <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Cena</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Ukupno sa PDV</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
+                                             <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
+
                                         </StyledHeader>
                                         <StyledTableBody theme={theme}>
                                              {cart.map((cartItem: ICartItem) => (

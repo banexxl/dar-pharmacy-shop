@@ -112,7 +112,7 @@ export const SocialShare = ({ shareURL, flexDirection, sx }: ShareProps) => {
             key={'em'}
             size="small"
             variant="outlined"
-            startIcon={<AlternateEmailIcon />}
+            startIcon={<AlternateEmailIcon sx={{ color: Colors.primary.main }} />}
             sx={{
               m: 0.5,
               flexShrink: 0,
