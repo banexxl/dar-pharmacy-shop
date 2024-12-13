@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Container, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Button, Container, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,13 +8,14 @@ import sweetalert2 from 'sweetalert2';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
-import { CheckoutNextPrevButton, ClearFormButton, PaymentOptionRadio } from '@/styles/checkout/userinfo';
+import { ClearFormButton, PaymentOptionRadio } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LoadingWheel from '@/components/loading/loading';
 import Cart from '@/components/cart/cart';
 import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
+import { Box } from '@mui/system';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
      const theme = useTheme();
@@ -201,8 +202,19 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
                                         <EmailAndAccountCreation />
-                                        <PaymentOptionRadio theme={theme} >
-                                             <ClearFormButton
+                                        <Box sx={{
+                                             display: 'flex',
+                                             [theme.breakpoints.down("sm")]: {
+                                                  flexDirection: 'column',
+                                                  marginBottom: '100px'
+                                             },
+                                             height: '150px',
+                                             alignItems: 'center',
+                                             justifyContent: 'space-between',
+                                             width: '100%',
+                                             marginTop: '20px'
+                                        }}>
+                                             <Button
                                                   endIcon={<DeleteIcon />}
                                                   type='reset'
                                                   onClick={() => {
@@ -220,14 +232,14 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   }}
                                              >
                                                   Obriši
-                                             </ClearFormButton>
-                                             <CheckoutNextPrevButton
+                                             </Button>
+                                             <Button
                                                   sx={{ maxWidth: '200px' }}
                                                   // startIcon={<NavigateBeforeIcon />}
                                                   onClick={() => showCartDialog()}>
                                                   Proveri korpu
-                                             </CheckoutNextPrevButton>
-                                             <CheckoutNextPrevButton
+                                             </Button>
+                                             <Button
                                                   onClick={() => handleSubmit(formik.values)}
                                                   endIcon={<NavigateNextIcon />}
                                                   disabled={
@@ -243,9 +255,9 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   }
                                              >
                                                   Dalje
-                                             </CheckoutNextPrevButton>
+                                             </Button>
 
-                                        </PaymentOptionRadio>
+                                        </Box>
                                    </Grid>
                               </Form>
                          )}
