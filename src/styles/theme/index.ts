@@ -232,7 +232,7 @@ const theme: Theme = createTheme({
           MuiSvgIcon: {
                styleOverrides: {
                     root: {
-                         color: Colors.primary.lighter,
+                         color: Colors.primary.dark,
                          '&:hover': {
                               color: Colors.primary.main,
                               //zoomin
@@ -258,7 +258,7 @@ const theme: Theme = createTheme({
                     root: {
                          position: 'relative',
                          overflow: 'hidden',
-                         background: Colors.primary.lighter,
+                         background: Colors.primary.light,
                          cursor: 'pointer',
                          transition: 'background-color 0.3s ease, transform 0.2s ease',
                          '&:hover': {
@@ -288,7 +288,6 @@ const theme: Theme = createTheme({
                     },
                },
           },
-
           MuiTooltip: {
                defaultProps: {
                     arrow: true,
