@@ -257,12 +257,16 @@ function ProductDetails(product: IProduct) {
                     </Box>
                </ProductDetailInfoWrapper>
                <CartDialog />
-               <MediaCarousel
-                    media={mediaItems}
-                    open={isCarouselOpen}
-                    initialIndex={carouselIndex}
-                    onClose={handleCloseCarousel}
-               />
+               {
+                    mediaItems && mediaItems.length > 0 && (
+                         <MediaCarousel
+                              media={mediaItems}
+                              open={isCarouselOpen}
+                              initialIndex={carouselIndex}
+                              onClose={handleCloseCarousel}
+                         />
+                    )
+               }
           </ProductDetailWrapper>
      )
 }
