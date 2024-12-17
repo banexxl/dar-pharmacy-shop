@@ -32,7 +32,7 @@ const PageNotFount = () => {
                               <Container404 theme={theme}>
                                    <Heading404>404 - Stranica nije pronađena {'\u{1F612}'}</Heading404>
                                    <Message404 variant="body1">
-                                        UPS!....Stranica koju ste zahtevali je u izradi! Možda iznenadi i pojavi se posle osvežavanja stranice {'\u{1F609}'}
+                                        UPS!....Stranica ili proizvod koji ste zahtevali nije pronađen! Možda iznenadi i pojavi se posle osvežavanja stranice {'\u{1F609}'}
                                    </Message404>
                                    <Link rel='canonical' href="/" passHref>
                                         <StyledButton404 variant="contained" color="primary">

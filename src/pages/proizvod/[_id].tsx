@@ -22,7 +22,9 @@ const SingleProduct = (props: SingleProductProps) => {
           loading: () => <LoadingWheel />,
           ssr: false
      })
-     return (
+
+
+     return props.product ? (
           <DynamicThemeProvider theme={theme}>
                <Seo title={props.product.name} description={props.product.description} url={'https://www.apoteka-dar.rs/'} />
                <Container
@@ -44,6 +46,9 @@ const SingleProduct = (props: SingleProductProps) => {
                </Container>
           </DynamicThemeProvider>
      )
+          :
+          //server redirect to 404
+          {}
 }
 
 export default SingleProduct
@@ -51,6 +56,13 @@ export default SingleProduct
 export async function getServerSideProps(context: any) {
 
      const product: any = await ProductsServices().getProductById(context.params._id)
+
+     if (!product) {
+          return {
+               notFound: true, // Redirects to the 404 page
+          };
+     }
+
      // context iz getstaticprops {
      //           params: { _id: '647660082a76d9e7aa674dc8' },
      //           locales: ['sr-RS', 'en-US'],
