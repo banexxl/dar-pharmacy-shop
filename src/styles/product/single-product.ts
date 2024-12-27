@@ -111,12 +111,23 @@ export const ProductAddToCart = styled(LoadingButton, { shouldForwardProp: (prop
           [theme.breakpoints.up("md")]: {
                position: "absolute",
                bottom: "2%",
+               left: "25%",
                width: "150px",
                padding: "10px 5px",
                ...(show && {
                     animation: `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
                })
           },
+          [theme.breakpoints.down("md")]: {
+               position: "absolute",
+               bottom: "2%",
+               left: "25%",
+               width: "150px",
+               padding: "10px 5px",
+               ...(show && {
+                    animation: `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+               })
+          }
           // '&:hover': {
           //      backgroundColor: Colors.primary.lighter,
           // },

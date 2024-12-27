@@ -1,9 +1,9 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
+import { CarouselButton, CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
-import { Box, Button, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import { ProductAddToCart } from '@/styles/product/single-product';
 import { useState } from 'react';
@@ -64,7 +64,7 @@ const ProductCarousel = (props: any) => {
                >
                     {
                          props.products.map((product: IProduct) => (
-                              <StyledCarouselCard key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingBottom: isScreenToMedium ? '20px' : '80px' }}>
+                              <StyledCarouselCard key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingBottom: '10px' }}>
                                    <Box
                                         sx={{
                                              position: 'relative', // Make the Box container a positioning context
@@ -119,22 +119,20 @@ const ProductCarousel = (props: any) => {
                                    </Box>
                                    {
                                         product.availableStock > 0 ? (
-                                             <ProductAddToCart
-                                                  show={true}
+                                             <CarouselButton
                                                   onClick={() => {
                                                        callCartAlert();
                                                        dispatch(addToCart(product));
                                                   }} theme={theme}>
                                                   Dodaj u korpu
-                                             </ProductAddToCart>
+                                             </CarouselButton>
                                         )
                                              :
-                                             <ProductAddToCart
-                                                  show={true}
+                                             <CarouselButton
                                                   disabled
                                                   theme={theme}>
                                                   Nema na stanju
-                                             </ProductAddToCart>
+                                             </CarouselButton>
                                    }
 
                               </StyledCarouselCard>

@@ -1,6 +1,7 @@
 import styled from '@mui/system/styled';
 import { Box, Button, Typography } from '@mui/material';
-import { Colors } from '../theme';
+import theme, { Colors } from '../theme';
+import { fontSize } from '@mui/system';
 
 export const StyledCarouselBox = styled(Box)({
      display: 'block',
@@ -17,11 +18,19 @@ export const StyledCarouselLogoBox = styled(Box)({
 });
 
 export const StyledCarouselCard = styled(Box)({
+     display: 'flex',
+     flexDirection: 'column',
+     [theme.breakpoints.up("md")]: {
+          justifyContent: 'space-between',
+     },
+     [theme.breakpoints.down("md")]: {
+          justifyContent: 'space-around',
+     },
      background: Colors.dove_gray,
      border: '1px solid',
      borderRadius: '20px',
      borderColor: Colors.primary.lighter,
-     height: '300px',
+     height: '400px',
      maxWidth: '100%',
      color: 'black',
      cursor: 'pointer',
@@ -74,7 +83,7 @@ export const CarouselManufacturer = styled(Typography)({
      lineHeight: '1.8em', // Adjust line height as needed
      textTransform: 'uppercase',
      cursor: 'pointer',
-     maxWidth: '200px' // Adjust this value as needed
+     maxWidth: '200px'
 });
 
 export const CarouselImgBox = styled(Box)({
@@ -121,16 +130,21 @@ export const CarouselLogoImgBox = styled(Box)({
 })
 
 export const CarouselButton = styled(Button)({
-     background: `linear-gradient(to right bottom,${Colors.primary}, ${Colors.primary.lighter})`,
+     background: `linear-gradient(to right bottom,${Colors.primary.main}, ${Colors.primary.lighter})`,
      border: `1px solid ${Colors.dim_grey}`,
-     transition: 'transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-     width: '50%',
-     transform: 'translateX(50%)',
-     ':hover': {
-          webkitTransform: 'scale(1.2) rotate(0.01deg)',
-          transform: 'scale(1.1) rotate(0.01deg) translateX(50%)',
+     transform: 'translateX(-50%)',
+     left: '50%',
+
+     [theme.breakpoints.up("md")]: {
+          fontSize: '1rem',
+          height: '40px',
+          width: '200px',
      },
-     height: '30px'
+     [theme.breakpoints.down("md")]: {
+          fontSize: '.7rem',
+          height: '30px',
+          width: '130px',
+     },
 });
 
 export const DiscountSticker = styled(Box)({
