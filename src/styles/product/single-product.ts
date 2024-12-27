@@ -142,6 +142,14 @@ export const PopularProductAddToCart = styled(LoadingButton)({
      // background: Colors.primary.lighter,
 });
 
+export const MobileAddToCart = styled(LoadingButton)({
+     fontSize: "12px",
+     '&:hover': {
+          backgroundColor: Colors.primary.light,
+     },
+     background: Colors.primary.lighter,
+});
+
 type ProductMetaProps = {
      theme: Theme;
 }

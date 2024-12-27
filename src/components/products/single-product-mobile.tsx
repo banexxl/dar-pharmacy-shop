@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, } from "../../styles/product/single-product";
+import { MobileAddToCart, Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, } from "../../styles/product/single-product";
 import { Alert, Box, Grow, Stack, Tooltip, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -155,22 +155,20 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                     {
                          product.availableStock > 0 ?
                               (
-                                   <ProductAddToCart
+                                   <MobileAddToCart
                                         onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
                                         theme={theme}
-                                        show={true}
                                    >
                                         Dodaj u korpu
-                                   </ProductAddToCart >
+                                   </MobileAddToCart >
                               )
                               :
                               (
-                                   <ProductAddToCart
+                                   <MobileAddToCart
                                         theme={theme}
-                                        show={true}
                                    >
                                         Nema na stanju
-                                   </ProductAddToCart >
+                                   </MobileAddToCart >
                               )
                     }
 
