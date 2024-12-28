@@ -17,7 +17,7 @@ import IProduct from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 import { SocialShare } from "../social/socials-share";
-import { ProductAddToCart } from "@/styles/product/single-product";
+import { MobileAddToCart, ProductAddToCart } from "@/styles/product/single-product";
 
 type FilteredSingleProductMobileProps = {
      product: IProduct;
@@ -160,22 +160,20 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                {
                     product.availableStock > 0 ?
                          (
-                              <ProductAddToCart
+                              <MobileAddToCart
                                    onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
                                    theme={theme}
-                                   show={true}
                               >
                                    Dodaj u korpu
-                              </ProductAddToCart >
+                              </MobileAddToCart >
                          )
                          :
                          (
-                              <ProductAddToCart
+                              <MobileAddToCart
                                    theme={theme}
-                                   show={true}
                               >
                                    Nema na stanju
-                              </ProductAddToCart >
+                              </MobileAddToCart >
                          )
                }
                <ProductDetailDialog product={product} />
