@@ -124,6 +124,10 @@ function ProductDetails(product: IProduct) {
           return el._id == product._id;
      });
 
+     const formattedDescription = product.description.replace(/([,.])/g, "$1 ");
+     const formattedInstructions = product.instructions.replace(/([,.])/g, "$1 ");
+     const formattedWarning = product.warning.replace(/([,.])/g, "$1 ");
+
      return (
           <ProductDetailWrapper sx={{ marginTop: '100px', gap: '30px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"} ref={domRef} isVisible={isVisible} theme={theme}>
                <ProductImageBox
@@ -176,20 +180,20 @@ function ProductDetails(product: IProduct) {
                     <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                          Opis
                     </Typography>
-                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center' }}>
-                         {product.description}
+                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center', wordBreak: 'break-word' }}>
+                         {formattedDescription}
                     </Typography>
                     <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                          Instrukcije
                     </Typography>
-                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center' }}>
-                         {product.instructions}
+                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center', wordBreak: 'break-word' }}>
+                         {formattedInstructions}
                     </Typography>
                     <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                          Upozorenje
                     </Typography >
-                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center' }}>
-                         {product.warning}
+                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center', wordBreak: 'break-word' }}>
+                         {formattedWarning}
                     </Typography>
                     <Box
                          sx={{ mt: 4 }}
