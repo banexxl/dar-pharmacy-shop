@@ -8,6 +8,7 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
      if (req.method === "POST") {
 
           const data: IEmailToFields = req.body;
+          const emailToClientSubject = "Poruka iz naše male apoteke DAR"
 
           if (!data || !data.name || !data.email || !data.subject || !data.cart) {
                return res.status(400).send({ message: "Bad request, data missing" });
@@ -56,6 +57,15 @@ const SendConfirmMessageToAdminAPI = async (req: any, res: any) => {
         <p>Ove proizvode je potrebno poslati na adresu:</p>
         <br/>
         <p>${data.country}<br/>${data.city}<br/>${data.streetAddress}<br/>${data.phoneNumber}<br/>${data.customerEmail}</p>
+
+          <button style="background-color: #ef7272; color: #05072d; padding: 10px; border-radius: 5px; cursor: pointer; border: none;">
+          <a href="mailto:${data.customerEmail}?subject=${emailToClientSubject}" style="text-decoration: none;">
+                    Pošalji poruku kupcu
+          </a>
+          </button>
+
+
+
     </div>
 </body>
 </html>
