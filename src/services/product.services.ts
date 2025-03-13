@@ -48,7 +48,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getRandomProductsFromManufacturerURL = async (manufacturerURL: string) => {
+     const getRandomProductsFromManufacturerURL = async (manufacturerURL: string): Promise<IProduct[]> => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
@@ -67,7 +67,7 @@ export const ProductsServices = () => {
                     .toArray()
                return data
           } catch (error: any) {
-               return { message: error.message }
+               return error.message
           }
           finally {
                await client.close();
@@ -141,7 +141,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getProductsByNameAndOrManufacturer = async (searchTerm: any) => {
+     const getProductsByNameAndOrManufacturer = async (searchTerm: any): Promise<IProduct[]> => {
 
           const searchTermArray = searchTerm.split(" ")
 
@@ -162,14 +162,14 @@ export const ProductsServices = () => {
 
                return products
           } catch (error: any) {
-               return { message: error.message }
+               return error
           }
           finally {
                await client.close();
           }
      }
 
-     const getProductsByDiscount = async () => {
+     const getProductsByDiscount = async (): Promise<IProduct[]> => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
           try {
                const db = client.db('DAR_DB')
@@ -179,7 +179,7 @@ export const ProductsServices = () => {
 
                return products
           } catch (error: any) {
-               return { message: error.message }
+               return error
           } finally {
                await client.close();
           }
@@ -295,7 +295,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getNewProducts = async () => {
+     const getNewProducts = async (): Promise<IProduct[]> => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
@@ -307,13 +307,13 @@ export const ProductsServices = () => {
 
                return products
           } catch (error: any) {
-               return { message: error.message }
+               return error
           } finally {
                await client.close();
           }
      }
 
-     const getAllProductsOnPromotion = async () => {
+     const getAllProductsOnPromotion = async (): Promise<IProduct[]> => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
@@ -323,7 +323,7 @@ export const ProductsServices = () => {
                     .toArray()
                return products
           } catch (error: any) {
-               return { message: error.message }
+               return error
           } finally {
                await client.close();
           }

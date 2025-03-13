@@ -13,6 +13,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Parallax() {
+
      const [scrollY, setScrollY] = useState(0);
      const parallaxRef = useRef<HTMLDivElement>(null);
      const theme = useTheme();
@@ -56,6 +57,7 @@ export default function Parallax() {
                          fill={true} // Updated
                          style={{ objectFit: "cover" }} // Updated
                          quality={100}
+                         priority
                     />
                </Box>
                <Box
