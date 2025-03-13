@@ -246,25 +246,32 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        session.status === 'authenticated'
                                                             ? // If session is authenticated, disable if there are any errors except email errors
                                                             Object.keys(formik.errors).some(
-                                                                 (key) => key !== 'email'
+                                                                 (key) =>
+                                                                      key !== 'email' && formik.errors[key as keyof IUserForm] !== undefined
                                                             )
                                                             : // If session is not authenticated, disable if there are any errors except the specific email error
+                                                            (formik.errors.email !== 'Ovaj email je već registrovan!' && formik.errors.email !== undefined) ||
+                                                            // Check if any other formik fields have errors
                                                             Object.keys(formik.errors).some(
-                                                                 (key) => formik.errors.email !== 'Ovaj email je već registrovan!'
+                                                                 (key) => key !== 'email' && formik.errors[key as keyof IUserForm] !== undefined
                                                             )
                                                   }
                                              >
                                                   Dalje
                                              </Button>
 
+
+
+
                                         </Box>
+                                        {/* </PaymentOptionRadio> */}
                                    </Grid>
                               </Form>
                          )}
                     </Formik>
                </Container>
                <CartDialog />
-          </DynamicThemeProvider>
+          </DynamicThemeProvider >
      );
 };
 
