@@ -7,12 +7,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Colors } from "@/styles/theme";
 import SvgIcon from "../svg/svg-icon";
+import { useRouter } from "next/router";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
      const { setShowSearchBox } = useUIContext()
      const [isScrolled, setIsScrolled] = useState<Boolean>(false);
-
+     const router = useRouter()
      const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
 
 
@@ -56,10 +57,8 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
           }}>
                <IconBox>
                     <SvgIcon type={"logo"} />
-                    <AppbarTitle sx={{ paddingTop: '5px', fontSize: '1.2rem' }}>
-                         <Link rel='canonical' href="/">
-                              Apoteka DAR
-                         </Link>
+                    <AppbarTitle sx={{ paddingTop: '5px', fontSize: '1.2rem' }} onClick={() => router.push('/')}>
+                         Apoteka DAR
                     </AppbarTitle>
                </IconBox>
                <ListItemButton sx={{

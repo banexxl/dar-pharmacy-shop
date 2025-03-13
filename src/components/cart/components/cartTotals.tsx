@@ -7,6 +7,7 @@ import { clearCart } from '@/store/cart/cart.slice'
 import { Button, Typography } from '@mui/material'
 import theme, { Colors } from '@/styles/theme'
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/router'
 
 interface ICartTotalsProps {
      onClose: () => void
@@ -15,7 +16,7 @@ interface ICartTotalsProps {
 function CartTotals({ onClose }: ICartTotalsProps) {
 
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
-
+     const router = useRouter()
      const dispatch = useDispatch()
 
      return (
@@ -36,10 +37,11 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                </Button>
                <Button
                     disabled={parseFloat(totalItemPrice) === 0}
+                    onClick={() => router.push('/placanje')}
                >
-                    <Link rel='canonical' href='/placanje'>
-                         KREIRAJ PORUDŽBENICU
-                    </Link>
+
+                    KREIRAJ PORUDŽBENICU
+
                </Button>
                <Button onClick={() => {
                     toast.success("Korpa je prazna", { duration: 1500, position: "top-center" })
