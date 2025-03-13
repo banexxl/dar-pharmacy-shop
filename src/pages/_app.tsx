@@ -16,12 +16,12 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
 
      let persistor = persistStore(store)
 
-     useEffect(() => {
-          // Make sure to run React Scan after hydration
-          scan({
-               enabled: true,
-          });
-     }, []);
+     // useEffect(() => {
+     //      // Make sure to run React Scan after hydration
+     //      scan({
+     //           enabled: true,
+     //      });
+     // }, []);
 
      return (
 

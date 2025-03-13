@@ -51,12 +51,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      useEffect(() => {
           setProducts(props.data || []);
           updateDisplayedProducts(0);
-     }, [props.data, updateDisplayedProducts]);
-
-     useEffect(() => {
-          updateDisplayedProducts(0);
-     }, [products]);
-
+     }, []);
 
      const onShowNext = () => {
           if ((currentPage + 1) * 10 < products.length) {
@@ -75,27 +70,25 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
      // New function for handling filtering
      const handleFilter = () => {
           let filteredProducts = props.data.filter((product) => {
-               if (discountOnly && !product.discount) {
-                    return false;
-               }
+               if (discountOnly && !product.discount) return false;
 
                if (priceRange) {
                     const [min, max] = priceRange.split('-').map(Number);
-                    if (max && (product.price < min || product.price > max)) {
-                         return false;
-                    }
-                    if (!max && product.price < min) {
-                         return false;
-                    }
+                    if (max && (product.price < min || product.price > max)) return false;
+                    if (!max && product.price < min) return false;
                }
 
                return true;
           });
 
           setProducts(filteredProducts);
-          updateDisplayedProducts(0);
+          setDisplayedProducts(filteredProducts.slice(0, 10));
+          setCurrentPage(0);
+          setSortOption(''); // reset sorting optionally
           setIsFilterDialogOpen(false);
      };
+
+
      // New function for handling sorting
      const handleSort = () => {
           let sortedProducts = [...products];

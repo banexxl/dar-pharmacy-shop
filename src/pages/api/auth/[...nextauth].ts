@@ -218,7 +218,7 @@ export const authOptions: NextAuthOptions = {
           }),
      ],
      callbacks: {
-          async jwt({ token }) {
+          async jwt({ token, trigger }) {
                token.userRole = "admin"
                return token
           },
@@ -250,6 +250,7 @@ export const authOptions: NextAuthOptions = {
                return baseUrl; // Otherwise, redirect to the base URL (home page)
           },
           async session({ session, user, token }) {
+               session.expires = new Date(Date.now() + 1000 * 60 * 60 * 3).toISOString()
                return session
           }
      },
