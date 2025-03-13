@@ -270,7 +270,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getAllManufacturers = async () => {
+     const getAllManufacturers = async (): Promise<string[]> => {
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
           try {
@@ -278,8 +278,8 @@ export const ProductsServices = () => {
                const db = client.db('DAR_DB');
                const productsCollection = db.collection('Products');
 
-               const manufacturers = await new Promise((resolve, reject) => {
-                    productsCollection.distinct("manufacturer", (error: any, manufacturers: any) => {
+               const manufacturers: string[] = await new Promise((resolve, reject) => {
+                    productsCollection.distinct("manufacturer", (error: any, manufacturers: string[]) => {
                          if (error) {
                               reject(error);
                          } else {
@@ -289,7 +289,7 @@ export const ProductsServices = () => {
                });
                return manufacturers;
           } catch (error) {
-               return { message: error };
+               return [];
           } finally {
                client.close();
           }
@@ -329,6 +329,45 @@ export const ProductsServices = () => {
           }
      }
 
+     const getAllPathsForMainCategoryAndManufacturer = async (): Promise<{ params: { mainCategory: string, manufacturerURL: string } }[]> => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!); // Connect to the MongoDB database
+          try {
+               const db = client.db('DAR_DB'); // Connect to the DAR_DB database
+               const productsCollection = db.collection('Products'); // Connect to the Products collection
+
+               const paths = await new Promise<any[]>((resolve, reject) => {
+                    productsCollection.aggregate([
+                         {
+                              $group: {
+                                   _id: { mainCategory: "$mainCategory", manufacturerURL: "$manufacturerURL" }
+                              }
+                         }
+                    ]).toArray((error: any, result: any[]) => {
+                         if (error) {
+                              reject(error);
+                         } else {
+                              resolve(result);
+                         }
+                    });
+               });
+
+               // Map the results into the structure required for getStaticPaths
+               return paths.map((path) => ({
+                    params: JSON.parse(JSON.stringify({
+                         'mainCategory': path._id.mainCategory.toString(),
+                         'manufacturerURL': path._id.manufacturerURL.toString(),
+                    }))
+               }));
+          }
+          catch (error: any) {
+               console.error(error.message);
+               return [];  // Return an empty array in case of error
+          }
+          finally {
+               await client.close();
+          }
+     }
+
 
      return {
           getAllProductsOnPromotion,
@@ -346,6 +385,7 @@ export const ProductsServices = () => {
           getAllLogos,
           getAllManufacturers,
           getRandomProductsFromManufacturerURL,
-          getRandomApotekaProducts
+          getRandomApotekaProducts,
+          getAllPathsForMainCategoryAndManufacturer
      }
 }

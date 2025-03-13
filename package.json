@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start --port 3000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scan": "next dev & npx react-scan@latest localhost:3000"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -71,10 +72,12 @@
     "react-material-ui-carousel": "^3.4.2",
     "react-multi-carousel": "^2.8.5",
     "react-redux": "^8.0.5",
+    "react-scan": "^0.2.14",
     "react-slick": "^0.29.0",
     "react-visibility-sensor": "^5.1.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
+    "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.7.5",
     "typescript": "4.9.4",

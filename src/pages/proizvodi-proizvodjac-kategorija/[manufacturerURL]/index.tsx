@@ -67,18 +67,36 @@ export default function MainCategoryPage(props: any) {
      )
 }
 
-export async function getServerSideProps({ query }: any) {
+export async function getStaticPaths() {
+     // Fetch all manufacturers
+     const manufacturers: string[] = await ProductsServices().getAllManufacturers();
+     // Map each manufacturer to the required format for getStaticPaths
+     const paths = manufacturers.map((manufacturer: string) => ({
+          params: { manufacturerURL: manufacturer }  // Ensure manufacturerURL is part of the params object
+     }));
 
-     const productsByManufacturer: any = await ProductsServices().getProductsByManufacturer(query.manufacturerURL)
+     return {
+          paths,
+          fallback: 'blocking'
+     };
+}
+
+
+export async function getStaticProps({ params }: any) {
+     const productsByManufacturer: any = await ProductsServices().getProductsByManufacturer(params.manufacturerURL);
+
+     if (!productsByManufacturer) {
+          return {
+               redirect: {
+                    destination: "/404",
+                    permanent: false,
+               },
+          };
+     }
 
      const finalList = [
           ...productsByManufacturer
-     ]
-
-     redirect: {
-          destination: "/404"
-     }
-
+     ];
 
      return {
           props: {
@@ -86,7 +104,8 @@ export async function getServerSideProps({ query }: any) {
                //...(await serverSideTranslations('sr-RS'))
                // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
           },
-     }
+          revalidate: 60, // Revalidate every 60 seconds
+     };
 }
 
 

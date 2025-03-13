@@ -10,13 +10,14 @@ import {
 import { BannerQuotaText, BannerShopButton } from '@/styles/banner';
 import { Colors } from '@/styles/theme';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Parallax() {
      const [scrollY, setScrollY] = useState(0);
      const parallaxRef = useRef<HTMLDivElement>(null);
      const theme = useTheme();
      const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+     const router = useRouter();
      const [loading, setLoading] = useState(false);
 
      useEffect(() => {
@@ -148,14 +149,13 @@ export default function Parallax() {
                                    color="primary"
                                    variant="outlined"
                                    loading={loading}
-                                   onClick={() => setLoading(true)}
+                                   onClick={() => {
+                                        setLoading(true);
+                                        router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika');
+                                   }}
                               >
-                                   <Link
-                                        rel="canonical"
-                                        href={"/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika"}
-                                   >
-                                        Pogledajte ponudu
-                                   </Link>
+
+                                   Pogledajte ponudu
                               </BannerShopButton>
                          </Typography>
                     </Container>

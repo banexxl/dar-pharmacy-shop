@@ -42,24 +42,29 @@ export default function MainCategoryAndManufacturerPage(props: any) {
 }
 
 
-export async function getServerSideProps({ query }: any) {
+export async function getStaticProps({ params }: any) {
 
-     const productsByMainCategoryAndManufacturer: any = await ProductsServices().getProductsByMainCategoryAndManufacturer(query.mainCategory, query.manufacturerURL)
-
-     // if (!productsByMainCategoryAndManufacturer || productsByMainCategoryAndManufacturer.length === 0) {
-     //      return {
-     //           redirect: {
-     //                destination: `/${query.manufacturerURL}/`
-     //           },
-     //      };
-     // }
-
+     const productsByMainCategoryAndManufacturer: any = await ProductsServices().getProductsByMainCategoryAndManufacturer(params.mainCategory, params.manufacturerURL)
 
      return {
           props: {
                products: JSON.parse(JSON.stringify(productsByMainCategoryAndManufacturer)),
-               //...(await serverSideTranslations('sr-RS'))
-               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
           },
+          revalidate: 10, // Revalidate at most once every 10 seconds
+     }
+}
+
+
+export async function getStaticPaths() {
+     // Fetch the data that determines the paths
+     const paths = await ProductsServices().getAllPathsForMainCategoryAndManufacturer();
+     return {
+          paths: paths.map((path: any) => ({
+               params: {
+                    mainCategory: path.params.mainCategory,  // mainCategory
+                    manufacturerURL: path.params.manufacturerURL,  // manufacturerURL
+               }
+          })),
+          fallback: 'blocking',
      }
 }

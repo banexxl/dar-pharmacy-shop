@@ -9,10 +9,19 @@ import { persistStore } from 'redux-persist'
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head'
 import { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react'
+import { scan } from "react-scan";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
      let persistor = persistStore(store)
+
+     useEffect(() => {
+          // Make sure to run React Scan after hydration
+          scan({
+               enabled: true,
+          });
+     }, []);
 
      return (
 

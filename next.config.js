@@ -6,7 +6,24 @@ const nextConfig = {
      reactStrictMode: true,
      //i18n,
      images: {
-          domains: ['i.ibb.co', 'lh3.googleusercontent.com', 'utfs.io', 'dar-pharmacy.s3.eu-central-1.amazonaws.com'],
+          remotePatterns: [
+               {
+                    protocol: 'https',
+                    hostname: 'i.ibb.co'
+               },
+               {
+                    protocol: 'https',
+                    hostname: 'lh3.googleusercontent.com'
+               },
+               {
+                    protocol: 'https',
+                    hostname: 'utfs.io'
+               },
+               {
+                    protocol: 'https',
+                    hostname: 'dar-pharmacy.s3.eu-central-1.amazonaws.com'
+               }
+          ],
      }
 }
 

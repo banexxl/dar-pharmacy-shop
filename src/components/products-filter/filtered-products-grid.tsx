@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Container, Grid, Link, Typography } from "@mui/material";
 import FilteredSingleProductMobile from "./filtered-single-product-mobile";
@@ -41,17 +41,17 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
           });
      };
 
-     const updateDisplayedProducts = (page: number) => {
+     const updateDisplayedProducts = useCallback((page: number) => {
           const start = page * 10;
           const end = start + 10;
           setDisplayedProducts(products.slice(start, end));
           setCurrentPage(page);
-     };
+     }, [products]);
 
      useEffect(() => {
           setProducts(props.data || []);
           updateDisplayedProducts(0);
-     }, [props.data]);
+     }, [props.data, updateDisplayedProducts]);
 
      useEffect(() => {
           updateDisplayedProducts(0);
