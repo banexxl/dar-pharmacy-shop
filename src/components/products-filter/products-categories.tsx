@@ -3,17 +3,19 @@ import Typography from '@mui/material/Typography';
 import { Accordion, AccordionBox, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AccordionPanels } from './all-categories'
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const transformToMuiAccordion = (data: any) => {
+
      return data.map((item: any) => {
+
           const { id, link, title, children } = item;
           const router = useRouter();
+
           return children && children.length > 0 ? (
                <Accordion key={id}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                         <Typography>{title}</Typography>
+                         <Typography sx={{ cursor: 'pointer' }}>{title}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                          {transformToMuiAccordion(children)}
@@ -21,7 +23,7 @@ const transformToMuiAccordion = (data: any) => {
                </Accordion>
           ) : (
                <AccordionDetails key={id}>
-                    <Typography onClick={() => router.push(link)}>
+                    <Typography onClick={() => router.push(link)} sx={{ cursor: 'pointer' }}>
                          {title}
                     </Typography>
                </AccordionDetails>
