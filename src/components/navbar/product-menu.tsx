@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Menu, MenuItem, Typography, Popover } from '@mui/material';
 import { StyledProductMenu } from '@/styles/navbar/product-menu';
-import { StyledMenuItem, StyledNestedTypography } from '@/styles/products-nested/products-nested';
+import { StyledMenuItem } from '@/styles/products-nested/products-nested';
 import LoadingWheel from '@/components/loading/loading';
 import { useState } from 'react';
 import { Colors } from '@/styles/theme';
@@ -22,6 +22,7 @@ export const ProductsMenu = () => {
      const [submenuAnchorEl, setSubmenuAnchorEl] = useState<null | HTMLElement>(null);
      const [submenu2AnchorEl, setSubmenu2AnchorEl] = useState<null | HTMLElement>(null);
      const [submenu3AnchorEl, setSubmenu3AnchorEl] = useState<null | HTMLElement>(null);
+     const [submenu4AnchorEl, setSubmenu4AnchorEl] = useState<null | HTMLElement>(null);
      const open = Boolean(anchorEl);
 
      const { drawerOpen, setDrawerOpen, showLoadingWheel, setShowLoadingWheel } = useUIContext();
@@ -36,6 +37,7 @@ export const ProductsMenu = () => {
           setSubmenuAnchorEl(null);
           setSubmenu2AnchorEl(null);
           setSubmenu3AnchorEl(null);
+          setSubmenu4AnchorEl(null);
           setDrawerOpen(false);
      };
 
@@ -72,13 +74,25 @@ export const ProductsMenu = () => {
                          onClick={(e) => toggleSubmenu(e.currentTarget, setSubmenuAnchorEl, submenuAnchorEl)}
                          sx={menuItemStyle}
                     >
-                         Prirodna kozmetika
+                         <Typography>
+                              Prirodna kozmetika
+                         </Typography>
                     </MenuItem>
                     <MenuItem
                          onClick={(e) => toggleSubmenu(e.currentTarget, setSubmenu2AnchorEl, submenu2AnchorEl)}
                          sx={menuItemStyle}
                     >
-                         Sve za bebe
+                         <Typography>
+                              Sve za bebe
+                         </Typography>
+                    </MenuItem>
+                    <MenuItem
+                         onClick={(e) => toggleSubmenu(e.currentTarget, setSubmenu4AnchorEl, submenu4AnchorEl)}
+                         sx={menuItemStyle}
+                    >
+                         <Typography>
+                              Biljne tinkture
+                         </Typography>
                     </MenuItem>
                     <MenuItem
                          onClick={(e) => toggleSubmenu(e.currentTarget, setSubmenu3AnchorEl, submenu3AnchorEl)}
@@ -105,7 +119,9 @@ export const ProductsMenu = () => {
                          ['/proizvodi/homeopatija', 'Homeopatija'],
                     ].map(([href, label]) => (
                          <StyledMenuItem key={label} sx={menuItemStyle} onClick={() => onLinkClick(href)}>
-                              {label}
+                              <Typography>
+                                   {label}
+                              </Typography>
                          </StyledMenuItem>
                     ))}
                </StyledProductMenu>
@@ -138,7 +154,7 @@ export const ProductsMenu = () => {
                                    onLinkClick(`/proizvodi-proizvodjac-kategorija/${brand}/prirodna-kozmetika`)
                               }
                          >
-                              <StyledNestedTypography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</StyledNestedTypography>
+                              <Typography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</Typography>
                          </StyledMenuItem>
                     ))}
                </Popover>
@@ -165,7 +181,32 @@ export const ProductsMenu = () => {
                                    onLinkClick(`/proizvodi-proizvodjac-kategorija/${brand}/${category}`)
                               }
                          >
-                              <StyledNestedTypography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</StyledNestedTypography>
+                              <Typography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</Typography>
+                         </StyledMenuItem>
+                    ))}
+               </Popover>
+
+               {/* Submenu: Biljne tinture */}
+               <Popover
+                    open={Boolean(submenu4AnchorEl)}
+                    anchorEl={submenu4AnchorEl}
+                    onClose={() => setSubmenu4AnchorEl(null)}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+               >
+                    {[
+                         ['fantastik-fungi', 'biljne-tinkture'],
+                         ['priroda-na-dar', 'biljne-tinkture'],
+                         ['bioteo', 'biljne-tinkture'],
+                    ].map(([brand, category]) => (
+                         <StyledMenuItem
+                              key={brand + category}
+                              sx={menuItemStyle}
+                              onClick={() =>
+                                   onLinkClick(`/proizvodi-proizvodjac-kategorija/${brand}/${category}`)
+                              }
+                         >
+                              <Typography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</Typography>
                          </StyledMenuItem>
                     ))}
                </Popover>
@@ -182,7 +223,7 @@ export const ProductsMenu = () => {
                          sx={menuItemStyle}
                          onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/okp/ciscenje-organizma')}
                     >
-                         <StyledNestedTypography>OKP paket za čišćenje organizma</StyledNestedTypography>
+                         <Typography>OKP paket za čišćenje organizma</Typography>
                     </StyledMenuItem>
                     <StyledMenuItem
                          sx={menuItemStyle}
@@ -190,7 +231,7 @@ export const ProductsMenu = () => {
                               onLinkClick('/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture')
                          }
                     >
-                         <StyledNestedTypography>Priroda na dar</StyledNestedTypography>
+                         <Typography>Priroda na dar</Typography>
                     </StyledMenuItem>
                </Popover>
           </Box>
