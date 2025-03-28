@@ -3,6 +3,7 @@ import { Button, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import { slideInBottom, slideInRight } from '../animation';
 import { Colors } from '../theme';
+import Image from 'mui-image'
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Theme } from '@mui/material';
 
@@ -41,7 +42,7 @@ export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
 
 }))
 
-export const FilteredProductImage = styled('img')(({ src, theme }: any) => ({
+export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
      src: `${src}`,
      [theme.breakpoints.up('md')]: {
           maxHeight: '150px',

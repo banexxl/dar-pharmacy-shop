@@ -1,4 +1,5 @@
 import { Backdrop, Box, IconButton, styled } from "@mui/material";
+import Image from 'mui-image'
 
 export const BackdropStyled = styled(Backdrop)(({ theme }) => ({
      zIndex: theme.zIndex.drawer + 1,
@@ -14,7 +15,7 @@ export const CarouselBox = styled(Box)({
      height: '100%',
 });
 
-export const MediaStyled = styled('img')({
+export const MediaStyled = styled(Image)({
      maxWidth: '80%',
      maxHeight: '80%',
      objectFit: 'contain',
