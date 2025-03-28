@@ -85,7 +85,6 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                               whileTap={{ scale: 0.95 }}
                          >
                               <ListItemButton>
-
                                    <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.white, // Override only for this instance
