@@ -72,7 +72,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                        Kartično plaćanje
                                                   </Typography>
                                                   <Grid container spacing={2}>
-                                                       <Grid size={{ xs: 12, sm: 6 }}>
+                                                       <Grid item xs={12} sm={6}>
                                                             <TextField
                                                                  label={"Broj kartice"}
                                                                  variant="outlined"
@@ -88,7 +88,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                  required
                                                             />
                                                        </Grid>
-                                                       <Grid size={{ xs: 12, sm: 6 }}>
+                                                       <Grid item xs={12} sm={6}>
                                                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                                  <MobileDatePicker
                                                                       views={['year', 'month']}
@@ -106,7 +106,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                  />
                                                             </LocalizationProvider>
                                                        </Grid>
-                                                       <Grid size={{ xs: 12, sm: 6 }}>
+                                                       <Grid item xs={12} sm={6}>
                                                             <TextField
                                                                  label={"Sigurnosni kod"}
                                                                  variant="outlined"
@@ -124,7 +124,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                  required
                                                             />
                                                        </Grid>
-                                                       < Grid size={{ xs: 12, sm: 6 }} sx={{ marginTop: '20px' }}>
+                                                       < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
                                                             <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                  Nazad
                                                             </CheckoutNextPrevButton>
@@ -138,7 +138,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                    }
                               </Formik>
                               :
-                              < Grid size={{ xs: 12, sm: 6 }} sx={{ marginTop: '20px' }}>
+                              < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
                                    <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                         Nazad
                                    </CheckoutNextPrevButton>

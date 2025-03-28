@@ -115,7 +115,7 @@ export default function FilteredProductsGrid(props: FilteredProductsGridProps) {
                </Box>
           ) : (
                displayedProducts.map((product: IProduct) => (
-                    <Grid key={product._id} size={{ xs: 6, sm: 4, md: 3 }} display="flex" flexDirection={'column'} alignItems="center">
+                    <Grid key={product._id} item xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
                          {isScreenToMedium ? (
                               <FilteredSingleProductMobile key={product._id} product={product} isScreenToMedium={isScreenToMedium} />
                          ) : (
