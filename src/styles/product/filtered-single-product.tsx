@@ -4,7 +4,6 @@ import { Box } from '@mui/material';
 import { slideInBottom, slideInRight } from '../animation';
 import { Colors } from '../theme';
 import LoadingButton from '@mui/lab/LoadingButton';
-import Image from 'mui-image'
 import { Theme } from '@mui/material';
 
 interface FilteredProductProps {
@@ -42,7 +41,7 @@ export const FilteredProductImageContainer = styled(Box)(({ theme }: any) => ({
 
 }))
 
-export const FilteredProductImage = styled(Image)(({ src, theme }: any) => ({
+export const FilteredProductImage = styled('img')(({ src, theme }: any) => ({
      src: `${src}`,
      [theme.breakpoints.up('md')]: {
           maxHeight: '150px',
@@ -84,21 +83,16 @@ export const FilteredProductDropdown = styled(Box, {
 
 }))
 
-export const FilteredProductImageDropdown = styled(Image)(({ src, theme }: any) => ({
-     src: `${src}`,
+export const FilteredProductImageDropdown = styled(Box)(({ theme }: any) => ({
      width: '50%',
      background: Colors.light_gray,
      padding: '10px',
+     display: 'flex',
+     justifyContent: 'center',
+     alignItems: 'center',
      [theme.breakpoints.up('md')]: {
           width: '80%',
      },
-     // cursor: 'pointer',
-     // webkitTransition: '-webkit-transform 0.4s',
-     // transition: 'transform 0.4s',
-     // ':hover': {
-     //           webkitTransform: 'scale(1.2) rotate(0.01deg)',
-     //           transform: 'scale(1.1) rotate(0.01deg)'
-     // },
 }));
 
 export const FilteredProductActionButton = styled(IconButton)(() => ({

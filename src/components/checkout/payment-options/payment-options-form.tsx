@@ -13,6 +13,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers/';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { submitPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice';
+import { Dayjs } from 'dayjs';
 
 export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: IPaymentOptionsFormProps) => {
 
@@ -71,7 +72,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                        Kartično plaćanje
                                                   </Typography>
                                                   <Grid container spacing={2}>
-                                                       <Grid item xs={12} sm={12}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <TextField
                                                                  label={"Broj kartice"}
                                                                  variant="outlined"
@@ -87,13 +88,13 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                  required
                                                             />
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                                  <MobileDatePicker
                                                                       views={['year', 'month']}
                                                                       label={"Datum isteka kartice"}
                                                                       disablePast
-                                                                      onAccept={(date: ChangeEvent<HTMLInputElement> | null) => formik.setFieldValue('expirationDate', date)}
+                                                                      onAccept={(date: Dayjs | null) => formik.setFieldValue('expirationDate', date)}
                                                                       format='MM/YY'
                                                                       slotProps={{
                                                                            layout: {
@@ -105,7 +106,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                  />
                                                             </LocalizationProvider>
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <TextField
                                                                  label={"Sigurnosni kod"}
                                                                  variant="outlined"
@@ -123,7 +124,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                                                  required
                                                             />
                                                        </Grid>
-                                                       < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
+                                                       < Grid size={{ xs: 12, sm: 6 }} sx={{ marginTop: '20px' }}>
                                                             <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                                                  Nazad
                                                             </CheckoutNextPrevButton>
@@ -137,7 +138,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                    }
                               </Formik>
                               :
-                              < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
+                              < Grid size={{ xs: 12, sm: 6 }} sx={{ marginTop: '20px' }}>
                                    <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                         Nazad
                                    </CheckoutNextPrevButton>

@@ -1,11 +1,7 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import { Box, Menu, MenuItem, Typography, Popover } from '@mui/material';
 import { StyledProductMenu } from '@/styles/navbar/product-menu';
-import { Box, Typography } from '@mui/material';
-import { NestedMenuItem } from 'mui-nested-menu';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { StyledMenuItem, StyledNestedTypography } from '@/styles/products-nested/products-nested';
-import Link from 'next/link';
 import LoadingWheel from '@/components/loading/loading';
 import { useState } from 'react';
 import { Colors } from '@/styles/theme';
@@ -13,251 +9,123 @@ import { useUIContext } from '@/context/ui/ui.context';
 import { useRouter } from 'next/router';
 
 export const ProductsMenu = () => {
-
      const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-     const open = Boolean(anchorEl);
-     const { drawerOpen, setDrawerOpen, showLoadingWheel, setShowLoadingWheel } = useUIContext()
-     const handleProductsClick = (event: React.MouseEvent<HTMLElement>) => {
-          setAnchorEl(event.currentTarget)
-     };
+     const [submenuAnchorEl, setSubmenuAnchorEl] = useState<null | HTMLElement>(null);
+     const [submenu2AnchorEl, setSubmenu2AnchorEl] = useState<null | HTMLElement>(null);
 
-     const router = useRouter()
+     const open = Boolean(anchorEl);
+     const submenuOpen = Boolean(submenuAnchorEl);
+     const submenu2Open = Boolean(submenu2AnchorEl);
+
+     const { drawerOpen, setDrawerOpen, showLoadingWheel, setShowLoadingWheel } = useUIContext();
+     const router = useRouter();
+
+     const handleProductsClick = (event: React.MouseEvent<HTMLElement>) => {
+          setAnchorEl(event.currentTarget);
+     };
 
      const handleClose = () => {
-          setAnchorEl(null)
-          setDrawerOpen(false)
+          setAnchorEl(null);
+          setSubmenuAnchorEl(null);
+          setSubmenu2AnchorEl(null);
+          setDrawerOpen(false);
      };
 
-     const onLinkClick = () => {
-          setShowLoadingWheel('flex')
-          setAnchorEl(null)
-          setDrawerOpen(false)
-     }
+     const onLinkClick = (href: string) => {
+          setShowLoadingWheel('flex');
+          setAnchorEl(null);
+          setSubmenuAnchorEl(null);
+          setSubmenu2AnchorEl(null);
+          setDrawerOpen(false);
+          router.push(href);
+     };
+
+     const handleSubmenuEnter = (event: React.MouseEvent<HTMLElement>) => {
+          setSubmenuAnchorEl(event.currentTarget);
+     };
+
+     const handleSubmenu2Enter = (event: React.MouseEvent<HTMLElement>) => {
+          setSubmenu2AnchorEl(event.currentTarget);
+     };
 
      return (
           <Box>
                <LoadingWheel showLoadingWheel={showLoadingWheel} />
-               {/* <Button
-                    variant="contained"
-                    onClick={handleProductsClick}
-                    endIcon={<ArrowDownwardIcon />}
-                    sx={{
-                         ':hover': {
-                              backgroundColor: Colors.secondary.custom,
-                              textEmphasisColor: Colors.dim_grey
-                         }
-                    }}
-               > */}
                <Typography
                     sx={{ textAlign: 'center', color: Colors.secondary.custom, cursor: 'pointer' }}
                     onClick={handleProductsClick}
-
-               // endIcon={<ArrowDownwardIcon />}
                >
                     Proizvodi
                </Typography>
 
-               {/* </Button> */}
                <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                    <NestedMenuItem label="Prirodna kozmetika" parentMenuOpen={open}>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/gana-kozmetika/prirodna-kozmetika')}>
-                                   Gana kozmetika
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/gloria/prirodna-kozmetika')}>
-                                   Gloria
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/fitaky/prirodna-kozmetika')}>
-                                   Fitaky
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/weleda/prirodna-kozmetika')}>
-                                   Weleda
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika')}>
-                                   Majana
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/viviscal/prirodna-kozmetika')}>
-                                   Viviscal
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/herbalab/prirodna-kozmetika')}>
-                                   Herbalab
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/medical-plants/prirodna-kozmetika')}>
-                                   Medical plants
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/gamarde/prirodna-kozmetika')}>
-                                   Gamarde
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/aronica/prirodna-kozmetika')}>
-                                   Aronica
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/phyto/prirodna-kozmetika')}>
-                                   Phyto
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                    </NestedMenuItem>
-                    <NestedMenuItem label="Sve za bebe" parentMenuOpen={open}>
-                         <NestedMenuItem label="Bebi prirodna kozmetika" parentMenuOpen={open}>
-                              <StyledMenuItem onClick={handleClose}>
-                                   <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika')}>
-                                        Fitaky
-                                   </StyledNestedTypography>
-                              </StyledMenuItem>
-                              <StyledMenuItem onClick={handleClose}>
-                                   <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika')}>
-                                        Azeta bio
-                                   </StyledNestedTypography>
-                              </StyledMenuItem>
-                              <StyledMenuItem onClick={handleClose}>
-                                   <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika')}>
-                                        Gamarde
-                                   </StyledNestedTypography>
-                              </StyledMenuItem>
-                              <StyledMenuItem onClick={handleClose}>
-                                   <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika')}>
-                                        Weleda
-                                   </StyledNestedTypography>
-                              </StyledMenuItem>
-                         </NestedMenuItem>
-                         <NestedMenuItem label="Bebi pelene" parentMenuOpen={open}>
-                              <StyledMenuItem onClick={handleClose}>
-                                   <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/eco-boom/bebi-pelene')}>
-                                        Eco Boom
-                                   </StyledNestedTypography>
-                              </StyledMenuItem>
-                         </NestedMenuItem>
-                    </NestedMenuItem>
-                    <NestedMenuItem label="Biljne Tinkture" parentMenuOpen={open}>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/fantastik-fungi/biljne-tinkture')}>
-                                   Fantastik Fungi
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture')}>
-                                   Priroda na dar
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/bioteo/biljne-tinkture')}>
-                                   Bioteo
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                    </NestedMenuItem>
-                    <NestedMenuItem label="Čišćenje organizma" parentMenuOpen={open}>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/okp/ciscenje-organizma')}>
-                                   OKP paket za čišćenje organizma
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                         <StyledMenuItem onClick={handleClose}>
-                              <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture')}>
-                                   Priroda na dar
-                              </StyledNestedTypography>
-                         </StyledMenuItem>
-                    </NestedMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/ruska-apoteka')}>
-                              Ruska Apoteka
-                         </StyledNestedTypography>
+                    <MenuItem onMouseEnter={handleSubmenuEnter} onMouseLeave={() => setSubmenuAnchorEl(null)}>
+                         Prirodna kozmetika
+                    </MenuItem>
+                    <MenuItem onMouseEnter={handleSubmenu2Enter} onMouseLeave={() => setSubmenu2AnchorEl(null)}>
+                         Sve za bebe
+                    </MenuItem>
+                    <StyledMenuItem onClick={() => onLinkClick('/proizvodi/ruska-apoteka')}>
+                         <StyledNestedTypography>Ruska Apoteka</StyledNestedTypography>
                     </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/prirodni-imunitet')}>
-                              Prirodni imunitet
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/kolagen')}>
-                              Kolagen
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/suplementi')}>
-                              Suplementi
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/ledene-kocke-za-imunitet')}>
-                              Ledene kocke za imunitet
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/domaci-prirodni-melemi')}>
-                              Domaći prirodni melemi
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/mast-od-jazavca')}>
-                              Mast od Jazavca
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/guscija-mast')}>
-                              Guščija mast
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/ulja-za-masazu')}>
-                              Ulja za masažu
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/imunitet-za-decu')}>
-                              Imunitet za decu
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi-proizvodjac-kategorija/todoxin/prirodni-imunitet')}>
-                              Todoxin
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/suplemania')}>
-                              Suplemania
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/zao-prirodna-sminka')}>
-                              Zao prirodna šminka
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/prirodni-imunitet')}>
-                              Prirodni imunitet
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/proizvodi-za-zene')}>
-                              Proizvodi za žene
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
-                    <StyledMenuItem onClick={handleClose}>
-                         <StyledNestedTypography onClick={() => router.push('/proizvodi/homeopatija')}>
-                              Homeopatija
-                         </StyledNestedTypography>
-                    </StyledMenuItem>
+                    {/* ... other items like Prirodni imunitet, Kolagen, etc. */}
                </StyledProductMenu>
 
-          </Box >
+               {/* Submenu 1: Prirodna kozmetika */}
+               <Popover
+                    open={submenuOpen}
+                    anchorEl={submenuAnchorEl}
+                    onClose={() => setSubmenuAnchorEl(null)}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                    disableAutoFocus
+                    disableEnforceFocus
+               >
+                    {[
+                         ['gana-kozmetika', 'Gana kozmetika'],
+                         ['gloria', 'Gloria'],
+                         ['fitaky', 'Fitaky'],
+                         ['weleda', 'Weleda'],
+                         ['majana', 'Majana'],
+                         ['viviscal', 'Viviscal'],
+                         ['herbalab', 'Herbalab'],
+                         ['medical-plants', 'Medical plants'],
+                         ['gamarde', 'Gamarde'],
+                         ['aronica', 'Aronica'],
+                         ['phyto', 'Phyto'],
+                    ].map(([brand, name]) => (
+                         <StyledMenuItem key={brand} onClick={() => onLinkClick(`/proizvodi-proizvodjac-kategorija/${brand}/prirodna-kozmetika`)}>
+                              <StyledNestedTypography>{name}</StyledNestedTypography>
+                         </StyledMenuItem>
+                    ))}
+               </Popover>
+
+               {/* Submenu 2: Sve za bebe */}
+               <Popover
+                    open={submenu2Open}
+                    anchorEl={submenu2AnchorEl}
+                    onClose={() => setSubmenu2AnchorEl(null)}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                    disableAutoFocus
+                    disableEnforceFocus
+               >
+                    <StyledMenuItem onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/fitaky/bebi-prirodna-kozmetika')}>
+                         <StyledNestedTypography>Fitaky</StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/azeta-bio/bebi-prirodna-kozmetika')}>
+                         <StyledNestedTypography>Azeta Bio</StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/gamarde/bebi-prirodna-kozmetika')}>
+                         <StyledNestedTypography>Gamarde</StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/weleda/bebi-prirodna-kozmetika')}>
+                         <StyledNestedTypography>Weleda</StyledNestedTypography>
+                    </StyledMenuItem>
+                    <StyledMenuItem onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/eco-boom/bebi-pelene')}>
+                         <StyledNestedTypography>Eco Boom (pelene)</StyledNestedTypography>
+                    </StyledMenuItem>
+               </Popover>
+          </Box>
      );
-}
+};

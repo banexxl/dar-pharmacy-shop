@@ -13,7 +13,7 @@ export default function Products(props: any) {
      //const cart: ICartItem[] = useSelector((state: any) => state.cart)
 
      const renderProducts = props.data?.map((product: any) => (
-          <Grid item key={product._id} xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
+          <Grid key={product._id} size={{ xs: 6, sm: 4, md: 3 }} display="flex" flexDirection={'column'} alignItems="center">
                {isScreenToMedium ? (
                     <SingleProductMobile product={product} isScreenToMedium={isScreenToMedium} />
                ) : (

@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
 import { SearchBoxContainer, SearchResultsBox } from "@/styles/search/search.style";
 import { KeyboardEvent, useState } from "react";
-import Image from 'mui-image'
+import Image from "next/image";
 import IProduct from "@/interfaces/product/product.interface";
 import { Colors } from "@/styles/theme";
 import { addToCart } from "@/store/cart/cart.slice";

@@ -57,7 +57,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
      }
 
      return (
-          <CartWrapper component={Paper} theme={theme}>
+          <CartWrapper theme={theme}>
                <StyledTable>
                     <StyledHeader>
                          <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>

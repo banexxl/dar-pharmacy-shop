@@ -97,7 +97,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                         Adresa za dostavu
                                    </Typography>
                                    <Grid container spacing={2}>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Ime i prezime"
@@ -112,7 +112,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Broj telefona"
@@ -127,7 +127,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Adresa"
@@ -142,7 +142,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Grad"
@@ -157,7 +157,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Region"
@@ -172,7 +172,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Država"
@@ -187,7 +187,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid size={{ xs: 12, sm: 6 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Poštanski broj"

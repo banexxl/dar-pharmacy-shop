@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import { slideInBottom, slideInRight } from "../animation";
 import { Colors } from "../theme";
 import LoadingButton from '@mui/lab/LoadingButton';
-import Image from 'mui-image'
+
 
 type ProductProps = {
      isVisible: boolean;
@@ -23,7 +23,7 @@ export const Product = styled(Box, {
      },
 }))
 
-export const ProductImage = styled(Image)(({ src, theme }: any) => ({
+export const ProductImage = styled('img')(({ src, theme }: any) => ({
      src: `${src}`,
      width: "auto",
      height: '150px',
@@ -68,7 +68,7 @@ export const ProductDropdown = styled(Box, {
 
 }))
 
-export const ProductImageDropdown = styled(Image)(({ src, theme }: any) => ({
+export const ProductImageDropdown = styled('img')(({ src, theme }: any) => ({
      src: `${src}`,
      width: "50%",
      background: Colors.light_gray,

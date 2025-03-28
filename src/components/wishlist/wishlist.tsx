@@ -54,7 +54,7 @@ export default function WishList({ open, onClose }: any) {
                     </Box>
                </DialogTitle>
                <DialogContent>
-                    <WishListWrapper component={Paper} theme={theme}>
+                    <WishListWrapper theme={theme}>
                          <WishlistTable>
                               <WishlistHeader theme={theme}>
                                    <WishlistHeaderCell>Slika</WishlistHeaderCell>

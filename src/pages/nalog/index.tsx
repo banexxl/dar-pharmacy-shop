@@ -51,7 +51,7 @@ export default function ProtectedPage(props: any) {
                               <UIProvider>
                                    <Grid container spacing={2}>
                                         {/* Left Side: User Information */}
-                                        <Grid item xs={12} md={4} >
+                                        <Grid size={{ xs: 12, md: 4 }}>
                                              <ProfileBox
                                                   theme={theme}
                                                   sx={{
@@ -90,7 +90,7 @@ export default function ProtectedPage(props: any) {
                                         </Grid>
 
                                         {/* Right Side: User Orders */}
-                                        <Grid item xs={12} md={8}>
+                                        <Grid size={{ xs: 12, md: 8 }}>
                                              <Box
                                                   sx={{
                                                        marginTop: isScreenToMedium ? '10px' : '100px',

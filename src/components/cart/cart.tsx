@@ -50,7 +50,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                </DialogTitle>
 
                <DialogContent>
-                    <CartWrapper component={Paper} theme={theme}>
+                    <CartWrapper theme={theme}>
                          {
                               cart.length === 0 ? (
                                    <Typography variant="h6" align="center" sx={{ color: Colors.primary.main }}>
