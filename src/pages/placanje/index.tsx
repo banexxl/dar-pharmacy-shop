@@ -16,7 +16,7 @@ import { ReCaptchaProvider } from "next-recaptcha-v3";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
 
-const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Checkout = () => {
 
      const [tabIndex, setTabIndex] = useState(0)
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
@@ -79,17 +79,6 @@ const Checkout = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                </DynamicThemeProvider >
           </ReCaptchaProvider>
      )
-}
-
-
-export async function getStaticProps({ locale }: any) {
-     return {
-          props: {
-               //...(await serverSideTranslations('sr-RS'))
-               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
-               // Will be passed to the page component as props
-          },
-     }
 }
 
 export default Checkout

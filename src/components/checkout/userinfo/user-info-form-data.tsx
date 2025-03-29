@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Button, Container, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import React, { FunctionComponent } from 'react';
+import { Button, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,6 @@ import sweetalert2 from 'sweetalert2';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
-import { ClearFormButton, PaymentOptionRadio } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LoadingWheel from '@/components/loading/loading';
@@ -19,11 +18,9 @@ import { Box } from '@mui/system';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
      const theme = useTheme();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
      const [CartDialog, showCartDialog] = useDialogModal(Cart);
      const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }));
      const session = useSession();
-     const [nextEnabled, setNextEnabled] = useState(false);
      const dispatch = useDispatch();
 
      const initialUserFormValues: IUserForm = {

@@ -6,6 +6,7 @@ import { IUserForm } from '../../../interfaces/checkout/user-form-values.interfa
 import { useSession } from 'next-auth/react';
 
 const EmailAndAccountCreation: React.FC = () => {
+
      const { values, errors, touched, handleChange, setFieldValue, validateField } = useFormikContext<IUserForm>();
      const { data: session } = useSession();
 
