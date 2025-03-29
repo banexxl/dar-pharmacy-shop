@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSession } from 'next-auth/react';
 import sweetalert2 from 'sweetalert2';
-import { ThemeProvider } from '@mui/system';
+import { maxWidth, ThemeProvider } from '@mui/system';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
@@ -86,10 +86,10 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                     >
                          {formik => (
                               <Form>
-                                   <Typography component="legend" gutterBottom>
+                                   <Typography component="legend" gutterBottom sx={{ my: '30px' }}>
                                         Adresa za dostavu
                                    </Typography>
-                                   <Grid container spacing={2}>
+                                   <Grid container spacing={2} sx={{ width: { xs: '90vw', md: '50vw' }, ml: { xs: '10px', md: '100px' } }}>
                                         <Grid item xs={12} sm={6}>
                                              <Field
                                                   as={TextField}

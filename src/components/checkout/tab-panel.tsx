@@ -13,18 +13,17 @@ export const TabPanel = (props: TabPanelProps) => {
 
 
      return (
-          <Box
+          <div
                role="tabpanel"
-               hidden={value !== index}
-               id={`simple-tabpanel-${index}`}
-               aria-labelledby={`simple-tab-${index}`}
+               style={{
+                    display: value === index ? 'block' : 'block',
+                    visibility: value === index ? 'visible' : 'hidden',
+                    height: value === index ? 'auto' : 0,
+                    overflow: 'hidden',
+               }}
                {...other}
           >
-               {value === index && (
-                    <Box sx={{ p: 2 }}>
-                         <Typography variant="body1">{children}</Typography>
-                    </Box>
-               )}
-          </Box>
+               {children}
+          </div>
      );
 }

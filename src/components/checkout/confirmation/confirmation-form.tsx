@@ -59,7 +59,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
      return (
           <CartWrapper theme={theme}>
                <StyledTable>
-                    <StyledHeader>
+                    {/* <StyledHeader>
                          <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
                          <StyledHeaderCell theme={theme} align="left" >Naziv</StyledHeaderCell>
                          <StyledHeaderCell theme={theme} align="left" >Pakovanje</StyledHeaderCell>
@@ -69,7 +69,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          <StyledHeaderCell theme={theme} align="right">Ukupno sa PDV</StyledHeaderCell>
                          <StyledHeaderCell theme={theme} align="right">Ukupno sa popustom</StyledHeaderCell>
                          <StyledHeaderCell theme={theme} align="right">Obriši</StyledHeaderCell>
-                    </StyledHeader>
+                    </StyledHeader> */}
                     <StyledTableBody theme={theme}>
                          {cart.map((cartItem: ICartItem) => (
                               <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}

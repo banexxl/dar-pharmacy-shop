@@ -3,22 +3,12 @@ import { Colors } from "../theme";
 
 
 export const CheckoutTabs = styled(Tabs)(({ theme }) => ({
-     marginTop: '20px',
-     [theme.breakpoints.up("xl")]: {
-          width: '800px'
-     },
-     [theme.breakpoints.down("xl")]: {
-          width: '700px'
-     },
-     [theme.breakpoints.down("lg")]: {
-          width: '600px'
-     },
+     width: '100%',
 }));
 
 export const CheckoutTab = styled(Tab)(({ theme }) => ({
-     background: Colors.primary.lighter,
      [theme.breakpoints.up("md")]: {
-          width: '250px',
+          width: '100%',
      },
      [theme.breakpoints.down("md")]: {
           display: 'none'
@@ -26,11 +16,13 @@ export const CheckoutTab = styled(Tab)(({ theme }) => ({
 }));
 
 export const CheckoutTabText = styled(Typography)(({ theme }) => ({
+     my: 2,
      wordWrap: 'break-word',
-     [theme.breakpoints.up("xl")]: {
+     width: '100%',
+     [theme.breakpoints.up("md")]: {
           fontSize: "1rem",
      },
-     [theme.breakpoints.down("xl")]: {
+     [theme.breakpoints.down("md")]: {
           fontSize: ".8rem",
      },
      color: Colors.primary.main

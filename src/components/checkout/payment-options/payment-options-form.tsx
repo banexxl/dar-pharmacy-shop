@@ -47,7 +47,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                     background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px'
                }}
                >
-                    <Typography variant="h5" component="legend">Način plaćanja</Typography>
+                    <Typography sx={{ my: '30px' }} component="legend" >Način plaćanja</Typography>
                     <RadioGroup
                          aria-labelledby="demo-controlled-radio-buttons-group"
                          name="controlled-radio-buttons-group"

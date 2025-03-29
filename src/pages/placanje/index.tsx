@@ -46,8 +46,17 @@ const Checkout = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <Box sx={{ borderBottom: 3, borderColor: Colors.primary.lighter, marginTop: isScreenToMedium ? '100px' : '150px' }}>
-                                        <CheckoutStepper activeStep={tabIndex}>
+                                   <Box sx={{
+                                        borderBottom: 3,
+                                        borderColor: Colors.primary.lighter,
+                                        marginTop: isScreenToMedium ? '100px' : '150px',
+                                   }}>
+
+                                        <CheckoutStepper
+                                             sx={{
+                                                  display: { md: 'none' }
+                                             }}
+                                             activeStep={tabIndex}>
                                              {steps.map(label => (
                                                   <CheckoutStep key={label}>
                                                        <CheckoutStepLabel>{label}</CheckoutStepLabel>
@@ -55,21 +64,24 @@ const Checkout = () => {
                                              ))}
                                         </CheckoutStepper>
 
-                                        <CheckoutTabs value={tabIndex} TabIndicatorProps={{ sx: { display: 'none' } }}>
-                                             <CheckoutTab label={<CheckoutTabText>Adresa za dostavu</CheckoutTabText>} />
-                                             <CheckoutTab label={<CheckoutTabText>Način plaćanja</CheckoutTabText>} />
-                                             <CheckoutTab label={<CheckoutTabText>Potvrda</CheckoutTabText>} />
+                                        <CheckoutTabs value={tabIndex}>
+                                             {steps.map((label, index) => (
+                                                  <CheckoutTab key={index} label={<CheckoutTabText>{label}</CheckoutTabText>} />
+                                             ))}
                                         </CheckoutTabs>
 
                                         <TabPanel value={tabIndex} index={0}>
                                              <UserInfoFormData formName={'user-form-name'} setTab={setTab} tabIndex={0} />
                                         </TabPanel>
+
                                         <TabPanel value={tabIndex} index={1} >
                                              <CreditCard setTab={setTab} formName='credit-card' tabIndex={1} />
                                         </TabPanel>
+
                                         <TabPanel value={tabIndex} index={2} >
                                              <Confirmation setTab={setTab} tabIndex={2} />
                                         </TabPanel>
+
                                    </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />

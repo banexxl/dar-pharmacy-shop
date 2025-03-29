@@ -59,7 +59,7 @@ export const CartProductActionButton = styled(IconButton)(() => ({
      margin: 4,
 }))
 
-export const StyledTable = styled(Table)(({ theme }: any) => ({
+export const StyledTable = styled(Table)(({ theme, sx }: any) => ({
 
 }))
 
@@ -67,7 +67,7 @@ type StyledTableBodyProps = {
      theme: Theme;
 }
 
-export const StyledTableBody = styled(TableBody)<StyledTableBodyProps>(({ theme }) => ({
+export const StyledTableBody = styled(TableBody)<StyledTableBodyProps>(({ theme, sx }) => ({
      display: 'flex',
      flexDirection: 'column',
      justifyContent: 'space-evenly',
@@ -108,7 +108,7 @@ export const StyledProductCell = styled(TableCell)<StyledProductCellProps>(({ th
      display: 'flex',
      alignItems: 'center',
      justifyContent: 'start',
-     maxWidth: '150px',
+     maxWidth: '110px',
      [`&.${tableCellClasses.head}`]: {
           backgroundColor: Colors.primary.lighter,
           color: Colors.white,
