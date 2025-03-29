@@ -2,7 +2,6 @@ import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { Colors } from '@/styles/theme';
-import { useUIContext } from '@/context/ui/ui.context';
 
 export default function LoadingWheel(props: any) {
 

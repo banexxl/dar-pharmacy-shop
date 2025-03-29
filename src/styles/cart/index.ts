@@ -93,11 +93,11 @@ type StyledHeaderCellProps = {
      theme: Theme;
 }
 
-export const StyledHeaderCell = styled(TableCell)<StyledHeaderCellProps>(({ theme }) => ({
+export const StyledHeaderCell = styled(TableCell)<StyledHeaderCellProps>(({ theme, sx }) => ({
      maxWidth: '100px',
-     // display: 'flex',
      justifyContent: 'center',
      alignItems: 'right',
+     color: theme.palette.primary.main,
 }));
 
 type StyledProductCellProps = {

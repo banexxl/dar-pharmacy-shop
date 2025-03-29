@@ -1,4 +1,4 @@
-import { Box, Container, FormControlLabel, FormLabel, Grid, Input, InputAdornment, Radio, RadioGroup, TextField, Typography } from '@mui/material';
+import { Box, Container, FormControlLabel, FormLabel, Grid, Input, InputAdornment, Radio, RadioGroup, TextField, ThemeProvider, Typography } from '@mui/material';
 import { Form, Formik, FormikErrors, FormikTouched } from 'formik';
 import React, { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
 import { IPaymentOptionsForm, IPaymentOptionsFormProps } from '../../../interfaces/checkout/payment-options-form-values.interface';
@@ -25,10 +25,6 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
           expirationDate: paymentOptionsFormSelector.expirationDate,
           securityCode: paymentOptionsFormSelector.securityCode
      };
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
 
      const handleSubmit = (values: IPaymentOptionsForm) => {
           dispatch(submitPaymentOptionsForm(values))
@@ -45,7 +41,7 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
 
 
      return (
-          <DynamicThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
 
                <Container disableGutters maxWidth="md" sx={{
                     background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px'
@@ -149,6 +145,6 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                     }
 
                </Container>
-          </DynamicThemeProvider >
+          </ThemeProvider >
      );
 };

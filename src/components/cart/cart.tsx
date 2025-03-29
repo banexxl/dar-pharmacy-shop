@@ -60,7 +60,11 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    :
                                    <StyledTable>
                                         <StyledHeader>
-                                             <TableRow>
+                                             <TableRow sx={{
+                                                  display: 'flex',
+                                                  width: '100%',
+                                                  justifyContent: 'space-around',
+                                             }}   >
                                                   <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
                                                   <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
                                                   <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>

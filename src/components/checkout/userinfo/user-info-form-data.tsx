@@ -5,21 +5,22 @@ import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSession } from 'next-auth/react';
 import sweetalert2 from 'sweetalert2';
+import { ThemeProvider } from '@mui/system';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
-import LoadingWheel from '@/components/loading/loading';
 import Cart from '@/components/cart/cart';
 import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
 import { Box } from '@mui/system';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
+
      const theme = useTheme();
-     const [CartDialog, showCartDialog] = useDialogModal(Cart);
-     const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }));
+     const [CartDialog] = useDialogModal(Cart);
+     const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer);
      const session = useSession();
      const dispatch = useDispatch();
 
@@ -36,11 +37,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           shouldCreateAccount: false,
           emailVerified: null
      };
-
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     });
 
      const handleSubmit = (values: any) => {
           dispatch(submitUserForm(values));
@@ -79,13 +75,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           }
      };
 
-     const isHydrated = userFormSelector && userFormSelector.name !== undefined;
-     if (!isHydrated) return (
-          <CircularProgress />
-     )
-
      return (
-          <DynamicThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
                <Container disableGutters maxWidth="md">
                     <Formik
                          validateOnMount
@@ -210,7 +201,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   flexDirection: 'column',
                                                   marginBottom: '100px'
                                              },
-                                             height: '150px',
+                                             height: '100px',
                                              alignItems: 'center',
                                              justifyContent: 'space-between',
                                              width: '100%',
@@ -236,12 +227,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   Obriši
                                              </Button>
                                              <Button
-                                                  sx={{ maxWidth: '200px' }}
-                                                  // startIcon={<NavigateBeforeIcon />}
-                                                  onClick={() => showCartDialog()}>
-                                                  Proveri korpu
-                                             </Button>
-                                             <Button
                                                   onClick={() => handleSubmit(formik.values)}
                                                   endIcon={<NavigateNextIcon />}
                                                   disabled={
@@ -261,10 +246,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              >
                                                   Dalje
                                              </Button>
-
-
-
-
                                         </Box>
                                         {/* </PaymentOptionRadio> */}
                                    </Grid>
@@ -273,7 +254,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                     </Formik>
                </Container>
                <CartDialog />
-          </DynamicThemeProvider >
+          </ThemeProvider >
      );
 };
 

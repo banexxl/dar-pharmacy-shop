@@ -1,6 +1,6 @@
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Stack, useMediaQuery } from '@mui/material'
+import { Box, CircularProgress, Container, Stack, useMediaQuery } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import React, { use, useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
@@ -27,7 +27,7 @@ const Checkout = () => {
      }
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
+          loading: () => <CircularProgress />,
           ssr: false
      })
 
