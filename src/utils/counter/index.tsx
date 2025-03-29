@@ -32,7 +32,6 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                     <RemoveIcon />
                </IconButton>
                <Typography
-                    variant="h6"
                     sx={{
                          border: `1px solid ${Colors.primary.lighter}`,
                          borderRadius: '10px',

@@ -13,7 +13,7 @@ export const TabPanel = (props: TabPanelProps) => {
 
 
      return (
-          <div
+          <Box
                role="tabpanel"
                hidden={value !== index}
                id={`simple-tabpanel-${index}`}
@@ -22,9 +22,9 @@ export const TabPanel = (props: TabPanelProps) => {
           >
                {value === index && (
                     <Box sx={{ p: 2 }}>
-                         <Typography>{children}</Typography>
+                         <Typography variant="body1">{children}</Typography>
                     </Box>
                )}
-          </div>
+          </Box>
      );
 }

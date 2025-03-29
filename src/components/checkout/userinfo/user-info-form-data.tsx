@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Button, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
+import { Button, CircularProgress, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
@@ -79,6 +79,11 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           }
      };
 
+     const isHydrated = userFormSelector && userFormSelector.name !== undefined;
+     if (!isHydrated) return (
+          <CircularProgress />
+     )
+
      return (
           <DynamicThemeProvider theme={theme}>
                <Container disableGutters maxWidth="md">
@@ -90,7 +95,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                     >
                          {formik => (
                               <Form>
-                                   <Typography variant="h5" component="legend" gutterBottom>
+                                   <Typography component="legend" gutterBottom>
                                         Adresa za dostavu
                                    </Typography>
                                    <Grid container spacing={2}>

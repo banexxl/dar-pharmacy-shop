@@ -8,7 +8,7 @@ type CartProps = {
 
 export const CartWrapper = styled(Box)<CartProps>(({ theme }) => ({
      display: "flex",
-     padding: theme.spacing(4),
+     padding: theme.spacing(1),
      flexDirection: 'column',
      alignItems: 'center',
      justifyContent: 'space-between',
@@ -51,7 +51,7 @@ export const StyledProductName = styled(Typography)<ProductNameProps>((theme) =>
      display: 'flex',
      justifyContent: 'center',
      textAlign: 'center',
-     width: '100px',
+     width: '200px',
 }))
 
 export const CartProductActionButton = styled(IconButton)(() => ({
@@ -76,7 +76,7 @@ export const StyledTableBody = styled(TableBody)<StyledTableBodyProps>(({ theme 
 
 export const StyledHeader = styled(TableHead)(({ theme }: any) => ({
      borderRadius: '20px',
-     marginBottom: '20px',
+     marginBottom: '10px',
      [theme.breakpoints.up("xs")]: {
           display: 'none',
           color: 'white'
@@ -108,7 +108,7 @@ export const StyledProductCell = styled(TableCell)<StyledProductCellProps>(({ th
      display: 'flex',
      alignItems: 'center',
      justifyContent: 'start',
-     maxWidth: '160px',
+     maxWidth: '150px',
      [`&.${tableCellClasses.head}`]: {
           backgroundColor: Colors.primary.lighter,
           color: Colors.white,
@@ -119,6 +119,7 @@ export const StyledProductCell = styled(TableCell)<StyledProductCellProps>(({ th
      [theme.breakpoints.down("sm")]: {
           flexDirection: "column",
           alignItems: "center",
+          padding: '6px'
      }
 }));
 
@@ -130,7 +131,6 @@ export const StyledProductRow = styled(TableRow)<StyledProductRowProps>(({ theme
      display: 'flex',
      justifyContent: 'space-around',
      alignItems: 'center',
-     gap: '10px',
      '&:nth-of-type(odd)': {
           backgroundColor: Colors.secondary.lighter,
           borderRadius: '20px'

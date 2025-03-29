@@ -47,11 +47,11 @@ const CartItem = (props: ICartItem) => {
 
                     {/* Product Counter */}
                     <StyledProductCell theme={theme}>
-                         <StyledProductName theme={theme}>
-                              <Counter _id={props._id} count={props.count}>
-                                   {props.count}
-                              </Counter>
-                         </StyledProductName>
+                         {/* <StyledProductName theme={theme}> */}
+                         <Counter _id={props._id} count={props.count}>
+                              {props.count}
+                         </Counter>
+                         {/* </StyledProductName> */}
                     </StyledProductCell>
 
                     {/* Original Total Price (without discount) */}
