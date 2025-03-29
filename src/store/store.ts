@@ -4,35 +4,33 @@ import wishListReducer from './wishlist/wishlist.slice'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from "redux-persist"
 import userInfoFormSliceReducer from './checkout/user-info-form.slice'
-import paymentOptionsFormSliceReducer from './checkout/payment-options-form.slice'
 
 const persistConfig = {
-          key: 'root',
-          storage,
+     key: 'root',
+     storage,
 }
 
 const comboReducer = combineReducers({
-          cartSliceReducer,
-          wishListReducer,
-          userInfoFormSliceReducer,
-          paymentOptionsFormSliceReducer
+     cartSliceReducer,
+     wishListReducer,
+     userInfoFormSliceReducer,
 })
 
 const persistReduce = persistReducer(persistConfig, comboReducer)
 
 const store = configureStore({
 
-          reducer: {
-                    // cartState: cartSliceReducer,
-                    // wishListState: wishListReducer,
-                    // userInfoState: userInfoFormSliceReducer,
-                    // paymentOptionsState: paymentOptionsFormSliceReducer
-                    persistReduce
-          },
-          middleware: (getDefaultMiddleware) =>
-                    getDefaultMiddleware({
-                              serializableCheck: false,
-                    }),
+     reducer: {
+          // cartState: cartSliceReducer,
+          // wishListState: wishListReducer,
+          // userInfoState: userInfoFormSliceReducer,
+          // paymentOptionsState: paymentOptionsFormSliceReducer
+          persistReduce
+     },
+     middleware: (getDefaultMiddleware) =>
+          getDefaultMiddleware({
+               serializableCheck: false,
+          }),
 
 })
 

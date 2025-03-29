@@ -10,7 +10,6 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IConfirmationProps } from '@/interfaces/checkout/confirmation.interface'
 import { clearCart } from '@/store/cart/cart.slice'
-import { clearPaymentOptionsForm } from '@/store/checkout/payment-options-form.slice'
 import { clearUserForm } from '@/store/checkout/user-info-form.slice'
 import Link from 'next/link'
 import theme, { Colors } from '@/styles/theme'
@@ -20,7 +19,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
 
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
-     const userFormSelector = useSelector((state: any) => ({ ...state.persistReduce.userInfoFormSliceReducer }))
+     const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer)
 
      const dispatch = useDispatch()
 
@@ -110,8 +109,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                    country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
                               }).then(() => {
                                    dispatch(clearCart()),
-                                        dispatch(clearUserForm()),
-                                        dispatch(clearPaymentOptionsForm())
+                                        dispatch(clearUserForm())
                               }).then(() => {
                                    onOrderItems()
                               })
