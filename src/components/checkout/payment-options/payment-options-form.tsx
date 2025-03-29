@@ -47,7 +47,6 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                     background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px'
                }}
                >
-                    <Typography sx={{ my: '30px' }} component="legend" >Način plaćanja</Typography>
                     <RadioGroup
                          aria-labelledby="demo-controlled-radio-buttons-group"
                          name="controlled-radio-buttons-group"
@@ -64,9 +63,6 @@ export const CreditCard: FunctionComponent<IPaymentOptionsFormProps> = (props: I
                                    {
                                         formik => (
                                              <Form>
-                                                  <Typography variant="h6" component="legend" gutterBottom>
-                                                       Kartično plaćanje
-                                                  </Typography>
                                                   <Grid container spacing={2}>
                                                        <Grid item xs={12} sm={6}>
                                                             <TextField

@@ -86,10 +86,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                     >
                          {formik => (
                               <Form>
-                                   <Typography component="legend" gutterBottom sx={{ my: '30px' }}>
-                                        Adresa za dostavu
-                                   </Typography>
-                                   <Grid container spacing={2} sx={{ width: { xs: '90vw', md: '50vw' }, ml: { xs: '10px', md: '100px' } }}>
+                                   <Grid container spacing={2} sx={{ width: { xs: '90vw', md: '50vw' } }}>
                                         <Grid item xs={12} sm={6}>
                                              <Field
                                                   as={TextField}
