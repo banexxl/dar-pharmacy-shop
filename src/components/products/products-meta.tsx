@@ -5,7 +5,7 @@ import IProduct from "@/interfaces/product/product.interface";
 
 type ProductMetaProps = {
      product: IProduct;
-     isScreenToMedium: boolean;
+     isScreenToMedium?: boolean;
 }
 
 export default function ProductMeta({ product, isScreenToMedium }: ProductMetaProps) {
