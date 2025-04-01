@@ -25,7 +25,7 @@ const WishlistItem = (props: IWishlistItem) => {
                     Šifra: {props._id.toString().slice(-8).toUpperCase()}
                </WishListProductDetails>
                <WishListProductDetails align="left" theme={theme}>
-                    Cena: {props.price} rsd
+                    Cena: {parseFloat(props.price.toString()).toFixed(2)} rsd
                </WishListProductDetails>
           </WishlistProductRow >
      )

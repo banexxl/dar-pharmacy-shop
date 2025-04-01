@@ -169,7 +169,7 @@ function ProductDetails(product: IProduct) {
                     )}
                </ProductImageBox>
                <ProductDetailInfoWrapper>
-                    <ProductMeta product={product} sx={{ lineHeight: 2 }} variant="h4" />
+                    <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                     <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
                     {
                          product.availableStock == 0 ?

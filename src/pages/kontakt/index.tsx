@@ -73,6 +73,12 @@ const ContactPage = (props: ContactPageProps) => {
                                                   Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac
                                              </ContactStrongText>
                                              <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                                  Email:
+                                             </ContactText>
+                                             <ContactStrongText theme={theme}>
+                                                  maja@apoteka-dar.rs
+                                             </ContactStrongText>
+                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
                                                   Radno vreme:
                                              </ContactText>
                                              <ContactStrongText theme={theme}>

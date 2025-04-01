@@ -1,10 +1,17 @@
 import { Box, Typography } from "@mui/material";
 import { ProductMetaWrapper } from "../../styles/product/single-product";
 import theme, { Colors } from "@/styles/theme";
+import IProduct from "@/interfaces/product/product.interface";
 
-export default function ProductMeta({ product, isScreenToMedium }: any) {
+type ProductMetaProps = {
+     product: IProduct;
+     isScreenToMedium: boolean;
+}
 
-     const calculateDiscountedPrice = (price: number, discount: number): number => {
+export default function ProductMeta({ product, isScreenToMedium }: ProductMetaProps) {
+
+     const calculateDiscountedPrice = (price: number, discount?: number): number => {
+          if (discount === undefined) return price;
           return price - (price * discount) / 100;
      }
 
@@ -45,7 +52,7 @@ export default function ProductMeta({ product, isScreenToMedium }: any) {
                                              }}
                                              component="span"
                                         >
-                                             {calculateDiscountedPrice(product.price, product.discount)} RSD
+                                             {calculateDiscountedPrice(product.price, product.discountAmount)} RSD
                                         </Typography>
                                    </Typography>
                               </Box>
@@ -55,7 +62,7 @@ export default function ProductMeta({ product, isScreenToMedium }: any) {
                                    sx={{ fontSize: '1rem' }}
                                    component="div"
                               >
-                                   Cena: {product.price} RSD
+                                   Cena: {parseFloat(product.price.toString()).toFixed(2)} RSD
                               </Typography>
                          )
                     }

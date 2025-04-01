@@ -18,7 +18,7 @@ import { ReCaptcha, useReCaptcha } from 'next-recaptcha-v3'
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
-     const totalItemPrice: any = useSelector(cartTotalPriceSelector)
+     const totalItemPrice: any = useSelector(cartTotalPriceSelector(450))
      const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer)
 
      const dispatch = useDispatch()
@@ -81,7 +81,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     </StyledTableBody>
                </StyledTable>
                <StyledTotalsTitle theme={theme}>
-                    Ukupno sa PDV: {parseFloat(totalItemPrice).toFixed(2)} RSD
+                    {totalItemPrice < 8000 ? `Ukupno sa PDV i dostavom: ${parseFloat(totalItemPrice + 450).toFixed(2)} RSD` : `Ukupno sa PDV, besplatna dostava: ${parseFloat(totalItemPrice).toFixed(2)} RSD`}
                </StyledTotalsTitle>
                <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
                     PDV uračunat u cenu i nema skrivenih troškova.

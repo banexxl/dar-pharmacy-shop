@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { removeAllSingleItems } from '@/store/cart/cart.slice';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import { parse } from 'path';
 
 const CartItem = (props: ICartItem) => {
 
@@ -57,7 +58,7 @@ const CartItem = (props: ICartItem) => {
                     {/* Original Total Price (without discount) */}
                     <StyledProductCell theme={theme}>
                          <StyledProductName theme={theme}>
-                              {props.count * props.price} RSD
+                              {parseFloat((props.count * props.price).toString()).toFixed(2)} RSD
                          </StyledProductName>
                     </StyledProductCell>
 
