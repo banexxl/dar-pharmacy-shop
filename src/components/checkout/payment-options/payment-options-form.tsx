@@ -1,9 +1,16 @@
-import { Box, Container, FormControlLabel, Grid, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, FormControlLabel, Grid, Link, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material';
 import React, { FunctionComponent, useState } from 'react';
 import theme from '@/styles/theme';
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { useDispatch, useSelector } from 'react-redux';
+import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
+import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUser } from '@/services/email/send-email';
+import { ReCaptcha } from 'next-recaptcha-v3';
+import { clearCart } from '@/store/cart/cart.slice';
+import { clearUserForm } from '@/store/checkout/user-info-form.slice';
+import { useRouter } from 'next/navigation';
 
 interface CreditCardProps {
      setTab: (tabIndex: number) => number;
@@ -14,20 +21,36 @@ interface CreditCardProps {
 export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCardProps) => {
 
      const [paymentOption, setPaymentOption] = useState('onDelivery')
-
-     // const handleSubmit = (values: IPaymentOptionsForm) => {
-     //      dispatch(submitPaymentOptionsForm(values))
-     //      props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
-     // };
+     const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
+     const [loading, setLoading] = useState<boolean>(false)
+     const router = useRouter()
+     const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer)
+     const totalItemPrice: any = useSelector(cartTotalPriceSelector(450))
+     const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
+     const dispatch = useDispatch()
 
      const handleBack = () => {
-          props.tabIndex === 1 ? props.setTab?.(props.tabIndex - 1) : null
+          props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
      };
 
      const handleNext = () => {
-          props.tabIndex === 1 ? props.setTab?.(props.tabIndex + 1) : null
+          props.tabIndex === 0 ? props.setTab?.(props.tabIndex + 1) : null
      };
 
+
+     const onOrderItems = async () => {
+          try {
+               await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: {
+                         'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ cart, userFormSelector, totalItemPrice })
+               })
+          } catch (error) {
+               console.log(error);
+          }
+     }
 
      return (
           <ThemeProvider theme={theme}>
@@ -44,12 +67,12 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                          sx={{ display: 'flex', flexDirection: 'row' }}
                     >
                          <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
-                         <FormControlLabel disabled value="cardPayment" control={<Radio />} label={"Kartično plaćanje - Uskoro"} />
+                         <FormControlLabel value="cardPayment" control={<Radio />} label={"Kartično plaćanje"} />
                     </RadioGroup>
                     {
                          paymentOption === 'cardPayment' ?
-                              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
-                                   <Typography variant="body1">
+                              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px', gap: '20px' }}>
+                                   <Typography variant="body1" >
                                         Izabrali ste kartično plaćanje. Bićete preusmereni na drugu platformu za završetak transakcije.
                                    </Typography>
                                    <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px', marginTop: '10px' }} endIcon={<NavigateNextIcon />}>
@@ -57,17 +80,56 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                    </CheckoutNextPrevButton>
                               </Box>
                               :
-                              < Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
-                                   <CheckoutNextPrevButton sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                              <Box>
+                                   <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                        Odabirom "Plaćanje pouzećem", iznos od {parseFloat(totalItemPrice).toFixed(2)} dinara plaćate kuriru prilikom dostave paketa.
+                                   </Typography>
+                                   <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                        Ako ste uneli validan email, biće vam poslat email sa potvrdom porudžbenice.
+                                   </Typography>
+                                   <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                         Nazad
                                    </CheckoutNextPrevButton>
-                                   <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />}>
-                                        Dalje
-                                   </CheckoutNextPrevButton>
-                              </Grid>
-                    }
+                                   <CheckoutNextPrevButton
+                                        disabled={totalItemPrice === 0 || !submitEnabled || loading}
+                                        onClick={() => {
+                                             setLoading(true)
+                                             SendCheckoutConfirmationEmailToAdmin({
+                                                  email: 'maja@apoteka-dar.rs',
+                                                  customerEmail: userFormSelector.email.toLowerCase(),
+                                                  subject: 'Poružbenica',
+                                                  name: userFormSelector.name,
+                                                  title: 'Potvrda porudzbenice',
+                                                  cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
+                                                  country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
+                                             }).then(() => {
+                                                  SendCheckoutConfirmationEmailToUser({
+                                                       email: userFormSelector.email.toLowerCase(), subject: 'Poružbenica',
+                                                       name: userFormSelector.name, title: 'Potvrda porudzbenice',
+                                                       cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
+                                                       country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
+                                                  }).then(() => {
+                                                       dispatch(clearCart()),
+                                                            dispatch(clearUserForm())
+                                                  }).then(() => {
+                                                       onOrderItems()
+                                                  }).finally(() => {
+                                                       setTimeout(() => {
+                                                            setLoading(false)
+                                                       }, 2000)
+                                                       router.push('/')
+                                                  })
+                                             })
 
+                                        }}
+                                        sx={{ maxWidth: '200px', marginTop: '10px', height: '40px', color: theme.palette.primary.main }}
+                                   >
+                                        {loading ? <CircularProgress size={20} color="inherit" /> : 'Poruči'}
+                                   </CheckoutNextPrevButton>
+                              </Box>
+                    }
                </Container>
+               <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
           </ThemeProvider >
      );
 };

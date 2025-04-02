@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Grid, Box, useMediaQuery } from '@mui/material';
+import { AppBar, Toolbar, Grid, Box, useMediaQuery, Divider } from '@mui/material';
 import Image from 'next/image';
 import theme from '@/styles/theme';
 import Link from 'next/link';
@@ -21,54 +21,23 @@ const PaymentStrip: React.FC = () => {
 
      return (
           <Box width="100%" overflow="hidden" sx={{ backgroundColor: theme.palette.background.paper, py: '30px', margin: '0' }}>
+               <Divider sx={{ mb: '30px' }} />
                <Grid container justifyContent="center" alignItems="center" sx={{ padding: '0', margin: '0' }}>
-                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px' }}>
-                         {paymentTypes.slice(0, 5).map(payment => (
+                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: isMobile ? '15px' : '30px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
+                         {paymentTypes.map(payment => (
                               <Box key={payment.name}>
                                    <Link href={payment.link} target='_blank'>
                                         <Image
-                                             style={{
-                                                  width: '85px',
-                                             }}
                                              src={payment.icon}
                                              alt={`${payment.name} icon`}
                                              title={payment.name}
-                                             width={90}
-                                             height={60}
-                                        />
-                                   </Link>
-                              </Box>
-                         ))}
-                    </Grid>
-                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px', pt: '30px' }}>
-                         <Box key={paymentTypes[5].name}>
-                              <Link href={paymentTypes[5].link} target='_blank'>
-                                   <Image
-                                        style={{
-                                             width: '150px',
-                                        }}
-                                        src={paymentTypes[5].icon}
-                                        alt={`${paymentTypes[5].name} icon`}
-                                        title={paymentTypes[5].name}
-                                        width={110}
-                                        height={100}
-                                   />
-                              </Link>
-                         </Box>
-                    </Grid>
-                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px', pt: '30px' }}>
-                         {paymentTypes.slice(6, 9).map(payment => (
-                              <Box key={payment.name}>
-                                   <Link href={payment.link} target='_blank'>
-                                        <Image
+                                             width={isMobile ? 60 : payment.name.toLowerCase().includes('halk') ? 120 : 70}
+                                             height={isMobile ? 40 : 50}
                                              style={{
-                                                  width: '85px',
+                                                  cursor: 'pointer',
+                                                  marginLeft: payment.name.toLowerCase().includes('halk') ? '40px' : '10px',
+                                                  marginRight: payment.name.toLowerCase().includes('halk') ? '40px' : '10px'
                                              }}
-                                             src={payment.icon}
-                                             alt={`${payment.name} icon`}
-                                             title={payment.name}
-                                             width={90}
-                                             height={60}
                                         />
                                    </Link>
                               </Box>

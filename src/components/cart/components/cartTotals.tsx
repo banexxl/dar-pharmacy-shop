@@ -14,59 +14,86 @@ interface ICartTotalsProps {
 function CartTotals({ onClose }: ICartTotalsProps) {
 
      const totalItemPrice: any = useSelector(cartTotalPriceSelector(450))
+     const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const router = useRouter()
 
      return (
           <StyledTotalsBox theme={theme}>
                <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} />
-               <StyledTotalsTitle theme={theme}>
-                    Ukupno u korpi
-               </StyledTotalsTitle>
-               <StyledTotalsPrice>
-                    {
-                         !isNaN(parseFloat(totalItemPrice)) && parseFloat(totalItemPrice) < 8000 ? (
-                              <Box>
-                                   {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
-                                   <Box display="flex" alignItems="center" height={'20px'} gap={2}>
-                                        <LinearProgress
-                                             variant="determinate"
-                                             value={(parseFloat(totalItemPrice) / 8000) * 100}
-                                             color="error"
-                                             sx={{
-                                                  height: '10px',
-                                                  borderRadius: '10px',
-                                                  flexGrow: 1,
-                                                  width: '100px'
-                                             }}
-                                        />
-                                        <Typography color="text.secondary" fontSize={'.8rem'} sx={{ color: Colors.primary.main }}>
-                                             Dostava: +450RSD
-                                        </Typography>
-                                   </Box>
-                              </Box>
-                         )
-                              :
-                              (
-                                   <Box >
+
+               {cart.length > 0 ? (
+                    <StyledTotalsPrice>
+                         {
+                              !isNaN(parseFloat(totalItemPrice)) && parseFloat(totalItemPrice) < 8000 ? (
+                                   <Box>
+                                        <StyledTotalsTitle theme={theme}>
+                                             Ukupno u korpi:
+                                        </StyledTotalsTitle>
                                         {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
-                                        <Box display="flex" alignItems="center" height={'20px'}>
-                                             <Typography sx={{
-                                                  color: Colors.success,
-                                                  fontSize: '1rem',
-                                                  textAlign: 'center',
-                                             }}>
-                                                  Besplatna dostava
+                                        <Typography
+                                             sx={{
+                                                  color: Colors.primary.main,
+                                                  fontSize: '.8rem',
+                                                  textAlign: 'center'
+                                             }}
+                                        >
+                                             / uračunata dostava 450RSD
+                                        </Typography>
+                                        <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2, alignItems: 'center' }} >
+                                             <LinearProgress
+                                                  variant="determinate"
+                                                  value={(parseFloat(totalItemPrice) / 8000) * 100}
+                                                  color="error"
+                                                  sx={{
+                                                       height: '10px',
+                                                       borderRadius: '10px',
+                                                       flexGrow: 1,
+                                                       width: '100px'
+                                                  }}
+                                             />
+                                             <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
+                                                  PDV uračunat u cenu i nema skrivenih troškova.
                                              </Typography>
                                         </Box>
                                    </Box>
                               )
-                    }
+                                   :
+                                   (
+                                        <Box sx={{
+                                             display: 'flex',
+                                             justifyContent: 'space-between',
+                                             flexDirection: 'column',
+                                             alignItems: 'center',
+                                             width: '100%'
+                                        }}>
+                                             <StyledTotalsTitle theme={theme}>
+                                                  Ukupno u korpi:
+                                             </StyledTotalsTitle>
+                                             {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
+                                             <Typography
+                                                  sx={{
+                                                       color: Colors.primary.main,
+                                                       fontSize: '.8rem',
+                                                       textAlign: 'center'
+                                                  }}
+                                             >
+                                                  / besplatna dostava
+                                             </Typography>
+                                             <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
+                                                  PDV uračunat u cenu i nema skrivenih troškova.
+                                             </Typography>
+                                        </Box>
+                                   )
+                         }
 
-               </StyledTotalsPrice>
-               <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
-                    PDV uračunat u cenu i nema skrivenih troškova.
-               </Typography>
-               <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} />
+                    </StyledTotalsPrice>
+               ) : (
+                    <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
+                         Vaša korpa je prazna
+                    </Typography>
+               )}
+
+               {/* <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} /> */}
                <Box
                     sx={{
                          display: 'flex',
@@ -80,18 +107,33 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                          gap: '5px',
                     }}
                >
-                    <Button onClick={onClose}>
-                         <Link rel='canonical' href='/'>
-                              Nazad u apoteku
-                         </Link>
-                    </Button>
-                    <Button
-                         disabled={parseFloat(totalItemPrice) === 0}
-                         onClick={() => router.push('/placanje')}
+                    <Box
+                         sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              [theme.breakpoints.down('md')]: {
+                                   flexDirection: 'column',
+                              },
+                              justifyContent: 'space-around',
+                              alignItems: 'center',
+                              width: '100%',
+                              gap: '5px',
+                         }}
                     >
-                         KREIRAJ PORUDŽBENICU
-                    </Button>
 
+                         <Button onClick={onClose} sx={{ backgroundColor: theme.palette.secondary.light }}>
+                              <Link rel='canonical' href='/'>
+                                   Nazad u apoteku
+                              </Link>
+                         </Button>
+                         <Button
+                              disabled={parseFloat(totalItemPrice) === 450}
+                              onClick={() => router.push('/placanje')}
+                              sx={{ backgroundColor: theme.palette.secondary.light }}
+                         >
+                              KREIRAJ PORUDŽBENICU
+                         </Button>
+                    </Box>
                </Box>
                <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} />
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '30px', mb: '30px' }}>

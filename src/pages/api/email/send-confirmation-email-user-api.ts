@@ -1,8 +1,6 @@
 import ICartItem from '@/interfaces/cart/cart.interface';
 import { IEmailToFields } from '@/interfaces/email/email-to-fields.interface';
-import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
 import { Colors } from '@/styles/theme';
-import { useSelector } from 'react-redux';
 import { transporter } from '../../../services/email/email-config'
 
 const SendConfirmMessageToUserAPI = async (req: any, res: any) => {

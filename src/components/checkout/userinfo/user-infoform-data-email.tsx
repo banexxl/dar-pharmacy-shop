@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Grid, TextField, FormControlLabel, Typography } from '@mui/material';
+import { Grid, TextField, FormControlLabel, Typography, Tooltip } from '@mui/material';
 import { useFormikContext, Field } from 'formik';
-import { ShouldCreateAccountCheckBox } from '@/styles/checkout/userinfo';
 import { IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { useSession } from 'next-auth/react';
+import theme from '@/styles/theme';
+import { Checkbox } from '@mui/material';
 
 const EmailAndAccountCreation: React.FC = () => {
 
@@ -52,26 +53,33 @@ const EmailAndAccountCreation: React.FC = () => {
                {/* Only show the checkbox if the session is not present */}
                {!session?.user?.email && (
                     <Grid item xs={12} sm={6}>
-                         <FormControlLabel
-                              sx={{ marginBottom: '10px', width: '100%' }}
-                              control={
-                                   <ShouldCreateAccountCheckBox
-                                        checked={!!errors.email ? false : values.shouldCreateAccount}
-                                        onChange={handleChange}
-                                        name="shouldCreateAccount"
-                                        color="primary"
-                                        disabled={
-                                             values.email === '' ||
-                                             Boolean(errors.email)
-                                        }
-                                   />
-                              }
-                              label={
-                                   <Typography sx={{ display: 'inline', textAlign: 'justify', color: 'black' }}>
-                                        Kreiraj nalog sa navedenim podacima...
-                                   </Typography>
-                              }
-                         />
+                         <Tooltip title={errors.email ? errors.email : ''} >
+                              <FormControlLabel
+                                   sx={{ marginBottom: '10px', width: '100%' }}
+                                   control={
+                                        <Checkbox
+                                             checked={!!errors.email ? false : values.shouldCreateAccount}
+                                             onChange={handleChange}
+                                             name="shouldCreateAccount"
+                                             sx={{
+                                                  '& .MuiSvgIcon-root': {
+                                                       color: errors.email ? theme.palette.grey[400] : theme.palette.primary.main,
+                                                  }
+                                             }}
+                                             disabled={
+                                                  values.email === '' ||
+                                                  Boolean(errors.email)
+                                             }
+
+                                        />
+                                   }
+                                   label={
+                                        <Typography sx={{ display: 'inline', textAlign: 'justify', color: 'black' }}>
+                                             Kreiraj nalog sa navedenim podacima...
+                                        </Typography>
+                                   }
+                              />
+                         </Tooltip>
                     </Grid>
                )}
           </>

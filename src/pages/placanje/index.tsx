@@ -15,6 +15,7 @@ import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/check
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
+import PaymentStrip from '@/components/payment-strip/payment-strip'
 
 const Checkout = () => {
 
@@ -31,7 +32,7 @@ const Checkout = () => {
           ssr: false
      })
 
-     const steps = ["Adresa za dostavu", "Način plaćanja", "Potvrda"];
+     const steps = ["Adresa za dostavu", "Provera korpe", "Način plaćanja"];
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
@@ -75,13 +76,14 @@ const Checkout = () => {
                                         </TabPanel>
 
                                         <TabPanel value={tabIndex} index={1} >
-                                             <CreditCard setTab={setTab} formName='credit-card' tabIndex={1} />
+                                             <Confirmation setTab={setTab} tabIndex={1} />
                                         </TabPanel>
 
                                         <TabPanel value={tabIndex} index={2} >
-                                             <Confirmation setTab={setTab} tabIndex={2} />
+                                             <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
                                         </TabPanel>
 
+                                        <PaymentStrip />
                                    </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />

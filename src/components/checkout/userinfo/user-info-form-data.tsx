@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Button, CircularProgress, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
+import { Button, CircularProgress, Container, Grid, TextField, Tooltip, Typography, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,11 +15,14 @@ import Cart from '@/components/cart/cart';
 import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
 import { Box } from '@mui/system';
+import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
+import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
      const theme = useTheme();
      const [CartDialog] = useDialogModal(Cart);
+     const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer);
      const session = useSession();
      const dispatch = useDispatch();
@@ -204,47 +207,45 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              width: '100%',
                                              marginTop: '20px'
                                         }}>
-                                             <Button
+                                             <CheckoutNextPrevButton
                                                   endIcon={<DeleteIcon />}
                                                   type='reset'
                                                   onClick={() => {
-                                                       formik.validateForm().then(() => {
-                                                            // formik.setFieldTouched('email', true);
-                                                            formik.setFieldTouched('name', true);
-                                                            formik.setFieldTouched('phoneNumber', true);
-                                                            formik.setFieldTouched('streetAddress', true);
-                                                            formik.setFieldTouched('city', true);
-                                                            formik.setFieldTouched('country', true);
-                                                            formik.setFieldTouched('zipPostalCode', true);
-
-                                                            dispatch(clearUserForm());
-                                                       });
+                                                       dispatch(clearUserForm())
+                                                       formik.setValues(initialUserFormValues);
                                                   }}
                                              >
                                                   Obriši
-                                             </Button>
-                                             <Button
-                                                  onClick={() => handleSubmit(formik.values)}
-                                                  endIcon={<NavigateNextIcon />}
-                                                  disabled={
-                                                       session.status === 'authenticated'
-                                                            ? // If session is authenticated, disable if there are any errors except email errors
-                                                            Object.keys(formik.errors).some(
-                                                                 (key) =>
-                                                                      key !== 'email' && formik.errors[key as keyof IUserForm] !== undefined
-                                                            )
-                                                            : // If session is not authenticated, disable if there are any errors except the specific email error
-                                                            (formik.errors.email !== 'Ovaj email je već registrovan!' && formik.errors.email !== undefined) ||
-                                                            // Check if any other formik fields have errors
-                                                            Object.keys(formik.errors).some(
-                                                                 (key) => key !== 'email' && formik.errors[key as keyof IUserForm] !== undefined
-                                                            )
-                                                  }
-                                             >
-                                                  Dalje
-                                             </Button>
+                                             </CheckoutNextPrevButton>
+                                             <Tooltip title={cart.length <= 0 ? 'Korpa je prazna' : ''}>
+                                                  <Box>
+                                                       <CheckoutNextPrevButton
+                                                            onClick={() => handleSubmit(formik.values)}
+                                                            endIcon={<NavigateNextIcon />}
+                                                            disabled={
+                                                                 cart.length === 0 ||
+                                                                 (
+                                                                      session.status === 'authenticated'
+                                                                           ? Object.keys(formik.errors).some(
+                                                                                (key) =>
+                                                                                     key !== 'email' &&
+                                                                                     formik.errors[key as keyof IUserForm] !== undefined
+                                                                           )
+                                                                           : (formik.errors.email !== 'Ovaj email je već registrovan!' &&
+                                                                                formik.errors.email !== undefined) ||
+                                                                           Object.keys(formik.errors).some(
+                                                                                (key) =>
+                                                                                     key !== 'email' &&
+                                                                                     formik.errors[key as keyof IUserForm] !== undefined
+                                                                           )
+                                                                 )
+                                                            }
+                                                       >
+                                                            Dalje
+                                                       </CheckoutNextPrevButton>
+                                                  </Box>
+                                             </Tooltip>
                                         </Box>
-                                        {/* </PaymentOptionRadio> */}
                                    </Grid>
                               </Form>
                          )}

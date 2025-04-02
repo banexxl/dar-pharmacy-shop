@@ -19,10 +19,10 @@ export const PaymentOptionRadio = styled(Box)<UserInfoProps>(({ theme, sx }) => 
      marginTop: '20px'
 }))
 
-export const CheckoutNextPrevButton = styled(Button)(() => ({
+export const CheckoutNextPrevButton = styled(Button)(({ sx }) => ({
      background: Colors.primary.lighter,
      margin: 4,
-     height: '40px'
+     height: '40px',
 }))
 
 export const ClearFormButton = styled(Button)(() => ({
@@ -30,9 +30,5 @@ export const ClearFormButton = styled(Button)(() => ({
      margin: 10,
      width: '150px',
      height: '40px'
-}))
-
-export const ShouldCreateAccountCheckBox = styled(Checkbox)(() => ({
-     color: Colors.primary.lighter,
 }))
 
