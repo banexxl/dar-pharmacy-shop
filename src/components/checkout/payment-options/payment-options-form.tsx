@@ -75,6 +75,17 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                    <Typography variant="body1" >
                                         Izabrali ste kartično plaćanje. Bićete preusmereni na drugu platformu za završetak transakcije.
                                    </Typography>
+                                   <Typography
+                                        variant="body1"
+                                        sx={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+                                   >
+                                        Prilikom unošenja podataka o platnoj kartici, poverljive informacije se prenose putem javne
+                                        mreže u zaštićenoj (kriptovanoj) formi upotrebnom SSL protokola i PKI sistema, kao trenutno
+                                        najsavremenije kriptografske tehnologije. Sigurnost podataka prilikom kupovine garantuje
+                                        procesor platnih kartica ChipCard a.d Beograd, pa se tako kompletan proces naplate obavlja na
+                                        stranicama ChipCard-a. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem
+                                        sistemu.
+                                   </Typography>
                                    <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px', marginTop: '10px' }} endIcon={<NavigateNextIcon />}>
                                         Potvrdi
                                    </CheckoutNextPrevButton>
