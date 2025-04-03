@@ -108,14 +108,14 @@ const DeliveryAndPaymentPage = () => {
                                    </Typography>
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                         Ukoliko ste se odlučili za plaćanje Vašom platnom karticom (Dina, Visa, Master i Maestro) online,
-                                        prilikom poslednjeg koraka pre potvrde kupovine, sistem će Vas preusmeriti na sigurnosni link
-                                        OTP banke Srbija AD gde unosite podatke o svojoj platnoj kartici. Ukupna suma i broj pošiljke su
+                                        prilikom poslednjeg koraka pre potvrde kupovine, aplikacija će Vas preusmeriti na sigurnosni link
+                                        ChipCard sistema za sigurno plaćanje, gde unosite podatke o svojoj platnoj kartici. Ukupna suma i broj pošiljke su
                                         automatski uneti i ne mogu se menjati.
                                    </Typography>
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                         Prilikom unošenja podataka o platnoj kartici, poverljive informacija se prenose u zaštićenoj (kriptovanoj) formi.
-                                        Sigurnost podataka prilikom kupovine, garantuje prihvatilac platnih kartica, OTP banke Srbija AD, pa se tako
-                                        kompletni proces naplate obavlja na stranicama banke. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem sistemu.
+                                        Sigurnost podataka prilikom kupovine, garantuje prihvatilac platnih kartica, Chip Card, pa se tako
+                                        kompletni proces naplate obavlja na stranicama Chip Card-a. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem sistemu.
                                    </Typography>
                                    <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                         Apotekarskoj ustanovi DAR je zabranjeno prodavanje, naručivanje, obezbeđivanje ili razmena podataka potrošača ili informacija o
