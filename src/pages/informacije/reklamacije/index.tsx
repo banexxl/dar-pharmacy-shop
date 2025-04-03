@@ -146,6 +146,12 @@ const PrivacyPolicy = () => {
                                         <Link rel='canonical' href="http://www.postexpress.rs/" target='_blank' style={{ fontWeight: 'bold' }}> Post Express</Link> sa kojom imamo ugovorni odnos.
                                    </Typography>
 
+                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                        U slučaju vraćanja robe i povraćaja sredstava kupcu koji je prethodno platio nekom od platnih
+                                        kartica, delimično ili u celosti, a bez obzira na razlog vraćanja, apoteka DAR je u
+                                        obavezi da povraćaj vrši isključivo preko VISA, EC/MC i Maestro metoda plaćanja.
+                                   </Typography>
+
                                    <Typography textAlign='left' fontSize='1rem' marginLeft='20px' fontWeight='bold' >
                                         OTKLANJANJE NESAOBRAZNOSTI POSLE ISTEKA ZAKONSKOG ROKA
                                    </Typography>
