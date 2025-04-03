@@ -16,6 +16,7 @@ import { ReCaptchaProvider } from "next-recaptcha-v3";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
 import PaymentStrip from '@/components/payment-strip/payment-strip'
+import { Toaster } from 'react-hot-toast'
 
 const Checkout = () => {
 

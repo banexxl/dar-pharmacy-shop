@@ -11,6 +11,7 @@ import { ReCaptcha } from 'next-recaptcha-v3';
 import { clearCart } from '@/store/cart/cart.slice';
 import { clearUserForm } from '@/store/checkout/user-info-form.slice';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 interface CreditCardProps {
      setTab: (tabIndex: number) => number;
@@ -23,6 +24,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
      const [paymentOption, setPaymentOption] = useState('onDelivery')
      const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
      const [loading, setLoading] = useState<boolean>(false)
+     const session = useSession()
      const router = useRouter()
      const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer)
      const totalItemPrice: any = useSelector(cartTotalPriceSelector(450))
@@ -95,9 +97,22 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                    <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
                                         Odabirom "Plaćanje pouzećem", iznos od {parseFloat(totalItemPrice).toFixed(2)} dinara plaćate kuriru prilikom dostave paketa.
                                    </Typography>
-                                   <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
-                                        Ako ste uneli validan email, biće vam poslat email sa potvrdom porudžbenice.
-                                   </Typography>
+                                   {
+                                        session.status === 'unauthenticated' && (
+                                             <Box>
+                                                  <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                                       Ako ste uneli validan email, biće vam poslat email sa potvrdom porudžbenice.
+                                                  </Typography>
+                                                  <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                                       Ako niste, molimo Vas da nas kontaktirate putem
+                                                       <Link href={'/kontakt'}> kontakt forme</Link>, ili putem broja telefona {' '}
+                                                       <a href="tel:+381346104222">+381 34 610 4222, </a>
+                                                       kako biste dobili potvrdu porudžbenice.
+                                                  </Typography>
+                                             </Box>
+                                        )
+                                   }
+
                                    <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                         Nazad
                                    </CheckoutNextPrevButton>

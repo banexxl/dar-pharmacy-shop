@@ -17,6 +17,7 @@ import EmailAndAccountCreation from './user-infoform-data-email'; // Import the 
 import { Box } from '@mui/system';
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
+import toast, { Toaster } from 'react-hot-toast';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
@@ -55,20 +56,14 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                          body: JSON.stringify(values),
                     }).then(response => {
                          if (response.status === 409) {
-                              sweetalert2.fire({
-                                   title: 'Ovaj email je već registrovan!',
-                                   text: 'Molimo Vas da unesete drugi email, ili nastavite kao gost!',
-                                   icon: 'warning',
-                                   showConfirmButton: true,
-                                   confirmButtonText: 'U redu',
+                              toast.error('Ovaj email je ve  registrovan! Molimo Vas da unesete drugi email, ili nastavite kao gost!', {
+                                   position: 'top-center',
+                                   duration: 3000
                               });
                          } else if (response.status === 200) {
-                              sweetalert2.fire({
-                                   title: 'Poslat Vam je email za verifikaciju!',
-                                   text: 'Molimo Vas da proverite Vaš inbox, i potvrdite Vaš email!',
-                                   icon: 'success',
-                                   showConfirmButton: true,
-                                   confirmButtonText: 'U redu',
+                              toast.success('Poslat Vam je email za verifikaciju! Molimo Vas da proverite Vaš inbox, i potvrdite Vaš email!', {
+                                   position: 'top-center',
+                                   duration: 3000
                               });
                          }
                     });
@@ -245,6 +240,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        </CheckoutNextPrevButton>
                                                   </Box>
                                              </Tooltip>
+                                             <Toaster />
                                         </Box>
                                    </Grid>
                               </Form>
