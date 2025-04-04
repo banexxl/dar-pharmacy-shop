@@ -10,8 +10,9 @@ import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUs
 import { ReCaptcha } from 'next-recaptcha-v3';
 import { clearCart } from '@/store/cart/cart.slice';
 import { clearUserForm } from '@/store/checkout/user-info-form.slice';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 
 interface CreditCardProps {
      setTab: (tabIndex: number) => number;
@@ -40,19 +41,25 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
      };
 
 
-     const onOrderItems = async () => {
+     const onOrderItems = async (): Promise<boolean> => {
           try {
-               await fetch('/api/orders', {
+               const response = await fetch('/api/orders', {
                     method: 'POST',
-                    headers: {
-                         'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ cart, userFormSelector, totalItemPrice })
-               })
+               });
+
+               if (!response.ok) {
+                    toast.error('Greška prilikom kreiranja porudžbine. Pokušajte ponovo.');
+                    return false;
+               }
+
+               return true;
           } catch (error) {
-               console.log(error);
+               console.error('Error creating order:', error);
+               return false;
           }
-     }
+     };
 
      return (
           <ThemeProvider theme={theme}>
@@ -118,35 +125,53 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                    </CheckoutNextPrevButton>
                                    <CheckoutNextPrevButton
                                         disabled={totalItemPrice === 0 || !submitEnabled || loading}
-                                        onClick={() => {
-                                             setLoading(true)
-                                             SendCheckoutConfirmationEmailToAdmin({
-                                                  email: 'maja@apoteka-dar.rs',
-                                                  customerEmail: userFormSelector.email.toLowerCase(),
-                                                  subject: 'Poružbenica',
-                                                  name: userFormSelector.name,
-                                                  title: 'Potvrda porudzbenice',
-                                                  cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
-                                                  country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
-                                             }).then(() => {
-                                                  SendCheckoutConfirmationEmailToUser({
-                                                       email: userFormSelector.email.toLowerCase(), subject: 'Poružbenica',
-                                                       name: userFormSelector.name, title: 'Potvrda porudzbenice',
-                                                       cart, streetAddress: userFormSelector.streetAddress, city: userFormSelector.city,
-                                                       country: userFormSelector.country, phoneNumber: userFormSelector.phoneNumber,
-                                                  }).then(() => {
-                                                       dispatch(clearCart()),
-                                                            dispatch(clearUserForm())
-                                                  }).then(() => {
-                                                       onOrderItems()
-                                                  }).finally(() => {
-                                                       setTimeout(() => {
-                                                            setLoading(false)
-                                                       }, 2000)
-                                                       router.push('/')
-                                                  })
-                                             })
+                                        onClick={async () => {
+                                             setLoading(true);
 
+                                             try {
+                                                  const orderSuccess = await onOrderItems(); // Step 1: Try to create the order
+
+                                                  if (orderSuccess) {
+                                                       // Step 2: Send confirmation emails
+                                                       await SendCheckoutConfirmationEmailToAdmin({
+                                                            email: 'maja@apoteka-dar.rs',
+                                                            customerEmail: userFormSelector.email.toLowerCase(),
+                                                            subject: 'Poružbenica',
+                                                            name: userFormSelector.name,
+                                                            title: 'Potvrda porudzbenice',
+                                                            cart,
+                                                            streetAddress: userFormSelector.streetAddress,
+                                                            city: userFormSelector.city,
+                                                            country: userFormSelector.country,
+                                                            phoneNumber: userFormSelector.phoneNumber,
+                                                       });
+
+                                                       await SendCheckoutConfirmationEmailToUser({
+                                                            email: userFormSelector.email.toLowerCase(),
+                                                            subject: 'Poružbenica',
+                                                            name: userFormSelector.name,
+                                                            title: 'Potvrda porudzbenice',
+                                                            cart,
+                                                            streetAddress: userFormSelector.streetAddress,
+                                                            city: userFormSelector.city,
+                                                            country: userFormSelector.country,
+                                                            phoneNumber: userFormSelector.phoneNumber,
+                                                       });
+
+                                                       // Step 3: Clear store and go to next step
+                                                       dispatch(clearCart());
+                                                       dispatch(clearUserForm());
+                                                       handleNext();
+                                                  } else {
+                                                       console.error("Failed to create order.");
+                                                       // Optionally show toast or UI message here
+                                                  }
+                                             } catch (error) {
+                                                  console.error("Unexpected error:", error);
+                                                  // Optionally show toast or UI message here
+                                             } finally {
+                                                  setLoading(false);
+                                             }
                                         }}
                                         sx={{ maxWidth: '200px', marginTop: '10px', height: '40px', color: theme.palette.primary.main }}
                                    >

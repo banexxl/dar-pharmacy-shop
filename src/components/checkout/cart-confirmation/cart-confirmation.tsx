@@ -46,7 +46,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
           <CartWrapper theme={theme}>
                <StyledTable>
                     <StyledHeader>
-                         <TableRow>
+                         <TableRow sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                               <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
                               <StyledHeaderCell theme={theme} align="left">Naziv</StyledHeaderCell>
                               <StyledHeaderCell theme={theme} align="left">Pakovanje</StyledHeaderCell>
