@@ -37,7 +37,7 @@
     "src/pages/api/auth/[...nextauth].js",
     "src/pages/_app.jsx",
     ".next/types/**/*.ts"
-  ],
+, "src/pages/api/card-payment/index.tx"  ],
   "exclude": [
     "node_modules"
   ]

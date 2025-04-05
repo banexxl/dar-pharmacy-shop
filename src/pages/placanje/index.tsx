@@ -1,11 +1,9 @@
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, CircularProgress, Container, Stack, useMediaQuery } from '@mui/material'
-import { InferGetStaticPropsType } from 'next'
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
 import dynamic from 'next/dynamic'
-import LoadingWheel from '../../components/loading/loading'
 import Confirmation from '@/components/checkout/cart-confirmation/cart-confirmation'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
@@ -16,7 +14,6 @@ import { ReCaptchaProvider } from "next-recaptcha-v3";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
 import PaymentStrip from '@/components/payment-strip/payment-strip'
-import { OrderConfirmation } from '@/components/checkout/order-confirmation/order-confirmation'
 
 const Checkout = () => {
 
@@ -33,7 +30,7 @@ const Checkout = () => {
           ssr: false
      })
 
-     const steps = ["Adresa za dostavu", "Provera korpe", "Način plaćanja", "Potvrda porudžbine"];
+     const steps = ["Adresa za dostavu", "Provera korpe", "Način plaćanja"];
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
@@ -82,10 +79,6 @@ const Checkout = () => {
 
                                         <TabPanel value={tabIndex} index={2} >
                                              <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
-                                        </TabPanel>
-
-                                        <TabPanel value={tabIndex} index={3} >
-                                             <OrderConfirmation setTab={setTab} formName='order-confirmation' tabIndex={3} />
                                         </TabPanel>
 
                                         <PaymentStrip />

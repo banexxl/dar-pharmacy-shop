@@ -1,5 +1,4 @@
 import { FormikContextType, FormikErrors, FormikTouched } from "formik";
-import { Session } from "next-auth";
 
 export interface IUserForm {
      name: string;

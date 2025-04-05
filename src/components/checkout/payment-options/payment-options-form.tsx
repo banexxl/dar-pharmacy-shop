@@ -36,11 +36,6 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
      };
 
-     const handleNext = () => {
-          props.tabIndex === 0 ? props.setTab?.(props.tabIndex + 1) : null
-     };
-
-
      const onOrderItems = async (): Promise<boolean> => {
           try {
                const response = await fetch('/api/orders', {
@@ -95,7 +90,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                         stranicama ChipCard-a. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem
                                         sistemu.
                                    </Typography>
-                                   <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px', marginTop: '10px' }} endIcon={<NavigateNextIcon />}>
+                                   <CheckoutNextPrevButton sx={{ maxWidth: '100px', marginTop: '10px' }} endIcon={<NavigateNextIcon />}>
                                         Potvrdi
                                    </CheckoutNextPrevButton>
                               </Box>
@@ -130,38 +125,66 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
 
                                              try {
                                                   const orderSuccess = await onOrderItems(); // Step 1: Try to create the order
+                                                  console.log('orderSuccess', orderSuccess);
 
                                                   if (orderSuccess) {
                                                        // Step 2: Send confirmation emails
-                                                       await SendCheckoutConfirmationEmailToAdmin({
-                                                            email: 'maja@apoteka-dar.rs',
-                                                            customerEmail: userFormSelector.email.toLowerCase(),
-                                                            subject: 'Poružbenica',
-                                                            name: userFormSelector.name,
-                                                            title: 'Potvrda porudzbenice',
-                                                            cart,
-                                                            streetAddress: userFormSelector.streetAddress,
-                                                            city: userFormSelector.city,
-                                                            country: userFormSelector.country,
-                                                            phoneNumber: userFormSelector.phoneNumber,
-                                                       });
+                                                       const [adminEmailResult, userEmailResult] = await Promise.all([
+                                                            SendCheckoutConfirmationEmailToAdmin({
+                                                                 email: 'maja@apoteka-dar.rs',
+                                                                 customerEmail: userFormSelector.email.toLowerCase(),
+                                                                 subject: 'Poružbenica',
+                                                                 name: userFormSelector.name,
+                                                                 title: 'Potvrda porudzbenice',
+                                                                 cart,
+                                                                 streetAddress: userFormSelector.streetAddress,
+                                                                 city: userFormSelector.city,
+                                                                 country: userFormSelector.country,
+                                                                 phoneNumber: userFormSelector.phoneNumber,
+                                                            }),
+                                                            SendCheckoutConfirmationEmailToUser({
+                                                                 email: userFormSelector.email.toLowerCase(),
+                                                                 subject: 'Poružbenica',
+                                                                 name: userFormSelector.name,
+                                                                 title: 'Potvrda porudzbenice',
+                                                                 cart,
+                                                                 streetAddress: userFormSelector.streetAddress,
+                                                                 city: userFormSelector.city,
+                                                                 country: userFormSelector.country,
+                                                                 phoneNumber: userFormSelector.phoneNumber,
+                                                            })
+                                                       ])
 
-                                                       await SendCheckoutConfirmationEmailToUser({
-                                                            email: userFormSelector.email.toLowerCase(),
-                                                            subject: 'Poružbenica',
-                                                            name: userFormSelector.name,
-                                                            title: 'Potvrda porudzbenice',
-                                                            cart,
-                                                            streetAddress: userFormSelector.streetAddress,
-                                                            city: userFormSelector.city,
-                                                            country: userFormSelector.country,
-                                                            phoneNumber: userFormSelector.phoneNumber,
-                                                       });
+                                                       console.log(adminEmailResult, userEmailResult);
+                                                       if (adminEmailResult.message === "Email sent successfully" &&
+                                                            userEmailResult.message === "Email sent successfully") {
 
-                                                       // Step 3: Clear store and go to next step
-                                                       dispatch(clearCart());
-                                                       dispatch(clearUserForm());
-                                                       handleNext();
+                                                            const confirmationData = {
+                                                                 cart,
+                                                                 userForm: userFormSelector,
+                                                                 transaction: {
+                                                                      orderNumber: 'ORD-20250405',
+                                                                      authorizationCode: 'AUTH-XYZ123',
+                                                                      status: 'Uspešna',
+                                                                      statusCode: '00',
+                                                                      transactionNumber: 'TXN-99887766',
+                                                                      transactionDate: new Date().toLocaleString('sr-RS'),
+                                                                      amount: totalItemPrice,
+                                                                      referenceId: 'REF-112233',
+                                                                 },
+                                                                 deliveryDate: new Date().toLocaleDateString('sr-RS'),
+                                                            };
+
+                                                            localStorage.setItem('orderConfirmationData', JSON.stringify(confirmationData));
+
+                                                            toast.success('Porudžbina uspešno kreirana!');
+                                                            dispatch(clearCart());
+                                                            dispatch(clearUserForm());
+                                                            router.push('/placanje/pouzecem-uspesno');
+                                                       } else (
+                                                            toast.error('Greška prilikom slanja email-a!')
+                                                       )
+
                                                   } else {
                                                        console.error("Failed to create order.");
                                                        // Optionally show toast or UI message here
