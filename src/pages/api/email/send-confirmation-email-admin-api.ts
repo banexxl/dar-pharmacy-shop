@@ -73,9 +73,9 @@ const SendConfirmMessageToAdminAPI = async (req: NextApiRequest, res: NextApiRes
                     html: htmlForMaja,
                });
 
-               return res.status(200).json({ message: 'Email sent successfully' });
+               return res.status(200).json({ status: 200, message: 'Email sent successfully' });
           } catch (err: any) {
-               return res.status(500).json({ message: err.message || 'Failed to send email' });
+               return res.status(500).json({ status: 500, message: err.message || 'Failed to send email' });
           }
      } else {
           return res.status(405).json({ message: 'Method Not Allowed' });

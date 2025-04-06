@@ -13,6 +13,27 @@ import { clearUserForm } from '@/store/checkout/user-info-form.slice';
 import { redirect, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
+import { Order } from '@/schemas/order';
+import ICartItem, { ICart } from '@/interfaces/cart/cart.interface';
+import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
+
+export type Transaction = {
+     orderNumber?: string;
+     authorizationCode: string;
+     status?: string;
+     statusCode: string;
+     transactionNumber: string;
+     transactionDate: string;
+     amount: number;
+     referenceId: string;
+};
+
+export type ConfirmationData = {
+     cart: ICartItem[];
+     userForm: IUserForm;
+     transaction: Transaction;
+     deliveryDate: string;
+};
 
 interface CreditCardProps {
      setTab: (tabIndex: number) => number;
@@ -27,32 +48,33 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
      const [loading, setLoading] = useState<boolean>(false)
      const session = useSession()
      const router = useRouter()
-     const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer)
-     const totalItemPrice: any = useSelector(cartTotalPriceSelector(450))
-     const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
+     const [userFormSelectorState, setUserFormSelectorState] = useState(useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
+     const [totalItemPriceState, setTotalItemPriceState] = useState<number>(useSelector(cartTotalPriceSelector(450)))
+     const [cart, setCart] = useState<ICartItem[]>(useSelector((state: any) => state.persistReduce.cartSliceReducer))
      const dispatch = useDispatch()
 
      const handleBack = () => {
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
      };
 
-     const onOrderItems = async (): Promise<boolean> => {
+     const onOrderItems = async (): Promise<{ success: boolean; error?: string, order?: Order }> => {
           try {
                const response = await fetch('/api/orders', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ cart, userFormSelector, totalItemPrice })
+                    body: JSON.stringify({ cart, userFormSelectorState, totalItemPriceState })
                });
+               const responseData = await response.json();
 
                if (!response.ok) {
                     toast.error('Greška prilikom kreiranja porudžbine. Pokušajte ponovo.');
-                    return false;
+                    return responseData
                }
 
-               return true;
+               return responseData
           } catch (error) {
                console.error('Error creating order:', error);
-               return false;
+               return { success: false, error: 'Greška prilikom kreiranja porudžbine. Pokušajte ponovo.' };
           }
      };
 
@@ -97,7 +119,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                               :
                               <Box>
                                    <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
-                                        Odabirom "Plaćanje pouzećem", iznos od {parseFloat(totalItemPrice).toFixed(2)} dinara plaćate kuriru prilikom dostave paketa.
+                                        Odabirom "Plaćanje pouzećem", iznos od {totalItemPriceState.toFixed(2)} dinara plaćate kuriru prilikom dostave paketa.
                                    </Typography>
                                    {
                                         session.status === 'unauthenticated' && (
@@ -119,60 +141,57 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                         Nazad
                                    </CheckoutNextPrevButton>
                                    <CheckoutNextPrevButton
-                                        disabled={totalItemPrice === 0 || !submitEnabled || loading}
+                                        disabled={totalItemPriceState === 0 || !submitEnabled || loading}
                                         onClick={async () => {
                                              setLoading(true);
 
                                              try {
-                                                  const orderSuccess = await onOrderItems(); // Step 1: Try to create the order
-                                                  console.log('orderSuccess', orderSuccess);
+                                                  const { success, error, order } = await onOrderItems(); // Step 1: Try to create the order
 
-                                                  if (orderSuccess) {
+                                                  if (success) {
                                                        // Step 2: Send confirmation emails
                                                        const [adminEmailResult, userEmailResult] = await Promise.all([
                                                             SendCheckoutConfirmationEmailToAdmin({
                                                                  email: 'maja@apoteka-dar.rs',
-                                                                 customerEmail: userFormSelector.email.toLowerCase(),
+                                                                 customerEmail: userFormSelectorState.email.toLowerCase(),
                                                                  subject: 'Poružbenica',
-                                                                 name: userFormSelector.name,
+                                                                 name: userFormSelectorState.name,
                                                                  title: 'Potvrda porudzbenice',
                                                                  cart,
-                                                                 streetAddress: userFormSelector.streetAddress,
-                                                                 city: userFormSelector.city,
-                                                                 country: userFormSelector.country,
-                                                                 phoneNumber: userFormSelector.phoneNumber,
+                                                                 streetAddress: userFormSelectorState.streetAddress,
+                                                                 city: userFormSelectorState.city,
+                                                                 country: userFormSelectorState.country,
+                                                                 phoneNumber: userFormSelectorState.phoneNumber,
                                                             }),
                                                             SendCheckoutConfirmationEmailToUser({
-                                                                 email: userFormSelector.email.toLowerCase(),
+                                                                 email: userFormSelectorState.email.toLowerCase(),
                                                                  subject: 'Poružbenica',
-                                                                 name: userFormSelector.name,
+                                                                 name: userFormSelectorState.name,
                                                                  title: 'Potvrda porudzbenice',
                                                                  cart,
-                                                                 streetAddress: userFormSelector.streetAddress,
-                                                                 city: userFormSelector.city,
-                                                                 country: userFormSelector.country,
-                                                                 phoneNumber: userFormSelector.phoneNumber,
+                                                                 streetAddress: userFormSelectorState.streetAddress,
+                                                                 city: userFormSelectorState.city,
+                                                                 country: userFormSelectorState.country,
+                                                                 phoneNumber: userFormSelectorState.phoneNumber,
                                                             })
                                                        ])
 
-                                                       console.log(adminEmailResult, userEmailResult);
-                                                       if (adminEmailResult.message === "Email sent successfully" &&
-                                                            userEmailResult.message === "Email sent successfully") {
+                                                       if (adminEmailResult.status === 200 && userEmailResult.status === 200) {
 
-                                                            const confirmationData = {
+                                                            const confirmationData: ConfirmationData = {
                                                                  cart,
-                                                                 userForm: userFormSelector,
+                                                                 userForm: userFormSelectorState,
                                                                  transaction: {
-                                                                      orderNumber: 'ORD-20250405',
-                                                                      authorizationCode: 'AUTH-XYZ123',
-                                                                      status: 'Uspešna',
+                                                                      orderNumber: order?.orderNumber,
+                                                                      authorizationCode: '/',
+                                                                      status: order?.status,
                                                                       statusCode: '00',
-                                                                      transactionNumber: 'TXN-99887766',
+                                                                      transactionNumber: 'Plaćanje pouzećem',
                                                                       transactionDate: new Date().toLocaleString('sr-RS'),
-                                                                      amount: totalItemPrice,
-                                                                      referenceId: 'REF-112233',
+                                                                      amount: totalItemPriceState,
+                                                                      referenceId: 'Plaćanje pouzećem',
                                                                  },
-                                                                 deliveryDate: new Date().toLocaleDateString('sr-RS'),
+                                                                 deliveryDate: '3-5 radnih dana',
                                                             };
 
                                                             localStorage.setItem('orderConfirmationData', JSON.stringify(confirmationData));
