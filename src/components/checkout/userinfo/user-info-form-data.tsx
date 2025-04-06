@@ -198,7 +198,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              },
                                              height: '100px',
                                              alignItems: 'center',
-                                             justifyContent: 'space-between',
+                                             justifyContent: 'center',
                                              width: '100%',
                                              marginTop: '20px'
                                         }}>

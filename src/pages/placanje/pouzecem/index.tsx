@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Divider, Stack, CircularProgress, Button } from '@mui/material';
+import { Box, Container, Typography, Divider, Stack, CircularProgress, Button, List, ListItemText, ListItem } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useState } from 'react';
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -8,6 +8,7 @@ import theme from '@/styles/theme';
 import { UIProvider } from '@/context/ui/ui.context';
 import { useRouter } from 'next/navigation';
 import { ConfirmationData } from '@/components/checkout/payment-options/payment-options-form';
+import AppDrawer from '@/components/navbar/drawer/drawer';
 
 const DeliveryConfirmationPage = () => {
 
@@ -56,16 +57,77 @@ const DeliveryConfirmationPage = () => {
                                    <Divider sx={{ my: 2 }} />
 
                                    <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>📦 Podaci o narudžbini:</Typography>
-                                   {orderConfirmationData?.cart.map((item, index) => (
-                                        <Box key={index} sx={{ mb: 1 }}>
-                                             <Typography>Naziv: {item.name}</Typography>
-                                             <Typography>Jedinicna cena: {item.price.toFixed(2)} RSD</Typography>
-                                             <Typography>Kolicina: {item.count}</Typography>
-                                             <Typography>Porez: uračunat u cenu</Typography>
-                                             <Typography>Ukupno: {(item.count * item.price).toFixed(2)} RSD</Typography>
-                                             <Divider sx={{ my: 2 }} />
-                                        </Box>
-                                   ))}
+                                   <List>
+                                        {orderConfirmationData?.cart.map((item, index) => (
+                                             <ListItem
+                                                  key={index}
+                                                  sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                                             >
+                                                  <ListItemText
+                                                       primary={
+                                                            <Typography variant="body1">
+                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                      {index + 1}. Naziv:
+                                                                 </Typography>{" "}
+                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                      {item.name}
+                                                                 </Typography>
+                                                            </Typography>
+                                                       }
+                                                  />
+                                                  <ListItemText
+                                                       primary={
+                                                            <Typography variant="subtitle1">
+                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                      Jedinicna cena:
+                                                                 </Typography>{" "}
+                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                      {item.price.toFixed(2)} RSD
+                                                                 </Typography>
+                                                            </Typography>
+                                                       }
+                                                  />
+                                                  <ListItemText
+                                                       primary={
+                                                            <Typography variant="subtitle1">
+                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                      Kolicina:
+                                                                 </Typography>{" "}
+                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                      {item.count}
+                                                                 </Typography>
+                                                            </Typography>
+                                                       }
+                                                  />
+                                                  <ListItemText
+                                                       primary={
+                                                            <Typography variant="subtitle1">
+                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                      Porez:
+                                                                 </Typography>{" "}
+                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                      Uračunat u cenu
+                                                                 </Typography>
+                                                            </Typography>
+                                                       }
+                                                  />
+                                                  <ListItemText
+                                                       primary={
+                                                            <Typography variant="subtitle1">
+                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                      Ukupno:
+                                                                 </Typography>{" "}
+                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                      {(item.count * item.price).toFixed(2)} RSD
+                                                                 </Typography>
+                                                            </Typography>
+                                                       }
+                                                  />
+                                             </ListItem>
+                                        ))}
+                                   </List>
+
+
                                    <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>
                                         Ukupna cena: {orderConfirmationData?.cart.reduce((acc, item) => acc + item.price * item.count, 0).toFixed(2)} RSD
                                    </Typography>
@@ -109,6 +171,7 @@ const DeliveryConfirmationPage = () => {
                                              variant="contained"
                                              onClick={() => {
                                                   router.push('/')
+                                                  localStorage.removeItem('orderConfirmationData')
                                                   setTimeout(() => {
                                                        setOrderConfirmationData(null)
                                                   }, 3000);
@@ -117,7 +180,7 @@ const DeliveryConfirmationPage = () => {
                                              Početna
                                         </Button>
                                    </Stack>
-
+                                   <AppDrawer isScreenToMedium={false} />
                               </UIProvider>
                          </Stack>
                     </Container>

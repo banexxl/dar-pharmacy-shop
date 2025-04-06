@@ -70,8 +70,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
                                                   <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
                                                   <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Cena</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Ukupno sa PDV</StyledHeaderCell>
+                                                  <StyledHeaderCell theme={theme}>Cena sa PDV</StyledHeaderCell>
                                                   <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
                                                   <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
                                              </TableRow>

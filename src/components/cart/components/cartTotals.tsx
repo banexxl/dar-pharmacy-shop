@@ -13,7 +13,7 @@ interface ICartTotalsProps {
 
 function CartTotals({ onClose }: ICartTotalsProps) {
 
-     const totalItemPrice: any = useSelector(cartTotalPriceSelector(450))
+     const totalItemPrice: any = useSelector(cartTotalPriceSelector)
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const router = useRouter()
 
@@ -37,7 +37,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                                   textAlign: 'center'
                                              }}
                                         >
-                                             / uračunata dostava 450RSD
+                                             / na ovaj iznos će biti naplaćena dostava
                                         </Typography>
                                         <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2, alignItems: 'center' }} >
                                              <LinearProgress
