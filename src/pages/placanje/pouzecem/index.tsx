@@ -17,6 +17,8 @@ const DeliveryConfirmationPage = () => {
           const data = localStorage.getItem('orderConfirmationData');
           return data ? JSON.parse(data) as ConfirmationData : null;
      });
+     console.log('orderConfirmationData', orderConfirmationData);
+
      const router = useRouter()
 
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
@@ -156,7 +158,7 @@ const DeliveryConfirmationPage = () => {
                                                   </Typography>
                                                   <Typography>Kod statusa: {orderConfirmationData.order.statusCode}</Typography>
                                                   <Typography>Broj transakcije: {orderConfirmationData.order.transactionNumber}</Typography>
-                                                  <Typography>Datum transakcije: {orderConfirmationData.order.transactionDate.toISOString().split('T')[0]}</Typography>
+                                                  <Typography>Datum transakcije: {orderConfirmationData.order.transactionDate.toString().split('T')[0]}</Typography>
                                                   <Typography>Iznos transakcije: {orderConfirmationData.order.totalAmount.toFixed(2)} RSD</Typography>
                                                   <Typography>Referentni ID: {orderConfirmationData.order.referenceId}</Typography>
                                              </>
