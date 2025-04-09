@@ -112,11 +112,6 @@ const SendConfirmMessageToUserAPI = async (req: NextApiRequest, res: NextApiResp
                 </div>
 
                 <div style="margin-top: 20px; color: rgb(151, 3, 3);">
-                  <div style="font-weight: bold; color: rgb(0, 0, 0);">Iznos:</div>
-                  <p style="color: rgb(151, 3, 3);">${data.order.totalAmount.toFixed(2)} RSD</p>
-                </div>
-
-                <div style="margin-top: 20px; color: rgb(151, 3, 3);">
                   <div style="font-weight: bold; color: rgb(0, 0, 0);">Referentni ID:</div>
                   <p style="color: rgb(151, 3, 3);">${data.order.referenceId === 'cash-on-delivery' ? 'Plaćanje pouzećem' : data.order.referenceId}</p>
                 </div>
