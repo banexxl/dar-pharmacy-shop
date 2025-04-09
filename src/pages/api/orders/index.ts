@@ -21,7 +21,7 @@ const OrdersAPI = async (
                     customer: userFormSelectorState as ICustomer,
                     items: cart,
                     paymentMethod: paymentOption,
-                    totalAmount: totalItemPriceState,
+                    total: totalItemPriceState,
                     paymentStatus: 'pending',
                     logs: [
                          {
@@ -43,7 +43,7 @@ const OrdersAPI = async (
                     customer: userFormSelectorState as ICustomer,
                     items: cart,
                     paymentMethod: paymentOption,
-                    totalAmount: totalItemPriceState,
+                    total: totalItemPriceState,
                     paymentStatus: 'pending',
                     logs: [
                          {

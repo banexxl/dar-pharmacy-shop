@@ -159,7 +159,7 @@ const DeliveryConfirmationPage = () => {
                                                   <Typography>Kod statusa: {orderConfirmationData.order.statusCode}</Typography>
                                                   <Typography>Broj transakcije: {orderConfirmationData.order.transactionNumber}</Typography>
                                                   <Typography>Datum transakcije: {orderConfirmationData.order.transactionDate.toString().split('T')[0]}</Typography>
-                                                  <Typography>Iznos transakcije: {orderConfirmationData.order.totalAmount.toFixed(2)} RSD</Typography>
+                                                  <Typography>Iznos transakcije: {orderConfirmationData.order.total.toFixed(2)} RSD</Typography>
                                                   <Typography>Referentni ID: {orderConfirmationData.order.referenceId}</Typography>
                                              </>
                                         )}

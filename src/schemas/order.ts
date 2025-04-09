@@ -12,7 +12,7 @@ export type Order = {
      _id?: string;
      orderNumber: string;
      authorizationCode: string;
-     totalAmount: number;
+     total: number;
      createdAt: Date;
      customer: ICustomer;
      items: ICartItem[];

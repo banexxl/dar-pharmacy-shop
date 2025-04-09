@@ -175,7 +175,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                                                                      statusCode: '00',
                                                                                      transactionNumber: 'Plaćanje pouzećem',
                                                                                      transactionDate: new Date(),
-                                                                                     totalAmount: totalItemPriceState,
+                                                                                     total: totalItemPriceState,
                                                                                      referenceId: 'Plaćanje pouzećem',
                                                                                      createdAt: new Date(),
                                                                                      customer: userFormSelectorState,
