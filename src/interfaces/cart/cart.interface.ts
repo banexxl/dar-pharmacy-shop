@@ -7,5 +7,4 @@ export default interface ICartItem extends IProduct {
 export interface ICart {
      cartItems: ICartItem[],
      children?: JSX.IntrinsicElements,
-     deliveryFee: number
 }

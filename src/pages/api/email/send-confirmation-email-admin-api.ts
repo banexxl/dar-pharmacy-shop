@@ -1,20 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import ICartItem from '@/interfaces/cart/cart.interface';
-import { IEmailToFields } from '@/interfaces/email/email-to-fields.interface';
+import { EmailData } from '@/interfaces/email/email-to-fields.interface';
 import { Colors } from '@/styles/theme';
 import { transporter } from '../../../services/email/email-config';
 
 const SendConfirmMessageToAdminAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-     if (req.method === 'POST') {
-          const data: IEmailToFields = req.body;
+  if (req.method === 'POST') {
+    const data: EmailData = req.body;
 
-          const emailToClientSubject = 'Poruka iz naše male apoteke DAR';
+    const emailToClientSubject = 'Poruka iz naše male apoteke DAR';
 
-          if (!data || !data.name || !data.email || !data.subject || !data.cart) {
-               return res.status(400).json({ message: 'Bad request, data missing' });
-          }
+    if (!data || !data.name || !data.email || !data.subject || !data.order.items || data.order.items.length <= 0) {
+      return res.status(400).json({ message: 'Bad request, data missing' });
+    }
 
-          const htmlForMaja = `
+    const htmlForMaja = `
       <html>
         <head>
           <meta charset="UTF-8" />
@@ -40,14 +40,14 @@ const SendConfirmMessageToAdminAPI = async (req: NextApiRequest, res: NextApiRes
             <p>Korisnik je poručio sledeće proizvode:</p>
 
             <ul style="padding-left: 20px;">
-              ${data.cart.map((cartItem: ICartItem) =>
-               `<li style="margin-bottom: 8px;">` +
-               cartItem._id.toString().slice(-8).toUpperCase() +
-               " " + cartItem.name +
-               " " + cartItem.quantity +
-               " * " + cartItem.count +
-               `</li>`
-          ).join('')}
+              ${data.order.items.map((cartItem: ICartItem) =>
+      `<li style="margin-bottom: 8px;">` +
+      cartItem._id.toString().slice(-8).toUpperCase() +
+      " " + cartItem.name +
+      " " + cartItem.quantity +
+      " * " + cartItem.count +
+      `</li>`
+    ).join('')}
             </ul>
 
             <br/>
@@ -65,21 +65,21 @@ const SendConfirmMessageToAdminAPI = async (req: NextApiRequest, res: NextApiRes
       </html>
     `;
 
-          try {
-               await transporter.sendMail({
-                    from: process.env.EMAIL_SERVER_USER,
-                    to: data.email,
-                    subject: data.subject,
-                    html: htmlForMaja,
-               });
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_SERVER_USER,
+        to: data.email,
+        subject: data.subject,
+        html: htmlForMaja,
+      });
 
-               return res.status(200).json({ status: 200, message: 'Email sent successfully' });
-          } catch (err: any) {
-               return res.status(500).json({ status: 500, message: err.message || 'Failed to send email' });
-          }
-     } else {
-          return res.status(405).json({ message: 'Method Not Allowed' });
-     }
+      return res.status(200).json({ status: 200, message: 'Email sent successfully' });
+    } catch (err: any) {
+      return res.status(500).json({ status: 500, message: err.message || 'Failed to send email' });
+    }
+  } else {
+    return res.status(405).json({ message: 'Method Not Allowed' });
+  }
 };
 
 export default SendConfirmMessageToAdminAPI;

@@ -1,22 +1,36 @@
-import IProduct from "@/interfaces/product/product.interface";
 import { ICustomer } from "./user";
-import { ICart } from "@/interfaces/cart/cart.interface";
+import ICartItem, { ICart } from "@/interfaces/cart/cart.interface";
+import { IUserForm } from "@/interfaces/checkout/user-form-values.interface";
 
-export type PaymentMethod = 'credit card' | 'paypal' | 'cash' | 'check' | 'cash-on-delivery';
+export type PaymentMethod = 'credit-card' | 'paypal' | 'cash' | 'check' | 'cash-on-delivery';
 
 export type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'cancelled'
+
+export type PaymentStatus = 'pending' | 'successful' | 'failed' | 'refunded'
 
 export type Order = {
      _id?: string;
      orderNumber: string;
+     authorizationCode: string;
+     totalAmount: number;
      createdAt: Date;
      customer: ICustomer;
-     items: ICart;
+     items: ICartItem[];
      paymentMethod: PaymentMethod;
-     total: number;
-     status: OrderStatus;
+     orderStatus: OrderStatus;
+     paymentStatus: PaymentStatus;
+     statusCode: string;
+     transactionNumber: string;
+     transactionDate: Date;
+     referenceId: string;
      logs: {
           message: string;
           createdAt: Date;
      }[];
 }
+
+export type ConfirmationData = {
+     userForm: IUserForm;
+     order: Order;
+     deliveryDate: string;
+};

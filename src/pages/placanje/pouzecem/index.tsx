@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Divider, Stack, CircularProgress, Button, List, ListItemText, ListItem } from '@mui/material';
+import { Container, Typography, Divider, Stack, CircularProgress, Button, List, ListItemText, ListItem } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useState } from 'react';
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -7,8 +7,9 @@ import dynamic from 'next/dynamic';
 import theme from '@/styles/theme';
 import { UIProvider } from '@/context/ui/ui.context';
 import { useRouter } from 'next/navigation';
-import { ConfirmationData } from '@/components/checkout/payment-options/payment-options-form';
 import AppDrawer from '@/components/navbar/drawer/drawer';
+import ICartItem from '@/interfaces/cart/cart.interface';
+import { ConfirmationData } from '@/schemas/order';
 
 const DeliveryConfirmationPage = () => {
 
@@ -58,7 +59,7 @@ const DeliveryConfirmationPage = () => {
 
                                    <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>📦 Podaci o narudžbini:</Typography>
                                    <List>
-                                        {orderConfirmationData?.cart.map((item, index) => (
+                                        {orderConfirmationData?.order.items.map((item: ICartItem, index: number) => (
                                              <ListItem
                                                   key={index}
                                                   sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
@@ -129,7 +130,7 @@ const DeliveryConfirmationPage = () => {
 
 
                                    <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>
-                                        Ukupna cena: {orderConfirmationData?.cart.reduce((acc, item) => acc + item.price * item.count, 0).toFixed(2)} RSD
+                                        Ukupna cena: {orderConfirmationData?.order.items.reduce((acc: number, item: ICartItem) => acc + item.price * item.count, 0).toFixed(2)} RSD
                                    </Typography>
 
                                    <Divider sx={{ my: 2 }} />
@@ -145,14 +146,19 @@ const DeliveryConfirmationPage = () => {
                                    {
                                         orderConfirmationData !== null && (
                                              <>
-                                                  <Typography>Broj narudžbine: {orderConfirmationData.transaction.orderNumber}</Typography>
-                                                  <Typography>Autorizacioni kod: {orderConfirmationData.transaction.authorizationCode}</Typography>
-                                                  <Typography>Status transakcije: {orderConfirmationData.transaction.status}</Typography>
-                                                  <Typography>Kod statusa: {orderConfirmationData.transaction.statusCode}</Typography>
-                                                  <Typography>Broj transakcije: {orderConfirmationData.transaction.transactionNumber}</Typography>
-                                                  <Typography>Datum transakcije: {orderConfirmationData.transaction.transactionDate}</Typography>
-                                                  <Typography>Iznos transakcije: {orderConfirmationData.transaction.amount.toFixed(2)} RSD</Typography>
-                                                  <Typography>Referentni ID: {orderConfirmationData.transaction.referenceId}</Typography>
+                                                  <Typography>Broj narudžbine: {orderConfirmationData.order.orderNumber}</Typography>
+                                                  <Typography>Autorizacioni kod: {orderConfirmationData.order.authorizationCode}</Typography>
+                                                  <Typography>Status transakcije: {orderConfirmationData?.order.paymentStatus === 'pending' ?
+                                                       'U obradi' : orderConfirmationData?.order.paymentStatus === 'successful' ?
+                                                            'Uspešno' : orderConfirmationData?.order.paymentStatus === 'failed' ?
+                                                                 'Neuspešno' : orderConfirmationData?.order.paymentStatus === 'refunded' ?
+                                                                      'Refundirano' : ''}
+                                                  </Typography>
+                                                  <Typography>Kod statusa: {orderConfirmationData.order.statusCode}</Typography>
+                                                  <Typography>Broj transakcije: {orderConfirmationData.order.transactionNumber}</Typography>
+                                                  <Typography>Datum transakcije: {orderConfirmationData.order.transactionDate}</Typography>
+                                                  <Typography>Iznos transakcije: {orderConfirmationData.order.totalAmount.toFixed(2)} RSD</Typography>
+                                                  <Typography>Referentni ID: {orderConfirmationData.order.referenceId}</Typography>
                                              </>
                                         )}
 

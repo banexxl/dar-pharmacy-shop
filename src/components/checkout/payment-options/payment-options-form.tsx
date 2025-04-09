@@ -13,27 +13,8 @@ import { clearUserForm } from '@/store/checkout/user-info-form.slice';
 import { redirect, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
-import { Order } from '@/schemas/order';
+import { ConfirmationData, Order, PaymentMethod } from '@/schemas/order';
 import ICartItem, { ICart } from '@/interfaces/cart/cart.interface';
-import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
-
-export type Transaction = {
-     orderNumber?: string;
-     authorizationCode: string;
-     status?: string;
-     statusCode: string;
-     transactionNumber: string;
-     transactionDate: string;
-     amount: number;
-     referenceId: string;
-};
-
-export type ConfirmationData = {
-     cart: ICartItem[];
-     userForm: IUserForm;
-     transaction: Transaction;
-     deliveryDate: string;
-};
 
 interface CreditCardProps {
      setTab: (tabIndex: number) => number;
@@ -43,13 +24,13 @@ interface CreditCardProps {
 
 export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCardProps) => {
 
-     const [paymentOption, setPaymentOption] = useState('onDelivery')
+     const [paymentOption, setPaymentOption] = useState<PaymentMethod>('cash-on-delivery')
      const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
      const [loading, setLoading] = useState<boolean>(false)
      const session = useSession()
      const router = useRouter()
-     const [userFormSelectorState, setUserFormSelectorState] = useState(useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
      const [totalItemPriceState, setTotalItemPriceState] = useState<number>(useSelector(cartTotalPriceSelector))
+     const [userFormSelectorState, setUserFormSelectorState] = useState(useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
      const [cart, setCart] = useState<ICartItem[]>(useSelector((state: any) => state.persistReduce.cartSliceReducer))
      const dispatch = useDispatch()
 
@@ -57,12 +38,12 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
      };
 
-     const onOrderItems = async (): Promise<{ success: boolean; error?: string, order?: Order }> => {
+     const onOrderCashOnDelivery = async (): Promise<{ success: boolean; error?: string, order: Order }> => {
           try {
                const response = await fetch('/api/orders', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ cart, userFormSelectorState, totalItemPriceState })
+                    body: JSON.stringify({ cart, userFormSelectorState, totalItemPriceState, paymentOption })
                });
                const responseData = await response.json();
 
@@ -74,7 +55,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                return responseData
           } catch (error) {
                console.error('Error creating order:', error);
-               return { success: false, error: 'Greška prilikom kreiranja porudžbine. Pokušajte ponovo.' };
+               return { success: false, error: 'Greška prilikom kreiranja porudžbine. Pokušajte ponovo.', order: {} as Order };
           }
      };
 
@@ -92,11 +73,11 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                          onChange={(e: any) => setPaymentOption(e.target.value)}
                          sx={{ display: 'flex', flexDirection: 'row' }}
                     >
-                         <FormControlLabel value="onDelivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
-                         <FormControlLabel value="cardPayment" control={<Radio />} label={"Kartično plaćanje"} />
+                         <FormControlLabel value="cash-on-delivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
+                         <FormControlLabel value="credit-card" control={<Radio />} label={"Kartično plaćanje"} />
                     </RadioGroup>
                     {
-                         paymentOption === 'cardPayment' ?
+                         paymentOption === 'credit-card' ?
                               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px', gap: '20px' }}>
                                    <Typography variant="body1" >
                                         Izabrali ste kartično plaćanje. Pritiskom na dugme "Potvrdi", bićete preusmereni na drugu platformu za završetak transakcije.
@@ -154,65 +135,75 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                                                   setLoading(true);
 
                                                   try {
-                                                       const { success, error, order } = await onOrderItems(); // Step 1: Try to create the order
+                                                       const { success, error, order } = await onOrderCashOnDelivery(); // Step 1: Try to create the order
 
                                                        if (success) {
                                                             // Step 2: Send confirmation emails
-                                                            const [adminEmailResult, userEmailResult] = await Promise.all([
+                                                            Promise.all([
                                                                  SendCheckoutConfirmationEmailToAdmin({
                                                                       email: 'maja@apoteka-dar.rs',
                                                                       customerEmail: userFormSelectorState.email.toLowerCase(),
                                                                       subject: 'Porudžbenica',
                                                                       name: userFormSelectorState.name,
                                                                       title: 'Potvrda porudžbenice',
-                                                                      cart,
                                                                       streetAddress: userFormSelectorState.streetAddress,
                                                                       city: userFormSelectorState.city,
                                                                       country: userFormSelectorState.country,
                                                                       phoneNumber: userFormSelectorState.phoneNumber,
+                                                                      order: order
                                                                  }),
                                                                  SendCheckoutConfirmationEmailToUser({
                                                                       email: userFormSelectorState.email.toLowerCase(),
                                                                       subject: 'Porudžbenica',
                                                                       name: userFormSelectorState.name,
                                                                       title: 'Potvrda porudžbenice',
-                                                                      cart,
                                                                       streetAddress: userFormSelectorState.streetAddress,
                                                                       city: userFormSelectorState.city,
                                                                       country: userFormSelectorState.country,
                                                                       phoneNumber: userFormSelectorState.phoneNumber,
+                                                                      order: order
                                                                  })
                                                             ])
+                                                                 .then(([adminEmailResult, userEmailResult]) => {
+                                                                      if (adminEmailResult.status === 200 && userEmailResult.status === 200) {
+                                                                           const confirmationData: ConfirmationData = {
+                                                                                userForm: userFormSelectorState,
+                                                                                order: {
+                                                                                     orderNumber: order?.orderNumber,
+                                                                                     authorizationCode: '/',
+                                                                                     paymentStatus: order?.paymentStatus,
+                                                                                     statusCode: '00',
+                                                                                     transactionNumber: 'Plaćanje pouzećem',
+                                                                                     transactionDate: new Date(),
+                                                                                     totalAmount: totalItemPriceState,
+                                                                                     referenceId: 'Plaćanje pouzećem',
+                                                                                     createdAt: new Date(),
+                                                                                     customer: userFormSelectorState,
+                                                                                     items: cart,
+                                                                                     paymentMethod: paymentOption,
+                                                                                     orderStatus: 'pending',
+                                                                                     logs: []
+                                                                                },
+                                                                                deliveryDate: '3-5 radnih dana',
+                                                                           };
 
-                                                            if (adminEmailResult.status === 200 && userEmailResult.status === 200) {
+                                                                           localStorage.setItem('orderConfirmationData', JSON.stringify(confirmationData));
 
-                                                                 const confirmationData: ConfirmationData = {
-                                                                      cart,
-                                                                      userForm: userFormSelectorState,
-                                                                      transaction: {
-                                                                           orderNumber: order?.orderNumber,
-                                                                           authorizationCode: '/',
-                                                                           status: order?.status,
-                                                                           statusCode: '00',
-                                                                           transactionNumber: 'Plaćanje pouzećem',
-                                                                           transactionDate: new Date().toLocaleString('sr-RS'),
-                                                                           amount: totalItemPriceState,
-                                                                           referenceId: 'Plaćanje pouzećem',
-                                                                      },
-                                                                      deliveryDate: '3-5 radnih dana',
-                                                                 };
+                                                                           toast.success('Porudžbina uspešno kreirana!');
+                                                                           setTimeout(() => {
+                                                                                dispatch(clearCart());
+                                                                                dispatch(clearUserForm());
+                                                                           }, 2000);
+                                                                           router.push('/placanje/pouzecem');
+                                                                      } else {
+                                                                           toast.error('Greška prilikom slanja email-a!');
+                                                                      }
+                                                                 })
+                                                                 .catch((error) => {
+                                                                      console.error('Error while sending confirmation emails:', error);
+                                                                      toast.error('Došlo je do greške prilikom slanja email-a!');
+                                                                 });
 
-                                                                 localStorage.setItem('orderConfirmationData', JSON.stringify(confirmationData));
-
-                                                                 toast.success('Porudžbina uspešno kreirana!');
-                                                                 setTimeout(() => {
-                                                                      dispatch(clearCart());
-                                                                      dispatch(clearUserForm());
-                                                                 }, 3000);
-                                                                 router.push('/placanje/pouzecem');
-                                                            } else (
-                                                                 toast.error('Greška prilikom slanja email-a!')
-                                                            )
 
                                                        } else {
                                                             console.error("Failed to create order.");

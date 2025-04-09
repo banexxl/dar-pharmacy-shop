@@ -134,15 +134,13 @@ export const CarouselButton = styled(Button)({
      border: `1px solid ${Colors.dim_grey}`,
      transform: 'translateX(-50%)',
      left: '50%',
-
+     height: '30px',
      [theme.breakpoints.up("md")]: {
           fontSize: '1rem',
-          height: '40px',
           width: '200px',
      },
      [theme.breakpoints.down("md")]: {
           fontSize: '.7rem',
-          height: '30px',
           width: '130px',
      },
 });

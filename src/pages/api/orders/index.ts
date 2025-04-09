@@ -1,47 +1,71 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import moment from 'moment';
 import { OrdersServices } from "@/services/order-service";
-import { Order, OrderStatus, PaymentMethod } from "@/schemas/order";
+import { Order, PaymentMethod } from "@/schemas/order";
 import { ICustomer } from "@/schemas/user";
-import { ICart } from "@/interfaces/cart/cart.interface";
 
 const OrdersAPI = async (
      request: NextApiRequest,
      response: NextApiResponse<{ success: boolean; error?: string; order?: Order }>
 ) => {
      if (request.method === 'POST') {
-          const { cart, userFormSelector, totalItemPrice } = request.body;
+          const { cart, userFormSelectorState, totalItemPriceState, paymentOption } = request.body;
+          console.log('request.body', request.body);
 
           const orderNumber = moment().format('YYYYMMDD') + '-ID-' + Math.floor(Math.random() * 1000);
-
-          const order: Order = {
-               orderNumber,
-               createdAt: new Date(),
-               customer: userFormSelector as ICustomer,
-               items: cart as ICart,
-               paymentMethod: 'cash-on-delivery' as PaymentMethod,
-               total: totalItemPrice,
-               status: 'pending' as OrderStatus,
-               logs: [
-                    {
-                         message: 'Order created',
-                         createdAt: new Date()
-                    },
-               ],
-          };
-
+          let order: Order | null = null;
+          if (paymentOption as PaymentMethod === 'cash-on-delivery') {
+               order = {
+                    orderNumber,
+                    createdAt: new Date(),
+                    customer: userFormSelectorState as ICustomer,
+                    items: cart,
+                    paymentMethod: paymentOption,
+                    totalAmount: totalItemPriceState,
+                    paymentStatus: 'pending',
+                    logs: [
+                         {
+                              message: 'Order created',
+                              createdAt: new Date()
+                         },
+                    ],
+                    authorizationCode: paymentOption,
+                    orderStatus: "pending",
+                    statusCode: paymentOption,
+                    transactionNumber: paymentOption,
+                    transactionDate: new Date(),
+                    referenceId: paymentOption
+               };
+          } else if (paymentOption as PaymentMethod === 'credit-card') {
+               order = {
+                    orderNumber,
+                    createdAt: new Date(),
+                    customer: userFormSelectorState as ICustomer,
+                    items: cart,
+                    paymentMethod: paymentOption,
+                    totalAmount: totalItemPriceState,
+                    paymentStatus: 'pending',
+                    logs: [
+                         {
+                              message: 'Order created',
+                              createdAt: new Date()
+                         },
+                    ],
+                    orderStatus: "pending",
+                    authorizationCode: "",
+                    statusCode: "",
+                    transactionNumber: "",
+                    transactionDate: new Date(),
+                    referenceId: ""
+               };
+          }
           try {
+               if (!order) {
+                    return response.status(400).json({ success: false, error: 'Order data is incomplete' });
+               }
                const orderCreated = await OrdersServices().createNewOrder(order);
-               if (orderCreated?.message === 'Order successfully created!') {
-                    if ('orderNumber' in order) {
-                         if ('orderNumber' in order && 'createdAt' in order && 'customer' in order && 'items' in order) {
-                              return response.status(200).json({ success: true, order: order as Order });
-                         } else {
-                              return response.status(400).json({ success: false, error: 'Invalid order data' });
-                         }
-                    } else {
-                         return response.status(400).json({ success: false, error: 'Invalid order data' });
-                    }
+               if (orderCreated?.message === 'Order successfully created!' && 'orderNumber' in order && 'createdAt' in order && 'customer' in order && 'items' in order) {
+                    return response.status(200).json({ success: true, order: order as Order });
                } else {
                     return response.status(400).json({ success: false, error: 'Order creation failed' });
                }

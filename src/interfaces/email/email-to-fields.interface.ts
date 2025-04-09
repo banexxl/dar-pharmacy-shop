@@ -1,14 +1,15 @@
+import { Order } from "@/schemas/order"
 import ICartItem from "../cart/cart.interface"
 
-export interface IEmailToFields {
+export interface EmailData {
      email: string,
      customerEmail?: string,
      subject: string,
      name?: string,
      title?: string
-     cart: ICartItem[],
      streetAddress?: string,
      city?: string,
      country?: string,
      phoneNumber?: string
+     order: Order
 }

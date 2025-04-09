@@ -1,10 +1,9 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
-import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUser } from '@/services/email/send-email'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
-import { CartWrapper, StyledProductCell, StyledHeader, StyledProductRow, StyledTotalsTitle, StyledTable, StyledHeaderCell, StyledTableBody } from '@/styles/cart'
+import { CartWrapper, StyledHeader, StyledTotalsTitle, StyledTable, StyledHeaderCell, StyledTableBody } from '@/styles/cart'
 import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
-import { Box, Button, Paper, Table, TableBody, TableRow, Typography } from '@mui/material'
+import { Box, TableRow, Typography } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import React, { FunctionComponent, useEffect, useState } from 'react'

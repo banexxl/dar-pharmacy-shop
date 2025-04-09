@@ -64,7 +64,13 @@ const ProductCarousel = (props: any) => {
                >
                     {
                          props.products.map((product: IProduct) => (
-                              <StyledCarouselCard key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingBottom: '10px' }}>
+                              <StyledCarouselCard key={product._id} sx={{
+                                   display: 'flex',
+                                   flexDirection: 'column',
+                                   justifyContent: 'space-between',
+                                   paddingBottom: '10px',
+                                   height: 'auto'
+                              }}>
                                    <Box
                                         sx={{
                                              position: 'relative', // Make the Box container a positioning context
