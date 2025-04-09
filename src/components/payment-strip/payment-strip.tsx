@@ -8,7 +8,7 @@ const paymentTypes = [
      { name: 'Maestro', icon: '/cards/maestro-card-black-medium.png', link: 'https://www.mastercard.com/content/brandcenter/standard-mastercard/en/brand-requirement/maestro.html' },
      { name: 'Mastercard', icon: '/cards/master-card-black-medium.png', link: 'https://www.mastercard.rs/sr-rs/korisnici/pronadite-karticu.html' },
      { name: 'Dina card', icon: '/cards/dina-card.jpg', link: 'https://dinacard.nbs.rs/cirilica/' },
-     { name: 'Visa', icon: '/cards/visa-card.png', link: 'https://rs.visa.com/pay-with-visa/security-and-assistance/protected-everywhere.html' },
+     { name: 'Visa', icon: '/cards/visa-card.png', link: 'https://rs.visa.com/' },
      { name: 'American Express', icon: '/cards/american-express.png', link: 'https://www.americanexpress.com/' },
      { name: 'Halk Bank', icon: '/cards/halk-bank-logo.jpg', link: 'https://www.halkbank.rs/' },
      { name: 'ID Check', icon: '/cards/id-check.png', link: 'https://www.idcheck.com/' },
