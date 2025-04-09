@@ -59,7 +59,11 @@ const SendConfirmMessageToUserAPI = async (req: NextApiRequest, res: NextApiResp
                 </div>
 
                 <div style="margin-top: 20px; color: rgb(151, 3, 3);">
-                  <p style="margin-top: 20px;font-weight: bold; color: rgb(6, 0, 0);">Broj porudžbine: ${data.order.orderNumber}</p>
+                  <div style="font-weight: bold; color: rgb(0, 0, 0);">Broj porudžbine: </div>
+                  <p style="color: rgb(151, 3, 3);">${data.order.orderNumber}</p>
+                </div>
+
+                <div style="margin-top: 20px; color: rgb(151, 3, 3);">
                   <p style="font-weight: bold; color: rgb(1, 0, 0);">Vaši proizvodi u korpi (PDV uračunat u cenu):</p>
                   <ul style="padding-left: 20px;">
                     ${data.order.items.map((cartItem: ICartItem) => `
@@ -68,7 +72,11 @@ const SendConfirmMessageToUserAPI = async (req: NextApiRequest, res: NextApiResp
                       </li>
                     `).join('')}
                   </ul>
-                  <p style="font-weight: bold; margin-top: 10px; color: rgb(0, 0, 0);">Ukupno: ${data.order.totalAmount.toFixed(2)} RSD</p>
+                </div>
+
+                <div style="margin-top: 20px; color: rgb(151, 3, 3);">
+                  <div style="font-weight: bold; color: rgb(0, 0, 0);">Ukupno (sa PDV): </div>
+                  <p style="color: rgb(151, 3, 3);">${Number(data.order.totalAmount) < 8000 ? data.order.totalAmount.toFixed(2) + 'RSD + dostava' : data.order.totalAmount.toFixed(2) + 'RSD /besplatna dostava'}</p>
                 </div>
 
                 <div style="margin-top: 20px; color: rgb(151, 3, 3);">
