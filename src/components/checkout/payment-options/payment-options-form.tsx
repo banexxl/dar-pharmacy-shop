@@ -74,7 +74,7 @@ export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCard
                          sx={{ display: 'flex', flexDirection: 'row' }}
                     >
                          <FormControlLabel value="cash-on-delivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
-                         <FormControlLabel value="credit-card" control={<Radio />} label={"Kartično plaćanje"} />
+                         <FormControlLabel disabled value="credit-card" control={<Radio />} label={"Kartično plaćanje"} />
                     </RadioGroup>
                     {
                          paymentOption === 'credit-card' ?
