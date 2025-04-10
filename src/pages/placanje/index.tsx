@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 import Confirmation from '@/components/checkout/cart-confirmation/cart-confirmation'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
-import { CreditCard } from '@/components/checkout/payment-options/payment-options-form'
+import { PaymentOptions } from '@/components/checkout/payment-options/payment-options-form'
 import { CheckoutTabs, CheckoutTab, CheckoutTabText } from '@/styles/checkout/checkout-tabs'
 import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/checkout/checkout-stepper'
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -78,7 +78,7 @@ const Checkout = () => {
                                         </TabPanel>
 
                                         <TabPanel value={tabIndex} index={2} >
-                                             <CreditCard setTab={setTab} formName='credit-card' tabIndex={2} />
+                                             <PaymentOptions setTab={setTab} formName='credit-card' tabIndex={2} />
                                         </TabPanel>
 
                                         <PaymentStrip />

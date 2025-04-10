@@ -16,13 +16,13 @@ import toast from 'react-hot-toast';
 import { ConfirmationData, Order, PaymentMethod } from '@/schemas/order';
 import ICartItem, { ICart } from '@/interfaces/cart/cart.interface';
 
-interface CreditCardProps {
+interface PaymentOptionsProps {
      setTab: (tabIndex: number) => number;
      formName: string;
      tabIndex: number;
 }
 
-export const CreditCard: FunctionComponent<CreditCardProps> = (props: CreditCardProps) => {
+export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: PaymentOptionsProps) => {
 
      const [paymentOption, setPaymentOption] = useState<PaymentMethod>('cash-on-delivery')
      const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
