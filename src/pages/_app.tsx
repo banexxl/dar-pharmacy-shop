@@ -9,10 +9,15 @@ import { persistStore } from 'redux-persist'
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head'
 import { Toaster } from 'react-hot-toast';
+import { useReportWebVitals } from 'next/web-vitals'
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) => {
 
      let persistor = persistStore(store)
+
+     useReportWebVitals((metric) => {
+          console.log(metric)
+     })
 
      return (
 
