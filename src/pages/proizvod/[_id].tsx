@@ -11,6 +11,7 @@ import React from 'react'
 import LoadingWheel from '@/components/loading/loading'
 import dynamic from 'next/dynamic'
 import { Seo } from '@/components/seo'
+import { notFound } from 'next/navigation'
 
 type SingleProductProps = {
      product: IProduct
@@ -53,8 +54,7 @@ const SingleProduct = (props: SingleProductProps) => {
           </DynamicThemeProvider>
      )
           :
-          //server redirect to 404
-          {}
+          notFound()
 }
 
 export default SingleProduct
