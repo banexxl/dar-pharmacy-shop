@@ -11,7 +11,7 @@ import React from 'react'
 import LoadingWheel from '@/components/loading/loading'
 import dynamic from 'next/dynamic'
 import { Seo } from '@/components/seo'
-import { notFound } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type SingleProductProps = {
      product: IProduct
@@ -19,13 +19,19 @@ type SingleProductProps = {
 
 const SingleProduct = (props: SingleProductProps) => {
 
+     const router = useRouter()
+
+     if (!props.product || !(props.product as IProduct).name || !(props.product as IProduct)._id || !(props.product as IProduct).description) {
+          router.push('/404')
+          return null
+     }
+
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
           ssr: false
      })
 
-
-     return props.product ? (
+     return (
           <DynamicThemeProvider theme={theme}>
                <Seo
                     title={props.product.name}
@@ -53,25 +59,25 @@ const SingleProduct = (props: SingleProductProps) => {
                </Container>
           </DynamicThemeProvider>
      )
-          :
-          notFound()
+
 }
 
 export default SingleProduct
 
 export async function getServerSideProps(context: any) {
 
-     const product: any = await ProductsServices().getProductById(context.params._id)
+     try {
+          const product: any = await ProductsServices().getProductById(context.params._id)
 
-     if (!product) {
           return {
-               notFound: true, // Redirects to the 404 page
-          };
-     }
-
-     return {
-          props: {
-               product: JSON.parse(JSON.stringify(product)),
-          },
+               props: {
+                    product: JSON.parse(JSON.stringify(product)),
+               },
+          }
+     } catch (error) {
+          console.error("Error fetching product:", error)
+          return {
+               notFound: true, // This will render the 404 page
+          }
      }
 }
