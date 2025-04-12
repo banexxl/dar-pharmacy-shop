@@ -17,7 +17,7 @@ type SingleProductProps = {
 }
 
 const SingleProduct = (props: SingleProductProps) => {
-     //this way next js does not try to render theme provider on server (no hydration error : )
+
      const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
           loading: () => <LoadingWheel />,
           ssr: false
@@ -26,7 +26,13 @@ const SingleProduct = (props: SingleProductProps) => {
 
      return props.product ? (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={props.product.name} description={props.product.description} url={'https://www.apoteka-dar.rs/'} />
+               <Seo
+                    title={props.product.name}
+                    description={props.product.description}
+                    image={props.product.imageURL}
+                    url={`https://www.apoteka-dar.rs/proizvodi/${props.product._id}`}
+                    keywords={props.product.name}
+               />
                <Container
                     disableGutters
                     maxWidth="lg"
@@ -63,37 +69,9 @@ export async function getServerSideProps(context: any) {
           };
      }
 
-     // context iz getstaticprops {
-     //           params: { _id: '647660082a76d9e7aa674dc8' },
-     //           locales: ['sr-RS', 'en-US'],
-     //           locale: 'sr-RS',
-     //           defaultLocale: 'sr-RS'
-     // }
-
      return {
           props: {
                product: JSON.parse(JSON.stringify(product)),
-               //...(await serverSideTranslations('sr-RS'))
-               // ...(await serverSideTranslations('sr-RS' ?? context.locale, ['common'], null, ['en-US', 'sr-RS'])),
           },
      }
 }
-
-// export const getStaticPaths = async (context: any) => {
-
-//           //context { locales: ['sr-RS', 'en-US'], defaultLocale: 'sr-RS' }
-
-//           const allProducts: any = await ProductsServices().getAllProducts()
-
-//           const paths = allProducts.flatMap((product: any) =>
-//                     context.locales.map((locale: any) => ({
-//                               params: { _id: product._id.toString() },
-//                               locale,
-//                     }))
-//           );
-
-//           return {
-//                     paths,
-//                     fallback: false, // false or "blocking"
-//           };
-// }
