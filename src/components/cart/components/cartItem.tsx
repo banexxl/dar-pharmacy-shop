@@ -4,12 +4,11 @@ import theme, { Colors } from '@/styles/theme';
 import Counter from '@/utils/counter';
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, useMediaQuery } from '@mui/material';
+import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { removeAllSingleItems } from '@/store/cart/cart.slice';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { parse } from 'path';
 
 const CartItem = (props: ICartItem) => {
 
@@ -20,7 +19,7 @@ const CartItem = (props: ICartItem) => {
                <StyledProductRow key={props._id} theme={theme}>
                     {/* Product Image */}
                     <StyledProductCell component="th" scope="row" theme={theme}>
-                         <Link rel='canonical' href={`/proizvod/${props._id}`}>
+                         <Link rel='canonical' href={`/proizvod/${props.slug}`}>
                               <CartProductImage src={props.imageURL} />
                          </Link>
                     </StyledProductCell>

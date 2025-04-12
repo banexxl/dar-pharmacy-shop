@@ -114,7 +114,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      return (
           <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
                <FilteredProductImageContainer>
-                    <Link rel='canonical' href={'/proizvod/' + product._id}>
+                    <Link rel='canonical' href={'/proizvod/' + product.slug}>
                          <ProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>
@@ -187,7 +187,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
                {showShareOptions && showOptions && (
-                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="row" />
+                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug} flexDirection="row" />
                )}
           </Product>
      );

@@ -111,7 +111,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      return (
           <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
                <FilteredProductImageContainer>
-                    <Link rel='canonical' href={'/proizvod/' + product._id}>
+                    <Link rel='canonical' href={'/proizvod/' + product.slug}>
                          <FilteredProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>
@@ -186,7 +186,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                {
                     showShareOptions && showOptions && (
                          <SocialShare
-                              shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
+                              shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug}
                               flexDirection="row"
                               sx={{
                                    mt: '100px',

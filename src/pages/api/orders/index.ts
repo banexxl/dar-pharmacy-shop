@@ -9,8 +9,8 @@ const OrdersAPI = async (
      response: NextApiResponse<{ success: boolean; error?: string; order?: Order }>
 ) => {
      if (request.method === 'POST') {
+
           const { cart, userFormSelectorState, totalItemPriceState, paymentOption } = request.body;
-          console.log('request.body', request.body);
 
           const orderNumber = moment().format('YYYYMMDD') + '-ID-' + Math.floor(Math.random() * 1000);
           let order: Order | null = null;

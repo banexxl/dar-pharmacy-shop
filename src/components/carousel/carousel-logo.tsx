@@ -64,7 +64,7 @@ const CarouselLogo = (props: CarouselProps) => {
                               :
                               props.products?.map((product: IProduct) => (
                                    <CarouselImgBox key={product._id} >
-                                        <Link rel='canonical' href={`/proizvod/${product._id}`}>
+                                        <Link rel='canonical' href={`/proizvod/${product.slug}`}>
                                              <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 150 : 200} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
                                         </Link>
                                         <Tooltip title={product.name} placement="top">

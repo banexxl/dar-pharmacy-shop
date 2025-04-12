@@ -368,6 +368,20 @@ export const ProductsServices = () => {
           }
      }
 
+     const getProductBySlug = async (slug: string) => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+          try {
+               const db = client.db('DAR_DB')
+               let product: IProduct = await db.collection('Products').findOne({ slug: slug, isActive: true })
+               return product
+          }
+          catch (error: any) {
+               return { message: error.message }
+          }
+          finally {
+               await client.close();
+          }
+     }
 
      return {
           getAllProductsOnPromotion,
@@ -386,6 +400,7 @@ export const ProductsServices = () => {
           getAllManufacturers,
           getRandomProductsFromManufacturerURL,
           getRandomApotekaProducts,
-          getAllPathsForMainCategoryAndManufacturer
+          getAllPathsForMainCategoryAndManufacturer,
+          getProductBySlug
      }
 }

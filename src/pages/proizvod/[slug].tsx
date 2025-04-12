@@ -51,7 +51,11 @@ const SingleProduct = (props: SingleProductProps) => {
                          <UIProvider>
                               <ProductDetails discount={props.product.discount} _id={props.product._id} availableStock={props.product.availableStock} category={props.product.category} description={props.product.description}
                                    imageURL={props.product.imageURL} ingredients={props.product.ingredients} instructions={props.product.instructions} name={props.product.name}
-                                   price={props.product.price} quantity={props.product.quantity} warning={props.product.warning} manufacturer={props.product.manufacturer} quantityUnit={props.product.quantityUnit} mediaURLs={props.product.mediaURLs} discountAmount={props.product.discountAmount} />
+                                   price={props.product.price} quantity={props.product.quantity} warning={props.product.warning}
+                                   manufacturer={props.product.manufacturer} quantityUnit={props.product.quantityUnit}
+                                   mediaURLs={props.product.mediaURLs} discountAmount={props.product.discountAmount}
+                                   slug={props.product.slug} promotionText={props.product.promotionText} />
+
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>
@@ -65,19 +69,16 @@ const SingleProduct = (props: SingleProductProps) => {
 export default SingleProduct
 
 export async function getServerSideProps(context: any) {
+     const { slug } = context.params;
+     const product = await ProductsServices().getProductBySlug(slug); // You write this method
 
-     try {
-          const product: any = await ProductsServices().getProductById(context.params._id)
-
-          return {
-               props: {
-                    product: JSON.parse(JSON.stringify(product)),
-               },
-          }
-     } catch (error) {
-          console.error("Error fetching product:", error)
-          return {
-               notFound: true, // This will render the 404 page
-          }
+     if (!product) {
+          return { notFound: true };
      }
+
+     return {
+          props: {
+               product: JSON.parse(JSON.stringify(product)),
+          },
+     };
 }

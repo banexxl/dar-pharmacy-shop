@@ -167,7 +167,7 @@ export default function SearchBox() {
                                                                       </Box>
                                                                       <Box
                                                                            component={'a'}
-                                                                           href={`/proizvod/${product._id}`}
+                                                                           href={`/proizvod/${product.slug}`}
                                                                            sx={{
                                                                                 display: 'flex',
                                                                                 flexDirection: 'column',

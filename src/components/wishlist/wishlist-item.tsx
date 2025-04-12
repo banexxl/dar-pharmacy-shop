@@ -11,7 +11,7 @@ const WishlistItem = (props: IWishlistItem) => {
      return (
           <WishlistProductRow key={props._id} theme={theme} >
                <WishlistProductCell component="th" scope="row" theme={theme}>
-                    <Link rel='canonical' href={`/proizvod/${props._id}`}>
+                    <Link rel='canonical' href={`/proizvod/${props.slug}`}>
                          <WishlistProductImage src={props.imageURL} theme={theme} />
                     </Link>
                </WishlistProductCell>

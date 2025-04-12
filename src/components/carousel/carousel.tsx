@@ -79,7 +79,7 @@ const ProductCarousel = (props: any) => {
                                              alignItems: 'center', // Center the content vertically
                                         }}
                                    >
-                                        <Link href={`/proizvod/${product._id}`}>
+                                        <Link href={`/proizvod/${product.slug}`}>
                                              <Image
                                                   style={{ borderRadius: '10px' }}
                                                   src={product.imageURL}

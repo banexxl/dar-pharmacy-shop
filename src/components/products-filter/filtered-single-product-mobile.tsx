@@ -100,7 +100,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      return (
           <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} theme={theme} isVisible={isVisible}>
                <FilteredProductImageContainer>
-                    <Link rel='canonical' href={'/proizvod/' + product._id}>
+                    <Link rel='canonical' href={'/proizvod/' + product.slug}>
                          <FilteredProductImage src={product.imageURL} />
                     </Link>
                </FilteredProductImageContainer>
@@ -155,7 +155,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                     </Stack>
                </FilteredProductActionsWrapper>
                {openShareOption && showOptions && (
-                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product._id} flexDirection="column" />
+                    <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug} flexDirection="column" />
                )}
                {
                     product.availableStock > 0 ?

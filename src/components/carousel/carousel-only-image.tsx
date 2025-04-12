@@ -58,7 +58,7 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
                     {
                          props.products?.map((product: IProduct) => (
                               <CarouselOnlyImgBox key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
-                                   <Link rel='canonical' href={`/proizvod/${product._id}`}>
+                                   <Link rel='canonical' href={`/proizvod/${product.slug}`}>
                                         <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 120 : 160} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
                                    </Link>
                                    <CarouselTitle sx={{

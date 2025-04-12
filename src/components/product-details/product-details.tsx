@@ -248,7 +248,7 @@ function ProductDetails(product: IProduct) {
                               showShareOptions && (
                                    <Box onMouseLeave={() => setShowShareOptions(false)} sx={{ transform: 'translate(-100px, -80px)' }}>
                                         <SocialShare
-                                             shareURL={`https://apoteka-dar.rs/proizvod/` + product._id}
+                                             shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug}
                                              flexDirection="row"
                                              sx={{
                                                   mt: '100px',

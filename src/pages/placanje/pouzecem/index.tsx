@@ -17,7 +17,6 @@ const DeliveryConfirmationPage = () => {
           const data = localStorage.getItem('orderConfirmationData');
           return data ? JSON.parse(data) as ConfirmationData : null;
      });
-     console.log('orderConfirmationData', orderConfirmationData);
 
      const router = useRouter()
 

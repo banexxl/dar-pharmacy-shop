@@ -71,7 +71,11 @@ export default function WishList({ open, onClose }: any) {
                                                        name={wishListItem.name} description={wishListItem.description} category={wishListItem.category}
                                                        availableStock={wishListItem.availableStock} ingredients={wishListItem.ingredients}
                                                        instructions={wishListItem.instructions} quantity={wishListItem.quantity}
-                                                       warning={wishListItem.warning} imageURL={wishListItem.imageURL} price={wishListItem.price} quantityUnit={wishListItem.quantityUnit} mediaURLs={[]} />
+                                                       warning={wishListItem.warning} imageURL={wishListItem.imageURL}
+                                                       price={wishListItem.price} quantityUnit={wishListItem.quantityUnit}
+                                                       mediaURLs={[]} slug={wishListItem.slug} discountAmount={wishListItem.discountAmount}
+                                                       promotionText={wishListItem.promotionText} manufacturer={wishListItem.manufacturer} />
+
                                                   <Button
                                                        sx={{ color: Colors.primary.main, margin: '10px' }}
                                                        onClick={() => {

@@ -63,7 +63,8 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                    availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
                                    discountAmount={cartItem.discountAmount}
                                    instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                   warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price} quantityUnit={cartItem.quantityUnit} mediaURLs={[]} />
+                                   warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price}
+                                   quantityUnit={cartItem.quantityUnit} mediaURLs={[]} slug={cartItem.slug} />
                          ))}
                     </StyledTableBody>
                </StyledTable>

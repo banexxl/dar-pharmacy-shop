@@ -230,7 +230,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
      if (req.method !== 'POST') {
           return res.status(405).json({ error: 'Method Not Allowed' });
      }
-     console.log(req.body);
 
      const shouldSucceed = Math.random() < 0.5; // 50/50 chance
 
