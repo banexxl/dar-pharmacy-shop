@@ -185,7 +185,7 @@ export const ProductsServices = () => {
           }
      }
 
-     const getLimitedProductsByMainCategory = async (mainCategory: string) => {
+     const getProductsByMainCategory = async (mainCategory: string) => {
 
           const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 
@@ -392,7 +392,7 @@ export const ProductsServices = () => {
           getProductsByNameAndOrManufacturer,
           getProductsByManufacturer,
           getProductsByDiscount,
-          getLimitedProductsByMainCategory,
+          getProductsByMainCategory,
           getProductsByMainCategoryMidCategory,
           getProductsByMainCategoryAndManufacturer,
           getProductsByMainCategoryMidCategorySubCategory,

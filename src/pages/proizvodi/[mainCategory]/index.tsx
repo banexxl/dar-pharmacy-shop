@@ -51,7 +51,7 @@ export default function MainCategoryPage(props: any) {
 
 export async function getServerSideProps({ query }: any) {
 
-     const productsByMainCategoryLimited: any = await ProductsServices().getLimitedProductsByMainCategory(query.mainCategory)
+     const productsByMainCategoryLimited: any = await ProductsServices().getProductsByMainCategory(query.mainCategory)
      // notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
 
      // if (!productsByMainCategoryLimited || productsByMainCategoryLimited.length === 0) {
