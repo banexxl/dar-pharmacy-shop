@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer';
 import { transporter } from "./email/email-config";
 import { Colors } from "@/styles/theme";
 import { generateVerificationToken } from "./token/generate-verification-token";
-import bcrypt from 'bcrypt';
 
 export const AccountService = () => {
 

@@ -14,20 +14,6 @@ export const getVerificationTokenByEmail = async (email: string) => {
      }
 }
 
-export const getVerificationTokenByToken = async (token: string) => {
-     const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
-     try {
-          const db = client.db('ACCOUNTS_DB');
-          const verificationToken = await db.collection("Verification_tokens").findOne({ token: token });
-
-          return verificationToken;
-     } catch (error) {
-          console.log(error);
-     } finally {
-          client.close();
-     }
-}
-
 export const newVerification = async (token: string) => {
      const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
 

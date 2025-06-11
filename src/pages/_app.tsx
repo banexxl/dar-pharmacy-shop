@@ -16,7 +16,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<{ ses
      let persistor = persistStore(store)
 
      useReportWebVitals((metric) => {
-          console.log(metric)
+          // console.log(metric)
      })
 
      return (

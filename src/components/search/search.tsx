@@ -57,7 +57,7 @@ export default function SearchBox() {
                          setSearchResults(data)
                          setLoading(false)
                     }).catch((error) => {
-                         console.log(error);
+                         setSearchResults({ message: 'Navedeni termin nije pronadjen!', data: [] })
                     })
                } else {
                     setLoading(false)
