@@ -3,6 +3,13 @@ import type { GetServerSidePropsContext } from 'next';
 
 const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
 
+const escapeXml = (unsafe: string) =>
+  unsafe.replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+
 const generateSiteMap = (
   entries: { type: 'product' | 'category' | 'manufacturer'; slug: string }[]
 ) => {
@@ -11,13 +18,13 @@ const generateSiteMap = (
       let path = '';
       switch (entry.type) {
         case 'product':
-          path = `/proizvod/${entry.slug}`;
+          path = `/proizvod/${escapeXml(entry.slug)}`;
           break;
         case 'category':
-          path = `/proizvodi/${entry.slug}`;
+          path = `/proizvodi/${escapeXml(entry.slug)}`;
           break;
         case 'manufacturer':
-          path = `/proizvodi-proizvodjac-kategorija/${entry.slug}`;
+          path = `/proizvodi-proizvodjac-kategorija/${escapeXml(entry.slug)}`;
           break;
       }
 
@@ -32,39 +39,28 @@ const generateSiteMap = (
     .join('');
 
   const staticUrls = [
-    '',
-    '/autentifikacija/greska',
-    '/autentifikacija/prijava',
+    '', '/kontakt', '/placanje', '/registracija',
+    '/autentifikacija/greska', '/autentifikacija/prijava',
     '/autentifikacija/verifikacija-zahteva',
-    '/informacije/dar-savetnik',
-    '/informacije/isporuka-i-placanje',
-    '/informacije/o-nama',
-    '/informacije/odustanak',
-    '/informacije/politika-kolacica',
-    '/informacije/politika-privatnosti',
-    '/informacije/reklamacije',
-    '/informacije/uslovi-koriscenja',
-    '/kontakt',
-    '/placanje',
-    '/registracija'
-  ]
-    .map((path) => {
-      return `
+    '/informacije/dar-savetnik', '/informacije/o-nama',
+    '/informacije/odustanak', '/informacije/politika-kolacica',
+    '/informacije/politika-privatnosti', '/informacije/reklamacije',
+    '/informacije/uslovi-koriscenja', '/informacije/isporuka-i-placanje'
+  ].map((path) => `
   <url>
     <loc>${BASE_URL}${path}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-  </url>`;
-    })
-    .join('');
+  </url>`).join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urls}
-  ${staticUrls}
+${urls}
+${staticUrls}
 </urlset>`;
 };
+
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
   const productsResult = await ProductsServices().getAllProducts();
