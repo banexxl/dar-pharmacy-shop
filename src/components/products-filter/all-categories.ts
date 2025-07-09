@@ -10,6 +10,11 @@ export const AccordionPanels = [
                     title: 'Prirodna kozmetika',
                     children: [
                          {
+                              id: 'pure-hristina-lazarevic',
+                              title: 'Pure Hristina Lazarevic',
+                              link: '/proizvodi-proizvodjac-kategorija/pure-hristina-lazarevic/prirodna-kozmetika'
+                         },
+                         {
                               id: 'prirodna-kozmetika-gana',
                               title: 'Gana kozmetika',
                               link: '/proizvodi-proizvodjac-kategorija/gana-kozmetika/prirodna-kozmetika',

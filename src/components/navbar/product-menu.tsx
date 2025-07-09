@@ -135,6 +135,7 @@ export const ProductsMenu = () => {
                     transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                >
                     {[
+                         'pure-hristina-lazarevic',
                          'gana-kozmetika',
                          'gloria',
                          'fitaky',
