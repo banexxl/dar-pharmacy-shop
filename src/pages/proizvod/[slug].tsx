@@ -8,10 +8,8 @@ import theme from '@/styles/theme'
 import { Container, Stack } from '@mui/material'
 import { _id } from '@next-auth/mongodb-adapter'
 import React from 'react'
-import LoadingWheel from '@/components/loading/loading'
-import dynamic from 'next/dynamic'
 import { Seo } from '@/components/seo'
-import { useRouter } from 'next/navigation'
+import { ThemeProvider } from '@mui/system';
 
 type SingleProductProps = {
      product: IProduct
@@ -19,20 +17,8 @@ type SingleProductProps = {
 
 const SingleProduct = (props: SingleProductProps) => {
 
-     const router = useRouter()
-
-     if (!props.product || !(props.product as IProduct).name || !(props.product as IProduct)._id || !(props.product as IProduct).description) {
-          router.push('/404')
-          return null
-     }
-
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
-
      return (
-          <DynamicThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
                <Seo
                     title={props.product.name}
                     description={props.product.description}
@@ -61,7 +47,7 @@ const SingleProduct = (props: SingleProductProps) => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </DynamicThemeProvider>
+          </ThemeProvider>
      )
 
 }
