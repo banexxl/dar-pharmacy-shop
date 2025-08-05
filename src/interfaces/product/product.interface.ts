@@ -16,6 +16,7 @@ export default interface IProduct {
      discount: boolean;
      discountAmount?: number;
      promotionText?: string;
+     updatedAt?: Date;
      slug: string;
 }
 

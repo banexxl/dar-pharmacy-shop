@@ -1,7 +1,8 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { ProductsServices } from '@/services/product.services';
-import type { GetServerSidePropsContext } from 'next';
+import IProduct from '@/interfaces/product/product.interface';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.SITEMAP_BASE_URL || 'https://www.apoteka-dar.rs';
 
 const escapeXml = (unsafe: string) =>
   unsafe.replace(/&/g, '&amp;')
@@ -10,10 +11,30 @@ const escapeXml = (unsafe: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
 
-const generateSiteMap = (
-  entries: { type: 'product' | 'category' | 'manufacturer'; slug: string; updatedAt?: string }[]
-) => {
-  const urls = entries.map((entry) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const productsResult = await ProductsServices().getAllProducts();
+  const mainCategories = await ProductsServices().getAllMainCategories();
+  const allManufacturers = await ProductsServices().getAllManufacturers();
+
+  const productSlugs = Array.isArray(productsResult)
+    ? productsResult.map((p: any) => ({
+      type: 'product' as const,
+      slug: p.slug as string,
+      updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : undefined
+    }))
+    : [];
+
+  const mainCategorySlugs = Array.isArray(mainCategories)
+    ? mainCategories.map((cat: string) => ({ type: 'category' as const, slug: cat as string }))
+    : [];
+
+  const manufacturerSlugs = Array.isArray(allManufacturers)
+    ? allManufacturers.map((m: string) => ({ type: 'manufacturer' as const, slug: m as string }))
+    : [];
+
+  const entries = [...productSlugs, ...mainCategorySlugs, ...manufacturerSlugs];
+
+  const urls = entries.map((entry: any) => {
     let path = '';
     switch (entry.type) {
       case 'product':
@@ -51,46 +72,13 @@ const generateSiteMap = (
     <priority>0.7</priority>
   </url>`).join('');
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls}
 ${staticUrls}
 </urlset>`;
-};
-
-
-export const getStaticProps = async ({ res }: GetServerSidePropsContext) => {
-  const productsResult = await ProductsServices().getAllProducts();
-  const mainCategories = await ProductsServices().getAllMainCategories();
-  const allManufacturers = await ProductsServices().getAllManufacturers();
-
-  const productSlugs = Array.isArray(productsResult)
-    ? productsResult.map((p: any) => ({
-      type: 'product' as const,
-      slug: p.slug as string,
-      updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : undefined
-    }))
-    : [];
-
-  const mainCategorySlugs = Array.isArray(mainCategories)
-    ? mainCategories.map((cat: string) => ({ type: 'category' as const, slug: cat as string }))
-    : [];
-
-  const manufacturerSlugs = Array.isArray(allManufacturers)
-    ? allManufacturers.map((m: string) => ({ type: 'manufacturer' as const, slug: m as string }))
-    : [];
-
-  const sitemap = generateSiteMap([...productSlugs, ...mainCategorySlugs, ...manufacturerSlugs]);
 
   res.setHeader('Content-Type', 'application/xml');
   res.write(sitemap);
   res.end();
-
-  return { props: {}, revalidate: 3600 }; // Revalidate every hour
-};
-
-
-export default function SiteMap() {
-  // getServerSideProps handles response
-  return null;
 }
