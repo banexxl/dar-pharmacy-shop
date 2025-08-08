@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { ProductsServices } from '@/services/product.services';
-import IProduct from '@/interfaces/product/product.interface';
+import type { GetServerSidePropsContext } from 'next';
 
-const BASE_URL = process.env.SITEMAP_BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
 
 const escapeXml = (unsafe: string) =>
   unsafe.replace(/&/g, '&amp;')
@@ -11,7 +10,58 @@ const escapeXml = (unsafe: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+const generateSiteMap = (
+  entries: { type: 'product' | 'category' | 'manufacturer'; slug: string; updatedAt?: string }[]
+) => {
+  const urls = entries
+    .map((entry) => {
+      let path = '';
+      switch (entry.type) {
+        case 'product':
+          path = `/proizvod/${escapeXml(entry.slug)}`;
+          break;
+        case 'category':
+          path = `/proizvodi/${escapeXml(entry.slug)}`;
+          break;
+        case 'manufacturer':
+          path = `/proizvodi-proizvodjac-kategorija/${escapeXml(entry.slug)}`;
+          break;
+      }
+
+      return `
+  <url>
+    <loc>${BASE_URL}${path}</loc>
+    ${entry.updatedAt ? `<lastmod>${entry.updatedAt}</lastmod>` : ''}
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    })
+    .join('');
+
+  const staticUrls = [
+    '/', '/kontakt', '/placanje', '/registracija',
+    '/autentifikacija/greska', '/autentifikacija/prijava',
+    '/autentifikacija/verifikacija-zahteva',
+    '/informacije/dar-savetnik', '/informacije/o-nama',
+    '/informacije/odustanak', '/informacije/politika-kolacica',
+    '/informacije/politika-privatnosti', '/informacije/reklamacije',
+    '/informacije/uslovi-koriscenja', '/informacije/isporuka-i-placanje'
+  ].map((path) => `
+  <url>
+    <loc>${BASE_URL}${path}</loc>
+    <lastmod>2025-08-01T00:00:00Z</lastmod> <!-- Fixed lastmod date for static pages -->
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>`).join('');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+${staticUrls}
+</urlset>`;
+};
+
+export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
   const productsResult = await ProductsServices().getAllProducts();
   const mainCategories = await ProductsServices().getAllMainCategories();
   const allManufacturers = await ProductsServices().getAllManufacturers();
@@ -32,53 +82,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ? allManufacturers.map((m: string) => ({ type: 'manufacturer' as const, slug: m as string }))
     : [];
 
-  const entries = [...productSlugs, ...mainCategorySlugs, ...manufacturerSlugs];
-
-  const urls = entries.map((entry: any) => {
-    let path = '';
-    switch (entry.type) {
-      case 'product':
-        path = `/proizvod/${escapeXml(entry.slug)}`;
-        break;
-      case 'category':
-        path = `/proizvodi/${escapeXml(entry.slug)}`;
-        break;
-      case 'manufacturer':
-        path = `/proizvodi-proizvodjac-kategorija/${escapeXml(entry.slug)}`;
-        break;
-    }
-
-    return `
-  <url>
-    <loc>${BASE_URL}${path}</loc>
-    ${entry.updatedAt ? `<lastmod>${entry.updatedAt}</lastmod>` : ''}
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`;
-  }).join('');
-
-  const staticUrls = [
-    '/', '/kontakt', '/placanje', '/registracija',
-    '/autentifikacija/greska', '/autentifikacija/prijava',
-    '/autentifikacija/verifikacija-zahteva',
-    '/informacije/dar-savetnik', '/informacije/o-nama',
-    '/informacije/odustanak', '/informacije/politika-kolacica',
-    '/informacije/politika-privatnosti', '/informacije/reklamacije',
-    '/informacije/uslovi-koriscenja', '/informacije/isporuka-i-placanje'
-  ].map((path) => `
-  <url>
-    <loc>${BASE_URL}${path}</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>`).join('');
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-${staticUrls}
-</urlset>`;
+  const sitemap = generateSiteMap([...productSlugs, ...mainCategorySlugs, ...manufacturerSlugs]);
 
   res.setHeader('Content-Type', 'application/xml');
   res.write(sitemap);
   res.end();
+
+  return { props: {} }; // This is required by Next.js
+};
+
+export default function SiteMap() {
+  return null; // No React rendering, response already sent in getServerSideProps
 }
