@@ -1,12 +1,10 @@
 
-import { Typography } from "@mui/material";
-import { ProductMetaWrapper } from "../../styles/product/single-product";
-import theme from "@/styles/theme";
+import { Typography, Box } from "@mui/material";
 
 export default function FilteredProductMeta({ product, isScreenToMedium }: any) {
 
      return (
-          <ProductMetaWrapper theme={theme}>
+          <Box className="ProductMetaWrapper">
                <Typography variant={"h6"} lineHeight={2} textAlign='center'>
                     {product.name}
                </Typography>
@@ -17,6 +15,6 @@ export default function FilteredProductMeta({ product, isScreenToMedium }: any) 
                <Typography variant={isScreenToMedium ? "caption" : "body1"} textAlign='center'>
                     Pakovanje: {product.quantity + " " + product.quantityUnit}
                </Typography>
-          </ProductMetaWrapper>
+          </Box>
      );
 }

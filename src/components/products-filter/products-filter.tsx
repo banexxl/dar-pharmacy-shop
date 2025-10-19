@@ -1,5 +1,4 @@
-import { FilterCategoryAccordionBox, FilterTitleBox, FilteredProducts, FilteredProductsTitle, ProductsFilterContainer, ProductsFilters } from '@/styles/products-filter/products-filter';
-import { Breadcrumbs, Divider, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Divider, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import ProductsAllCategories from './products-categories';
 import PriceFilterComponent from './product-filter-price';
@@ -19,22 +18,22 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
      };
 
      return (
-          <ProductsFilterContainer>
-               <ProductsFilters>
-                    <FilterTitleBox>
+          <Box className="ProductsFilterContainer">
+               <Box className="ProductsFilters">
+                    <Box className="FilterTitleBox">
                          <Typography sx={{ fontWeight: 'bold', fontSize: '20px' }}>
                               Izaberi iz liste proizvoda
                          </Typography>
-                    </FilterTitleBox>
+                    </Box>
                     <Divider />
                     {/* <PriceFilterComponent products={filterObject} onPriceFilterChange={handlePriceFilterChange} /> */}
                     <Divider />
-                    <FilterCategoryAccordionBox>
+                    <Box className="FilterCategoryAccordionBox">
                          <ProductsAllCategories />
-                    </FilterCategoryAccordionBox>
-               </ProductsFilters>
-               <FilteredProducts>
-                    <FilteredProductsTitle>
+                    </Box>
+               </Box>
+               <Box className="FilteredProducts">
+                    <Typography className="FilteredProductsTitle">
                          {filterObject?.length === 0 || filteredProducts?.length === 0 ? (
                               "Nije pronađen ni jedan proizvod sa trenutnim filterom!"
                          ) : (
@@ -55,10 +54,10 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                                    )}
                               </Breadcrumbs>
                          )}
-                    </FilteredProductsTitle>
+                    </Typography>
                     <FilteredProductsGrid data={filteredProducts !== undefined ? filteredProducts : filterObject} />
-               </FilteredProducts>
-          </ProductsFilterContainer>
+               </Box>
+          </Box>
      );
 }
 

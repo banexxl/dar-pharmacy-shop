@@ -1,11 +1,9 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselButton, CarouselManufacturer, CarouselManufacturerBox, CarouselTitle, CarouselTitleBox, StyledCarouselBox, StyledCarouselCard } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
-import { Box, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Tooltip, Typography, useMediaQuery, useTheme, Button, Card, CardContent } from '@mui/material';
 import Image from 'next/image';
-import { ProductAddToCart } from '@/styles/product/single-product';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/cart/cart.slice';
@@ -48,7 +46,7 @@ const ProductCarousel = (props: any) => {
      };
 
      return (
-          <StyledCarouselBox>
+          <Box className="StyledCarouselBox">
                <Carousel
                     responsive={responsive}
                     swipeable={true}
@@ -64,7 +62,7 @@ const ProductCarousel = (props: any) => {
                >
                     {
                          props.products.map((product: IProduct) => (
-                              <StyledCarouselCard key={product._id} sx={{
+                              <Card className="StyledCarouselCard" key={product._id} sx={{
                                    display: 'flex',
                                    flexDirection: 'column',
                                    justifyContent: 'space-between',
@@ -89,11 +87,11 @@ const ProductCarousel = (props: any) => {
                                              />
                                         </Link>
                                    </Box>
-                                   <Box>
-                                        <CarouselManufacturerBox>
-                                             <CarouselManufacturer sx={{ textTransform: 'capitalize', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.3rem' }}>{product.manufacturer}</CarouselManufacturer>
-                                        </CarouselManufacturerBox>
-                                        <CarouselTitleBox>
+                                   <CardContent>
+                                        <Box className="CarouselManufacturerBox">
+                                             <Typography className="CarouselManufacturer" sx={{ textTransform: 'capitalize', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.3rem' }}>{product.manufacturer}</Typography>
+                                        </Box>
+                                        <Box className="CarouselTitleBox">
                                              {
                                                   product.discount && product.discountAmount && (
                                                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
@@ -119,33 +117,36 @@ const ProductCarousel = (props: any) => {
                                              }
 
                                              <Tooltip title={product.name} placement="top">
-                                                  <CarouselTitle sx={{ fontSize: isScreenToMedium ? '.8rem' : '1rem', textAlign: 'center' }}>{product.name}</CarouselTitle>
+                                                  <Typography className="CarouselTitle" sx={{ fontSize: isScreenToMedium ? '.8rem' : '1rem', textAlign: 'center' }}>{product.name}</Typography>
                                              </Tooltip>
-                                        </CarouselTitleBox>
-                                   </Box>
+                                        </Box>
+                                   </CardContent>
                                    {
                                         product.availableStock > 0 ? (
-                                             <CarouselButton
+                                             <Button
+                                                  className="CarouselButton"
+                                                  variant="contained"
                                                   onClick={() => {
                                                        callCartAlert();
                                                        dispatch(addToCart(product));
-                                                  }} theme={theme}>
+                                                  }}>
                                                   Dodaj u korpu
-                                             </CarouselButton>
+                                             </Button>
                                         )
                                              :
-                                             <CarouselButton
-                                                  disabled
-                                                  theme={theme}>
+                                             <Button
+                                                  className="CarouselButton"
+                                                  variant="outlined"
+                                                  disabled>
                                                   Nema na stanju
-                                             </CarouselButton>
+                                             </Button>
                                    }
 
-                              </StyledCarouselCard>
+                              </Card>
                          ))
                     }
                </Carousel>
-          </StyledCarouselBox >
+          </Box>
      );
 }
 

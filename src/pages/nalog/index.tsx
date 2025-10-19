@@ -8,7 +8,6 @@ import { UIProvider } from "@/context/ui/ui.context";
 import LoadingWheel from "@/components/loading/loading";
 import theme from "@/styles/theme";
 import dynamic from "next/dynamic";
-import { ProfileBox } from "@/styles/profile";
 import ErrorPage from "../autentifikacija/greska";
 import { AccountService } from "@/services/accounts.service";
 import { OrdersServices } from "@/services/order-service";
@@ -52,8 +51,8 @@ export default function ProtectedPage(props: any) {
                                    <Grid container spacing={2}>
                                         {/* Left Side: User Information */}
                                         <Grid item xs={6} md={4}>
-                                             <ProfileBox
-                                                  theme={theme}
+                                             <Box
+                                                  className="profile-box"
                                                   sx={{
                                                        textAlign: 'left', // Align text to the left
                                                        display: 'flex',
@@ -86,7 +85,7 @@ export default function ProtectedPage(props: any) {
                                                        </Typography>
                                                   </Link>
                                                   {/* Add more user details here as needed */}
-                                             </ProfileBox>
+                                             </Box>
                                         </Grid>
 
                                         {/* Right Side: User Orders */}

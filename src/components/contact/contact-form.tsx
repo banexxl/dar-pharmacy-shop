@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 import LoadingWheel from '@/components/loading/loading';
 import { IContactForm, initialContactFormValues } from '@/interfaces/contact/contact.interface';
 import { contactFormSchema } from '@/schemas/contact-form';
-import { ContactStrongText, ContactText, ContactTitle } from '@/styles/contact/contact';
 import { SendContactEmail } from '@/services/email/send-email';
 import Link from 'next/link';
 import { ReCaptcha, useReCaptcha } from "next-recaptcha-v3";
@@ -59,9 +58,9 @@ const ContactForm = () => {
                                    marginBottom: '20px', alignItems: 'center', background: Colors.dove_gray,
                                    borderRadius: '10px', gap: '10px', padding: '10px',
                               }}>
-                                   <ContactTitle variant="h5" component="legend" gutterBottom>
+                                   <Typography variant="h5" component="legend" gutterBottom className="ContactTitle">
                                         Kontakt forma
-                                   </ContactTitle>
+                                   </Typography>
 
                                    <Typography>
                                         Ako ste u potrazi za <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
@@ -156,7 +155,7 @@ const ContactForm = () => {
                                    </Box>
                                    <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
                                    <Button type='submit'
-                                        sx={{ color: Colors.secondary.custom, backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
+                                        sx={{ color: Colors.secondary[50], backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
                                         disabled={submitEnabled && Object.keys(formik.errors).length > 0 && loaded}>
                                         Pošalji poruku
                                    </Button>

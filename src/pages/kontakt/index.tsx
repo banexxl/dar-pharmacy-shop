@@ -2,9 +2,8 @@ import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
 import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import { ContactBox, ContactInfoBox, ContactStrongText, ContactText } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Box, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
@@ -32,68 +31,68 @@ const ContactPage = (props: ContactPageProps) => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <ContactBox theme={theme}>
+                                   <Box className="contact-box">
                                         <ContactForm />
                                         <ContactMap mapApiKey={props.mapApiKey} />
-                                        <ContactInfoBox theme={theme}>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around' }} theme={theme}>
+                                        <Box className="contact-info-box">
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around' }}>
                                                   Adresa:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme} >
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   Kralja Aleksandra I Karadjordjevica 102, lokal 9
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Grad:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme} >
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   34000 Kragujevac
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Telefon:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   +381 34 610 4222
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Matični broj:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   66597784
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Poresko identifikacioni broj:
-                                             </ContactText>
-                                             <ContactStrongText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   113127282
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Kontakt osoba:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Email:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   maja@apoteka-dar.rs
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Radno vreme:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   Radnim danima: 08 - 22h<br />
                                                   Subota: 08 - 22h<br />
                                                   Nedelja: 08 - 20h
-                                             </ContactStrongText>
-                                             <ContactText sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }} theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Pretežna delatnost:
-                                             </ContactText>
-                                             <ContactStrongText theme={theme}>
+                                             </Typography>
+                                             <Typography className="contact-strong-text">
                                                   4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama
-                                             </ContactStrongText>
-                                        </ContactInfoBox>
-                                   </ContactBox>
+                                             </Typography>
+                                        </Box>
+                                   </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

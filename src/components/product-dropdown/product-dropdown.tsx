@@ -1,14 +1,11 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Alert } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Alert, Container, Paper } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
-import styled from "@emotion/styled";
-import { ProductImageDropdown, ProductDropdown } from "../../styles/product/single-product";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { ProductDetailInfoWrapper, ProductDetailWrapper } from "@/styles/productdetails";
 import { FC, useState } from "react";
 import ICartItem from "@/interfaces/cart/cart.interface";
 import Cart from "../cart/cart";
@@ -95,11 +92,22 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                </DialogTitle>
 
                <DialogContent>
-                    <ProductDetailWrapper display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"} theme={theme} isVisible={false}>
-                         <ProductDropdown sx={{ mr: 4 }} theme={theme} isVisible={open}>
-                              <ProductImageDropdown src={product.imageURL} />
-                         </ProductDropdown>
-                         <ProductDetailInfoWrapper>
+                    <Container className="ProductDetailWrapper" style={{ display: "flex", flexDirection: isScreenToMedium ? "column" : "row" }}>
+                         <Box className="ProductDropdown" sx={{ mr: 4 }}>
+                              <Box
+                                   component="img"
+                                   className="ProductImageDropdown"
+                                   src={product.imageURL}
+                                   alt="Product"
+                                   sx={{
+                                        width: '100%',
+                                        height: 'auto',
+                                        maxWidth: 300,
+                                        borderRadius: 2
+                                   }}
+                              />
+                         </Box>
+                         <Box className="ProductDetailInfoWrapper">
                               <ProductMeta product={product} />
                               <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
                               {
@@ -161,8 +169,8 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                    )}
                                    <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.light }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                               </Box>
-                         </ProductDetailInfoWrapper>
-                    </ProductDetailWrapper>
+                         </Box>
+                    </Container>
                     <CartDialog />
                </DialogContent>
           </Dialog >

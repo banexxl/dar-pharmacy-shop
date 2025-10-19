@@ -1,6 +1,5 @@
 import { Box, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
-import { BannerContainer } from "../../styles/banner";
 import CountUp from "react-countup";
 import { useVisibility } from "@/hooks/useVisibility";
 import { fShortenNumber } from "@/utils/format-number";
@@ -18,7 +17,15 @@ export const BannerCountUp = () => {
      ];
 
      return (
-          <BannerContainer sx={{ marginTop: "0px" }}>
+          <Box
+               className="BannerContainer"
+               sx={{
+                    marginTop: "0px",
+                    width: "100%",
+                    height: "100%",
+                    p: 3,
+               }}
+          >
                <Typography
                     sx={{
                          marginTop: "20px",
@@ -79,6 +86,6 @@ export const BannerCountUp = () => {
                          </Stack>
                     ))}
                </Box>
-          </BannerContainer>
+          </Box>
      );
 };

@@ -1,7 +1,6 @@
 import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import { ContactBox, ContactFormBox, ContactInfoBox, ContactStrongText, ContactText, ContactTitle } from "@/styles/contact/contact";
 import theme from "@/styles/theme";
 import { Box, Container, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
 import dynamic from "next/dynamic";
@@ -95,7 +94,7 @@ const ContactPage = (props: ContactPageProps) => {
                                         Izjava o odustanku od ugovora o prodaji zaključenog na daljinu možete preuzeti: {" "}
                                         <a href='/docs/Izjava_o_odustanku.pdf' download={true}>OVDE!</a>
                                    </Typography>
-                                   <ContactInfoBox theme={theme} >
+                                   <Box className="contact-info-box">
                                         <Typography textAlign='justify' sx={{ textAlignLast: 'left', fontWeight: 'bold' }}>
                                              Adresa:
                                              <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
@@ -140,7 +139,7 @@ const ContactPage = (props: ContactPageProps) => {
                                         <Typography textAlign='justify' padding='20px 20px' sx={{ textAlignLast: 'left' }}>
                                              4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama
                                         </Typography>
-                                   </ContactInfoBox>
+                                   </Box>
 
                               </Box>
                               <SearchBox />

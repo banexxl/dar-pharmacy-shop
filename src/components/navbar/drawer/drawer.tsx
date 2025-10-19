@@ -1,7 +1,6 @@
 import { Box, Button, Divider, Drawer, IconButton, List, ListItemButton, ListItemText, styled, Typography } from "@mui/material"
 import { useUIContext } from "../../../context/ui/ui.context"
 import CloseIcon from "@mui/icons-material/Close"
-import { DrawerCloseButton } from "../../../styles/appbar"
 import { Colors } from "../../../styles/theme"
 import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
@@ -76,85 +75,183 @@ export default function AppDrawer({ isScreenToMedium }: any) {
      };
 
      return (
-          <Box >
-               <Drawer open={drawerOpen} >
-                    <List>
+          <Box>
+               <Drawer
+                    open={drawerOpen}
+                    sx={{
+                         '& .MuiDrawer-paper': {
+                              background: 'linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(5, 150, 105, 0.95) 100%)',
+                              backdropFilter: 'blur(20px)',
+                              color: Colors.neutral[100],
+                              minWidth: 300,
+                              borderTopRightRadius: 16,
+                              borderBottomRightRadius: 16,
+                              border: `1px solid rgba(255, 255, 255, 0.2)`,
+                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
+                         }
+                    }}
+               >
+                    <List sx={{ pt: 3, px: 2 }}>
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton>
+                              <ListItemButton sx={{
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        transform: 'translateX(4px)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
                                    <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                         '& .MuiTypography-root': {
-                                             color: Colors.white, // Override only for this instance
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             fontSize: '1.1rem',
+                                             '& a': {
+                                                  color: 'inherit',
+                                                  textDecoration: 'none',
+                                             }
                                         },
                                    }}>
                                         <Link rel='canonical' href={'/'}>
                                              Početna
                                         </Link>
                                    </ListItemText>
-                                   <DrawerCloseButton onClick={() => setDrawerOpen(false)} >
+                                   <IconButton
+                                        className="DrawerCloseButton"
+                                        onClick={() => setDrawerOpen(false)}
+                                        sx={{
+                                             color: Colors.neutral[100],
+                                             '&:hover': {
+                                                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                                  transform: 'rotate(90deg)',
+                                             },
+                                             transition: 'all 0.3s ease',
+                                        }}
+                                   >
                                         <CloseIcon />
-                                   </DrawerCloseButton>
+                                   </IconButton>
                               </ListItemButton>
                          </motion.li>
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <MiddleDivider />
+                              <MiddleDivider sx={{
+                                   borderColor: 'rgba(255, 255, 255, 0.2)',
+                                   my: 1
+                              }} />
                          </motion.li>
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton sx={{ justifyContent: 'center' }} >
+                              <ListItemButton sx={{
+                                   justifyContent: 'center',
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
                                    <ProductsMenu />
                               </ListItemButton>
                          </motion.li>
-                         <MiddleDivider />
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }}>
+                              <ListItemButton onClick={() => { showCartDialog(); setDrawerOpen(false) }} sx={{
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        transform: 'translateX(4px)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
                                    <ListItemText sx={{
                                         '& .MuiTypography-root': {
-                                             color: Colors.white, // Override only for this instance
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             fontSize: '1rem',
                                         },
-                                   }}>Korpa: {counter} </ListItemText>
+                                   }}>Korpa: {counter}</ListItemText>
                               </ListItemButton>
                          </motion.li>
-                         <MiddleDivider />
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }}>
+                              <ListItemButton onClick={() => { showWishListDialog(); setDrawerOpen(false) }} sx={{
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        transform: 'translateX(4px)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
                                    <ListItemText sx={{
                                         '& .MuiTypography-root': {
-                                             color: Colors.white, // Override only for this instance
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             fontSize: '1rem',
                                         },
                                    }}>
                                         Omiljeni
                                    </ListItemText>
                               </ListItemButton>
                          </motion.li>
-                         <MiddleDivider />
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton>
+                              <ListItemButton sx={{
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        transform: 'translateX(4px)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
                                    <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                         '& .MuiTypography-root': {
-                                             color: Colors.white, // Override only for this instance
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             fontSize: '1rem',
+                                             '& a': {
+                                                  color: 'inherit',
+                                                  textDecoration: 'none',
+                                             }
                                         },
                                    }}>
                                         <Link rel='canonical' href={'/kontakt'}>
@@ -163,16 +260,30 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    </ListItemText>
                               </ListItemButton>
                          </motion.li>
-                         <MiddleDivider />
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
                          <motion.li
                               variants={variants}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }}>
+                              <ListItemButton onClick={() => { showLoginDialog(); setDrawerOpen(false) }} sx={{
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        transform: 'translateX(4px)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
                                    <ListItemText sx={{
                                         '& .MuiTypography-root': {
-                                             color: Colors.white, // Override only for this instance
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             fontSize: '1rem',
                                         },
                                    }}>
                                         {
@@ -181,18 +292,36 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    </ListItemText>
                               </ListItemButton>
                          </motion.li>
-                         <MiddleDivider />
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
                          {
                               !session &&
                               <motion.li
                                    variants={variants}
-                                   whileHover={{ scale: 1.1 }}
-                                   whileTap={{ scale: 0.95 }}
+                                   whileHover={{ scale: 1.02 }}
+                                   whileTap={{ scale: 0.98 }}
                               >
-                                   <ListItemButton>
+                                   <ListItemButton sx={{
+                                        borderRadius: 2,
+                                        mb: 1,
+                                        py: 1.5,
+                                        '&:hover': {
+                                             backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                             transform: 'translateX(4px)',
+                                        },
+                                        transition: 'all 0.3s ease',
+                                   }}>
                                         <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                              '& .MuiTypography-root': {
-                                                  color: Colors.white, // Override only for this instance
+                                                  color: Colors.neutral[100],
+                                                  fontWeight: 600,
+                                                  fontSize: '1rem',
+                                                  '& a': {
+                                                       color: 'inherit',
+                                                       textDecoration: 'none',
+                                                  }
                                              },
                                         }}>
                                              <Link rel='canonical' href={'/registracija'}>
@@ -202,13 +331,16 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    </ListItemButton>
                               </motion.li>
                          }
-                         <MiddleDivider />
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
                     </List>
                </Drawer>
                <WishListDialog />
                <CartDialog />
                <LoginDialog />
                <Actions isScreenToMedium={isScreenToMedium} />
-          </Box >
+          </Box>
      );
 }

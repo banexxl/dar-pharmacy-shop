@@ -1,5 +1,4 @@
 import { Container, Stack } from "@mui/material";
-import theme from "../../../../../styles/theme";
 import { UIProvider } from "../../../../../context/ui/ui.context";
 import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from "../../../../../components/navbar/drawer/drawer";
@@ -9,6 +8,7 @@ import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
 import { Seo } from "@/components/seo";
+import theme from "@/styles/theme";
 
 export default function MainCategoryPage(props: any) {
 

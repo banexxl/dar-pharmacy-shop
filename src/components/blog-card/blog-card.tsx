@@ -1,23 +1,22 @@
-import { BlogCardButton, BlogCardContainer, BlogCardDescription, BlogCardImageContainer, BlogCardTitle } from '@/styles/blog-card'
+import { Box, Typography, Button } from '@mui/material'
 import React from 'react'
 
 function BlogCard() {
 
+     return (
+          <Box className="BlogCardContainer">
+               <Box className="BlogCardImageContainer">
 
-          return (
-                    <BlogCardContainer>
-                              <BlogCardImageContainer>
-
-                              </BlogCardImageContainer>
-                              <BlogCardTitle>
-                                        aaaaaaa
-                              </BlogCardTitle>
-                              <BlogCardDescription>
-                                        aaaaaaaaaaa
-                              </BlogCardDescription>
-                              <BlogCardButton />
-                    </BlogCardContainer>
-          )
+               </Box>
+               <Typography className="BlogCardTitle">
+                    aaaaaaa
+               </Typography>
+               <Typography className="BlogCardDescription">
+                    aaaaaaaaaaa
+               </Typography>
+               <Button className="BlogCardButton">Read More</Button>
+          </Box>
+     )
 }
 
 export default BlogCard

@@ -1,7 +1,6 @@
-import { Typography, useMediaQuery } from "@mui/material"
+import { Typography, useMediaQuery, Container, Box, Button } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
-import { BannerContainer, BannerLeftImageContent, BannerRightImageContent, BannerQuotaText, BannerShopButton, BannerTextContent, BannerTitle } from "../../styles/banner"
 import { useState } from "react";
 import { Colors } from "@/styles/theme";
 
@@ -13,9 +12,9 @@ export default function Banner() {
      const [loading, setLoading] = useState(false)
 
      return (
-          <BannerContainer>
+          <Container className="BannerContainer">
                {/* <BannerImage src="/images/home-page/darHeroPic.png" alt={"banner"} /> */}
-               <BannerLeftImageContent>
+               <Box className="BannerLeftImageContent">
                     <h1 style={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
                          Apoteka DAR
                     </h1>
@@ -25,7 +24,7 @@ export default function Banner() {
                     <h3 style={{ color: Colors.primary.lighter, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
                          Dostava lekova radnim danima po celoj Srbiji!
                     </h3>
-                    <BannerQuotaText >
+                    <Typography className="BannerQuotaText">
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
                          da nas kontaktirate putem {'  '}
                          <Link rel='canonical' href={"/kontakt"}>
@@ -33,22 +32,22 @@ export default function Banner() {
                                    kontakt forme
                               </Typography>
                          </Link>
-                    </BannerQuotaText>
-                    <BannerQuotaText>
+                    </Typography>
+                    <Typography className="BannerQuotaText">
                          ili pozivom na broj telefona {'  '}
                          <Typography component={'span'} sx={{ display: 'inline', fontSize: isScreenToMedium ? '1.2rem' : '2rem' }}>
                               <a href={`tel:${+381346104222}`} >
                                    +381 34 610 4222
                               </a>
                          </Typography>
-                    </BannerQuotaText>
-                    <BannerShopButton color="primary" variant="outlined" loading={loading} onClick={() => setLoading(true)}>
+                    </Typography>
+                    <Button className="BannerShopButton" color="primary" variant="outlined" onClick={() => setLoading(true)}>
                          <Link rel='canonical' href={"/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika"}>
                               Pogledajte ponudu
                          </Link>
-                    </BannerShopButton>
-                    <BannerRightImageContent />
-               </BannerLeftImageContent>
-          </BannerContainer >
+                    </Button>
+                    <Box className="BannerRightImageContent" />
+               </Box>
+          </Container>
      )
 }

@@ -1,12 +1,11 @@
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme from "@/styles/theme";
-import { Button, Container, Stack, TextField } from "@mui/material";
+import { Button, Container, Stack, TextField, Box, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-import { AuthBox, AuthButton, AuthFormBox, AuthText, AuthTitle } from "@/styles/auth/auth";
 import { signIn } from "next-auth/react";
 import { Form, Formik } from 'formik';
 import { userEmailSchema } from "@/schemas/email-form.schema";
@@ -36,16 +35,16 @@ const SignInPage = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <AuthBox theme={theme}>
-                                        <AuthFormBox>
-                                             <AuthTitle>
+                                   <Box className="auth-box">
+                                        <Box className="auth-form-box">
+                                             <Typography className="auth-title">
                                                   Email za prijavu je poslat.
-                                             </AuthTitle>
-                                             <AuthText theme={theme}>
+                                             </Typography>
+                                             <Typography className="auth-text">
                                                   Molimo vas da proverite vaš email kako biste završili proces prijave.
-                                             </AuthText>
-                                        </AuthFormBox>
-                                   </AuthBox>
+                                             </Typography>
+                                        </Box>
+                                   </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

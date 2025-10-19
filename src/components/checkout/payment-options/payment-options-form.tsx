@@ -1,7 +1,6 @@
 import { Box, Button, CircularProgress, Container, FormControlLabel, Grid, Link, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material';
 import React, { FunctionComponent, useState } from 'react';
 import theme from '@/styles/theme';
-import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useDispatch, useSelector } from 'react-redux';
@@ -93,9 +92,9 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                         stranicama ChipCard-a. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem
                                         sistemu.
                                    </Typography>
-                                   <CheckoutNextPrevButton sx={{ maxWidth: '100px', marginTop: '10px' }} endIcon={<NavigateNextIcon />}>
+                                   <Button className="CheckoutNextPrevButton" sx={{ maxWidth: '100px', marginTop: '10px' }} endIcon={<NavigateNextIcon />}>
                                         Potvrdi
-                                   </CheckoutNextPrevButton>
+                                   </Button>
                               </Box>
                               :
                               <Box>
@@ -126,10 +125,11 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                         display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '20px'
                                    }}>
 
-                                        <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                        <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                              Nazad
-                                        </CheckoutNextPrevButton>
-                                        <CheckoutNextPrevButton
+                                        </Button>
+                                        <Button
+                                             className="CheckoutNextPrevButton"
                                              disabled={totalItemPriceState === 0 || !submitEnabled || loading}
                                              onClick={async () => {
                                                   setLoading(true);
@@ -219,7 +219,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                              sx={{ maxWidth: '200px', marginTop: '10px', height: '40px', color: theme.palette.primary.main }}
                                         >
                                              {loading ? <CircularProgress size={20} color="inherit" /> : 'Poruči'}
-                                        </CheckoutNextPrevButton>
+                                        </Button>
                                    </Box>
                               </Box>
                     }

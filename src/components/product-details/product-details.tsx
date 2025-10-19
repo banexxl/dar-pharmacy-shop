@@ -1,8 +1,6 @@
-import { ProductImage, ProductImageBox } from '@/styles/productdetails';
-import { ProductDetailInfoWrapper, ProductDetailWrapper } from '@/styles/productdetails'
-import theme, { Colors } from '@/styles/theme';
+import { Colors } from '@/styles/theme';
 import ShareIcon from "@mui/icons-material/Share";
-import { Alert, Box, Button, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Alert, Box, Button, Tooltip, Typography, useMediaQuery, useTheme, Container, Paper } from '@mui/material';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -129,8 +127,9 @@ function ProductDetails(product: IProduct) {
      const formattedWarning = product.warning.replace(/([,.])/g, "$1 ");
 
      return (
-          <ProductDetailWrapper sx={{ marginTop: '100px', gap: '30px' }} display={"flex"} flexDirection={isScreenToMedium ? "column" : "row"} ref={domRef} isVisible={isVisible} theme={theme}>
-               <ProductImageBox
+          <Container className="ProductDetailWrapper" sx={{ marginTop: '100px', gap: '30px' }} style={{ display: "flex", flexDirection: isScreenToMedium ? "column" : "row" }}>
+               <Box
+                    className="ProductImageBox"
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{
                          position: 'relative',
@@ -167,8 +166,8 @@ function ProductDetails(product: IProduct) {
                               </Typography>
                          </Box>
                     )}
-               </ProductImageBox>
-               <ProductDetailInfoWrapper>
+               </Box>
+               <Box className="ProductDetailInfoWrapper">
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                     <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
                     {
@@ -259,7 +258,7 @@ function ProductDetails(product: IProduct) {
                               )
                          }
                     </Box>
-               </ProductDetailInfoWrapper>
+               </Box>
                <CartDialog />
                {
                     mediaItems && mediaItems.length > 0 && (
@@ -271,7 +270,7 @@ function ProductDetails(product: IProduct) {
                          />
                     )
                }
-          </ProductDetailWrapper>
+          </Container>
      )
 }
 

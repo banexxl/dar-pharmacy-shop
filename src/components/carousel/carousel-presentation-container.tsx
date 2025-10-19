@@ -1,9 +1,7 @@
 import Carousel from "react-multi-carousel";
-import { StyledCarouselBox } from '@/styles/carousel/carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Alert, Avatar, Box, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, IconButtonProps, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Alert, Avatar, Box, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, IconButtonProps, styled, Typography, useMediaQuery, useTheme, Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { PopularProductAddToCart } from "@/styles/product/single-product";
 import IProduct from "@/interfaces/product/product.interface";
 import { Colors } from "@/styles/theme";
 import { useDispatch } from "react-redux";
@@ -71,7 +69,7 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
      }
 
      return (
-          <StyledCarouselBox>
+          <Box className="StyledCarouselBox">
                <Carousel
                     responsive={responsive}
                     swipeable={true}
@@ -101,15 +99,15 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
                                    <CardActions disableSpacing>
                                         {
                                              product.availableStock > 0 ? (
-                                                  <PopularProductAddToCart loading={loading} onClick={() => {
+                                                  <Button className="PopularProductAddToCart" onClick={() => {
                                                        callCartAlert()
                                                        dispatch(addToCart(product))
                                                   }}
                                                   >
                                                        Dodaj u korpu
-                                                  </PopularProductAddToCart>
+                                                  </Button>
                                              ) : (
-                                                  <PopularProductAddToCart loading={loading} onClick={() => {
+                                                  <Button className="PopularProductAddToCart" onClick={() => {
                                                        callCartAlert()
                                                        dispatch(addToCart(product))
                                                   }}
@@ -117,7 +115,7 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
                                                        disabled
                                                   >
                                                        Nema na stanju
-                                                  </PopularProductAddToCart>
+                                                  </Button>
                                              )
                                         }
                                         {/* <ExpandMore
@@ -143,7 +141,7 @@ const CarouselPresentationContainer = (props: ProductCardProps) => {
                     }
 
                </Carousel>
-          </StyledCarouselBox >
+          </Box>
      );
 }
 

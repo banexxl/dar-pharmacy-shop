@@ -1,7 +1,6 @@
-import { Box, Typography, useMediaQuery } from "@mui/material"
+import { Box, Typography, useMediaQuery, Container } from "@mui/material"
 import { useTheme } from "@mui/system"
 import Link from "next/link";
-import { BannerContainer } from "../../styles/banner"
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
@@ -16,7 +15,7 @@ export const BannerServices = () => {
      const [loading, setLoading] = useState(false)
 
      return (
-          <BannerContainer sx={{ marginTop: '0px' }}>
+          <Container className="BannerContainer" sx={{ marginTop: '0px' }}>
                <Typography sx={{ fontSize: '2rem', margin: '20px' }}>
                     Usluge i ponuda
                </Typography>
@@ -49,6 +48,6 @@ export const BannerServices = () => {
                          </Typography>
                     </Box>
                </Box>
-          </BannerContainer >
+          </Container>
      )
 }

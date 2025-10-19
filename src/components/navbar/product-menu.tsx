@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Box, Menu, MenuItem, Typography, Popover } from '@mui/material';
-import { StyledProductMenu } from '@/styles/navbar/product-menu';
-import { StyledMenuItem } from '@/styles/products-nested/products-nested';
 import LoadingWheel from '@/components/loading/loading';
 import { useState } from 'react';
 import { Colors } from '@/styles/theme';
@@ -9,12 +7,19 @@ import { useUIContext } from '@/context/ui/ui.context';
 import { useRouter } from 'next/router';
 
 const menuItemStyle = {
-     backgroundColor: '#ffe6e6',
-     color: Colors.primary.main,
+     backgroundColor: 'rgba(255, 255, 255, 0.95)',
+     color: Colors.neutral[700],
+     borderRadius: 1,
+     mx: 0.5,
+     my: 0.25,
+     fontWeight: 500,
      '&:hover': {
-          backgroundColor: '#ffcccc',
+          backgroundColor: Colors.primary[50],
           color: Colors.primary.main,
+          transform: 'translateX(4px)',
+          boxShadow: `0 2px 8px ${Colors.primary.main}20`,
      },
+     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 };
 
 export const ProductsMenu = () => {
@@ -63,13 +68,43 @@ export const ProductsMenu = () => {
           <Box>
                <LoadingWheel showLoadingWheel={showLoadingWheel} />
                <Typography
-                    sx={{ textAlign: 'center', color: Colors.secondary.custom, cursor: 'pointer' }}
+                    sx={{
+                         textAlign: 'center',
+                         color: Colors.neutral[100],
+                         cursor: 'pointer',
+                         fontWeight: 600,
+                         fontSize: '1rem',
+                         py: 1,
+                         px: 2,
+                         borderRadius: 2,
+                         '&:hover': {
+                              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                              transform: 'scale(1.02)',
+                         },
+                         transition: 'all 0.3s ease',
+                    }}
                     onClick={handleProductsClick}
                >
                     Proizvodi
                </Typography>
 
-               <StyledProductMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
+               <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    className="ProductMenu"
+                    sx={{
+                         '& .MuiPaper-root': {
+                              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%)',
+                              backdropFilter: 'blur(20px)',
+                              borderRadius: 3,
+                              border: `1px solid ${Colors.neutral[200]}`,
+                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
+                              mt: 1,
+                              minWidth: 250,
+                         }
+                    }}
+               >
                     <MenuItem
                          onClick={(e) => toggleSubmenu(e.currentTarget, setSubmenuAnchorEl, submenuAnchorEl)}
                          sx={menuItemStyle}
@@ -118,13 +153,13 @@ export const ProductsMenu = () => {
                          ['/proizvodi/proizvodi-za-zene', 'Proizvodi za žene'],
                          ['/proizvodi/homeopatija', 'Homeopatija'],
                     ].map(([href, label]) => (
-                         <StyledMenuItem key={label} sx={menuItemStyle} onClick={() => onLinkClick(href)}>
+                         <MenuItem key={label} sx={menuItemStyle} onClick={() => onLinkClick(href)}>
                               <Typography>
                                    {label}
                               </Typography>
-                         </StyledMenuItem>
+                         </MenuItem>
                     ))}
-               </StyledProductMenu>
+               </Menu>
 
                {/* Submenu: Prirodna kozmetika */}
                <Popover
@@ -148,7 +183,7 @@ export const ProductsMenu = () => {
                          'aronica',
                          'phyto',
                     ].map((brand) => (
-                         <StyledMenuItem
+                         <MenuItem
                               key={brand}
                               sx={menuItemStyle}
                               onClick={() =>
@@ -156,7 +191,7 @@ export const ProductsMenu = () => {
                               }
                          >
                               <Typography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</Typography>
-                         </StyledMenuItem>
+                         </MenuItem>
                     ))}
                </Popover>
 
@@ -175,7 +210,7 @@ export const ProductsMenu = () => {
                          ['weleda', 'bebi-prirodna-kozmetika'],
                          ['eco-boom', 'bebi-pelene'],
                     ].map(([brand, category]) => (
-                         <StyledMenuItem
+                         <MenuItem
                               key={brand + category}
                               sx={menuItemStyle}
                               onClick={() =>
@@ -183,7 +218,7 @@ export const ProductsMenu = () => {
                               }
                          >
                               <Typography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</Typography>
-                         </StyledMenuItem>
+                         </MenuItem>
                     ))}
                </Popover>
 
@@ -200,7 +235,7 @@ export const ProductsMenu = () => {
                          ['priroda-na-dar', 'biljne-tinkture'],
                          ['bioteo', 'biljne-tinkture'],
                     ].map(([brand, category]) => (
-                         <StyledMenuItem
+                         <MenuItem
                               key={brand + category}
                               sx={menuItemStyle}
                               onClick={() =>
@@ -208,7 +243,7 @@ export const ProductsMenu = () => {
                               }
                          >
                               <Typography>{brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ')}</Typography>
-                         </StyledMenuItem>
+                         </MenuItem>
                     ))}
                </Popover>
 
@@ -220,20 +255,20 @@ export const ProductsMenu = () => {
                     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                     transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                >
-                    <StyledMenuItem
+                    <MenuItem
                          sx={menuItemStyle}
                          onClick={() => onLinkClick('/proizvodi-proizvodjac-kategorija/okp/ciscenje-organizma')}
                     >
                          <Typography>OKP paket za čišćenje organizma</Typography>
-                    </StyledMenuItem>
-                    <StyledMenuItem
+                    </MenuItem>
+                    <MenuItem
                          sx={menuItemStyle}
                          onClick={() =>
                               onLinkClick('/proizvodi-proizvodjac-kategorija/priroda-na-dar/biljne-tinkture')
                          }
                     >
                          <Typography>Priroda na dar</Typography>
-                    </StyledMenuItem>
+                    </MenuItem>
                </Popover>
           </Box>
      );

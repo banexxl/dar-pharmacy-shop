@@ -10,8 +10,7 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Colors } from '@/styles/theme';
-import { Alert, Box } from '@mui/material';
-import { PopularProductAddToCart } from '@/styles/product/single-product';
+import { Alert, Box, Button } from '@mui/material';
 import { useState } from 'react';
 import { addToCart } from '@/store/cart/cart.slice';
 import { useDispatch } from 'react-redux';
@@ -75,15 +74,15 @@ export default function ProductCard(props: ProductCardProps) {
                <CardActions disableSpacing>
                     {
                          props.product.availableStock > 0 ? (
-                              <PopularProductAddToCart loading={loading} onClick={() => {
+                              <Button className="ProductAddToCart" onClick={() => {
                                    callCartAlert()
                                    dispatch(addToCart(props.product))
                               }}
                               >
                                    Dodaj u korpu
-                              </PopularProductAddToCart>
+                              </Button>
                          ) : (
-                              <PopularProductAddToCart loading={loading} onClick={() => {
+                              <Button className="ProductAddToCart" onClick={() => {
                                    callCartAlert()
                                    dispatch(addToCart(props.product))
                               }}
@@ -91,7 +90,7 @@ export default function ProductCard(props: ProductCardProps) {
                                    disabled
                               >
                                    Nema na stanju
-                              </PopularProductAddToCart>
+                              </Button>
                          )
                     }
                     <ExpandMore

@@ -2,7 +2,6 @@ import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { StyledTotalsBox, StyledTotalsPrice, StyledTotalsTitle } from '@/styles/cart'
 import { Box, Button, Divider, LinearProgress, Typography } from '@mui/material'
 import theme, { Colors } from '@/styles/theme'
 import { useRouter } from 'next/router'
@@ -18,17 +17,17 @@ function CartTotals({ onClose }: ICartTotalsProps) {
      const router = useRouter()
 
      return (
-          <StyledTotalsBox theme={theme}>
+          <Box className="StyledTotalsBox">
                <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} />
 
                {cart.length > 0 ? (
-                    <StyledTotalsPrice>
+                    <Box className="StyledTotalsPrice">
                          {
                               !isNaN(parseFloat(totalItemPrice)) && parseFloat(totalItemPrice) < 8000 ? (
                                    <Box>
-                                        <StyledTotalsTitle theme={theme}>
+                                        <Typography className="StyledTotalsTitle">
                                              Ukupno u korpi:
-                                        </StyledTotalsTitle>
+                                        </Typography>
                                         {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
                                         <Typography
                                              sx={{
@@ -66,9 +65,9 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                              alignItems: 'center',
                                              width: '100%'
                                         }}>
-                                             <StyledTotalsTitle theme={theme}>
+                                             <Typography className="StyledTotalsTitle">
                                                   Ukupno u korpi:
-                                             </StyledTotalsTitle>
+                                             </Typography>
                                              {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
                                              <Typography
                                                   sx={{
@@ -86,7 +85,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                    )
                          }
 
-                    </StyledTotalsPrice>
+                    </Box>
                ) : (
                     <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
                          Vaša korpa je prazna
@@ -143,7 +142,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'justify', mt: '30px', mb: '30px', maxWidth: '500px' }}>
                     Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
                </Typography>
-          </StyledTotalsBox>
+          </Box>
      )
 }
 export default CartTotals

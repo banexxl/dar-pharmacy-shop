@@ -1,12 +1,11 @@
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme, { Colors } from "@/styles/theme";
-import { Button, Container, Stack } from "@mui/material";
+import { Button, Container, Stack, Box, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-import { AuthBox, AuthButton, AuthFormBox, AuthText, AuthTitle } from "@/styles/auth/auth";
 import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation'
 import Link from "next/link";
@@ -49,21 +48,21 @@ const ErrorPage = (props: any) => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <AuthBox theme={theme}>
-                                        <AuthFormBox>
-                                             <AuthTitle>
+                                   <Box className="AuthBox">
+                                        <Box className="AuthFormBox">
+                                             <Typography className="AuthTitle">
                                                   Greška prilikom prijave!
-                                             </AuthTitle>
-                                             <AuthText theme={theme}>
+                                             </Typography>
+                                             <Typography className="AuthText">
                                                   {getErrorMessage(props.error)}
-                                             </AuthText>
-                                        </AuthFormBox>
+                                             </Typography>
+                                        </Box>
                                         <Link rel='canonical' href="/autentifikacija/prijava">
-                                             <AuthButton theme={theme}>
+                                             <Button className="AuthButton">
                                                   Povratak na prijavu
-                                             </AuthButton>
+                                             </Button>
                                         </Link>
-                                   </AuthBox>
+                                   </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

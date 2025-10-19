@@ -1,11 +1,10 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { CarouselManufacturerImage, CarouselProductImage } from './carousel-image-loader';
-import { CarouselImgBox, CarouselLogoImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
+import { Box, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
-import { Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { Colors } from '@/styles/theme';
 
 type CarouselProps = {
@@ -36,7 +35,7 @@ const CarouselLogo = (props: CarouselProps) => {
      };
 
      return (
-          <StyledCarouselLogoBox >
+          <Box className="StyledCarouselLogoBox">
                <Carousel
                     responsive={responsive}
                     swipeable={true}
@@ -55,20 +54,20 @@ const CarouselLogo = (props: CarouselProps) => {
                     {
                          props.manufacturers ?
                               props.manufacturers.map((logo: { url: string, name: string, value: string }) => (
-                                   <CarouselLogoImgBox key={Math.random()}>
+                                   <Box className="CarouselLogoImgBox" key={Math.random()}>
                                         <Link rel='canonical' href={`/proizvodi-proizvodjac-kategorija/${logo.value}`}>
                                              <CarouselManufacturerImage src={logo.url} alt={'LOGO'} height={200} width={150} isOnDiscount={false} />
                                         </Link>
-                                   </CarouselLogoImgBox>
+                                   </Box>
                               ))
                               :
                               props.products?.map((product: IProduct) => (
-                                   <CarouselImgBox key={product._id} >
+                                   <Box className="CarouselImgBox" key={product._id}>
                                         <Link rel='canonical' href={`/proizvod/${product.slug}`}>
                                              <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 150 : 200} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
                                         </Link>
                                         <Tooltip title={product.name} placement="top">
-                                             <CarouselTitle sx={{
+                                             <Typography className="CarouselTitle" sx={{
                                                   position: 'absolute',
                                                   justifyContent: 'center',
                                                   alignItems: 'center',
@@ -80,13 +79,13 @@ const CarouselLogo = (props: CarouselProps) => {
                                                   <Typography component={'span'} sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
                                                        {product.name}
                                                   </Typography>
-                                             </CarouselTitle>
+                                             </Typography>
                                         </Tooltip>
-                                   </CarouselImgBox>
+                                   </Box>
                               ))
                     }
                </Carousel>
-          </StyledCarouselLogoBox >
+          </Box>
      );
 }
 

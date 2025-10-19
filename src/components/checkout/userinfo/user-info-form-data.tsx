@@ -15,7 +15,6 @@ import Cart from '@/components/cart/cart';
 import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
 import { Box } from '@mui/system';
-import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo';
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -202,7 +201,8 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              width: '100%',
                                              marginTop: '20px'
                                         }}>
-                                             <CheckoutNextPrevButton
+                                             <Button
+                                                  className="CheckoutNextPrevButton"
                                                   endIcon={<DeleteIcon />}
                                                   type='reset'
                                                   onClick={() => {
@@ -211,10 +211,11 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                   }}
                                              >
                                                   Obriši
-                                             </CheckoutNextPrevButton>
+                                             </Button>
                                              <Tooltip title={cart.length <= 0 ? 'Korpa je prazna' : ''}>
                                                   <Box>
-                                                       <CheckoutNextPrevButton
+                                                       <Button
+                                                            className="CheckoutNextPrevButton"
                                                             onClick={() => handleSubmit(formik.values)}
                                                             endIcon={<NavigateNextIcon />}
                                                             disabled={
@@ -237,7 +238,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                             }
                                                        >
                                                             Dalje
-                                                       </CheckoutNextPrevButton>
+                                                       </Button>
                                                   </Box>
                                              </Tooltip>
                                              <Toaster />

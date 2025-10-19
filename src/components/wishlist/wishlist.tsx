@@ -1,10 +1,8 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, Alert, } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, Alert, Table, TableHead, TableBody, TableCell, TableRow } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Colors } from "../../styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { WishListWrapper, WishlistHeader, WishlistHeaderCell, WishlistRemoveAllButton, WishlistTable, WishlistTableBody } from "@/styles/wishlist";
 import IWishlistItem from "@/interfaces/wishlist/wishlist.interface";
 import WishlistItem from "./wishlist-item";
 import { clearWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
@@ -12,6 +10,7 @@ import { useState } from "react";
 import { addToCart } from "@/store/cart/cart.slice";
 import SlideTransition from "@/hooks/use-slide-transition";
 import toast from "react-hot-toast";
+import { Colors } from "@/styles/theme";
 
 
 export default function WishList({ open, onClose }: any) {
@@ -54,16 +53,18 @@ export default function WishList({ open, onClose }: any) {
                     </Box>
                </DialogTitle>
                <DialogContent>
-                    <WishListWrapper theme={theme}>
-                         <WishlistTable>
-                              <WishlistHeader theme={theme}>
-                                   <WishlistHeaderCell>Slika</WishlistHeaderCell>
-                                   <WishlistHeaderCell align="left">Naziv</WishlistHeaderCell>
-                                   <WishlistHeaderCell align="left">Količina</WishlistHeaderCell>
-                                   <WishlistHeaderCell align="left">Šifra</WishlistHeaderCell>
-                                   <WishlistHeaderCell align="left">Cena</WishlistHeaderCell>
-                              </WishlistHeader>
-                              <WishlistTableBody>
+                    <Box className="WishListWrapper">
+                         <Table className="WishlistTable">
+                              <TableHead className="WishlistHeader">
+                                   <TableRow>
+                                        <TableCell className="WishlistHeaderCell">Slika</TableCell>
+                                        <TableCell className="WishlistHeaderCell" align="left">Naziv</TableCell>
+                                        <TableCell className="WishlistHeaderCell" align="left">Količina</TableCell>
+                                        <TableCell className="WishlistHeaderCell" align="left">Šifra</TableCell>
+                                        <TableCell className="WishlistHeaderCell" align="left">Cena</TableCell>
+                                   </TableRow>
+                              </TableHead>
+                              <TableBody className="WishlistTableBody">
                                    {
                                         wishlist.map((wishListItem: IWishlistItem) => (
                                              <Box key={Math.random()}>
@@ -103,9 +104,9 @@ export default function WishList({ open, onClose }: any) {
                                              </Box>
                                         ))
                                    }
-                              </WishlistTableBody>
-                         </WishlistTable>
-                         <WishlistRemoveAllButton onClick={() => {
+                              </TableBody>
+                         </Table>
+                         <Button className="WishlistRemoveAllButton" onClick={() => {
                               toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda", {
                                    duration: 1500,
                                    position: "top-center"
@@ -114,8 +115,8 @@ export default function WishList({ open, onClose }: any) {
                          }}
                          >
                               Obriši listu omiljenih proizvoda
-                         </WishlistRemoveAllButton>
-                    </WishListWrapper>
+                         </Button>
+                    </Box>
                </DialogContent>
           </Dialog >
      );

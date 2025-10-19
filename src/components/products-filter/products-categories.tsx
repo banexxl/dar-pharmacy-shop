@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Accordion, AccordionBox, AccordionDetails, AccordionSummary } from '@/styles/accordions/accordions';
+import { Accordion, AccordionDetails, AccordionSummary, Box } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AccordionPanels } from './all-categories'
 import { useRouter } from 'next/router';
@@ -36,6 +36,6 @@ export default function ProductsAllCategories() {
      const router = useRouter();
 
      return (
-          <AccordionBox>{transformToMuiAccordion(AccordionPanels)}</AccordionBox>
+          <Box>{transformToMuiAccordion(AccordionPanels)}</Box>
      )
 }

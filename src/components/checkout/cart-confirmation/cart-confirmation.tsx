@@ -1,9 +1,7 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
-import { CartWrapper, StyledHeader, StyledTotalsTitle, StyledTable, StyledHeaderCell, StyledTableBody } from '@/styles/cart'
-import { CheckoutNextPrevButton } from '@/styles/checkout/userinfo'
-import { Box, TableRow, Typography } from '@mui/material'
+import { Box, TableRow, Typography, Container, Table, TableHead, TableCell, TableBody, Button } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import React, { FunctionComponent, useEffect, useState } from 'react'
@@ -42,21 +40,21 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
      };
 
      return (
-          <CartWrapper theme={theme}>
-               <StyledTable>
-                    <StyledHeader>
+          <Container className="CartWrapper">
+               <Table className="StyledTable">
+                    <TableHead className="StyledHeader">
                          <TableRow sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                              <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="left">Naziv</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="left">Pakovanje</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="left">Kod</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="left">Količina</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="right">Cena sa PDV</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="right">Ukupno sa popustom</StyledHeaderCell>
-                              <StyledHeaderCell theme={theme} align="right">Obriši</StyledHeaderCell>
+                              <TableCell className="StyledHeaderCell">Slika</TableCell>
+                              <TableCell className="StyledHeaderCell" align="left">Naziv</TableCell>
+                              <TableCell className="StyledHeaderCell" align="left">Pakovanje</TableCell>
+                              <TableCell className="StyledHeaderCell" align="left">Kod</TableCell>
+                              <TableCell className="StyledHeaderCell" align="left">Količina</TableCell>
+                              <TableCell className="StyledHeaderCell" align="right">Cena sa PDV</TableCell>
+                              <TableCell className="StyledHeaderCell" align="right">Ukupno sa popustom</TableCell>
+                              <TableCell className="StyledHeaderCell" align="right">Obriši</TableCell>
                          </TableRow>
-                    </StyledHeader>
-                    <StyledTableBody theme={theme}>
+                    </TableHead>
+                    <TableBody className="StyledTableBody">
                          {cart.map((cartItem: ICartItem) => (
                               <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
                                    name={cartItem.name} description={cartItem.description} category={cartItem.category}
@@ -66,11 +64,11 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                    warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price}
                                    quantityUnit={cartItem.quantityUnit} mediaURLs={[]} slug={cartItem.slug} />
                          ))}
-                    </StyledTableBody>
-               </StyledTable>
-               <StyledTotalsTitle theme={theme}>
+                    </TableBody>
+               </Table>
+               <Typography className="StyledTotalsTitle">
                     {totalItemPrice < 8000 ? `Ukupno sa PDV: ${parseFloat(totalItemPrice).toFixed(2)} RSD` : `Ukupno sa PDV, besplatna dostava: ${parseFloat(totalItemPrice).toFixed(2)} RSD`}
-               </StyledTotalsTitle>
+               </Typography>
                <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
                     PDV uračunat u cenu i nema skrivenih troškova
                </Typography>
@@ -83,12 +81,12 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     <Typography sx={{ color: Colors.primary.main }}>Dostava besplatna</Typography>
                )}
                <Box>
-                    <CheckoutNextPrevButton type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                    <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                          Nazad
-                    </CheckoutNextPrevButton>
-                    <CheckoutNextPrevButton onClick={() => handleNext()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} disabled={!submitEnabled}>
+                    </Button>
+                    <Button className="CheckoutNextPrevButton" onClick={() => handleNext()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} disabled={!submitEnabled}>
                          Dalje
-                    </CheckoutNextPrevButton>
+                    </Button>
                </Box>
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '30px' }}>
                     Detalje isporuke i plaćanja možete pogledati <Link rel='canonical' href='/informacije/isporuka-i-placanje'>OVDE!</Link>
@@ -97,7 +95,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
                </Typography>
                <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
-          </CartWrapper>
+          </Container>
      )
 }
 

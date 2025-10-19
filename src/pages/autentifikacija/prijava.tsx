@@ -1,12 +1,11 @@
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme from "@/styles/theme";
-import { Box, Container, Stack, TextField } from "@mui/material";
+import { Box, Container, Stack, TextField, Button, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-import { AuthBox, AuthButton, AuthFormBox, AuthText, AuthTitle } from "@/styles/auth/auth";
 import { signIn } from "next-auth/react";
 import { Form, Formik } from "formik";
 import { userEmailSchema } from "@/schemas/email-form.schema";
@@ -39,9 +38,9 @@ const SignInPage = () => {
      // Memoize the SignInForm component to prevent unnecessary re-renders
      const SignInForm = useMemo(
           () => (
-               <AuthFormBox>
-                    <AuthTitle>Ako želite možete se prijaviti.</AuthTitle>
-                    <AuthText theme={theme}>Ako ne, možete nastaviti kao gost.</AuthText>
+               <Box className="auth-form-box">
+                    <Typography className="auth-title">Ako želite možete se prijaviti.</Typography>
+                    <Typography className="auth-text">Ako ne, možete nastaviti kao gost.</Typography>
                     <Formik
                          initialValues={{ email: "" }}
                          onSubmit={handleSubmit}
@@ -69,25 +68,26 @@ const SignInPage = () => {
                                         fullWidth
                                         sx={{ width: "300px" }}
                                    />
-                                   <AuthButton
+                                   <Button
+                                        className="auth-button"
                                         variant="contained"
                                         color="primary"
                                         fullWidth
                                         type="submit"
-                                        loading={loading} // Ensure this prop is set correctly
+                                        disabled={loading} // Ensure this prop is set correctly
                                    >
                                         Prijava
-                                   </AuthButton>
+                                   </Button>
                               </Form>
                          )}
                     </Formik>
                     <Box>
-                         <AuthText theme={theme}>Nemate nalog?</AuthText>
-                         <AuthButton href="/registracija" disabled={loading}>
+                         <Typography className="auth-text">Nemate nalog?</Typography>
+                         <Button className="auth-button" href="/registracija" disabled={loading}>
                               Registrujte se
-                         </AuthButton>
+                         </Button>
                     </Box>
-               </AuthFormBox>
+               </Box>
           ),
           [handleSubmit, loading] // Only re-render when handleSubmit or loading changes
      );
@@ -109,9 +109,9 @@ const SignInPage = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <AuthBox theme={theme}>
+                                   <Box className="auth-box">
                                         {SignInForm}
-                                   </AuthBox>
+                                   </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

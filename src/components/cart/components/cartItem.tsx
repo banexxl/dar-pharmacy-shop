@@ -1,10 +1,9 @@
 import ICartItem from '@/interfaces/cart/cart.interface';
-import { CartProductImage, StyledProductCell, StyledProductName, StyledProductRow } from '@/styles/cart';
-import theme, { Colors } from '@/styles/theme';
+import { TableRow, TableCell, Box, IconButton, Button, Typography } from '@mui/material';
+import { Colors } from '@/styles/theme';
 import Counter from '@/utils/counter';
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { removeAllSingleItems } from '@/store/cart/cart.slice';
 import Link from 'next/link';
@@ -16,69 +15,67 @@ const CartItem = (props: ICartItem) => {
 
      return (
           <>
-               <StyledProductRow key={props._id} theme={theme}>
+               <TableRow key={props._id} className="StyledProductRow">
                     {/* Product Image */}
-                    <StyledProductCell component="th" scope="row" theme={theme}>
+                    <TableCell component="th" scope="row" className="StyledProductCell">
                          <Link rel='canonical' href={`/proizvod/${props.slug}`}>
-                              <CartProductImage src={props.imageURL} />
+                              <Box component="img" src={props.imageURL} className="CartProductImage" />
                          </Link>
-                    </StyledProductCell>
+                    </TableCell>
 
                     {/* Product Name */}
-                    <StyledProductCell theme={theme}>
-                         <StyledProductName theme={theme}>
+                    <TableCell className="StyledProductCell">
+                         <Typography className="StyledProductName">
                               {props.name}
-                         </StyledProductName>
-                    </StyledProductCell>
+                         </Typography>
+                    </TableCell>
 
                     {/* Quantity and Unit */}
-                    <StyledProductCell theme={theme}>
-                         <StyledProductName theme={theme}>
+                    <TableCell className="StyledProductCell">
+                         <Typography className="StyledProductName">
                               {props.quantity} {props.quantityUnit}
-                         </StyledProductName>
-                    </StyledProductCell>
+                         </Typography>
+                    </TableCell>
 
                     {/* Product ID (last 8 characters) */}
-                    <StyledProductCell theme={theme}>
-                         <StyledProductName theme={theme}>
+                    <TableCell className="StyledProductCell">
+                         <Typography className="StyledProductName">
                               {props._id.toString().slice(-8).toUpperCase()}
-                         </StyledProductName>
-                    </StyledProductCell>
+                         </Typography>
+                    </TableCell>
 
                     {/* Product Counter */}
-                    <StyledProductCell theme={theme}>
-                         {/* <StyledProductName theme={theme}> */}
+                    <TableCell className="StyledProductCell">
                          <Counter _id={props._id} count={props.count}>
                               {props.count}
                          </Counter>
-                         {/* </StyledProductName> */}
-                    </StyledProductCell>
+                    </TableCell>
 
                     {/* Original Total Price (without discount) */}
-                    <StyledProductCell theme={theme}>
-                         <StyledProductName theme={theme}>
+                    <TableCell className="StyledProductCell">
+                         <Typography className="StyledProductName">
                               {parseFloat((props.count * props.price).toString()).toFixed(2)} RSD
-                         </StyledProductName>
-                    </StyledProductCell>
+                         </Typography>
+                    </TableCell>
 
                     {/* Discount Percentage and Discounted Price */}
                     {props.discount && props.discountAmount! > 0 ? (
-                         <StyledProductCell theme={theme}>
-                              <StyledProductName theme={theme} sx={{ color: Colors.primary.main, fontWeight: 'bold' }}>
+                         <TableCell className="StyledProductCell">
+                              <Typography className="StyledProductName" sx={{ color: Colors.primary.main, fontWeight: 'bold' }}>
                                    (-{props.discountAmount}%) {((props.price - (props.price * (props.discountAmount! / 100))) * props.count).toFixed(2)} RSD
-                              </StyledProductName>
-                         </StyledProductCell>
+                              </Typography>
+                         </TableCell>
                     ) : (
                          // Empty cell to maintain layout alignment with the header
-                         <StyledProductCell theme={theme}>
-                              <StyledProductName theme={theme}>
+                         <TableCell className="StyledProductCell">
+                              <Typography className="StyledProductName">
                                    {props.count * props.price} RSD
-                              </StyledProductName>
-                         </StyledProductCell>
+                              </Typography>
+                         </TableCell>
                     )}
 
                     {/* Remove Item Button */}
-                    <StyledProductCell theme={theme}>
+                    <TableCell className="StyledProductCell">
                          <Button
                               sx={{ backgroundColor: 'transparent' }}
                               onClick={() => {
@@ -88,8 +85,8 @@ const CartItem = (props: ICartItem) => {
                          >
                               <DeleteIcon />
                          </Button>
-                    </StyledProductCell>
-               </StyledProductRow>
+                    </TableCell>
+               </TableRow>
           </>
      );
 };

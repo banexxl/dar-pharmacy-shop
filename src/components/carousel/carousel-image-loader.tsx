@@ -1,6 +1,5 @@
-import { DiscountSticker } from '@/styles/carousel/carousel'
 import { Height } from '@mui/icons-material'
-import { Box } from '@mui/material'
+import { Box, Chip } from '@mui/material'
 import Image, { ImageLoader } from 'next/image'
 
 const myLoader: ImageLoader = ({ src }) => {

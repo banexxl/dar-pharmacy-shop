@@ -1,13 +1,11 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { CarouselProductImage } from './carousel-image-loader';
-import { CarouselOnlyImgBox, CarouselTitle, StyledCarouselLogoBox } from '@/styles/carousel/carousel';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
-import { Typography, useMediaQuery } from '@mui/material';
-import theme, { Colors } from '@/styles/theme';
-import { StyledTotalsTitle } from '@/styles/cart';
+import { Colors } from '@/styles/theme';
 
 type CarouselProps = {
      products?: IProduct[];
@@ -15,6 +13,7 @@ type CarouselProps = {
 }
 const CarouselOnlyImageProduct = (props: CarouselProps) => {
 
+     const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      const responsive = {
@@ -36,7 +35,7 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
      };
 
      return (
-          <StyledCarouselLogoBox sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginTop: '0px', paddingBottom: '30px' }}>
+          <Box className="StyledCarouselLogoBox" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginTop: '0px', paddingBottom: '30px' }}>
                <Typography sx={{ marginTop: '20px', fontSize: isScreenToMedium ? '1.8rem' : '2rem', fontWeight: 'bold' }}>
                     Deo asortimana
                </Typography>
@@ -57,11 +56,11 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
                >
                     {
                          props.products?.map((product: IProduct) => (
-                              <CarouselOnlyImgBox key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
+                              <Box className="CarouselOnlyImgBox" key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
                                    <Link rel='canonical' href={`/proizvod/${product.slug}`}>
                                         <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 120 : 160} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
                                    </Link>
-                                   <CarouselTitle sx={{
+                                   <Typography className="CarouselTitle" sx={{
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                         color: Colors.primary.main
@@ -69,13 +68,13 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
                                         <Typography component={'span'} sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
                                              {product.name}
                                         </Typography>
-                                   </CarouselTitle>
+                                   </Typography>
 
-                              </CarouselOnlyImgBox>
+                              </Box>
                          ))
                     }
                </Carousel>
-          </StyledCarouselLogoBox >
+          </Box>
      );
 }
 

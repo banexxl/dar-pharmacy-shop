@@ -2,6 +2,8 @@ import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from
 import Products from "../components/products/products-grid";
 import { UIProvider } from "../context/ui/ui.context";
 import AppDrawer from "../components/navbar/drawer/drawer";
+import NavBar from "../components/navbar/navbar";
+import Footer from "../components/footer/footer";
 import Promotions from "../components/promotions/promotions";
 import SearchBox from "../components/search/search"
 import { ProductsServices } from '@/services/product.services'
@@ -61,16 +63,19 @@ export default function Home(props: any) {
           <DynamicThemeProvider theme={theme}>
                <Seo title={'Početna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <UIProvider>
+                    {/* Navbar */}
+                    <NavBar />
+                    
                     {/* Main Content */}
                     <Box component="main" sx={{ width: '100vw', overflow: 'hidden' }}>
                          {/* Hero Section */}
                          <Paralax />
 
                          {/* Promotions Section */}
-                         <Box sx={{
+                         <Box sx={{ 
                               width: '100%',
-                              py: { xs: 3, md: 4 },
-                              px: { xs: 2, md: 4 }
+                              py: { xs: 3, md: 4 }, 
+                              px: { xs: 2, md: 4 } 
                          }}>
                               <Container maxWidth="xl">
                                    <Promotions />
@@ -111,11 +116,11 @@ export default function Home(props: any) {
                                         >
                                              Popularno
                                         </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
+                                        <Typography 
+                                             variant="body1" 
+                                             sx={{ 
+                                                  color: 'rgba(55, 65, 81, 0.8)', 
+                                                  maxWidth: 600, 
                                                   mx: 'auto',
                                                   fontSize: '1.1rem',
                                                   lineHeight: 1.6
@@ -130,7 +135,7 @@ export default function Home(props: any) {
                                    </Box>
                               </Container>
                          </Box>
-
+                         
                          {/* Services Section */}
                          <BannerServices />
 
@@ -172,31 +177,29 @@ export default function Home(props: any) {
                                         </Typography>
                                    </Box>
                                    <Products data={dataForGrid} />
-                              </Container>
-                         </Box>
+                              </Box>
 
-                         {/* Counter Section */}
-                         <BannerCountUp />
+                              {/* Counter Section */}
+                              <BannerCountUp />
 
-                         {/* New Products Section */}
-                         <Box sx={{
-                              width: '100%',
-                              py: { xs: 5, md: 8 },
-                              background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.04) 0%, rgba(124, 58, 237, 0.04) 100%)',
-                              position: 'relative',
-                              '&::before': {
-                                   content: '""',
-                                   position: 'absolute',
-                                   top: 0,
-                                   left: 0,
-                                   right: 0,
-                                   bottom: 0,
-                                   background: 'linear-gradient(45deg, rgba(248, 250, 252, 0.9) 0%, rgba(243, 244, 246, 0.95) 100%)',
-                                   pointerEvents: 'none'
-                              }
-                         }}>
-                              <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                                   <Box sx={{ textAlign: 'center', mb: 6 }}>
+                              {/* New Products Section */}
+                              <Box sx={{
+                                   py: { xs: 5, md: 8 },
+                                   px: { xs: 2, md: 4 },
+                                   background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.04) 0%, rgba(124, 58, 237, 0.04) 100%)',
+                                   position: 'relative',
+                                   '&::before': {
+                                        content: '""',
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        background: 'linear-gradient(45deg, rgba(248, 250, 252, 0.9) 0%, rgba(243, 244, 246, 0.95) 100%)',
+                                        pointerEvents: 'none'
+                                   }
+                              }}>
+                                   <Box sx={{ textAlign: 'center', mb: 6, position: 'relative', zIndex: 1 }}>
                                         <Typography
                                              variant="h2"
                                              sx={{
@@ -225,18 +228,18 @@ export default function Home(props: any) {
                                              Najnoviji proizvodi koje smo dodali u našu ponudu
                                         </Typography>
                                    </Box>
-                                   <ProductCarousel products={dataForNewProducts} />
-                              </Container>
-                         </Box>
+                                   <Box sx={{ position: 'relative', zIndex: 1 }}>
+                                        <ProductCarousel products={dataForNewProducts} />
+                                   </Box>
+                              </Box>
 
-                         {/* Brands Section */}
-                         <Box sx={{
-                              width: '100%',
-                              py: { xs: 5, md: 8 },
-                              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.95) 100%)',
-                              position: 'relative'
-                         }}>
-                              <Container maxWidth="xl">
+                              {/* Brands Section */}
+                              <Box sx={{
+                                   py: { xs: 5, md: 8 },
+                                   px: { xs: 2, md: 4 },
+                                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.95) 100%)',
+                                   position: 'relative'
+                              }}>
                                    <Box sx={{ textAlign: 'center', mb: 6 }}>
                                         <Typography
                                              variant="h2"
@@ -267,29 +270,27 @@ export default function Home(props: any) {
                                         </Typography>
                                    </Box>
                                    <CarouselLogo manufacturers={manufacturers} />
-                              </Container>
-                         </Box>
+                              </Box>
 
-                         {/* Discounted Products Section */}
-                         {productsOnDiscount.length > 0 && (
-                              <Box sx={{
-                                   width: '100%',
-                                   py: { xs: 5, md: 8 },
-                                   background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.08) 100%)',
-                                   position: 'relative',
-                                   '&::before': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        background: 'linear-gradient(45deg, rgba(254, 242, 242, 0.9) 0%, rgba(251, 113, 133, 0.05) 100%)',
-                                        pointerEvents: 'none'
-                                   }
-                              }}>
-                                   <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                                        <Box sx={{ textAlign: 'center', mb: 6 }}>
+                              {/* Discounted Products Section */}
+                              {productsOnDiscount.length > 0 && (
+                                   <Box sx={{
+                                        py: { xs: 5, md: 8 },
+                                        px: { xs: 2, md: 4 },
+                                        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.08) 100%)',
+                                        position: 'relative',
+                                        '&::before': {
+                                             content: '""',
+                                             position: 'absolute',
+                                             top: 0,
+                                             left: 0,
+                                             right: 0,
+                                             bottom: 0,
+                                             background: 'linear-gradient(45deg, rgba(254, 242, 242, 0.9) 0%, rgba(251, 113, 133, 0.05) 100%)',
+                                             pointerEvents: 'none'
+                                        }
+                                   }}>
+                                        <Box sx={{ textAlign: 'center', mb: 6, position: 'relative', zIndex: 1 }}>
                                              <Typography
                                                   variant="h2"
                                                   sx={{
@@ -318,31 +319,31 @@ export default function Home(props: any) {
                                                   Iskoristite posebne cene i uštedite na omiljenim proizvodima
                                              </Typography>
                                         </Box>
-                                        <ProductCarousel products={productsOnDiscount} />
-                                   </Container>
-                              </Box>
-                         )}
+                                        <Box sx={{ position: 'relative', zIndex: 1 }}>
+                                             <ProductCarousel products={productsOnDiscount} />
+                                        </Box>
+                                   </Box>
+                              )}
 
-                         {/* Promotion Products Section */}
-                         {promotionProducts.length > 0 && (
-                              <Box sx={{
-                                   width: '100%',
-                                   py: { xs: 5, md: 8 },
-                                   background: 'linear-gradient(135deg, rgba(30, 64, 175, 0.06) 0%, rgba(5, 150, 105, 0.06) 100%)',
-                                   position: 'relative',
-                                   '&::before': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        background: 'linear-gradient(45deg, rgba(239, 246, 255, 0.9) 0%, rgba(236, 253, 245, 0.9) 100%)',
-                                        pointerEvents: 'none'
-                                   }
-                              }}>
-                                   <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                                        <Box sx={{ textAlign: 'center', mb: 6 }}>
+                              {/* Promotion Products Section */}
+                              {promotionProducts.length > 0 && (
+                                   <Box sx={{
+                                        py: { xs: 5, md: 8 },
+                                        px: { xs: 2, md: 4 },
+                                        background: 'linear-gradient(135deg, rgba(30, 64, 175, 0.06) 0%, rgba(5, 150, 105, 0.06) 100%)',
+                                        position: 'relative',
+                                        '&::before': {
+                                             content: '""',
+                                             position: 'absolute',
+                                             top: 0,
+                                             left: 0,
+                                             right: 0,
+                                             bottom: 0,
+                                             background: 'linear-gradient(45deg, rgba(239, 246, 255, 0.9) 0%, rgba(236, 253, 245, 0.9) 100%)',
+                                             pointerEvents: 'none'
+                                        }
+                                   }}>
+                                        <Box sx={{ textAlign: 'center', mb: 6, position: 'relative', zIndex: 1 }}>
                                              <Typography
                                                   variant="h2"
                                                   sx={{
@@ -371,41 +372,41 @@ export default function Home(props: any) {
                                                   Ekskluzivne ponude koje ne smete propustiti
                                              </Typography>
                                         </Box>
-                                        <CarouselPresentationContainer products={promotionProducts} />
-                                   </Container>
-                              </Box>
-                         )}
+                                        <Box sx={{ position: 'relative', zIndex: 1 }}>
+                                             <CarouselPresentationContainer products={promotionProducts} />
+                                        </Box>
+                                   </Box>
+                              )}
 
-                         <PaymentStrip />
-                    </Box>
-
-                    <Chatbot />
-                    <SearchBox />
-                    <AppDrawer isScreenToMedium={false} />
-               </UIProvider>
-
-               <Modal
-                    open={open}
-                    onClose={handleClose}
-               >
-                    <Paper
-                         sx={{
-                              position: 'fixed',
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
-                              textAlign: 'center',
-                              padding: '10px',
-                         }}
+                              <PaymentStrip />
+                              <Chatbot />
+                              <SearchBox />
+                              <AppDrawer isScreenToMedium={false} />
+                         </UIProvider>
+                    </Stack>
+                    <Modal
+                         open={open}
+                         onClose={handleClose}
                     >
-                         <Typography id="first-load-modal-description" sx={{ fontSize: '1rem' }}>
-                              Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
-                         </Typography>
-                         <Button onClick={handleClose} >
-                              Prihvati sve
-                         </Button>
-                    </Paper>
-               </Modal>
+                         <Paper
+                              sx={{
+                                   position: 'fixed',
+                                   bottom: 0,
+                                   left: 0,
+                                   right: 0,
+                                   textAlign: 'center',
+                                   padding: '10px',
+                              }}
+                         >
+                              <Typography id="first-load-modal-description" sx={{ fontSize: '1rem' }}>
+                                   Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
+                              </Typography>
+                              <Button onClick={handleClose} >
+                                   Prihvati sve
+                              </Button>
+                         </Paper>
+                    </Modal>
+               </Container>
           </DynamicThemeProvider>
      )
 }
@@ -449,25 +450,43 @@ export async function getServerSideProps() {
      //      return data
      // })
 
-     // const manufacturersLogos: any[] = await ProductsServices().getAllLogos().then((data: any) => {
+     // const manufacturersLogos: string[] = await ProductsServices().getAllLogos().then((logos: any) => {
+     //      return logos
+     // })
+
+     // const gloriaProducts: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
      //      return data
      // })
 
-     // const customSearchedProducts: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
+     // const searchedByNameORManufacturer: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
      //      return data
      // })
 
-     // const customSearchedProducts1: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
+     // const searchedByNameORManufacturerI: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
      //      return data
      // })
 
-     // const customSearchedProducts2: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
+     const dataForCaruselTop: IProduct[] = [
+          ...(Array.isArray(productsFromManufacturerFitaky) ? productsFromManufacturerFitaky : []),
+          ...(Array.isArray(productsFromManufacturerGana) ? productsFromManufacturerGana : []),
+     ]
+
+     const dataForGrid: IProduct[] = [
+          ...(Array.isArray(customSearchedProducts) ? customSearchedProducts : []),
+          ...(Array.isArray(customSearchedProducts1) ? customSearchedProducts1 : []),
+          ...(Array.isArray(customSearchedProducts2) ? customSearchedProducts2 : []),
+     ]
+
+     // const dataForCarouselProducts: IProduct[] = productsFromManufacturerGana.concat(gloriaProducts)
+
+     // const newProducts: IProduct[] = await ProductsServices().getNewProducts().then((data: any) => {
      //      return data
      // })
 
-     const dataForCaruselTop: IProduct[] = [...productsFromManufacturerGana, ...productsFromManufacturerFitaky]
-     const dataForGrid: IProduct[] = [...customSearchedProducts, ...customSearchedProducts1, ...customSearchedProducts2].slice(0, 6)
-
+     //notFound: true -> ako vratimo ovo umesto ovog dole, vratice na 404 page tj not found page
+     //redirect: {
+     //           destination: "/nodata"
+     // }  mozemo da proverimo da li podaci uopste postoje, ako ne, mozemo da vratimo ovo, i da uradimo redirect na drugu stranicu
      //revalidate bi trebao da ponovo odradi getstaticprops logiku
 
      return {
@@ -482,3 +501,6 @@ export async function getServerSideProps() {
           },
      }
 }
+
+
+

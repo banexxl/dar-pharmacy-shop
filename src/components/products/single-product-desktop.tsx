@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Product, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage } from "../../styles/product/single-product";
-import { Alert, Box, Button, Stack, Tooltip } from "@mui/material";
+import { Alert, Box, Button, Stack, Tooltip, IconButton } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -11,7 +10,6 @@ import ProductMeta from "./products-meta";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
-import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 import { SocialShare } from "../social/socials-share";
 import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
@@ -112,14 +110,14 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      };
 
      return (
-          <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
-               <FilteredProductImageContainer>
+          <Box className="Product" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef}>
+               <Box className="FilteredProductImageContainer">
                     <Link rel='canonical' href={'/proizvod/' + product.slug}>
-                         <ProductImage src={product.imageURL} />
+                         <Box component="img" src={product.imageURL} alt={product.name} className="ProductImage" />
                     </Link>
-               </FilteredProductImageContainer>
+               </Box>
                {(showOptions || isScreenToMedium) && (
-                    <ProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
+                    <Box className="ProductActionsWrapper" sx={{ display: showOptions || isScreenToMedium ? 'flex' : 'none' }}>
                          <Stack direction={isScreenToMedium ? "row" : "column"} sx={{
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -170,18 +168,19 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                                    <FitScreenIcon color="primary" />
                               </Tooltip>
                          </Button>
-                    </ProductActionsWrapper>
+                    </Box>
                )}
                {(showOptions || isScreenToMedium) && (
-                    <ProductAddToCart
-                         show={showOptions}
-                         loading={loading}
+                    <Button
+                         className="ProductAddToCart"
+                         variant="contained"
                          onClick={() => {
                               callCartAlert();
                               dispatch(addToCart(product));
-                         }} theme={theme}>
+                         }}
+                         sx={{ display: showOptions ? 'flex' : 'none' }}>
                          Dodaj u korpu
-                    </ProductAddToCart>
+                    </Button>
                )}
 
                <ProductMeta product={product} />
@@ -189,6 +188,6 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                {showShareOptions && showOptions && (
                     <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug} flexDirection="row" />
                )}
-          </Product>
+          </Box>
      );
 }

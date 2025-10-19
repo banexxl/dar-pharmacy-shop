@@ -13,8 +13,6 @@ import { Seo } from "@/components/seo";
 import { useSession } from "next-auth/react";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
-import { RegisterFormBox } from "@/styles/register";
-import { CheckoutNextPrevButton, ClearFormButton, PaymentOptionRadio } from "@/styles/checkout/userinfo";
 import { IUserForm } from "@/interfaces/checkout/user-form-values.interface";
 import { userDataFormSchema } from "@/schemas/user-form.schema";
 import sweetalert2 from "sweetalert2";
@@ -102,7 +100,7 @@ const UserUpdatePage = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <RegisterFormBox>
+                                   <Box className="register-form-box">
                                         <Formik isInitialValid={false} initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userDataFormSchema}>
                                              {
                                                   formik => (
@@ -257,29 +255,31 @@ const UserUpdatePage = () => {
 
 
 
-                                                                 <PaymentOptionRadio theme={theme} sx={{ marginBottom: '50px', width: '50%' }}>
-                                                                      <ClearFormButton
+                                                                 <Box className="payment-option-radio" sx={{ marginBottom: '50px', width: '50%' }}>
+                                                                      <Button
+                                                                           className="clear-form-button"
                                                                            endIcon={<DeleteIcon />}
                                                                            type='reset'
                                                                            onClick={formik.handleReset}
                                                                       >
                                                                            Obriši
-                                                                      </ClearFormButton>
-                                                                      <CheckoutNextPrevButton
+                                                                      </Button>
+                                                                      <Button
+                                                                           className="checkout-next-prev-button"
                                                                            onClick={() => handleSubmit(formik.values)}
                                                                            endIcon={<NavigateNextIcon />}
                                                                            disabled={Object.keys(formik.errors).length > 0 || !formik.isValid || formik.isSubmitting || loading}
                                                                       >
                                                                            Izmeni
-                                                                      </CheckoutNextPrevButton>
+                                                                      </Button>
 
-                                                                 </PaymentOptionRadio>
+                                                                 </Box>
                                                             </Container>
                                                        </Form>
                                                   )
                                              }
                                         </Formik>
-                                   </RegisterFormBox>
+                                   </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

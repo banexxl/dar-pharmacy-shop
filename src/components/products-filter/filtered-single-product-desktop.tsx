@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react"
-import { FilteredProduct, FilteredProductActionButton, FilteredProductActionsWrapper, FilteredProductAddToCart, FilteredProductFavButton, FilteredProductImage, FilteredProductImageContainer } from "../../styles/product/filtered-single-product";
-import { Alert, Box, Button, Stack, Tooltip } from "@mui/material";
+import { Alert, Box, Button, Stack, Tooltip, Card, CardContent, CardMedia } from "@mui/material";
+import { Colors } from "@/styles/theme";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -11,7 +11,6 @@ import ProductMeta from "./filtered-products-meta";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
-import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import IProduct from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
@@ -109,28 +108,35 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      };
 
      return (
-          <FilteredProduct onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef} isVisible={isVisible} theme={theme}>
-               <FilteredProductImageContainer>
+          <Card className="FilteredProduct" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+               <Box className="FilteredProductImageContainer">
                     <Link rel='canonical' href={'/proizvod/' + product.slug}>
-                         <FilteredProductImage src={product.imageURL} />
+                         <CardMedia
+                              component="img"
+                              className="FilteredProductImage"
+                              image={product.imageURL}
+                              alt="Product"
+                              sx={{
+                                   height: 200,
+                                   objectFit: 'cover'
+                              }}
+                         />
                     </Link>
-               </FilteredProductImageContainer>
+               </Box>
                {(showOptions || isScreenToMedium) && (
-                    <FilteredProductAddToCart
-                         show={showOptions}
+                    <Button
+                         className="FilteredProductAddToCart"
                          variant="contained"
-                         loading={loading}
                          onClick={() => {
                               callCartAlert();
                               dispatch(addToCart(product));
                          }}
-                         theme={theme}
                          disabled={product.availableStock <= 0}
                     >
                          Dodaj u korpu
-                    </FilteredProductAddToCart>
+                    </Button>
                )}
-               <FilteredProductActionsWrapper show={showOptions || isScreenToMedium} theme={theme}>
+               <Box className="FilteredProductActionsWrapper">
                     <Stack direction={isScreenToMedium ? "row" : "column"} sx={{
                          alignItems: 'center',
                          justifyContent: 'center',
@@ -174,13 +180,17 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               </Tooltip>
                          </Button>
 
-                         <FilteredProductActionButton onClick={() => showProductDetailDialog()}>
+                         <Button
+                              className="FilteredProductActionButton"
+                              onClick={() => showProductDetailDialog()}
+                              sx={{ width: '30px', height: '30px', backgroundColor: 'transparent' }}
+                         >
                               <Tooltip placement="left" title="Brz pregled">
                                    <FitScreenIcon color="primary" />
                               </Tooltip>
-                         </FilteredProductActionButton>
+                         </Button>
                     </Stack>
-               </FilteredProductActionsWrapper>
+               </Box>
                <ProductMeta product={product} />
                <ProductDetailDialog product={product} />
                {
@@ -194,6 +204,6 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          />
                     )
                }
-          </FilteredProduct>
+          </Card>
      );
 }

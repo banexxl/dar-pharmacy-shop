@@ -2,13 +2,12 @@
 
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, Container, Grid, Stack, TextField, Typography } from '@mui/material'
+import { Box, Container, Grid, Stack, TextField, Typography, Button } from '@mui/material'
 import dynamic from 'next/dynamic'
 import LoadingWheel from '../../components/loading/loading'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-import { CheckoutNextPrevButton, ClearFormButton, PaymentOptionRadio } from '@/styles/checkout/userinfo'
 import { Field, Form, Formik } from 'formik'
 import { initialUserFormValues, IUserForm } from '@/interfaces/checkout/user-form-values.interface'
 import { userFormSchema } from '@/schemas/user-form.schema'
@@ -17,7 +16,6 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import sweetalert2 from 'sweetalert2'
 import { useRouter } from 'next/router'
-import { RegisterFormBox } from '@/styles/register'
 import { Seo } from '@/components/seo'
 import Link from 'next/link'
 
@@ -98,7 +96,7 @@ const RegisterPage = () => {
                     >
                          <Stack>
                               <UIProvider>
-                                   <RegisterFormBox>
+                                   <Box className="register-form-box">
                                         <Formik isInitialValid={false} initialValues={initialUserFormValues} onSubmit={(values: IUserForm) => handleSubmit(values)} validationSchema={userFormSchema}>
                                              {
                                                   formik => (
@@ -230,22 +228,24 @@ const RegisterPage = () => {
                                                                  {/* <Typography>
                                                                       {JSON.stringify(formik.errors)}
                                                                  </Typography> */}
-                                                                 <PaymentOptionRadio theme={theme} sx={{ display: 'flex', flexDirection: 'column', marginBottom: '50px', width: '50%' }}>
+                                                                 <Box className="payment-option-radio" sx={{ display: 'flex', flexDirection: 'column', marginBottom: '50px', width: '50%' }}>
                                                                       <Box>
-                                                                           <ClearFormButton
+                                                                           <Button
+                                                                                className="clear-form-button"
                                                                                 endIcon={<DeleteIcon />}
                                                                                 type='reset'
                                                                                 onClick={formik.handleReset}
                                                                            >
                                                                                 Obriši
-                                                                           </ClearFormButton>
-                                                                           <CheckoutNextPrevButton
+                                                                           </Button>
+                                                                           <Button
+                                                                                className="checkout-next-prev-button"
                                                                                 onClick={() => handleSubmit(formik.values)}
                                                                                 endIcon={<NavigateNextIcon />}
                                                                                 disabled={Object.keys(formik.errors).length > 0 || !formik.isValid || formik.isSubmitting}
                                                                            >
                                                                                 Dalje
-                                                                           </CheckoutNextPrevButton>
+                                                                           </Button>
                                                                       </Box>
 
                                                                       <Typography variant="h5" component="legend" sx={{ mt: '90px', mb: '30px' }} >
@@ -254,13 +254,13 @@ const RegisterPage = () => {
                                                                                 color: Colors.primary.light
                                                                            }}>Prijavite se</Link>
                                                                       </Typography>
-                                                                 </PaymentOptionRadio>
+                                                                 </Box>
                                                             </Container>
                                                        </Form>
                                                   )
                                              }
                                         </Formik>
-                                   </RegisterFormBox>
+                                   </Box>
                                    <SearchBox />
                                    <AppDrawer isScreenToMedium={false} />
                               </UIProvider>

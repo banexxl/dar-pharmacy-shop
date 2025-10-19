@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { ProductMetaWrapper } from "../../styles/product/single-product";
-import theme, { Colors } from "@/styles/theme";
+import { Colors } from "@/styles/theme";
 import IProduct from "@/interfaces/product/product.interface";
 
 type ProductMetaProps = {
@@ -16,7 +15,7 @@ export default function ProductMeta({ product, isScreenToMedium }: ProductMetaPr
      }
 
      return (
-          <ProductMetaWrapper theme={theme}>
+          <Box className="ProductMetaWrapper">
                <Typography variant='h6' lineHeight={2} textAlign='center'>
                     {product.name}
                </Typography>
@@ -74,6 +73,6 @@ export default function ProductMeta({ product, isScreenToMedium }: ProductMetaPr
                >
                     Pakovanje: {product.quantity + " " + product.quantityUnit}
                </Typography>
-          </ProductMetaWrapper>
+          </Box>
      );
 }

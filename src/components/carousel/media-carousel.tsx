@@ -4,7 +4,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Image from 'next/image';
-import { ArrowButton, BackdropStyled, CarouselBox, CloseButton, LeftArrowButton, RightArrowButton } from '@/styles/carousel/media-carousel';
 import { Colors } from '@/styles/theme';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
 
@@ -46,15 +45,17 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ media, open, initialIndex
                onClose={onClose}
                PaperProps={{ sx: { backgroundColor: 'transparent', boxShadow: 'none' } }}
           >
-               <BackdropStyled
+               <Backdrop
+                    className="BackdropStyled"
                     open={open}
                >
-                    <CarouselBox                    >
-                         <LeftArrowButton
+                    <Box className="CarouselBox">
+                         <IconButton
+                              className="LeftArrowButton"
                               onClick={handlePrev}
                          >
                               <ArrowBackIosNewIcon />
-                         </LeftArrowButton>
+                         </IconButton>
 
                          {media[activeIndex].type === 'image' ? (
                               <Box
@@ -99,19 +100,21 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ media, open, initialIndex
                                    )
                          }
 
-                         <RightArrowButton
+                         <IconButton
+                              className="RightArrowButton"
                               onClick={handleNext}
                          >
                               <ArrowForwardIosIcon />
-                         </RightArrowButton>
-                    </CarouselBox>
+                         </IconButton>
+                    </Box>
 
-                    <CloseButton
+                    <IconButton
+                         className="CloseButton"
                          onClick={onClose}
                     >
                          <CloseIcon />
-                    </CloseButton>
-               </BackdropStyled>
+                    </IconButton>
+               </Backdrop>
           </Dialog>
      );
 };

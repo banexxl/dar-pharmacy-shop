@@ -2,7 +2,6 @@ import { Alert, Box, Button, CircularProgress, Divider, IconButton, InputAdornme
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
-import { SearchBoxContainer, SearchResultsBox } from "@/styles/search/search.style";
 import { KeyboardEvent, useState } from "react";
 import Image from "next/image";
 import IProduct from "@/interfaces/product/product.interface";
@@ -76,7 +75,23 @@ export default function SearchBox() {
 
      return (
           <Slide direction="down" in={showSearchBox} timeout={500} >
-               <SearchBoxContainer theme={theme}>
+               <Box
+                    className="SearchBoxContainer"
+                    sx={{
+                         position: "fixed",
+                         top: 0,
+                         left: 0,
+                         width: "100%",
+                         height: "100%",
+                         background: Colors.secondary[50],
+                         display: "flex",
+                         flexDirection: 'column',
+                         justifyContent: "center",
+                         alignItems: "center",
+                         zIndex: 99999,
+                         opacity: 1,
+                    }}
+               >
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                          <TextField
                               label="Pronadji proizvod"
@@ -99,7 +114,18 @@ export default function SearchBox() {
                     <IconButton onClick={() => handleClearSearch()} sx={{ position: 'absolute', top: '5px', right: '5px' }} >
                          <CloseIcon sx={{ fontSize: '2rem' }} color="secondary" />
                     </IconButton>
-                    <SearchResultsBox>
+                    <Box
+                         className="SearchResultsBox"
+                         sx={{
+                              width: "130%",
+                              backgroundColor: Colors.secondary[50],
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              opacity: 1,
+                              borderRadius: '10px',
+                         }}
+                    >
                          {
                               loading ? (
                                    <Box>
@@ -112,7 +138,7 @@ export default function SearchBox() {
                                                   overflow: 'auto',
                                                   height: '500px',
                                                   width: isScreenToMedium ? '60%' : '20%',
-                                                  backgroundColor: Colors.secondary.custom,
+                                                  backgroundColor: Colors.secondary[50],
                                                   display: 'flex',
                                                   flexDirection: 'column',
                                                   justifyContent: 'space-between',
@@ -209,8 +235,8 @@ export default function SearchBox() {
                                         )
                               )
                          }
-                    </SearchResultsBox>
-               </SearchBoxContainer>
+                    </Box>
+               </Box>
           </Slide >
      );
 }

@@ -1,7 +1,6 @@
-import { Slide } from "@mui/material";
+import { Slide, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
-import { MessageText, PromotionsContainer } from "../../styles/promotions";
 
 const messages = [
      "Mala apoteka VELIKOG srca!",
@@ -14,7 +13,7 @@ const messages = [
 ];
 export default function Promotions() {
 
-     const containerRef = useRef();
+     const containerRef = useRef<HTMLDivElement>();
      const [show, setShow] = useState(true);
      const [messageIndex, setMessageIndex] = useState(0);
 
@@ -40,7 +39,22 @@ export default function Promotions() {
      }, [])
 
      return (
-          <PromotionsContainer ref={containerRef} overflow="hidden">
+          <Box
+               className="PromotionsContainer"
+               ref={containerRef}
+               sx={{
+                    padding: "20px 0px 20px 0px",
+                    '@media (max-width: 900px)': {
+                         padding: "20px",
+                    },
+                    borderRadius: '5px',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    overflow: "hidden",
+                    height: '70px'
+               }}
+          >
                <Slide
                     direction={show ? "left" : "right"}
                     in={show}
@@ -51,11 +65,22 @@ export default function Promotions() {
                     }}
                >
                     <Box display="flex" justifyContent="center" alignItems="center">
-                         <MessageText>
+                         <Typography
+                              className="MessageText"
+                              sx={{
+                                   '@media (min-width: 900px)': {
+                                        fontSize: "2.2rem",
+                                        fontWeight: "bold",
+                                   },
+                                   '@media (max-width: 900px)': {
+                                        fontSize: "1.5rem",
+                                   },
+                              }}
+                         >
                               {messages[messageIndex]}
-                         </MessageText>
+                         </Typography>
                     </Box>
                </Slide>
-          </PromotionsContainer>
+          </Box>
      );
 }

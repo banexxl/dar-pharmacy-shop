@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MobileAddToCart, Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage, } from "../../styles/product/single-product";
-import { Alert, Box, Grow, Stack, Tooltip, Typography } from "@mui/material";
+import { Alert, Box, Grow, Stack, Tooltip, Typography, IconButton, Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from "@mui/icons-material/Share";
@@ -11,7 +10,6 @@ import ProductMeta from "./products-meta"
 import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
-import { FilteredProductImageContainer } from "@/styles/product/filtered-single-product";
 import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import { SocialShare } from "../social/socials-share";
@@ -98,14 +96,14 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                style={{ transformOrigin: '0 0 0' }}
                {...(isVisible ? { timeout: 1000 } : {})}
           >
-               <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={productRef} theme={undefined} isVisible={isVisible}>
-                    <FilteredProductImageContainer>
+               <Box className="Product" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={productRef}>
+                    <Box className="FilteredProductImageContainer">
                          <Link rel='canonical' href={'/proizvod/' + product.slug}>
-                              <ProductImage src={product.imageURL} />
+                              <Box component="img" src={product.imageURL} alt={product.name} className="ProductImage" />
                          </Link>
-                    </FilteredProductImageContainer>
+                    </Box>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
-                    <ProductActionsWrapper theme={theme} show={showOptions}>
+                    <Box className="ProductActionsWrapper" sx={{ display: showOptions ? 'flex' : 'none' }}>
                          <Stack direction={isScreenToMedium ? "row" : "column"}
                               sx={{
                                    alignItems: 'center',
@@ -137,44 +135,49 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                                         />
                                    )}
                               </Box>
-                              <ProductActionButton onClick={() => setOpenShareOptions(!openShareOption)} >
+                              <IconButton className="ProductActionButton" onClick={() => setOpenShareOptions(!openShareOption)} >
                                    <Tooltip placement="top" title="Podeli" >
                                         <ShareIcon color="primary" />
                                    </Tooltip>
-                              </ProductActionButton>
-                              <ProductActionButton onClick={() => showProductDetailDialog()}>
+                              </IconButton>
+                              <IconButton className="ProductActionButton" onClick={() => showProductDetailDialog()}>
                                    <Tooltip placement="left" title="Pogledaj proizvod">
                                         <FitScreenIcon color="primary" />
                                    </Tooltip>
-                              </ProductActionButton>
+                              </IconButton>
                          </Stack>
-                    </ProductActionsWrapper>
+                    </Box>
                     {openShareOption && showOptions && (
                          < SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug} flexDirection="column" />
                     )}
                     {
                          product.availableStock > 0 ?
                               (
-                                   <MobileAddToCart
+                                   <Button
+                                        className="MobileAddToCart"
                                         onClick={() => { callCartAlert(); dispatch(addToCart(product)); }}
-                                        theme={theme}
+                                        variant="contained"
+                                        fullWidth
                                    >
                                         Dodaj u korpu
-                                   </MobileAddToCart >
+                                   </Button>
                               )
                               :
                               (
-                                   <MobileAddToCart
-                                        theme={theme}
+                                   <Button
+                                        className="MobileAddToCart"
+                                        variant="outlined"
+                                        fullWidth
+                                        disabled
                                    >
                                         Nema na stanju
-                                   </MobileAddToCart >
+                                   </Button>
                               )
                     }
 
 
                     <ProductDetailDialog product={product} />
-               </Product>
+               </Box>
           </Grow>
      )
 }

@@ -1,6 +1,6 @@
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, CircularProgress, Container, Stack, useMediaQuery } from '@mui/material'
+import { Box, CircularProgress, Container, Stack, useMediaQuery, Tabs, Tab, Typography, Stepper, Step, StepLabel } from '@mui/material'
 import React, { useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
 import dynamic from 'next/dynamic'
@@ -8,8 +8,6 @@ import Confirmation from '@/components/checkout/cart-confirmation/cart-confirmat
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
 import { PaymentOptions } from '@/components/checkout/payment-options/payment-options-form'
-import { CheckoutTabs, CheckoutTab, CheckoutTabText } from '@/styles/checkout/checkout-tabs'
-import { CheckoutStep, CheckoutStepLabel, CheckoutStepper } from '@/styles/checkout/checkout-stepper'
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
@@ -51,23 +49,24 @@ const Checkout = () => {
                                         marginTop: isScreenToMedium ? '100px' : '150px',
                                    }}>
 
-                                        <CheckoutStepper
+                                        <Stepper
+                                             className="checkout-stepper"
                                              sx={{
                                                   display: { md: 'none' }
                                              }}
                                              activeStep={tabIndex}>
                                              {steps.map(label => (
-                                                  <CheckoutStep key={label}>
-                                                       <CheckoutStepLabel>{label}</CheckoutStepLabel>
-                                                  </CheckoutStep>
+                                                  <Step className="checkout-step" key={label}>
+                                                       <StepLabel className="checkout-step-label">{label}</StepLabel>
+                                                  </Step>
                                              ))}
-                                        </CheckoutStepper>
+                                        </Stepper>
 
-                                        <CheckoutTabs value={tabIndex}>
+                                        <Tabs className="checkout-tabs" value={tabIndex}>
                                              {steps.map((label, index) => (
-                                                  <CheckoutTab key={index} label={<CheckoutTabText>{label}</CheckoutTabText>} />
+                                                  <Tab className="checkout-tab" key={index} label={<Typography className="checkout-tab-text">{label}</Typography>} />
                                              ))}
-                                        </CheckoutTabs>
+                                        </Tabs>
 
                                         <TabPanel value={tabIndex} index={0}>
                                              <UserInfoFormData formName={'user-form-name'} setTab={setTab} tabIndex={0} />

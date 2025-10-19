@@ -1,5 +1,5 @@
 import Carousel from "react-multi-carousel";
-import { StyledCarouselLogoBox } from '@/styles/carousel/carousel';
+import { Box } from '@mui/material';
 import 'react-multi-carousel/lib/styles.css';
 
 import BlogCard from '../blog-card/blog-card';
@@ -25,7 +25,7 @@ const CarouselBlog = (props: any) => {
      };
 
      return (
-          <StyledCarouselLogoBox >
+          <Box className="StyledCarouselLogoBox">
                <Carousel
                     responsive={responsive}
                     swipeable={true}
@@ -45,7 +45,7 @@ const CarouselBlog = (props: any) => {
                     {/* ))
                                         } */}
                </Carousel>
-          </StyledCarouselLogoBox >
+          </Box>
      );
 }
 

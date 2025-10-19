@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import LoadingWheel from "@/components/loading/loading";
 import theme, { Colors } from "@/styles/theme";
 import Head from "next/head";
-import { ContactBox, ContactInfoBox, ContactText, ContactTitle } from "@/styles/contact/contact";
 import { UIProvider } from "@/context/ui/ui.context";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
@@ -40,15 +39,15 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                >
                     <Stack>
                          <UIProvider>
-                              <ContactBox theme={theme}>
-                                   <ContactInfoBox theme={theme} >
+                              <Box className="contact-box">
+                                   <Box className="contact-info-box">
                                         {
                                              success &&
                                              <Box>
-                                                  <ContactTitle theme={theme} >
+                                                  <Typography className="contact-title">
                                                        Uspešno ste izvršili registraciju!
                                                        <br />
-                                                  </ContactTitle>
+                                                  </Typography>
                                                   <Box >
                                                        <Typography>
                                                             Ako želite, možete da se prijavite<br />
@@ -74,19 +73,19 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                         {
                                              error &&
                                              <Box>
-                                                  <ContactTitle theme={theme} >
+                                                  <Typography className="contact-title">
                                                        Greška prilikom verifikacije!
-                                                  </ContactTitle>
-                                                  <ContactText theme={theme} sx={{ display: 'inline-block' }}>
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'inline-block' }}>
                                                        {error}
-                                                  </ContactText>
-                                                  <ContactText theme={theme}>
+                                                  </Typography>
+                                                  <Typography className="contact-text">
                                                        Ako Vam je istekao token, ili ste izgubili email za verifikaciju istog, <br />
                                                        možete zatražiti novi popunjavanjem registracione forme na sledećem linku: <br />
-                                                  </ContactText>
-                                                  <ContactText theme={theme} sx={{ display: 'inline-block', textAlign: 'center' }}>
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'inline-block', textAlign: 'center' }}>
                                                        <Link rel='canonical' href="/registracija" style={{ color: Colors.primary.main, textAlign: 'justify', textDecoration: 'underline' }}>Registrujte se</Link>
-                                                  </ContactText>
+                                                  </Typography>
                                              </Box>
                                         }
                                         {
@@ -95,8 +94,8 @@ export default function VerifyEmailForm({ success, error }: VerifyEmailFormProps
                                                   <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bolder' }}>Verifikacija nije uspela, probajte ponovo.</Typography>
                                              </Card>
                                         }
-                                   </ContactInfoBox>
-                              </ContactBox>
+                                   </Box>
+                              </Box>
                               <SearchBox />
                               <AppDrawer isScreenToMedium={false} />
                          </UIProvider>

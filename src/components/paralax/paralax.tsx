@@ -5,9 +5,9 @@ import {
      Box,
      Container,
      useTheme,
-     useMediaQuery
+     useMediaQuery,
+     Button
 } from '@mui/material';
-import { BannerQuotaText, BannerShopButton } from '@/styles/banner';
 import { Colors } from '@/styles/theme';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -126,7 +126,7 @@ export default function Parallax() {
                               >
                                    Dostava lekova radnim danima po celoj Srbiji!
                               </h3>
-                              <BannerQuotaText>
+                              <Typography className="BannerQuotaText">
                                    Nudimo pouzdane savete i širok asortiman proizvoda, a za bilo kakva dodatna pitanja ohrabrujemo Vas
                                    da nas kontaktirate putem{' '}
                                    <Link rel="canonical" href={"/kontakt"}>
@@ -137,8 +137,8 @@ export default function Parallax() {
                                              kontakt forme
                                         </Typography>
                                    </Link>
-                              </BannerQuotaText>
-                              <BannerQuotaText>
+                              </Typography>
+                              <Typography className="BannerQuotaText">
                                    ili pozivom na broj telefona{' '}
                                    <Typography
                                         component="span"
@@ -146,19 +146,18 @@ export default function Parallax() {
                                    >
                                         <a href={`tel:${+381346104222}`}>+381 34 610 4222</a>
                                    </Typography>
-                              </BannerQuotaText>
-                              <BannerShopButton
+                              </Typography>
+                              <Button
+                                   className="BannerShopButton"
                                    color="primary"
                                    variant="outlined"
-                                   loading={loading}
                                    onClick={() => {
                                         setLoading(true);
                                         router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika');
                                    }}
                               >
-
                                    Pogledajte ponudu
-                              </BannerShopButton>
+                              </Button>
                          </Typography>
                     </Container>
                </Box>

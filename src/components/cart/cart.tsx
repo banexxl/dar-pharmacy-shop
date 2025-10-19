@@ -1,9 +1,8 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow, Typography } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow, Typography, TableHead, TableCell } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Colors } from "../../styles/theme";
+import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { CartWrapper, StyledHeaderCell, StyledHeader, StyledTable, StyledTableBody } from "@/styles/cart"
 import { useSelector } from "react-redux";
 import ICartItem from "@/interfaces/cart/cart.interface";
 import CartItem from "./components/cartItem";
@@ -50,7 +49,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                </DialogTitle>
 
                <DialogContent>
-                    <CartWrapper theme={theme}>
+                    <Box className="CartWrapper">
                          {
                               cart.length === 0 ? (
                                    <Typography align="center" sx={{ color: Colors.primary.main }}>
@@ -58,34 +57,34 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    </Typography>
                               )
                                    :
-                                   <StyledTable>
-                                        <StyledHeader>
+                                   <Table>
+                                        <TableHead>
                                              <TableRow sx={{
                                                   display: 'flex',
                                                   width: '100%',
                                                   justifyContent: 'space-around',
-                                             }}   >
-                                                  <StyledHeaderCell theme={theme}>Slika</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Naziv</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Pakovanje</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Kod</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Količina</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Cena sa PDV</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Ukupno sa popustom</StyledHeaderCell>
-                                                  <StyledHeaderCell theme={theme}>Obriši</StyledHeaderCell>
+                                             }}>
+                                                  <TableCell className="CartTableCell">Slika</TableCell>
+                                                  <TableCell className="CartTableCell">Naziv</TableCell>
+                                                  <TableCell className="CartTableCell">Pakovanje</TableCell>
+                                                  <TableCell className="CartTableCell">Kod</TableCell>
+                                                  <TableCell className="CartTableCell">Količina</TableCell>
+                                                  <TableCell className="CartTableCell">Cena sa PDV</TableCell>
+                                                  <TableCell className="CartTableCell">Ukupno sa popustom</TableCell>
+                                                  <TableCell className="CartTableCell">Obriši</TableCell>
                                              </TableRow>
-                                        </StyledHeader>
-                                        <StyledTableBody theme={theme}>
+                                        </TableHead>
+                                        <TableBody>
                                              {cart.map((cartItem: ICartItem) => (
                                                   <CartItem key={cartItem._id} {...cartItem} />
                                              ))}
-                                        </StyledTableBody>
-                                   </StyledTable>
+                                        </TableBody>
+                                   </Table>
                          }
 
-                    </CartWrapper>
+                    </Box>
                     <CartTotals onClose={onClose} />
                </DialogContent>
-          </Dialog >
+          </Dialog>
      );
 }
