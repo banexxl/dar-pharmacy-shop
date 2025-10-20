@@ -16,61 +16,41 @@ export default function ProductMeta({ product, isScreenToMedium }: ProductMetaPr
 
      return (
           <Box className="ProductMetaWrapper">
-               <Typography variant='h6' lineHeight={2} textAlign='center'>
+               <Typography variant='h4' lineHeight={1.3} textAlign='center' sx={{ fontWeight: 700, color: Colors.neutral[900], mb: 1 }}>
                     {product.name}
                </Typography>
-               <Box textAlign="center">
+               <Box textAlign="center" sx={{ mb: 1 }}>
                     {
                          product.discount ? (
                               <Box>
                                    <Typography
-                                        variant={isScreenToMedium ? "caption" : "body1"}
-                                        sx={{ fontSize: '1rem' }}
+                                        variant={isScreenToMedium ? "caption" : "body2"}
+                                        sx={{ color: Colors.neutral[600] }}
                                         component="div"
                                    >
                                         Originalna cena:
                                         <Typography
                                              sx={{
                                                   textDecoration: 'line-through',
+                                                  color: Colors.neutral[500]
                                              }}
                                              component="span"
                                         >
                                              {product.price} RSD
                                         </Typography>
                                    </Typography>
-                                   <Typography
-                                        variant={isScreenToMedium ? "caption" : "body1"}
-                                        sx={{ fontSize: '1rem' }}
-                                        component="div"
-                                   >
-                                        Cena sa popustom:
-                                        <Typography
-                                             sx={{
-                                                  color: Colors.primary.main,
-                                                  fontWeight: 'bold'
-                                             }}
-                                             component="span"
-                                        >
-                                             {calculateDiscountedPrice(product.price, product.discountAmount)} RSD
-                                        </Typography>
+                                   <Typography variant={isScreenToMedium ? 'h6' : 'h5'} sx={{ color: Colors.primary.dark, fontWeight: 800 }}>
+                                        {calculateDiscountedPrice(product.price, product.discountAmount)} RSD
                                    </Typography>
                               </Box>
                          ) : (
-                              <Typography
-                                   variant={isScreenToMedium ? "caption" : "body1"}
-                                   sx={{ fontSize: '1rem' }}
-                                   component="div"
-                              >
-                                   Cena: {parseFloat(product.price.toString()).toFixed(2)} RSD
+                              <Typography variant={isScreenToMedium ? 'h6' : 'h5'} sx={{ color: Colors.primary.dark, fontWeight: 800 }}>
+                                   {parseFloat(product.price.toString()).toFixed(2)} RSD
                               </Typography>
                          )
-                    }
-               </Box>
-               <Typography
-                    variant={isScreenToMedium ? "caption" : "body1"}
-                    textAlign='center'
-                    component="div"
-               >
+                   }
+              </Box>
+               <Typography variant={isScreenToMedium ? 'caption' : 'body2'} textAlign='center' sx={{ color: Colors.neutral[600] }}>
                     Pakovanje: {product.quantity + " " + product.quantityUnit}
                </Typography>
           </Box>

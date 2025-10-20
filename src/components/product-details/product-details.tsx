@@ -127,25 +127,31 @@ function ProductDetails(product: IProduct) {
      const formattedWarning = product.warning.replace(/([,.])/g, "$1 ");
 
      return (
-          <Container className="ProductDetailWrapper" sx={{ marginTop: '100px', gap: '30px' }} style={{ display: "flex", flexDirection: isScreenToMedium ? "column" : "row" }}>
+          <Container className="ProductDetailWrapper" sx={{ mt: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
                <Box
                     className="ProductImageBox"
                     onClick={() => handleOpenCarousel(0)} // Open carousel on image click
                     sx={{
                          position: 'relative',
                          cursor: 'pointer',
-                         width: isScreenToMedium ? 300 : 400,
-                         height: isScreenToMedium ? 400 : 600,
+                         width: '100%',
+                         maxWidth: 520,
+                         mx: 'auto',
                     }}>
                     <Image
-                         fill
                          src={product.imageURL}
                          alt="Product image"
+                         width={800}
+                         height={800}
                          style={{
-                              borderRadius: Number(theme.shape.borderRadius),
+                              width: '100%',
+                              height: 'auto',
                               objectFit: 'contain',
                               background: Colors.neutral[50],
-                              padding: '8px'
+                              borderRadius: Number(theme.shape.borderRadius),
+                              padding: '8px',
+                              display: 'block',
+                              margin: '0 auto'
                          }}
                     />
                     {showSticker && (
@@ -169,31 +175,31 @@ function ProductDetails(product: IProduct) {
                          </Box>
                     )}
                </Box>
-               <Box className="ProductDetailInfoWrapper">
+               <Box className="ProductDetailInfoWrapper" sx={{ width: '100%', maxWidth: 900, mx: 'auto' }}>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
                     <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
                     {
                          product.availableStock == 0 ?
-                              <Typography textAlign='center' sx={{ fontWeight: 'bold' }}>Nema na stanju!</Typography>
+                              <Typography textAlign='center' sx={{ fontWeight: 700, color: Colors.error.main }}>Nema na stanju!</Typography>
                               :
-                              <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
+                              <Typography textAlign='center' sx={{ color: Colors.neutral[700] }}>Dostupno: {product.availableStock} na stanju</Typography>
                     }
-                    <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+                    <Typography variant="h4" sx={{ fontWeight: 700, color: Colors.primary.main, mt: 3, textAlign: 'center' }}>
                          Opis
                     </Typography>
-                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center', wordBreak: 'break-word' }}>
+                    <Typography variant="body1" sx={{ textAlign: 'center', wordBreak: 'break-word', color: Colors.neutral[700], lineHeight: 1.7 }}>
                          {formattedDescription}
                     </Typography>
-                    <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+                    <Typography variant="h4" sx={{ fontWeight: 700, color: Colors.primary.main, mt: 3, textAlign: 'center' }}>
                          Instrukcije
                     </Typography>
-                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center', wordBreak: 'break-word' }}>
+                    <Typography variant="body1" sx={{ textAlign: 'center', wordBreak: 'break-word', color: Colors.neutral[700], lineHeight: 1.7 }}>
                          {formattedInstructions}
                     </Typography>
-                    <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+                    <Typography variant="h4" sx={{ fontWeight: 700, color: Colors.primary.main, mt: 3, textAlign: 'center' }}>
                          Upozorenje
                     </Typography >
-                    <Typography variant="h5" sx={{ textAlign: 'justify', textAlignLast: 'center', wordBreak: 'break-word' }}>
+                    <Typography variant="body1" sx={{ textAlign: 'center', wordBreak: 'break-word', color: Colors.neutral[700], lineHeight: 1.7 }}>
                          {formattedWarning}
                     </Typography>
                     <Box
@@ -214,16 +220,13 @@ function ProductDetails(product: IProduct) {
                               Korpa
                          </Button>
                     </Box>
-                    <Box
-                         display="flex"
-                         alignItems="center"
-                         sx={{ m: 4, color: Colors.primary.main }}
-                    >
+                    <Box display="flex" alignItems="center" justifyContent="center" sx={{ m: 4, color: Colors.primary.main, gap: 2 }}>
                          {!isInWishlist ? (
                               <FavoriteBorderIcon
                                    id={`wishlist-icon-${product._id}`}
                                    sx={{
                                         cursor: 'pointer',
+                                        fontSize: 28,
                                         ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                    }}
                                    onClick={handleAddToWishlist}
@@ -233,18 +236,19 @@ function ProductDetails(product: IProduct) {
                                    id={`wishlist-icon-${product._id}`}
                                    sx={{
                                         cursor: 'pointer',
+                                        fontSize: 28,
                                         ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                    }}
                                    onClick={handleRemoveFromWishlist}
                               />
                          )}
-                         <InstagramIcon sx={{ pl: 2, cursor: 'pointer', color: Colors.primary.main }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
+                         <InstagramIcon sx={{ cursor: 'pointer', color: Colors.primary.main, fontSize: 28 }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
                          <Button
                               sx={{ width: '30px', height: '30px', backgroundColor: 'transparent', }}
                               onClick={() => setShowShareOptions(!showShareOptions)}
                          >
                               <Tooltip placement="left" title={"Podeli"}>
-                                   <ShareIcon color="primary" />
+                                   <ShareIcon color="primary" sx={{ fontSize: 28 }} />
                               </Tooltip>
                          </Button>
                          {
