@@ -41,7 +41,15 @@ export default function ProductCard({
             component="img"
             image={product.imageURL}
             alt={product.name}
-            sx={{ height: compact ? 160 : 200, objectFit: 'contain', p: 1, backgroundColor: Colors.neutral[50], mx: 'auto', display: 'block' }}
+            sx={{
+              height: compact ? 160 : 200,
+              objectFit: 'contain',
+              p: 1,
+              backgroundColor: Colors.neutral[50],
+              mx: 'auto',
+              display: 'block',
+              borderRadius: '28px',
+            }}
           />
         </Link>
       )}

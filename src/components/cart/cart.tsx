@@ -50,7 +50,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                     </Box>
                </DialogTitle>
 
-               <DialogContent>
+               <DialogContent sx={{ pb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <Box className="CartWrapper">
                          {
                               cart.length === 0 ? (
@@ -59,7 +59,12 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    </Typography>
                               )
                                    :
-                                   <TableContainer sx={{ maxHeight: isScreenToMedium ? '70vh' : '60vh', overflowX: isScreenToMedium ? 'auto' : 'visible' }}>
+                                   <TableContainer sx={{
+                                        maxHeight: isScreenToMedium ? '70vh' : '50vh',
+                                        overflowY: 'auto',
+                                        overflowX: isScreenToMedium ? 'auto' : 'visible',
+                                        mb: { xs: 1, md: 3 }
+                                   }}>
                                         <Table stickyHeader size={isScreenToMedium ? 'small' : 'medium'} sx={{ minWidth: isScreenToMedium ? 700 : 'auto' }}>
                                              <TableHead>
                                                   <TableRow>
