@@ -48,9 +48,9 @@ export default function ProductMeta({ product, isScreenToMedium }: ProductMetaPr
                                    {parseFloat(product.price.toString()).toFixed(2)} RSD
                               </Typography>
                          )
-                   }
-              </Box>
-               <Typography variant={isScreenToMedium ? 'caption' : 'body2'} textAlign='center' sx={{ color: Colors.neutral[600] }}>
+                    }
+               </Box>
+               <Typography variant='body2' textAlign='center' sx={{ color: Colors.neutral[600] }}>
                     Pakovanje: {product.quantity + " " + product.quantityUnit}
                </Typography>
           </Box>
