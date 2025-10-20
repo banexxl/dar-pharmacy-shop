@@ -350,10 +350,6 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    </ListItemButton>
                               </motion.li>
                          }
-                         <MiddleDivider sx={{
-                              borderColor: 'rgba(255, 255, 255, 0.2)',
-                              my: 1
-                         }} />
                     </List>
                </Drawer>
                <WishListDialog />
