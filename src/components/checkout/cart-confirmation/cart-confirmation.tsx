@@ -75,7 +75,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                          </TableBody>
                     </Table>
                </TableContainer>
-               <Typography className="StyledTotalsTitle">
+               <Typography sx={{ color: Colors.primary.main }}>
                     {totalItemPrice < 8000 ? `Ukupno sa PDV: ${parseFloat(totalItemPrice).toFixed(2)} RSD` : `Ukupno sa PDV, besplatna dostava: ${parseFloat(totalItemPrice).toFixed(2)} RSD`}
                </Typography>
                <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
