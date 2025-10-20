@@ -1,18 +1,52 @@
 ﻿import { Container, Stack } from "@mui/material";
+import theme from "../../../styles/theme";
 import { UIProvider } from "../../../context/ui/ui.context";
 import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from "../../../components/navbar/drawer/drawer";
 import SearchBox from "../../../components/search/search"
 import { ProductsServices } from '@/services/product.services'
-// removed per-page ThemeProvider; using global provider
+import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Seo } from "@/components/seo";
-import theme from "@/styles/theme";
 
 export default function MainCategoryPage(props: any) {
 
+     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
+          loading: () => <LoadingWheel />,
+          ssr: true
+     })
+
+     const router = useRouter()
+     const [loading, setLoading] = useState(false)
+
+     return (
+          <>
+               {
+                    loading ?
+                         <LoadingWheel /> :
+                         <DynamicThemeProvider theme={theme}>
+                              <Seo title={'Kategorija'} description={'Kategorija'} url={'https://www.apoteka-dar.rs/'} />
+                              <Container
+                                   disableGutters
+                                   maxWidth="lg"
+                                   sx={{
+                                        background: "#fff",
+                                   }}
+                              >
+                                   <Stack>
+                                        <UIProvider>
+                                             <SearchBox />
+                                             <ProductsFilter filterObject={props.products} routerQuery={router.query} />
+                                             <AppDrawer isScreenToMedium={false} />
+                                        </UIProvider>
+                                   </Stack>
+                              </Container>
+                         </DynamicThemeProvider>
+               }
+          </>
+     )
 }
 
 export async function getServerSideProps({ query }: any) {
@@ -38,4 +72,3 @@ export async function getServerSideProps({ query }: any) {
           },
      }
 }
-
