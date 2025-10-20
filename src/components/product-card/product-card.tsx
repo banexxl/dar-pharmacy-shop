@@ -2,6 +2,7 @@ import { Card, CardContent, CardActions, CardMedia, Typography, Button, Box, Chi
 import IProduct from '@/interfaces/product/product.interface';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/cart/cart.slice';
+import { addToWishList } from '@/store/wishlist/wishlist.slice';
 import { Colors } from '@/styles/theme';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -36,7 +37,16 @@ export default function ProductCard({
   const discounted: number = hasDiscount ? Math.max(price - discountAmount, 0) : price;
 
   return (
-    <Card sx={{ width: '100%', maxWidth: compact ? 280 : 340, borderRadius: 2, border: `1px solid ${Colors.neutral[200]}`, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Card sx={{
+      width: '100%',
+      maxWidth: compact ? 280 : 340,
+      height: compact ? 360 : 440,
+      borderRadius: 2,
+      border: `1px solid ${Colors.neutral[200]}`,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'stretch'
+    }}>
       {showImage && (
         <Link href={`/proizvod/${product.slug}`} passHref>
           <CardMedia
@@ -55,13 +65,24 @@ export default function ProductCard({
           />
         </Link>
       )}
-      <CardContent sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
+      <CardContent sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%', flexGrow: 1 }}>
         {hasDiscount && (
           <Chip size="small" color="error" label={`-${Math.round(((product.price - discounted) / product.price) * 100)}%`} sx={{ mb: 1 }} />
         )}
         {showTitle && (
           <Link href={`/proizvod/${product.slug}`} passHref>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3, mb: 0.5, color: Colors.neutral[900], textAlign: 'center' }}>
+            <Typography variant="subtitle1" sx={{
+              fontWeight: 700,
+              lineHeight: 1.3,
+              mb: 0.5,
+              color: Colors.neutral[900],
+              textAlign: 'center',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              minHeight: 44
+            }}>
               {product.name}
             </Typography>
           </Link>
@@ -70,7 +91,7 @@ export default function ProductCard({
           <Typography variant="caption" sx={{ color: Colors.neutral[600], textAlign: 'center' }}>{product.manufacturer}</Typography>
         )}
         {showPrice && (
-          <Box sx={{ mt: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, width: '100%' }}>
+          <Box sx={{ mt: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, width: '100%', minHeight: 32 }}>
             <Typography variant="h6" sx={{ fontWeight: 800, color: Colors.primary.dark }}>
               {discounted.toFixed(2)} RSD
             </Typography>
@@ -93,16 +114,6 @@ export default function ProductCard({
         >
           <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
             <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              disabled={product.availableStock <= 0}
-              onClick={() => dispatch(addToCart(product))}
-              sx={{ minWidth: 0, px: 2 }}
-            >
-              {product.availableStock > 0 ? 'Dodaj' : 'Nema'}
-            </Button>
-            <Button
               variant="outlined"
               color="primary"
               size="small"
@@ -110,6 +121,27 @@ export default function ProductCard({
               sx={{ minWidth: 0, px: 2 }}
             >
               Detalji
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              onClick={() => dispatch(addToWishList(product))}
+              sx={{ minWidth: 0, px: 2 }}
+            >
+              Omiljeni
+            </Button>
+          </Box>
+          <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              disabled={product.availableStock <= 0}
+              onClick={() => dispatch(addToCart(product))}
+              sx={{ minWidth: 0, px: 2, width: '100%' }}
+            >
+              {product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
             </Button>
           </Box>
         </CardActions>
