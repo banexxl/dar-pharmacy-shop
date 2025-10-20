@@ -54,9 +54,17 @@ const ContactForm = () => {
                     {
                          formik => (
                               <Form style={{
-                                   width: '80%', display: 'flex', flexDirection: 'column',
-                                   marginBottom: '20px', alignItems: 'center', background: Colors.dove_gray,
-                                   borderRadius: '10px', gap: '10px', padding: '10px',
+                                   width: '100%',
+                                   maxWidth: '760px',
+                                   margin: '0 auto 24px',
+                                   display: 'flex',
+                                   flexDirection: 'column',
+                                   alignItems: 'stretch',
+                                   gap: '16px',
+                                   padding: '24px',
+                                   background: '#ffffff',
+                                   borderRadius: '12px',
+                                   boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
                               }}>
                                    <Typography variant="h5" component="legend" gutterBottom className="ContactTitle">
                                         Kontakt forma
@@ -67,27 +75,28 @@ const ContactForm = () => {
                                         Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                         Slobodno nas kontaktirajte!
                                    </Typography>
-                                   <TextField
-                                        value={formik.values.name}
-                                        label={"Ime"}
-                                        name={'name'}
-                                        variant="outlined"
-                                        onChange={formik.handleChange('name')}
-                                        error={formik.touched.name && !!formik.errors.name}
-                                        helperText={formik.touched.name && formik.errors.name}
-                                        fullWidth
-                                   />
-
-                                   <TextField
-                                        value={formik.values.email}
-                                        onChange={formik.handleChange('email')}
-                                        label={"Email"}
-                                        name={'email'}
-                                        variant="outlined"
-                                        error={formik.touched?.email && !!formik.errors?.email}
-                                        helperText={formik.touched?.email && formik.errors?.email}
-                                        fullWidth
-                                   />
+                                   <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, width: '100%' }}>
+                                        <TextField
+                                             value={formik.values.name}
+                                             label={"Ime"}
+                                             name={'name'}
+                                             variant="outlined"
+                                             onChange={formik.handleChange('name')}
+                                             error={formik.touched.name && !!formik.errors.name}
+                                             helperText={formik.touched.name && formik.errors.name}
+                                             fullWidth
+                                        />
+                                        <TextField
+                                             value={formik.values.email}
+                                             onChange={formik.handleChange('email')}
+                                             label={"Email"}
+                                             name={'email'}
+                                             variant="outlined"
+                                             error={formik.touched?.email && !!formik.errors?.email}
+                                             helperText={formik.touched?.email && formik.errors?.email}
+                                             fullWidth
+                                        />
+                                   </Box>
 
                                    <TextField
                                         value={formik.values.message}
@@ -106,7 +115,7 @@ const ContactForm = () => {
 
                                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                         <FormControlLabel
-                                             sx={{ marginBottom: '10px', width: isScreenToMedium ? '100%' : '50%' }}
+                                             sx={{ width: '100%', maxWidth: 680, alignSelf: 'center', marginBottom: '10px' }}
                                              control={
                                                   <Checkbox
                                                        checked={formik.values.dataProcessConsent}
@@ -115,9 +124,9 @@ const ContactForm = () => {
                                                        color="primary"
                                                   />
                                              }
-                                             label={<Typography sx={{ display: 'inline', textAlign: 'justify' }}>
+                                              label={<Typography sx={{ textAlign: 'center' }}>
                                                   Saglasan/saglasna sam sa obradom mojih podataka o ličnosti navedenih za potrebe savetovanja, za vreme potrebno da se pitanje obradi i da se na njega odgovori. Više informacija možete naći na linku: <br />
-                                                  <Typography sx={{ color: Colors.link, display: 'inline', textAlign: 'justify' }}>
+                                                   <Typography sx={{ color: Colors.link, display: 'inline' }}>
                                                        <Link rel='canonical' href="/informacije/politika-privatnosti">
                                                             Politika privatnosti.
                                                        </Link>
@@ -129,7 +138,7 @@ const ContactForm = () => {
                                         )}
 
                                         <FormControlLabel
-                                             sx={{ width: isScreenToMedium ? '100%' : '50%', marginBottom: '10px' }}
+                                             sx={{ width: '100%', maxWidth: 680, alignSelf: 'center', marginBottom: '10px' }}
                                              control={
                                                   <Checkbox
                                                        checked={formik.values.questionSubmissionConsent}
@@ -139,7 +148,7 @@ const ContactForm = () => {
                                                   />
                                              }
                                              label={
-                                                  <Typography sx={{ textAlign: 'justify' }}>
+                                                  <Typography sx={{ textAlign: 'center' }}>
                                                        Postavljanjem pitanja potvrđujem da sam pročitao i da sam saglasan sa: <br />
                                                        <Typography sx={{ color: Colors.link, display: 'inline' }}>
                                                             <Link rel='canonical' href="/informacije/politika-privatnosti">
@@ -155,7 +164,8 @@ const ContactForm = () => {
                                    </Box>
                                    <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
                                    <Button type='submit'
-                                        sx={{ color: Colors.secondary[50], backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
+                                        fullWidth={isScreenToMedium}
+                                        sx={{ alignSelf: { xs: 'stretch', sm: 'flex-end' }, mt: 1, color: Colors.secondary[50], backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
                                         disabled={submitEnabled && Object.keys(formik.errors).length > 0 && loaded}>
                                         Pošalji poruku
                                    </Button>
@@ -168,3 +178,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+

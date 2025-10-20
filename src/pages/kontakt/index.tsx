@@ -27,12 +27,13 @@ const ContactPage = (props: ContactPageProps) => {
                               <Box sx={{ mb: 4, textAlign: 'center', '& > p:first-of-type': { display: 'none' } }} >
                                    <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pi&scaron;ite nam ili nas posetite</Typography>
                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                                        <Box sx={{
-                                        }}>
+                                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                              <ContactForm />
                                         </Box>
                                         <Box>
-                                             <ContactMap mapApiKey={props.mapApiKey} />
+                                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                  <ContactMap mapApiKey={props.mapApiKey} />
+                                             </Box>
                                              <Box className="contact-info-box" sx={{ mt: 3 }}>
                                                   <Typography className="contact-text" sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center' }}>
                                                        <LocationOnIcon color="primary" /> Adresa:
