@@ -127,18 +127,15 @@ export default function Home(props: any) {
                          }}>
                               <Container maxWidth="xl">
                                    <Box sx={{ textAlign: 'center', mb: 6 }}>
-                                        <Typography
-                                             variant="h2"
-                                             sx={{
-                                                  fontSize: { xs: '2rem', md: '2.5rem' },
-                                                  fontWeight: 700,
-                                                  background: 'linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%)',
-                                                  backgroundClip: 'text',
-                                                  WebkitBackgroundClip: 'text',
-                                                  WebkitTextFillColor: 'transparent',
-                                                  mb: 2,
-                                                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-                                             }}
+                                         <Typography
+                                              variant="h2"
+                                              sx={{
+                                                   fontSize: { xs: '2rem', md: '2.5rem' },
+                                                   fontWeight: 700,
+                                                   color: Colors.primary.main,
+                                                   mb: 2,
+                                                   letterSpacing: '-0.01em'
+                                              }}
                                         >
                                              Izdvajamo iz ponude
                                         </Typography>
