@@ -34,11 +34,7 @@ function ProductDetails(product: IProduct) {
      const domRef = useRef<HTMLElement | null>(null)
      const observerRef = useRef<IntersectionObserver | null>(null);
 
-     const mediaItems = product.mediaURLs?.map((url) => ({
-          type: 'image' as const,
-          src: url,
-          alt: product.name,
-     }));
+     const mediaItems = (product.mediaURLs ?? []).map(url => ({ type: 'image' as const, src: url, alt: product.name }));
 
      useEffect(() => {
           observerRef.current = new IntersectionObserver(
@@ -110,17 +106,13 @@ function ProductDetails(product: IProduct) {
      }
 
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
-     const localStorage: any = useLocalStorage('persist:root', {});
-     const localStorageReducers: any = localStorage[0];
-     const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer);
+     const wishListProductID = wishListState.find((el: IProduct) => el._id === product._id) ?? null;
      const showSticker = product.discount && product.discountAmount! > 0;
-     const wishListProductID = localStorageWishList.find((el: IProduct) => {
-          return el._id == product._id;
-     });
 
-     const formattedDescription = product.description.replace(/([,.])/g, "$1 ");
-     const formattedInstructions = product.instructions.replace(/([,.])/g, "$1 ");
-     const formattedWarning = product.warning.replace(/([,.])/g, "$1 ");
+     const formattedDescription = (product.description ?? '').replace(/([,.])/g, "$1 ");
+     const formattedInstructions = (product.instructions ?? '').replace(/([,.])/g, "$1 ");
+     const formattedWarning = (product.warning ?? '').replace(/([,.])/g, "$1 ");
+
 
      return (
           <Container className="ProductDetailWrapper" sx={{ mt: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
