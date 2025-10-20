@@ -1,6 +1,6 @@
 import { createTheme, Theme } from "@mui/material/styles";
 import { darken, lighten } from "polished";
-import { keyframes } from '@mui/system'
+import { color, keyframes } from '@mui/system'
 
 export const DrawerWidth = 250;
 const shineKeyframe = keyframes`
@@ -1064,6 +1064,7 @@ const theme: Theme = createTheme({
                               borderBottom: 'none',
                               padding: '12px 16px',
                               backgroundColor: Colors.neutral[50],
+                              color: Colors.primary.main,
                               '&:first-of-type': {
                                    borderRadius: '12px 0 0 12px',
                               },

@@ -25,13 +25,13 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                          {
                               !isNaN(parseFloat(totalItemPrice)) && parseFloat(totalItemPrice) < 8000 ? (
                                    <Box sx={{ textAlign: 'center', alignItems: 'center' }}>
-                                        <Typography className="StyledTotalsTitle">
+                                        <Typography className="StyledTotalsTitle" sx={{ color: Colors.primary.darker }}>
                                              Ukupno u korpi:
                                         </Typography>
                                         {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
                                         <Typography
                                              sx={{
-                                                  color: Colors.primary.main,
+                                                  color: Colors.primary.darker,
                                                   fontSize: '.8rem',
                                                   textAlign: 'center'
                                              }}
@@ -64,9 +64,10 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                              flexDirection: 'column',
                                              alignItems: 'center',
                                              width: '100%',
-                                             textAlign: 'center'
+                                             textAlign: 'center',
+                                             color: Colors.primary.darker
                                         }}>
-                                             <Typography className="StyledTotalsTitle">
+                                             <Typography className="StyledTotalsTitle" sx={{ color: Colors.primary.darker }}>
                                                   Ukupno u korpi:
                                              </Typography>
                                              {(parseFloat(totalItemPrice).toFixed(2) + ' RSD')}
@@ -91,7 +92,8 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                     <Typography sx={{ color: Colors.primary.main, fontSize: '1rem', textAlign: 'center' }}>
                          Vaša korpa je prazna
                     </Typography>
-               )}
+               )
+               }
 
                {/* <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} /> */}
                <Box
@@ -137,7 +139,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '24px', mb: '24px', maxWidth: '640px', mx: 'auto' }}>
                     Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
                </Typography>
-          </Box>
+          </Box >
      )
 }
 export default CartTotals
