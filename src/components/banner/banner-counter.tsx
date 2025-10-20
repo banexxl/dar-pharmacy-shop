@@ -50,7 +50,7 @@ export const BannerCountUp = () => {
                               xs: "repeat(2, 1fr)",
                               md: "repeat(4, 1fr)",
                          },
-                         pt: { xs: 1, md: 5 },
+                         pt: { xs: 2, md: 5 },
                          pl: "10px",
                          pb: "20px",
                     }}

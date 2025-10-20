@@ -59,8 +59,8 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    </Typography>
                               )
                                    :
-                                   <TableContainer sx={{ maxHeight: isScreenToMedium ? '70vh' : '60vh' }}>
-                                        <Table stickyHeader size={isScreenToMedium ? 'small' : 'medium'}>
+                                   <TableContainer sx={{ maxHeight: isScreenToMedium ? '70vh' : '60vh', overflowX: isScreenToMedium ? 'auto' : 'visible' }}>
+                                        <Table stickyHeader size={isScreenToMedium ? 'small' : 'medium'} sx={{ minWidth: isScreenToMedium ? 700 : 'auto' }}>
                                              <TableHead>
                                                   <TableRow>
                                                        <TableCell className="CartTableCell" sx={{ width: { xs: 72, md: 88 } }}>Slika</TableCell>

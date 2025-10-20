@@ -129,62 +129,81 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                    >
                                         APOTEKA DAR
                                    </Typography>
-                              </Link>                              {/* Actions */}
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                   <IconButton
-                                        onClick={() => setShowSearchBox(true)}
-                                        sx={{
-                                             color: Colors.neutral[600],
-                                             p: 1.5,
-                                             borderRadius: 2,
-                                             '&:hover': {
-                                                  color: Colors.primary.main,
-                                                  bgcolor: Colors.primary[50],
-                                                  transform: 'translateY(-2px)',
-                                                  boxShadow: `0 4px 12px ${Colors.primary.main}20`,
-                                             },
-                                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                        }}
-                                   >
-                                        <SearchIcon />
-                                   </IconButton>
-
-                                   <IconButton
-                                        onClick={() => { showCartDialog(); setDrawerOpen(false) }}
-                                        sx={{
-                                             color: Colors.neutral[600],
-                                             p: 1.5,
-                                             position: 'relative',
-                                             borderRadius: 2,
-                                             '&:hover': {
-                                                  color: Colors.primary.main,
-                                                  bgcolor: Colors.primary[50],
-                                                  transform: 'translateY(-2px)',
-                                                  boxShadow: `0 4px 12px ${Colors.primary.main}20`,
-                                             },
-                                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                        }}
-                                   >
-                                        <Badge
-                                             badgeContent={cartCounter}
-                                             color="primary"
-                                             sx={{
-                                                  '& .MuiBadge-badge': {
-                                                       fontWeight: 600,
-                                                       fontSize: '0.75rem',
-                                                       minWidth: 20,
-                                                       height: 20,
-                                                       borderRadius: '10px',
-                                                       background: `linear-gradient(135deg, ${Colors.primary.main} 0%, ${Colors.primary[600]} 100%)`,
-                                                       boxShadow: `0 2px 8px ${Colors.primary.main}30`,
-                                                       animation: cartCounter > 0 ? `${pulseAnimation} 2s infinite` : 'none',
-                                                  }
-                                             }}
-                                        >
-                                             <ShoppingCartIcon />
-                                        </Badge>
-                                   </IconButton>
-                              </Box>
+                               </Link>
+                               {/* Actions (3 icons on mobile) */}
+                               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                                    <Link href="/lista-zelja" passHref>
+                                         <IconButton
+                                              sx={{
+                                                   color: Colors.neutral[600],
+                                                   p: 1,
+                                                   borderRadius: 2,
+                                                   '&:hover': {
+                                                        color: 'error.main',
+                                                        bgcolor: 'error.50',
+                                                        transform: 'translateY(-2px)',
+                                                   },
+                                                   transition: 'all 0.2s ease',
+                                              }}
+                                         >
+                                              <Badge
+                                                   badgeContent={wishlistCounter}
+                                                   color="error"
+                                                   sx={{ '& .MuiBadge-badge': { fontSize: '0.65rem', minWidth: 16, height: 16 } }}
+                                              >
+                                                   <FavoriteIcon />
+                                              </Badge>
+                                         </IconButton>
+                                    </Link>
+                                    <IconButton
+                                         onClick={() => { showCartDialog(); setDrawerOpen(false) }}
+                                         sx={{
+                                              color: Colors.neutral[600],
+                                              p: 1,
+                                              position: 'relative',
+                                              borderRadius: 2,
+                                              '&:hover': {
+                                                   color: Colors.primary.main,
+                                                   bgcolor: Colors.primary[50],
+                                                   transform: 'translateY(-2px)',
+                                              },
+                                              transition: 'all 0.2s ease',
+                                         }}
+                                    >
+                                         <Badge
+                                              badgeContent={cartCounter}
+                                              color="primary"
+                                              sx={{
+                                                   '& .MuiBadge-badge': {
+                                                        fontWeight: 600,
+                                                        fontSize: '0.7rem',
+                                                        minWidth: 18,
+                                                        height: 18,
+                                                        borderRadius: '10px',
+                                                   }
+                                              }}
+                                         >
+                                              <ShoppingCartIcon />
+                                         </Badge>
+                                    </IconButton>
+                                    <Link href="/nalog" passHref>
+                                         <IconButton
+                                              sx={{
+                                                   color: Colors.neutral[600],
+                                                   p: 1,
+                                                   borderRadius: 2,
+                                                   '&:hover': {
+                                                        color: Colors.primary.main,
+                                                        bgcolor: Colors.primary[50],
+                                                        transform: 'translateY(-2px)',
+                                                   },
+                                                   transition: 'all 0.2s ease',
+                                              }}
+                                         >
+                                              <PersonIcon />
+                                         </IconButton>
+                                    </Link>
+                               </Box>
                          </Toolbar>
                     </AppBar>
                </HideOnScroll>

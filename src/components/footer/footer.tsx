@@ -96,14 +96,14 @@ export default function Footer() {
                                         color: Colors.neutral[100],
                                    }}>
                                         <AccordionSummary
-                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
+                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[100] }} />}
                                              aria-controls="panel1-content"
                                              id="panel1-header"
                                              sx={{
                                                   color: Colors.neutral[100],
                                                   fontWeight: 600,
                                                   '&:hover': {
-                                                       bgcolor: Colors.neutral[800],
+                                                       bgcolor: Colors.neutral[700],
                                                   }
                                              }}
                                         >
@@ -192,14 +192,14 @@ export default function Footer() {
                                         color: Colors.neutral[100],
                                    }}>
                                         <AccordionSummary
-                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
+                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[100] }} />}
                                              aria-controls="panel2-content"
                                              id="panel2-header"
                                              sx={{
                                                   color: Colors.neutral[100],
                                                   fontWeight: 600,
                                                   '&:hover': {
-                                                       bgcolor: Colors.neutral[800],
+                                                       bgcolor: Colors.neutral[700],
                                                   }
                                              }}
                                         >
@@ -233,20 +233,20 @@ export default function Footer() {
                                         color: Colors.neutral[100],
                                    }}>
                                         <AccordionSummary
-                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
+                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[100] }} />}
                                              aria-controls="panel3-content"
                                              id="panel3-header"
                                              sx={{
                                                   color: Colors.neutral[100],
                                                   fontWeight: 600,
                                                   '&:hover': {
-                                                       bgcolor: Colors.neutral[800],
+                                                       bgcolor: Colors.neutral[700],
                                                   }
                                              }}
                                         >
                                              <Typography variant="h6" fontWeight={600}>Korisnički servis</Typography>
                                         </AccordionSummary>
-                                        <AccordionDetails sx={{ px: 2, py: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                                        <AccordionDetails sx={{ px: 2, py: 1, display: 'flex' }}>
                                              <Link rel='canonical' href={"/informacije/odustanak"} style={{
                                                   color: Colors.neutral[300],
                                                   textDecoration: 'none',

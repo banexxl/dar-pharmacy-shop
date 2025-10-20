@@ -14,14 +14,14 @@ export default function Banner() {
      return (
           <Container className="BannerContainer">
                {/* <BannerImage src="/images/home-page/darHeroPic.png" alt={"banner"} /> */}
-               <Box className="BannerLeftImageContent">
-                    <Typography component="h1" variant="h1" sx={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'Montserrat', mt: '50px' }}>
+               <Box className="BannerLeftImageContent" sx={{ textAlign: isScreenToMedium ? 'center' : 'left', alignItems: isScreenToMedium ? 'center' : 'flex-start' }}>
+                    <Typography component="h1" variant="h1" sx={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'Montserrat', mt: { xs: 2, md: '50px' }, fontSize: isScreenToMedium ? '2rem' : undefined }}>
                          Apoteka DAR
                     </Typography>
-                    <Typography component="h2" variant="h2" sx={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'Montserrat', mt: '50px' }}>
+                    <Typography component="h2" variant="h2" sx={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'Montserrat', mt: { xs: 2, md: '50px' }, fontSize: isScreenToMedium ? '1.6rem' : undefined }}>
                          "Radosno srce je pola zdravlja!"
                     </Typography>
-                    <Typography component="h3" variant="h3" sx={{ color: Colors.primary.lighter, fontStyle: 'italic', fontFamily: 'Montserrat', mt: '50px' }}>
+                    <Typography component="h3" variant="h3" sx={{ color: Colors.primary.lighter, fontStyle: 'italic', fontFamily: 'Montserrat', mt: { xs: 2, md: '50px' }, fontSize: isScreenToMedium ? '1.3rem' : undefined }}>
                          Dostava lekova radnim danima po celoj Srbiji!
                     </Typography>
                     <Typography className="BannerQuotaText">
@@ -41,12 +41,12 @@ export default function Banner() {
                               </a>
                          </Typography>
                     </Typography>
-                    <Button className="BannerShopButton" color="primary" variant="outlined" onClick={() => setLoading(true)}>
+                    <Button className="BannerShopButton" color="primary" variant="outlined" onClick={() => setLoading(true)} fullWidth={isScreenToMedium} sx={{ mt: { xs: 2, md: 0 } }}>
                          <Link rel='canonical' href={"/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika"}>
                               Pogledajte ponudu
                          </Link>
                     </Button>
-                    <Box className="BannerRightImageContent" />
+                    <Box className="BannerRightImageContent" sx={{ display: { xs: 'none', md: 'block' } }} />
                </Box>
           </Container>
      )
