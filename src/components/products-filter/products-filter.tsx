@@ -29,10 +29,11 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                <Box
                     className="ProductsFilters"
                     sx={{
-                         flex: { md: '0 0 280px' },
-                         width: { xs: '100%', md: 280 },
-                         position: { md: 'sticky' },
-                         top: { md: 96 },
+                        display: { xs: 'none', md: 'block' },
+                        flex: { md: '0 0 280px' },
+                        width: { md: 280 },
+                        position: { md: 'sticky' },
+                        top: { md: 96 },
                     }}
                >
                     <Box className="FilterTitleBox">

@@ -30,8 +30,10 @@ export default function ProductCard({
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const hasDiscount = product.discount && typeof product.discountAmount === 'number' && product.discountAmount! > 0;
-  const discounted = hasDiscount ? Math.max(product.price - (product.discountAmount as number), 0) : product.price;
+  const price = Number(product.price);
+  const discountAmount = Number(product.discountAmount);
+  const hasDiscount = !!product.discount && !isNaN(discountAmount) && discountAmount > 0;
+  const discounted: number = hasDiscount ? Math.max(price - discountAmount, 0) : price;
 
   return (
     <Card sx={{ width: '100%', maxWidth: compact ? 280 : 340, borderRadius: 2, border: `1px solid ${Colors.neutral[200]}`, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
