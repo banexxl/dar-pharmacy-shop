@@ -22,6 +22,7 @@ import Link from "next/link";
 import { Colors } from "@/styles/theme";
 import useDialogModal from "@/hooks/useDialogModal";
 import Cart from "../cart/cart";
+import WishList from "../wishlist/wishlist";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "@/store/cart/cart.selector";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
@@ -44,6 +45,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
      const wishlistCounter = wishlistState?.length || 0;
 
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
+     const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList);
 
      const pulseAnimation = keyframes`
     0% { transform: scale(1); }
@@ -98,29 +100,29 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
 
                               {/* Actions (3 icons on mobile) */}
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: isScrolled ? 0.25 : 0.5 }}>
-                                   <Link href="/lista-zelja" passHref>
-                                        <IconButton
-                                             sx={{
-                                                  color: Colors.neutral[600],
-                                                  p: isScrolled ? 0.75 : 1,
-                                                  borderRadius: 2,
-                                                  '&:hover': {
-                                                       color: 'error.main',
-                                                       bgcolor: 'error.50',
-                                                       transform: 'translateY(-2px)',
-                                                  },
-                                                  transition: 'all 0.2s ease',
-                                             }}
+                                   <IconButton
+                                        aria-label="Omiljeni"
+                                        onClick={() => showWishListDialog()}
+                                        sx={{
+                                             color: Colors.neutral[600],
+                                             p: isScrolled ? 0.75 : 1,
+                                             borderRadius: 2,
+                                             '&:hover': {
+                                                  color: 'error.main',
+                                                  bgcolor: 'error.50',
+                                                  transform: 'translateY(-2px)',
+                                             },
+                                             transition: 'all 0.2s ease',
+                                        }}
+                                   >
+                                        <Badge
+                                             badgeContent={wishlistCounter}
+                                             color="error"
+                                             sx={{ '& .MuiBadge-badge': { fontSize: '0.65rem', minWidth: 16, height: 16 } }}
                                         >
-                                             <Badge
-                                                  badgeContent={wishlistCounter}
-                                                  color="error"
-                                                  sx={{ '& .MuiBadge-badge': { fontSize: '0.65rem', minWidth: 16, height: 16 } }}
-                                             >
-                                                  <FavoriteIcon />
-                                             </Badge>
-                                        </IconButton>
-                                   </Link>
+                                             <FavoriteIcon />
+                                        </Badge>
+                                   </IconButton>
                                    <IconButton
                                         onClick={() => { showCartDialog(); setDrawerOpen(false) }}
                                         sx={{
@@ -235,34 +237,34 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                               <SearchIcon />
                          </IconButton>
 
-                         <Link href="/lista-zelja" passHref>
-                              <IconButton
+                         <IconButton
+                              aria-label="Omiljeni"
+                              onClick={() => showWishListDialog()}
+                              sx={{
+                                   flexDirection: 'column',
+                                   gap: 0.5,
+                                   color: 'text.secondary',
+                                   '&:hover': {
+                                        color: 'error.main',
+                                        transform: 'translateY(-2px)',
+                                   },
+                                   transition: 'all 0.2s ease',
+                              }}
+                         >
+                              <Badge
+                                   badgeContent={wishlistCounter}
+                                   color="error"
                                    sx={{
-                                        flexDirection: 'column',
-                                        gap: 0.5,
-                                        color: 'text.secondary',
-                                        '&:hover': {
-                                             color: 'error.main',
-                                             transform: 'translateY(-2px)',
-                                        },
-                                        transition: 'all 0.2s ease',
+                                        '& .MuiBadge-badge': {
+                                             fontSize: '0.65rem',
+                                             minWidth: 16,
+                                             height: 16,
+                                        }
                                    }}
                               >
-                                   <Badge
-                                        badgeContent={wishlistCounter}
-                                        color="error"
-                                        sx={{
-                                             '& .MuiBadge-badge': {
-                                                  fontSize: '0.65rem',
-                                                  minWidth: 16,
-                                                  height: 16,
-                                             }
-                                        }}
-                                   >
-                                        <FavoriteIcon />
-                                   </Badge>
-                              </IconButton>
-                         </Link>
+                                   <FavoriteIcon />
+                              </Badge>
+                         </IconButton>
 
                          <Link href="/nalog" passHref>
                               <IconButton
@@ -284,6 +286,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                </AppBar>
 
                <CartDialog />
+               <WishListDialog />
           </>
      );
 }
