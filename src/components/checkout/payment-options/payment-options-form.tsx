@@ -216,7 +216,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                        setLoading(false);
                                                   }
                                              }}
-                                             sx={{ maxWidth: '200px', marginTop: '10px', height: '40px', color: theme.palette.primary.main }}
+                                             sx={{ maxWidth: '200px', height: '40px', color: theme.palette.primary.main }}
                                              endIcon={<NavigateNextIcon />}
                                         >
                                              {loading ? <CircularProgress size={20} color="inherit" /> : 'Poruči'}

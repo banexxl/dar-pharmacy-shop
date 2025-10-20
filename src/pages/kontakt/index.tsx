@@ -3,7 +3,11 @@ import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme, { Colors } from "@/styles/theme";
-import { Container, Stack, Box, Typography } from "@mui/material";
+import { Container, Stack, Box, Typography, Link as MuiLink } from "@mui/material";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -21,7 +25,6 @@ const ContactPage = (props: ContactPageProps) => {
                     <Stack>
                          <UIProvider>
                               <Box sx={{ mb: 4, textAlign: 'center', '& > p:first-of-type': { display: 'none' } }} >
-                                   <Typography variant="h2" sx={{ fontWeight: 700, color: Colors.primary.main }}>Kontakt</Typography>
                                    <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pi&scaron;ite nam ili nas posetite</Typography>
                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                                         <Box sx={{
@@ -31,8 +34,8 @@ const ContactPage = (props: ContactPageProps) => {
                                         <Box>
                                              <ContactMap mapApiKey={props.mapApiKey} />
                                              <Box className="contact-info-box" sx={{ mt: 3 }}>
-                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                                       Adresa:
+                                                  <Typography className="contact-text" sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center' }}>
+                                                       <LocationOnIcon color="primary" /> Adresa:
                                                   </Typography>
                                                   <Typography className="contact-strong-text">
                                                        Kralja Aleksandra I Karađorđevića 102, lokal 9
@@ -43,11 +46,11 @@ const ContactPage = (props: ContactPageProps) => {
                                                   <Typography className="contact-strong-text">
                                                        34000 Kragujevac
                                                   </Typography>
-                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                       Telefon:
+                                                  <Typography className="contact-text" sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center', marginTop: '20px' }}>
+                                                       <PhoneIcon color="primary" /> Telefon:
                                                   </Typography>
-                                                  <Typography className="contact-strong-text">
-                                                       +381 34 610 4222
+                                                  <Typography className="contact-strong-text" sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                       <MuiLink href="tel:+381346104222" underline="none" color="inherit">+381 34 610 4222</MuiLink>
                                                   </Typography>
                                                   <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                        Matični broj:
@@ -67,14 +70,14 @@ const ContactPage = (props: ContactPageProps) => {
                                                   <Typography className="contact-strong-text">
                                                        Maja Joksović PR, privatna praksa, apoteka DAR Kragujevac
                                                   </Typography>
-                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                       Email:
+                                                  <Typography className="contact-text" sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center', marginTop: '20px' }}>
+                                                       <EmailIcon color="primary" /> Email:
                                                   </Typography>
-                                                  <Typography className="contact-strong-text">
-                                                       maja@apoteka-dar.rs
+                                                  <Typography className="contact-strong-text" sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                       <MuiLink href="mailto:maja@apoteka-dar.rs" underline="none" color="inherit">maja@apoteka-dar.rs</MuiLink>
                                                   </Typography>
-                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                       Radno vreme:
+                                                  <Typography className="contact-text" sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center', marginTop: '20px' }}>
+                                                       <AccessTimeIcon color="primary" /> Radno vreme:
                                                   </Typography>
                                                   <Typography className="contact-strong-text">
                                                        Radnim danima: 08 - 22h<br />

@@ -43,15 +43,15 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
           <Container className="CartWrapper">
                <Table className="StyledTable">
                     <TableHead className="StyledHeader">
-                         <TableRow sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                              <TableCell className="StyledHeaderCell">Slika</TableCell>
-                              <TableCell className="StyledHeaderCell" align="left">Naziv</TableCell>
-                              <TableCell className="StyledHeaderCell" align="left">Pakovanje</TableCell>
-                              <TableCell className="StyledHeaderCell" align="left">Kod</TableCell>
-                              <TableCell className="StyledHeaderCell" align="left">Količina</TableCell>
-                              <TableCell className="StyledHeaderCell" align="right">Cena sa PDV</TableCell>
-                              <TableCell className="StyledHeaderCell" align="right">Ukupno sa popustom</TableCell>
-                              <TableCell className="StyledHeaderCell" align="right">Obriši</TableCell>
+                         <TableRow>
+                              <TableCell className="StyledHeaderCell" sx={{ width: { xs: 72, md: 88 } }}>Slika</TableCell>
+                              <TableCell className="StyledHeaderCell" >Naziv</TableCell>
+                              <TableCell className="StyledHeaderCell" >Pakovanje</TableCell>
+                              <TableCell className="StyledHeaderCell" >Kod</TableCell>
+                              <TableCell className="StyledHeaderCell" >Količina</TableCell>
+                              <TableCell className="StyledHeaderCell" >Cena sa PDV</TableCell>
+                              <TableCell className="StyledHeaderCell" >Ukupno sa popustom</TableCell>
+                              <TableCell className="StyledHeaderCell" >Obriši</TableCell>
                          </TableRow>
                     </TableHead>
                     <TableBody className="StyledTableBody">
