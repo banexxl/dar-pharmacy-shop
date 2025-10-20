@@ -3,6 +3,7 @@ import { useTheme } from "@mui/system";
 import CountUp from "react-countup";
 import { useVisibility } from "@/hooks/useVisibility";
 import { fShortenNumber } from "@/utils/format-number";
+import { Colors } from "@/styles/theme";
 
 export const BannerCountUp = () => {
      const theme = useTheme();
@@ -24,13 +25,16 @@ export const BannerCountUp = () => {
                     width: "100%",
                     height: "100%",
                     p: 3,
+                    backgroundColor: Colors.secondary[50],
                }}
           >
                <Typography
                     sx={{
                          marginTop: "20px",
-                         fontWeight: "bold",
-                         fontSize: isScreenToMedium ? "1.8rem" : "2rem",
+                         fontWeight: 700,
+                         fontSize: isScreenToMedium ? "2rem" : "2.5rem",
+                         color: Colors.primary.main,
+                         textAlign: 'center',
                     }}
                >
                     Naši uspesi

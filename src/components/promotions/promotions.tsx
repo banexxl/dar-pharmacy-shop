@@ -1,5 +1,6 @@
 import { Slide, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { Colors } from "@/styles/theme";
 import { useEffect, useRef, useState } from "react";
 
 const messages = [
@@ -52,7 +53,8 @@ export default function Promotions() {
                     justifyContent: "center",
                     alignItems: "center",
                     overflow: "hidden",
-                    height: '70px'
+                    height: '70px',
+                    background: Colors.primary.lighter
                }}
           >
                <Slide
@@ -75,6 +77,7 @@ export default function Promotions() {
                                    '@media (max-width: 900px)': {
                                         fontSize: "1.5rem",
                                    },
+                                   color: Colors.primary.dark
                               }}
                          >
                               {messages[messageIndex]}

@@ -36,7 +36,7 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
 
      return (
           <Box className="StyledCarouselLogoBox" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginTop: '0px', paddingBottom: '30px' }}>
-               <Typography sx={{ marginTop: '20px', fontSize: isScreenToMedium ? '1.8rem' : '2rem', fontWeight: 'bold' }}>
+               <Typography variant="h2" sx={{ marginTop: '20px', fontSize: { xs: '2rem', md: '2.5rem' }, fontWeight: 700, color: Colors.primary.main }}>
                     Deo asortimana
                </Typography>
                <Carousel

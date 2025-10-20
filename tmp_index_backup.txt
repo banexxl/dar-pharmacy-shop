@@ -1,4 +1,4 @@
-﻿import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
+import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
 import Products from "../components/products/products-grid";
 import { UIProvider } from "../context/ui/ui.context";
 import Promotions from "../components/promotions/promotions";
@@ -53,7 +53,7 @@ export default function Home(props: any) {
 
      return (
           <>
-               <Seo title={'PoÄetna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Početna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <UIProvider>
                     {/* Main Content */}
                     <Box component="main" sx={{ width: '100vw', overflow: 'hidden' }}>
@@ -82,7 +82,7 @@ export default function Home(props: any) {
                               '&::before': { display: 'none' }
                          }}>
                               <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                                   <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
+                                   <Box sx={{ textAlign: 'center', mb: 6 }}>
                                         <Typography
                                              variant="h2"
                                              sx={{
@@ -94,54 +94,6 @@ export default function Home(props: any) {
                                              }}
                                         >
                                              Popularno
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Iskoristite posebne cene i uštedite na omiljenim proizvodima
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Najtraženiji proizvodi koje naši kupci najviše vole
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Najnoviji proizvodi koje smo dodali u našu ponudu
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Posebno odabrani proizvodi za vaše zdravlje i lepotu
                                         </Typography>
                                         <Typography
                                              variant="body1"
@@ -174,7 +126,7 @@ export default function Home(props: any) {
                               position: 'relative'
                          }}>
                               <Container maxWidth="xl">
-                                   <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
+                                   <Box sx={{ textAlign: 'center', mb: 6 }}>
                                         <Typography
                                              variant="h2"
                                              sx={{
@@ -197,7 +149,7 @@ export default function Home(props: any) {
                                                   lineHeight: 1.6
                                              }}
                                         >
-                                             Posebno odabrani proizvodi za vaÅ¡e zdravlje i lepotu
+                                             Posebno odabrani proizvodi za vaše zdravlje i lepotu
                                         </Typography>
                                    </Box>
                                    <Products data={dataForGrid} />
@@ -217,7 +169,7 @@ export default function Home(props: any) {
                               '&::before': { display: 'none' }
                          }}>
                               <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                                   <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
+                                   <Box sx={{ textAlign: 'center', mb: 6 }}>
                                         <Typography
                                              variant="h2"
                                              sx={{
@@ -240,7 +192,7 @@ export default function Home(props: any) {
                                                   lineHeight: 1.6
                                              }}
                                         >
-                                             Najnoviji proizvodi koje smo dodali u naÅ¡u ponudu
+                                             Najnoviji proizvodi koje smo dodali u našu ponudu
                                         </Typography>
                                    </Box>
                                    <ProductCarousel products={dataForNewProducts} />
@@ -255,7 +207,7 @@ export default function Home(props: any) {
                               position: 'relative'
                          }}>
                               <Container maxWidth="xl">
-                                   <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
+                                   <Box sx={{ textAlign: 'center', mb: 6 }}>
                                         <Typography
                                              variant="h2"
                                              sx={{
@@ -307,11 +259,6 @@ export default function Home(props: any) {
                                         <Box sx={{ textAlign: 'center', mb: 6 }}>
                                              <Typography
                                                   variant="h2"
-                                                  sx={{
-                                                       fontSize: { xs: '2rem', md: '2.5rem' },
-                                                       fontWeight: 700,
-                                                       color: Colors.primary.main,
-                                                  }}
                                              >
                                                   Proizvodi na akciji
                                              </Typography>
@@ -407,10 +354,7 @@ export default function Home(props: any) {
                               padding: '10px',
                          }}
                     >
-                         <Typography id="first-load-modal-description" sx={{ fontSize: '1rem', display: 'none' }}>
-                              Ovaj sajt koriÅ¡Ä‡enjem kolaÄiÄ‡a obezbeÄ‘uje bolje korisniÄko iskustvo.
-                         </Typography>
-                         <Typography id="first-load-modal-description-corrected" sx={{ fontSize: '1rem' }}>
+                         <Typography id="first-load-modal-description" sx={{ fontSize: '1rem' }}>
                               Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
                          </Typography>
                          <Button onClick={handleClose} >

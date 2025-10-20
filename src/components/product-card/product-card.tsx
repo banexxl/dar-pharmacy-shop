@@ -34,33 +34,33 @@ export default function ProductCard({
   const discounted = hasDiscount ? Math.max(product.price - (product.discountAmount as number), 0) : product.price;
 
   return (
-    <Card sx={{ width: '100%', maxWidth: compact ? 280 : 340, borderRadius: 2, border: `1px solid ${Colors.neutral[200]}` }}>
+    <Card sx={{ width: '100%', maxWidth: compact ? 280 : 340, borderRadius: 2, border: `1px solid ${Colors.neutral[200]}`, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {showImage && (
         <Link href={`/proizvod/${product.slug}`} passHref>
           <CardMedia
             component="img"
             image={product.imageURL}
             alt={product.name}
-            sx={{ height: compact ? 160 : 200, objectFit: 'contain', p: 1, backgroundColor: Colors.neutral[50] }}
+            sx={{ height: compact ? 160 : 200, objectFit: 'contain', p: 1, backgroundColor: Colors.neutral[50], mx: 'auto', display: 'block' }}
           />
         </Link>
       )}
-      <CardContent sx={{ p: 2 }}>
+      <CardContent sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
         {hasDiscount && (
           <Chip size="small" color="error" label={`-${Math.round(((product.price - discounted) / product.price) * 100)}%`} sx={{ mb: 1 }} />
         )}
         {showTitle && (
           <Link href={`/proizvod/${product.slug}`} passHref>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3, mb: 0.5, color: Colors.neutral[900] }}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3, mb: 0.5, color: Colors.neutral[900], textAlign: 'center' }}>
               {product.name}
             </Typography>
           </Link>
         )}
         {showManufacturer && product.manufacturer && (
-          <Typography variant="caption" sx={{ color: Colors.neutral[600] }}>{product.manufacturer}</Typography>
+          <Typography variant="caption" sx={{ color: Colors.neutral[600], textAlign: 'center' }}>{product.manufacturer}</Typography>
         )}
         {showPrice && (
-          <Box sx={{ mt: 1, display: 'flex', alignItems: 'baseline', gap: 1 }}>
+          <Box sx={{ mt: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, width: '100%' }}>
             <Typography variant="h6" sx={{ fontWeight: 800, color: Colors.primary.dark }}>
               {discounted.toFixed(2)} RSD
             </Typography>
@@ -72,32 +72,36 @@ export default function ProductCard({
           </Box>
         )}
         {showDescription && (
-          <Typography variant="body2" sx={{ mt: 1, color: Colors.neutral[700] }}>
+          <Typography variant="body2" sx={{ mt: 1, color: Colors.neutral[700], textAlign: 'center' }}>
             {product.description?.slice(0, 120)}{product.description && product.description.length > 120 ? '…' : ''}
           </Typography>
         )}
       </CardContent>
       {showActions && (
         <CardActions
-          sx={{ p: 2, pt: 0, display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: 1 }}
+          sx={{ p: 2, pt: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, width: '100%' }}
         >
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            disabled={product.availableStock <= 0}
-            onClick={() => dispatch(addToCart(product))}
-          >
-            {product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="small"
-            onClick={() => router.push(`/proizvod/${product.slug}`)}
-          >
-            Detalji
-          </Button>
+          <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              disabled={product.availableStock <= 0}
+              onClick={() => dispatch(addToCart(product))}
+              sx={{ minWidth: 0, px: 2 }}
+            >
+              {product.availableStock > 0 ? 'Dodaj' : 'Nema'}
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              onClick={() => router.push(`/proizvod/${product.slug}`)}
+              sx={{ minWidth: 0, px: 2 }}
+            >
+              Detalji
+            </Button>
+          </Box>
         </CardActions>
       )}
     </Card>
