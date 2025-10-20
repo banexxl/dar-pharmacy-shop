@@ -337,20 +337,6 @@ const theme: Theme = createTheme({
           MuiContainer: {
                styleOverrides: {
                     root: {
-                         // Promotion Container
-                         '&.PromotionsContainer': {
-                              padding: "20px 0px 20px 0px",
-                              '@media (max-width: 900px)': {
-                                   padding: "20px",
-                              },
-                              borderRadius: '5px',
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              overflow: "hidden",
-                              background: Colors.primary.lighter,
-                              height: '70px'
-                         },
                          // Banner Container
                          '&.BannerContainer': {
                               width: "100%",
@@ -649,17 +635,6 @@ const theme: Theme = createTheme({
                               fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
                               fontWeight: 600,
                               lineHeight: 1.3,
-                         },
-                         // Message Text (Promotions)
-                         '&.MessageText': {
-                              '@media (min-width: 900px)': {
-                                   fontSize: "2.2rem",
-                                   fontWeight: "bold",
-                              },
-                              '@media (max-width: 900px)': {
-                                   fontSize: "1.5rem",
-                              },
-                              color: Colors.primary.main,
                          },
                          // Banner Title
                          '&.BannerTitle': {

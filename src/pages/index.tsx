@@ -63,12 +63,8 @@ export default function Home(props: any) {
                          {/* Promotions Section */}
                          <Box sx={{
                               width: '100%',
-                              py: { xs: 3, md: 4 },
-                              px: { xs: 2, md: 4 }
                          }}>
-                              <Container maxWidth="xl">
-                                   <Promotions />
-                              </Container>
+                              <Promotions />
                          </Box>
 
                          {/* Popular Products Section */}

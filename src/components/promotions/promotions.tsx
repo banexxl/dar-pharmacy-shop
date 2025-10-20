@@ -41,19 +41,14 @@ export default function Promotions() {
 
      return (
           <Box
-               className="PromotionsContainer"
                ref={containerRef}
                sx={{
-                    padding: "20px 0px 20px 0px",
-                    '@media (max-width: 900px)': {
-                         padding: "12px",
-                    },
                     borderRadius: '5px',
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     overflow: "hidden",
-                    height: { xs: 56, md: 70 },
+                    height: '55px',
                     background: Colors.primary.lighter
                }}
           >
@@ -68,7 +63,6 @@ export default function Promotions() {
                >
                     <Box display="flex" justifyContent="center" alignItems="center">
                          <Typography
-                              className="MessageText"
                               sx={{
                                    '@media (min-width: 900px)': {
                                         fontSize: "2rem",
@@ -76,7 +70,7 @@ export default function Promotions() {
                                         lineHeight: 1.2,
                                    },
                                    '@media (max-width: 900px)': {
-                                        fontSize: "1.1rem",
+                                        fontSize: "1rem",
                                         lineHeight: 1.25,
                                         fontWeight: 600,
                                    },
