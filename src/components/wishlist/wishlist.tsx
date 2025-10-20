@@ -83,7 +83,7 @@ export default function WishList({ open, onClose }: any) {
                               </Table>
                          </TableContainer>
                          <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}><Button className="WishlistRemoveAllButton" variant="outlined" color="primary" onClick={() => {
-                              toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda", {
+                              toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda!", {
                                    duration: 1500,
                                    position: "top-center"
                               })
