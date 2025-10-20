@@ -39,150 +39,149 @@ const DeliveryConfirmationPage = () => {
                          <Stack>
                               <UIProvider>
                                    <Box sx={{ maxWidth: 900, mx: 'auto', px: { xs: 2, md: 4 }, py: { xs: 3, md: 4 }, bgcolor: '#ffffff', borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)' }}>
-                                   <Typography gutterBottom sx={{ mt: 4, mb: 3, fontSize: '2rem', fontWeight: 'bold', textAlign: 'center' }}>
-                                        Potvrda o isporuci
-                                   </Typography>
+                                        <Typography gutterBottom sx={{ mt: 4, mb: 3, fontSize: '2rem', fontWeight: 'bold', textAlign: 'center' }}>
+                                             Potvrda o isporuci
+                                        </Typography>
 
-                                   <Divider sx={{ my: 2 }} />
+                                        <Divider sx={{ my: 2 }} />
 
-                                   <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>👤 Podaci o korisniku:</Typography>
-                                   <Typography>Ime i prezime: {orderConfirmationData?.userForm.name}</Typography>
-                                   <Typography>Adresa: {`${orderConfirmationData?.userForm.country}, ${orderConfirmationData?.userForm.city}, ${orderConfirmationData?.userForm.streetAddress}`}</Typography>
-                                   <Typography>Broj telefona: {orderConfirmationData?.userForm.phoneNumber}</Typography>
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>👤 Podaci o korisniku:</Typography>
+                                        <Typography>Ime i prezime: {orderConfirmationData?.userForm.name}</Typography>
+                                        <Typography>Adresa: {`${orderConfirmationData?.userForm.country}, ${orderConfirmationData?.userForm.city}, ${orderConfirmationData?.userForm.streetAddress}`}</Typography>
+                                        <Typography>Broj telefona: {orderConfirmationData?.userForm.phoneNumber}</Typography>
 
-                                   <Divider sx={{ my: 2 }} />
+                                        <Divider sx={{ my: 2 }} />
 
-                                   <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>📦 Podaci o narudžbini:</Typography>
-                                   <List>
-                                        {orderConfirmationData?.order.items.map((item: ICartItem, index: number) => (
-                                             <ListItem
-                                                  key={index}
-                                                  sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-                                             >
-                                                  <ListItemText
-                                                       primary={
-                                                            <Typography variant="body1">
-                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
-                                                                      {index + 1}. Naziv:
-                                                                 </Typography>{" "}
-                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
-                                                                      {item.name}
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>📦 Podaci o narudžbini:</Typography>
+                                        <List>
+                                             {orderConfirmationData?.order.items.map((item: ICartItem, index: number) => (
+                                                  <ListItem
+                                                       key={index}
+                                                       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                                                  >
+                                                       <ListItemText
+                                                            primary={
+                                                                 <Typography variant="body1">
+                                                                      <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                           {index + 1}. Naziv:
+                                                                      </Typography>{" "}
+                                                                      <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                           {item.name}
+                                                                      </Typography>
                                                                  </Typography>
-                                                            </Typography>
-                                                       }
-                                                  />
-                                                  <ListItemText
-                                                       primary={
-                                                            <Typography variant="subtitle1">
-                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
-                                                                      Jedinicna cena:
-                                                                 </Typography>{" "}
-                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
-                                                                      {item.price.toFixed(2)} RSD
+                                                            }
+                                                       />
+                                                       <ListItemText
+                                                            primary={
+                                                                 <Typography variant="subtitle1">
+                                                                      <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                           Jedinicna cena:
+                                                                      </Typography>{" "}
+                                                                      <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                           {item.price.toFixed(2)} RSD
+                                                                      </Typography>
                                                                  </Typography>
-                                                            </Typography>
-                                                       }
-                                                  />
-                                                  <ListItemText
-                                                       primary={
-                                                            <Typography variant="subtitle1">
-                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
-                                                                      Kolicina:
-                                                                 </Typography>{" "}
-                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
-                                                                      {item.count}
+                                                            }
+                                                       />
+                                                       <ListItemText
+                                                            primary={
+                                                                 <Typography variant="subtitle1">
+                                                                      <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                           Kolicina:
+                                                                      </Typography>{" "}
+                                                                      <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                           {item.count}
+                                                                      </Typography>
                                                                  </Typography>
-                                                            </Typography>
-                                                       }
-                                                  />
-                                                  <ListItemText
-                                                       primary={
-                                                            <Typography variant="subtitle1">
-                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
-                                                                      Porez:
-                                                                 </Typography>{" "}
-                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
-                                                                      Uračunat u cenu
+                                                            }
+                                                       />
+                                                       <ListItemText
+                                                            primary={
+                                                                 <Typography variant="subtitle1">
+                                                                      <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                           Porez:
+                                                                      </Typography>{" "}
+                                                                      <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                           Uračunat u cenu
+                                                                      </Typography>
                                                                  </Typography>
-                                                            </Typography>
-                                                       }
-                                                  />
-                                                  <ListItemText
-                                                       primary={
-                                                            <Typography variant="subtitle1">
-                                                                 <Typography component="span" sx={{ fontWeight: 'bold' }}>
-                                                                      Ukupno:
-                                                                 </Typography>{" "}
-                                                                 <Typography component="span" sx={{ fontWeight: 'normal' }}>
-                                                                      {(item.count * item.price).toFixed(2)} RSD
+                                                            }
+                                                       />
+                                                       <ListItemText
+                                                            primary={
+                                                                 <Typography variant="subtitle1">
+                                                                      <Typography component="span" sx={{ fontWeight: 'bold' }}>
+                                                                           Ukupno:
+                                                                      </Typography>{" "}
+                                                                      <Typography component="span" sx={{ fontWeight: 'normal' }}>
+                                                                           {(item.count * item.price).toFixed(2)} RSD
+                                                                      </Typography>
                                                                  </Typography>
-                                                            </Typography>
-                                                       }
-                                                  />
-                                             </ListItem>
-                                        ))}
-                                   </List>
+                                                            }
+                                                       />
+                                                  </ListItem>
+                                             ))}
+                                        </List>
 
 
-                                   <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>
-                                        Ukupna cena: {orderConfirmationData?.order.items.reduce((acc: number, item: ICartItem) => acc + item.price * item.count, 0).toFixed(2)} RSD
-                                   </Typography>
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>
+                                             Ukupna cena: {orderConfirmationData?.order.items.reduce((acc: number, item: ICartItem) => acc + item.price * item.count, 0).toFixed(2)} RSD
+                                        </Typography>
 
-                                   <Divider sx={{ my: 2 }} />
+                                        <Divider sx={{ my: 2 }} />
 
-                                   <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>🏢 Podaci o trgovcu:</Typography>
-                                   <Typography>Naziv: {merchant.name}</Typography>
-                                   <Typography>PIB: {merchant.pib}</Typography>
-                                   <Typography>Adresa: {merchant.address}</Typography>
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>🏢 Podaci o trgovcu:</Typography>
+                                        <Typography>Naziv: {merchant.name}</Typography>
+                                        <Typography>PIB: {merchant.pib}</Typography>
+                                        <Typography>Adresa: {merchant.address}</Typography>
 
-                                   <Divider sx={{ my: 2 }} />
+                                        <Divider sx={{ my: 2 }} />
 
-                                   <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>💳 Podaci o transakciji:</Typography>
-                                   {
-                                        orderConfirmationData !== null && (
-                                             <>
-                                                  <Typography>Broj narudžbine: {orderConfirmationData.order.orderNumber}</Typography>
-                                                  <Typography>Autorizacioni kod: {orderConfirmationData.order.authorizationCode}</Typography>
-                                                  <Typography>Status transakcije: {orderConfirmationData?.order.paymentStatus === 'pending' ?
-                                                       'U obradi' : orderConfirmationData?.order.paymentStatus === 'successful' ?
-                                                            'Uspešno' : orderConfirmationData?.order.paymentStatus === 'failed' ?
-                                                                 'Neuspešno' : orderConfirmationData?.order.paymentStatus === 'refunded' ?
-                                                                      'Refundirano' : ''}
-                                                  </Typography>
-                                                  <Typography>Kod statusa: {orderConfirmationData.order.statusCode}</Typography>
-                                                  <Typography>Broj transakcije: {orderConfirmationData.order.transactionNumber}</Typography>
-                                                  <Typography>Datum transakcije: {orderConfirmationData.order.transactionDate.toString().split('T')[0]}</Typography>
-                                                  <Typography>Iznos transakcije: {orderConfirmationData.order.total.toFixed(2)} RSD</Typography>
-                                                  <Typography>Referentni ID: {orderConfirmationData.order.referenceId}</Typography>
-                                             </>
-                                        )}
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>💳 Podaci o transakciji:</Typography>
+                                        {
+                                             orderConfirmationData !== null && (
+                                                  <>
+                                                       <Typography>Broj narudžbine: {orderConfirmationData.order.orderNumber}</Typography>
+                                                       <Typography>Autorizacioni kod: {orderConfirmationData.order.authorizationCode}</Typography>
+                                                       <Typography>Status transakcije: {orderConfirmationData?.order.paymentStatus === 'pending' ?
+                                                            'U obradi' : orderConfirmationData?.order.paymentStatus === 'successful' ?
+                                                                 'Uspešno' : orderConfirmationData?.order.paymentStatus === 'failed' ?
+                                                                      'Neuspešno' : orderConfirmationData?.order.paymentStatus === 'refunded' ?
+                                                                           'Refundirano' : ''}
+                                                       </Typography>
+                                                       <Typography>Kod statusa: {orderConfirmationData.order.statusCode}</Typography>
+                                                       <Typography>Broj transakcije: {orderConfirmationData.order.transactionNumber}</Typography>
+                                                       <Typography>Datum transakcije: {orderConfirmationData.order.transactionDate.toString().split('T')[0]}</Typography>
+                                                       <Typography>Iznos transakcije: {orderConfirmationData.order.total.toFixed(2)} RSD</Typography>
+                                                       <Typography>Referentni ID: {orderConfirmationData.order.referenceId}</Typography>
+                                                  </>
+                                             )}
 
-                                   <Divider sx={{ my: 2 }} />
+                                        <Divider sx={{ my: 2 }} />
 
-                                   <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>📅 Datum isporuke:</Typography>
-                                   <Typography>{orderConfirmationData?.deliveryDate}</Typography>
+                                        <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>📅 Datum isporuke:</Typography>
+                                        <Typography>{orderConfirmationData?.deliveryDate}</Typography>
 
-                                   <Stack
-                                        direction="row"
-                                        spacing={2}
-                                        sx={{ mt: 2, alignItems: 'center', justifyContent: 'center', mb: 4 }}
-                                   >
-                                        <Button
-                                             startIcon={<HomeIcon />}
-                                             variant="contained"
-                                             onClick={() => {
-                                                  router.push('/')
-                                                  localStorage.removeItem('orderConfirmationData')
-                                                  setTimeout(() => {
-                                                       setOrderConfirmationData(null)
-                                                  }, 3000);
-                                             }}
+                                        <Stack
+                                             direction="row"
+                                             spacing={2}
+                                             sx={{ mt: 2, alignItems: 'center', justifyContent: 'center', mb: 4 }}
                                         >
-                                             Početna
-                                        </Button>
-                                   </Stack>
+                                             <Button
+                                                  startIcon={<HomeIcon />}
+                                                  variant="contained"
+                                                  onClick={() => {
+                                                       router.push('/')
+                                                       localStorage.removeItem('orderConfirmationData')
+                                                       setTimeout(() => {
+                                                            setOrderConfirmationData(null)
+                                                       }, 3000);
+                                                  }}
+                                             >
+                                                  Početna
+                                             </Button>
+                                        </Stack>
                                    </Box>
-                                   <AppDrawer isScreenToMedium={false} />
                               </UIProvider>
                          </Stack>
                     </Container>
