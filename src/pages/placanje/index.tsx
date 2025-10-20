@@ -56,7 +56,25 @@ const Checkout = () => {
                                         ))}
                                    </Stepper>
 
-                                   <Tabs className="checkout-tabs" value={tabIndex}>
+                                   <Tabs
+                                        className="checkout-tabs"
+                                        value={tabIndex}
+                                        variant={isScreenToMedium ? 'scrollable' : 'standard'}
+                                        scrollButtons={isScreenToMedium}
+                                        allowScrollButtonsMobile
+                                        orientation="horizontal"
+                                        sx={{
+                                             flexWrap: 'nowrap',
+                                             '& .MuiTabs-flexContainer': { flexWrap: 'nowrap' },
+                                             '& .MuiTabs-scrollButtons': {
+                                                  order: 0,
+                                                  alignSelf: 'center',
+                                             }
+                                        }}
+                                        onChange={(e, newValue) => {
+                                             if (!isScreenToMedium) setTabIndex(newValue);
+                                        }}
+                                   >
                                         {steps.map((label, index) => (
                                              <Tab className="checkout-tab" key={index} label={<Typography className="checkout-tab-text">{label}</Typography>} />
                                         ))}

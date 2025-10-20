@@ -1251,8 +1251,17 @@ const theme: Theme = createTheme({
           MuiTabs: {
                styleOverrides: {
                     root: {
-                         display: 'inline',
-                         flexWrap: 'wrap',
+                         display: 'flex',
+                         alignItems: 'center',
+                         flexWrap: 'nowrap',
+                         // Ensure horizontal scrolling with side arrows
+                         '& .MuiTabs-flexContainer': {
+                              flexWrap: 'nowrap',
+                         },
+                         '& .MuiTabs-scrollButtons': {
+                              order: 0,
+                              alignSelf: 'center',
+                         },
                     }
                },
           },
