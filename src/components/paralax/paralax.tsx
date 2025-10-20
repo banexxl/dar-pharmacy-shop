@@ -1,166 +1,108 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import {
-     Typography,
-     Box,
-     Container,
-     useTheme,
-     useMediaQuery,
-     Button
-} from '@mui/material';
+import { Typography, Box, Container, useTheme, useMediaQuery, Button } from '@mui/material';
 import { Colors } from '@/styles/theme';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Parallax() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const router = useRouter();
+  const [bgOffset, setBgOffset] = useState(0);
 
-     const [scrollY, setScrollY] = useState(0);
-     const parallaxRef = useRef<HTMLDivElement>(null);
-     const theme = useTheme();
-     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-     const router = useRouter();
-     const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setBgOffset(window.scrollY * 0.2);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-     useEffect(() => {
-          const handleScroll = () => {
-               if (parallaxRef.current) {
-                    const rect = parallaxRef.current.getBoundingClientRect();
-                    if (rect.top <= 0 && rect.bottom > 0) {
-                         setScrollY(-rect.top);
-                    }
-               }
-          };
-          window.addEventListener('scroll', handleScroll);
-          return () => window.removeEventListener('scroll', handleScroll);
-     }, []);
+  return (
+    <Box
+      sx={{
+        mt: 0,
+        minHeight: { xs: '80vh', md: '100vh' },
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background image with subtle parallax translate */}
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          transform: `translateY(${bgOffset}px)`,
+          transition: 'transform 0.05s linear',
+          willChange: 'transform',
+        }}
+      >
+        <Image
+          src="/images/home-page/image1.jpg"
+          alt="Apoteka DAR background"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </Box>
 
-     return (
-          <Box
-               ref={parallaxRef}
-               sx={{
-                    marginTop: isMobile ? '60px' : '100px',
-                    height: '100vh',
-                    position: 'relative',
-                    overflow: 'hidden',
-               }}
+      {/* Overlay for readability */}
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 100%)',
+        }}
+      />
+
+      {/* Foreground content */}
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: { xs: 6, md: 10 } }}>
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography
+            variant={isMobile ? 'h3' : 'h2'}
+            sx={{
+              fontWeight: 800,
+              color: Colors.white,
+              textShadow: '0 2px 8px rgba(0,0,0,0.35)',
+              letterSpacing: '-0.02em',
+            }}
           >
-               <Box
-                    sx={{
-                         position: 'absolute',
-                         inset: 0,
-                         zIndex: 0,
-                    }}
-               >
-                    <Image
-                         src="/images/home-page/image1.jpg"
-                         alt="Background landscape"
-                         fill={true} // Updated
-                         style={{ objectFit: "cover" }} // Updated
-                         quality={100}
-                         priority
-                    />
-               </Box>
-               <Box
-                    sx={{
-                         position: 'absolute',
-                         top: 0,
-                         left: 0,
-                         right: 0,
-                         bottom: 0,
-                         overflowY: 'auto',
-                         zIndex: 10,
-                         '&::-webkit-scrollbar': {
-                              display: 'none',
-                         },
-                         scrollbarWidth: 'none',
-                    }}
-               >
-                    <Container
-                         maxWidth="lg"
-                         sx={{
-                              minHeight: '100%',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              py: 4,
-                         }}
-                    >
-                         <Typography
-                              variant={isMobile ? 'h3' : 'h1'}
-                              component="div"
-                              color="white"
-                              textAlign="center"
-                              sx={{
-                                   fontWeight: 'bold',
-                                   transform: `translateY(${scrollY * 0.5}px)`,
-                                   height: '110vh',
-                              }}
-                         >
-                              <h1
-                                   style={{
-                                        color: Colors.primary.main,
-                                        fontStyle: 'italic',
-                                        fontFamily: 'monserrat',
-                                        marginTop: '50px',
-                                   }}
-                              >
-                                   Apoteka DAR
-                              </h1>
-                              <h2
-                                   style={{
-                                        color: Colors.primary.main,
-                                        fontStyle: 'italic',
-                                        fontFamily: 'monserrat',
-                                        marginTop: '50px',
-                                   }}
-                              >
-                                   {'"Radosno srce je pola zdravlja!"'}
-                              </h2>
-                              <h3
-                                   style={{
-                                        color: Colors.primary.main,
-                                        fontStyle: 'italic',
-                                        fontFamily: 'monserrat',
-                                        marginTop: '50px',
-                                   }}
-                              >
-                                   Dostava lekova radnim danima po celoj Srbiji!
-                              </h3>
-                              <Typography className="BannerQuotaText">
-                                   Nudimo pouzdane savete i širok asortiman proizvoda, a za bilo kakva dodatna pitanja ohrabrujemo Vas
-                                   da nas kontaktirate putem{' '}
-                                   <Link rel="canonical" href={"/kontakt"}>
-                                        <Typography
-                                             component="span"
-                                             sx={{ display: 'inline', fontSize: isMobile ? '1.2rem' : '2rem' }}
-                                        >
-                                             kontakt forme
-                                        </Typography>
-                                   </Link>
-                              </Typography>
-                              <Typography className="BannerQuotaText">
-                                   ili pozivom na broj telefona{' '}
-                                   <Typography
-                                        component="span"
-                                        sx={{ display: 'inline', fontSize: isMobile ? '1.2rem' : '2rem' }}
-                                   >
-                                        <a href={`tel:${+381346104222}`}>+381 34 610 4222</a>
-                                   </Typography>
-                              </Typography>
-                              <Button
-                                   className="BannerShopButton"
-                                   color="primary"
-                                   variant="outlined"
-                                   onClick={() => {
-                                        setLoading(true);
-                                        router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika');
-                                   }}
-                              >
-                                   Pogledajte ponudu
-                              </Button>
-                         </Typography>
-                    </Container>
-               </Box>
-          </Box>
-     );
+            Apoteka DAR
+          </Typography>
+          <Typography
+            variant={isMobile ? 'h5' : 'h4'}
+            sx={{
+              mt: 1,
+              color: Colors.white,
+              opacity: 0.95,
+              textShadow: '0 1px 6px rgba(0,0,0,0.3)',
+            }}
+          >
+            Radosno srce je pola zdravlja
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              mt: 2,
+              mx: 'auto',
+              maxWidth: 720,
+              color: 'rgba(255,255,255,0.92)',
+              fontSize: { xs: '1rem', md: '1.125rem' },
+              lineHeight: 1.7,
+            }}
+          >
+            Prirodni proizvodi, savet i briga — sve na jednom mestu. Dostava radnim danima širom Srbije.
+          </Typography>
+          <Button
+            className="BannerShopButton"
+            color="primary"
+            variant="contained"
+            size="large"
+            sx={{ mt: 4 }}
+            onClick={() => router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika')}
+          >
+            Pogledajte ponudu
+          </Button>
+        </Box>
+      </Container>
+    </Box>
+  );
 }
