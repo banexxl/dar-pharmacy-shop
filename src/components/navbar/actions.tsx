@@ -10,6 +10,7 @@ import { Language } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "@/store/cart/cart.selector";
+import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
 import { useState } from "react";
 import Link from "next/link";
 import { Colors } from "@/styles/theme";
@@ -25,6 +26,8 @@ export default function Actions({ isScreenToMedium }: any) {
      const containerClassName = isScreenToMedium ? "ActionIconsContainerMobile" : "ActionIconsContainerDesktop";
 
      const counter = useSelector(cartTotalSelector)
+     const wishList = useSelector(wishListSelectorState) as any[];
+     const wishCounter = Array.isArray(wishList) ? wishList.length : 0;
 
      return (
           <Box className={containerClassName} sx={{
@@ -95,6 +98,7 @@ export default function Actions({ isScreenToMedium }: any) {
                          p: 1.5,
                          minWidth: 48,
                          height: 48,
+                         position: 'relative',
                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                          '&:hover': {
                               backgroundColor: Colors.secondary[50],
@@ -115,6 +119,28 @@ export default function Actions({ isScreenToMedium }: any) {
                          }}
                     >
                          <FavoriteIcon sx={{ fontSize: '1.4rem' }} />
+                         {wishCounter > 0 && (
+                              <Box
+                                   sx={{
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 8,
+                                        backgroundColor: Colors.primary.main,
+                                        color: 'white',
+                                        borderRadius: '50%',
+                                        minWidth: 20,
+                                        height: 20,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '0.75rem',
+                                        fontWeight: 600,
+                                        border: '2px solid white',
+                                   }}
+                              >
+                                   {wishCounter}
+                              </Box>
+                         )}
                     </ListItemIcon>
                </ListItemButton>
 

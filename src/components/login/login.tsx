@@ -12,6 +12,7 @@ import LoadingWheel from "../loading/loading";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import SlideTransition from "@/hooks/use-slide-transition";
+import { Colors } from "@/styles/theme";
 
 
 export default function LoginRegister({ open, onClose }: any) {
@@ -72,7 +73,7 @@ export default function LoginRegister({ open, onClose }: any) {
           >
                <DialogTitle sx={{ px: 3, py: 2, bgcolor: 'rgba(0,0,0,0.02)' }}>
                     <Box display="flex" alignItems="center" justifyContent="space-between">
-                         <Typography sx={{ fontWeight: 700 }}>Profil</Typography>
+                         <Typography sx={{ fontWeight: 700, color: Colors.primary.main }}>Profil</Typography>
                          <IconButton onClick={onClose} aria-label="Zatvori" sx={{ color: 'text.primary' }}>
                               <CloseIcon />
                          </IconButton>
@@ -101,7 +102,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                    <Typography>{userData?.streetAddress}, {userData?.city}</Typography>
                               </Box>
                               <Link rel='canonical' href='/nalog'>
-                                   <Typography sx={{ mt: 1, textDecoration: 'underline', cursor: 'pointer' }}>Profil</Typography>
+                                   <Typography sx={{ mt: 1, textDecoration: 'underline', cursor: 'pointer', color: Colors.primary.light }}>Profil</Typography>
                               </Link>
                               <Button variant="contained" color="primary" onClick={() => signOut()} sx={{ mt: 1 }}>
                                    Odjavi se
