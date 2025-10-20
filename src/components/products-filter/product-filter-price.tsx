@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Slider, Typography, Grid, Box, Button } from '@mui/material';
+import { Colors } from '@/styles/theme';
 import IProduct from '@/interfaces/product/product.interface';
 
 interface PriceFilterProps {
@@ -27,7 +28,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
 
      return (
           <Box className="PriceRangeBox">
-               <Typography gutterBottom>Opseg cena</Typography>
+               <Typography variant="h6" sx={{ fontWeight: 700, color: Colors.primary.main }} gutterBottom>Opseg cena</Typography>
                <Grid container spacing={2} alignItems="center">
                     <Grid item xs={10} marginLeft='6%'>
                          <Slider
@@ -47,7 +48,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
                          <Typography variant="subtitle2" align="right">{`RSD ${priceRange[1]}`}</Typography>
                     </Grid>
                </Grid>
-               <Button className="PriceRangeFilterButton" onClick={() => filterProductsByPriceRange()}>
+               <Button className="PriceRangeFilterButton" variant="contained" onClick={() => filterProductsByPriceRange()}>
                     <Typography sx={{ margin: '0 10px 0 10px' }}>
                          Primeni filter
                     </Typography>

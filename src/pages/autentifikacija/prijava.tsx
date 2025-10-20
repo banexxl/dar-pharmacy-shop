@@ -58,14 +58,11 @@ const SignInPage = () => {
                                         name="email"
                                         error={formik.touched.email && !!formik.errors.email}
                                         helperText={formik.touched.email && formik.errors.email}
-                                        fullWidth
                                         sx={{ width: "300px" }}
                                    />
                                    <Button
-                                        className="auth-button"
                                         variant="contained"
                                         color="primary"
-                                        fullWidth
                                         type="submit"
                                         disabled={loading} // Ensure this prop is set correctly
                                    >
@@ -76,7 +73,7 @@ const SignInPage = () => {
                     </Formik>
                     <Box>
                          <Typography className="auth-text">Nemate nalog?</Typography>
-                         <Button className="auth-button" href="/registracija" disabled={loading}>
+                         <Button href="/registracija" disabled={loading}>
                               Registrujte se
                          </Button>
                     </Box>

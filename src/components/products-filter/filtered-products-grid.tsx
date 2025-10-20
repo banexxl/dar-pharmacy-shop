@@ -86,8 +86,8 @@ export default function FilteredProductsGrid({ data }: FilteredProductsGridProps
   return (
     <Container sx={{ paddingBottom: '100px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, gap: 2 }}>
-        <Button variant="outlined" startIcon={<FilterListIcon />} onClick={() => setIsFilterDialogOpen(true)}>Filter</Button>
-        <Button variant="outlined" startIcon={<SortIcon />} onClick={() => setIsSortDialogOpen(true)}>Sort</Button>
+        <Button color="primary" variant="outlined" startIcon={<FilterListIcon />} onClick={() => setIsFilterDialogOpen(true)}>Filter</Button>
+        <Button color="primary" variant="outlined" startIcon={<SortIcon />} onClick={() => setIsSortDialogOpen(true)}>Sort</Button>
       </Box>
 
       <Grid container spacing={2} justifyContent="center">
@@ -155,4 +155,8 @@ export default function FilteredProductsGrid({ data }: FilteredProductsGridProps
     </Container>
   );
 }
+
+
+
+
 

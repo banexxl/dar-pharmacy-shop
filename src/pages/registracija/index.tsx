@@ -60,7 +60,7 @@ const RegisterPage = () => {
                     <Stack>
                          <UIProvider>
                               <Box className="register-form-box" sx={{ mt: 8, mb: 6 }}>
-                                   <Typography variant="h4" sx={{ mb: 3, fontWeight: 700, textAlign: 'center' }}>
+                                   <Typography variant="h4" sx={{ mb: 3, fontWeight: 700, textAlign: 'center', color: 'primary.main' }}>
                                         Registracija korisnika
                                    </Typography>
                                    <Formik initialValues={initialUserFormValues} validationSchema={userFormSchema()} onSubmit={handleSubmit}>

@@ -137,6 +137,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              color: Colors.primary.main,
+                                             fontSize: 28,
                                         }}
                                         onClick={handleAddToWishlist}
                                    />
@@ -147,6 +148,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              color: Colors.primary.main,
+                                             fontSize: 28,
                                         }}
                                         onClick={handleRemoveFromWishlist}
                                    />
@@ -154,12 +156,12 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          </Tooltip>
                          <Button className="FilteredProductActionButton">
                               <Tooltip placement="top" title="Share this product" onClick={() => setOpenShareOptions(!openShareOption)}>
-                                   <ShareIcon color="primary" />
+                                   <ShareIcon color="primary" sx={{ fontSize: 28 }} />
                               </Tooltip>
                          </Button>
                          <Button className="FilteredProductActionButton" onClick={() => showProductDetailDialog()}>
                               <Tooltip placement="bottom" title="Brz pregled">
-                                   <FitScreenIcon color="primary" />
+                                   <FitScreenIcon color="primary" sx={{ fontSize: 28 }} />
                               </Tooltip>
                          </Button>
                     </Stack>
@@ -195,3 +197,6 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
           </Card>
      )
 }
+
+
+

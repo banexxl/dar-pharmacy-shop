@@ -2,7 +2,6 @@ import { List, ListItemText, Typography, Button, Stack, Container, ListItemButto
 import theme, { Colors } from "@/styles/theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import SendIcon from "@mui/icons-material/Send";
-import { useState } from "react";
 import Link from "next/link";
 import useDialogModal from "@/hooks/useDialogModal";
 import WishList from "../wishlist/wishlist";
@@ -12,7 +11,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Form, Formik } from "formik";
 import { subscriptionEmailSchema } from "@/schemas/email-form.schema";
 import { ISubscribeEmailForm, initialSubscribeEmailFormValues } from "@/interfaces/subscribe/subscription-interface";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 export default function Footer() {
@@ -60,7 +58,7 @@ export default function Footer() {
 
 
      return (
-          <Box component="footer" sx={{ width: '100vw', backgroundColor: Colors.neutral[200], borderTop: `1px solid ${Colors.neutral[800]}`, mt: 8 }}>
+          <Box component="footer" sx={{ width: '100%', backgroundColor: Colors.neutral[200], borderTop: `1px solid ${Colors.neutral[800]}` }}>
                <Container
                     className="FooterContainer"
                     maxWidth="xl"

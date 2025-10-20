@@ -159,6 +159,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              color: Colors.primary.main,
+                                             fontSize: 28,
                                         }}
                                         onClick={handleAddToWishlist}
                                    />
@@ -169,6 +170,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
                                              color: Colors.primary.main,
+                                             fontSize: 28,
                                         }}
                                         onClick={handleRemoveFromWishlist}
                                    />
@@ -179,7 +181,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               onClick={() => setShowShareOptions(!showShareOptions)}
                          >
                               <Tooltip placement="left" title={"Podeli"}>
-                                   <ShareIcon color="primary" />
+                                   <ShareIcon color="primary" sx={{ fontSize: 28 }} />
                               </Tooltip>
                          </Button>
 
@@ -189,7 +191,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               sx={{ width: '30px', height: '30px', backgroundColor: 'transparent' }}
                          >
                               <Tooltip placement="left" title="Brz pregled">
-                                   <FitScreenIcon color="primary" />
+                                   <FitScreenIcon color="primary" sx={{ fontSize: 28 }} />
                               </Tooltip>
                          </Button>
                     </Stack>
@@ -210,3 +212,4 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
           </Card>
      );
 }
+

@@ -22,7 +22,7 @@ const ContactPage = (props: ContactPageProps) => {
                          <UIProvider>
                               <Box sx={{ mb: 4, textAlign: 'center', '& > p:first-of-type': { display: 'none' } }} >
                                    <Typography variant="h2" sx={{ fontWeight: 700, color: Colors.primary.main }}>Kontakt</Typography>
-                                   <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pi�ite nam ili nas posetite</Typography>
+                                   <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pi&scaron;ite nam ili nas posetite</Typography>
                               </Box>
                               <Box className="contact-box" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
                                    <ContactForm />
@@ -33,7 +33,7 @@ const ContactPage = (props: ContactPageProps) => {
                                                   Adresa:
                                              </Typography>
                                              <Typography className="contact-strong-text">
-                                                  Kralja Aleksandra I Karadjordjevica 102, lokal 9
+                                                  Kralja Aleksandra I Karađorđevića 102, lokal 9
                                              </Typography>
                                              <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Grad:
@@ -63,7 +63,7 @@ const ContactPage = (props: ContactPageProps) => {
                                                   Kontakt osoba:
                                              </Typography>
                                              <Typography className="contact-strong-text">
-                                                  Maja Joksovic PR, privatna praksa, apoteka DAR Kragujevac
+                                                  Maja Joksović PR, privatna praksa, apoteka DAR Kragujevac
                                              </Typography>
                                              <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                                                   Email:

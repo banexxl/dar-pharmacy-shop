@@ -55,7 +55,7 @@ export default function ProductCard(props: ProductCardProps) {
      }
 
      return (
-          <Box sx={{ maxWidth: 800, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: { md: '15%', sm: '0' } }}>
+          <Box sx={{ maxWidth: 800, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                <CardHeader
                     avatar={
                          <Avatar sx={{ bgcolor: Colors.primary.lighter }} aria-label="recipe">
