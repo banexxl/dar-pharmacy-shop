@@ -1,5 +1,6 @@
 import { UIProvider } from "@/context/ui/ui.context";
 import { Button, Container, Stack, Box, Typography } from "@mui/material";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import SearchBox from "@/components/search/search";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import Link from "next/link";
@@ -30,12 +31,7 @@ const ErrorPage = (props: any) => {
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
 
                <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
-               <Container
-                    maxWidth="xl"
-                    sx={{
-                         background: "#fff",
-                    }}
-               >
+               <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
                               <Box className="AuthBox">
