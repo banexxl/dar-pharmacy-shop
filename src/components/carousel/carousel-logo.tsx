@@ -1,7 +1,8 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselManufacturerImage, CarouselProductImage } from './carousel-image-loader';
+import { CarouselManufacturerImage } from './carousel-image-loader';
 import { Box, Tooltip, Typography, useMediaQuery } from '@mui/material';
+import ProductCard from '@/components/product-card/product-card';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
@@ -62,25 +63,8 @@ const CarouselLogo = (props: CarouselProps) => {
                               ))
                               :
                               props.products?.map((product: IProduct) => (
-                                   <Box className="CarouselImgBox" key={product._id}>
-                                        <Link rel='canonical' href={`/proizvod/${product.slug}`}>
-                                             <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 150 : 200} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
-                                        </Link>
-                                        <Tooltip title={product.name} placement="top">
-                                             <Typography className="CarouselTitle" sx={{
-                                                  position: 'absolute',
-                                                  justifyContent: 'center',
-                                                  alignItems: 'center',
-                                                  bottom: '50px',
-                                                  left: '10px',
-                                                  padding: '5px',
-                                                  color: Colors.primary.main
-                                             }}>
-                                                  <Typography component={'span'} sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
-                                                       {product.name}
-                                                  </Typography>
-                                             </Typography>
-                                        </Tooltip>
+                                   <Box className="CarouselImgBox" key={product._id} sx={{ px: 1 }}>
+                                        <ProductCard product={product} showDescription={false} compact />
                                    </Box>
                               ))
                     }

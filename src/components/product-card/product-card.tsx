@@ -1,0 +1,105 @@
+import { Card, CardContent, CardActions, CardMedia, Typography, Button, Box, Chip } from '@mui/material';
+import IProduct from '@/interfaces/product/product.interface';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/store/cart/cart.slice';
+import { Colors } from '@/styles/theme';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+export type ProductCardProps = {
+  product: IProduct;
+  showImage?: boolean;
+  showTitle?: boolean;
+  showManufacturer?: boolean;
+  showPrice?: boolean;
+  showDescription?: boolean;
+  showActions?: boolean;
+  compact?: boolean;
+};
+
+export default function ProductCard({
+  product,
+  showImage = true,
+  showTitle = true,
+  showManufacturer = false,
+  showPrice = true,
+  showDescription = false,
+  showActions = true,
+  compact = false,
+}: ProductCardProps) {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const hasDiscount = product.discount && typeof product.discountAmount === 'number' && product.discountAmount! > 0;
+  const discounted = hasDiscount ? Math.max(product.price - (product.discountAmount as number), 0) : product.price;
+
+  return (
+    <Card sx={{ width: '100%', maxWidth: compact ? 280 : 340, borderRadius: 2, border: `1px solid ${Colors.neutral[200]}` }}>
+      {showImage && (
+        <Link href={`/proizvod/${product.slug}`} passHref>
+          <CardMedia
+            component="img"
+            image={product.imageURL}
+            alt={product.name}
+            sx={{ height: compact ? 160 : 200, objectFit: 'contain', p: 1, backgroundColor: Colors.neutral[50] }}
+          />
+        </Link>
+      )}
+      <CardContent sx={{ p: 2 }}>
+        {hasDiscount && (
+          <Chip size="small" color="error" label={`-${Math.round(((product.price - discounted) / product.price) * 100)}%`} sx={{ mb: 1 }} />
+        )}
+        {showTitle && (
+          <Link href={`/proizvod/${product.slug}`} passHref>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3, mb: 0.5, color: Colors.neutral[900] }}>
+              {product.name}
+            </Typography>
+          </Link>
+        )}
+        {showManufacturer && product.manufacturer && (
+          <Typography variant="caption" sx={{ color: Colors.neutral[600] }}>{product.manufacturer}</Typography>
+        )}
+        {showPrice && (
+          <Box sx={{ mt: 1, display: 'flex', alignItems: 'baseline', gap: 1 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: Colors.primary.dark }}>
+              {discounted.toFixed(2)} RSD
+            </Typography>
+            {hasDiscount && (
+              <Typography variant="body2" sx={{ color: Colors.neutral[500], textDecoration: 'line-through' }}>
+                {product.price.toFixed(2)} RSD
+              </Typography>
+            )}
+          </Box>
+        )}
+        {showDescription && (
+          <Typography variant="body2" sx={{ mt: 1, color: Colors.neutral[700] }}>
+            {product.description?.slice(0, 120)}{product.description && product.description.length > 120 ? '…' : ''}
+          </Typography>
+        )}
+      </CardContent>
+      {showActions && (
+        <CardActions
+          sx={{ p: 2, pt: 0, display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: 1 }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            disabled={product.availableStock <= 0}
+            onClick={() => dispatch(addToCart(product))}
+          >
+            {product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="small"
+            onClick={() => router.push(`/proizvod/${product.slug}`)}
+          >
+            Detalji
+          </Button>
+        </CardActions>
+      )}
+    </Card>
+  );
+}

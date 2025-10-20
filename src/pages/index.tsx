@@ -1,4 +1,4 @@
-import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
+﻿import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
 import Products from "../components/products/products-grid";
 import { UIProvider } from "../context/ui/ui.context";
 import Promotions from "../components/promotions/promotions";
@@ -7,7 +7,7 @@ import { ProductsServices } from '@/services/product.services'
 import IProduct from "@/interfaces/product/product.interface";
 import ProductCarousel from "@/components/carousel/carousel";
 import CarouselLogo from "@/components/carousel/carousel-logo";
-import ProductCard from "@/components/product-presentation/product-presentation";
+import ProductCard from "@/components/product-card/product-card";
 import { BannerServices } from "@/components/banner/banner-services";
 import { BannerCountUp } from "@/components/banner/banner-counter";
 import { useEffect, useState } from "react";
@@ -53,7 +53,7 @@ export default function Home(props: any) {
 
      return (
           <>
-               <Seo title={'Početna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'PoÄetna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <UIProvider>
                     {/* Main Content */}
                     <Box component="main" sx={{ width: '100vw', overflow: 'hidden' }}>
@@ -105,7 +105,7 @@ export default function Home(props: any) {
                                                   lineHeight: 1.6
                                              }}
                                         >
-                                             Najtraženiji proizvodi koje naši kupci najviše vole
+                                             NajtraÅ¾eniji proizvodi koje naÅ¡i kupci najviÅ¡e vole
                                         </Typography>
                                    </Box>
                                    <ProductCard product={promotionProduct} />
@@ -152,7 +152,7 @@ export default function Home(props: any) {
                                                   lineHeight: 1.6
                                              }}
                                         >
-                                             Posebno odabrani proizvodi za vaše zdravlje i lepotu
+                                             Posebno odabrani proizvodi za vaÅ¡e zdravlje i lepotu
                                         </Typography>
                                    </Box>
                                    <Products data={dataForGrid} />
@@ -195,7 +195,7 @@ export default function Home(props: any) {
                                                   lineHeight: 1.6
                                              }}
                                         >
-                                             Najnoviji proizvodi koje smo dodali u našu ponudu
+                                             Najnoviji proizvodi koje smo dodali u naÅ¡u ponudu
                                         </Typography>
                                    </Box>
                                    <ProductCarousel products={dataForNewProducts} />
@@ -275,7 +275,7 @@ export default function Home(props: any) {
                                                        lineHeight: 1.6
                                                   }}
                                              >
-                                                  Iskoristite posebne cene i uštedite na omiljenim proizvodima
+                                                  Iskoristite posebne cene i uÅ¡tedite na omiljenim proizvodima
                                              </Typography>
                                         </Box>
                                         <ProductCarousel products={productsOnDiscount} />
@@ -358,7 +358,7 @@ export default function Home(props: any) {
                          }}
                     >
                          <Typography id="first-load-modal-description" sx={{ fontSize: '1rem' }}>
-                              Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
+                              Ovaj sajt koriÅ¡Ä‡enjem kolaÄiÄ‡a obezbeÄ‘uje bolje korisniÄko iskustvo.
                          </Typography>
                          <Button onClick={handleClose} >
                               Prihvati sve
@@ -441,3 +441,4 @@ export async function getServerSideProps() {
           },
      }
 }
+

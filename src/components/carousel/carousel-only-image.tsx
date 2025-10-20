@@ -1,7 +1,7 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
-import { CarouselProductImage } from './carousel-image-loader';
 import { Box, Typography, useMediaQuery } from '@mui/material';
+import ProductCard from '@/components/product-card/product-card';
 import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { useTheme } from "@mui/system"
@@ -54,25 +54,11 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
                     removeArrowOnDeviceType={["tablet", "mobile"]}
                     dotListClass="custom-dot-list-style"
                >
-                    {
-                         props.products?.map((product: IProduct) => (
-                              <Box className="CarouselOnlyImgBox" key={product._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
-                                   <Link rel='canonical' href={`/proizvod/${product.slug}`}>
-                                        <CarouselProductImage src={product.imageURL} alt={product.name} height={isScreenToMedium ? 120 : 160} width={isScreenToMedium ? 100 : 150} isOnDiscount={product.discount} />
-                                   </Link>
-                                   <Typography className="CarouselTitle" sx={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        color: Colors.primary.main
-                                   }}>
-                                        <Typography component={'span'} sx={{ fontSize: isScreenToMedium ? '1rem' : '1rem', width: '150px' }}>
-                                             {product.name}
-                                        </Typography>
-                                   </Typography>
-
-                              </Box>
-                         ))
-                    }
+                    {props.products?.map((product: IProduct) => (
+                         <Box className="CarouselOnlyImgBox" key={product._id} sx={{ px: 1 }}>
+                              <ProductCard product={product} showDescription={false} showManufacturer={false} compact />
+                         </Box>
+                    ))}
                </Carousel>
           </Box>
      );

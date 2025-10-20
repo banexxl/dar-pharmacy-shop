@@ -234,7 +234,7 @@ export default function Footer() {
                                         >
                                              <Typography variant="h6" fontWeight={600}>Korisnički servis</Typography>
                                         </AccordionSummary>
-                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                        <AccordionDetails sx={{ px: 2, py: 1, display: 'flex', justifyContent: 'flex-end' }}>
                                              <Link rel='canonical' href={"/informacije/odustanak"} style={{
                                                   color: Colors.neutral[300],
                                                   textDecoration: 'none',
@@ -470,7 +470,8 @@ export default function Footer() {
                                              color: Colors.neutral[100],
                                              fontWeight: 600,
                                              mb: 2,
-                                             fontSize: '1.1rem'
+                                             fontSize: '1.1rem',
+                                             textAlign: 'right'
                                         }}>
                                              Korisnički servis
                                         </Typography>
@@ -479,9 +480,10 @@ export default function Footer() {
                                              display: 'flex',
                                              flexDirection: 'column',
                                              gap: 0.5,
-                                             p: 0
+                                             p: 0,
+                                             alignItems: 'flex-end'
                                         }}>
-                                             <ListItemText sx={{ m: 0 }}>
+                                             <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
                                                             color: Colors.neutral[300],
@@ -497,7 +499,7 @@ export default function Footer() {
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
-                                             <ListItemText sx={{ m: 0 }}>
+                                             <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
                                                             color: Colors.neutral[300],
@@ -513,7 +515,7 @@ export default function Footer() {
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
-                                             <ListItemText sx={{ m: 0 }}>
+                                             <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
                                                             color: Colors.neutral[300],
@@ -529,7 +531,7 @@ export default function Footer() {
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
-                                             <ListItemText sx={{ m: 0 }}>
+                                             <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
                                                             color: Colors.neutral[300],
@@ -576,8 +578,34 @@ export default function Footer() {
                          {
                               formik => (
                                    <Form>
-                                        <Box className="FooterSubscribe">
-                                             <Typography className="FooterTitle" variant="body1">Bilten</Typography>
+                                        <Box
+                                             className="FooterSubscribe"
+                                             sx={{
+                                                  display: 'flex',
+                                                  flexDirection: { xs: 'column', sm: 'row' },
+                                                  alignItems: { xs: 'stretch', sm: 'center' },
+                                                  gap: 2,
+                                                  mt: 4,
+                                                  mb: 2,
+                                                  px: { xs: 0, sm: 2 },
+                                                  width: '100%',
+                                                  maxWidth: 600,
+                                                  mx: 'auto',
+                                             }}
+                                        >
+                                             {/* <Typography
+                                                  className="FooterTitle"
+                                                  variant="body1"
+                                                  sx={{
+                                                       minWidth: 80,
+                                                       mr: { sm: 2 },
+                                                       mb: { xs: 1, sm: 0 },
+                                                       fontWeight: 600,
+                                                       color: Colors.neutral[100],
+                                                  }}
+                                             >
+                                                  Bilten
+                                             </Typography> */}
                                              <TextField
                                                   className="SubscribeTf"
                                                   color="secondary"
@@ -587,25 +615,70 @@ export default function Footer() {
                                                   onChange={formik.handleChange('email')}
                                                   error={formik.touched.email && !!formik.errors.email}
                                                   helperText={formik.touched.email && formik.errors.email}
+                                                  sx={{
+                                                       flex: 1,
+                                                       minWidth: 180,
+                                                       mb: { xs: 1, sm: 0 },
+                                                       background: Colors.neutral[50],
+                                                       borderRadius: 1,
+                                                  }}
                                              />
                                              <Button
                                                   startIcon={<SendIcon />}
-                                                  // variant="contained"
                                                   type="submit"
-                                             //disabled={formik.errors ? true : false}
+                                                  sx={{
+                                                       whiteSpace: 'nowrap',
+                                                       minWidth: 120,
+                                                       height: 48,
+                                                       mb: { xs: 1, sm: 0 },
+                                                  }}
                                              >
                                                   Prijavi se
                                              </Button>
+                                        </Box>
+                                        <Box
+                                             sx={{
+                                                  display: 'flex',
+                                                  flexDirection: { xs: 'column', sm: 'row' },
+                                                  alignItems: { xs: 'flex-start', sm: 'center' },
+                                                  justifyContent: { sm: 'center' },
+                                                  gap: 1,
+                                                  mb: 2,
+                                                  px: { xs: 0, sm: 2 },
+                                                  maxWidth: 600,
+                                                  mx: 'auto',
+                                             }}
+                                        >
                                              <FormControlLabel
-                                                  control={<Checkbox className="PrivacyPolicyCheckBox" checked={formik.values.agreedToTerms} />}
-                                                  onChange={
-                                                       formik.handleChange('agreedToTerms')
+                                                  control={
+                                                       <Checkbox
+                                                            className="PrivacyPolicyCheckBox"
+                                                            checked={formik.values.agreedToTerms}
+                                                            onChange={formik.handleChange('agreedToTerms')}
+                                                            name="agreedToTerms"
+                                                       />
                                                   }
-                                                  label={"Prihvatam uslove politike privatnosti"}
-                                                  name="agreedToTerms"
+                                                  label={
+                                                       <Typography variant="body2" sx={{ color: Colors.neutral[200] }}>
+                                                            Prihvatam uslove politike privatnosti
+                                                       </Typography>
+                                                  }
+                                                  sx={{
+                                                       m: 0,
+                                                       alignItems: 'center',
+                                                  }}
                                              />
                                         </Box>
-                                        <Typography className="Copyright">
+                                        <Typography
+                                             className="Copyright"
+                                             sx={{
+                                                  textAlign: 'center',
+                                                  color: Colors.neutral[400],
+                                                  fontSize: '0.95rem',
+                                                  mt: 2,
+                                                  mb: 1,
+                                             }}
+                                        >
                                              Copyright © Apoteka Dar | Sva prava zadržana.
                                         </Typography>
                                    </Form>

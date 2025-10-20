@@ -1,149 +1,42 @@
-import Carousel from "react-multi-carousel";
+import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Alert, Avatar, Box, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, IconButtonProps, styled, Typography, useMediaQuery, useTheme, Button } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import IProduct from "@/interfaces/product/product.interface";
-import { Colors } from "@/styles/theme";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { addToCart } from "@/store/cart/cart.slice";
-import toast from "react-hot-toast";
+import { Box, useMediaQuery, useTheme } from '@mui/material';
+import IProduct from '@/interfaces/product/product.interface';
+import ProductCard from '@/components/product-card/product-card';
 
+type Props = { products: IProduct[] };
 
-interface ExpandMoreProps extends IconButtonProps {
-     expand: boolean;
-}
+const CarouselPresentationContainer = ({ products }: Props) => {
+  const theme = useTheme();
+  const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'));
 
-const ExpandMore = styled((props: ExpandMoreProps) => {
-     const { expand, ...other } = props;
-     return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-     marginLeft: 'auto',
-     transition: theme.transitions.create('transform', {
-          duration: theme.transitions.duration.shortest,
-     }),
-}));
+  const responsive = {
+    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3, partialVisibilityGutter: 40 },
+    tablet: { breakpoint: { max: 1024, min: 600 }, items: 2, partialVisibilityGutter: 30 },
+    mobile: { breakpoint: { max: 600, min: 0 }, items: 1, partialVisibilityGutter: 30 },
+  };
 
-type ProductCardProps = {
-     products: IProduct[]
-}
-
-const CarouselPresentationContainer = (props: ProductCardProps) => {
-
-     const theme = useTheme();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-
-     const responsive = {
-          desktop: {
-               breakpoint: { max: 3000, min: 1024 },
-               items: 3,
-               partialVisibilityGutter: 40 // this is optional if you are not using partialVisible props
-          },
-          tablet: {
-               breakpoint: { max: 1024, min: 600 },
-               items: 2,
-               partialVisibilityGutter: 30 // this is optional if you are not using partialVisible props
-          },
-          mobile: {
-               breakpoint: { max: 600, min: 0 },
-               items: 1,
-               partialVisibilityGutter: 30 // this is optional if you are not using partialVisible props
-          }
-     };
-
-     const [expanded, setExpanded] = useState(false);
-
-     const handleExpandClick = () => {
-          setExpanded(!expanded);
-     };
-     const dispatch = useDispatch();
-     const [loading, setLoading] = useState(false)
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-
-     const callCartAlert = () => {
-          toast.success("Proizvod je dodat u korpu", {
-               position: "top-center",
-               duration: 1500
-          })
-     }
-
-     return (
-          <Box className="StyledCarouselBox">
-               <Carousel
-                    responsive={responsive}
-                    swipeable={true}
-                    draggable={false}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={3000}
-                    keyBoardControl={true}
-                    customTransition=""
-                    transitionDuration={500}
-                    containerClass=""
-                    itemClass=""
-               >
-                    {
-                         props.products.map((product: IProduct) => (
-                              <Box key={product._id} sx={{ maxWidth: 300, height: 600, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', paddingLeft: { md: '15%', sm: '0' } }}>
-                                   <CardHeader
-                                        title={product.name}
-                                        subheader={product.promotionText}
-                                   />
-                                   <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={product.imageURL}
-                                        alt="Paella dish"
-                                   />
-                                   <CardActions disableSpacing>
-                                        {
-                                             product.availableStock > 0 ? (
-                                                  <Button className="PopularProductAddToCart" onClick={() => {
-                                                       callCartAlert()
-                                                       dispatch(addToCart(product))
-                                                  }}
-                                                  >
-                                                       Dodaj u korpu
-                                                  </Button>
-                                             ) : (
-                                                  <Button className="PopularProductAddToCart" onClick={() => {
-                                                       callCartAlert()
-                                                       dispatch(addToCart(product))
-                                                  }}
-                                                       sx={{ backgroundColor: Colors.dim_grey }}
-                                                       disabled
-                                                  >
-                                                       Nema na stanju
-                                                  </Button>
-                                             )
-                                        }
-                                        {/* <ExpandMore
-                                             expand={expanded}
-                                             onClick={handleExpandClick}
-                                             aria-expanded={expanded}
-                                             aria-label="show more"
-                                        >
-                                             <ExpandMoreIcon />
-                                        </ExpandMore> */}
-                                   </CardActions>
-                                   {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
-                                        <CardContent>
-                                             <Typography paragraph>Opis</Typography>
-                                             <Typography paragraph>
-                                                  {product.description}
-                                             </Typography>
-                                        </CardContent>
-                                   </Collapse> */}
-
-                              </Box>
-                         ))
-                    }
-
-               </Carousel>
+  return (
+    <Box className="StyledCarouselBox">
+      <Carousel
+        responsive={responsive}
+        swipeable
+        draggable={false}
+        infinite
+        autoPlay
+        autoPlaySpeed={3000}
+        keyBoardControl
+        transitionDuration={500}
+      >
+        {products.map((product) => (
+          <Box key={product._id} sx={{ px: 1 }}>
+            <ProductCard product={product} showDescription={false} compact />
           </Box>
-     );
-}
+        ))}
+      </Carousel>
+    </Box>
+  );
+};
 
 export default CarouselPresentationContainer;
 

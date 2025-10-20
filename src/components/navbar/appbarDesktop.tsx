@@ -85,7 +85,6 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                          <Typography
                               className="AppbarTitle"
                               onClick={() => router.push('/')}
-
                          >
                               APOTEKA DAR
                          </Typography>

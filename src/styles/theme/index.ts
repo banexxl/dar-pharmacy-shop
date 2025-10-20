@@ -637,16 +637,18 @@ const theme: Theme = createTheme({
                styleOverrides: {
                     root: {
                          fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-                         // AppBar Title
+                         // AppBar Title as h3
                          '&.AppbarTitle': {
                               '@media (max-width: 900px)': {
                                    maxWidth: '250px',
                               },
                               paddingLeft: '4px',
-                              fontSize: ".5rem",
+                              fontSize: '1.2rem', // h3 font size
                               color: Colors.primary.main,
                               cursor: 'pointer',
-                              fontFamily: 'serif',
+                              fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+                              fontWeight: 600,
+                              lineHeight: 1.3,
                          },
                          // Message Text (Promotions)
                          '&.MessageText': {

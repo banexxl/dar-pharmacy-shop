@@ -1,31 +1,14 @@
 import IProduct from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
-import Link from 'next/link';
-import { Box, Tooltip, Typography, useMediaQuery, useTheme, Button, Card, CardContent } from '@mui/material';
-import Image from 'next/image';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '@/store/cart/cart.slice';
-import toast from 'react-hot-toast';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
+import ProductCard from '@/components/product-card/product-card';
 
 const ProductCarousel = (props: any) => {
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
-     const dispatch = useDispatch();
-     const [loading, setLoading] = useState(false)
-     const calculateDiscountedPrice = (oldPrice: number, discount: number) => {
-          return oldPrice - (oldPrice * (discount / 100))
-     };
-
-     const callCartAlert = () => {
-          toast.success("Proizvod je dodat u korpu", {
-               position: "top-center",
-               duration: 1500
-          })
-     }
+     // Switched to generic ProductCard for each item
 
      const responsive = {
           desktop: {
@@ -60,91 +43,11 @@ const ProductCarousel = (props: any) => {
                     containerClass=""
                     itemClass=""
                >
-                    {
-                         props.products.map((product: IProduct) => (
-                              <Card className="StyledCarouselCard" key={product._id} sx={{
-                                   display: 'flex',
-                                   flexDirection: 'column',
-                                   justifyContent: 'space-between',
-                                   paddingBottom: '10px',
-                                   height: 'auto'
-                              }}>
-                                   <Box
-                                        sx={{
-                                             position: 'relative', // Make the Box container a positioning context
-                                             display: 'flex',
-                                             justifyContent: 'center',
-                                             alignItems: 'center', // Center the content vertically
-                                        }}
-                                   >
-                                        <Link href={`/proizvod/${product.slug}`}>
-                                             <Image
-                                                  style={{ borderRadius: '10px' }}
-                                                  src={product.imageURL}
-                                                  alt={product.name}
-                                                  height={isScreenToMedium ? 160 : 230}
-                                                  width={isScreenToMedium ? 125 : 200}
-                                             />
-                                        </Link>
-                                   </Box>
-                                   <CardContent>
-                                        <Box className="CarouselManufacturerBox">
-                                             <Typography className="CarouselManufacturer" sx={{ textTransform: 'capitalize', textAlign: 'center', fontSize: isScreenToMedium ? '1rem' : '1.3rem' }}>{product.manufacturer}</Typography>
-                                        </Box>
-                                        <Box className="CarouselTitleBox">
-                                             {
-                                                  product.discount && product.discountAmount && (
-                                                       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                                                            {/* Old Price with Strikethrough */}
-                                                            {product.price && (
-                                                                 <Typography
-                                                                      fontSize={'.8rem'}
-                                                                      color="textSecondary"
-                                                                      sx={{ textDecoration: 'line-through' }}
-                                                                 >
-                                                                      {product.price.toFixed(2)}
-                                                                 </Typography>
-                                                            )}
-
-                                                            {/* New Price after Discount */}
-                                                            {product.price && product.discount && (
-                                                                 <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
-                                                                      {calculateDiscountedPrice(product.price, product.discountAmount!).toFixed(2)}
-                                                                 </Typography>
-                                                            )}
-                                                       </Box>
-                                                  )
-                                             }
-
-                                             <Tooltip title={product.name} placement="top">
-                                                  <Typography className="CarouselTitle" sx={{ fontSize: isScreenToMedium ? '.8rem' : '1rem', textAlign: 'center' }}>{product.name}</Typography>
-                                             </Tooltip>
-                                        </Box>
-                                   </CardContent>
-                                   {
-                                        product.availableStock > 0 ? (
-                                             <Button
-                                                  className="CarouselButton"
-                                                  variant="contained"
-                                                  onClick={() => {
-                                                       callCartAlert();
-                                                       dispatch(addToCart(product));
-                                                  }}>
-                                                  Dodaj u korpu
-                                             </Button>
-                                        )
-                                             :
-                                             <Button
-                                                  className="CarouselButton"
-                                                  variant="outlined"
-                                                  disabled>
-                                                  Nema na stanju
-                                             </Button>
-                                   }
-
-                              </Card>
-                         ))
-                    }
+                    {props.products.map((product: IProduct) => (
+                         <Box key={product._id} sx={{ px: 1 }}>
+                              <ProductCard product={product} showDescription={false} compact />
+                         </Box>
+                    ))}
                </Carousel>
           </Box>
      );
