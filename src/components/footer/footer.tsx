@@ -58,13 +58,27 @@ export default function Footer() {
 
 
      return (
-          <Box component="footer" sx={{ width: '100%', backgroundColor: Colors.neutral[200], borderTop: `1px solid ${Colors.neutral[800]}` }}>
+          <Box
+               component="footer"
+               sx={{
+                    position: 'relative',
+                    left: '50%',
+                    right: '50%',
+                    marginLeft: '-50vw',
+                    marginRight: '-50vw',
+                    width: '100vw',
+                    backgroundColor: Colors.neutral[200],
+                    borderTop: `1px solid ${Colors.neutral[800]}`,
+               }}
+          >
                <Container
                     className="FooterContainer"
                     maxWidth="xl"
+                    disableGutters
                     sx={{
                          color: Colors.neutral[100],
                          py: { xs: 4, md: 6 },
+                         px: { xs: 2, md: 0 },
                     }}
                >
                     {
