@@ -1,12 +1,14 @@
 import { Card, CardContent, CardActions, CardMedia, Typography, Box, Chip } from '@mui/material';
 import Button from '@/components/button';
 import IProduct from '@/interfaces/product/product.interface';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '@/store/cart/cart.slice';
 import { addToWishList } from '@/store/wishlist/wishlist.slice';
 import { Colors } from '@/styles/theme';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
 
 export type ProductCardProps = {
   product: IProduct;
@@ -31,6 +33,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   const dispatch = useDispatch();
   const router = useRouter();
+  const wishListState = useSelector(wishListSelectorState);
 
   const price = Number(product.price);
   const discountAmount = Number(product.discountAmount);
@@ -41,12 +44,20 @@ export default function ProductCard({
     await router.push(`/proizvod/${product.slug}`);
   };
 
+  const isInWishlist = !!wishListState?.some((item: IProduct) => item._id === product._id);
+
   const handleAddToWishList = async () => {
+    if (isInWishlist) {
+      toast.error('Proizvod je već u listi želja', { position: 'top-center', duration: 1500 });
+      return;
+    }
     dispatch(addToWishList(product));
+    toast.success('Proizvod je dodat u listu želja', { position: 'top-center', duration: 1500 });
   };
 
   const handleAddToCart = async () => {
     dispatch(addToCart(product));
+    toast.success('Proizvod je dodat u korpu', { position: 'top-center', duration: 1500 });
   };
 
   return (
@@ -142,7 +153,7 @@ export default function ProductCard({
               onClick={handleAddToWishList}
               sx={{ minWidth: 0, px: 2 }}
             >
-              Omiljeni
+              {isInWishlist ? 'U listi zelja' : 'Omiljeni'}
             </Button>
           </Box>
           <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
