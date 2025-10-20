@@ -67,20 +67,16 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                     <AppBar
                          position="fixed"
                          sx={{
-                              background: isScrolled
-                                   ? 'rgba(255, 255, 255, 0.95)'
-                                   : 'rgba(255, 255, 255, 0.98)',
+                              background: isScrolled ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 255, 255, 0.98)',
                               backdropFilter: 'blur(20px)',
                               borderBottom: '1px solid',
                               borderBottomColor: Colors.neutral[200],
-                              boxShadow: isScrolled
-                                   ? `0 8px 32px ${Colors.neutral[900]}15`
-                                   : `0 2px 12px ${Colors.neutral[900]}08`,
+                              boxShadow: isScrolled ? `0 8px 32px ${Colors.neutral[900]}15` : `0 2px 12px ${Colors.neutral[900]}08`,
                               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                          }}
                     >
                          <Toolbar sx={{
-                              minHeight: { xs: 68, sm: 72 },
+                              minHeight: { xs: isScrolled ? 56 : 68, sm: isScrolled ? 60 : 72 },
                               px: { xs: 2, sm: 3 },
                               justifyContent: 'space-between'
                          }}>
@@ -101,12 +97,12 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                               </IconButton>
 
                               {/* Actions (3 icons on mobile) */}
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: isScrolled ? 0.25 : 0.5 }}>
                                    <Link href="/lista-zelja" passHref>
                                         <IconButton
                                              sx={{
                                                   color: Colors.neutral[600],
-                                                  p: 1,
+                                                  p: isScrolled ? 0.75 : 1,
                                                   borderRadius: 2,
                                                   '&:hover': {
                                                        color: 'error.main',
@@ -129,7 +125,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         onClick={() => { showCartDialog(); setDrawerOpen(false) }}
                                         sx={{
                                              color: Colors.neutral[600],
-                                             p: 1,
+                                             p: isScrolled ? 0.75 : 1,
                                              position: 'relative',
                                              borderRadius: 2,
                                              '&:hover': {
@@ -160,7 +156,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         <IconButton
                                              sx={{
                                                   color: Colors.neutral[600],
-                                                  p: 1,
+                                                  p: isScrolled ? 0.75 : 1,
                                                   borderRadius: 2,
                                                   '&:hover': {
                                                        color: Colors.primary.main,

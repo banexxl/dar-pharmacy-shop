@@ -1,6 +1,7 @@
 import Animate from "@/components/animate/animate";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/navbar/navbar";
+import { Box } from "@mui/material";
 import { createContext, useContext, useState } from "react";
 
 
@@ -23,6 +24,7 @@ export const UIProvider = ({ children }: any) => {
      return (
           <UIContext.Provider value={value}>
                <NavBar />
+               <Box sx={{ height: '50px' }} />
                <Animate>
                     {children}
                </Animate>
