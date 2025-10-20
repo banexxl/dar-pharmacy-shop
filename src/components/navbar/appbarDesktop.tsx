@@ -41,23 +41,16 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
           }
      }, []);
 
-     const getHeight = () => {
-          if (isScrolled) {
-               return '60px';
-          } else {
-               return '100px';
-          }
-     };
+     const getHeight = () => (isScrolled ? '60px' : '100px');
 
      return (
+          <>
           <Container
                className="AppbarContainer"
                maxWidth="xl"
                sx={{
                     height: getHeight(),
-                    background: isScrolled
-                         ? 'rgba(255, 255, 255, 0.95)'
-                         : 'rgba(255, 255, 255, 0.98)',
+                    background: isScrolled ? 'rgba(255, 255, 255, 0.88)' : 'rgba(255, 255, 255, 0.98)',
                     backdropFilter: 'blur(20px)',
                     borderBottom: '1px solid',
                     borderBottomColor: Colors.neutral[200],
@@ -65,9 +58,11 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                          ? `0 8px 32px ${Colors.neutral[900]}15`
                          : `0 2px 12px ${Colors.neutral[900]}08`,
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    position: 'sticky',
+                    position: 'fixed',
                     top: 0,
-                    zIndex: 1100,
+                    left: 0,
+                    right: 0,
+                    zIndex: 1200,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -86,27 +81,9 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                     },
                     transition: 'all 0.3s ease',
                }}>
-                    <SvgIcon type={"logo"} />
+                    <SvgIcon type={"logo"} width={32} height={32} color={Colors.primary.main} />
                     <Typography
                          className="AppbarTitle"
-                         sx={{
-                              fontSize: { xs: '1.6rem', md: '1.8rem', lg: '2rem' },
-                              fontWeight: 700,
-                              background: `linear-gradient(135deg, ${Colors.primary.main} 0%, ${Colors.primary[600]} 100%)`,
-                              backgroundClip: 'text',
-                              WebkitBackgroundClip: 'text',
-                              WebkitTextFillColor: 'transparent',
-                              letterSpacing: '0.02em',
-                              fontFamily: '"Inter", "Roboto", sans-serif',
-                              whiteSpace: 'nowrap',
-                              '&:hover': {
-                                   background: `linear-gradient(135deg, ${Colors.primary[700]} 0%, ${Colors.primary.main} 100%)`,
-                                   backgroundClip: 'text',
-                                   WebkitBackgroundClip: 'text',
-                                   WebkitTextFillColor: 'transparent',
-                              },
-                              transition: 'all 0.3s ease',
-                         }}
                          onClick={() => router.push('/')}
                     >
                          APOTEKA DAR
@@ -147,5 +124,8 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                </ListItemButton>
                <Actions isScreenToMedium={isScreenToMedium} />
           </Container>
+          {/* Spacer to offset fixed header height */}
+          <Box sx={{ height: getHeight() }} />
+          </>
      );
 }

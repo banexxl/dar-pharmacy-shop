@@ -1,27 +1,23 @@
-import LoadingWheel from '@/components/loading/loading'
+﻿import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
 import { Seo } from '@/components/seo'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Container, Stack, Typography, Button, Box } from '@mui/material'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React from 'react'
 
 const PageNotFount = () => {
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
+     // ThemeProvider is applied globally in _app.tsx
 
      return (
-          <DynamicThemeProvider theme={theme}>
-               <Seo title={'Stranica nije pronađena'} description={'Stranica nije pronađena'} url={'https://www.apoteka-dar.rs/'} />
+          <>
+               <Seo title={'Stranica nije pronaÄ‘ena'} description={'Stranica nije pronaÄ‘ena'} url={'https://www.apoteka-dar.rs/'} />
                <Container
-                    disableGutters
-                    maxWidth="lg"
+
+                    maxWidth="xl"
                     sx={{
                          background: "#fff",
                     }}
@@ -29,13 +25,13 @@ const PageNotFount = () => {
                     <Stack>
                          <UIProvider>
                               <Box className="Container404">
-                                   <Typography className="Heading404">404 - Stranica nije pronađena {'\u{1F612}'}</Typography>
+                                   <Typography className="Heading404">404 - Stranica nije pronaÄ‘ena {'\u{1F612}'}</Typography>
                                    <Typography className="Message404" variant="body1">
-                                        UPS!....Stranica ili proizvod koji ste zahtevali nije pronađen! Možda iznenadi i pojavi se posle osvežavanja stranice {'\u{1F609}'}
+                                        UPS!....Stranica ili proizvod koji ste zahtevali nije pronaÄ‘en! MoÅ¾da iznenadi i pojavi se posle osveÅ¾avanja stranice {'\u{1F609}'}
                                    </Typography>
                                    <Link rel='canonical' href="/" passHref>
                                         <Button className="StyledButton404" variant="contained" color="primary">
-                                             Nazad na početnu
+                                             Nazad na poÄetnu
                                         </Button>
                                    </Link>
                               </Box>
@@ -44,7 +40,7 @@ const PageNotFount = () => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </DynamicThemeProvider>
+          </>
      )
 }
 

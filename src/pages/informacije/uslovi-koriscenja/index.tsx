@@ -5,24 +5,18 @@ import { Box, Container, Divider, List, ListItem, ListItemText, Stack, Typograph
 import React from 'react'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
-import dynamic from 'next/dynamic'
+// removed per-page ThemeProvider; using global provider
 import Link from 'next/link'
 import { Seo } from '@/components/seo'
 
 const TermsConditions = () => {
 
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
-
      return (
-          <DynamicThemeProvider theme={theme}>
-               <Seo title={'Uslovi korišćenja'} description={'Uslovi korišćenja'} url={'https://www.apoteka-dar.rs/'} />
+          <>
+               <Seo title={'Uslovi koriscenja'} description={'Uslovi koriscenja'} url={'https://www.apoteka-dar.rs/'} />
                <Container
-                    disableGutters
-                    maxWidth="lg"
+                    maxWidth="xl"
                     sx={{
                          background: "#fff",
                     }}
@@ -330,8 +324,10 @@ const TermsConditions = () => {
                          </UIProvider>
                     </Stack>
                </Container >
-          </DynamicThemeProvider >
+          </>
      )
 }
 
 export default TermsConditions
+
+

@@ -113,7 +113,14 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
           <Box className="Product" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef}>
                <Box className="FilteredProductImageContainer">
                     <Link rel='canonical' href={'/proizvod/' + product.slug}>
-                         <Box component="img" src={product.imageURL} alt={product.name} className="ProductImage" />
+                         <Box component="img" src={product.imageURL} alt={product.name} className="ProductImage" sx={{
+                              width: '100%',
+                              height: 300,
+                              objectFit: 'contain',
+                              backgroundColor: Colors.neutral[50],
+                              borderRadius: 1,
+                              p: 1
+                         }} />
                     </Link>
                </Box>
                {(showOptions || isScreenToMedium) && (

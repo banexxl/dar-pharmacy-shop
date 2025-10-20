@@ -1,12 +1,9 @@
 import { Container, Typography, Box, Stack, Divider, Button, Modal, Paper } from "@mui/material";
 import Products from "../components/products/products-grid";
 import { UIProvider } from "../context/ui/ui.context";
-import AppDrawer from "../components/navbar/drawer/drawer";
 import Promotions from "../components/promotions/promotions";
 import SearchBox from "../components/search/search"
 import { ProductsServices } from '@/services/product.services'
-import dynamic from "next/dynamic";
-import LoadingWheel from "@/components/loading/loading";
 import IProduct from "@/interfaces/product/product.interface";
 import ProductCarousel from "@/components/carousel/carousel";
 import CarouselLogo from "@/components/carousel/carousel-logo";
@@ -20,16 +17,13 @@ import CarouselPresentationContainer from "@/components/carousel/carousel-presen
 import Paralax from "@/components/paralax/paralax";
 import Chatbot from "@/chatbot/chatbot";
 import PaymentStrip from "@/components/payment-strip/payment-strip";
-import theme from "@/styles/theme";
+import theme, { Colors } from "@/styles/theme";
 
 export default function Home(props: any) {
 
      const { dataForProductCarousel, dataForGrid, dataForNewProducts, manufacturers, productsOnDiscount, promotionProduct, promotionProducts } = props
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
+     // ThemeProvider is now applied globally in _app.tsx
 
      const [open, setOpen] = useState(false);
 
@@ -58,7 +52,7 @@ export default function Home(props: any) {
      };
 
      return (
-          <DynamicThemeProvider theme={theme}>
+          <>
                <Seo title={'Početna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <UIProvider>
                     {/* Main Content */}
@@ -81,18 +75,11 @@ export default function Home(props: any) {
                          <Box sx={{
                               width: '100%',
                               py: { xs: 5, md: 8 },
-                              background: 'linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(5, 150, 105, 0.02) 100%)',
+                              backgroundColor: Colors.neutral[50],
                               position: 'relative',
-                              '&::before': {
-                                   content: '""',
-                                   position: 'absolute',
-                                   top: 0,
-                                   left: 0,
-                                   right: 0,
-                                   bottom: 0,
-                                   background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%)',
-                                   pointerEvents: 'none'
-                              }
+                              borderTop: `1px solid ${Colors.neutral[200]}`,
+                              borderBottom: `1px solid ${Colors.neutral[200]}`,
+                              '&::before': { display: 'none' }
                          }}>
                               <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
                                    <Box sx={{ textAlign: 'center', mb: 6 }}>
@@ -101,12 +88,9 @@ export default function Home(props: any) {
                                              sx={{
                                                   fontSize: { xs: '2rem', md: '2.5rem' },
                                                   fontWeight: 700,
-                                                  background: 'linear-gradient(135deg, #1E40AF 0%, #059669 100%)',
-                                                  backgroundClip: 'text',
-                                                  WebkitBackgroundClip: 'text',
-                                                  WebkitTextFillColor: 'transparent',
+                                                  color: Colors.primary.main,
                                                   mb: 2,
-                                                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                                                  letterSpacing: '-0.01em'
                                              }}
                                         >
                                              Popularno
@@ -182,18 +166,10 @@ export default function Home(props: any) {
                          <Box sx={{
                               width: '100%',
                               py: { xs: 5, md: 8 },
-                              background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.04) 0%, rgba(124, 58, 237, 0.04) 100%)',
+                              backgroundColor: Colors.white,
                               position: 'relative',
-                              '&::before': {
-                                   content: '""',
-                                   position: 'absolute',
-                                   top: 0,
-                                   left: 0,
-                                   right: 0,
-                                   bottom: 0,
-                                   background: 'linear-gradient(45deg, rgba(248, 250, 252, 0.9) 0%, rgba(243, 244, 246, 0.95) 100%)',
-                                   pointerEvents: 'none'
-                              }
+                              borderBottom: `1px solid ${Colors.neutral[200]}`,
+                              '&::before': { display: 'none' }
                          }}>
                               <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
                                    <Box sx={{ textAlign: 'center', mb: 6 }}>
@@ -202,12 +178,9 @@ export default function Home(props: any) {
                                              sx={{
                                                   fontSize: { xs: '2rem', md: '2.5rem' },
                                                   fontWeight: 700,
-                                                  background: 'linear-gradient(135deg, #059669 0%, #7C3AED 100%)',
-                                                  backgroundClip: 'text',
-                                                  WebkitBackgroundClip: 'text',
-                                                  WebkitTextFillColor: 'transparent',
+                                                  color: Colors.secondary.main,
                                                   mb: 2,
-                                                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                                                  letterSpacing: '-0.01em'
                                              }}
                                         >
                                              Novo u ponudi
@@ -233,7 +206,7 @@ export default function Home(props: any) {
                          <Box sx={{
                               width: '100%',
                               py: { xs: 5, md: 8 },
-                              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.95) 100%)',
+                              backgroundColor: Colors.neutral[50],
                               position: 'relative'
                          }}>
                               <Container maxWidth="xl">
@@ -243,12 +216,9 @@ export default function Home(props: any) {
                                              sx={{
                                                   fontSize: { xs: '2rem', md: '2.5rem' },
                                                   fontWeight: 700,
-                                                  background: 'linear-gradient(135deg, #7C3AED 0%, #1E40AF 100%)',
-                                                  backgroundClip: 'text',
-                                                  WebkitBackgroundClip: 'text',
-                                                  WebkitTextFillColor: 'transparent',
+                                                  color: Colors.primary.main,
                                                   mb: 2,
-                                                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                                                  letterSpacing: '-0.01em'
                                              }}
                                         >
                                              Brendovi
@@ -275,7 +245,7 @@ export default function Home(props: any) {
                               <Box sx={{
                                    width: '100%',
                                    py: { xs: 5, md: 8 },
-                                   background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.08) 100%)',
+                                   backgroundColor: Colors.white,
                                    position: 'relative',
                                    '&::before': {
                                         content: '""',
@@ -292,16 +262,6 @@ export default function Home(props: any) {
                                         <Box sx={{ textAlign: 'center', mb: 6 }}>
                                              <Typography
                                                   variant="h2"
-                                                  sx={{
-                                                       fontSize: { xs: '2rem', md: '2.5rem' },
-                                                       fontWeight: 700,
-                                                       background: 'linear-gradient(135deg, #DC2626 0%, #EF4444 100%)',
-                                                       backgroundClip: 'text',
-                                                       WebkitBackgroundClip: 'text',
-                                                       WebkitTextFillColor: 'transparent',
-                                                       mb: 2,
-                                                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-                                                  }}
                                              >
                                                   Proizvodi na akciji
                                              </Typography>
@@ -381,7 +341,6 @@ export default function Home(props: any) {
 
                     <Chatbot />
                     <SearchBox />
-                    <AppDrawer isScreenToMedium={false} />
                </UIProvider>
 
                <Modal
@@ -406,7 +365,7 @@ export default function Home(props: any) {
                          </Button>
                     </Paper>
                </Modal>
-          </DynamicThemeProvider>
+          </>
      )
 }
 

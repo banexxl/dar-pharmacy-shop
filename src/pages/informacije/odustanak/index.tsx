@@ -3,36 +3,23 @@ import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme from "@/styles/theme";
 import { Box, Container, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
-import dynamic from "next/dynamic";
+// removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { Seo } from "@/components/seo";
 
 const ContactPage = (props: ContactPageProps) => {
-
-
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      return (
-          <DynamicThemeProvider theme={theme}>
+          <>
                <Seo title={'Izjava o odustanku'} description={'Izjava o odustanku'} url={'https://www.apoteka-dar.rs/'} />
-               <Container
-                    disableGutters
-                    maxWidth="lg"
-                    sx={{
-                         background: "#fff",
-                    }}
-               >
+               <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mt: '70px' }}>
-
-                                   <Typography marginTop='130px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
-                                        ODUSTANAK
+                              <Box sx={{ mt: { xs: 2, md: 8 } }}>
+                                   <Typography variant="h2" textAlign='center' sx={{ fontWeight: 700, mb: 2 }}>
+                                        Izjava o odustanku
                                    </Typography>
 
                                    <Divider sx={{ marginBottom: '30px' }} variant="middle" />
@@ -147,7 +134,7 @@ const ContactPage = (props: ContactPageProps) => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </DynamicThemeProvider >
+          </>
      )
 }
 
@@ -163,3 +150,4 @@ export async function getStaticProps({ locale }: any) {
 }
 
 export default ContactPage
+

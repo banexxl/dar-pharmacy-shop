@@ -117,8 +117,11 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               image={product.imageURL}
                               alt="Product"
                               sx={{
-                                   height: 200,
-                                   objectFit: 'cover'
+                                   height: 220,
+                                   objectFit: 'contain',
+                                   backgroundColor: Colors.neutral[50],
+                                   borderRadius: 1,
+                                   p: 1
                               }}
                          />
                     </Link>

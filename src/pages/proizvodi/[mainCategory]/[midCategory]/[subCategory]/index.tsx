@@ -1,10 +1,10 @@
-import { Container, Stack } from "@mui/material";
+﻿import { Container, Stack } from "@mui/material";
 import { UIProvider } from "../../../../../context/ui/ui.context";
 import LoadingWheel from '@/components/loading/loading'
 import AppDrawer from "../../../../../components/navbar/drawer/drawer";
 import SearchBox from "../../../../../components/search/search"
 import { ProductsServices } from '@/services/product.services'
-import dynamic from 'next/dynamic';
+// removed per-page ThemeProvider; using global provider
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
 import { Seo } from "@/components/seo";
@@ -12,33 +12,6 @@ import theme from "@/styles/theme";
 
 export default function MainCategoryPage(props: any) {
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: true
-     })
-
-     const router = useRouter()
-
-     return (
-          <DynamicThemeProvider theme={theme}>
-               <Seo title={'Kategorija'} description={'Kategorija'} url={'https://www.apoteka-dar.rs/'} />
-               <Container
-                    disableGutters
-                    maxWidth="lg"
-                    sx={{
-                         background: "#fff",
-                    }}
-               >
-                    <Stack>
-                         <UIProvider>
-                              <SearchBox />
-                              <ProductsFilter filterObject={props.products} routerQuery={router.query} />
-                              <AppDrawer isScreenToMedium={false} />
-                         </UIProvider>
-                    </Stack>
-               </Container>
-          </DynamicThemeProvider>
-     )
 }
 
 
@@ -62,3 +35,4 @@ export async function getServerSideProps({ query }: any) {
           },
      }
 }
+

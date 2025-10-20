@@ -37,21 +37,21 @@ const wiggleKeyframe = keyframes`
 
 export const Colors = {
      primary: {
-          main: "#1E40AF", // Professional deep blue
-          dark: "#1E3A8A",
-          darker: "#1E3A8A",
-          light: "#3B82F6",
-          lighter: "#DBEAFE",
-          50: "#EFF6FF",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6",
-          600: "#2563EB", // Primary accent
-          700: "#1D4ED8",
-          800: "#1E40AF", // Main primary
-          900: "#1E3A8A"
+          main: "#EF4444",
+          dark: "#DC2626",
+          darker: "#B91C1C",
+          light: "#F87171",
+          lighter: "#FEE2E2",
+          50: "#FEF2F2",
+          100: "#FEE2E2",
+          200: "#FECACA",
+          300: "#FCA5A5",
+          400: "#F87171",
+          500: "#EF4444",
+          600: "#DC2626",
+          700: "#B91C1C",
+          800: "#991B1B",
+          900: "#7F1D1D"
      },
      secondary: {
           main: "#059669", // Professional emerald green for pharmacy feel
@@ -585,7 +585,7 @@ const theme: Theme = createTheme({
                          },
                          // Footer Container
                          '&.FooterContainer': {
-                              backgroundColor: Colors.primary.main,
+                              backgroundColor: Colors.primary[400],
                               color: Colors.primary.lighter,
                               padding: '40px 20px',
                               marginTop: 'auto',

@@ -60,562 +60,562 @@ export default function Footer() {
 
 
      return (
-          <Container
-               className="FooterContainer"
-               sx={{
-                    background: `linear-gradient(135deg, ${Colors.neutral[900]} 0%, ${Colors.neutral[800]} 100%)`,
-                    color: Colors.neutral[100],
-                    py: { xs: 4, md: 6 },
-                    mt: 8,
-                    borderTop: `1px solid ${Colors.neutral[700]}`,
-               }}
-          >
-               {
-                    isScreenToMedium ?
-                         <Box sx={{
-                              '& .MuiAccordion-root': {
-                                   background: 'transparent',
-                                   boxShadow: 'none',
-                                   '&:before': { display: 'none' },
-                                   borderBottom: `1px solid ${Colors.neutral[700]}`,
-                              }
-                         }}>
-                              <Accordion disableGutters sx={{
-                                   background: 'transparent',
-                                   color: Colors.neutral[100],
+          <Box component="footer" sx={{ width: '100vw', backgroundColor: Colors.neutral[200], borderTop: `1px solid ${Colors.neutral[800]}`, mt: 8 }}>
+               <Container
+                    className="FooterContainer"
+                    maxWidth="xl"
+                    sx={{
+                         color: Colors.neutral[100],
+                         py: { xs: 4, md: 6 },
+                    }}
+               >
+                    {
+                         isScreenToMedium ?
+                              <Box sx={{
+                                   '& .MuiAccordion-root': {
+                                        background: 'transparent',
+                                        boxShadow: 'none',
+                                        '&:before': { display: 'none' },
+                                        borderBottom: `1px solid ${Colors.neutral[700]}`,
+                                   }
                               }}>
-                                   <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
-                                        aria-controls="panel1-content"
-                                        id="panel1-header"
-                                        sx={{
-                                             color: Colors.neutral[100],
-                                             fontWeight: 600,
-                                             '&:hover': {
-                                                  bgcolor: Colors.neutral[800],
-                                             }
-                                        }}
-                                   >
-                                        <Typography variant="h6" fontWeight={600}>Informacije</Typography>
-                                   </AccordionSummary>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Početna
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/kontakt"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Kontakt
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/o-nama"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             O nama
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/isporuka-i-placanje"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Isporuka i plaćanje
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/politika-privatnosti"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Politika privatnosti
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/uslovi-koriscenja"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Uslovi korišćenja
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/politika-kolacica"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Politika kolačića
-                                        </Link>
-                                   </AccordionDetails>
-                              </Accordion>
-                              <Accordion disableGutters sx={{
-                                   background: 'transparent',
-                                   color: Colors.neutral[100],
-                              }}>
-                                   <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
-                                        aria-controls="panel2-content"
-                                        id="panel2-header"
-                                        sx={{
-                                             color: Colors.neutral[100],
-                                             fontWeight: 600,
-                                             '&:hover': {
-                                                  bgcolor: Colors.neutral[800],
-                                             }
-                                        }}
-                                   >
-                                        <Typography variant="h6" fontWeight={600}>Nalog</Typography>
-                                   </AccordionSummary>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/autentifikacija/prijava"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Prijava
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/nalog"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Moj profil
-                                        </Link>
-                                   </AccordionDetails>
-                              </Accordion>
-                              <Accordion disableGutters sx={{
-                                   background: 'transparent',
-                                   color: Colors.neutral[100],
-                              }}>
-                                   <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
-                                        aria-controls="panel3-content"
-                                        id="panel3-header"
-                                        sx={{
-                                             color: Colors.neutral[100],
-                                             fontWeight: 600,
-                                             '&:hover': {
-                                                  bgcolor: Colors.neutral[800],
-                                             }
-                                        }}
-                                   >
-                                        <Typography variant="h6" fontWeight={600}>Korisnički servis</Typography>
-                                   </AccordionSummary>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/odustanak"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Izjava o odustanku
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/reklamacije"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Reklamacije
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/docs/Ugovor-o-prodaji-na-daljinu.docx"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             Ugovor o prodaji na daljinu
-                                        </Link>
-                                   </AccordionDetails>
-                                   <AccordionDetails sx={{ px: 2, py: 1 }}>
-                                        <Link rel='canonical' href={"/informacije/dar-savetnik"} style={{
-                                             color: Colors.neutral[300],
-                                             textDecoration: 'none',
-                                             display: 'block',
-                                             padding: '8px 0',
-                                             transition: 'color 0.3s ease'
-                                        }}>
-                                             DAR savetnik
-                                        </Link>
-                                   </AccordionDetails>
-                              </Accordion>
-                         </Box>
-                         :
-                         <Box className="FooterInfoAccount" sx={{
-                              display: 'flex',
-                              gap: 6,
-                              justifyContent: 'space-between',
-                              flexWrap: 'wrap'
-                         }}>
-                              <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 200 }}>
-                                   <Typography variant="h6" sx={{
+                                   <Accordion disableGutters sx={{
+                                        background: 'transparent',
                                         color: Colors.neutral[100],
-                                        fontWeight: 600,
-                                        mb: 2,
-                                        fontSize: '1.1rem'
                                    }}>
-                                        Informacije
-                                   </Typography>
-                                   <List sx={{
-                                        color: Colors.neutral[300],
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: 0.5,
-                                        p: 0
-                                   }}>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
+                                        <AccordionSummary
+                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
+                                             aria-controls="panel1-content"
+                                             id="panel1-header"
+                                             sx={{
+                                                  color: Colors.neutral[100],
+                                                  fontWeight: 600,
+                                                  '&:hover': {
+                                                       bgcolor: Colors.neutral[800],
                                                   }
+                                             }}
+                                        >
+                                             <Typography variant="h6" fontWeight={600}>Informacije</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href={"/"}>
-                                                       Početna
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                                  Početna
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/kontakt"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href={"/kontakt"}>
-                                                       Kontakt
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                                  Kontakt
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/o-nama"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href='/informacije/o-nama'>
-                                                       O nama
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                                  O nama
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/isporuka-i-placanje"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href={"/informacije/isporuka-i-placanje"}>
-                                                       Isporuka i plaćanje
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                                  Isporuka i plaćanje
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/politika-privatnosti"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href='/informacije/politika-privatnosti'>
-                                                       Politika privatnosti
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                                  Politika privatnosti
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/uslovi-koriscenja"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href='/informacije/uslovi-koriscenja'>
-                                                       Uslovi korišćenja
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                                  Uslovi korišćenja
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/politika-kolacica"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href='/informacije/politika-kolacica'>
-                                                       Politika kolačića
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                   </List>
-                              </Box>
-                              <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 150 }}>
-                                   <Typography variant="h6" sx={{
+                                                  Politika kolačića
+                                             </Link>
+                                        </AccordionDetails>
+                                   </Accordion>
+                                   <Accordion disableGutters sx={{
+                                        background: 'transparent',
                                         color: Colors.neutral[100],
-                                        fontWeight: 600,
-                                        mb: 2,
-                                        fontSize: '1.1rem'
                                    }}>
-                                        Nalog
-                                   </Typography>
-                                   <List sx={{
-                                        color: Colors.neutral[300],
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: 0.5,
-                                        p: 0
-                                   }}>
-                                        <ListItemText onClick={showLoginDialog} sx={{
-                                             m: 0,
-                                             cursor: 'pointer',
-                                             '&:hover': {
-                                                  color: Colors.primary.light
-                                             }
-                                        }}>
-                                             <Typography sx={{
-                                                  color: 'inherit',
+                                        <AccordionSummary
+                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
+                                             aria-controls="panel2-content"
+                                             id="panel2-header"
+                                             sx={{
+                                                  color: Colors.neutral[100],
+                                                  fontWeight: 600,
+                                                  '&:hover': {
+                                                       bgcolor: Colors.neutral[800],
+                                                  }
+                                             }}
+                                        >
+                                             <Typography variant="h6" fontWeight={600}>Nalog</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/autentifikacija/prijava"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
                                                   transition: 'color 0.3s ease'
                                              }}>
                                                   Prijava
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/nalog"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
                                              }}>
-                                                  <Link rel='canonical' href={"/nalog"}>
-                                                       Moj profil
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                   </List>
-                              </Box>
-                              <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 200 }}>
-                                   <Typography variant="h6" sx={{
+                                                  Moj profil
+                                             </Link>
+                                        </AccordionDetails>
+                                   </Accordion>
+                                   <Accordion disableGutters sx={{
+                                        background: 'transparent',
                                         color: Colors.neutral[100],
-                                        fontWeight: 600,
-                                        mb: 2,
-                                        fontSize: '1.1rem'
                                    }}>
-                                        Korisnički servis
-                                   </Typography>
-                                   <List sx={{
-                                        color: Colors.neutral[300],
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: 0.5,
-                                        p: 0
-                                   }}>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
+                                        <AccordionSummary
+                                             expandIcon={<ExpandMoreIcon sx={{ color: Colors.neutral[300] }} />}
+                                             aria-controls="panel3-content"
+                                             id="panel3-header"
+                                             sx={{
+                                                  color: Colors.neutral[100],
+                                                  fontWeight: 600,
+                                                  '&:hover': {
+                                                       bgcolor: Colors.neutral[800],
                                                   }
-                                             }}>
-                                                  <Link rel='canonical' href='/informacije/odustanak'>
-                                                       Izjava o odustanku
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
-                                             }}>
-                                                  <Link rel='canonical' href='/informacije/reklamacije'>
-                                                       Reklamacije
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
-                                             }}>
-                                                  <Link rel='canonical' href='/docs/Ugovor-o-prodaji-na-daljinu.docx'>
-                                                       Ugovor o prodaji na daljinu
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                        <ListItemText sx={{ m: 0 }}>
-                                             <Typography sx={{
-                                                  '& a': {
-                                                       color: Colors.neutral[300],
-                                                       textDecoration: 'none',
-                                                       transition: 'color 0.3s ease',
-                                                       '&:hover': {
-                                                            color: Colors.primary.light
-                                                       }
-                                                  }
-                                             }}>
-                                                  <Link rel='canonical' href='/informacije/dar-savetnik'>
-                                                       DAR Savetnik
-                                                  </Link>
-                                             </Typography>
-                                        </ListItemText>
-                                   </List>
-                              </Box>
-                         </Box>
-               }
-
-               <Box className="FooterSocial" sx={{
-                    mt: 4,
-                    pt: 3,
-                    borderTop: `1px solid ${Colors.neutral[700]}`,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-               }}>
-                    <InstagramIcon
-                         onClick={() => window.open('https://instagram.com/apoteka_dar')}
-                         sx={{
-                              cursor: 'pointer',
-                              color: Colors.neutral[300],
-                              fontSize: '2rem',
-                              transition: 'color 0.3s ease',
-                              '&:hover': {
-                                   color: Colors.primary.light
-                              }
-                         }}
-                    />
-               </Box>
-
-               <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema}>
-                    {
-                         formik => (
-                              <Form>
-                                   <Box className="FooterSubscribe">
-                                        <Typography className="FooterTitle" variant="body1">Bilten</Typography>
-                                        <TextField
-                                             className="SubscribeTf"
-                                             color="secondary"
-                                             label={"Email adresa"}
-                                             variant="filled"
-                                             value={formik.values.email}
-                                             onChange={formik.handleChange('email')}
-                                             error={formik.touched.email && !!formik.errors.email}
-                                             helperText={formik.touched.email && formik.errors.email}
-                                        />
-                                        <Button
-                                             startIcon={<SendIcon />}
-                                             // variant="contained"
-                                             type="submit"
-                                        //disabled={formik.errors ? true : false}
+                                             }}
                                         >
-                                             Prijavi se
-                                        </Button>
-                                        <FormControlLabel
-                                             control={<Checkbox className="PrivacyPolicyCheckBox" checked={formik.values.agreedToTerms} />}
-                                             onChange={
-                                                  formik.handleChange('agreedToTerms')
-                                             }
-                                             label={"Prihvatam uslove politike privatnosti"}
-                                             name="agreedToTerms"
-                                        />
+                                             <Typography variant="h6" fontWeight={600}>Korisnički servis</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/odustanak"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
+                                             }}>
+                                                  Izjava o odustanku
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/reklamacije"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
+                                             }}>
+                                                  Reklamacije
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/docs/Ugovor-o-prodaji-na-daljinu.docx"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
+                                             }}>
+                                                  Ugovor o prodaji na daljinu
+                                             </Link>
+                                        </AccordionDetails>
+                                        <AccordionDetails sx={{ px: 2, py: 1 }}>
+                                             <Link rel='canonical' href={"/informacije/dar-savetnik"} style={{
+                                                  color: Colors.neutral[300],
+                                                  textDecoration: 'none',
+                                                  display: 'block',
+                                                  padding: '8px 0',
+                                                  transition: 'color 0.3s ease'
+                                             }}>
+                                                  DAR savetnik
+                                             </Link>
+                                        </AccordionDetails>
+                                   </Accordion>
+                              </Box>
+                              :
+                              <Box className="FooterInfoAccount" sx={{
+                                   display: 'flex',
+                                   gap: 6,
+                                   justifyContent: 'space-between',
+                                   flexWrap: 'wrap'
+                              }}>
+                                   <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 200 }}>
+                                        <Typography variant="h6" sx={{
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             mb: 2,
+                                             fontSize: '1.1rem'
+                                        }}>
+                                             Informacije
+                                        </Typography>
+                                        <List sx={{
+                                             color: Colors.neutral[300],
+                                             display: 'flex',
+                                             flexDirection: 'column',
+                                             gap: 0.5,
+                                             p: 0
+                                        }}>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href={"/"}>
+                                                            Početna
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href={"/kontakt"}>
+                                                            Kontakt
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/o-nama'>
+                                                            O nama
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href={"/informacije/isporuka-i-placanje"}>
+                                                            Isporuka i plaćanje
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/politika-privatnosti'>
+                                                            Politika privatnosti
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/uslovi-koriscenja'>
+                                                            Uslovi korišćenja
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/politika-kolacica'>
+                                                            Politika kolačića
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                        </List>
                                    </Box>
-                                   <Typography className="Copyright">
-                                        Copyright © Apoteka Dar | Sva prava zadržana.
-                                   </Typography>
-                              </Form>
-                         )
+                                   <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 150 }}>
+                                        <Typography variant="h6" sx={{
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             mb: 2,
+                                             fontSize: '1.1rem'
+                                        }}>
+                                             Nalog
+                                        </Typography>
+                                        <List sx={{
+                                             color: Colors.neutral[300],
+                                             display: 'flex',
+                                             flexDirection: 'column',
+                                             gap: 0.5,
+                                             p: 0
+                                        }}>
+                                             <ListItemText onClick={showLoginDialog} sx={{
+                                                  m: 0,
+                                                  cursor: 'pointer',
+                                                  '&:hover': {
+                                                       color: Colors.primary.light
+                                                  }
+                                             }}>
+                                                  <Typography sx={{
+                                                       color: 'inherit',
+                                                       transition: 'color 0.3s ease'
+                                                  }}>
+                                                       Prijava
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href={"/nalog"}>
+                                                            Moj profil
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                        </List>
+                                   </Box>
+                                   <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 200 }}>
+                                        <Typography variant="h6" sx={{
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             mb: 2,
+                                             fontSize: '1.1rem'
+                                        }}>
+                                             Korisnički servis
+                                        </Typography>
+                                        <List sx={{
+                                             color: Colors.neutral[300],
+                                             display: 'flex',
+                                             flexDirection: 'column',
+                                             gap: 0.5,
+                                             p: 0
+                                        }}>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/odustanak'>
+                                                            Izjava o odustanku
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/reklamacije'>
+                                                            Reklamacije
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/docs/Ugovor-o-prodaji-na-daljinu.docx'>
+                                                            Ugovor o prodaji na daljinu
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                             <ListItemText sx={{ m: 0 }}>
+                                                  <Typography sx={{
+                                                       '& a': {
+                                                            color: Colors.neutral[300],
+                                                            textDecoration: 'none',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                 color: Colors.primary.light
+                                                            }
+                                                       }
+                                                  }}>
+                                                       <Link rel='canonical' href='/informacije/dar-savetnik'>
+                                                            DAR Savetnik
+                                                       </Link>
+                                                  </Typography>
+                                             </ListItemText>
+                                        </List>
+                                   </Box>
+                              </Box>
                     }
-               </Formik>
-               <WishListDialog />
-               <CartDialog />
-               <LoginDialog />
-          </Container>
+
+                    <Box className="FooterSocial" sx={{
+                         mt: 4,
+                         pt: 3,
+                         borderTop: `1px solid ${Colors.neutral[700]}`,
+                         display: 'flex',
+                         justifyContent: 'center',
+                         alignItems: 'center'
+                    }}>
+                         <InstagramIcon
+                              onClick={() => window.open('https://instagram.com/apoteka_dar')}
+                              sx={{
+                                   cursor: 'pointer',
+                                   color: Colors.neutral[300],
+                                   fontSize: '2rem',
+                                   transition: 'color 0.3s ease',
+                                   '&:hover': {
+                                        color: Colors.primary.light
+                                   }
+                              }}
+                         />
+                    </Box>
+
+                    <Formik initialValues={initialSubscribeEmailFormValues} onSubmit={(values: ISubscribeEmailForm) => handleSubmit(values)} validationSchema={subscriptionEmailSchema}>
+                         {
+                              formik => (
+                                   <Form>
+                                        <Box className="FooterSubscribe">
+                                             <Typography className="FooterTitle" variant="body1">Bilten</Typography>
+                                             <TextField
+                                                  className="SubscribeTf"
+                                                  color="secondary"
+                                                  label={"Email adresa"}
+                                                  variant="filled"
+                                                  value={formik.values.email}
+                                                  onChange={formik.handleChange('email')}
+                                                  error={formik.touched.email && !!formik.errors.email}
+                                                  helperText={formik.touched.email && formik.errors.email}
+                                             />
+                                             <Button
+                                                  startIcon={<SendIcon />}
+                                                  // variant="contained"
+                                                  type="submit"
+                                             //disabled={formik.errors ? true : false}
+                                             >
+                                                  Prijavi se
+                                             </Button>
+                                             <FormControlLabel
+                                                  control={<Checkbox className="PrivacyPolicyCheckBox" checked={formik.values.agreedToTerms} />}
+                                                  onChange={
+                                                       formik.handleChange('agreedToTerms')
+                                                  }
+                                                  label={"Prihvatam uslove politike privatnosti"}
+                                                  name="agreedToTerms"
+                                             />
+                                        </Box>
+                                        <Typography className="Copyright">
+                                             Copyright © Apoteka Dar | Sva prava zadržana.
+                                        </Typography>
+                                   </Form>
+                              )
+                         }
+                    </Formik>
+                    <WishListDialog />
+                    <CartDialog />
+                    <LoginDialog />
+               </Container>
+          </Box>
      );
 }

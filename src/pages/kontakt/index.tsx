@@ -2,9 +2,8 @@ import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
 import ContactForm from "@/components/contact/contact-form";
 import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme from "@/styles/theme";
+import theme, { Colors } from "@/styles/theme";
 import { Container, Stack, Box, Typography } from "@mui/material";
-import dynamic from "next/dynamic";
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -13,28 +12,23 @@ import { Seo } from "@/components/seo";
 const ContactPage = (props: ContactPageProps) => {
 
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
+     // ThemeProvider is applied globally in _app.tsx
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               <DynamicThemeProvider theme={theme}>
-                    <Seo title={'Kontakt forma'} description={'Kontakt forma'} url={'https://www.apoteka-dar.rs/'} />
-                    <Container
-                         disableGutters
-                         maxWidth="lg"
-                         sx={{
-                              background: "#fff",
-                         }}
-                    >
-                         <Stack>
-                              <UIProvider>
-                                   <Box className="contact-box">
-                                        <ContactForm />
+               <Seo title={'Kontakt forma'} description={'Kontakt forma'} url={'https://www.apoteka-dar.rs/'} />
+               <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
+                    <Stack>
+                         <UIProvider>
+                              <Box sx={{ mb: 4, textAlign: 'center' }}>
+                                   <Typography variant="h2" sx={{ fontWeight: 700, color: Colors.primary.main }}>Kontakt</Typography>
+                                   <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pišite nam ili nas posetite</Typography>
+                              </Box>
+                              <Box className="contact-box" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
+                                   <ContactForm />
+                                   <Box>
                                         <ContactMap mapApiKey={props.mapApiKey} />
-                                        <Box className="contact-info-box">
+                                        <Box className="contact-info-box" sx={{ mt: 3 }}>
                                              <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around' }}>
                                                   Adresa:
                                              </Typography>
@@ -93,13 +87,13 @@ const ContactPage = (props: ContactPageProps) => {
                                              </Typography>
                                         </Box>
                                    </Box>
-                                   <SearchBox />
-                                   <AppDrawer isScreenToMedium={false} />
-                              </UIProvider>
-                         </Stack>
-                    </Container>
-               </DynamicThemeProvider >
-          </ReCaptchaProvider >
+                              </Box>
+                              <SearchBox />
+                              <AppDrawer isScreenToMedium={false} />
+                         </UIProvider>
+                    </Stack>
+               </Container>
+               </ReCaptchaProvider >
      )
 }
 

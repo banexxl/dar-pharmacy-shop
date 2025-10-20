@@ -142,8 +142,10 @@ function ProductDetails(product: IProduct) {
                          src={product.imageURL}
                          alt="Product image"
                          style={{
-                              borderRadius: theme.shape.borderRadius,
-                              objectFit: 'cover',
+                              borderRadius: Number(theme.shape.borderRadius),
+                              objectFit: 'contain',
+                              background: Colors.neutral[50],
+                              padding: '8px'
                          }}
                     />
                     {showSticker && (
@@ -201,12 +203,14 @@ function ProductDetails(product: IProduct) {
                          justifyContent="space-evenly"
                     >
                          <Button
+                              variant="contained"
+                              color="primary"
                               onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}
                               disabled={product.availableStock <= 0}
                          >
                               Dodaj u korpu
                          </Button>
-                         <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} >
+                         <Button variant="outlined" color="primary" onClick={showCartDialog} startIcon={<ShoppingCartIcon />} >
                               Korpa
                          </Button>
                     </Box>

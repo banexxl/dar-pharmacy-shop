@@ -32,12 +32,8 @@ interface HideOnScrollProps {
 }
 
 function HideOnScroll({ children }: HideOnScrollProps) {
-     const trigger = useScrollTrigger();
-     return (
-          <Slide appear={false} direction="down" in={!trigger}>
-               {children}
-          </Slide>
-     );
+     // Always show header; no hide-on-scroll behavior
+     return children;
 }
 
 export default function AppbarMobile({ isScreenToMedium }: any) {

@@ -2,7 +2,7 @@ import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme, { Colors } from "@/styles/theme";
 import { Button, Container, Stack, Box, Typography } from "@mui/material";
-import dynamic from "next/dynamic";
+// removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -13,10 +13,7 @@ import { Seo } from "@/components/seo";
 
 const ErrorPage = (props: any) => {
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false,
-     });
+     // ThemeProvider is applied globally in _app.tsx
 
      const getErrorMessage = (errorType: string | string[] | undefined) => {
           switch (errorType) {
@@ -37,11 +34,10 @@ const ErrorPage = (props: any) => {
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               <DynamicThemeProvider theme={theme}>
+               
                     <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
                     <Container
-                         disableGutters
-                         maxWidth="lg"
+                         maxWidth="xl"
                          sx={{
                               background: "#fff",
                          }}
@@ -68,7 +64,7 @@ const ErrorPage = (props: any) => {
                               </UIProvider>
                          </Stack>
                     </Container>
-               </DynamicThemeProvider>
+               
           </ReCaptchaProvider>
      );
 }

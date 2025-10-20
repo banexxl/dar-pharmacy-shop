@@ -2,7 +2,7 @@ import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme from "@/styles/theme";
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
-import dynamic from "next/dynamic";
+// removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { Seo } from "@/components/seo";
@@ -11,21 +11,12 @@ import Link from "next/link";
 const DeliveryAndPaymentPage = () => {
 
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
+     // ThemeProvider is applied globally in _app.tsx
 
      return (
-          <DynamicThemeProvider theme={theme}>
+          <>
                <Seo title={'Isporuka i plaćanje'} description={'Isporuka i plaćanje'} url={'https://www.apoteka-dar.rs/'} />
-               <Container
-                    disableGutters
-                    maxWidth="lg"
-                    sx={{
-                         background: "#fff",
-                    }}
-               >
+               <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
 
@@ -129,7 +120,7 @@ const DeliveryAndPaymentPage = () => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </DynamicThemeProvider >
+          </>
      )
 }
 

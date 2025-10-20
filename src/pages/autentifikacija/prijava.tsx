@@ -2,7 +2,7 @@ import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
 import theme from "@/styles/theme";
 import { Box, Container, Stack, TextField, Button, Typography } from "@mui/material";
-import dynamic from "next/dynamic";
+// removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -12,10 +12,7 @@ import { userEmailSchema } from "@/schemas/email-form.schema";
 import { Seo } from "@/components/seo";
 import { useCallback, useMemo, useState } from "react";
 
-const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-     loading: () => <LoadingWheel />,
-     ssr: false,
-});
+// ThemeProvider is applied globally in _app.tsx
 
 const SignInPage = () => {
      const [loading, setLoading] = useState(false);
@@ -94,15 +91,14 @@ const SignInPage = () => {
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               <DynamicThemeProvider theme={theme}>
+               
                     <Seo
                          title={"Greska prilikom prijave"}
                          description={"Greska prilikom prijave"}
                          url={"https://www.apoteka-dar.rs/"}
                     />
                     <Container
-                         disableGutters
-                         maxWidth="lg"
+                         maxWidth="xl"
                          sx={{
                               background: "#fff",
                          }}
@@ -117,7 +113,7 @@ const SignInPage = () => {
                               </UIProvider>
                          </Stack>
                     </Container>
-               </DynamicThemeProvider>
+               
           </ReCaptchaProvider>
      );
 };

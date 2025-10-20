@@ -6,23 +6,18 @@ import Head from 'next/head'
 import React from 'react'
 import SearchBox from '@/components/search/search'
 import AppDrawer from '@/components/navbar/drawer/drawer'
-import dynamic from 'next/dynamic'
+// removed per-page ThemeProvider; using global provider
 import { Seo } from '@/components/seo'
 
 const PrivacyPolicy = () => {
 
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: false
-     })
 
      return (
-          <DynamicThemeProvider theme={theme}>
+          <>
                <Seo title={'Reklamacije'} description={'Reklamacije'} url={'https://www.apoteka-dar.rs/'} />
                <Container
-                    disableGutters
-                    maxWidth="lg"
+                    maxWidth="xl"
                     sx={{
                          background: "#fff",
                     }}
@@ -166,8 +161,9 @@ const PrivacyPolicy = () => {
                          </UIProvider>
                     </Stack>
                </Container >
-          </DynamicThemeProvider>
+          </>
      )
 }
 
 export default PrivacyPolicy
+

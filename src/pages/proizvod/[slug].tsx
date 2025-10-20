@@ -1,4 +1,4 @@
-import AppDrawer from '@/components/navbar/drawer/drawer'
+﻿import AppDrawer from '@/components/navbar/drawer/drawer'
 import ProductDetails from '@/components/product-details/product-details'
 import SearchBox from '@/components/search/search'
 import { UIProvider } from '@/context/ui/ui.context'
@@ -27,8 +27,8 @@ const SingleProduct = (props: SingleProductProps) => {
                     keywords={props.product.name}
                />
                <Container
-                    disableGutters
-                    maxWidth="lg"
+                    
+                    maxWidth="xl"
                     sx={{
                          background: "#fff",
                     }}

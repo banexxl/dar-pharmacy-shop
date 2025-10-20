@@ -127,14 +127,14 @@ export default function ModernProductCard({
                          m: 1,
                          borderRadius: 3,
                          boxShadow: isHovered
-                              ? '0 20px 40px rgba(0,0,0,0.1)'
-                              : '0 4px 12px rgba(0,0,0,0.05)',
-                         transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
+                              ? '0 12px 24px rgba(0,0,0,0.08)'
+                              : '0 2px 8px rgba(0,0,0,0.04)',
+                         transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                          position: 'relative',
                          overflow: 'visible',
                          border: '1px solid',
-                         borderColor: isHovered ? 'primary.main' : 'grey.200',
+                         borderColor: isHovered ? 'grey.300' : 'grey.200',
                          '&::before': {
                               content: '""',
                               position: 'absolute',
@@ -142,7 +142,7 @@ export default function ModernProductCard({
                               left: 0,
                               right: 0,
                               bottom: 0,
-                              background: 'linear-gradient(135deg, rgba(197,48,48,0.05) 0%, rgba(59,130,246,0.05) 100%)',
+                              background: 'linear-gradient(135deg, rgba(30,64,175,0.03) 0%, rgba(5,150,105,0.03) 100%)',
                               opacity: isHovered ? 1 : 0,
                               transition: 'opacity 0.3s ease',
                               borderRadius: 3,
@@ -240,7 +240,7 @@ export default function ModernProductCard({
                                         width: '100%',
                                         height: '100%',
                                         objectFit: 'contain',
-                                        transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+                                        transform: isHovered ? 'scale(1.02)' : 'scale(1)',
                                         transition: 'transform 0.3s ease',
                                         filter: imageLoaded ? 'none' : 'blur(5px)',
                                    }}
@@ -362,14 +362,14 @@ export default function ModernProductCard({
                                    fontWeight: 600,
                                    textTransform: 'none',
                                    background: product.availableStock > 0
-                                        ? 'linear-gradient(135deg, #C53030 0%, #E53E3E 100%)'
+                                        ? 'linear-gradient(135deg, #1E40AF 0%, #2563EB 100%)'
                                         : undefined,
                                    '&:hover': {
                                         background: product.availableStock > 0
-                                             ? 'linear-gradient(135deg, #9B2C2C 0%, #C53030 100%)'
+                                             ? 'linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)'
                                              : undefined,
                                         transform: 'translateY(-1px)',
-                                        boxShadow: '0 4px 12px rgba(197,48,48,0.3)',
+                                        boxShadow: '0 4px 12px rgba(30,64,175,0.25)',
                                    },
                                    transition: 'all 0.2s ease',
                               }}

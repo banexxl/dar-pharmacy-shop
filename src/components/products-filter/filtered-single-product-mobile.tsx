@@ -106,7 +106,10 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                               alt="Product"
                               sx={{
                                    height: 200,
-                                   objectFit: 'cover'
+                                   objectFit: 'contain',
+                                   backgroundColor: Colors.neutral[50],
+                                   borderRadius: 1,
+                                   p: 1
                               }}
                          />
                     </Link>

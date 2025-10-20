@@ -1,70 +1,47 @@
-import { Container, Stack } from "@mui/material";
-import { ProductsServices } from '@/services/product.services'
-import dynamic from 'next/dynamic';
+import { Container, Stack } from '@mui/material';
+import { ProductsServices } from '@/services/product.services';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
-import LoadingWheel from "@/components/loading/loading";
-import theme from "@/styles/theme";
-import { UIProvider } from "@/context/ui/ui.context";
-import SearchBox from "@/components/search/search";
-import AppDrawer from "@/components/navbar/drawer/drawer";
-import { Seo } from "@/components/seo";
+import { UIProvider } from '@/context/ui/ui.context';
+import SearchBox from '@/components/search/search';
+import AppDrawer from '@/components/navbar/drawer/drawer';
+import { Seo } from '@/components/seo';
 
-export default function MainCategoryAndManufacturerPage(props: any) {
+type Props = { products: any[] };
 
-     const DynamicThemeProvider = dynamic(() => import("@mui/system/ThemeProvider"), {
-          loading: () => <LoadingWheel />,
-          ssr: true
-     })
-
-     const router = useRouter()
-
-     return (
-          <DynamicThemeProvider theme={theme}>
-               <Seo title={'Kategorija'} description={'Kategorija'} url={'https://www.apoteka-dar.rs/'} />
-               <Container
-                    disableGutters
-                    maxWidth="lg"
-                    sx={{
-                         background: "#fff",
-                    }}
-               >
-                    <Stack>
-                         <UIProvider>
-                              <SearchBox />
-                              <ProductsFilter filterObject={props.products} routerQuery={router.query} />
-                              <AppDrawer isScreenToMedium={false} />
-                         </UIProvider>
-                    </Stack>
-               </Container>
-          </DynamicThemeProvider>
-     )
+export default function ManufacturerMainCategoryPage({ products }: Props) {
+  const router = useRouter();
+  return (
+    <>
+      <Seo title={'Proizvodi po proizvođaču i kategoriji'} description={'Pregled proizvoda po proizvođaču i kategoriji'} url={'https://www.apoteka-dar.rs/'} />
+      <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
+        <Stack>
+          <UIProvider>
+            <ProductsFilter filterObject={products} routerQuery={router.query} />
+            <SearchBox />
+            <AppDrawer isScreenToMedium={false} />
+          </UIProvider>
+        </Stack>
+      </Container>
+    </>
+  );
 }
-
-
-export async function getStaticProps({ params }: any) {
-
-     const productsByMainCategoryAndManufacturer: any = await ProductsServices().getProductsByMainCategoryAndManufacturer(params.mainCategory, params.manufacturerURL)
-
-     return {
-          props: {
-               products: JSON.parse(JSON.stringify(productsByMainCategoryAndManufacturer)),
-          },
-          revalidate: 10, // Revalidate at most once every 10 seconds
-     }
-}
-
 
 export async function getStaticPaths() {
-     // Fetch the data that determines the paths
-     const paths = await ProductsServices().getAllPathsForMainCategoryAndManufacturer();
-     return {
-          paths: paths.map((path: any) => ({
-               params: {
-                    mainCategory: path.params.mainCategory,  // mainCategory
-                    manufacturerURL: path.params.manufacturerURL,  // manufacturerURL
-               }
-          })),
-          fallback: 'blocking',
-     }
+  // Expecting service to provide an array like [{ params: { manufacturerURL, mainCategory } }, ...]
+  const pathsData = await ProductsServices().getAllPathsForMainCategoryAndManufacturer();
+  const paths = pathsData.map((p: any) => ({ params: { manufacturerURL: p.params.manufacturerURL, mainCategory: p.params.mainCategory } }));
+  return { paths, fallback: 'blocking' };
 }
+
+export async function getStaticProps({ params }: any) {
+  const products = await ProductsServices().getProductsByMainCategoryAndManufacturer(params.mainCategory, params.manufacturerURL);
+  if (!products) {
+    return { redirect: { destination: '/404', permanent: false } };
+  }
+  return {
+    props: { products: JSON.parse(JSON.stringify(products)) },
+    revalidate: 60,
+  };
+}
+
