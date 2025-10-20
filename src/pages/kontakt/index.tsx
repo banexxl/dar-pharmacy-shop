@@ -89,11 +89,11 @@ const ContactPage = (props: ContactPageProps) => {
                                    </Box>
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>
-               </ReCaptchaProvider >
+          </ReCaptchaProvider >
      )
 }
 

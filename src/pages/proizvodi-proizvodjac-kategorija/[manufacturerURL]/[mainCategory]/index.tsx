@@ -19,7 +19,7 @@ export default function ManufacturerMainCategoryPage({ products }: Props) {
           <UIProvider>
             <ProductsFilter filterObject={products} routerQuery={router.query} />
             <SearchBox />
-            <AppDrawer isScreenToMedium={false} />
+
           </UIProvider>
         </Stack>
       </Container>

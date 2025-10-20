@@ -91,29 +91,29 @@ const SignInPage = () => {
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               
-                    <Seo
-                         title={"Greska prilikom prijave"}
-                         description={"Greska prilikom prijave"}
-                         url={"https://www.apoteka-dar.rs/"}
-                    />
-                    <Container
-                         maxWidth="xl"
-                         sx={{
-                              background: "#fff",
-                         }}
-                    >
-                         <Stack>
-                              <UIProvider>
-                                   <Box className="auth-box">
-                                        {SignInForm}
-                                   </Box>
-                                   <SearchBox />
-                                   <AppDrawer isScreenToMedium={false} />
-                              </UIProvider>
-                         </Stack>
-                    </Container>
-               
+
+               <Seo
+                    title={"Greska prilikom prijave"}
+                    description={"Greska prilikom prijave"}
+                    url={"https://www.apoteka-dar.rs/"}
+               />
+               <Container
+                    maxWidth="xl"
+                    sx={{
+                         background: "#fff",
+                    }}
+               >
+                    <Stack>
+                         <UIProvider>
+                              <Box className="auth-box">
+                                   {SignInForm}
+                              </Box>
+                              <SearchBox />
+
+                         </UIProvider>
+                    </Stack>
+               </Container>
+
           </ReCaptchaProvider>
      );
 };

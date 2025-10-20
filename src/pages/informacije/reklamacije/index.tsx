@@ -164,7 +164,7 @@ const PrivacyPolicy = () => {
                                    </Typography>
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container >

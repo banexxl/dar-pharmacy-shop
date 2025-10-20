@@ -21,32 +21,32 @@ const SignInPage = () => {
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               
-                    <Seo title={'Greska prilikom verifikacije'} description={'Greska prilikom verifikacije'} url={'https://www.apoteka-dar.rs/'} />
-                    <Container
-                         maxWidth="xl"
-                         sx={{
-                              background: "#fff",
-                         }}
-                    >
-                         <Stack>
-                              <UIProvider>
-                                   <Box className="auth-box">
-                                        <Box className="auth-form-box">
-                                             <Typography className="auth-title">
-                                                  Email za prijavu je poslat.
-                                             </Typography>
-                                             <Typography className="auth-text">
-                                                  Molimo vas da proverite vaš email kako biste završili proces prijave.
-                                             </Typography>
-                                        </Box>
+
+               <Seo title={'Greska prilikom verifikacije'} description={'Greska prilikom verifikacije'} url={'https://www.apoteka-dar.rs/'} />
+               <Container
+                    maxWidth="xl"
+                    sx={{
+                         background: "#fff",
+                    }}
+               >
+                    <Stack>
+                         <UIProvider>
+                              <Box className="auth-box">
+                                   <Box className="auth-form-box">
+                                        <Typography className="auth-title">
+                                             Email za prijavu je poslat.
+                                        </Typography>
+                                        <Typography className="auth-text">
+                                             Molimo vas da proverite vaš email kako biste završili proces prijave.
+                                        </Typography>
                                    </Box>
-                                   <SearchBox />
-                                   <AppDrawer isScreenToMedium={false} />
-                              </UIProvider>
-                         </Stack>
-                    </Container>
-               
+                              </Box>
+                              <SearchBox />
+
+                         </UIProvider>
+                    </Stack>
+               </Container>
+
           </ReCaptchaProvider >
      )
 }

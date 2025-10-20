@@ -17,7 +17,7 @@ const PageNotFount = () => {
           <>
                <Seo title={'Stranica nije pronaÄ‘ena'} description={'Stranica nije pronaÄ‘ena'} url={'https://www.apoteka-dar.rs/'} />
                <Container
-                    
+
                     maxWidth="xl"
                     sx={{
                          background: "#fff",
@@ -37,7 +37,7 @@ const PageNotFount = () => {
                                    </Link>
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>

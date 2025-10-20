@@ -116,7 +116,7 @@ const DeliveryAndPaymentPage = () => {
 
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>

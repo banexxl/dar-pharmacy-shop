@@ -27,7 +27,7 @@ const SingleProduct = (props: SingleProductProps) => {
                     keywords={props.product.name}
                />
                <Container
-                    
+
                     maxWidth="xl"
                     sx={{
                          background: "#fff",
@@ -43,7 +43,7 @@ const SingleProduct = (props: SingleProductProps) => {
                                    slug={props.product.slug} promotionText={props.product.promotionText} />
 
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>

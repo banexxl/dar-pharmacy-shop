@@ -77,7 +77,7 @@ const Checkout = () => {
                                    <PaymentStrip />
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>

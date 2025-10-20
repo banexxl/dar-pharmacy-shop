@@ -130,7 +130,7 @@ const ContactPage = (props: ContactPageProps) => {
 
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>

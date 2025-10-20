@@ -36,7 +36,7 @@ const PageNotFount = () => {
                                    </Link>
                               </Box>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>

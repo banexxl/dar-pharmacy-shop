@@ -310,7 +310,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -326,7 +326,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -342,7 +342,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -358,7 +358,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -374,7 +374,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -390,7 +390,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -406,7 +406,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -437,7 +437,7 @@ export default function Footer() {
                                                   m: 0,
                                                   cursor: 'pointer',
                                                   '&:hover': {
-                                                       color: Colors.primary.light
+                                                       color: Colors.primary.dark
                                                   }
                                              }}>
                                                   <Typography sx={{
@@ -454,7 +454,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -490,7 +490,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -506,7 +506,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -522,7 +522,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -538,7 +538,7 @@ export default function Footer() {
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                             '&:hover': {
-                                                                 color: Colors.primary.light
+                                                                 color: Colors.primary.dark
                                                             }
                                                        }
                                                   }}>
@@ -568,7 +568,7 @@ export default function Footer() {
                                    fontSize: '2rem',
                                    transition: 'color 0.3s ease',
                                    '&:hover': {
-                                        color: Colors.primary.light
+                                        color: Colors.primary.dark
                                    }
                               }}
                          />

@@ -34,37 +34,37 @@ const ErrorPage = (props: any) => {
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
-               
-                    <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
-                    <Container
-                         maxWidth="xl"
-                         sx={{
-                              background: "#fff",
-                         }}
-                    >
-                         <Stack>
-                              <UIProvider>
-                                   <Box className="AuthBox">
-                                        <Box className="AuthFormBox">
-                                             <Typography className="AuthTitle">
-                                                  Greška prilikom prijave!
-                                             </Typography>
-                                             <Typography className="AuthText">
-                                                  {getErrorMessage(props.error)}
-                                             </Typography>
-                                        </Box>
-                                        <Link rel='canonical' href="/autentifikacija/prijava">
-                                             <Button className="AuthButton">
-                                                  Povratak na prijavu
-                                             </Button>
-                                        </Link>
+
+               <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
+               <Container
+                    maxWidth="xl"
+                    sx={{
+                         background: "#fff",
+                    }}
+               >
+                    <Stack>
+                         <UIProvider>
+                              <Box className="AuthBox">
+                                   <Box className="AuthFormBox">
+                                        <Typography className="AuthTitle">
+                                             Greška prilikom prijave!
+                                        </Typography>
+                                        <Typography className="AuthText">
+                                             {getErrorMessage(props.error)}
+                                        </Typography>
                                    </Box>
-                                   <SearchBox />
-                                   <AppDrawer isScreenToMedium={false} />
-                              </UIProvider>
-                         </Stack>
-                    </Container>
-               
+                                   <Link rel='canonical' href="/autentifikacija/prijava">
+                                        <Button className="AuthButton">
+                                             Povratak na prijavu
+                                        </Button>
+                                   </Link>
+                              </Box>
+                              <SearchBox />
+
+                         </UIProvider>
+                    </Stack>
+               </Container>
+
           </ReCaptchaProvider>
      );
 }

@@ -129,7 +129,7 @@ export default function ProtectedPage(props: any) {
                                    </Grid>
                               </Grid>
                               <SearchBox />
-                              <AppDrawer isScreenToMedium={false} />
+
                          </UIProvider>
                     </Stack>
                </Container>
