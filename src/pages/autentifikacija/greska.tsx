@@ -34,8 +34,9 @@ const ErrorPage = (props: any) => {
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Box className="AuthBox">
-                                   <Box className="AuthFormBox">
+                               <Box className="AuthBox" sx={{ maxWidth: 800, mx: 'auto', bgcolor: '#fff', p: { xs: 3, md: 4 }, borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)', textAlign: 'center' }}>
+                                    <Box className="AuthFormBox">
+                                         <ErrorOutlineIcon color="error" sx={{ fontSize: 48, mb: 1, display: 'block', mx: 'auto' }} />
                                         <Typography className="AuthTitle">
                                              Greška prilikom prijave!
                                         </Typography>
@@ -48,6 +49,14 @@ const ErrorPage = (props: any) => {
                                              Povratak na prijavu
                                         </Button>
                                    </Link>
+                                   <Box sx={{ mt: 2, display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+                                        <Link rel='canonical' href="/">
+                                             <Button variant="outlined">Pocetna</Button>
+                                        </Link>
+                                        <Link rel='canonical' href="/kontakt">
+                                             <Button variant="text">Kontakt</Button>
+                                        </Link>
+                                   </Box>
                               </Box>
                               <SearchBox />
 
