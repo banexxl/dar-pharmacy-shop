@@ -32,93 +32,104 @@ export default function ProtectedPage(props: any) {
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Grid container spacing={2} sx={{ maxWidth: 1200, mx: 'auto' }}>
-                                   {/* Left Side: User Information */}
-                                   <Grid item xs={12} md={4}>
-                                        <Box
-                                             className="profile-box"
-                                             sx={{
-                                                  bgcolor: '#fff',
-                                                  borderRadius: 2,
-                                                  boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
-                                                  p: 3,
-                                                  display: 'flex',
-                                                  flexDirection: 'column',
-                                                  alignItems: 'flex-start',
-                                                  gap: 1,
-                                             }}
-                                        >
-                                             <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
-                                                  Korisnički Podaci
-                                             </Typography>
-                                             <Typography variant="body1">
-                                                  <strong>Ime: </strong> {userData.name}
-                                             </Typography>
-                                             <Typography variant="body1">
-                                                  <strong>Email: </strong> {userData.email}
-                                             </Typography>
-                                             <Typography variant="body1">
-                                                  <strong>Telefon: </strong> {userData.phoneNumber || "Nije dostupno"}
-                                             </Typography>
-                                             <Typography variant="body1">
-                                                  <strong>Adresa: </strong> {userData.streetAddress || "Nije dostupno"}
-                                             </Typography>
-                                             <Typography variant="body1">
-                                                  <strong>Grad: </strong> {userData.city || "Nije dostupno"}
-                                             </Typography>
-                                             <Link rel='canonical' href="/nalog/izmena-podataka">
-                                                  <Typography variant="body1" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
-                                                       Izmeni podatke
-                                                  </Typography>
-                                             </Link>
-                                             {/* Add more user details here as needed */}
-                                        </Box>
-                                   </Grid>
 
-                                   {/* Right Side: User Orders */}
-                                   <Grid item xs={12} md={8}>
-                                        <Box sx={{ bgcolor: '#fff', borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)', p: 3 }}>
-                                             <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
-                                                  Vaše Narudžbine
+                              <Box
+                                   sx={{
+                                        display: 'flex',
+                                        flexDirection: { xs: 'column', md: 'row' },
+                                        gap: { xs: 3, md: 4 },
+                                        alignItems: 'stretch',
+                                        width: '100%',
+                                   }}
+                              >
+                                   <Box
+                                        sx={{
+                                             bgcolor: '#fff',
+                                             borderRadius: 2,
+                                             boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
+                                             p: 3,
+                                             display: 'flex',
+                                             flexDirection: 'column',
+                                             alignItems: 'flex-start',
+                                             gap: 1,
+                                             alignSelf: 'flex-start', // prevent stretching
+                                             width: { xs: '100%', md: 'auto' }
+                                        }}
+                                   >
+                                        <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
+                                             Korisnički Podaci
+                                        </Typography>
+                                        <Typography variant="body1">
+                                             <strong>Ime: </strong> {userData.name}
+                                        </Typography>
+                                        <Typography variant="body1">
+                                             <strong>Email: </strong> {userData.email}
+                                        </Typography>
+                                        <Typography variant="body1">
+                                             <strong>Telefon: </strong> {userData.phoneNumber || "Nije dostupno"}
+                                        </Typography>
+                                        <Typography variant="body1">
+                                             <strong>Adresa: </strong> {userData.streetAddress || "Nije dostupno"}
+                                        </Typography>
+                                        <Typography variant="body1">
+                                             <strong>Grad: </strong> {userData.city || "Nije dostupno"}
+                                        </Typography>
+                                        <Link rel='canonical' href="/nalog/izmena-podataka">
+                                             <Typography variant="body1" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
+                                                  Izmeni podatke
                                              </Typography>
-                                             {userOrders.length === 0 ? (
-                                                  <Typography variant="body1">Nemate nijednu narudžbinu.</Typography>
-                                             ) : (
-                                                  userOrders.map((order: any, index: number) => (
-                                                       index === 0 ? (
-                                                            <Box sx={{ height: '100vh', overflowY: 'auto', pr: 1 }}>
-                                                                 {userOrders.map((o: any, i: number) => (
-                                                                      <Paper
-                                                                           key={i}
-                                                                           sx={{
-                                                                                p: 2,
-                                                                                mb: 2,
-                                                                                border: '1px solid #ccc',
-                                                                                borderRadius: '8px',
-                                                                           }}
-                                                                      >
-                                                                           <Typography variant="h6">
-                                                                                <strong>Narudžbina: </strong>#{o.orderNumber}
-                                                                           </Typography>
-                                                                           <Typography variant="body1">
-                                                                                <strong>Datum: </strong> {new Date(o.createdAt).toLocaleDateString()}
-                                                                           </Typography>
-                                                                           <Typography variant="body1">
-                                                                                <strong>Ukupan Iznos: </strong> {o.total} RSD
-                                                                           </Typography>
-                                                                           <Typography variant="body2">
-                                                                                <strong>Stavke: </strong>{' '}
-                                                                                {o.items.map((item: any) => item.name + ' ' + `x${item.count}`).join(', ')}
-                                                                           </Typography>
-                                                                      </Paper>
-                                                                 ))}
-                                                            </Box>
-                                                       ) : null
-                                                  ))
-                                             )}
-                                        </Box>
-                                   </Grid>
-                              </Grid>
+                                        </Link>
+                                   </Box>
+
+                                   <Box
+                                        sx={{
+                                             flex: 1,
+                                             bgcolor: '#fff',
+                                             borderRadius: 2,
+                                             boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
+                                             p: 3,
+                                             display: 'flex',
+                                             flexDirection: 'column',
+                                        }}
+                                   >
+                                        <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
+                                             Vaše Narudžbine
+                                        </Typography>
+                                        {userOrders.length === 0 ? (
+                                             <Typography variant="body1">Nemate nijednu narudžbinu.</Typography>
+                                        ) : (
+                                             <Box sx={{ flex: 1, overflowY: 'auto', pr: 1, maxHeight: { xs: 400, md: '70vh' } }}>
+                                                  {userOrders.map((o: any, i: number) => (
+                                                       <Paper
+                                                            key={i}
+                                                            sx={{
+                                                                 p: 2,
+                                                                 mb: 2,
+                                                                 border: '1px solid #ccc',
+                                                                 borderRadius: '8px',
+                                                            }}
+                                                       >
+                                                            <Typography variant="h6">
+                                                                 <strong>Narudžbina: </strong>#{o.orderNumber}
+                                                            </Typography>
+                                                            <Typography variant="body1">
+                                                                 <strong>Datum: </strong> {new Date(o.createdAt).toLocaleDateString()}
+                                                            </Typography>
+                                                            <Typography variant="body1">
+                                                                 <strong>Ukupan Iznos: </strong> {o.total} RSD
+                                                            </Typography>
+                                                            <Typography variant="body2">
+                                                                 <strong>Stavke: </strong>{' '}
+                                                                 {o.items.map((item: any) => item.name + ' ' + `x${item.count}`).join(', ')}
+                                                            </Typography>
+                                                       </Paper>
+                                                  ))}
+                                             </Box>
+                                        )}
+                                   </Box>
+                              </Box>
+
+
                               <SearchBox />
 
                          </UIProvider>
