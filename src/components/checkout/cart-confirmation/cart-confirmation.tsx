@@ -1,7 +1,8 @@
 import CartItem from '@/components/cart/components/cartItem'
 import ICartItem from '@/interfaces/cart/cart.interface'
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector'
-import { Box, TableRow, Typography, Container, Table, TableHead, TableCell, TableBody, Button } from '@mui/material'
+import { Box, TableRow, Typography, Container, Table, TableHead, TableCell, TableBody, Button, TableContainer } from '@mui/material'
+import { useMediaQuery } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import React, { FunctionComponent, useEffect, useState } from 'react'
@@ -14,6 +15,7 @@ import { ReCaptcha, useReCaptcha } from 'next-recaptcha-v3'
 export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
 
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
+     const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'))
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
 
 
@@ -41,31 +43,38 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
 
      return (
           <Container className="CartWrapper">
-               <Table className="StyledTable">
-                    <TableHead className="StyledHeader">
-                         <TableRow>
-                              <TableCell className="StyledHeaderCell" sx={{ width: { xs: 72, md: 88 } }}>Slika</TableCell>
-                              <TableCell className="StyledHeaderCell" >Naziv</TableCell>
-                              <TableCell className="StyledHeaderCell" >Pakovanje</TableCell>
-                              <TableCell className="StyledHeaderCell" >Kod</TableCell>
-                              <TableCell className="StyledHeaderCell" >Količina</TableCell>
-                              <TableCell className="StyledHeaderCell" >Cena sa PDV</TableCell>
-                              <TableCell className="StyledHeaderCell" >Ukupno sa popustom</TableCell>
-                              <TableCell className="StyledHeaderCell" >Obriši</TableCell>
-                         </TableRow>
-                    </TableHead>
-                    <TableBody className="StyledTableBody">
-                         {cart.map((cartItem: ICartItem) => (
-                              <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
-                                   name={cartItem.name} description={cartItem.description} category={cartItem.category}
-                                   availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
-                                   discountAmount={cartItem.discountAmount}
-                                   instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                   warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price}
-                                   quantityUnit={cartItem.quantityUnit} mediaURLs={[]} slug={cartItem.slug} />
-                         ))}
-                    </TableBody>
-               </Table>
+               <TableContainer sx={{
+                    maxHeight: isScreenToMedium ? '60vh' : 'none',
+                    overflowY: isScreenToMedium ? 'auto' : 'visible',
+                    overflowX: isScreenToMedium ? 'auto' : 'visible',
+                    mb: { xs: 2, md: 0 }
+               }}>
+                    <Table className="StyledTable" sx={{ minWidth: isScreenToMedium ? 700 : 'auto' }}>
+                         <TableHead className="StyledHeader">
+                              <TableRow>
+                                   <TableCell sx={{ width: { xs: 72, md: 88 }, color: Colors.primary.main }}>Slika</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Naziv</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Pakovanje</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Kod</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Količina</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Cena sa PDV</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Ukupno sa popustom</TableCell>
+                                   <TableCell className="StyledHeaderCell" sx={{ color: Colors.primary.main }}>Obriši</TableCell>
+                              </TableRow>
+                         </TableHead>
+                         <TableBody className="StyledTableBody">
+                              {cart.map((cartItem: ICartItem) => (
+                                   <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
+                                        name={cartItem.name} description={cartItem.description} category={cartItem.category}
+                                        availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
+                                        discountAmount={cartItem.discountAmount}
+                                        instructions={cartItem.instructions} quantity={cartItem.quantity}
+                                        warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price}
+                                        quantityUnit={cartItem.quantityUnit} mediaURLs={[]} slug={cartItem.slug} />
+                              ))}
+                         </TableBody>
+                    </Table>
+               </TableContainer>
                <Typography className="StyledTotalsTitle">
                     {totalItemPrice < 8000 ? `Ukupno sa PDV: ${parseFloat(totalItemPrice).toFixed(2)} RSD` : `Ukupno sa PDV, besplatna dostava: ${parseFloat(totalItemPrice).toFixed(2)} RSD`}
                </Typography>
