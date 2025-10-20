@@ -1,14 +1,9 @@
-import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme from "@/styles/theme";
 import { Button, Container, Stack, TextField, Box, Typography } from "@mui/material";
 // removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
-import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import { signIn } from "next-auth/react";
-import { Form, Formik } from 'formik';
-import { userEmailSchema } from "@/schemas/email-form.schema";
 import { Seo } from "@/components/seo";
 
 const SignInPage = () => {
@@ -31,7 +26,13 @@ const SignInPage = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Box className="auth-box">
+                              <Box className="auth-box" sx={{ textAlign: 'center', py: { xs: 5, md: 8 }, '& .auth-title, & .auth-text': { display: 'none' } }}>
+                                   <Typography variant="h2" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                                        Proverite email
+                                   </Typography>
+                                   <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
+                                        Link za prijavu je poslat. Proverite svoj email da dovršite prijavu.
+                                   </Typography>
                                    <Box className="auth-form-box">
                                         <Typography className="auth-title">
                                              Email za prijavu je poslat.

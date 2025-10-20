@@ -28,11 +28,11 @@ const PageNotFount = () => {
                               <Box className="container-404">
                                    <Typography className="heading-404">404 - Stranica nije pronaÄ‘ena {'\u{1F612}'}</Typography>
                                    <Typography className="message-404" variant="body1">
-                                        UPS!....Stranica ili proizvod koji ste zahtevali nije pronaÄ‘en! MoÅ¾da iznenadi i pojavi se posle osveÅ¾avanja stranice {'\u{1F609}'}
+                                        UPS!....Stranica ili proizvod koji ste zahtevali nije pronađena! Možda iznenadi i pojavi se posle osvežavanja stranice {'\u{1F609}'}
                                    </Typography>
                                    <Link rel='canonical' href="/" passHref>
                                         <Button className="styled-button-404" variant="contained" color="primary">
-                                             Nazad na poÄetnu
+                                             Nazad na početnu
                                         </Button>
                                    </Link>
                               </Box>

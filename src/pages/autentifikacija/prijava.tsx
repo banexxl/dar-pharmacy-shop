@@ -1,10 +1,6 @@
-import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme from "@/styles/theme";
 import { Box, Container, Stack, TextField, Button, Typography } from "@mui/material";
-// removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
-import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import { signIn } from "next-auth/react";
 import { Form, Formik } from "formik";
@@ -105,7 +101,13 @@ const SignInPage = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Box className="auth-box">
+                              <Box className="auth-box" sx={{ textAlign: 'center', py: { xs: 5, md: 8 }, '& .auth-title, & .auth-text': { display: 'none' } }}>
+                                   <Typography variant="h2" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                                        Prijava
+                                   </Typography>
+                                   <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
+                                        Ako želite, možete se prijaviti. Ako ne, možete nastaviti kao gost.
+                                   </Typography>
                                    {SignInForm}
                               </Box>
                               <SearchBox />

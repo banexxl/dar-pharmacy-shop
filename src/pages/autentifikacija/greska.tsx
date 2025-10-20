@@ -1,13 +1,7 @@
-import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme, { Colors } from "@/styles/theme";
 import { Button, Container, Stack, Box, Typography } from "@mui/material";
-// removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
-import AppDrawer from "@/components/navbar/drawer/drawer";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-import { useRouter } from 'next/router';
-import { useParams } from 'next/navigation'
 import Link from "next/link";
 import { Seo } from "@/components/seo";
 

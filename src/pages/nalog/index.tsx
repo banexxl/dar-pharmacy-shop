@@ -1,18 +1,14 @@
-import { useState } from "react";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import { Seo } from "@/components/seo";
 import { Box, Container, Grid, Stack, Typography, Paper, useMediaQuery } from "@mui/material";
 import { UIProvider } from "@/context/ui/ui.context";
-import LoadingWheel from "@/components/loading/loading";
 import theme from "@/styles/theme";
-// removed per-page ThemeProvider; using global provider
 import ErrorPage from "../autentifikacija/greska";
 import { AccountService } from "@/services/accounts.service";
 import { OrdersServices } from "@/services/order-service";
 import SearchBox from "@/components/search/search";
-import AppDrawer from "@/components/navbar/drawer/drawer";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
@@ -55,7 +51,7 @@ export default function ProtectedPage(props: any) {
                                                   gap: 1, // Add some space between elements
                                              }}
                                         >
-                                             <Typography variant="h3" gutterBottom sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+                                             <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
                                                   Korisnički Podaci
                                              </Typography>
                                              <Typography variant="body1">
@@ -96,7 +92,7 @@ export default function ProtectedPage(props: any) {
                                                   marginBottom: '100px'
                                              }}
                                         >
-                                             <Typography variant="h3" gutterBottom sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+                                             <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
                                                   Vaše Narudžbine
                                              </Typography>
                                              {userOrders.length === 0 ? (

@@ -20,9 +20,9 @@ const ContactPage = (props: ContactPageProps) => {
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mb: 4, textAlign: 'center' }}>
+                              <Box sx={{ mb: 4, textAlign: 'center', '& > p:first-of-type': { display: 'none' } }} >
                                    <Typography variant="h2" sx={{ fontWeight: 700, color: Colors.primary.main }}>Kontakt</Typography>
-                                   <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pi≈°ite nam ili nas posetite</Typography>
+                                   <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Piöite nam ili nas posetite</Typography>
                               </Box>
                               <Box className="contact-box" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
                                    <ContactForm />
@@ -109,3 +109,4 @@ export async function getStaticProps({ locale }: any) {
 }
 
 export default ContactPage
+

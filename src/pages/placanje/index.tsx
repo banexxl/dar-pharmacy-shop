@@ -24,7 +24,7 @@ const Checkout = () => {
      }
 
 
-     const steps = ["Adresa za dostavu", "Provera korpe", "Način plaćanja"];
+     const steps = ["Adresa za dostavu", "Provera korpe", "Nacin placanja"];
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
@@ -87,5 +87,6 @@ const Checkout = () => {
 }
 
 export default Checkout
+
 
 
