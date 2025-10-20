@@ -29,11 +29,11 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                <Box
                     className="ProductsFilters"
                     sx={{
-                        display: { xs: 'none', md: 'block' },
-                        flex: { md: '0 0 280px' },
-                        width: { md: 280 },
-                        position: { md: 'sticky' },
-                        top: { md: 96 },
+                         display: { xs: 'none', md: 'block' },
+                         flex: { md: '0 0 280px' },
+                         width: { md: 280 },
+                         position: { md: 'sticky' },
+                         top: { md: 96 },
                     }}
                >
                     <Box className="FilterTitleBox">
@@ -55,18 +55,49 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                                    Nije pronađen ni jedan proizvod sa trenutnim filterom!
                               </Typography>
                          ) : (
-                              <Breadcrumbs>
-                                   {manufacturerURL && (
-                                        <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
-                                             {manufacturerURL}
-                                        </Typography>
-                                   )}
-                                   {mainCategory && (
-                                        <Typography sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
-                                             {mainCategory}
-                                        </Typography>
-                                   )}
-                              </Breadcrumbs>
+                              <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 5 }}>
+                                   <Breadcrumbs
+                                        sx={{
+                                             color: 'red',
+                                             '& a': {
+                                                  color: 'red',
+                                                  textDecoration: 'underline',
+                                                  fontFamily: 'monospace',
+                                             },
+                                        }}
+                                   >
+                                        {manufacturerURL && (
+                                             <Typography
+                                                  component="a"
+                                                  href={`/${manufacturerURL}`}
+                                                  sx={{
+                                                       fontSize: '1rem',
+                                                       fontStyle: 'italic',
+                                                       textDecoration: 'underline',
+                                                       color: 'red',
+                                                       fontFamily: 'monospace',
+                                                  }}
+                                             >
+                                                  {manufacturerURL}
+                                             </Typography>
+                                        )}
+                                        {mainCategory && (
+                                             <Typography
+                                                  component="a"
+                                                  href={`/${mainCategory}`}
+                                                  sx={{
+                                                       fontSize: '1rem',
+                                                       fontStyle: 'italic',
+                                                       textDecoration: 'underline',
+                                                       color: 'red',
+                                                       fontFamily: 'monospace',
+                                                  }}
+                                             >
+                                                  {mainCategory}
+                                             </Typography>
+                                        )}
+                                   </Breadcrumbs>
+                              </Box>
                          )}
                     </Box>
                     <FilteredProductsGrid data={filteredProducts !== undefined ? filteredProducts : filterObject} />
