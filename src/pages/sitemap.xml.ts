@@ -1,36 +1,42 @@
-import { ProductsServices } from '@/services/product.services';
+// pages/sitemap.xml.ts
 import type { GetServerSidePropsContext } from 'next';
+import { ProductsServices } from '@/services/product.services';
 
 const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
 
 const escapeXml = (unsafe: string) =>
-  unsafe.replace(/&/g, '&amp;')
+  unsafe
+    .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
 
-const generateSiteMap = (
-  entries: { type: 'product' | 'category' | 'manufacturer'; slug: string; updatedAt?: string }[]
-) => {
+type Entry =
+  | { type: 'product'; slug: string; updatedAt?: string }
+  | { type: 'category'; slug: string; updatedAt?: string }
+  | { type: 'manufacturer'; slug: string; updatedAt?: string };
+
+function buildPath(entry: Entry) {
+  // URL-encode ONLY the slug segment
+  const enc = encodeURIComponent(entry.slug);
+  switch (entry.type) {
+    case 'product':
+      return `/proizvod/${enc}`;
+    case 'category':
+      return `/proizvodi/${enc}`;
+    case 'manufacturer':
+      return `/proizvodi-proizvodjac-kategorija/${enc}`;
+  }
+}
+
+function generateSiteMap(entries: Entry[]) {
   const urls = entries
     .map((entry) => {
-      let path = '';
-      switch (entry.type) {
-        case 'product':
-          path = `/proizvod/${escapeXml(entry.slug)}`;
-          break;
-        case 'category':
-          path = `/proizvodi/${escapeXml(entry.slug)}`;
-          break;
-        case 'manufacturer':
-          path = `/proizvodi-proizvodjac-kategorija/${escapeXml(entry.slug)}`;
-          break;
-      }
-
+      const loc = `${BASE_URL}${buildPath(entry)}`;
       return `
   <url>
-    <loc>${BASE_URL}${path}</loc>
+    <loc>${escapeXml(loc)}</loc>
     ${entry.updatedAt ? `<lastmod>${entry.updatedAt}</lastmod>` : ''}
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -38,59 +44,82 @@ const generateSiteMap = (
     })
     .join('');
 
-  const staticUrls = [
+  // If you don't have true lastmod for static pages, it’s safer to omit it.
+  const staticPaths = [
     '/', '/kontakt', '/placanje', '/registracija',
     '/autentifikacija/greska', '/autentifikacija/prijava',
     '/autentifikacija/verifikacija-zahteva',
     '/informacije/dar-savetnik', '/informacije/o-nama',
     '/informacije/odustanak', '/informacije/politika-kolacica',
     '/informacije/politika-privatnosti', '/informacije/reklamacije',
-    '/informacije/uslovi-koriscenja', '/informacije/isporuka-i-placanje'
-  ].map((path) => `
+    '/informacije/uslovi-koriscenja', '/informacije/isporuka-i-placanje',
+  ];
+
+  const staticUrls = staticPaths
+    .map((p) => {
+      const loc = `${BASE_URL}${p}`;
+      return `
   <url>
-    <loc>${BASE_URL}${path}</loc>
-    <lastmod>2025-08-01T00:00:00Z</lastmod> <!-- Fixed lastmod date for static pages -->
+    <loc>${escapeXml(loc)}</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-  </url>`).join('');
+  </url>`;
+    })
+    .join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
 ${urls}
 ${staticUrls}
 </urlset>`;
-};
+}
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
   const productsResult = await ProductsServices().getAllProducts();
   const mainCategories = await ProductsServices().getAllMainCategories();
   const allManufacturers = await ProductsServices().getAllManufacturers();
 
-  const productSlugs = Array.isArray(productsResult)
-    ? productsResult.map((p: any) => ({
-      type: 'product' as const,
-      slug: p.slug as string,
-      updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : undefined
-    }))
+  // Only include products that are truly indexable and won’t crash render.
+  const productSlugs: Entry[] = Array.isArray(productsResult)
+    ? productsResult
+      .filter((p: any) => p?.isActive && p?.slug) // adjust conditions to your rules
+      .map((p: any) => ({
+        type: 'product',
+        slug: String(p.slug),
+        updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : undefined,
+      }))
     : [];
 
-  const mainCategorySlugs = Array.isArray(mainCategories)
-    ? mainCategories.map((cat: string) => ({ type: 'category' as const, slug: cat as string }))
+  const mainCategorySlugs: Entry[] = Array.isArray(mainCategories)
+    ? mainCategories
+      .filter((cat: any) => !!cat)
+      .map((cat: any) => ({ type: 'category', slug: String(cat) }))
     : [];
 
-  const manufacturerSlugs = Array.isArray(allManufacturers)
-    ? allManufacturers.map((m: string) => ({ type: 'manufacturer' as const, slug: m as string }))
+  const manufacturerSlugs: Entry[] = Array.isArray(allManufacturers)
+    ? allManufacturers
+      .filter((m: any) => !!m)
+      .map((m: any) => ({ type: 'manufacturer', slug: String(m) }))
     : [];
 
-  const sitemap = generateSiteMap([...productSlugs, ...mainCategorySlugs, ...manufacturerSlugs]);
+  const sitemap = generateSiteMap([
+    ...productSlugs,
+    ...mainCategorySlugs,
+    ...manufacturerSlugs,
+  ]);
 
-  res.setHeader('Content-Type', 'application/xml');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  // Cache for 24h at the edge, allow week of stale while revalidating
+  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=604800');
   res.write(sitemap);
   res.end();
 
-  return { props: {} }; // This is required by Next.js
+  return { props: {} };
 };
 
 export default function SiteMap() {
-  return null; // No React rendering, response already sent in getServerSideProps
+  return null;
 }
