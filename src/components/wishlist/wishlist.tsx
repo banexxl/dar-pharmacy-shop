@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, Alert, Table, TableHead, TableBody, TableCell, TableRow } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Stack, Paper, Alert, Table, TableHead, TableBody, TableCell, TableRow, TableContainer } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
@@ -32,7 +32,9 @@ export default function WishList({ open, onClose }: any) {
           <Dialog
                TransitionComponent={SlideTransition}
                open={open}
-               fullScreen
+               fullScreen={useMediaQuery(theme.breakpoints.down("md"))}
+               fullWidth
+               maxWidth="lg"
           >
                <DialogTitle
                     sx={{
@@ -54,59 +56,33 @@ export default function WishList({ open, onClose }: any) {
                </DialogTitle>
                <DialogContent>
                     <Box className="WishListWrapper">
-                         <Table className="WishlistTable">
-                              <TableHead className="WishlistHeader">
-                                   <TableRow>
-                                        <TableCell className="WishlistHeaderCell">Slika</TableCell>
-                                        <TableCell className="WishlistHeaderCell" align="left">Naziv</TableCell>
-                                        <TableCell className="WishlistHeaderCell" align="left">Količina</TableCell>
-                                        <TableCell className="WishlistHeaderCell" align="left">Šifra</TableCell>
-                                        <TableCell className="WishlistHeaderCell" align="left">Cena</TableCell>
-                                   </TableRow>
-                              </TableHead>
-                              <TableBody className="WishlistTableBody">
-                                   {
-                                        wishlist.map((wishListItem: IWishlistItem) => (
-                                             <Box key={Math.random()}>
-                                                  <WishlistItem discount={wishListItem.discount} key={wishListItem._id} _id={wishListItem._id}
-                                                       name={wishListItem.name} description={wishListItem.description} category={wishListItem.category}
-                                                       availableStock={wishListItem.availableStock} ingredients={wishListItem.ingredients}
-                                                       instructions={wishListItem.instructions} quantity={wishListItem.quantity}
-                                                       warning={wishListItem.warning} imageURL={wishListItem.imageURL}
-                                                       price={wishListItem.price} quantityUnit={wishListItem.quantityUnit}
-                                                       mediaURLs={[]} slug={wishListItem.slug} discountAmount={wishListItem.discountAmount}
-                                                       promotionText={wishListItem.promotionText} manufacturer={wishListItem.manufacturer} />
-
-                                                  <Button
-                                                       sx={{ color: Colors.primary.main, margin: '10px' }}
-                                                       onClick={() => {
-                                                            showOptions ? setShowOptions(false) : setShowOptions(true);
-                                                            callCartAlert();
-                                                            dispatch(addToCart(wishListItem));
-                                                       }}
-                                                       disabled={wishListItem.availableStock <= 0}
-                                                  >
-                                                       Dodaj u korpu
-                                                  </Button>
-                                                  <Button
-                                                       sx={{ color: Colors.primary.main, margin: '10px' }}
-                                                       onClick={() => {
-                                                            showOptions ? setShowOptions(false) : setShowOptions(true);
-                                                            toast.success("Proizvod je uklonjen iz omiljenih proizvoda", {
-                                                                 duration: 1500,
-                                                                 position: "top-center"
-                                                            });
-                                                            dispatch(removeFromWishList(wishListItem));
-                                                       }}
-                                                  >
-                                                       Obriši
-                                                  </Button>
-                                             </Box>
-                                        ))
-                                   }
-                              </TableBody>
-                         </Table>
-                         <Button className="WishlistRemoveAllButton" onClick={() => {
+                         <TableContainer sx={{ maxHeight: useMediaQuery(theme.breakpoints.down("md")) ? '70vh' : '60vh' }}>
+                              <Table stickyHeader size={useMediaQuery(theme.breakpoints.down("md")) ? 'small' : 'medium'} className="WishlistTable">
+                                   <TableHead className="WishlistHeader">
+                                        <TableRow>
+                                             <TableCell className="WishlistHeaderCell" sx={{ width: { xs: 72, md: 88 } }}>Slika</TableCell>
+                                             <TableCell className="WishlistHeaderCell" align="left">Naziv</TableCell>
+                                             <TableCell className="WishlistHeaderCell" align="left">Količina</TableCell>
+                                             <TableCell className="WishlistHeaderCell" align="left">Šifra</TableCell>
+                                             <TableCell className="WishlistHeaderCell" align="left">Cena</TableCell>
+                                             <TableCell className="WishlistHeaderCell" align="center">Akcije</TableCell>
+                                        </TableRow>
+                                   </TableHead>
+                                   <TableBody className="WishlistTableBody">
+                                        {wishlist.map((wishListItem: IWishlistItem) => (
+                                             <WishlistItem discount={wishListItem.discount} key={wishListItem._id} _id={wishListItem._id}
+                                                  name={wishListItem.name} description={wishListItem.description} category={wishListItem.category}
+                                                  availableStock={wishListItem.availableStock} ingredients={wishListItem.ingredients}
+                                                  instructions={wishListItem.instructions} quantity={wishListItem.quantity}
+                                                  warning={wishListItem.warning} imageURL={wishListItem.imageURL}
+                                                  price={wishListItem.price} quantityUnit={wishListItem.quantityUnit}
+                                                  mediaURLs={[]} slug={wishListItem.slug} discountAmount={wishListItem.discountAmount}
+                                                  promotionText={wishListItem.promotionText} manufacturer={wishListItem.manufacturer} />
+                                        ))}
+                                   </TableBody>
+                              </Table>
+                         </TableContainer>
+                         <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}><Button className="WishlistRemoveAllButton" variant="outlined" color="primary" onClick={() => {
                               toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda", {
                                    duration: 1500,
                                    position: "top-center"
@@ -115,9 +91,11 @@ export default function WishList({ open, onClose }: any) {
                          }}
                          >
                               Obriši listu omiljenih proizvoda
-                         </Button>
+                         </Button></Box>
                     </Box>
                </DialogContent>
           </Dialog >
      );
 }
+
+

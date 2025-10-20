@@ -23,68 +23,71 @@ const ContactPage = (props: ContactPageProps) => {
                               <Box sx={{ mb: 4, textAlign: 'center', '& > p:first-of-type': { display: 'none' } }} >
                                    <Typography variant="h2" sx={{ fontWeight: 700, color: Colors.primary.main }}>Kontakt</Typography>
                                    <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>Pi&scaron;ite nam ili nas posetite</Typography>
-                              </Box>
-                              <Box className="contact-box" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
-                                   <ContactForm />
-                                   <Box>
-                                        <ContactMap mapApiKey={props.mapApiKey} />
-                                        <Box className="contact-info-box" sx={{ mt: 3 }}>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                                  Adresa:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  Kralja Aleksandra I Karađorđevića 102, lokal 9
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Grad:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  34000 Kragujevac
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Telefon:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  +381 34 610 4222
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Matični broj:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  66597784
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Poresko identifikacioni broj:
-                                             </Typography>
-                                             <Typography className="contact-strong-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  113127282
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Kontakt osoba:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  Maja Joksović PR, privatna praksa, apoteka DAR Kragujevac
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Email:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  maja@apoteka-dar.rs
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Radno vreme:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  Radnim danima: 08 - 22h<br />
-                                                  Subota: 08 - 22h<br />
-                                                  Nedelja: 08 - 20h
-                                             </Typography>
-                                             <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-                                                  Pretežna delatnost:
-                                             </Typography>
-                                             <Typography className="contact-strong-text">
-                                                  4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama
-                                             </Typography>
+                                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                                        <Box sx={{
+                                        }}>
+                                             <ContactForm />
+                                        </Box>
+                                        <Box>
+                                             <ContactMap mapApiKey={props.mapApiKey} />
+                                             <Box className="contact-info-box" sx={{ mt: 3 }}>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                                                       Adresa:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       Kralja Aleksandra I Karađorđevića 102, lokal 9
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Grad:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       34000 Kragujevac
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Telefon:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       +381 34 610 4222
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Matični broj:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       66597784
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Poresko identifikacioni broj:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       113127282
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Kontakt osoba:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       Maja Joksović PR, privatna praksa, apoteka DAR Kragujevac
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Email:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       maja@apoteka-dar.rs
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Radno vreme:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       Radnim danima: 08 - 22h<br />
+                                                       Subota: 08 - 22h<br />
+                                                       Nedelja: 08 - 20h
+                                                  </Typography>
+                                                  <Typography className="contact-text" sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+                                                       Pretežna delatnost:
+                                                  </Typography>
+                                                  <Typography className="contact-strong-text">
+                                                       4773 - trgovina na malo farmaceutskim proizvodima u prodavnicama - apotekama
+                                                  </Typography>
+                                             </Box>
                                         </Box>
                                    </Box>
                               </Box>

@@ -15,11 +15,11 @@ const CartItem = (props: ICartItem) => {
 
      return (
           <>
-               <TableRow key={props._id} className="StyledProductRow">
+               <TableRow key={props._id} className="StyledProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
                     {/* Product Image */}
-                    <TableCell component="th" scope="row" className="StyledProductCell">
+                    <TableCell component="th" scope="row" className="StyledProductCell" sx={{ width: { xs: 72, md: 88 } }}>
                          <Link rel='canonical' href={`/proizvod/${props.slug}`}>
-                              <Box component="img" src={props.imageURL} className="CartProductImage" />
+                              <Box component="img" src={props.imageURL} className="CartProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
                          </Link>
                     </TableCell>
 

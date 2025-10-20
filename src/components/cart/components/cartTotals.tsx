@@ -24,7 +24,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                     <Box className="StyledTotalsPrice">
                          {
                               !isNaN(parseFloat(totalItemPrice)) && parseFloat(totalItemPrice) < 8000 ? (
-                                   <Box>
+                                   <Box sx={{ textAlign: 'center', alignItems: 'center' }}>
                                         <Typography className="StyledTotalsTitle">
                                              Ukupno u korpi:
                                         </Typography>
@@ -60,10 +60,11 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                                    (
                                         <Box sx={{
                                              display: 'flex',
-                                             justifyContent: 'space-between',
+                                             justifyContent: 'center',
                                              flexDirection: 'column',
                                              alignItems: 'center',
-                                             width: '100%'
+                                             width: '100%',
+                                             textAlign: 'center'
                                         }}>
                                              <Typography className="StyledTotalsTitle">
                                                   Ukupno u korpi:
@@ -96,31 +97,25 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                <Box
                     sx={{
                          display: 'flex',
-                         flexDirection: 'row',
-                         [theme.breakpoints.down('md')]: {
-                              flexDirection: 'column',
-                         },
-                         justifyContent: 'space-between',
+                         flexDirection: 'column',
+                         justifyContent: 'center',
                          alignItems: 'center',
-                         width: '50%',
-                         gap: '5px',
+                         width: '100%',
+                         gap: '8px',
                     }}
                >
                     <Box
                          sx={{
                               display: 'flex',
-                              flexDirection: 'row',
-                              [theme.breakpoints.down('md')]: {
-                                   flexDirection: 'column',
-                              },
-                              justifyContent: 'space-around',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
                               alignItems: 'center',
                               width: '100%',
-                              gap: '5px',
+                              gap: '8px',
                          }}
                     >
 
-                         <Button onClick={onClose} sx={{ backgroundColor: theme.palette.secondary.light }}>
+                         <Button onClick={onClose} sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
                               <Link rel='canonical' href='/'>
                                    Nazad u apoteku
                               </Link>
@@ -128,7 +123,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                          <Button
                               disabled={parseFloat(totalItemPrice) === 450}
                               onClick={() => router.push('/placanje')}
-                              sx={{ backgroundColor: theme.palette.secondary.light }}
+                              sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}
                          >
                               KREIRAJ PORUDŽBENICU
                          </Button>
@@ -139,7 +134,7 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                     Detalje isporuke i plaćanja možete pogledati <Link rel='canonical' href='/informacije/isporuka-i-placanje'>OVDE!</Link>
                </Typography>
                <Divider sx={{ width: '60%', border: `1px solid ${theme.palette.primary.main}`, my: 2 }} />
-               <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'justify', mt: '30px', mb: '30px', maxWidth: '500px' }}>
+               <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'center', mt: '24px', mb: '24px', maxWidth: '640px', mx: 'auto' }}>
                     Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
                </Typography>
           </Box>

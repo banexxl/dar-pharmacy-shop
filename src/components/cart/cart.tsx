@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow, Typography, TableHead, TableCell } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow, Typography, TableHead, TableCell, TableContainer } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
@@ -27,7 +27,9 @@ export default function Cart({ open, onClose }: ICartProps) {
           <Dialog
                TransitionComponent={SlideTransition}
                open={open}
-               fullScreen
+               fullScreen={isScreenToMedium}
+               fullWidth
+               maxWidth="lg"
           >
                <DialogTitle
                     sx={{
@@ -40,7 +42,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                          justifyContent={"space-between"}
                     >
                          <Typography sx={{ color: Colors.primary.main, fontSize: '1.5rem', fontWeight: 'bold' }}>
-                              Proizvodi u korpi:
+                              Proizvodi u korpi
                          </Typography>
                          <IconButton onClick={onClose}>
                               <CloseIcon />
@@ -57,29 +59,27 @@ export default function Cart({ open, onClose }: ICartProps) {
                                    </Typography>
                               )
                                    :
-                                   <Table>
-                                        <TableHead>
-                                             <TableRow sx={{
-                                                  display: 'flex',
-                                                  width: '100%',
-                                                  justifyContent: 'space-around',
-                                             }}>
-                                                  <TableCell className="CartTableCell">Slika</TableCell>
-                                                  <TableCell className="CartTableCell">Naziv</TableCell>
-                                                  <TableCell className="CartTableCell">Pakovanje</TableCell>
-                                                  <TableCell className="CartTableCell">Kod</TableCell>
-                                                  <TableCell className="CartTableCell">Količina</TableCell>
-                                                  <TableCell className="CartTableCell">Cena sa PDV</TableCell>
-                                                  <TableCell className="CartTableCell">Ukupno sa popustom</TableCell>
-                                                  <TableCell className="CartTableCell">Obriši</TableCell>
-                                             </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                             {cart.map((cartItem: ICartItem) => (
-                                                  <CartItem key={cartItem._id} {...cartItem} />
-                                             ))}
-                                        </TableBody>
-                                   </Table>
+                                   <TableContainer sx={{ maxHeight: isScreenToMedium ? '70vh' : '60vh' }}>
+                                        <Table stickyHeader size={isScreenToMedium ? 'small' : 'medium'}>
+                                             <TableHead>
+                                                  <TableRow>
+                                                       <TableCell className="CartTableCell" sx={{ width: { xs: 72, md: 88 } }}>Slika</TableCell>
+                                                       <TableCell className="CartTableCell">Naziv</TableCell>
+                                                       <TableCell className="CartTableCell">Pakovanje</TableCell>
+                                                       <TableCell className="CartTableCell">Kod</TableCell>
+                                                       <TableCell className="CartTableCell">Količina</TableCell>
+                                                       <TableCell className="CartTableCell">Cena sa PDV-om</TableCell>
+                                                       <TableCell className="CartTableCell">Ukupno sa popustom</TableCell>
+                                                       <TableCell className="CartTableCell">Obriši</TableCell>
+                                                  </TableRow>
+                                             </TableHead>
+                                             <TableBody>
+                                                  {cart.map((cartItem: ICartItem) => (
+                                                       <CartItem key={cartItem._id} {...cartItem} />
+                                                  ))}
+                                             </TableBody>
+                                        </Table>
+                                   </TableContainer>
                          }
 
                     </Box>
@@ -88,3 +88,5 @@ export default function Cart({ open, onClose }: ICartProps) {
           </Dialog>
      );
 }
+
+

@@ -15,15 +15,15 @@ export default function Banner() {
           <Container className="BannerContainer">
                {/* <BannerImage src="/images/home-page/darHeroPic.png" alt={"banner"} /> */}
                <Box className="BannerLeftImageContent">
-                    <h1 style={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
+                    <Typography component="h1" variant="h1" sx={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'Montserrat', mt: '50px' }}>
                          Apoteka DAR
-                    </h1>
-                    <h2 style={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
-                         {'"Radosno srce je pola zdravlja!"'}
-                    </h2>
-                    <h3 style={{ color: Colors.primary.lighter, fontStyle: 'italic', fontFamily: 'monserrat', marginTop: '50px' }}>
+                    </Typography>
+                    <Typography component="h2" variant="h2" sx={{ color: Colors.primary.main, fontStyle: 'italic', fontFamily: 'Montserrat', mt: '50px' }}>
+                         "Radosno srce je pola zdravlja!"
+                    </Typography>
+                    <Typography component="h3" variant="h3" sx={{ color: Colors.primary.lighter, fontStyle: 'italic', fontFamily: 'Montserrat', mt: '50px' }}>
                          Dostava lekova radnim danima po celoj Srbiji!
-                    </h3>
+                    </Typography>
                     <Typography className="BannerQuotaText">
                          Nudimo pouzdane savete i širok asortiman proizvoda a za bilo kakva dodatna pitanja ohrabrujemo Vas
                          da nas kontaktirate putem {'  '}
