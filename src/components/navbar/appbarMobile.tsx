@@ -22,6 +22,7 @@ import Link from "next/link";
 import { Colors } from "@/styles/theme";
 import useDialogModal from "@/hooks/useDialogModal";
 import Cart from "../cart/cart";
+import LoginRegister from "../login/login";
 import WishList from "../wishlist/wishlist";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "@/store/cart/cart.selector";
@@ -45,6 +46,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
      const wishlistCounter = wishlistState?.length || 0;
 
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
+     const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister);
      const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList);
 
      const pulseAnimation = keyframes`
@@ -154,23 +156,23 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                              <ShoppingCartIcon />
                                         </Badge>
                                    </IconButton>
-                                   <Link href="/nalog" passHref>
-                                        <IconButton
-                                             sx={{
-                                                  color: Colors.neutral[600],
-                                                  p: isScrolled ? 0.75 : 1,
-                                                  borderRadius: 2,
-                                                  '&:hover': {
-                                                       color: Colors.primary.main,
-                                                       bgcolor: Colors.primary[50],
-                                                       transform: 'translateY(-2px)',
-                                                  },
-                                                  transition: 'all 0.2s ease',
-                                             }}
-                                        >
-                                             <PersonIcon />
-                                        </IconButton>
-                                   </Link>
+                                   <IconButton
+                                        aria-label="Profil"
+                                        onClick={() => showLoginDialog()}
+                                        sx={{
+                                             color: Colors.neutral[600],
+                                             p: isScrolled ? 0.75 : 1,
+                                             borderRadius: 2,
+                                             '&:hover': {
+                                                  color: Colors.primary.main,
+                                                  bgcolor: Colors.primary[50],
+                                                  transform: 'translateY(-2px)',
+                                             },
+                                             transition: 'all 0.2s ease',
+                                        }}
+                                   >
+                                        <PersonIcon />
+                                   </IconButton>
                               </Box>
                          </Toolbar>
                     </AppBar>
@@ -266,26 +268,27 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                               </Badge>
                          </IconButton>
 
-                         <Link href="/nalog" passHref>
-                              <IconButton
-                                   sx={{
-                                        flexDirection: 'column',
-                                        gap: 0.5,
-                                        color: 'text.secondary',
-                                        '&:hover': {
-                                             color: 'primary.main',
-                                             transform: 'translateY(-2px)',
-                                        },
-                                        transition: 'all 0.2s ease',
-                                   }}
-                              >
-                                   <PersonIcon />
-                              </IconButton>
-                         </Link>
+                         <IconButton
+                              aria-label="Profil"
+                              onClick={() => showLoginDialog()}
+                              sx={{
+                                   flexDirection: 'column',
+                                   gap: 0.5,
+                                   color: 'text.secondary',
+                                   '&:hover': {
+                                        color: 'primary.main',
+                                        transform: 'translateY(-2px)',
+                                   },
+                                   transition: 'all 0.2s ease',
+                              }}
+                         >
+                              <PersonIcon />
+                         </IconButton>
                     </Toolbar>
                </AppBar>
 
                <CartDialog />
+               <LoginDialog />
                <WishListDialog />
           </>
      );
