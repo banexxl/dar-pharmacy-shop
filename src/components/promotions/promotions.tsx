@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const messages = [
      "Mala apoteka VELIKOG srca!",
      "Besplatna poštarina za pakete preko 8000 dinara!",
-     "U slučaju da nemamo proizvod na sajtu,možete poslati Upit na mail",
+     "U slučaju da nemamo proizvod na sajtu, možete pozvati našu apoteku!",
      "Prijavite se na naše vesti i akcije!",
      "Nalazimo se u TC Prostor, Kragujevac!",
      "Kolagen Crux...Na 3 kutije dodatnih 10% popusta!",
