@@ -174,6 +174,9 @@ function html(params: { url: string; host: string; theme: Theme }) {
 }
 
 export const authOptions: NextAuthOptions = {
+     session: {
+          strategy: 'jwt',
+     },
 
      adapter: MongoDBAdapter(
           dbPromise, {

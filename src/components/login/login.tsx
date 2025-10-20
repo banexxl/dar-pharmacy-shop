@@ -56,8 +56,18 @@ export default function LoginRegister({ open, onClose }: any) {
      }, [session?.user?.email]);
 
 
+     useEffect(() => {
+          if (open && !session) {
+               try {
+                    onClose?.();
+                    router.replace('/autentifikacija/prijava');
+               } catch (e) {
+                    // ignore navigation errors
+               }
+          }
+     }, [open, session]);
+
      if (!session) {
-          router.push('/autentifikacija/prijava');
           return null;
      }
 
