@@ -53,7 +53,7 @@ export default function Home(props: any) {
 
      return (
           <>
-               <Seo title={'PoÄetna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Početna'} description={'Priroda na dohvat ruke'} url={'https://www.apoteka-dar.rs/'} />
                <UIProvider>
                     {/* Main Content */}
                     <Box component="main" sx={{ width: '100vw', overflow: 'hidden' }}>

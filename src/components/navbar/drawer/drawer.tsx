@@ -1,7 +1,13 @@
-import { Box, Button, Divider, Drawer, IconButton, List, ListItemButton, ListItemText, styled, Typography } from "@mui/material"
+import { Box, Button, Divider, Drawer, IconButton, List, ListItemButton, ListItemText, styled, Typography, ListItemIcon, Avatar } from "@mui/material"
 import { useUIContext } from "../../../context/ui/ui.context"
 import CloseIcon from "@mui/icons-material/Close"
+import HomeIcon from "@mui/icons-material/Home"
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import PersonIcon from "@mui/icons-material/Person"
+import ContactSupportIcon from "@mui/icons-material/ContactSupport"
 import { Colors } from "../../../styles/theme"
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration"
 import Actions from "../actions"
 import useDialogModal from "../../../hooks/useDialogModal"
 import WishList from "../../wishlist/wishlist"
@@ -80,9 +86,10 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                     open={drawerOpen}
                     sx={{
                          '& .MuiDrawer-paper': {
-                              background: 'linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(5, 150, 105, 0.95) 100%)',
+                              background: `linear-gradient(135deg, ${Colors.primary[800]} 0%, ${Colors.primary.main} 100%)`,
                               backdropFilter: 'blur(20px)',
                               color: Colors.neutral[100],
+                              width: { xs: '85vw', sm: 340 },
                               minWidth: 300,
                               borderTopRightRadius: 16,
                               borderBottomRightRadius: 16,
@@ -92,12 +99,12 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                     }}
                >
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, pt: 2, pb: 1 }}>
-                         <Typography sx={{ fontWeight: 700, letterSpacing: 0.5 }}>Meni</Typography>
+                         <Typography sx={{ fontWeight: 700, letterSpacing: 0.5, color: Colors.neutral[100] }}>Meni</Typography>
                          <IconButton aria-label="Zatvori" onClick={() => setDrawerOpen(false)} sx={{ color: Colors.neutral[100], '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)', transform: 'rotate(90deg)' }, transition: 'all 0.3s ease' }}>
                               <CloseIcon />
                          </IconButton>
                     </Box>
-                    <Divider sx={{ opacity: 0.4, borderColor: 'rgba(255, 255, 255, 0.2)' }} />
+                    <Divider sx={{ opacity: 0.2, borderColor: 'rgba(255, 255, 255, 0.2)', mb: 1 }} />
                     <List sx={{ pt: 1.5, px: 2 }}>
                          <motion.li
                               variants={variants}
@@ -114,6 +121,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    },
                                    transition: 'all 0.3s ease',
                               }}>
+                                   <ListItemIcon sx={{ minWidth: 36 }}>
+                                        <HomeIcon sx={{ color: Colors.primary.light }} />
+                                   </ListItemIcon>
                                    <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
@@ -179,6 +189,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    },
                                    transition: 'all 0.3s ease',
                               }}>
+                                   <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
+                                        <ShoppingCartIcon sx={{ color: Colors.primary.light }} />
+                                   </ListItemIcon>
                                    <ListItemText sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
@@ -207,6 +220,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    },
                                    transition: 'all 0.3s ease',
                               }}>
+                                   <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
+                                        <FavoriteIcon sx={{ color: Colors.primary.light }} />
+                                   </ListItemIcon>
                                    <ListItemText sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
@@ -237,6 +253,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    },
                                    transition: 'all 0.3s ease',
                               }}>
+                                   <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
+                                        <ContactSupportIcon sx={{ color: Colors.primary.light }} />
+                                   </ListItemIcon>
                                    <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
@@ -273,6 +292,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    },
                                    transition: 'all 0.3s ease',
                               }}>
+                                   <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
+                                        <PersonIcon sx={{ color: Colors.primary.light }} />
+                                   </ListItemIcon>
                                    <ListItemText sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
@@ -307,6 +329,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                         },
                                         transition: 'all 0.3s ease',
                                    }}>
+                                        <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
+                                             <AppRegistrationIcon sx={{ color: Colors.primary.light }} />
+                                        </ListItemIcon>
                                         <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
                                              '& .MuiTypography-root': {
                                                   color: Colors.neutral[100],

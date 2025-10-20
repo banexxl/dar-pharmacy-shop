@@ -12,7 +12,7 @@ const PageNotFount = () => {
 
      return (
           <>
-               <Seo title={'Stranica nije pronaÄ‘ena'} description={'Stranica nije pronaÄ‘ena'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Stranica nije pronađena'} description={'Stranica nije pronađena'} url={'https://www.apoteka-dar.rs/'} />
                <Container
 
                     maxWidth="xl"
