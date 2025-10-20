@@ -18,7 +18,6 @@ import { ReCaptchaProvider } from 'next-recaptcha-v3';
 import { Seo } from '@/components/seo';
 import { useSession } from 'next-auth/react';
 import SearchBox from '@/components/search/search';
-import AppDrawer from '@/components/navbar/drawer/drawer';
 import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userDataFormSchema } from '@/schemas/user-form.schema';
 import sweetalert2 from 'sweetalert2';
@@ -89,10 +88,10 @@ const UserUpdatePage = () => {
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
                <Seo title={'Izmena podataka'} description={'Izmena korisničkih podataka'} url={'https://www.apoteka-dar.rs/'} />
-               <Container maxWidth="xl" sx={{ background: '#fff' }}>
+               <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Box className="register-form-box" sx={{ mt: 8, mb: 6 }}>
+                              <Box className="register-form-box" sx={{ maxWidth: 900, mx: 'auto', bgcolor: '#fff', p: { xs: 3, md: 4 }, borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)' }}>
                                    <Typography variant="h4" sx={{ mb: 3, fontWeight: 700, textAlign: 'center' }}>
                                         Izmena korisničkih podataka
                                    </Typography>
@@ -133,4 +132,8 @@ const UserUpdatePage = () => {
 };
 
 export default UserUpdatePage;
+
+
+
+
 

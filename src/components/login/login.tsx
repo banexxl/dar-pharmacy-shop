@@ -1,9 +1,6 @@
 'use client'
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, TextField, CardMedia, Card, Avatar, CardContent, } from "@mui/material";
+import { Dialog, DialogTitle, Box, IconButton, DialogContent, Typography, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Colors } from "@/styles/theme";
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Image from 'next/image'
@@ -58,105 +55,60 @@ export default function LoginRegister({ open, onClose }: any) {
      }, [session?.user?.email]);
 
 
-     if (session) {
-          return (
-               <Dialog
-                    TransitionComponent={SlideTransition}
-                    open={open}
-                    fullScreen
-               >
-                    <DialogTitle
-                         sx={{
-                              background: Colors.primary.lighter,
-                         }}
-                    >
-                         <Box
-                              display="flex"
-                              alignItems="center"
-                              justifyContent={"space-between"}
-                         >
-                              {
-                                   session ? 'Profil' : 'Prijava'
-                              }
-                              <IconButton onClick={onClose}>
-                                   <CloseIcon />
-                              </IconButton>
-                         </Box>
-                    </DialogTitle>
-
-                    <DialogContent>
-                         <Card
-                              sx={{
-                                   marginLeft: '50%',
-                                   transform: 'translateX(-50%)',
-                                   marginTop: '20px',
-                                   variant: "outlined",
-                                   borderRadius: 15,
-                                   padding: '20px',
-                                   width: { xs: '300px', lg: '700px' },
-                                   height: { xs: '500px', lg: '600px' },
-                                   backgroundColor: Colors.dove_gray,
-                              }}
-                         >
-
-                              {
-                                   loading ?
-                                        <LoadingWheel />
-                                        :
-                                        <CardMedia sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                                             <Image src={session.user?.image! ?
-                                                  session.user?.image! : userData?.gender === 'male' ?
-                                                       '/images/avatars/avatar-marcus-finn.png' : userData?.gender === 'female' ?
-                                                            '/images/avatars/avatar-neha-punita.png' : '/images/avatars/avatar-marcus-finn.png'
-                                             }
-                                                  alt={"Avatar"}
-                                                  width={100}
-                                                  height={100}
-                                                  style={{ borderRadius: '30px' }} />
-                                             <CardContent sx={{ alignItems: 'center' }}>
-                                                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
-                                                       <PersonIcon />
-                                                       <Typography>
-                                                            {userData?.name}
-                                                       </Typography>
-                                                  </Box>
-                                                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
-                                                       <AlternateEmailIcon fontSize="small" />
-                                                       <Typography>
-                                                            {userData?.email}
-                                                       </Typography>
-                                                  </Box>
-                                                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
-                                                       <PhoneInTalkIcon fontSize="small" />
-                                                       <Typography>
-                                                            {userData?.phoneNumber}
-                                                       </Typography>
-                                                  </Box>
-                                                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column' }, alignItems: 'center', justifyContent: 'space-between', }}>
-                                                       <LocationOnIcon fontSize="small" />
-                                                       <Typography>
-                                                            {userData?.streetAddress},
-                                                            {userData?.city}
-                                                       </Typography>
-                                                  </Box>
-                                                  <Link rel='canonical' href='/nalog' >
-                                                       <Typography sx={{ marginTop: '20px', textDecoration: 'underline' }}>
-                                                            Profil
-                                                       </Typography>
-                                                  </Link>
-                                             </CardContent>
-                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                  <Button onClick={() => signOut()}>Odjavi se</Button>
-                                             </Box>
-                                        </CardMedia>
-                              }
-                         </Card>
-
-
-                    </DialogContent>
-               </Dialog >
-          )
-     } else {
-          router.push('/autentifikacija/prijava')
+     if (!session) {
+          router.push('/autentifikacija/prijava');
+          return null;
      }
+
+     return (
+          <Dialog
+               TransitionComponent={SlideTransition}
+               open={open}
+               onClose={onClose}
+               fullWidth
+               maxWidth="sm"
+               BackdropProps={{ sx: { backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' } }}
+               PaperProps={{ sx: { borderRadius: 3, boxShadow: '0 16px 40px rgba(0,0,0,0.2)', overflow: 'hidden' } }}
+          >
+               <DialogTitle sx={{ px: 3, py: 2, bgcolor: 'rgba(0,0,0,0.02)' }}>
+                    <Box display="flex" alignItems="center" justifyContent="space-between">
+                         <Typography sx={{ fontWeight: 700 }}>Profil</Typography>
+                         <IconButton onClick={onClose} aria-label="Zatvori" sx={{ color: 'text.primary' }}>
+                              <CloseIcon />
+                         </IconButton>
+                    </Box>
+               </DialogTitle>
+               <DialogContent sx={{ px: 3, py: 3 }}>
+                    {loading ? (
+                         <LoadingWheel />
+                    ) : (
+                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+                              <Image
+                                   src={session.user?.image! ? session.user?.image! : userData?.gender === 'male' ? '/images/avatars/avatar-marcus-finn.png' : userData?.gender === 'female' ? '/images/avatars/avatar-neha-punita.png' : '/images/avatars/avatar-marcus-finn.png'}
+                                   alt={'Avatar'}
+                                   width={96}
+                                   height={96}
+                                   style={{ borderRadius: 24 }}
+                              />
+                              <Box sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 1.5, rowGap: 1, alignItems: 'center', width: '100%', maxWidth: 480 }}>
+                                   <PersonIcon fontSize="small" />
+                                   <Typography>{userData?.name}</Typography>
+                                   <AlternateEmailIcon fontSize="small" />
+                                   <Typography>{userData?.email}</Typography>
+                                   <PhoneInTalkIcon fontSize="small" />
+                                   <Typography>{userData?.phoneNumber}</Typography>
+                                   <LocationOnIcon fontSize="small" />
+                                   <Typography>{userData?.streetAddress}, {userData?.city}</Typography>
+                              </Box>
+                              <Link rel='canonical' href='/nalog'>
+                                   <Typography sx={{ mt: 1, textDecoration: 'underline', cursor: 'pointer' }}>Profil</Typography>
+                              </Link>
+                              <Button variant="contained" color="primary" onClick={() => signOut()} sx={{ mt: 1 }}>
+                                   Odjavi se
+                              </Button>
+                         </Box>
+                    )}
+               </DialogContent>
+          </Dialog>
+     );
 }

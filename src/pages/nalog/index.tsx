@@ -29,26 +29,23 @@ export default function ProtectedPage(props: any) {
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
                <Seo title={"DAR Profil"} description={"DAR profil"} url={"https://www.apoteka-dar.rs/"} />
-               <Container
-                    maxWidth="xl"
-                    sx={{
-                         background: "#fff",
-                         padding: 2,
-                    }}
-               >
+               <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Grid container spacing={2}>
+                              <Grid container spacing={2} sx={{ maxWidth: 1200, mx: 'auto' }}>
                                    {/* Left Side: User Information */}
-                                   <Grid item xs={6} md={4}>
+                                   <Grid item xs={12} md={4}>
                                         <Box
                                              className="profile-box"
                                              sx={{
-                                                  textAlign: 'left', // Align text to the left
+                                                  bgcolor: '#fff',
+                                                  borderRadius: 2,
+                                                  boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
+                                                  p: 3,
                                                   display: 'flex',
                                                   flexDirection: 'column',
-                                                  alignItems: 'flex-start', // Align items to the left
-                                                  gap: 1, // Add some space between elements
+                                                  alignItems: 'flex-start',
+                                                  gap: 1,
                                              }}
                                         >
                                              <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
@@ -71,7 +68,7 @@ export default function ProtectedPage(props: any) {
                                              </Typography>
                                              <Link rel='canonical' href="/nalog/izmena-podataka">
                                                   <Typography variant="body1" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
-                                                       Izmeni Podatke
+                                                       Izmeni podatke
                                                   </Typography>
                                              </Link>
                                              {/* Add more user details here as needed */}
@@ -80,18 +77,7 @@ export default function ProtectedPage(props: any) {
 
                                    {/* Right Side: User Orders */}
                                    <Grid item xs={12} md={8}>
-                                        <Box
-                                             sx={{
-                                                  marginTop: isScreenToMedium ? '10px' : '100px',
-                                                  maxHeight: '70vh',
-                                                  overflowY: 'auto',
-                                                  padding: 2,
-                                                  border: '1px solid #ddd',
-                                                  borderRadius: '8px',
-                                                  backgroundColor: '#f9f9f9',
-                                                  marginBottom: '100px'
-                                             }}
-                                        >
+                                        <Box sx={{ bgcolor: '#fff', borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)', p: 3 }}>
                                              <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
                                                   Vaše Narudžbine
                                              </Typography>
@@ -99,26 +85,35 @@ export default function ProtectedPage(props: any) {
                                                   <Typography variant="body1">Nemate nijednu narudžbinu.</Typography>
                                              ) : (
                                                   userOrders.map((order: any, index: number) => (
-                                                       <Paper
-                                                            key={index}
-                                                            sx={{
-                                                                 padding: 2,
-                                                                 marginBottom: 2,
-                                                                 border: '1px solid #ccc',
-                                                                 borderRadius: '8px',
-                                                            }}
-                                                       >
-                                                            <Typography variant="h6"><strong>Narudžbina: </strong>#{order.orderNumber}</Typography>
-                                                            <Typography variant="body1">
-                                                                 <strong>Datum: </strong> {new Date(order.createdAt).toLocaleDateString()}
-                                                            </Typography>
-                                                            <Typography variant="body1">
-                                                                 <strong>Ukupan Iznos: </strong> {order.total} RSD
-                                                            </Typography>
-                                                            <Typography variant="body2">
-                                                                 <strong>Stavke: </strong> {order.items.map((item: any) => item.name + ' ' + `${('x' + item.count)}`).join(", ")}
-                                                            </Typography>
-                                                       </Paper>
+                                                       index === 0 ? (
+                                                            <Box sx={{ height: '100vh', overflowY: 'auto', pr: 1 }}>
+                                                                 {userOrders.map((o: any, i: number) => (
+                                                                      <Paper
+                                                                           key={i}
+                                                                           sx={{
+                                                                                p: 2,
+                                                                                mb: 2,
+                                                                                border: '1px solid #ccc',
+                                                                                borderRadius: '8px',
+                                                                           }}
+                                                                      >
+                                                                           <Typography variant="h6">
+                                                                                <strong>Narudžbina: </strong>#{o.orderNumber}
+                                                                           </Typography>
+                                                                           <Typography variant="body1">
+                                                                                <strong>Datum: </strong> {new Date(o.createdAt).toLocaleDateString()}
+                                                                           </Typography>
+                                                                           <Typography variant="body1">
+                                                                                <strong>Ukupan Iznos: </strong> {o.total} RSD
+                                                                           </Typography>
+                                                                           <Typography variant="body2">
+                                                                                <strong>Stavke: </strong>{' '}
+                                                                                {o.items.map((item: any) => item.name + ' ' + `x${item.count}`).join(', ')}
+                                                                           </Typography>
+                                                                      </Paper>
+                                                                 ))}
+                                                            </Box>
+                                                       ) : null
                                                   ))
                                              )}
                                         </Box>
@@ -148,5 +143,13 @@ export async function getServerSideProps(context: any) {
           },
      };
 }
+
+
+
+
+
+
+
+
 
 
