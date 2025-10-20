@@ -5,11 +5,10 @@ import { UIProvider } from '@/context/ui/ui.context'
 import IProduct from '@/interfaces/product/product.interface'
 import { ProductsServices } from '@/services/product.services'
 import theme from '@/styles/theme'
-import { Container, Stack } from '@mui/material'
+import { Container, Stack, ThemeProvider } from '@mui/material'
 import { _id } from '@next-auth/mongodb-adapter'
 import React from 'react'
 import { Seo } from '@/components/seo'
-import { ThemeProvider } from '@mui/system';
 
 type SingleProductProps = {
      product: IProduct
@@ -23,7 +22,7 @@ const SingleProduct = (props: SingleProductProps) => {
                     title={props.product.name}
                     description={props.product.description}
                     image={props.product.imageURL}
-                    url={`https://www.apoteka-dar.rs/proizvodi/${props.product._id}`}
+                    url={`https://www.apoteka-dar.rs/proizvodi/${props.product.slug}`}
                     keywords={props.product.name}
                />
                <Container
@@ -56,7 +55,11 @@ export default SingleProduct
 
 export async function getServerSideProps(context: any) {
      const { slug } = context.params;
-     const product = await ProductsServices().getProductBySlug(slug); // You write this method
+     const { product, error } = await ProductsServices().getProductBySlug(slug);
+
+     if (!product || error) {
+          return { notFound: true }; // ✅ proper 404 for non-indexable products
+     }
 
      if (!product) {
           return { notFound: true };

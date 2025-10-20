@@ -109,10 +109,6 @@ function ProductDetails(product: IProduct) {
           })
      }
 
-     const handleMouseLeave = () => {
-          setShowShareOptions(false);
-     };
-
      const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
      const localStorage: any = useLocalStorage('persist:root', {});
      const localStorageReducers: any = localStorage[0];
