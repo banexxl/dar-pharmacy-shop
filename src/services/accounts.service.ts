@@ -36,9 +36,6 @@ export const AccountService = () => {
                     { upsert: true } // Create a new document if no matching document is found
                );
 
-               console.log('insertNewRegisteredUserResult', insertUserResult);
-
-
                const html = `
                                         <html>
 <head>

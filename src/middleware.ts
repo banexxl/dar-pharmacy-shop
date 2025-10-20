@@ -12,7 +12,6 @@ export async function middleware(req: NextRequest) {
 
   // Read next-auth JWT token (user session) from cookies
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  console.log('token', token);
 
   const isAuthenticated = !!token;
 
