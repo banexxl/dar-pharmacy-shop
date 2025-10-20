@@ -1,4 +1,5 @@
-import { Card, CardContent, CardActions, CardMedia, Typography, Button, Box, Chip } from '@mui/material';
+import { Card, CardContent, CardActions, CardMedia, Typography, Box, Chip } from '@mui/material';
+import Button from '@/components/button';
 import IProduct from '@/interfaces/product/product.interface';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/cart/cart.slice';
@@ -35,6 +36,18 @@ export default function ProductCard({
   const discountAmount = Number(product.discountAmount);
   const hasDiscount = !!product.discount && !isNaN(discountAmount) && discountAmount > 0;
   const discounted: number = hasDiscount ? Math.max(price - discountAmount, 0) : price;
+
+  const handleDetails = async () => {
+    await router.push(`/proizvod/${product.slug}`);
+  };
+
+  const handleAddToWishList = async () => {
+    dispatch(addToWishList(product));
+  };
+
+  const handleAddToCart = async () => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <Card sx={{
@@ -117,7 +130,7 @@ export default function ProductCard({
               variant="outlined"
               color="primary"
               size="small"
-              onClick={() => router.push(`/proizvod/${product.slug}`)}
+              onClick={handleDetails}
               sx={{ minWidth: 0, px: 2 }}
             >
               Detalji
@@ -126,7 +139,7 @@ export default function ProductCard({
               variant="outlined"
               color="primary"
               size="small"
-              onClick={() => dispatch(addToWishList(product))}
+              onClick={handleAddToWishList}
               sx={{ minWidth: 0, px: 2 }}
             >
               Omiljeni
@@ -138,7 +151,7 @@ export default function ProductCard({
               color="primary"
               size="small"
               disabled={product.availableStock <= 0}
-              onClick={() => dispatch(addToCart(product))}
+              onClick={handleAddToCart}
               sx={{ minWidth: 0, px: 2, width: '100%' }}
             >
               {product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
