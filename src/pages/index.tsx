@@ -78,7 +78,7 @@ export default function Home(props: any) {
                               '&::before': { display: 'none' }
                          }}>
                               <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                                   <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
+                                   <Box sx={{ textAlign: 'center', mb: 6 }}>
                                         <Typography
                                              variant="h2"
                                              sx={{
@@ -102,54 +102,6 @@ export default function Home(props: any) {
                                              }}
                                         >
                                              Iskoristite posebne cene i uštedite na omiljenim proizvodima
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Najtraženiji proizvodi koje naši kupci najviše vole
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Najnoviji proizvodi koje smo dodali u našu ponudu
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Posebno odabrani proizvodi za vaše zdravlje i lepotu
-                                        </Typography>
-                                        <Typography
-                                             variant="body1"
-                                             sx={{
-                                                  color: 'rgba(55, 65, 81, 0.8)',
-                                                  maxWidth: 600,
-                                                  mx: 'auto',
-                                                  fontSize: '1.1rem',
-                                                  lineHeight: 1.6
-                                             }}
-                                        >
-                                             Najtraženiji proizvodi koje naši kupci najviše vole
                                         </Typography>
                                    </Box>
                                    <ProductCard product={promotionProduct} />
