@@ -46,14 +46,14 @@ export default function Promotions() {
                sx={{
                     padding: "20px 0px 20px 0px",
                     '@media (max-width: 900px)': {
-                         padding: "20px",
+                         padding: "12px",
                     },
                     borderRadius: '5px',
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     overflow: "hidden",
-                    height: '70px',
+                    height: { xs: 56, md: 70 },
                     background: Colors.primary.lighter
                }}
           >
@@ -71,11 +71,14 @@ export default function Promotions() {
                               className="MessageText"
                               sx={{
                                    '@media (min-width: 900px)': {
-                                        fontSize: "2.2rem",
+                                        fontSize: "2rem",
                                         fontWeight: "bold",
+                                        lineHeight: 1.2,
                                    },
                                    '@media (max-width: 900px)': {
-                                        fontSize: "1.5rem",
+                                        fontSize: "1.1rem",
+                                        lineHeight: 1.25,
+                                        fontWeight: 600,
                                    },
                                    color: Colors.primary.dark
                               }}
