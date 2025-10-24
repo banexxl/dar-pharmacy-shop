@@ -46,7 +46,7 @@ const WishlistItem = (props: IWishlistItem) => {
                               Dodaj u korpu
                          </Button>
                          <Button size="small" variant="outlined" color="primary" onClick={handleRemove}>
-                              Obrisi
+                              Obriši
                          </Button>
                     </Box>
                </TableCell>
