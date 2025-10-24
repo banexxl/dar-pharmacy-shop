@@ -1,11 +1,10 @@
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
-import { Box, CircularProgress, Container, Stack, useMediaQuery, Tabs, Tab, Typography, Stepper, Step, StepLabel } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, Container, Stack, useMediaQuery, Tabs, Tab, Typography, Stepper, Step, StepLabel } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { TabPanel } from '@/components/checkout/tab-panel'
 // removed per-page ThemeProvider; using global provider
 import Confirmation from '@/components/checkout/cart-confirmation/cart-confirmation'
-import AppDrawer from '@/components/navbar/drawer/drawer'
 import SearchBox from '@/components/search/search'
 import { PaymentOptions } from '@/components/checkout/payment-options/payment-options-form'
 import { ReCaptchaProvider } from "next-recaptcha-v3";
@@ -23,6 +22,16 @@ const Checkout = () => {
           return 0
      }
 
+     // mark this page as a checkout page
+     useEffect(() => {
+          if (typeof window === 'undefined') return;
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({
+               event: 'pageview',
+               pageType: 'checkout',
+               path: '/placanje',
+          });
+     }, []);
 
      const steps = ["Adresa za dostavu", "Provera korpe", "Nacin placanja"];
 

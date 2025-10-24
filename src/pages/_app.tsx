@@ -13,6 +13,7 @@ import { useReportWebVitals } from 'next/web-vitals'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from '@/styles/theme'
+import Script from 'next/script'
 
 export default function App({
      Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) {
