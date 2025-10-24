@@ -33,6 +33,17 @@ const Checkout = () => {
           });
      }, []);
 
+     // send step change events
+     useEffect(() => {
+          if (typeof window === 'undefined') return;
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({
+               event: 'checkout_step_view',
+               checkoutStep: tabIndex + 1,     // 1,2,3
+               checkoutStepLabel: ['Address', 'Review', 'Payment'][tabIndex], // optional
+          });
+     }, [tabIndex]);
+
      const steps = ["Adresa za dostavu", "Provera korpe", "Nacin placanja"];
 
      return (
