@@ -11,11 +11,19 @@ import { ReCaptchaProvider } from "next-recaptcha-v3";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
 import PaymentStrip from '@/components/payment-strip/payment-strip'
+import Script from 'next/script'
+
+declare global {
+     interface Window {
+          dataLayer: any[];
+     }
+}
 
 const Checkout = () => {
 
      const [tabIndex, setTabIndex] = useState(0)
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+     const steps = ["Adresa za dostavu", "Provera korpe", "Nacin placanja"];
 
      const setTab = (tabIndex: number) => {
           setTabIndex(tabIndex)
@@ -25,29 +33,52 @@ const Checkout = () => {
      // mark this page as a checkout page
      useEffect(() => {
           if (typeof window === 'undefined') return;
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).dataLayer.push({
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
                event: 'pageview',
                pageType: 'checkout',
                path: '/placanje',
           });
+
+          // Fire your "begin checkout" Ads conversion via GTM trigger
+          window.dataLayer.push({
+               event: 'begin_checkout_ads',
+               // If you want, add values GTM can map to conversion value/currency
+               value: undefined,
+               currency: 'RSD',
+          })
      }, []);
 
      // send step change events
      useEffect(() => {
           if (typeof window === 'undefined') return;
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).dataLayer.push({
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
                event: 'checkout_step_view',
                checkoutStep: tabIndex + 1,     // 1,2,3
-               checkoutStepLabel: ['Address', 'Review', 'Payment'][tabIndex], // optional
+               checkoutStepLabel: steps[tabIndex], // optional
           });
      }, [tabIndex]);
 
-     const steps = ["Adresa za dostavu", "Provera korpe", "Nacin placanja"];
-
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
+               {/* Initialize dataLayer early */}
+               <Script id="gtm-datalayer" strategy="beforeInteractive">
+                    {`window.dataLayer = window.dataLayer || [];`}
+               </Script>
+               <Script
+                    id="gtm"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                         __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}/awn4CL7G6rQbEKmbr9I-');
+          `,
+                    }}
+               />
                <Seo title={'Placanje/Porucivanje'} description={'Placanje/Porucivanje'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     maxWidth="xl"
