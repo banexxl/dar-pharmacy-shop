@@ -1,7 +1,18 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import cartSliceReducer from './cart/cart.slice'
 import wishListReducer from './wishlist/wishlist.slice'
-import storage from 'redux-persist/lib/storage'
+
+let storage;
+if (typeof window !== 'undefined') {
+     storage = require('redux-persist/lib/storage').default;
+} else {
+     // Noop storage for SSR
+     storage = {
+          getItem: () => Promise.resolve(null),
+          setItem: () => Promise.resolve(),
+          removeItem: () => Promise.resolve(),
+     };
+}
 import { persistReducer } from "redux-persist"
 import userInfoFormSliceReducer from './checkout/user-info-form.slice'
 
