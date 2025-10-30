@@ -1,4 +1,4 @@
-import { Divider, ListItemButton, ListItemIcon, Menu, MenuItem, Select, Box, List } from "@mui/material";
+import { ListItemButton, ListItemIcon, Box } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -6,13 +6,9 @@ import useDialogModal from "../../hooks/useDialogModal";
 import Cart from '../cart/cart'
 import WishList from "../wishlist/wishlist";
 import LoginRegister from '../login/login'
-import { Language } from "@mui/icons-material";
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "@/store/cart/cart.selector";
 import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
-import { useState } from "react";
-import Link from "next/link";
 import { Colors } from "@/styles/theme";
 
 export default function Actions({ isScreenToMedium }: any) {
@@ -37,6 +33,7 @@ export default function Actions({ isScreenToMedium }: any) {
                pl: 2,
           }}>
                <ListItemButton
+                    aria-label="Open cart"
                     onClick={showCartDialog}
                     sx={{
                          justifyContent: "center",
@@ -91,6 +88,7 @@ export default function Actions({ isScreenToMedium }: any) {
                </ListItemButton>
 
                <ListItemButton
+                    aria-label="Open wishlist"
                     onClick={showWishListDialog}
                     sx={{
                          justifyContent: "center",
@@ -144,7 +142,7 @@ export default function Actions({ isScreenToMedium }: any) {
                     </ListItemIcon>
                </ListItemButton>
 
-               <ListItemButton onClick={() => showLoginDialog()}
+               <ListItemButton aria-label="Login or register" onClick={() => showLoginDialog()}
                     sx={{
                          justifyContent: "center",
                          borderRadius: 2.5,
