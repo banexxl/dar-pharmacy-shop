@@ -1,5 +1,5 @@
 import { Box, Breadcrumbs, Divider, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductsAllCategories from './products-categories';
 import FilteredProductsGrid from './filtered-products-grid';
 
@@ -18,7 +18,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
      const [discountOnly, setDiscountOnly] = useState(false);
      const [sortOption, setSortOption] = useState('');
 
-     React.useEffect(() => {
+     useEffect(() => {
           setProducts(filterObject || []);
           setDisplayedProducts((filterObject || []).slice(0, 10));
           setCurrentPage(0);
