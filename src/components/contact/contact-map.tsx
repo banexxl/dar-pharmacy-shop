@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import maplibregl from 'maplibre-gl';
-import { Colors } from '@/styles/theme';
 import { Loader } from "@googlemaps/js-api-loader"
 import Box from '@mui/material/Box';
 

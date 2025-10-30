@@ -15,17 +15,6 @@ export const AccountService = () => {
           try {
                const db = client.db('ACCOUNTS_DB');
 
-               // Hash the password and remove the confirmPassword from the data
-               // const hashedPassword = await bcrypt.hash(data.password, 10);
-               // delete data.confirmPassword;
-
-               // Create a new data object with the hashed password
-               // const userData = {
-               //      ...data,
-               //      password: hashedPassword,
-               // };
-
-
                // Insert or update the user in the 'users' collection
                const insertUserResult = await db.collection('Users').updateOne(
                     {
