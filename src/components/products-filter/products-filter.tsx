@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Divider, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import ProductsAllCategories from './products-categories';
 import FilteredProductsGrid from './filtered-products-grid';
@@ -94,7 +94,6 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               Izaberi iz liste proizvoda
                          </Typography>
                     </Box>
-                    <Divider sx={{ mb: 2 }} />
                     <Box className="FilterCategoryAccordionBox">
                          <ProductsAllCategories />
                     </Box>

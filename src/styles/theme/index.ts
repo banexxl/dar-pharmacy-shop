@@ -571,7 +571,7 @@ const theme: Theme = createTheme({
                          },
                          // Footer Container
                          '&.FooterContainer': {
-                              backgroundColor: Colors.primary[400],
+                              backgroundColor: Colors.primary.main,
                               color: Colors.primary.lighter,
                               padding: '40px 20px',
                               marginTop: 'auto',

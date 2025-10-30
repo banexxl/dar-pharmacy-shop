@@ -14,9 +14,9 @@ const transformToMuiAccordion = (data: any) => {
           const router = useRouter();
 
           return children && children.length > 0 ? (
-               <Accordion key={id} sx={{ border: `1px solid ${Colors.neutral[200]}`, boxShadow: 'none', mb: 1, '&:before': { display: 'none' } }}>
+               <Accordion key={id} sx={{ border: `1px solid ${Colors.primary.main}`, boxShadow: 'none', mb: 1, '&:before': { display: 'none' } }}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />} id={id}>
-                         <Typography sx={{ cursor: 'pointer', fontWeight: 600, color: Colors.neutral[800] }}>{title}</Typography>
+                         <Typography sx={{ cursor: 'pointer', fontWeight: 600, color: Colors.white }}>{title}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                          {transformToMuiAccordion(children)}
@@ -24,7 +24,7 @@ const transformToMuiAccordion = (data: any) => {
                </Accordion>
           ) : (
                <AccordionDetails key={id}>
-                    <Typography onClick={() => router.push(link)} sx={{ cursor: 'pointer', color: Colors.neutral[700], '&:hover': { color: Colors.primary.main } }}>
+                    <Typography onClick={() => router.push(link)} sx={{ cursor: 'pointer', color: Colors.white, '&:hover': { color: Colors.primary.main } }}>
                          {title}
                     </Typography>
                </AccordionDetails>
@@ -33,8 +33,6 @@ const transformToMuiAccordion = (data: any) => {
 };
 
 export default function ProductsAllCategories() {
-
-     const router = useRouter();
 
      return (
           <Box>{transformToMuiAccordion(AccordionPanels)}</Box>

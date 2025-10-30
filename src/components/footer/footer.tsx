@@ -59,7 +59,6 @@ export default function Footer() {
 
      return (
           <Box
-               component="footer"
                sx={{
                     position: 'relative',
                     left: '50%',
@@ -67,8 +66,6 @@ export default function Footer() {
                     marginLeft: '-50vw',
                     marginRight: '-50vw',
                     width: '100vw',
-                    backgroundColor: Colors.primary[900], // much darker background
-                    borderTop: `1px solid ${Colors.primary[800]}`,
                }}
           >
                <Container
@@ -535,6 +532,7 @@ export default function Footer() {
                                                        minWidth: 120,
                                                        height: 48,
                                                        mb: { xs: 1, sm: 0 },
+                                                       color: Colors.primary.lighter,
                                                   }}
                                              >
                                                   Prijavi se
