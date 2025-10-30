@@ -563,7 +563,7 @@ export default function Footer() {
                                                        />
                                                   }
                                                   label={
-                                                       <Typography variant="body2" sx={{ color: Colors.primary[200] }}>
+                                                       <Typography variant="body2" sx={{ color: Colors.white }}>
                                                             Prihvatam uslove politike privatnosti
                                                        </Typography>
                                                   }
@@ -577,7 +577,7 @@ export default function Footer() {
                                              className="Copyright"
                                              sx={{
                                                   textAlign: 'center',
-                                                  color: Colors.primary[400],
+                                                  color: Colors.white,
                                                   fontSize: '0.95rem',
                                                   mt: 2,
                                                   mb: 1,
