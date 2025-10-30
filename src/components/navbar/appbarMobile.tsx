@@ -4,7 +4,6 @@ import {
      Badge,
      Box,
      IconButton,
-     keyframes,
      Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -13,7 +12,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
 import { useUIContext } from "../../context/ui/ui.context";
-import { useEffect, useState, forwardRef, cloneElement } from "react";
+import { useEffect, useState, forwardRef, cloneElement, useRef } from "react";
 import Link from "next/link";
 import { Colors } from "@/styles/theme";
 import useDialogModal from "@/hooks/useDialogModal";
@@ -36,29 +35,44 @@ function HideOnScroll({ children }: HideOnScrollProps) {
 
 export default function AppbarMobile({ isScreenToMedium }: any) {
      const { setDrawerOpen, setShowSearchBox } = useUIContext();
-     const [isScrolled, setIsScrolled] = useState<Boolean>(false);
+     const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
      const cartCounter = useSelector(cartTotalSelector);
      const wishlistState = useSelector(wishListSelectorState);
      const wishlistCounter = wishlistState?.length || 0;
 
-     const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
-     const [LoginDialog, showLoginDialog, closeLoginDialog] = useDialogModal(LoginRegister);
-     const [WishListDialog, showWishListDialog, closeWishListDialog] = useDialogModal(WishList);
+     const [CartDialog, showCartDialog] = useDialogModal(Cart);
+     const [LoginDialog, showLoginDialog] = useDialogModal(LoginRegister);
+     const [WishListDialog, showWishListDialog] = useDialogModal(WishList);
 
-     const pulseAnimation = keyframes`
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  `;
+     // rAF throttle for scroll
+     const lastScrollYRef = useRef(0);
+     const tickingRef = useRef(false);
+     const THRESHOLD = 50; // px
 
      useEffect(() => {
-          function handleScroll() {
-               const scrolled = window.scrollY > 50;
-               setIsScrolled(scrolled);
-          }
+          if (typeof window === "undefined") return;
 
-          window.addEventListener('scroll', handleScroll);
-          return () => window.removeEventListener('scroll', handleScroll);
+          // initialize state (handles refresh mid-scroll)
+          lastScrollYRef.current = window.scrollY || 0;
+          setIsScrolled(lastScrollYRef.current > THRESHOLD);
+
+          const readAndUpdate = () => {
+               const scrolled = lastScrollYRef.current > THRESHOLD;
+               setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+               tickingRef.current = false;
+          };
+
+          const onScroll = () => {
+               lastScrollYRef.current = window.scrollY || 0;
+               if (!tickingRef.current) {
+                    tickingRef.current = true;
+                    requestAnimationFrame(readAndUpdate);
+               }
+          };
+
+          window.addEventListener("scroll", onScroll, { passive: true });
+          return () => window.removeEventListener("scroll", onScroll as EventListener);
      }, []);
 
      return (

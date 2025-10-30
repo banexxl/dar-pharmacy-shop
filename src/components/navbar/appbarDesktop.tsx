@@ -1,47 +1,54 @@
-import { Box, Divider, Grow, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography, Container } from "@mui/material";
+import { Box, ListItemButton, ListItemIcon, Typography, Container } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./actions";
 import { useUIContext } from "../../context/ui/ui.context";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Colors } from "@/styles/theme";
 import SvgIcon from "../svg/svg-icon";
 import { useRouter } from "next/router";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 
-     const { setShowSearchBox } = useUIContext()
-     const [isScrolled, setIsScrolled] = useState<Boolean>(false);
-     const router = useRouter()
-     const [isScrolledHalfway, setIsScrolledHalfway] = useState(false);
+     const { setShowSearchBox } = useUIContext();
+     const [isScrolled, setIsScrolled] = useState<boolean>(false);
+     const router = useRouter();
 
+     // rAF throttle: keep last value + "ticking" flag in refs
+     const lastScrollYRef = useRef(0);
+     const tickingRef = useRef(false);
 
      useEffect(() => {
+          // guard for SSR
+          if (typeof window === "undefined") return;
 
-          function handleScroll() {
-               const scrolled = window.scrollY > 0;
-               setIsScrolled(scrolled);
-          }
+          // initialize (in case page loads mid-scroll)
+          lastScrollYRef.current = window.scrollY || 0;
+          setIsScrolled(lastScrollYRef.current > 0);
 
-          // const isScrollHalfway = () => {
-          //      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-          //      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-          //      const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+          const readAndUpdate = () => {
+               // read from ref (no layout reads here except scrollY)
+               const scrolled = lastScrollYRef.current > 0;
+               setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev)); // avoid useless renders
+               tickingRef.current = false;
+          };
 
-          //      setIsScrolledHalfway(scrollTop > (scrollHeight - windowHeight) / 2);
-          // }
+          const onScroll = () => {
+               lastScrollYRef.current = window.scrollY || 0;
 
-          // window.addEventListener('scroll', isScrollHalfway);
-          window.addEventListener('scroll', handleScroll);
+               // schedule one rAF per frame
+               if (!tickingRef.current) {
+                    tickingRef.current = true;
+                    requestAnimationFrame(readAndUpdate);
+               }
+          };
 
-
+          window.addEventListener("scroll", onScroll, { passive: true });
           return () => {
-               window.removeEventListener('scroll', handleScroll);
-               // window.removeEventListener('scroll', isScrollHalfway);
-          }
+               window.removeEventListener("scroll", onScroll as EventListener);
+          };
      }, []);
 
-     const getHeight = () => (isScrolled ? '60px' : '100px');
+     const getHeight = () => (isScrolled ? "60px" : "100px");
 
      return (
           <>
