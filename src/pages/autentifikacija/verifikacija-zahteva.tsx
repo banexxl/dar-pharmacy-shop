@@ -15,7 +15,7 @@ const SignInPage = () => {
      }
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
 
                <Seo title={'Greska prilikom verifikacije'} description={'Greska prilikom verifikacije'} url={'https://www.apoteka-dar.rs/'} />
                <Container

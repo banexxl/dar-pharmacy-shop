@@ -19,7 +19,7 @@ const ContactPage = (props: ContactPageProps) => {
      // ThemeProvider is applied globally in _app.tsx
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
                <Seo title={'Kontakt forma'} description={'Kontakt forma'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>

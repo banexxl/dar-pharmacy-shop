@@ -28,15 +28,15 @@ const ErrorPage = (props: any) => {
      };
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
 
                <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                               <Box className="AuthBox" sx={{ maxWidth: 800, mx: 'auto', bgcolor: '#fff', p: { xs: 3, md: 4 }, borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)', textAlign: 'center' }}>
-                                    <Box className="AuthFormBox">
-                                         <ErrorOutlineIcon color="error" sx={{ fontSize: 48, mb: 1, display: 'block', mx: 'auto' }} />
+                              <Box className="AuthBox" sx={{ maxWidth: 800, mx: 'auto', bgcolor: '#fff', p: { xs: 3, md: 4 }, borderRadius: 2, boxShadow: '0 6px 20px rgba(0,0,0,0.08)', textAlign: 'center' }}>
+                                   <Box className="AuthFormBox">
+                                        <ErrorOutlineIcon color="error" sx={{ fontSize: 48, mb: 1, display: 'block', mx: 'auto' }} />
                                         <Typography className="AuthTitle">
                                              Greška prilikom prijave!
                                         </Typography>

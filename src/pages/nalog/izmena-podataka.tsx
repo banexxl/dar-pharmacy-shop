@@ -86,7 +86,7 @@ const UserUpdatePage = () => {
      };
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
                <Seo title={'Izmena podataka'} description={'Izmena korisničkih podataka'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>

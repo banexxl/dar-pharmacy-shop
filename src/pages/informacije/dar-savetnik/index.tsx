@@ -1,12 +1,8 @@
-import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
-import theme, { Colors } from '@/styles/theme'
+import theme from '@/styles/theme'
 import { Box, Container, Divider, List, ListItem, ListItemIcon, Stack, Typography, useMediaQuery } from '@mui/material'
-import Head from 'next/head'
 import React from 'react'
 import SearchBox from '@/components/search/search'
-import AppDrawer from '@/components/navbar/drawer/drawer'
-// removed per-page ThemeProvider; using global provider
 import { Seo } from '@/components/seo'
 import Link from 'next/link'
 
