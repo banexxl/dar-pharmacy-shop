@@ -9,7 +9,66 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
      const manufacturerURL = routerQuery?.manufacturerURL || '';
      const mainCategory = routerQuery?.mainCategory || '';
 
-     const [filteredProducts, setFilteredProducts] = useState<any>();
+     const [products, setProducts] = useState<any[]>(filterObject || []);
+     const [displayedProducts, setDisplayedProducts] = useState<any[]>(products.slice(0, 10));
+     const [currentPage, setCurrentPage] = useState(0);
+     const [isFilterDialogOpen, setIsFilterDialogOpen] = useState(false);
+     const [isSortDialogOpen, setIsSortDialogOpen] = useState(false);
+     const [priceRange, setPriceRange] = useState('');
+     const [discountOnly, setDiscountOnly] = useState(false);
+     const [sortOption, setSortOption] = useState('');
+
+     React.useEffect(() => {
+          setProducts(filterObject || []);
+          setDisplayedProducts((filterObject || []).slice(0, 10));
+          setCurrentPage(0);
+     }, [filterObject]);
+
+     const updateDisplayedProducts = (page: number, list = products) => {
+          const start = page * 10;
+          const end = start + 10;
+          setDisplayedProducts(list.slice(start, end));
+          setCurrentPage(page);
+     };
+
+     const handleFilter = () => {
+          const filtered = (filterObject || []).filter((product: any) => {
+               if (discountOnly && !product.discount) return false;
+               if (priceRange) {
+                    const [min, max] = priceRange.split('-').map(Number);
+                    if (max && (product.price < min || product.price > max)) return false;
+                    if (!max && product.price < min) return false;
+               }
+               return true;
+          });
+          setProducts(filtered);
+          updateDisplayedProducts(0, filtered);
+          setSortOption('');
+          setIsFilterDialogOpen(false);
+     };
+
+     const handleSort = () => {
+          const sorted = [...products];
+          if (sortOption === 'price-asc') sorted.sort((a, b) => a.price - b.price);
+          else if (sortOption === 'price-desc') sorted.sort((a, b) => b.price - a.price);
+          else if (sortOption === 'name-asc') sorted.sort((a, b) => a.name.localeCompare(b.name));
+          else if (sortOption === 'name-desc') sorted.sort((a, b) => b.name.localeCompare(a.name));
+          setProducts(sorted);
+          updateDisplayedProducts(0, sorted);
+          setIsSortDialogOpen(false);
+     };
+
+     const onShowNext = () => {
+          if ((currentPage + 1) * 10 < products.length) {
+               updateDisplayedProducts(currentPage + 1);
+          }
+     };
+
+     const onShowPrevious = () => {
+          if (currentPage > 0) {
+               updateDisplayedProducts(currentPage - 1);
+          }
+     };
 
      return (
           <Box
@@ -42,7 +101,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                </Box>
                <Box className="FilteredProducts" sx={{ flex: 1, width: '100%' }}>
                     <Box className="FilteredProductsTitle">
-                         {(filterObject?.length === 0 || filteredProducts?.length === 0) ? (
+                         {(products.length === 0 || displayedProducts.length === 0) ? (
                               <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                                    Nije pronađen ni jedan proizvod sa trenutnim filterom!
                               </Typography>
@@ -92,7 +151,25 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               </Box>
                          )}
                     </Box>
-                    <FilteredProductsGrid data={filteredProducts !== undefined ? filteredProducts : filterObject} />
+                    <FilteredProductsGrid
+                         data={displayedProducts}
+                         onShowNext={onShowNext}
+                         onShowPrevious={onShowPrevious}
+                         currentPage={currentPage}
+                         totalProducts={products.length}
+                         isFilterDialogOpen={isFilterDialogOpen}
+                         setIsFilterDialogOpen={setIsFilterDialogOpen}
+                         isSortDialogOpen={isSortDialogOpen}
+                         setIsSortDialogOpen={setIsSortDialogOpen}
+                         priceRange={priceRange}
+                         setPriceRange={setPriceRange}
+                         discountOnly={discountOnly}
+                         setDiscountOnly={setDiscountOnly}
+                         sortOption={sortOption}
+                         setSortOption={setSortOption}
+                         handleFilter={handleFilter}
+                         handleSort={handleSort}
+                    />
                </Box>
           </Box>
      );

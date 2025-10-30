@@ -12,76 +12,47 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import SortIcon from '@mui/icons-material/Sort';
 import ProductCard from '@/components/product-card/product-card';
 
-type FilteredProductsGridProps = { data: IProduct[] };
+type FilteredProductsGridProps = {
+  data: IProduct[];
+  onShowNext: () => void;
+  onShowPrevious: () => void;
+  currentPage: number;
+  totalProducts: number;
+  isFilterDialogOpen: boolean;
+  setIsFilterDialogOpen: (open: boolean) => void;
+  isSortDialogOpen: boolean;
+  setIsSortDialogOpen: (open: boolean) => void;
+  priceRange: string;
+  setPriceRange: (val: string) => void;
+  discountOnly: boolean;
+  setDiscountOnly: (val: boolean) => void;
+  sortOption: string;
+  setSortOption: (val: string) => void;
+  handleFilter: () => void;
+  handleSort: () => void;
+};
 
-export default function FilteredProductsGrid({ data }: FilteredProductsGridProps) {
+export default function FilteredProductsGrid({
+  data,
+  onShowNext,
+  onShowPrevious,
+  currentPage,
+  totalProducts,
+  isFilterDialogOpen,
+  setIsFilterDialogOpen,
+  isSortDialogOpen,
+  setIsSortDialogOpen,
+  priceRange,
+  setPriceRange,
+  discountOnly,
+  setDiscountOnly,
+  sortOption,
+  setSortOption,
+  handleFilter,
+  handleSort,
+}: FilteredProductsGridProps) {
   const theme = useTheme();
   const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'));
-
-  const [products, setProducts] = useState<IProduct[]>(data || []);
-  const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [isFilterDialogOpen, setIsFilterDialogOpen] = useState(false);
-  const [isSortDialogOpen, setIsSortDialogOpen] = useState(false);
-  const [priceRange, setPriceRange] = useState('');
-  const [discountOnly, setDiscountOnly] = useState(false);
-  const [sortOption, setSortOption] = useState('');
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  const updateDisplayedProducts = useCallback((page: number) => {
-    const start = page * 10;
-    const end = start + 10;
-    setDisplayedProducts(products.slice(start, end));
-    setCurrentPage(page);
-  }, [products]);
-
-  useEffect(() => {
-    setProducts(data || []);
-    updateDisplayedProducts(0);
-  }, [data, updateDisplayedProducts]);
-
-  const onShowNext = () => {
-    if ((currentPage + 1) * 10 < products.length) {
-      updateDisplayedProducts(currentPage + 1);
-      scrollToTop();
-    }
-  };
-
-  const onShowPrevious = () => {
-    if (currentPage > 0) {
-      updateDisplayedProducts(currentPage - 1);
-      scrollToTop();
-    }
-  };
-
-  const handleFilter = () => {
-    const filtered = data.filter((product) => {
-      if (discountOnly && !product.discount) return false;
-      if (priceRange) {
-        const [min, max] = priceRange.split('-').map(Number);
-        if (max && (product.price < min || product.price > max)) return false;
-        if (!max && product.price < min) return false;
-      }
-      return true;
-    });
-    setProducts(filtered);
-    setDisplayedProducts(filtered.slice(0, 10));
-    setCurrentPage(0);
-    setSortOption('');
-    setIsFilterDialogOpen(false);
-  };
-
-  const handleSort = () => {
-    const sorted = [...products];
-    if (sortOption === 'price-asc') sorted.sort((a, b) => a.price - b.price);
-    else if (sortOption === 'price-desc') sorted.sort((a, b) => b.price - a.price);
-    else if (sortOption === 'name-asc') sorted.sort((a, b) => a.name.localeCompare(b.name));
-    else if (sortOption === 'name-desc') sorted.sort((a, b) => b.name.localeCompare(a.name));
-    setProducts(sorted);
-    updateDisplayedProducts(0);
-    setIsSortDialogOpen(false);
-  };
 
   return (
     <Container sx={{ paddingBottom: '100px' }}>
@@ -91,12 +62,12 @@ export default function FilteredProductsGrid({ data }: FilteredProductsGridProps
       </Box>
 
       <Grid container spacing={2} justifyContent="center">
-        {displayedProducts.length === 0 ? (
+        {data.length === 0 ? (
           <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary.main }}>
             <DoNotDisturbIcon />
           </Box>
         ) : (
-          displayedProducts.map((product) => (
+          data.map((product) => (
             <Grid key={product._id} item xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
               <ProductCard product={product} />
             </Grid>
@@ -107,9 +78,9 @@ export default function FilteredProductsGrid({ data }: FilteredProductsGridProps
       <Box sx={{ display: 'flex', paddingTop: '50px', justifyContent: 'space-between' }}>
         <Button onClick={onShowPrevious} disabled={currentPage === 0} startIcon={<ArrowBackIosIcon />}>Nazad</Button>
         <Typography sx={{ color: Colors.primary.main, alignSelf: 'center', fontSize: '.8rem' }}>
-          {Math.min((currentPage + 1) * 10, products.length)} od {products.length}
+          {Math.min((currentPage + 1) * 10, totalProducts)} od {totalProducts}
         </Typography>
-        <Button onClick={onShowNext} disabled={(currentPage + 1) * 10 >= products.length} endIcon={<ArrowForwardIosIcon />}>Učitaj još</Button>
+        <Button onClick={onShowNext} disabled={(currentPage + 1) * 10 >= totalProducts} endIcon={<ArrowForwardIosIcon />}>Učitaj još</Button>
       </Box>
 
       <Dialog open={isFilterDialogOpen} onClose={() => setIsFilterDialogOpen(false)}>
