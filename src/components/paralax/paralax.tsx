@@ -58,7 +58,8 @@ export default function Parallax() {
                <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: { xs: 6, md: 10 } }}>
                     <Box sx={{ textAlign: 'center' }}>
                          <Typography
-                              variant={isMobile ? 'h3' : 'h2'}
+                              component="h1"
+                              variant={isMobile ? 'h3' : 'h1'}
                               sx={{
                                    fontWeight: 800,
                                    color: Colors.white,
@@ -69,7 +70,8 @@ export default function Parallax() {
                               Apoteka DAR
                          </Typography>
                          <Typography
-                              variant={isMobile ? 'h5' : 'h4'}
+                              component="h2"
+                              variant={isMobile ? 'h5' : 'h2'}
                               sx={{
                                    mt: 1,
                                    color: Colors.white,
@@ -80,6 +82,7 @@ export default function Parallax() {
                               Radosno srce je pola zdravlja
                          </Typography>
                          <Typography
+                              component="h3"
                               variant="body1"
                               sx={{
                                    mt: 2,
