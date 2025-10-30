@@ -15,7 +15,7 @@ import CarouselOnlyImageProduct from "@/components/carousel/carousel-only-image"
 import { Seo } from "@/components/seo";
 import CarouselPresentationContainer from "@/components/carousel/carousel-presentation-container";
 import Paralax from "@/components/paralax/paralax";
-import LoadOnView from "@/components/common/LoadOnView";
+import LoadOnView from "@/components/common/load-on-view";
 import Chatbot from "@/chatbot/chatbot";
 import PaymentStrip from "@/components/payment-strip/payment-strip";
 import { Colors } from "@/styles/theme";
