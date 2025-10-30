@@ -1108,16 +1108,6 @@ const theme: Theme = createTheme({
                          position: 'relative',
                          overflow: 'hidden',
                          transition: 'box-shadow 0.3s ease',
-                         // Remove all hover background color changes
-                         '&.Mui-expanded': {
-                              margin: '16px 0',
-                              '&:first-of-type': {
-                                   marginTop: 0,
-                              },
-                              '&:last-of-type': {
-                                   marginBottom: 0,
-                              },
-                         },
                     },
                },
           },
@@ -1127,16 +1117,6 @@ const theme: Theme = createTheme({
                          color: Colors.white,
                          fontWeight: 'bold',
                          transition: 'transform 0.3s ease',
-                         // Remove hover color change
-                         '&.Mui-expanded': {
-                              transform: 'scale(1.05)',
-                         },
-                         '& .MuiAccordionSummary-expandIconWrapper': {
-                              transition: 'transform 0.5s ease',
-                         },
-                         '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-                              transform: 'rotate(180deg)',
-                         },
                     },
                },
           },
@@ -1165,15 +1145,6 @@ const theme: Theme = createTheme({
                     },
                },
           },
-          // MuiContainer: {
-          //           styleOverrides: {
-          //                     root: {
-          //                               boxShadow: `4px 4px 4px 4px ${Colors.primary}`,
-          //                               padding: '10px 10px 5px 10px',
-          //                               borderRadius: '5px'
-          //                     }
-          //           }
-          // },
           MuiStepper: {
                styleOverrides: {
                     root: {
