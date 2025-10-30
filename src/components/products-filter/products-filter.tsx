@@ -1,7 +1,6 @@
 import { Box, Breadcrumbs, Divider, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import ProductsAllCategories from './products-categories';
-import PriceFilterComponent from './product-filter-price';
 import FilteredProductsGrid from './filtered-products-grid';
 
 function ProductsFilter({ filterObject, routerQuery }: any) {
@@ -9,13 +8,8 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
      // Parse the URL
      const manufacturerURL = routerQuery?.manufacturerURL || '';
      const mainCategory = routerQuery?.mainCategory || '';
-     const part = routerQuery?.part || '';
 
      const [filteredProducts, setFilteredProducts] = useState<any>();
-
-     const handlePriceFilterChange = (filteredProducts: any) => {
-          setFilteredProducts(filteredProducts);
-     };
 
      return (
           <Box
@@ -41,9 +35,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               Izaberi iz liste proizvoda
                          </Typography>
                     </Box>
-                    <Divider />
-                    {/* <PriceFilterComponent products={filterObject} onPriceFilterChange={handlePriceFilterChange} /> */}
-                    <Divider />
+                    <Divider sx={{ mb: 2 }} />
                     <Box className="FilterCategoryAccordionBox">
                          <ProductsAllCategories />
                     </Box>
