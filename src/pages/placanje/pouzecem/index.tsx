@@ -22,30 +22,26 @@ const DeliveryConfirmationPage = () => {
      const [orderConfirmationData, setOrderConfirmationData] = useState<ConfirmationData | null>(null);
      const router = useRouter();
 
-     // Load confirmation from localStorage on client
      useEffect(() => {
           if (typeof window === 'undefined') return;
           try {
                const raw = localStorage.getItem('orderConfirmationData');
                if (raw) setOrderConfirmationData(JSON.parse(raw) as ConfirmationData);
-          } catch { /* ignore parse errors */ }
+          } catch { }
      }, []);
 
-     // Fire Google Ads purchase event exactly once per orderNumber
      useEffect(() => {
           if (!orderConfirmationData) return;
 
-          const orderId = orderConfirmationData.order?.orderNumber;
+          const orderId = String(orderConfirmationData.order?.orderNumber || '');
           const total = Number(orderConfirmationData.order?.total ?? 0);
           if (!orderId || isNaN(total)) return;
 
           const dedupeKey = `ads_purchase_${orderId}`;
-          if (typeof window === 'undefined') return;
-          if (sessionStorage.getItem(dedupeKey)) return; // already fired
+          if (sessionStorage.getItem(dedupeKey)) return;
 
-          // Initialize dataLayer and push purchase event
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).dataLayer.push({
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
                event: 'purchase_ads',
                value: total,
                currency: 'RSD',
