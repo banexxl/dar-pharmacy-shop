@@ -1176,6 +1176,8 @@ const theme: Theme = createTheme({
                          display: 'flex',
                          alignItems: 'center',
                          flexWrap: 'nowrap',
+                         pointerEvents: 'none', // Prevent clicking
+                         userSelect: 'none',    // Prevent selection
                          // Ensure horizontal scrolling with side arrows
                          '& .MuiTabs-flexContainer': {
                               flexWrap: 'nowrap',
