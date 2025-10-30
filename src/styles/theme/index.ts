@@ -1104,30 +1104,11 @@ const theme: Theme = createTheme({
           MuiAccordion: {
                styleOverrides: {
                     root: {
-                         backgroundColor: Colors.primary.lighter,
+                         backgroundColor: Colors.primary.main,
                          position: 'relative',
                          overflow: 'hidden',
-                         transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
-                         '&::before': {
-                              content: '""',
-                              position: 'absolute',
-                              top: '-50%',
-                              left: '-50%',
-                              width: '200%',
-                              height: '200%',
-                              background: `linear-gradient(to right, ${lighten(0.1, Colors.primary.lighter)} 0%, ${lighten(0.3, Colors.primary.lighter)} 30%, ${lighten(0.1, Colors.primary.lighter)} 50%, ${lighten(0.3, Colors.primary.lighter)} 70%, ${lighten(0.1, Colors.primary.lighter)} 100%)`,
-                              opacity: 0,
-                              transition: 'opacity 0.3s ease',
-                              pointerEvents: 'none',
-                         },
-                         '&:hover': {
-                              backgroundColor: lighten(0.05, Colors.primary.lighter),
-                              boxShadow: `0 4px 8px ${lighten(0.2, Colors.primary.main)}`,
-                              '&::before': {
-                                   opacity: 1,
-                                   animation: `${shineKeyframe} 1.5s infinite linear`,
-                              },
-                         },
+                         transition: 'box-shadow 0.3s ease',
+                         // Remove all hover background color changes
                          '&.Mui-expanded': {
                               margin: '16px 0',
                               '&:first-of-type': {
@@ -1143,12 +1124,10 @@ const theme: Theme = createTheme({
           MuiAccordionSummary: {
                styleOverrides: {
                     root: {
-                         color: Colors.primary.main,
+                         color: Colors.white,
                          fontWeight: 'bold',
-                         transition: 'color 0.3s ease, transform 0.3s ease',
-                         '&:hover': {
-                              color: Colors.primary.light,
-                         },
+                         transition: 'transform 0.3s ease',
+                         // Remove hover color change
                          '&.Mui-expanded': {
                               transform: 'scale(1.05)',
                          },
@@ -1158,16 +1137,13 @@ const theme: Theme = createTheme({
                          '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
                               transform: 'rotate(180deg)',
                          },
-                         '&:hover .MuiAccordionSummary-expandIconWrapper': {
-                              animation: `${wiggleKeyframe} 0.5s ease infinite`,
-                         },
                     },
                },
           },
           MuiAccordionDetails: {
                styleOverrides: {
                     root: {
-                         color: Colors.primary.main,
+                         color: Colors.primary.lighter,
                          padding: '16px',
                          borderTop: `1px solid ${lighten(0.2, Colors.primary.main)}`,
                          animation: `${expandKeyframe} 0.3s ease-out`,

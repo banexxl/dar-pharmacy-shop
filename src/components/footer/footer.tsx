@@ -67,8 +67,8 @@ export default function Footer() {
                     marginLeft: '-50vw',
                     marginRight: '-50vw',
                     width: '100vw',
-                    backgroundColor: Colors.neutral[200],
-                    borderTop: `1px solid ${Colors.neutral[800]}`,
+                    backgroundColor: Colors.primary[900], // much darker background
+                    borderTop: `1px solid ${Colors.primary[800]}`,
                }}
           >
                <Container
@@ -76,7 +76,7 @@ export default function Footer() {
                     maxWidth="xl"
                     disableGutters
                     sx={{
-                         color: Colors.primary.main,
+                         color: Colors.white, // high contrast text
                          py: { xs: 4, md: 6 },
                          px: { xs: 2, md: 0 },
                     }}
@@ -85,15 +85,15 @@ export default function Footer() {
                          isScreenToMedium ?
                               <Box sx={{
                                    '& .MuiAccordion-root': {
-                                        background: 'transparent',
+                                        background: Colors.primary[900],
                                         boxShadow: 'none',
                                         '&:before': { display: 'none' },
-                                        borderBottom: `1px solid ${Colors.neutral[700]}`,
+                                        borderBottom: `1px solid ${Colors.primary[700]}`,
                                    }
                               }}>
                                    <Accordion disableGutters sx={{
-                                        background: 'transparent',
-                                        color: Colors.primary.main,
+                                        background: Colors.primary[900],
+                                        color: Colors.white,
                                    }}>
                                         <AccordionSummary
                                              expandIcon={<ExpandMoreIcon sx={{ color: Colors.primary.main }} />}
@@ -101,12 +101,12 @@ export default function Footer() {
                                              id="panel1-header"
 
                                         >
-                                             <Typography variant="h6" fontWeight={600} sx={{ color: Colors.primary.darker, fontWeight: 600 }}>Informacije</Typography>
+                                             <Typography variant="h6" fontWeight={600} sx={{ color: Colors.white, fontWeight: 600 }}>Informacije</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -116,8 +116,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/kontakt"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -127,8 +127,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/o-nama"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -138,8 +138,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/isporuka-i-placanje"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -149,8 +149,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/politika-privatnosti"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -160,8 +160,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/uslovi-koriscenja"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -171,8 +171,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/politika-kolacica"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -182,8 +182,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                    </Accordion>
                                    <Accordion disableGutters sx={{
-                                        background: 'transparent',
-                                        color: Colors.primary.main,
+                                        background: Colors.primary[900],
+                                        color: Colors.white,
                                    }}>
                                         <AccordionSummary
                                              expandIcon={<ExpandMoreIcon sx={{ color: Colors.primary.main }} />}
@@ -191,12 +191,12 @@ export default function Footer() {
                                              id="panel2-header"
                                              sx={{ color: Colors.primary.main, fontWeight: 600 }}
                                         >
-                                             <Typography variant="h6" fontWeight={600} sx={{ color: Colors.primary.darker, fontWeight: 600 }}>Nalog</Typography>
+                                             <Typography variant="h6" fontWeight={600} sx={{ color: Colors.white, fontWeight: 600 }}>Nalog</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/autentifikacija/prijava"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -206,8 +206,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/nalog"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -217,8 +217,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                    </Accordion>
                                    <Accordion disableGutters sx={{
-                                        background: 'transparent',
-                                        color: Colors.primary.main,
+                                        background: Colors.primary[900],
+                                        color: Colors.white,
                                    }}>
                                         <AccordionSummary
                                              expandIcon={<ExpandMoreIcon sx={{ color: Colors.primary.main }} />}
@@ -226,12 +226,12 @@ export default function Footer() {
                                              id="panel3-header"
                                              sx={{ color: Colors.primary.main, fontWeight: 600 }}
                                         >
-                                             <Typography variant="h6" fontWeight={600} sx={{ color: Colors.primary.darker, fontWeight: 600 }}>Korisnički servis</Typography>
+                                             <Typography variant="h6" fontWeight={600} sx={{ color: Colors.white, fontWeight: 600 }}>Korisnički servis</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails sx={{ px: 2, py: 1, display: 'flex' }}>
                                              <Link rel='canonical' href={"/informacije/odustanak"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -241,8 +241,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/reklamacije"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -252,8 +252,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/docs/Ugovor-o-prodaji-na-daljinu.docx"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -263,8 +263,8 @@ export default function Footer() {
                                         </AccordionDetails>
                                         <AccordionDetails sx={{ px: 2, py: 1 }}>
                                              <Link rel='canonical' href={"/informacije/dar-savetnik"} style={{
-                                                  color: Colors.primary.dark,
-                                                  textDecoration: 'none',
+                                                  color: Colors.white,
+                                                  textDecoration: 'underline',
                                                   display: 'block',
                                                   padding: '8px 0',
                                                   transition: 'color 0.3s ease'
@@ -283,7 +283,7 @@ export default function Footer() {
                               }}>
                                    <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 200 }}>
                                         <Typography variant="h6" sx={{
-                                             color: Colors.primary.darker,
+                                             color: Colors.white,
                                              fontWeight: 600,
                                              mb: 2,
                                              fontSize: '1.1rem'
@@ -291,56 +291,56 @@ export default function Footer() {
                                              Informacije
                                         </Typography>
                                         <List sx={{
-                                             color: Colors.primary.dark,
+                                             color: Colors.white,
                                              display: 'flex',
                                              flexDirection: 'column',
                                              gap: 0.5,
                                              p: 0
                                         }}>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href={"/"}>
                                                             Početna
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href={"/kontakt"}>
                                                             Kontakt
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href='/informacije/o-nama'>
                                                             O nama
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href={"/informacije/isporuka-i-placanje"}>
                                                             Isporuka i plaćanje
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href='/informacije/politika-privatnosti'>
                                                             Politika privatnosti
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href='/informacije/uslovi-koriscenja'>
                                                             Uslovi korišćenja
                                                        </Link>
                                                   </Typography>
                                              </ListItemText>
                                              <ListItemText sx={{ m: 0 }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href='/informacije/politika-kolacica'>
                                                             Politika kolačića
                                                        </Link>
@@ -350,7 +350,7 @@ export default function Footer() {
                                    </Box>
                                    <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 150 }}>
                                         <Typography variant="h6" sx={{
-                                             color: Colors.primary.darker,
+                                             color: Colors.white,
                                              fontWeight: 600,
                                              mb: 2,
                                              fontSize: '1.1rem'
@@ -358,7 +358,7 @@ export default function Footer() {
                                              Nalog
                                         </Typography>
                                         <List sx={{
-                                             color: Colors.primary.dark,
+                                             color: Colors.white,
                                              display: 'flex',
                                              flexDirection: 'column',
                                              gap: 0.5,
@@ -378,7 +378,7 @@ export default function Footer() {
                                              <ListItemText sx={{ m: 0 }}>
                                                   <Typography sx={{
                                                        '& a': {
-                                                            color: Colors.primary.dark,
+                                                            color: Colors.white,
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                        }
@@ -392,7 +392,7 @@ export default function Footer() {
                                    </Box>
                                    <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 200 }}>
                                         <Typography variant="h6" sx={{
-                                             color: Colors.primary.darker,
+                                             color: Colors.white,
                                              fontWeight: 600,
                                              mb: 2,
                                              fontSize: '1.1rem',
@@ -401,7 +401,7 @@ export default function Footer() {
                                              Korisnički servis
                                         </Typography>
                                         <List sx={{
-                                             color: Colors.primary.dark,
+                                             color: Colors.white,
                                              display: 'flex',
                                              flexDirection: 'column',
                                              gap: 0.5,
@@ -409,7 +409,7 @@ export default function Footer() {
                                              alignItems: 'flex-end'
                                         }}>
                                              <ListItemText sx={{ m: 0, textAlign: 'right' }}>
-                                                  <Typography sx={{ '& a': { color: Colors.primary.dark, textDecoration: 'none' } }}>
+                                                  <Typography sx={{ '& a': { color: Colors.white, textDecoration: 'none' } }}>
                                                        <Link rel='canonical' href='/informacije/odustanak'>
                                                             Izjava o odustanku
                                                        </Link>
@@ -418,7 +418,7 @@ export default function Footer() {
                                              <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
-                                                            color: Colors.primary.dark,
+                                                            color: Colors.white,
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                        }
@@ -431,7 +431,7 @@ export default function Footer() {
                                              <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
-                                                            color: Colors.primary.dark,
+                                                            color: Colors.white,
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                        }
@@ -444,7 +444,7 @@ export default function Footer() {
                                              <ListItemText sx={{ m: 0, textAlign: 'right' }}>
                                                   <Typography sx={{
                                                        '& a': {
-                                                            color: Colors.primary.dark,
+                                                            color: Colors.white,
                                                             textDecoration: 'none',
                                                             transition: 'color 0.3s ease',
                                                        }
@@ -462,7 +462,7 @@ export default function Footer() {
                     <Box className="FooterSocial" sx={{
                          mt: 4,
                          pt: 3,
-                         borderTop: `1px solid ${Colors.neutral[700]}`,
+                         borderTop: `1px solid ${Colors.primary[700]}`,
                          display: 'flex',
                          justifyContent: 'center',
                          alignItems: 'center'
@@ -471,7 +471,7 @@ export default function Footer() {
                               onClick={() => window.open('https://instagram.com/apoteka_dar')}
                               sx={{
                                    cursor: 'pointer',
-                                   color: Colors.primary.dark,
+                                   color: Colors.white,
                                    fontSize: '2rem',
                                    transition: 'color 0.3s ease',
                               }}
@@ -505,7 +505,7 @@ export default function Footer() {
                                                        mr: { sm: 2 },
                                                        mb: { xs: 1, sm: 0 },
                                                        fontWeight: 600,
-                                                       color: Colors.neutral[100],
+                                                       color: Colors.primary[100],
                                                   }}
                                              >
                                                   Bilten
@@ -523,7 +523,7 @@ export default function Footer() {
                                                        flex: 1,
                                                        minWidth: 180,
                                                        mb: { xs: 1, sm: 0 },
-                                                       background: Colors.neutral[50],
+                                                       background: Colors.primary[50],
                                                        borderRadius: 1,
                                                   }}
                                              />
@@ -563,7 +563,7 @@ export default function Footer() {
                                                        />
                                                   }
                                                   label={
-                                                       <Typography variant="body2" sx={{ color: Colors.neutral[200] }}>
+                                                       <Typography variant="body2" sx={{ color: Colors.primary[200] }}>
                                                             Prihvatam uslove politike privatnosti
                                                        </Typography>
                                                   }
@@ -577,7 +577,7 @@ export default function Footer() {
                                              className="Copyright"
                                              sx={{
                                                   textAlign: 'center',
-                                                  color: Colors.neutral[400],
+                                                  color: Colors.primary[400],
                                                   fontSize: '0.95rem',
                                                   mt: 2,
                                                   mb: 1,
