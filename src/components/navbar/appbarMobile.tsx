@@ -1,14 +1,10 @@
 import {
      AppBar,
      Toolbar,
-     Typography,
      Badge,
      Box,
      IconButton,
      keyframes,
-     Fab,
-     Slide,
-     useScrollTrigger,
      Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -86,6 +82,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                          }}>
                               {/* Menu Button */}
                               <IconButton
+                                   aria-label="open-menu"
                                    onClick={() => setDrawerOpen(true)}
                                    sx={{
                                         color: 'primary.main',
@@ -103,7 +100,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                               {/* Actions (3 icons on mobile) */}
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: isScrolled ? 0.25 : 0.5 }}>
                                    <IconButton
-                                        aria-label="Omiljeni"
+                                        aria-label="wishlist"
                                         onClick={() => showWishListDialog()}
                                         sx={{
                                              color: Colors.neutral[600],
@@ -126,6 +123,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         </Badge>
                                    </IconButton>
                                    <IconButton
+                                        aria-label="open-cart"
                                         onClick={() => { showCartDialog(); setDrawerOpen(false) }}
                                         sx={{
                                              color: Colors.neutral[600],
@@ -157,7 +155,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                                         </Badge>
                                    </IconButton>
                                    <IconButton
-                                        aria-label="Profil"
+                                        aria-label="profile"
                                         onClick={() => showLoginDialog()}
                                         sx={{
                                              color: Colors.neutral[600],
@@ -198,6 +196,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                     }}>
                          <Link href="/" passHref>
                               <IconButton
+                                   aria-label="home"
                                    sx={{
                                         flexDirection: 'column',
                                         gap: 0.5,
@@ -224,6 +223,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                          </Link>
 
                          <IconButton
+                              aria-label="search"
                               onClick={() => setShowSearchBox(true)}
                               sx={{
                                    flexDirection: 'column',
@@ -240,7 +240,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                          </IconButton>
 
                          <IconButton
-                              aria-label="Omiljeni"
+                              aria-label="wishlist"
                               onClick={() => showWishListDialog()}
                               sx={{
                                    flexDirection: 'column',
@@ -269,7 +269,7 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
                          </IconButton>
 
                          <IconButton
-                              aria-label="Profil"
+                              aria-label="profile"
                               onClick={() => showLoginDialog()}
                               sx={{
                                    flexDirection: 'column',

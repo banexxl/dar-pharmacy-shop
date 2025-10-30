@@ -89,23 +89,25 @@ export default function AppbarDesktop({ isScreenToMedium }: any) {
                               APOTEKA DAR
                          </Typography>
                     </Box>
-                    <ListItemButton sx={{
-                         minWidth: '280px',
-                         maxWidth: '350px',
-                         borderRadius: 3,
-                         py: 1.8,
-                         px: 3,
-                         border: `1px solid ${Colors.neutral[200]}`,
-                         background: 'rgba(255, 255, 255, 0.9)',
-                         backdropFilter: 'blur(8px)',
-                         '&:hover': {
-                              backgroundColor: Colors.primary[50],
-                              borderColor: Colors.primary.main,
-                              transform: 'translateY(-1px)',
-                              boxShadow: `0 6px 20px ${Colors.primary.main}15`,
-                         },
-                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    }} onClick={() => setShowSearchBox(true)}>
+                    <ListItemButton
+                         aria-label="search"
+                         sx={{
+                              minWidth: '280px',
+                              maxWidth: '350px',
+                              borderRadius: 3,
+                              py: 1.8,
+                              px: 3,
+                              border: `1px solid ${Colors.neutral[200]}`,
+                              background: 'rgba(255, 255, 255, 0.9)',
+                              backdropFilter: 'blur(8px)',
+                              '&:hover': {
+                                   backgroundColor: Colors.primary[50],
+                                   borderColor: Colors.primary.main,
+                                   transform: 'translateY(-1px)',
+                                   boxShadow: `0 6px 20px ${Colors.primary.main}15`,
+                              },
+                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                         }} onClick={() => setShowSearchBox(true)}>
                          <ListItemIcon sx={{
                               color: Colors.neutral[600],
                               minWidth: 36,
