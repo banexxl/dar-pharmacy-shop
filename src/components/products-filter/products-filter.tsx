@@ -120,7 +120,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                                         {manufacturerURL && (
                                              <Typography
                                                   component="a"
-                                                  href={`/${manufacturerURL}`}
+                                                  href={`/proizvodi-proizvodjac-kategorija/${manufacturerURL}`}
                                                   sx={{
                                                        fontSize: '1rem',
                                                        fontStyle: 'italic',
@@ -135,7 +135,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                                         {mainCategory && (
                                              <Typography
                                                   component="a"
-                                                  href={`/${mainCategory}`}
+                                                  href={`/proizvodi-proizvodjac-kategorija/${manufacturerURL}/${mainCategory}`}
                                                   sx={{
                                                        fontSize: '1rem',
                                                        fontStyle: 'italic',
