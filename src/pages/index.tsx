@@ -193,8 +193,7 @@ export default function Home(props: any) {
 }
 
 
-export async function getServerSideProps() {
-
+export async function getStaticProps() {
      const [
           productsFromManufacturerFitaky,
           productsFromManufacturerGana,
@@ -219,38 +218,8 @@ export async function getServerSideProps() {
           ProductsServices().getAllProductsOnPromotion()
      ])
 
-     // const productsFromManufacturerGana: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika').then((data: any) => {
-     //      return data
-     // })
-
-     // const productsFromManufacturerFitaky: IProduct[] = await ProductsServices().getRandomProductsFromManufacturerURL('fitaky').then((data: any) => {
-     //      return data
-     // })
-
-     // const productsOnDiscount: IProduct[] = await ProductsServices().getProductsByDiscount().then((data: any) => {
-     //      return data
-     // })
-
-     // const manufacturersLogos: any[] = await ProductsServices().getAllLogos().then((data: any) => {
-     //      return data
-     // })
-
-     // const customSearchedProducts: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Gloria').then((data: any) => {
-     //      return data
-     // })
-
-     // const customSearchedProducts1: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('Lavlje').then((data: any) => {
-     //      return data
-     // })
-
-     // const customSearchedProducts2: IProduct[] = await ProductsServices().getProductsByNameAndOrManufacturer('jazavca').then((data: any) => {
-     //      return data
-     // })
-
      const dataForCaruselTop: IProduct[] = [...productsFromManufacturerGana, ...productsFromManufacturerFitaky]
      const dataForGrid: IProduct[] = [...customSearchedProducts, ...customSearchedProducts1, ...customSearchedProducts2].slice(0, 6)
-
-     //revalidate bi trebao da ponovo odradi getstaticprops logiku
 
      return {
           props: {
@@ -262,6 +231,7 @@ export async function getServerSideProps() {
                promotionProduct: JSON.parse(JSON.stringify(promotionProduct)),
                promotionProducts: JSON.parse(JSON.stringify(promotionProducts)),
           },
+          revalidate: 60,
      }
 }
 
