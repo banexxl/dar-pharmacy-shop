@@ -2,14 +2,12 @@
 
 import { NextAuthOptions, Theme } from "next-auth";
 import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from 'next-auth/providers/email'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { dbPromise } from "../../../services/db-connect";
 import nodemailer from "nodemailer"
 import { AccountService } from "@/services/accounts.service";
 import { Colors } from "@/styles/theme";
-import { Db, MongoClient } from "mongodb";
 
 async function sendVerificationRequest(params: any) {
 
