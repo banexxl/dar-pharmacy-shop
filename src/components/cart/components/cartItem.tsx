@@ -9,7 +9,7 @@ import { removeAllSingleItems } from '@/store/cart/cart.slice';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
-const CartItem = (props: ICartItem) => {
+const CartItem = (props: ICartItem & { onClose?: () => void }) => {
 
      const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const CartItem = (props: ICartItem) => {
                <TableRow key={props._id} className="StyledProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
                     {/* Product Image */}
                     <TableCell component="th" scope="row" className="StyledProductCell" sx={{ width: { xs: 72, md: 88 } }}>
-                         <Link rel='canonical' href={`/proizvod/${props.slug}`}>
+                         <Link rel='canonical' href={`/proizvod/${props.slug}`} onClick={props.onClose}>
                               <Box component="img" src={props.imageURL} className="CartProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
                          </Link>
                     </TableCell>

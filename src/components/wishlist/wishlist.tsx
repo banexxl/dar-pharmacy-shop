@@ -5,9 +5,8 @@ import { useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import IWishlistItem from "@/interfaces/wishlist/wishlist.interface";
 import WishlistItem from "./wishlist-item";
-import { clearWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
+import { clearWishList } from "@/store/wishlist/wishlist.slice";
 import { useState } from "react";
-import { addToCart } from "@/store/cart/cart.slice";
 import SlideTransition from "@/hooks/use-slide-transition";
 import toast from "react-hot-toast";
 import { Colors } from "@/styles/theme";
@@ -18,15 +17,6 @@ export default function WishList({ open, onClose }: any) {
      const wishlist = useSelector((state: any) => state.persistReduce.wishListReducer)
 
      const dispatch = useDispatch()
-     const [showOptions, setShowOptions] = useState(false);
-
-     const callCartAlert = () => {
-          toast.success("Proizvod je dodat u korpu", {
-               duration: 1500,
-               position: "top-center"
-          })
-     };
-
 
      return (
           <Dialog
@@ -77,7 +67,7 @@ export default function WishList({ open, onClose }: any) {
                                                   warning={wishListItem.warning} imageURL={wishListItem.imageURL}
                                                   price={wishListItem.price} quantityUnit={wishListItem.quantityUnit}
                                                   mediaURLs={[]} slug={wishListItem.slug} discountAmount={wishListItem.discountAmount}
-                                                  promotionText={wishListItem.promotionText} manufacturer={wishListItem.manufacturer} />
+                                                  promotionText={wishListItem.promotionText} manufacturer={wishListItem.manufacturer} onClose={onClose} />
                                         ))}
                                    </TableBody>
                               </Table>

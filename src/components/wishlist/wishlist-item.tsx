@@ -1,16 +1,14 @@
 import IWishlistItem from '@/interfaces/wishlist/wishlist.interface'
-import theme from '@/styles/theme'
 import { TableRow, TableCell, Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '@/store/cart/cart.slice'
 import { removeFromWishList } from '@/store/wishlist/wishlist.slice'
 import toast from 'react-hot-toast'
-import Counter from '@/utils/counter'
 import Link from 'next/link'
 import React from 'react'
 
 
-const WishlistItem = (props: IWishlistItem) => {
+const WishlistItem = (props: IWishlistItem & { onClose?: () => void }) => {
      const dispatch = useDispatch();
      const handleAddToCart = () => {
           toast.success("Proizvod je dodat u korpu", { position: "top-center", duration: 1500 });
@@ -24,7 +22,7 @@ const WishlistItem = (props: IWishlistItem) => {
      return (
           <TableRow key={props._id} className="WishlistProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
                <TableCell component="th" scope="row" className="WishlistProductCell" sx={{ width: { xs: 72, md: 88 } }}>
-                    <Link rel='canonical' href={`/proizvod/${props.slug}`}>
+                    <Link rel='canonical' href={`/proizvod/${props.slug}`} onClick={props.onClose}>
                          <Box component="img" src={props.imageURL} className="WishlistProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
                     </Link>
                </TableCell>

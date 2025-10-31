@@ -65,7 +65,10 @@ export default function Cart({ open, onClose }: ICartProps) {
                                         overflowX: isScreenToMedium ? 'auto' : 'visible',
                                         mb: { xs: 1, md: 3 }
                                    }}>
-                                        <Table stickyHeader size={isScreenToMedium ? 'small' : 'medium'} sx={{ minWidth: isScreenToMedium ? 700 : 'auto' }}>
+                                        <Table
+                                             stickyHeader
+                                             size={isScreenToMedium ? 'small' : 'medium'}
+                                             sx={{ minWidth: isScreenToMedium ? 700 : 'auto' }}>
                                              <TableHead>
                                                   <TableRow>
                                                        <TableCell className="CartTableCell" sx={{ width: { xs: 72, md: 88 } }}>Slika</TableCell>
@@ -80,7 +83,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                              </TableHead>
                                              <TableBody>
                                                   {cart.map((cartItem: ICartItem) => (
-                                                       <CartItem key={cartItem._id} {...cartItem} />
+                                                       <CartItem key={cartItem._id} {...cartItem} onClose={() => onClose()} />
                                                   ))}
                                              </TableBody>
                                         </Table>
