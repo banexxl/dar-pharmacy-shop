@@ -13,7 +13,7 @@ import Cart from '@/components/cart/cart';
 import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
 import { Box } from '@mui/system';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
@@ -238,7 +238,6 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                        </Button>
                                                   </Box>
                                              </Tooltip>
-                                             <Toaster />
                                         </Box>
                                    </Grid>
                               </Form>
