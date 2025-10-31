@@ -1,5 +1,4 @@
 import { UIProvider } from '@/context/ui/ui.context';
-import { Colors } from '@/styles/theme';
 import { Box, Container, Grid, Stack, TextField, Typography, Button, FormControlLabel, Checkbox } from '@mui/material';
 import SearchBox from '@/components/search/search';
 import { ReCaptchaProvider } from 'next-recaptcha-v3';
@@ -67,9 +66,19 @@ const RegisterPage = () => {
                                                        <Grid item xs={12}>
                                                             <Field as={TextField} label="Email" name="email" fullWidth variant="outlined" error={formik.touched.email && !!formik.errors.email} helperText={formik.touched.email && formik.errors.email} />
                                                        </Grid>
-                                                       <Grid item xs={12}>
-                                                            <FormControlLabel control={<Checkbox checked={formik.values.shouldCreateAccount || false} onChange={(_, checked) => formik.setFieldValue('shouldCreateAccount', checked)} />} label="Kreiraj nalog (opciono)" />
-                                                       </Grid>
+                                                       {typeof window !== 'undefined' && window.location.pathname !== '/registracija' && (
+                                                            <Grid item xs={12}>
+                                                                 <FormControlLabel
+                                                                      control={
+                                                                           <Checkbox
+                                                                                checked={formik.values.shouldCreateAccount || false}
+                                                                                onChange={(_, checked) => formik.setFieldValue('shouldCreateAccount', checked)}
+                                                                           />
+                                                                      }
+                                                                      label="Kreiraj nalog (opciono)"
+                                                                 />
+                                                            </Grid>
+                                                       )}
                                                        <Grid item xs={12} sx={{ textAlign: 'center' }}>
                                                             <Button type="reset" variant="outlined" sx={{ mr: 2 }} onClick={() => formik.resetForm()}>Obriši</Button>
                                                             <Button type="submit" variant="contained" disabled={!formik.isValid || formik.isSubmitting}>Registruj se</Button>
