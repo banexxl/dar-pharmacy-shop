@@ -20,7 +20,7 @@ import { useSession } from 'next-auth/react';
 import SearchBox from '@/components/search/search';
 import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userDataFormSchema } from '@/schemas/user-form.schema';
-import sweetalert2 from 'sweetalert2';
+import toast from 'react-hot-toast';
 import { Colors } from '@/styles/theme';
 
 const UserUpdatePage = () => {
@@ -49,37 +49,15 @@ const UserUpdatePage = () => {
                     body: JSON.stringify(values),
                });
                if (response.status === 200) {
-                    await sweetalert2.fire({
-                         title: 'Uspešna izmena podataka!',
-                         icon: 'success',
-                         confirmButtonText: 'U redu',
-                         confirmButtonColor: Colors.primary.main,
-                    });
+                    toast.success('Uspešna izmena podataka!', { duration: 3000, position: 'top-center' });
                     router.push('/');
                } else if (response.status === 404) {
-                    await sweetalert2.fire({
-                         title: 'Korisnik nije pronađen!',
-                         icon: 'warning',
-                         confirmButtonText: 'U redu',
-                         confirmButtonColor: Colors.primary.main,
-                    });
+                    toast('Korisnik nije pronađen!', { icon: '⚠️', duration: 3000, position: 'top-center' });
                } else {
-                    await sweetalert2.fire({
-                         title: 'Došlo je do greške!',
-                         text: 'Proverite unete podatke i pokušajte ponovo.',
-                         icon: 'error',
-                         confirmButtonText: 'U redu',
-                         confirmButtonColor: Colors.primary.main,
-                    });
+                    toast.error('Došlo je do greške! Proverite unete podatke i pokušajte ponovo.', { duration: 3000, position: 'top-center' });
                }
           } catch (err) {
-               await sweetalert2.fire({
-                    title: 'Greška pri izmeni!',
-                    text: 'Pokušajte ponovo kasnije.',
-                    icon: 'error',
-                    confirmButtonText: 'U redu',
-                    confirmButtonColor: Colors.primary.main,
-               });
+               toast.error('Greška pri izmeni! Pokušajte ponovo kasnije.', { duration: 3000, position: 'top-center' });
           } finally {
                setLoading(false);
           }

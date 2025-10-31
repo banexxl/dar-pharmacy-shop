@@ -2,13 +2,12 @@ import { UIProvider } from '@/context/ui/ui.context';
 import { Colors } from '@/styles/theme';
 import { Box, Container, Grid, Stack, TextField, Typography, Button, FormControlLabel, Checkbox } from '@mui/material';
 import SearchBox from '@/components/search/search';
-import AppDrawer from '@/components/navbar/drawer/drawer';
 import { ReCaptchaProvider } from 'next-recaptcha-v3';
 import { Formik, Form, Field } from 'formik';
 import { initialUserFormValues, IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
 import { Seo } from '@/components/seo';
-import sweetalert2 from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 const RegisterPage = () => {
      const handleSubmit = async (values: IUserForm) => {
@@ -19,37 +18,14 @@ const RegisterPage = () => {
                     body: JSON.stringify(values),
                });
                if (response.status === 409) {
-                    await sweetalert2.fire({
-                         title: 'Email je već registrovan',
-                         icon: 'warning',
-                         confirmButtonText: 'U redu',
-                         confirmButtonColor: Colors.primary.main,
-                    });
+                    toast('Korisnik već postoji!', { icon: '⚠️', duration: 3000, position: 'top-center' });
                } else if (response.status === 200) {
-                    await sweetalert2.fire({
-                         title: 'Poslat je email za verifikaciju',
-                         text: 'Proverite inbox i potvrdite svoju email adresu.',
-                         icon: 'success',
-                         confirmButtonText: 'U redu',
-                         confirmButtonColor: Colors.primary.main,
-                    });
+                    toast.success('Uspešna registracija!', { duration: 3000, position: 'top-center' });
                } else {
-                    await sweetalert2.fire({
-                         title: 'Došlo je do greške',
-                         text: 'Pokušajte ponovo kasnije.',
-                         icon: 'error',
-                         confirmButtonText: 'U redu',
-                         confirmButtonColor: Colors.primary.main,
-                    });
+                    toast.error('Došlo je do greške! Proverite podatke i pokušajte ponovo.', { duration: 3000, position: 'top-center' });
                }
           } catch (err) {
-               await sweetalert2.fire({
-                    title: 'Greška',
-                    text: 'Pokušajte ponovo kasnije.',
-                    icon: 'error',
-                    confirmButtonText: 'U redu',
-                    confirmButtonColor: Colors.primary.main,
-               });
+               toast.error('Greška pri registraciji! Pokušajte ponovo kasnije.', { duration: 3000, position: 'top-center' });
           }
      };
 

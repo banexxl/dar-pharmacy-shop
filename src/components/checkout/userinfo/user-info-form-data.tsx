@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import { Button, CircularProgress, Container, Grid, TextField, Tooltip, Typography, useTheme } from '@mui/material';
+import { Button, Container, Grid, TextField, Tooltip, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
-import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSession } from 'next-auth/react';
-import sweetalert2 from 'sweetalert2';
-import { maxWidth, ThemeProvider } from '@mui/system';
+import { ThemeProvider } from '@mui/system';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
@@ -15,7 +13,6 @@ import Cart from '@/components/cart/cart';
 import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
 import { Box } from '@mui/system';
-import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
 import toast, { Toaster } from 'react-hot-toast';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {

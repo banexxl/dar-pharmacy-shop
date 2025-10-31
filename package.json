@@ -59,7 +59,6 @@
     "react-multi-carousel": "^2.8.5",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",
-    "sweetalert2": "^11.7.5",
     "uuid": "^10.0.0",
     "yup": "^1.0.2"
   },
