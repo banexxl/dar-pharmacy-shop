@@ -9,6 +9,7 @@ import { Seo } from '@/components/seo';
 import toast from 'react-hot-toast';
 
 const RegisterPage = () => {
+     const router = typeof window !== "undefined" ? require('next/router').useRouter() : null;
      const handleSubmit = async (values: IUserForm) => {
           try {
                const response = await fetch('/api/register', {
@@ -18,13 +19,17 @@ const RegisterPage = () => {
                });
                if (response.status === 409) {
                     toast('Korisnik već postoji!', { icon: '⚠️', duration: 3000, position: 'top-center' });
+                    if (router) router.push('/registracija/rezultat?status=exists');
                } else if (response.status === 200) {
                     toast.success('Uspešna registracija!', { duration: 3000, position: 'top-center' });
+                    if (router) router.push('/registracija/rezultat?status=success');
                } else {
                     toast.error('Došlo je do greške! Proverite podatke i pokušajte ponovo.', { duration: 3000, position: 'top-center' });
+                    if (router) router.push('/registracija/rezultat?status=fail');
                }
           } catch (err) {
                toast.error('Greška pri registraciji! Pokušajte ponovo kasnije.', { duration: 3000, position: 'top-center' });
+               if (router) router.push('/registracija/rezultat?status=fail');
           }
      };
 
