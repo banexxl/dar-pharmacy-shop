@@ -1,8 +1,8 @@
-import { Alert, Box, Button, CircularProgress, Divider, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, CircularProgress, Divider, IconButton, InputAdornment, List, ListItem, ListItemText, Slide, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useRef, useState } from "react";
 import Image from "next/image";
 import IProduct from "@/interfaces/product/product.interface";
 import { Colors } from "@/styles/theme";
@@ -25,7 +25,7 @@ export default function SearchBox() {
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
      const dispatch = useDispatch()
-     const [addedToCartAlert, setAddedToCartAlert] = useState(false)
+     const inputRef = useRef<HTMLInputElement | null>(null)
 
      const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
           setSearchQuery(event.target.value);
@@ -74,7 +74,7 @@ export default function SearchBox() {
      };
 
      return (
-          <Slide direction="down" in={showSearchBox} timeout={500} >
+          <Slide direction="down" in={showSearchBox} timeout={500} onEntered={() => inputRef.current?.focus()}>
                <Box
                     className="SearchBoxContainer"
                     sx={{
@@ -108,9 +108,7 @@ export default function SearchBox() {
                                         :
                                         null
                               }}
-                              inputProps={{
-                                   autoFocus: true
-                              }}
+                              inputRef={inputRef}
                          />
                          <SearchIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, cursor: 'pointer', marginBottom: '15px' }} color="secondary" onClick={() => handleSearchClick()} />
                     </Box>
