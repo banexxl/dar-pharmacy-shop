@@ -108,6 +108,9 @@ export default function SearchBox() {
                                         :
                                         null
                               }}
+                              inputProps={{
+                                   autoFocus: true
+                              }}
                          />
                          <SearchIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, cursor: 'pointer', marginBottom: '15px' }} color="secondary" onClick={() => handleSearchClick()} />
                     </Box>
