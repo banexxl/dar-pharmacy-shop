@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Table, TableBody, Paper, TableRow, Typography, TableHead, TableCell, TableContainer } from "@mui/material";
+import { Dialog, DialogTitle, Box, IconButton, DialogContent, Table, TableBody, TableRow, Typography, TableHead, TableCell, TableContainer } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "@/styles/theme";
 import { useTheme } from "@mui/material/styles";
