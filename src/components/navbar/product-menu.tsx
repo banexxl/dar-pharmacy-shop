@@ -47,7 +47,7 @@ export const ProductsMenu = () => {
      };
 
      const onLinkClick = (href: string) => {
-          setShowLoadingWheel('flex');
+          // setShowLoadingWheel('flex');    
           handleClose();
           router.push(href);
      };
