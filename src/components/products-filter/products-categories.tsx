@@ -24,7 +24,7 @@ const transformToMuiAccordion = (data: any) => {
                </Accordion>
           ) : (
                <AccordionDetails key={id}>
-                    <Typography onClick={() => router.push(link)} sx={{ cursor: 'pointer', color: Colors.white, '&:hover': { color: Colors.primary.main } }}>
+                    <Typography onClick={() => router.push(link)} sx={{ cursor: 'pointer', color: Colors.white, '&:hover': { color: Colors.primary.dark } }}>
                          {title}
                     </Typography>
                </AccordionDetails>
