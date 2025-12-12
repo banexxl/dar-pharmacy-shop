@@ -23,7 +23,7 @@ const PaymentStrip: React.FC = () => {
           <Box width="100%" overflow="hidden" sx={{ backgroundColor: theme.palette.background.paper, py: '30px', margin: '0' }}>
                <Divider sx={{ mb: '30px' }} />
                <Grid container justifyContent="center" alignItems="center" sx={{ padding: '0', margin: '0' }}>
-                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: isMobile ? '15px' : '30px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
+                    <Grid size={{ xs: 12 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: isMobile ? '15px' : '30px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
                          {paymentTypes.map(payment => (
                               <Box key={payment.name}>
                                    <Link href={payment.link} target='_blank'>

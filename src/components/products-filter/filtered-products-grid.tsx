@@ -68,7 +68,7 @@ export default function FilteredProductsGrid({
           </Box>
         ) : (
           data.map((product) => (
-            <Grid key={product._id} item xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
+            <Grid key={product._id} size={{ xs: 12, sm: 6, md: 4 }} display="flex" flexDirection={'column'} alignItems="center">
               <ProductCard product={product} />
             </Grid>
           ))

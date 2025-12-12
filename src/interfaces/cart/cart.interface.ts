@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import IProduct from "../product/product.interface";
 
 export default interface ICartItem extends IProduct {

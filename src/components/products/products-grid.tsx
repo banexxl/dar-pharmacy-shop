@@ -4,7 +4,7 @@ import ProductCard from "@/components/product-card/product-card";
 
 export default function Products(props: any) {
   const renderProducts = props.data?.map((product: any) => (
-    <Grid key={product._id} item xs={6} sm={4} md={3} display="flex" flexDirection={'column'} alignItems="center">
+    <Grid key={product._id} size={{ xs: 12, sm: 6, md: 4 }} display="flex" flexDirection={'column'} alignItems="center">
       <ProductCard product={product} />
     </Grid>
   ));

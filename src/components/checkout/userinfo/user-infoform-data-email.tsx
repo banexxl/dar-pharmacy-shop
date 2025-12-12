@@ -34,7 +34,7 @@ const EmailAndAccountCreation: React.FC = () => {
 
      return (
           <>
-               <Grid item xs={12} sm={6}>
+               <Grid size={{ xs: 12, sm: 6 }}>
                     <Field
                          as={TextField}
                          value={values.email.toLowerCase()}
@@ -52,7 +52,7 @@ const EmailAndAccountCreation: React.FC = () => {
 
                {/* Only show the checkbox if the session is not present */}
                {!session?.user?.email && (
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                          <Tooltip title={errors.email ? errors.email : ''} >
                               <FormControlLabel
                                    sx={{ marginBottom: '10px', width: '100%' }}

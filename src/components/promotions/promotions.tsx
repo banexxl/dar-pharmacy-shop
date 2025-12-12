@@ -14,7 +14,7 @@ const messages = [
 ];
 export default function Promotions() {
 
-     const containerRef = useRef<HTMLDivElement>();
+     const containerRef = useRef<HTMLDivElement>(null);
      const [show, setShow] = useState(true);
      const [messageIndex, setMessageIndex] = useState(0);
 

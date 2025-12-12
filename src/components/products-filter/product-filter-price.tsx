@@ -30,7 +30,7 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
           <Box className="PriceRangeBox">
                <Typography variant="h6" sx={{ fontWeight: 700, color: Colors.primary.main }} gutterBottom>Opseg cena</Typography>
                <Grid container spacing={2} alignItems="center">
-                    <Grid item xs={10} marginLeft='6%'>
+                    <Grid size={{ xs: 10 }} marginLeft='6%'>
                          <Slider
                               value={priceRange}
                               onChange={handlePriceChange}
@@ -41,10 +41,10 @@ const PriceFilterComponent: React.FC<PriceFilterProps> = ({ products, onPriceFil
                               aria-labelledby="price-range-slider"
                          />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid size={{ xs: 6 }}>
                          <Typography variant="subtitle2">{`RSD ${priceRange[0]}`}</Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid size={{ xs: 6 }}>
                          <Typography variant="subtitle2" align="right">{`RSD ${priceRange[1]}`}</Typography>
                     </Grid>
                </Grid>

@@ -47,32 +47,32 @@ const RegisterPage = () => {
                                         {(formik) => (
                                              <Form>
                                                   <Grid container spacing={2} sx={{ maxWidth: 900, mx: 'auto' }}>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Ime i prezime" name="name" fullWidth variant="outlined" error={formik.touched.name && !!formik.errors.name} helperText={formik.touched.name && formik.errors.name} />
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Telefon" name="phoneNumber" fullWidth variant="outlined" error={formik.touched.phoneNumber && !!formik.errors.phoneNumber} helperText={formik.touched.phoneNumber && formik.errors.phoneNumber} />
                                                        </Grid>
-                                                       <Grid item xs={12}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Adresa" name="streetAddress" fullWidth variant="outlined" error={formik.touched.streetAddress && !!formik.errors.streetAddress} helperText={formik.touched.streetAddress && formik.errors.streetAddress} />
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Grad" name="city" fullWidth variant="outlined" error={formik.touched.city && !!formik.errors.city} helperText={formik.touched.city && formik.errors.city} />
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Region" name="provinceState" fullWidth variant="outlined" error={formik.touched.provinceState && !!formik.errors.provinceState} helperText={formik.touched.provinceState && formik.errors.provinceState} />
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Država" name="country" fullWidth variant="outlined" error={formik.touched.country && !!formik.errors.country} helperText={formik.touched.country && formik.errors.country} />
                                                        </Grid>
-                                                       <Grid item xs={12} sm={6}>
+                                                       <Grid size={{ xs: 12, sm: 6 }}>
                                                             <Field as={TextField} label="Poštanski broj" name="zipPostalCode" fullWidth variant="outlined" error={formik.touched.zipPostalCode && !!formik.errors.zipPostalCode} helperText={formik.touched.zipPostalCode && formik.errors.zipPostalCode} />
                                                        </Grid>
-                                                       <Grid item xs={12}>
+                                                       <Grid size={{ xs: 12 }}>
                                                             <Field as={TextField} label="Email" name="email" fullWidth variant="outlined" error={formik.touched.email && !!formik.errors.email} helperText={formik.touched.email && formik.errors.email} />
                                                        </Grid>
                                                        {typeof window !== 'undefined' && window.location.pathname !== '/registracija' && (
-                                                            <Grid item xs={12}>
+                                                            <Grid size={{ xs: 12 }}>
                                                                  <FormControlLabel
                                                                       control={
                                                                            <Checkbox
@@ -84,7 +84,7 @@ const RegisterPage = () => {
                                                                  />
                                                             </Grid>
                                                        )}
-                                                       <Grid item xs={12} sx={{ textAlign: 'center' }}>
+                                                       <Grid size={{ xs: 12 }} sx={{ textAlign: 'center' }}>
                                                             <Button type="reset" variant="outlined" sx={{ mr: 2 }} onClick={() => formik.resetForm()}>Obriši</Button>
                                                             <Button type="submit" variant="contained" disabled={!formik.isValid || formik.isSubmitting}>Registruj se</Button>
                                                        </Grid>
