@@ -168,7 +168,7 @@ function ProductDetails(product: IProduct) {
                     <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
                     {
                          product.availableStock == 0 ?
-                              <Typography textAlign='center' sx={{ fontWeight: 700, color: Colors.error.main }}>Nema na stanju!</Typography>
+                              <Typography textAlign='center' sx={{ fontWeight: 800, color: Colors.error.main }}>Nema na stanju!</Typography>
                               :
                               <Typography textAlign='center' sx={{ color: Colors.neutral[700] }}>Dostupno: {product.availableStock} na stanju</Typography>
                     }
