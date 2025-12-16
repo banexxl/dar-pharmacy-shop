@@ -202,7 +202,7 @@ function ProductDetails(product: IProduct) {
                               onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}
                               disabled={product.availableStock <= 0}
                          >
-                              Dodaj u korpu
+                              {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                          </Button>
                          <Button variant="outlined" color="primary" onClick={showCartDialog} startIcon={<ShoppingCartIcon />} >
                               Korpa

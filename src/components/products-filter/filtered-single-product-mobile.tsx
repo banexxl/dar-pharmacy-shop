@@ -178,7 +178,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                                    variant="contained"
                                    fullWidth
                               >
-                                   Dodaj u korpu
+                                   {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                               </Button>
                          )
                          :

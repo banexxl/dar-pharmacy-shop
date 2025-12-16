@@ -136,7 +136,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          }}
                          disabled={product.availableStock <= 0}
                     >
-                         Dodaj u korpu
+                         {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                     </Button>
                )}
                <Box className="FilteredProductActionsWrapper">

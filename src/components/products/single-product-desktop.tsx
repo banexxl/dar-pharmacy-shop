@@ -186,7 +186,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                               dispatch(addToCart(product));
                          }}
                          sx={{ display: showOptions ? 'flex' : 'none' }}>
-                         Dodaj u korpu
+                         {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                     </Button>
                )}
 

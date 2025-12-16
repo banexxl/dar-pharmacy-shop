@@ -189,7 +189,7 @@ export default function SearchBox() {
                                                                                 }}
                                                                                 disabled={product.availableStock <= 0}
                                                                            >
-                                                                                Dodaj u korpu
+                                                                                {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                                                                            </Button>
                                                                       </Box>
                                                                       <Box

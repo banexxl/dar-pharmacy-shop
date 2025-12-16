@@ -41,7 +41,7 @@ const WishlistItem = (props: IWishlistItem & { onClose?: () => void }) => {
                <TableCell align="center" className="WishListProductDetails">
                     <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
                          <Button size="small" variant="contained" color="primary" onClick={handleAddToCart} disabled={props.availableStock <= 0}>
-                              Dodaj u korpu
+                              {props.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                          </Button>
                          <Button size="small" variant="outlined" color="primary" onClick={handleRemove}>
                               Obriši

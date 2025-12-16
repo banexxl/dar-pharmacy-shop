@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Alert, Container, Paper } from "@mui/material";
+import { Dialog, DialogTitle, Slide, Box, IconButton, DialogContent, Typography, Button, Alert, Container, Paper, Tooltip } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -140,7 +140,10 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                    alignItems="center"
                                    justifyContent="space-evenly"
                               >
-                                   <Button onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>Dodaj u korpu</Button>
+                                   <Button
+                                        onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>
+                                        {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                                   </Button>
                                    <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} />
                               </Box>
                               <Box
