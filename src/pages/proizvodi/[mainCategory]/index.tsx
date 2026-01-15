@@ -10,6 +10,7 @@ import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Seo } from "@/components/seo";
+import { slugToTitle, generateCategoryTitle, generateCategoryDescription, buildCanonicalUrl, generateCollectionPageStructuredData, generateBreadcrumbStructuredData } from '@/utils/seo-utils';
 
 export default function MainCategoryPage(props: any) {
 
@@ -20,6 +21,31 @@ export default function MainCategoryPage(props: any) {
 
      const router = useRouter()
      const [loading, setLoading] = useState(false)
+     
+     const mainCategory = router.query.mainCategory as string;
+     const categoryName = slugToTitle(mainCategory || '');
+     const productCount = Array.isArray(props.products) ? props.products.length : 0;
+     const categoryUrl = buildCanonicalUrl('proizvodi', mainCategory);
+     
+     const seoTitle = generateCategoryTitle(categoryName);
+     const seoDescription = generateCategoryDescription(categoryName, productCount);
+     
+     // Generate breadcrumbs
+     const breadcrumbs = [
+          { name: 'Početna', url: buildCanonicalUrl() },
+          { name: 'Proizvodi', url: buildCanonicalUrl('proizvodi') },
+          { name: categoryName, url: categoryUrl }
+     ];
+     
+     // Generate structured data
+     const collectionStructuredData = generateCollectionPageStructuredData(
+          categoryName,
+          seoDescription,
+          categoryUrl,
+          productCount
+     );
+     
+     const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
 
      return (
           <>
@@ -27,7 +53,13 @@ export default function MainCategoryPage(props: any) {
                     loading ?
                          <LoadingWheel /> :
                          <DynamicThemeProvider theme={theme}>
-                              <Seo title={'Kategorija'} description={'Kategorija'} url={'https://www.apoteka-dar.rs/'} />
+                              <Seo 
+                                   title={seoTitle}
+                                   description={seoDescription}
+                                   url={categoryUrl}
+                                   keywords={`${categoryName}, proizvodi, apoteka DAR`}
+                                   structuredData={[collectionStructuredData, breadcrumbStructuredData]}
+                              />
                               <Container
                                    disableGutters
                                    maxWidth="lg"

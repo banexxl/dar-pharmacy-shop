@@ -9,21 +9,64 @@ import { Container, Stack, ThemeProvider } from '@mui/material'
 import { _id } from '@next-auth/mongodb-adapter'
 import React from 'react'
 import { Seo } from '@/components/seo'
+import { generateProductStructuredData, generateBreadcrumbStructuredData, buildCanonicalUrl } from '@/utils/seo-utils'
 
 type SingleProductProps = {
      product: IProduct
 }
 
 const SingleProduct = (props: SingleProductProps) => {
+     const { product } = props;
+     
+     const productUrl = buildCanonicalUrl('proizvod', product.slug);
+     const productImage = product.imageURL || '/images/home-page/apotekaDar.jpg';
+     
+     // Generate breadcrumbs
+     const breadcrumbs = [
+          { name: 'Početna', url: buildCanonicalUrl() },
+          { name: 'Proizvodi', url: buildCanonicalUrl('proizvodi') },
+     ];
+     
+     if (product.category) {
+          breadcrumbs.push({ 
+               name: product.category, 
+               url: buildCanonicalUrl('proizvodi', product.category.toLowerCase().replace(/\s+/g, '-')) 
+          });
+     }
+     
+     breadcrumbs.push({ name: product.name, url: productUrl });
+     
+     // Generate structured data (use original imageURL, function will handle URL conversion)
+     const productStructuredData = generateProductStructuredData({
+          name: product.name,
+          description: product.description,
+          imageURL: product.imageURL || '/images/home-page/apotekaDar.jpg',
+          price: product.price,
+          slug: product.slug,
+          manufacturer: product.manufacturer,
+          availableStock: product.availableStock,
+          category: product.category
+     });
+     
+     const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
+     
+     // Generate SEO description
+     const seoDescription = product.description 
+          ? (product.description.length > 160 
+               ? product.description.substring(0, 157) + '...' 
+               : product.description)
+          : `Kupite ${product.name} u Apoteci DAR Kragujevac. ${product.manufacturer ? `Proizvođač: ${product.manufacturer}. ` : ''}Prirodni proizvodi za zdravlje i lepotu.`;
 
      return (
           <ThemeProvider theme={theme}>
                <Seo
-                    title={props.product.name}
-                    description={props.product.description}
-                    image={props.product.imageURL}
-                    url={`https://www.apoteka-dar.rs/proizvodi/${props.product.slug}`}
-                    keywords={props.product.name}
+                    title={product.name}
+                    description={seoDescription}
+                    image={productImage}
+                    url={productUrl}
+                    keywords={`${product.name}${product.manufacturer ? `, ${product.manufacturer}` : ''}${product.category ? `, ${product.category}` : ''}`}
+                    type="product"
+                    structuredData={[productStructuredData, breadcrumbStructuredData]}
                />
                <Container
 

@@ -6,14 +6,52 @@ import { UIProvider } from '@/context/ui/ui.context';
 import SearchBox from '@/components/search/search';
 import AppDrawer from '@/components/navbar/drawer/drawer';
 import { Seo } from '@/components/seo';
+import { slugToTitle, generateManufacturerTitle, generateManufacturerDescription, buildCanonicalUrl, generateCollectionPageStructuredData, generateBreadcrumbStructuredData } from '@/utils/seo-utils';
 
-type Props = { products: any[] };
+type Props = { products: any[]; manufacturerURL: string; mainCategory: string };
 
-export default function ManufacturerMainCategoryPage({ products }: Props) {
+export default function ManufacturerMainCategoryPage({ products, manufacturerURL, mainCategory }: Props) {
   const router = useRouter();
+  
+  // Get manufacturer name from first product or format from URL
+  const manufacturerName = products && products.length > 0 && products[0]?.manufacturer 
+    ? products[0].manufacturer 
+    : slugToTitle(manufacturerURL);
+  
+  const categoryName = slugToTitle(mainCategory);
+  const productCount = Array.isArray(products) ? products.length : 0;
+  const pageUrl = buildCanonicalUrl('proizvodi-proizvodjac-kategorija', manufacturerURL, mainCategory);
+  
+  const seoTitle = generateManufacturerTitle(manufacturerName, categoryName);
+  const seoDescription = generateManufacturerDescription(manufacturerName, productCount, categoryName);
+  
+  // Generate breadcrumbs
+  const breadcrumbs = [
+    { name: 'Početna', url: buildCanonicalUrl() },
+    { name: 'Proizvodi', url: buildCanonicalUrl('proizvodi') },
+    { name: manufacturerName, url: buildCanonicalUrl('proizvodi-proizvodjac-kategorija', manufacturerURL) },
+    { name: `${manufacturerName} - ${categoryName}`, url: pageUrl }
+  ];
+  
+  // Generate structured data
+  const collectionStructuredData = generateCollectionPageStructuredData(
+    `${manufacturerName} - ${categoryName}`,
+    seoDescription,
+    pageUrl,
+    productCount
+  );
+  
+  const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
+  
   return (
     <>
-      <Seo title={'Proizvodi po proizvođaču i kategoriji'} description={'Pregled proizvoda po proizvođaču i kategoriji'} url={'https://www.apoteka-dar.rs/'} />
+      <Seo 
+        title={seoTitle}
+        description={seoDescription}
+        url={pageUrl}
+        keywords={`${manufacturerName}, ${categoryName}, proizvodi, apoteka DAR`}
+        structuredData={[collectionStructuredData, breadcrumbStructuredData]}
+      />
       <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
         <Stack>
           <UIProvider>
@@ -40,7 +78,11 @@ export async function getStaticProps({ params }: any) {
     return { redirect: { destination: '/404', permanent: false } };
   }
   return {
-    props: { products: JSON.parse(JSON.stringify(products)) },
+    props: { 
+      products: JSON.parse(JSON.stringify(products)),
+      manufacturerURL: params.manufacturerURL,
+      mainCategory: params.mainCategory
+    },
     revalidate: 60,
   };
 }

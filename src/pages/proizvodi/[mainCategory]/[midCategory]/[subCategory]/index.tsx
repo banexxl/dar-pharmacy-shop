@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 import ProductsFilter from '@/components/products-filter/products-filter';
 import { useRouter } from 'next/router';
 import { Seo } from "@/components/seo";
+import { slugToTitle, generateCategoryTitle, generateCategoryDescription, buildCanonicalUrl, generateCollectionPageStructuredData, generateBreadcrumbStructuredData } from '@/utils/seo-utils';
 
 export default function MainCategoryPage(props: any) {
 
@@ -18,10 +19,47 @@ export default function MainCategoryPage(props: any) {
      })
 
      const router = useRouter()
+     
+     const mainCategory = router.query.mainCategory as string;
+     const midCategory = router.query.midCategory as string;
+     const subCategory = router.query.subCategory as string;
+     const mainCategoryName = slugToTitle(mainCategory || '');
+     const midCategoryName = slugToTitle(midCategory || '');
+     const subCategoryName = slugToTitle(subCategory || '');
+     const productCount = Array.isArray(props.products) ? props.products.length : 0;
+     const categoryUrl = buildCanonicalUrl('proizvodi', mainCategory, midCategory, subCategory);
+     
+     const seoTitle = generateCategoryTitle(mainCategoryName, midCategoryName, subCategoryName);
+     const seoDescription = generateCategoryDescription(mainCategoryName, productCount, midCategoryName, subCategoryName);
+     
+     // Generate breadcrumbs
+     const breadcrumbs = [
+          { name: 'Početna', url: buildCanonicalUrl() },
+          { name: 'Proizvodi', url: buildCanonicalUrl('proizvodi') },
+          { name: mainCategoryName, url: buildCanonicalUrl('proizvodi', mainCategory) },
+          { name: midCategoryName, url: buildCanonicalUrl('proizvodi', mainCategory, midCategory) },
+          { name: subCategoryName, url: categoryUrl }
+     ];
+     
+     // Generate structured data
+     const collectionStructuredData = generateCollectionPageStructuredData(
+          subCategoryName,
+          seoDescription,
+          categoryUrl,
+          productCount
+     );
+     
+     const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
 
      return (
           <DynamicThemeProvider theme={theme}>
-               <Seo title={'Kategorija'} description={'Kategorija'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo 
+                    title={seoTitle}
+                    description={seoDescription}
+                    url={categoryUrl}
+                    keywords={`${subCategoryName}, ${midCategoryName}, ${mainCategoryName}, proizvodi, apoteka DAR`}
+                    structuredData={[collectionStructuredData, breadcrumbStructuredData]}
+               />
                <Container
                     disableGutters
                     maxWidth="lg"
