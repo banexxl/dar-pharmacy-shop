@@ -569,8 +569,8 @@ const theme: Theme = createTheme({
                          },
                          // Footer Container
                          '&.FooterContainer': {
-                              backgroundColor: Colors.primary.main,
-                              color: Colors.primary.lighter,
+                              backgroundColor: Colors.primary.lighter,
+                              // color: Colors.primary.lighter,
                               padding: '40px 20px',
                               marginTop: 'auto',
                          },
