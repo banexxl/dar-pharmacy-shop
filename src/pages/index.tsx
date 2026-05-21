@@ -61,11 +61,26 @@ export default function Home(props: any) {
                          <Box component="main" sx={{ width: '100vw', overflow: 'hidden' }}>
                               {/* Hero Section */}
                               <Paralax />
-
                               <LoadOnView fallback={<Box sx={{ minHeight: 300 }} />}>
                                    <Box sx={{ width: '100%' }}>
                                         <Promotions />
                                    </Box>
+                              </LoadOnView>
+
+                              <LoadOnView fallback={<Box sx={{ minHeight: 300 }} />}>
+                                   <Box sx={{ width: '100%', py: { xs: 5, md: 8 }, background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%)', position: 'relative' }}>
+                                        <Container maxWidth="xl">
+                                             <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
+                                                  <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, fontWeight: 700, color: Colors.primary.main, mb: 2, letterSpacing: '-0.01em' }}>Izdvajamo iz ponude</Typography>
+                                                  <Typography variant="h3" sx={{ color: 'rgba(55, 65, 81, 0.8)', maxWidth: 600, mx: 'auto', fontSize: '1.1rem', lineHeight: 1.6 }}>Posebno odabrani proizvodi za vaše zdravlje i lepotu</Typography>
+                                             </Box>
+                                             <Products data={dataForGrid} />
+                                        </Container>
+                                   </Box>
+                              </LoadOnView>
+
+                              <LoadOnView fallback={<Box sx={{ minHeight: 200 }} />}>
+                                   <BannerServices />
                               </LoadOnView>
 
                               <LoadOnView fallback={<Box sx={{ minHeight: 300 }} />}>
@@ -79,22 +94,6 @@ export default function Home(props: any) {
                                              <Box sx={{ mt: 6 }}>
                                                   <CarouselOnlyImageProduct products={dataForProductCarousel} />
                                              </Box>
-                                        </Container>
-                                   </Box>
-                              </LoadOnView>
-
-                              <LoadOnView fallback={<Box sx={{ minHeight: 200 }} />}>
-                                   <BannerServices />
-                              </LoadOnView>
-
-                              <LoadOnView fallback={<Box sx={{ minHeight: 300 }} />}>
-                                   <Box sx={{ width: '100%', py: { xs: 5, md: 8 }, background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%)', position: 'relative' }}>
-                                        <Container maxWidth="xl">
-                                             <Box sx={{ textAlign: 'center', mb: 6, '& > p:first-of-type': { display: 'none' } }}>
-                                                  <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, fontWeight: 700, color: Colors.primary.main, mb: 2, letterSpacing: '-0.01em' }}>Izdvajamo iz ponude</Typography>
-                                                  <Typography variant="body1" sx={{ color: 'rgba(55, 65, 81, 0.8)', maxWidth: 600, mx: 'auto', fontSize: '1.1rem', lineHeight: 1.6 }}>Posebno odabrani proizvodi za vaše zdravlje i lepotu</Typography>
-                                             </Box>
-                                             <Products data={dataForGrid} />
                                         </Container>
                                    </Box>
                               </LoadOnView>
@@ -201,9 +200,7 @@ export async function getStaticProps() {
           productsFromManufacturerGana,
           productsOnDiscount,
           manufacturersLogos,
-          customSearchedProducts,
-          customSearchedProducts1,
-          customSearchedProducts2,
+          homePageProducts,
           newProducts,
           promotionProduct,
           promotionProducts
@@ -212,16 +209,14 @@ export async function getStaticProps() {
           ProductsServices().getRandomProductsFromManufacturerURL('gana-kozmetika'),
           ProductsServices().getProductsByDiscount(),
           ProductsServices().getAllLogos(),
-          ProductsServices().getProductsByNameAndOrManufacturer('Gloria'),
-          ProductsServices().getProductsByNameAndOrManufacturer('Lavlje'),
-          ProductsServices().getProductsByNameAndOrManufacturer('jazavca'),
+          ProductsServices().getProductsForHomePage(),
           ProductsServices().getNewProducts(),
           ProductsServices().getProductById('65623269777d0eaba35c87ac'),
           ProductsServices().getAllProductsOnPromotion()
      ])
 
      const dataForCaruselTop: IProduct[] = [...productsFromManufacturerGana, ...productsFromManufacturerFitaky]
-     const dataForGrid: IProduct[] = [...customSearchedProducts, ...customSearchedProducts1, ...customSearchedProducts2].slice(0, 6)
+     const dataForGrid: IProduct[] = [...homePageProducts].slice(0, 16)
 
      return {
           props: {

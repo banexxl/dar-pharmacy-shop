@@ -383,7 +383,23 @@ export const ProductsServices = () => {
           }
      }
 
+     const getProductsForHomePage = async (): Promise<IProduct[]> => {
+          const client: any = await MongoClient.connect(process.env.MONGODB_URI!)
+          try {
+               const db = client.db('DAR_DB')
+               let products: IProduct[] = await db.collection('Products')
+                    .find({ displayOnHome: true, isActive: true })
+                    .toArray()
+               return products
+          } catch (error: any) {
+               return error
+          } finally {
+               await client.close();
+          }
+     }
+
      return {
+          getProductsForHomePage,
           getAllProductsOnPromotion,
           getAllProducts,
           getNewProducts,
