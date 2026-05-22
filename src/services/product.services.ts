@@ -97,7 +97,7 @@ export const ProductsServices = () => {
 
           try {
                const db = client.db('DAR_DB')
-               let data: IProduct[] = await db.collection('LogoURLs').find().toArray()
+               let data: IProduct[] = await db.collection('Manufacturers').find({ url: { $ne: '' } }).toArray()
                return data
           } catch (error: any) {
                return { message: error.message }
