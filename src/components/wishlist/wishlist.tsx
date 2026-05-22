@@ -72,16 +72,24 @@ export default function WishList({ open, onClose }: any) {
                                    </TableBody>
                               </Table>
                          </TableContainer>
-                         <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}><Button className="WishlistRemoveAllButton" variant="outlined" color="primary" onClick={() => {
-                              toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda!", {
-                                   duration: 1500,
-                                   position: "top-center"
-                              })
-                              dispatch(clearWishList())
-                         }}
-                         >
-                              Obriši listu omiljenih proizvoda
-                         </Button></Box>
+                         <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+                              {wishlist.length === 0 ? (
+                                   <Typography color="text.secondary" variant="body1">
+                                        Lista omiljenih proizvoda je prazna.
+                                   </Typography>
+                              ) : (
+                                   <Button className="WishlistRemoveAllButton" variant="outlined" color="primary" onClick={() => {
+                                        toast.success("Svi proizvodi su uklonjeni iz omiljenih proizvoda!", {
+                                             duration: 1500,
+                                             position: "top-center"
+                                        })
+                                        dispatch(clearWishList())
+                                   }}
+                                   >
+                                        Obriši listu omiljenih proizvoda
+                                   </Button>
+                              )}
+                         </Box>
                     </Box>
                </DialogContent>
           </Dialog >
