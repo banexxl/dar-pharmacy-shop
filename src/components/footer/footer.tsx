@@ -100,7 +100,7 @@ export default function Footer() {
                          <Box
                               sx={{
                                    "& .MuiAccordion-root": {
-                                        background: Colors.primary[900],
+                                        background: Colors.primary[400],
                                         boxShadow: "none",
                                         "&:before": { display: "none" },
                                         borderBottom: `1px solid ${Colors.primary[700]}`,
