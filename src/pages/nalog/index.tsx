@@ -138,8 +138,12 @@ export default function ProtectedPage(props: any) {
 export async function getServerSideProps(context: any) {
      const session = await getSession(context);
      // Fetch user data and orders using the user's email
+     console.log('getServerSideProps Session', session);
+
      const userData = await AccountService().getUserByEmail(session?.user?.email!);
+     console.log('userData', userData);
      const userOrders = await OrdersServices().getOrdersByUserEmail(session?.user?.email!);
+     console.log('userOrders', userOrders);
 
      return {
           props: {
