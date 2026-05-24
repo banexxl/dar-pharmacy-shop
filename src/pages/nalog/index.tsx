@@ -13,9 +13,11 @@ export default function ProtectedPage(props: any) {
      console.log('props', props);
 
      const { data: session } = useSession();
-     // Deserialize props data
-     const userData = JSON.parse(props.userData);
-     const userOrders = JSON.parse(props.userOrders);
+     // Deserialize props data safely because SSR can return null values.
+     const parsedUserData = props?.userData ? JSON.parse(props.userData) : null;
+     const parsedUserOrders = props?.userOrders ? JSON.parse(props.userOrders) : null;
+     const userData = parsedUserData && typeof parsedUserData === 'object' ? parsedUserData : null;
+     const userOrders = Array.isArray(parsedUserOrders) ? parsedUserOrders : null;
      // If no session exists, display access denied message
      console.log('session', session);
      if (!session) {
@@ -54,26 +56,34 @@ export default function ProtectedPage(props: any) {
                                         <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
                                              Korisnički Podaci
                                         </Typography>
-                                        <Typography variant="body1">
-                                             <strong>Ime: </strong> {userData.name}
-                                        </Typography>
-                                        <Typography variant="body1">
-                                             <strong>Email: </strong> {userData.email}
-                                        </Typography>
-                                        <Typography variant="body1">
-                                             <strong>Telefon: </strong> {userData.phoneNumber || "Nije dostupno"}
-                                        </Typography>
-                                        <Typography variant="body1">
-                                             <strong>Adresa: </strong> {userData.streetAddress || "Nije dostupno"}
-                                        </Typography>
-                                        <Typography variant="body1">
-                                             <strong>Grad: </strong> {userData.city || "Nije dostupno"}
-                                        </Typography>
-                                        <Link rel='canonical' href="/nalog/izmena-podataka">
-                                             <Typography variant="body1" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
-                                                  Izmeni podatke
+                                        {!userData ? (
+                                             <Typography variant="body1" color="text.secondary">
+                                                  Korisnički podaci trenutno nisu dostupni. Pokušajte ponovo kasnije.
                                              </Typography>
-                                        </Link>
+                                        ) : (
+                                             <>
+                                                  <Typography variant="body1">
+                                                       <strong>Ime: </strong> {userData.name || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Email: </strong> {userData.email || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Telefon: </strong> {userData.phoneNumber || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Adresa: </strong> {userData.streetAddress || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Typography variant="body1">
+                                                       <strong>Grad: </strong> {userData.city || "Nije dostupno"}
+                                                  </Typography>
+                                                  <Link rel='canonical' href="/nalog/izmena-podataka">
+                                                       <Typography variant="body1" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
+                                                            Izmeni podatke
+                                                       </Typography>
+                                                  </Link>
+                                             </>
+                                        )}
                                    </Box>
 
                                    <Box
@@ -90,35 +100,43 @@ export default function ProtectedPage(props: any) {
                                         <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: 'primary.main' }}>
                                              Vaše Narudžbine
                                         </Typography>
-                                        {userOrders.length === 0 ? (
+                                        {!userOrders ? (
+                                             <Typography variant="body1" color="text.secondary">Narudžbine trenutno nisu dostupne. Pokušajte ponovo kasnije.</Typography>
+                                        ) : userOrders.length === 0 ? (
                                              <Typography variant="body1">Nemate nijednu narudžbinu.</Typography>
                                         ) : (
                                              <Box sx={{ flex: 1, overflowY: 'auto', pr: 1, maxHeight: { xs: 400, md: '70vh' } }}>
-                                                  {userOrders.map((o: any, i: number) => (
-                                                       <Paper
-                                                            key={i}
-                                                            sx={{
-                                                                 p: 2,
-                                                                 mb: 2,
-                                                                 border: '1px solid #ccc',
-                                                                 borderRadius: '8px',
-                                                            }}
-                                                       >
-                                                            <Typography variant="h6">
-                                                                 <strong>Narudžbina: </strong>#{o.orderNumber}
-                                                            </Typography>
-                                                            <Typography variant="body1">
-                                                                 <strong>Datum: </strong> {new Date(o.createdAt).toLocaleDateString()}
-                                                            </Typography>
-                                                            <Typography variant="body1">
-                                                                 <strong>Ukupan Iznos: </strong> {o.total} RSD
-                                                            </Typography>
-                                                            <Typography variant="body2">
-                                                                 <strong>Stavke: </strong>{' '}
-                                                                 {o.items.map((item: any) => item.name + ' ' + `x${item.count}`).join(', ')}
-                                                            </Typography>
-                                                       </Paper>
-                                                  ))}
+                                                  {userOrders.map((o: any, i: number) => {
+                                                       const orderItems = Array.isArray(o?.items) ? o.items : [];
+
+                                                       return (
+                                                            <Paper
+                                                                 key={i}
+                                                                 sx={{
+                                                                      p: 2,
+                                                                      mb: 2,
+                                                                      border: '1px solid #ccc',
+                                                                      borderRadius: '8px',
+                                                                 }}
+                                                            >
+                                                                 <Typography variant="h6">
+                                                                      <strong>Narudžbina: </strong>#{o?.orderNumber || 'N/A'}
+                                                                 </Typography>
+                                                                 <Typography variant="body1">
+                                                                      <strong>Datum: </strong> {o?.createdAt ? new Date(o.createdAt).toLocaleDateString() : 'Nije dostupno'}
+                                                                 </Typography>
+                                                                 <Typography variant="body1">
+                                                                      <strong>Ukupan Iznos: </strong> {typeof o?.total === 'number' ? `${o.total} RSD` : 'Nije dostupno'}
+                                                                 </Typography>
+                                                                 <Typography variant="body2">
+                                                                      <strong>Stavke: </strong>{' '}
+                                                                      {orderItems.length > 0
+                                                                           ? orderItems.map((item: any) => (item?.name || 'Nepoznata stavka') + ' ' + `x${item?.count || 0}`).join(', ')
+                                                                           : 'Nema stavki'}
+                                                                 </Typography>
+                                                            </Paper>
+                                                       );
+                                                  })}
                                              </Box>
                                         )}
                                    </Box>
@@ -140,9 +158,19 @@ export async function getServerSideProps(context: any) {
      // Fetch user data and orders using the user's email
      console.log('getServerSideProps Session', session);
 
+     if (!session?.user?.email) {
+          return {
+               props: {
+                    userData: JSON.stringify(null),
+                    userOrders: JSON.stringify([]),
+               },
+          };
+     }
+
      const userData = await AccountService().getUserByEmail(session?.user?.email!);
      console.log('userData', userData);
-     const userOrders = await OrdersServices().getOrdersByUserEmail(session?.user?.email!);
+     const userOrdersResponse = await OrdersServices().getOrdersByUserEmail(session?.user?.email!);
+     const userOrders = Array.isArray(userOrdersResponse) ? userOrdersResponse : null;
      console.log('userOrders', userOrders);
 
      return {
