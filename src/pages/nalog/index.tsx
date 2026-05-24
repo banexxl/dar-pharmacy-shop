@@ -13,12 +13,11 @@ import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
 
-     const { data: session, status } = useSession();
-     const router = useRouter();
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
+     const { data: session } = useSession();
      // Deserialize props data
      const userData = JSON.parse(props.userData);
      const userOrders = JSON.parse(props.userOrders);
+     console.log('userData', userData);
 
 
      // If no session exists, display access denied message
