@@ -9,6 +9,8 @@ import { OrdersServices } from "@/services/order-service";
 import SearchBox from "@/components/search/search";
 import Link from "next/link";
 import SpinningWheel from "@/components/circularprogress/circular-progress";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]";
 
 export default function ProtectedPage(props: any) {
      const { data: session, status } = useSession();
@@ -167,23 +169,38 @@ export default function ProtectedPage(props: any) {
 }
 
 export async function getServerSideProps(context: any) {
-     const session = await getSession(context);
-     // Fetch user data and orders using the user's email
+     const session = await getServerSession(
+          context.req,
+          context.res,
+          authOptions
+     );
+
      console.log('getServerSideProps Session', session);
 
      if (!session?.user?.email) {
           return {
-               props: {
-                    userData: JSON.stringify(null),
-                    userOrders: JSON.stringify([]),
+               redirect: {
+                    destination: '/autentifikacija/prijava',
+                    permanent: false,
                },
           };
      }
 
-     const userData = await AccountService().getUserByEmail(session?.user?.email!);
+     const userData = await AccountService().getUserByEmail(
+          session.user.email
+     );
+
      console.log('userData', userData);
-     const userOrdersResponse = await OrdersServices().getOrdersByUserEmail(session?.user?.email!);
-     const userOrders = Array.isArray(userOrdersResponse) ? userOrdersResponse : null;
+
+     const userOrdersResponse =
+          await OrdersServices().getOrdersByUserEmail(
+               session.user.email
+          );
+
+     const userOrders = Array.isArray(userOrdersResponse)
+          ? userOrdersResponse
+          : [];
+
      console.log('userOrders', userOrders);
 
      return {
