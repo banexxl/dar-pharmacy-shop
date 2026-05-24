@@ -244,6 +244,7 @@ export const authOptions: NextAuthOptions = {
                }
           },
           async redirect({ url, baseUrl }) {
+               console.log(`Redirecting to url: ${url} and baseURL: ${baseUrl}`)
                // Allow relative URLs or external URLs that match the baseUrl
                if (url.startsWith(baseUrl) || url.startsWith("/")) {
                     return url; // Redirect to the original page if it’s within the same domain
