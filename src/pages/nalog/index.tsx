@@ -16,7 +16,6 @@ export default function ProtectedPage(props: any) {
      const userOrders = JSON.parse(props.userOrders);
      // If no session exists, display access denied message
      console.log('session', session);
-
      if (!session) {
           return <ErrorPage error="ProtectedRoute" />;
      }
