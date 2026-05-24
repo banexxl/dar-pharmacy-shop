@@ -10,16 +10,13 @@ import SearchBox from "@/components/search/search";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
-     console.log('props', props);
-
      const { data: session } = useSession();
      // Deserialize props data
      const userData = JSON.parse(props.userData);
      const userOrders = JSON.parse(props.userOrders);
-     console.log('userData', userData);
-
-
      // If no session exists, display access denied message
+     console.log('session', session);
+
      if (!session) {
           return <ErrorPage error="ProtectedRoute" />;
      }
@@ -139,8 +136,6 @@ export default function ProtectedPage(props: any) {
 
 export async function getServerSideProps(context: any) {
      const session = await getSession(context);
-     console.log('session', session);
-
      // Fetch user data and orders using the user's email
      const userData = await AccountService().getUserByEmail(session?.user?.email!);
      const userOrders = await OrdersServices().getOrdersByUserEmail(session?.user?.email!);
