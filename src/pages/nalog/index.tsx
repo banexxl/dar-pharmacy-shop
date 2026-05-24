@@ -10,19 +10,30 @@ import SearchBox from "@/components/search/search";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
-     console.log('props', props);
+     const { data: session, status } = useSession();
 
-     const { data: session } = useSession();
+     // Wait for session hydration to complete
+     if (status === 'loading') {
+          return null;
+     }
+
+     // If user is not authenticated, show error page
+     if (status === 'unauthenticated') {
+          return <ErrorPage error="ProtectedRoute" />;
+     }
+
      // Deserialize props data safely because SSR can return null values.
      const parsedUserData = props?.userData ? JSON.parse(props.userData) : null;
      const parsedUserOrders = props?.userOrders ? JSON.parse(props.userOrders) : null;
-     const userData = parsedUserData && typeof parsedUserData === 'object' ? parsedUserData : null;
-     const userOrders = Array.isArray(parsedUserOrders) ? parsedUserOrders : null;
-     // If no session exists, display access denied message
-     console.log('session', session);
-     if (!session) {
-          return <ErrorPage error="ProtectedRoute" />;
-     }
+
+     const userData =
+          parsedUserData && typeof parsedUserData === 'object'
+               ? parsedUserData
+               : null;
+
+     const userOrders = Array.isArray(parsedUserOrders)
+          ? parsedUserOrders
+          : null;
 
      return (
           <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
