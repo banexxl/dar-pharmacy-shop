@@ -8,13 +8,14 @@ import { AccountService } from "@/services/accounts.service";
 import { OrdersServices } from "@/services/order-service";
 import SearchBox from "@/components/search/search";
 import Link from "next/link";
+import SpinningWheel from "@/components/circularprogress/circular-progress";
 
 export default function ProtectedPage(props: any) {
      const { data: session, status } = useSession();
 
      // Wait for session hydration to complete
      if (status === 'loading') {
-          return null;
+          return <SpinningWheel></SpinningWheel>;
      }
 
      // If user is not authenticated, show error page
