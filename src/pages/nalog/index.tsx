@@ -10,6 +10,8 @@ import SearchBox from "@/components/search/search";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
+     console.log('props', props);
+
      const { data: session } = useSession();
      // Deserialize props data
      const userData = JSON.parse(props.userData);
