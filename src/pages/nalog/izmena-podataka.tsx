@@ -21,7 +21,6 @@ import SearchBox from '@/components/search/search';
 import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userDataFormSchema } from '@/schemas/user-form.schema';
 import toast from 'react-hot-toast';
-import { Colors } from '@/styles/theme';
 
 const UserUpdatePage = () => {
      const [loading, setLoading] = useState(false);

@@ -1,10 +1,8 @@
 import { getSession, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import { Seo } from "@/components/seo";
-import { Box, Container, Grid, Stack, Typography, Paper, useMediaQuery } from "@mui/material";
+import { Box, Container, Stack, Typography, Paper } from "@mui/material";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme from "@/styles/theme";
 import ErrorPage from "../autentifikacija/greska";
 import { AccountService } from "@/services/accounts.service";
 import { OrdersServices } from "@/services/order-service";
@@ -12,6 +10,7 @@ import SearchBox from "@/components/search/search";
 import Link from "next/link";
 
 export default function ProtectedPage(props: any) {
+     console.log('props', props);
 
      const { data: session } = useSession();
      // Deserialize props data
@@ -31,7 +30,6 @@ export default function ProtectedPage(props: any) {
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-
                               <Box
                                    sx={{
                                         display: 'flex',
@@ -141,6 +139,7 @@ export default function ProtectedPage(props: any) {
 
 export async function getServerSideProps(context: any) {
      const session = await getSession(context);
+     console.log('session', session);
 
      // Fetch user data and orders using the user's email
      const userData = await AccountService().getUserByEmail(session?.user?.email!);
