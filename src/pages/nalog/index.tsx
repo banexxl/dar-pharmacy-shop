@@ -12,6 +12,7 @@ import SpinningWheel from "@/components/circularprogress/circular-progress";
 
 export default function ProtectedPage(props: any) {
      const { data: session, status } = useSession();
+     console.log('session', session);
 
      // Wait for session hydration to complete
      if (status === 'loading') {
