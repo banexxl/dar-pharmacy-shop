@@ -146,7 +146,9 @@ export default function Chatbot() {
                                    backgroundColor: Colors.primary.lighter,
                               }}
                          >
-                              <Typography variant="h6">Korisnička podrška</Typography>
+                              <Typography variant="h6" color={Colors.primary.main} fontWeight="bold">
+                                   Korisnička podrška
+                              </Typography>
                               <IconButton onClick={() => {
                                    setMessages([
                                         "Apoteka DAR: Ćao! 😊",
