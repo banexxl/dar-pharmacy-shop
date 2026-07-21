@@ -154,9 +154,9 @@ export default function Home(props: any) {
                                    </LoadOnView>
                               )}
 
-                              {/* <LoadOnView fallback={<Box sx={{ minHeight: 100 }} />}>
+                              <LoadOnView fallback={<Box sx={{ minHeight: 100 }} />}>
                                    <PaymentStrip />
-                              </LoadOnView> */}
+                              </LoadOnView>
                          </Box>
 
                          <Chatbot />

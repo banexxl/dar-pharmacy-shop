@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress, Container, FormControlLabel, Grid, Link, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, FormControlLabel, Link, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material';
 import React, { FunctionComponent, useState } from 'react';
 import theme from '@/styles/theme';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -9,11 +9,11 @@ import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUs
 import { ReCaptcha } from 'next-recaptcha-v3';
 import { clearCart } from '@/store/cart/cart.slice';
 import { clearUserForm } from '@/store/checkout/user-info-form.slice';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
 import { ConfirmationData, Order, PaymentMethod } from '@/schemas/order';
-import ICartItem, { ICart } from '@/interfaces/cart/cart.interface';
+import ICartItem from '@/interfaces/cart/cart.interface';
 
 interface PaymentOptionsProps {
      setTab: (tabIndex: number) => number;
@@ -62,7 +62,13 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
           <ThemeProvider theme={theme}>
 
                <Container disableGutters maxWidth="md" sx={{
-                    background: "#fff", display: 'flex', flexDirection: 'column', gap: '20px'
+                    background: "#fff",
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '20px',
+                    px: { xs: 1, sm: 0 },
+                    width: '100%',
+                    maxWidth: '100%'
                }}
                >
                     <RadioGroup
@@ -70,7 +76,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                          name="controlled-radio-buttons-group"
                          value={paymentOption}
                          onChange={(e: any) => setPaymentOption(e.target.value)}
-                         sx={{ display: 'flex', flexDirection: 'row' }}
+                         sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'flex-start', sm: 'center' } }}
                     >
                          <FormControlLabel value="cash-on-delivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
                          <FormControlLabel disabled value="credit-card" control={<Radio />} label={"Kartično plaćanje (uskoro)"} />
@@ -98,21 +104,21 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                               </Box>
                               :
                               <Box>
-                                   <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                   <Typography variant="body1" sx={{ textAlign: 'left', mb: '20px', pr: { xs: 0, sm: 2 } }}>
                                         Odabirom "Plaćanje pouzećem", iznos od {useSelector(cartTotalPriceSelector).toFixed(2)}
                                         {useSelector(cartTotalPriceSelector) < 8000 ? ' (+ iznos dostave)' : ' (dostava besplatna)'} dinara plaćate kuriru prilikom dostave paketa.
                                    </Typography>
-                                   <Typography sx={{ mb: '30px' }}>
+                                   <Typography sx={{ mb: '20px' }}>
                                         Iznose dostave možete pogledati {' '}
                                         <Link rel='canonical' href='http://www.postexpress.rs/struktura/lat/cenovnik/cenovnik-unutrasnji-saobracaj.asp' target='_blank'>OVDE!</Link>
                                    </Typography>
                                    {
                                         session.status === 'unauthenticated' && (
                                              <Box>
-                                                  <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                                  <Typography variant="body1" sx={{ textAlign: 'left', mb: '20px' }}>
                                                        Ako ste uneli validan email, biće vam poslat email sa potvrdom porudžbenice.
                                                   </Typography>
-                                                  <Typography variant="body1" sx={{ textAlign: 'left', mb: '30px' }}>
+                                                  <Typography variant="body1" sx={{ textAlign: 'left', mb: '20px' }}>
                                                        Ako niste, molimo Vas da nas kontaktirate putem
                                                        <Link href={'/kontakt'}> kontakt forme</Link>, ili putem broja telefona {' '}
                                                        <a href="tel:+381346104222">+381 34 610 4222, </a>
@@ -122,10 +128,16 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                         )
                                    }
                                    <Box sx={{
-                                        display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '20px'
+                                        display: 'flex',
+                                        flexDirection: { xs: 'column', sm: 'row' },
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        marginTop: '20px',
+                                        width: '100%'
                                    }}>
 
-                                        <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+                                        <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '200px', width: { xs: '100%', sm: 'auto' } }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                                              Nazad
                                         </Button>
                                         <Button
@@ -216,7 +228,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                        setLoading(false);
                                                   }
                                              }}
-                                             sx={{ maxWidth: '200px', height: '40px', color: theme.palette.primary.main }}
+                                             sx={{ maxWidth: '200px', width: { xs: '100%', sm: 'auto' }, height: '40px', color: theme.palette.primary.main }}
                                              endIcon={<NavigateNextIcon />}
                                         >
                                              {loading ? <CircularProgress size={20} color="inherit" /> : 'Poruči'}

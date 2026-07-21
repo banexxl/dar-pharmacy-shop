@@ -71,7 +71,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
 
      return (
           <ThemeProvider theme={theme}>
-               <Container disableGutters maxWidth="md">
+               <Container disableGutters maxWidth="md" sx={{ px: { xs: 1, sm: 0 } }}>
                     <Formik
                          validateOnMount
                          initialValues={initialUserFormValues}
@@ -80,8 +80,17 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                     >
                          {formik => (
                               <Form>
-                                   <Grid container spacing={2} sx={{ width: { xs: '90vw', md: '50vw' } }}>
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                   <Grid
+                                        container
+                                        spacing={{ xs: 1.5, sm: 2 }}
+                                        sx={{
+                                             width: '100%',
+                                             maxWidth: { xs: '100%', md: 760 },
+                                             mx: 'auto',
+                                             boxSizing: 'border-box',
+                                        }}
+                                   >
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Ime i prezime"
@@ -96,7 +105,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Broj telefona"
@@ -111,7 +120,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Adresa"
@@ -126,7 +135,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Grad"
@@ -141,7 +150,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Region"
@@ -156,7 +165,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Država"
@@ -171,7 +180,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12, sm: 6 }}>
+                                        <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                                              <Field
                                                   as={TextField}
                                                   label="Poštanski broj"
@@ -186,59 +195,65 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              />
                                         </Grid>
                                         <EmailAndAccountCreation />
-                                        <Box sx={{
-                                             display: 'flex',
-                                             [theme.breakpoints.down("sm")]: {
-                                                  flexDirection: 'column',
-                                                  marginBottom: '100px'
-                                             },
-                                             height: '100px',
-                                             alignItems: 'center',
-                                             justifyContent: 'center',
-                                             width: '100%',
-                                             marginTop: '20px'
-                                        }}>
-                                             <Button
-                                                  className="CheckoutNextPrevButton"
-                                                  endIcon={<DeleteIcon />}
-                                                  type='reset'
-                                                  onClick={() => {
-                                                       dispatch(clearUserForm())
-                                                       formik.setValues(initialUserFormValues);
-                                                  }}
-                                             >
-                                                  Obriši
-                                             </Button>
-                                             <Tooltip title={cart.length <= 0 ? 'Korpa je prazna' : ''}>
-                                                  <Box>
-                                                       <Button
-                                                            className="CheckoutNextPrevButton"
-                                                            onClick={() => handleSubmit(formik.values)}
-                                                            endIcon={<NavigateNextIcon />}
-                                                            disabled={
-                                                                 cart.length === 0 ||
-                                                                 (
-                                                                      session.status === 'authenticated'
-                                                                           ? Object.keys(formik.errors).some(
-                                                                                (key) =>
-                                                                                     key !== 'email' &&
-                                                                                     formik.errors[key as keyof IUserForm] !== undefined
-                                                                           )
-                                                                           : (formik.errors.email !== 'Ovaj email je već registrovan!' &&
-                                                                                formik.errors.email !== undefined) ||
-                                                                           Object.keys(formik.errors).some(
-                                                                                (key) =>
-                                                                                     key !== 'email' &&
-                                                                                     formik.errors[key as keyof IUserForm] !== undefined
-                                                                           )
-                                                                 )
-                                                            }
-                                                       >
-                                                            Dalje
-                                                       </Button>
-                                                  </Box>
-                                             </Tooltip>
-                                        </Box>
+                                        <Grid size={{ xs: 12 }}>
+                                             <Box sx={{
+                                                  display: 'flex',
+                                                  flexWrap: 'wrap',
+                                                  [theme.breakpoints.down("sm")]: {
+                                                       flexDirection: 'column',
+                                                       marginBottom: '80px'
+                                                  },
+                                                  minHeight: '100px',
+                                                  alignItems: 'center',
+                                                  justifyContent: 'center',
+                                                  width: '100%',
+                                                  marginTop: '20px',
+                                                  gap: 1.5
+                                             }}>
+                                                  <Button
+                                                       className="CheckoutNextPrevButton"
+                                                       endIcon={<DeleteIcon />}
+                                                       type='reset'
+                                                       sx={{ width: { xs: '100%', sm: 'auto' } }}
+                                                       onClick={() => {
+                                                            dispatch(clearUserForm())
+                                                            formik.setValues(initialUserFormValues);
+                                                       }}
+                                                  >
+                                                       Obriši
+                                                  </Button>
+                                                  <Tooltip title={cart.length <= 0 ? 'Korpa je prazna' : ''}>
+                                                       <Box sx={{ width: { xs: '100%', sm: 'auto' } }}>
+                                                            <Button
+                                                                 className="CheckoutNextPrevButton"
+                                                                 sx={{ width: { xs: '100%', sm: 'auto' } }}
+                                                                 onClick={() => handleSubmit(formik.values)}
+                                                                 endIcon={<NavigateNextIcon />}
+                                                                 disabled={
+                                                                      cart.length === 0 ||
+                                                                      (
+                                                                           session.status === 'authenticated'
+                                                                                ? Object.keys(formik.errors).some(
+                                                                                     (key) =>
+                                                                                          key !== 'email' &&
+                                                                                          formik.errors[key as keyof IUserForm] !== undefined
+                                                                                )
+                                                                                : (formik.errors.email !== 'Ovaj email je već registrovan!' &&
+                                                                                     formik.errors.email !== undefined) ||
+                                                                                Object.keys(formik.errors).some(
+                                                                                     (key) =>
+                                                                                          key !== 'email' &&
+                                                                                          formik.errors[key as keyof IUserForm] !== undefined
+                                                                                )
+                                                                      )
+                                                                 }
+                                                            >
+                                                                 Dalje
+                                                            </Button>
+                                                       </Box>
+                                                  </Tooltip>
+                                             </Box>
+                                        </Grid>
                                    </Grid>
                               </Form>
                          )}

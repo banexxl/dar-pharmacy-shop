@@ -42,14 +42,14 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
      };
 
      return (
-          <Container className="CartWrapper">
+          <Container className="CartWrapper" disableGutters sx={{ px: { xs: 1, sm: 0 }, width: '100%', maxWidth: '100%' }}>
                <TableContainer sx={{
                     maxHeight: isScreenToMedium ? '60vh' : 'none',
                     overflowY: isScreenToMedium ? 'auto' : 'visible',
                     overflowX: isScreenToMedium ? 'auto' : 'visible',
                     mb: { xs: 2, md: 0 }
                }}>
-                    <Table className="StyledTable" sx={{ minWidth: isScreenToMedium ? 700 : 'auto' }}>
+                    <Table size={isScreenToMedium ? 'small' : 'medium'} className="StyledTable" sx={{ minWidth: isScreenToMedium ? 640 : 'auto' }}>
                          <TableHead className="StyledHeader">
                               <TableRow>
                                    <TableCell sx={{ width: { xs: 72, md: 88 }, color: Colors.primary.main }}>Slika</TableCell>
@@ -89,11 +89,11 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                ) : (
                     <Typography sx={{ color: Colors.primary.main }}>Dostava besplatna</Typography>
                )}
-               <Box>
-                    <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '100px' }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
+               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1.5, flexWrap: 'wrap', mt: 1 }}>
+                    <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '100px', width: { xs: '100%', sm: 'auto' } }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                          Nazad
                     </Button>
-                    <Button className="CheckoutNextPrevButton" onClick={() => handleNext()} sx={{ maxWidth: '100px' }} endIcon={<NavigateNextIcon />} disabled={!submitEnabled}>
+                    <Button className="CheckoutNextPrevButton" onClick={() => handleNext()} sx={{ maxWidth: '100px', width: { xs: '100%', sm: 'auto' } }} endIcon={<NavigateNextIcon />} disabled={!submitEnabled}>
                          Dalje
                     </Button>
                </Box>
