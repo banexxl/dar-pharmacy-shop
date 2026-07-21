@@ -173,25 +173,48 @@ export default function ProductsAllCategories() {
                     }}
                />
 
-               {filteredCategories.length === 0 ? (
-                    <Typography sx={{ px: 1, py: 1.5, color: Colors.dim_grey, fontSize: '0.9rem' }}>
-                         Nema rezultata za unetu kategoriju.
-                    </Typography>
-               ) : (
-                    <List disablePadding>
-                         {filteredCategories.map((node) => (
-                              <CategoryTreeItem
-                                   key={node.id}
-                                   node={node}
-                                   level={0}
-                                   expandedIds={expandedIds}
-                                   onToggle={handleToggle}
-                                   onNavigate={handleNavigate}
-                                   forceExpand={hasSearch}
-                              />
-                         ))}
-                    </List>
-               )}
+               <Box
+                    sx={{
+                         height: { xs: 320, md: 460 },
+                         overflowY: 'auto',
+                         overflowX: 'hidden',
+                         scrollbarGutter: 'stable',
+                         pr: 0.4,
+                         '&::-webkit-scrollbar': {
+                              width: '8px',
+                         },
+                         '&::-webkit-scrollbar-track': {
+                              background: 'transparent',
+                         },
+                         '&::-webkit-scrollbar-thumb': {
+                              background: 'transparent',
+                              borderRadius: '999px',
+                         },
+                         '&:hover::-webkit-scrollbar-thumb, &:focus-within::-webkit-scrollbar-thumb': {
+                              background: Colors.neutral[400],
+                         },
+                    }}
+               >
+                    {filteredCategories.length === 0 ? (
+                         <Typography sx={{ px: 1, py: 1.5, color: Colors.dim_grey, fontSize: '0.9rem' }}>
+                              Nema rezultata za unetu kategoriju.
+                         </Typography>
+                    ) : (
+                         <List disablePadding>
+                              {filteredCategories.map((node) => (
+                                   <CategoryTreeItem
+                                        key={node.id}
+                                        node={node}
+                                        level={0}
+                                        expandedIds={expandedIds}
+                                        onToggle={handleToggle}
+                                        onNavigate={handleNavigate}
+                                        forceExpand={hasSearch}
+                                   />
+                              ))}
+                         </List>
+                    )}
+               </Box>
           </Box>
      )
 }
