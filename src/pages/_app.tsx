@@ -14,6 +14,8 @@ import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from '@/styles/theme'
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 export default function App({
 
@@ -21,11 +23,28 @@ export default function App({
 
      // Only create persistor on client side to avoid SSR issues
      const [hydrated, setHydrated] = useState(false);
+     const [isRouteLoading, setIsRouteLoading] = useState(false);
+     const router = useRouter();
      const persistor = typeof window !== "undefined" ? persistStore(store) : null;
 
      useEffect(() => {
           setHydrated(true);
      }, []);
+
+     useEffect(() => {
+          const handleStart = () => setIsRouteLoading(true);
+          const handleDone = () => setIsRouteLoading(false);
+
+          router.events.on('routeChangeStart', handleStart);
+          router.events.on('routeChangeComplete', handleDone);
+          router.events.on('routeChangeError', handleDone);
+
+          return () => {
+               router.events.off('routeChangeStart', handleStart);
+               router.events.off('routeChangeComplete', handleDone);
+               router.events.off('routeChangeError', handleDone);
+          };
+     }, [router.events]);
 
      useReportWebVitals((metric) => {
           // console.log(metric)
@@ -50,6 +69,16 @@ export default function App({
                          ) : (
                               <Component {...pageProps} />
                          )}
+                         <Backdrop
+                              open={isRouteLoading}
+                              sx={{
+                                   zIndex: (muiTheme) => muiTheme.zIndex.modal + 2,
+                                   color: theme.palette.primary.main,
+                                   backgroundColor: 'rgba(255, 255, 255, 0.45)',
+                              }}
+                         >
+                              <CircularProgress color="inherit" />
+                         </Backdrop>
                          <Analytics />
                          <Toaster />
                     </ThemeProvider>
