@@ -77,10 +77,9 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                          }
                     }}
                >
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, pt: 2, pb: 1 }}>
-                         <Typography sx={{ fontWeight: 700, letterSpacing: 0.5, color: Colors.neutral[100] }}>Meni</Typography>
-                         <IconButton aria-label="Zatvori" onClick={() => setDrawerOpen(false)} sx={{ color: Colors.neutral[100], '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)', transform: 'rotate(90deg)' }, transition: 'all 0.3s ease' }}>
-                              <CloseIcon />
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%', px: 2, pt: 2, pb: 1 }}>
+                         <IconButton aria-label="Zatvori" onClick={() => setDrawerOpen(false)} sx={{ color: Colors.white, '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)', transform: 'rotate(90deg)' }, transition: 'all 0.3s ease' }}>
+                              <CloseIcon sx={{ color: `${Colors.white}` }} />
                          </IconButton>
                     </Box>
                     <Divider sx={{ opacity: 0.2, borderColor: 'rgba(255, 255, 255, 0.2)', mb: 1 }} />
