@@ -103,7 +103,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                    </Button>
                               </Box>
                               :
-                              <Box>
+                              <Box sx={{ textAlign: 'center' }}>
                                    <Typography variant="body1" sx={{ textAlign: 'left', mb: '20px', pr: { xs: 0, sm: 2 } }}>
                                         Odabirom "Plaćanje pouzećem", iznos od {totalItemPriceState.toFixed(2)}
                                         {totalItemPriceState < 8000 ? ' (+ iznos dostave)' : ' (dostava besplatna)'} dinara plaćate kuriru prilikom dostave paketa.
