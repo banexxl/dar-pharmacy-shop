@@ -34,7 +34,7 @@ const EmailAndAccountCreation: React.FC = () => {
 
      return (
           <>
-               <Grid size={{ xs: 12, sm: 6 }}>
+               <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                     <Field
                          as={TextField}
                          value={values.email.toLowerCase()}
@@ -52,10 +52,18 @@ const EmailAndAccountCreation: React.FC = () => {
 
                {/* Only show the checkbox if the session is not present */}
                {!session?.user?.email && (
-                    <Grid size={{ xs: 12, sm: 6 }}>
+                    <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                          <Tooltip title={errors.email ? errors.email : ''} >
                               <FormControlLabel
-                                   sx={{ marginBottom: '10px', width: '100%' }}
+                                   sx={{
+                                        marginBottom: '10px',
+                                        width: '100%',
+                                        alignItems: 'flex-start',
+                                        mr: 0,
+                                        '& .MuiFormControlLabel-label': {
+                                             width: '100%'
+                                        }
+                                   }}
                                    control={
                                         <Checkbox
                                              checked={!!errors.email ? false : values.shouldCreateAccount}
@@ -74,7 +82,7 @@ const EmailAndAccountCreation: React.FC = () => {
                                         />
                                    }
                                    label={
-                                        <Typography sx={{ display: 'inline', textAlign: 'justify', color: 'black' }}>
+                                        <Typography sx={{ display: 'inline', textAlign: 'justify', color: 'black', whiteSpace: 'normal', wordBreak: 'break-word' }}>
                                              Kreiraj nalog sa navedenim podacima...
                                         </Typography>
                                    }
