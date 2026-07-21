@@ -135,7 +135,7 @@ const Checkout = () => {
                                         <PaymentOptions setTab={setTab} formName='credit-card' tabIndex={2} />
                                    </TabPanel>
 
-                                   <PaymentStrip />
+                                   {/* <PaymentStrip /> */}
                               </Box>
                               <SearchBox />
 
