@@ -101,8 +101,8 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                <Box className="FilteredProducts" sx={{ flex: 1, width: '100%' }}>
                     <Box className="FilteredProductsTitle">
                          {(products.length === 0 || displayedProducts.length === 0) ? (
-                              <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                                   Nije pronađen ni jedan proizvod sa trenutnim filterom!
+                              <Typography variant="body1" sx={{ color: 'text.secondary', justifyContent: 'center', display: 'flex', paddingBottom: '50px' }}>
+                                   Nije pronađen ni jedan proizvod!
                               </Typography>
                          ) : (
                               <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 5 }}>
