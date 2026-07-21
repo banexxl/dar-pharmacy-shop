@@ -61,7 +61,8 @@ const DeliveryConfirmationPage = () => {
 
      const order = orderConfirmationData?.order;
      const userForm = orderConfirmationData?.userForm;
-     const orderItems = Array.isArray(order?.items) ? order.items : [];
+     const rawOrderItems = order?.items;
+     const orderItems = Array.isArray(rawOrderItems) ? rawOrderItems : [];
      const totalAmount = orderItems.reduce((acc: number, item: ICartItem) => acc + item.price * item.count, 0);
 
      const paymentStatusLabel =
