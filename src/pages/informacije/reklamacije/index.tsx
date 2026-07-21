@@ -5,9 +5,7 @@ import SearchBox from '@/components/search/search'
 import { Seo } from '@/components/seo'
 import Link from 'next/link'
 
-const PrivacyPolicy = () => {
-
-
+const ComplaintsPage = () => {
 
      return (
           <>
@@ -20,7 +18,7 @@ const PrivacyPolicy = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mt: '70px' }}>
+                              <Box>
                                    <Typography marginTop='130px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                         REKLAMACIJE
                                    </Typography>
@@ -37,9 +35,9 @@ const PrivacyPolicy = () => {
                                         City Express, u slučaju da je sadržaj pošiljke oštećen, odnosno nepotpun daje rok za reklamaciju od 24h od trenutka kada je potrošač preuzeo pošiljku.
                                    </Typography>
 
-                                   <Typography textAlign='justify' padding='20px 20px' sx={{ textAlign: 'left' }}>
+                                   <Typography component='div' textAlign='justify' padding='20px 20px' sx={{ textAlign: 'left' }}>
                                         Zakon ne predviđa povrat sledeće robe:
-                                        <Typography fontWeight='bold' sx={{ display: 'inline-block', textAlign: 'justify' }}>
+                                        <Typography component='span' fontWeight='bold' sx={{ display: 'inline', textAlign: 'justify' }}>
                                              robe koja je podložna pogoršanju kvaliteta ili ima kratak rok trajanja zapečaćene robe koja se ne može vratiti
                                              zbog zaštite zdravlja ili higijenskih razloga i koja je otpečaćena nakon isporuke.
                                         </Typography>
@@ -65,7 +63,7 @@ const PrivacyPolicy = () => {
                                         dobije njegovu saglasnost. Produžavanje roka za rešavanje reklamacija moguće je samo jednom.
                                    </Typography>
 
-                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                   <Typography component='div' sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
                                         Prodavac je, u slučaju da odbije reklamaciju:
                                         <List >
                                              <ListItem>
@@ -97,7 +95,7 @@ const PrivacyPolicy = () => {
                                         prelaska rizika, osim ako je to u suprotnosti sa prirodom robe i prirodom određene nesaobraznosti.
                                    </Typography>
 
-                                   <Typography sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
+                                   <Typography component='div' sx={{ display: 'inline-block', textAlign: 'justify', padding: '20px 20px' }}>
                                         U slučaju utvrdene nesaobraznosti i usvajanja reklamacije Potrošač ima pravo da bira izmedu sledećih rešenja:
                                         <List >
                                              <ListItem>
@@ -167,5 +165,5 @@ const PrivacyPolicy = () => {
      )
 }
 
-export default PrivacyPolicy
+export default ComplaintsPage
 

@@ -24,7 +24,6 @@ export const UIProvider = ({ children }: any) => {
      return (
           <UIContext.Provider value={value}>
                <NavBar />
-               <Box sx={{ height: '50px' }} />
                <Animate>
                     {children}
                </Animate>

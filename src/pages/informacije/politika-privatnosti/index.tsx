@@ -1,4 +1,3 @@
-import LoadingWheel from '@/components/loading/loading'
 import { UIProvider } from '@/context/ui/ui.context'
 import theme, { Colors } from '@/styles/theme'
 import { Box, Container, Divider, Link, List, ListItem, Stack, Typography, useMediaQuery } from '@mui/material'
@@ -9,8 +8,6 @@ import AppDrawer from '@/components/navbar/drawer/drawer'
 import { Seo } from '@/components/seo'
 
 const PrivacyPolicy = () => {
-
-
 
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
@@ -25,7 +22,7 @@ const PrivacyPolicy = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mt: '70px' }}>
+                              <Box>
                                    <Typography marginTop='130px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                         Politika privatnosti
                                    </Typography>

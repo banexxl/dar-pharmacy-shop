@@ -52,6 +52,7 @@ export default function ProtectedPage(props: any) {
                                         gap: { xs: 3, md: 4 },
                                         alignItems: 'stretch',
                                         width: '100%',
+                                        mb: 4,
                                    }}
                               >
                                    <Box

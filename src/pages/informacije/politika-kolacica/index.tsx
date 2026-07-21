@@ -4,10 +4,11 @@ import React from 'react'
 import SearchBox from '@/components/search/search'
 import { Seo } from '@/components/seo'
 
-const PrivacyPolicy = () => {
+const CookiePolicy = () => {
+
      return (
           <>
-               <Seo title={'Reklamacije'} description={'Reklamacije'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'Politika kolačića'} description={'Politika kolačića'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     maxWidth="xl"
                     sx={{
@@ -16,7 +17,7 @@ const PrivacyPolicy = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mt: '70px' }}>
+                              <Box>
                                    <Typography marginTop='150px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                         POLITIKA KOLAČIĆA
                                    </Typography>
@@ -157,5 +158,5 @@ const PrivacyPolicy = () => {
      )
 }
 
-export default PrivacyPolicy
+export default CookiePolicy
 

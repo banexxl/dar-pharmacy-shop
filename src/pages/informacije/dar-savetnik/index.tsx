@@ -6,15 +6,13 @@ import SearchBox from '@/components/search/search'
 import { Seo } from '@/components/seo'
 import Link from 'next/link'
 
-const PrivacyPolicy = () => {
-
-
+const DarCounselPage = () => {
 
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
      return (
           <>
-               <Seo title={'Reklamacije'} description={'Reklamacije'} url={'https://www.apoteka-dar.rs/'} />
+               <Seo title={'DAR Savetnik'} description={'DAR Savetnik'} url={'https://www.apoteka-dar.rs/'} />
                <Container
                     maxWidth="xl"
                     sx={{
@@ -23,7 +21,7 @@ const PrivacyPolicy = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Typography marginTop='150px' textAlign='center' fontSize='2rem' fontWeight='bold' >
+                              <Typography marginTop='50px' textAlign='center' fontSize='2rem' fontWeight='bold' >
                                    DAR Savetnik
                               </Typography>
                               <Box sx={{ ml: isScreenToMedium ? '-50px' : null }}>
@@ -156,5 +154,5 @@ const PrivacyPolicy = () => {
      )
 }
 
-export default PrivacyPolicy
+export default DarCounselPage
 
