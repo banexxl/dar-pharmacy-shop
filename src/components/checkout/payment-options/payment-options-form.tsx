@@ -79,7 +79,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                          sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'flex-start', sm: 'center' } }}
                     >
                          <FormControlLabel value="cash-on-delivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
-                         <FormControlLabel disabled value="credit-card" control={<Radio />} label={"Kartično plaćanje (uskoro)"} />
+                         <FormControlLabel value="credit-card" control={<Radio />} label={"Kartično plaćanje (uskoro)"} />
                     </RadioGroup>
                     {
                          paymentOption === 'credit-card' ?
@@ -105,8 +105,8 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                               :
                               <Box>
                                    <Typography variant="body1" sx={{ textAlign: 'left', mb: '20px', pr: { xs: 0, sm: 2 } }}>
-                                        Odabirom "Plaćanje pouzećem", iznos od {useSelector(cartTotalPriceSelector).toFixed(2)}
-                                        {useSelector(cartTotalPriceSelector) < 8000 ? ' (+ iznos dostave)' : ' (dostava besplatna)'} dinara plaćate kuriru prilikom dostave paketa.
+                                        Odabirom "Plaćanje pouzećem", iznos od {totalItemPriceState.toFixed(2)}
+                                        {totalItemPriceState < 8000 ? ' (+ iznos dostave)' : ' (dostava besplatna)'} dinara plaćate kuriru prilikom dostave paketa.
                                    </Typography>
                                    <Typography sx={{ mb: '20px' }}>
                                         Iznose dostave možete pogledati {' '}
