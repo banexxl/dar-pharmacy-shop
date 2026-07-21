@@ -25,7 +25,9 @@ export default function Cart({ open, onClose }: ICartProps) {
 
      return (
           <Dialog
-               TransitionComponent={SlideTransition}
+               slots={{ transition: SlideTransition }}
+               slotProps={{ transition: { direction: 'down', appear: true, timeout: { enter: 500, exit: 300 } } }}
+               keepMounted
                open={open}
                fullScreen={isScreenToMedium}
                fullWidth

@@ -20,7 +20,9 @@ export default function WishList({ open, onClose }: any) {
 
      return (
           <Dialog
-               TransitionComponent={SlideTransition}
+               slots={{ transition: SlideTransition }}
+               slotProps={{ transition: { direction: 'down', appear: true, timeout: { enter: 500, exit: 300 } } }}
+               keepMounted
                open={open}
                fullScreen={useMediaQuery(theme.breakpoints.down("md"))}
                fullWidth
