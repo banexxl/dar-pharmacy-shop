@@ -231,9 +231,9 @@ const Checkout = () => {
                                         </Paper>
                                    </Box>
 
-                                   <Box sx={{ mt: 3 }}>
+                                   {/* <Box sx={{ mt: 3 }}>
                                         <PaymentStrip />
-                                   </Box>
+                                   </Box> */}
                               </Box>
                               <SearchBox />
 
