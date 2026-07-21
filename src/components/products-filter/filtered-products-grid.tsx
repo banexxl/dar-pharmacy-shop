@@ -11,6 +11,8 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlL
 import FilterListIcon from '@mui/icons-material/FilterList';
 import SortIcon from '@mui/icons-material/Sort';
 import ProductCard from '@/components/product-card/product-card';
+import CategoryIcon from '@mui/icons-material/Category';
+import ProductsAllCategories from './products-categories';
 
 type FilteredProductsGridProps = {
   data: IProduct[];
@@ -53,12 +55,30 @@ export default function FilteredProductsGrid({
 }: FilteredProductsGridProps) {
   const theme = useTheme();
   const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'));
+  const [isAllFiltersDialogOpen, setIsAllFiltersDialogOpen] = useState(false);
+
+  const handleOpenSortDialog = () => {
+    if (!sortOption) {
+      setSortOption('price-asc');
+    }
+    setIsSortDialogOpen(true);
+  };
 
   return (
     <Container sx={{ paddingBottom: '100px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, gap: 2 }}>
+        {isScreenToMedium && (
+          <Button
+            color="primary"
+            variant="outlined"
+            startIcon={<CategoryIcon />}
+            onClick={() => setIsAllFiltersDialogOpen(true)}
+          >
+            Proizvodi
+          </Button>
+        )}
         <Button color="primary" variant="outlined" startIcon={<FilterListIcon />} onClick={() => setIsFilterDialogOpen(true)}>Filter</Button>
-        <Button color="primary" variant="outlined" startIcon={<SortIcon />} onClick={() => setIsSortDialogOpen(true)}>Sort</Button>
+        <Button color="primary" variant="outlined" startIcon={<SortIcon />} onClick={handleOpenSortDialog}>Sort</Button>
       </Box>
 
       <Grid container spacing={2} justifyContent="center">
@@ -82,6 +102,23 @@ export default function FilteredProductsGrid({
         </Typography>
         <Button onClick={onShowNext} disabled={(currentPage + 1) * 10 >= totalProducts} endIcon={<ArrowForwardIosIcon />}>Učitaj još</Button>
       </Box>
+
+
+
+      {isScreenToMedium && (
+        <Dialog open={isAllFiltersDialogOpen} onClose={() => setIsAllFiltersDialogOpen(false)} maxWidth="sm" fullWidth>
+          <DialogTitle>Svi filteri proizvoda</DialogTitle>
+          <DialogContent>
+            <Typography sx={{ mb: 1.5, color: 'text.secondary', fontSize: '0.9rem' }}>
+              Izaberite kategoriju ili podkategoriju proizvoda.
+            </Typography>
+            <ProductsAllCategories onCategoryNavigate={() => setIsAllFiltersDialogOpen(false)} />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setIsAllFiltersDialogOpen(false)}>Zatvori</Button>
+          </DialogActions>
+        </Dialog>
+      )}
 
       <Dialog open={isFilterDialogOpen} onClose={() => setIsFilterDialogOpen(false)}>
         <DialogTitle>Filter proizvoda</DialogTitle>

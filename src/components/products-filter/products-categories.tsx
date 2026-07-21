@@ -24,6 +24,10 @@ type CategoryTreeItemProps = {
      forceExpand: boolean;
 };
 
+type ProductsAllCategoriesProps = {
+     onCategoryNavigate?: () => void;
+};
+
 const filterTree = (nodes: CategoryNode[], query: string): CategoryNode[] => {
      if (!query.trim()) return nodes;
 
@@ -120,7 +124,7 @@ const CategoryTreeItem: React.FC<CategoryTreeItemProps> = ({
      );
 };
 
-export default function ProductsAllCategories() {
+export default function ProductsAllCategories({ onCategoryNavigate }: ProductsAllCategoriesProps) {
      const router = useRouter();
      const [searchTerm, setSearchTerm] = React.useState('');
      const [expandedIds, setExpandedIds] = React.useState<Set<string>>(new Set());
@@ -147,6 +151,7 @@ export default function ProductsAllCategories() {
 
      const handleNavigate = (link?: string) => {
           if (!link) return;
+          onCategoryNavigate?.();
           router.push(link);
      };
 
