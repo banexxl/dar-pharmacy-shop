@@ -8,8 +8,7 @@ import SearchBox from "@/components/search/search";
 import AppDrawer from "@/components/navbar/drawer/drawer";
 import { Seo } from "@/components/seo";
 
-const ContactPage = (props: ContactPageProps) => {
-     const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
+const WithdrawalPage = () => {
 
      return (
           <>
@@ -138,7 +137,7 @@ const ContactPage = (props: ContactPageProps) => {
      )
 }
 
-export async function getStaticProps({ locale }: any) {
+export async function getStaticProps() {
 
      return {
           props: {
@@ -149,5 +148,5 @@ export async function getStaticProps({ locale }: any) {
      }
 }
 
-export default ContactPage
+export default WithdrawalPage
 

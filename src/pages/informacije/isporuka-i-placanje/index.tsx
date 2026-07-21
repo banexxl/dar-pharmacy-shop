@@ -10,9 +10,6 @@ import Link from "next/link";
 
 const DeliveryAndPaymentPage = () => {
 
-
-     // ThemeProvider is applied globally in _app.tsx
-
      return (
           <>
                <Seo title={'Isporuka i plaćanje'} description={'Isporuka i plaćanje'} url={'https://www.apoteka-dar.rs/'} />

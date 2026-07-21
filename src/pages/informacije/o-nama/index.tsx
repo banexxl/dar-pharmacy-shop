@@ -10,6 +10,7 @@ import SearchBox from "@/components/search/search";
 import { Seo } from "@/components/seo";
 
 const AboutPage = (_props: ContactPageProps) => {
+
      return (
           <>
                <Seo title={'O nama'} description={'Informacije o Apoteka DAR'} url={'https://www.apoteka-dar.rs/informacije/o-nama'} />

@@ -11,7 +11,6 @@ import { Seo } from '@/components/seo'
 
 const TermsConditions = () => {
 
-
      return (
           <>
                <Seo title={'Uslovi koriscenja'} description={'Uslovi koriscenja'} url={'https://www.apoteka-dar.rs/'} />
@@ -329,5 +328,3 @@ const TermsConditions = () => {
 }
 
 export default TermsConditions
-
-
