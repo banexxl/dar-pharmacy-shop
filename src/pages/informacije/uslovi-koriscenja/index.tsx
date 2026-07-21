@@ -22,8 +22,8 @@ const TermsConditions = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mt: '70px' }}>
-                                   <Typography marginTop='130px' textAlign='center' fontSize='2rem' fontWeight='bold' >
+                              <Box>
+                                   <Typography marginTop='20px' textAlign='center' fontSize='2rem' fontWeight='bold' >
                                         Uslovi korišćenja
                                    </Typography>
 

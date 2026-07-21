@@ -21,7 +21,7 @@ const DarCounselPage = () => {
                >
                     <Stack>
                          <UIProvider>
-                              <Typography marginTop='50px' textAlign='center' fontSize='2rem' fontWeight='bold' >
+                              <Typography marginTop='20px' textAlign='center' fontSize='2rem' fontWeight='bold' >
                                    DAR Savetnik
                               </Typography>
                               <Box sx={{ ml: isScreenToMedium ? '-50px' : null }}>

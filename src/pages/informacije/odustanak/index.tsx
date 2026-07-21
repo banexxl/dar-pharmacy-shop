@@ -16,8 +16,8 @@ const WithdrawalPage = () => {
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Box sx={{ mt: { xs: 2, md: 8 } }}>
-                                   <Typography variant="h2" textAlign='center' sx={{ fontWeight: 700, mb: 2 }}>
+                              <Box>
+                                   <Typography variant="h2" textAlign='center' sx={{ fontWeight: 700, mb: 2, mt: '20px' }}>
                                         Izjava o odustanku
                                    </Typography>
 

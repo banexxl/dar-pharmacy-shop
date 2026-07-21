@@ -18,7 +18,7 @@ const CookiePolicy = () => {
                     <Stack>
                          <UIProvider>
                               <Box>
-                                   <Typography marginTop='150px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
+                                   <Typography marginTop='20px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                         POLITIKA KOLAČIĆA
                                    </Typography>
 

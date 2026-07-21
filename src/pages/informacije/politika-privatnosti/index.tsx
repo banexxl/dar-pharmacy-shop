@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
                     <Stack>
                          <UIProvider>
                               <Box>
-                                   <Typography marginTop='130px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
+                                   <Typography marginTop='20px' textAlign='center' fontSize='2rem' paddingTop='20px' fontWeight='bold' >
                                         Politika privatnosti
                                    </Typography>
 
