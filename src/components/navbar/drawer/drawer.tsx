@@ -14,7 +14,6 @@ import WishList from "../../wishlist/wishlist"
 import Cart from "../../cart/cart"
 import LoginRegister from "../../login/login"
 import Link from "next/link"
-import { ProductsMenu } from "../product-menu"
 import { useSession } from "next-auth/react"
 import { useSelector } from "react-redux"
 import { cartTotalSelector } from "@/store/cart/cart.selector"
@@ -120,34 +119,6 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                         </Link>
                                    </ListItemText>
 
-                              </ListItemButton>
-                         </motion.li>
-                         <motion.li
-                              variants={variants}
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                         >
-                              <MiddleDivider sx={{
-                                   borderColor: 'rgba(255, 255, 255, 0.2)',
-                                   my: 1
-                              }} />
-                         </motion.li>
-                         <motion.li
-                              variants={variants}
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                         >
-                              <ListItemButton sx={{
-                                   justifyContent: 'center',
-                                   borderRadius: 2,
-                                   mb: 1,
-                                   py: 1.5,
-                                   '&:hover': {
-                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                   },
-                                   transition: 'all 0.3s ease',
-                              }}>
-                                   <ProductsMenu />
                               </ListItemButton>
                          </motion.li>
                          <MiddleDivider sx={{
