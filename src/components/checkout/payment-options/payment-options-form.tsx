@@ -79,7 +79,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                          sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'flex-start', sm: 'center' } }}
                     >
                          <FormControlLabel value="cash-on-delivery" defaultChecked control={<Radio />} label={"Plaćanje pouzećem"} />
-                         <FormControlLabel value="credit-card" control={<Radio />} label={"Kartično plaćanje (uskoro)"} />
+                         <FormControlLabel disabled value="credit-card" control={<Radio />} label={"Kartično plaćanje (uskoro)"} />
                     </RadioGroup>
                     {
                          paymentOption === 'credit-card' ?
