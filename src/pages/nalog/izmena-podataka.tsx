@@ -16,27 +16,31 @@ import { UIProvider } from '@/context/ui/ui.context';
 import { useRouter } from 'next/router';
 import ReCaptchaProviderWrapper from '@/components/common/recaptcha-provider';
 import { Seo } from '@/components/seo';
-import { useSession } from 'next-auth/react';
 import SearchBox from '@/components/search/search';
 import { IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userDataFormSchema } from '@/schemas/user-form.schema';
 import toast from 'react-hot-toast';
+import { AccountService } from '@/services/accounts.service';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]';
 
-const UserUpdatePage = () => {
+const UserUpdatePage = (props: any) => {
      const [loading, setLoading] = useState(false);
      const router = useRouter();
-     const session = useSession();
+
+     const parsedUserData = props?.userData ? JSON.parse(props.userData) : null;
+     const userData = parsedUserData && typeof parsedUserData === 'object' ? parsedUserData : null;
 
      const initialUserFormValues: IUserForm = {
-          name: session.data?.user?.name || '',
-          phoneNumber: '',
-          streetAddress: '',
-          city: '',
-          provinceState: '',
-          country: '',
-          zipPostalCode: '',
-          email: session.data?.user?.email || '',
-          gender: 'male',
+          name: userData?.name || '',
+          phoneNumber: userData?.phoneNumber || '',
+          streetAddress: userData?.streetAddress || '',
+          city: userData?.city || '',
+          provinceState: userData?.provinceState || '',
+          country: userData?.country || '',
+          zipPostalCode: userData?.zipPostalCode || '',
+          email: userData?.email || '',
+          gender: userData?.gender || 'male',
      };
 
      const handleSubmit = async (values: IUserForm) => {
@@ -49,7 +53,6 @@ const UserUpdatePage = () => {
                });
                if (response.status === 200) {
                     toast.success('Uspešna izmena podataka!', { duration: 3000, position: 'top-center' });
-                    router.push('/');
                } else if (response.status === 404) {
                     toast('Korisnik nije pronađen!', { icon: '⚠️', duration: 3000, position: 'top-center' });
                } else {
@@ -109,6 +112,27 @@ const UserUpdatePage = () => {
 };
 
 export default UserUpdatePage;
+
+export async function getServerSideProps(context: any) {
+     const session = await getServerSession(context.req, context.res, authOptions);
+
+     if (!session?.user?.email) {
+          return {
+               redirect: {
+                    destination: '/autentifikacija/prijava',
+                    permanent: false,
+               },
+          };
+     }
+
+     const userData = await AccountService().getUserByEmail(session.user.email);
+
+     return {
+          props: {
+               userData: JSON.stringify(userData),
+          },
+     };
+}
 
 
 
