@@ -8,7 +8,7 @@ export const getVerificationTokenByEmail = async (email: string) => {
 
           return verificationToken;
      } catch (error) {
-          console.log(error);
+          console.log('getVerificationTokenByEmail failed with: ', error);
      } finally {
           client.close();
      }

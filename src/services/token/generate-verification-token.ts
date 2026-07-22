@@ -31,7 +31,7 @@ export const generateVerificationToken = async (email: string) => {
 
           return verificationToken;
      } catch (error) {
-          console.log(error);
+          console.log('generateVerificationToken failed with: ', error);
      } finally {
           client.close();
      }

@@ -174,8 +174,6 @@ export async function getServerSideProps(context: any) {
           session.user.email
      );
 
-     console.log('userData', userData);
-
      const userOrdersResponse =
           await OrdersServices().getOrdersByUserEmail(
                session.user.email
@@ -184,8 +182,6 @@ export async function getServerSideProps(context: any) {
      const userOrders = Array.isArray(userOrdersResponse)
           ? userOrdersResponse
           : [];
-
-     console.log('userOrders', userOrders);
 
      return {
           props: {
