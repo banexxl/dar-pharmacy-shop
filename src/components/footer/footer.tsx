@@ -30,6 +30,7 @@ export default function Footer() {
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
      const [LoginDialog, showLoginDialog, closeLoginDialog] =
           useDialogModal(LoginRegister);
+     const currentYear = new Date().getFullYear();
 
      const handleSubmit = async (data: ISubscribeEmailForm): Promise<boolean> => {
           if (!data.agreedToTerms) {
@@ -446,7 +447,7 @@ export default function Footer() {
                                                   mt: 1,
                                              }}
                                         >
-                                             Copyright © Apoteka Dar | Sva prava zadržana.
+                                             Copyright © {currentYear} Apoteka Dar | Sva prava zadržana.
                                         </Typography>
                                    </Form>
                               )}
