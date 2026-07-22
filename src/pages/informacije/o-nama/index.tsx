@@ -17,7 +17,7 @@ const AboutPage = (_props: ContactPageProps) => {
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
                          <UIProvider>
-                              <Box>
+                              <Box sx={{ textAlign: 'center', mb: 4 }}>
                                    <Typography variant="h2" sx={{ fontWeight: 700, color: Colors.primary.main }}>
                                         O nama
                                    </Typography>
