@@ -3,7 +3,7 @@
 import { Container, Typography, Divider, Stack, CircularProgress, Button, Box, Paper, Chip } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useEffect, useState } from 'react';
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import { Seo } from '@/components/seo';
 import dynamic from 'next/dynamic';
 import theme from '@/styles/theme';
@@ -79,7 +79,7 @@ const DeliveryConfirmationPage = () => {
                : 'Nije dostupno';
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID}`}></Script>
                <Script id="gtag-init" strategy="afterInteractive">
                     {`
@@ -222,7 +222,7 @@ const DeliveryConfirmationPage = () => {
                          </Stack>
                     </Container>
                </DynamicThemeProvider>
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 };
 

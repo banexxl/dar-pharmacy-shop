@@ -1,7 +1,7 @@
 import { UIProvider } from "@/context/ui/ui.context";
 import { Box, Container, Stack, TextField, Button, Typography } from "@mui/material";
 import SearchBox from "@/components/search/search";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import { signIn } from "next-auth/react";
 import { Form, Formik } from "formik";
 import { userEmailSchema } from "@/schemas/email-form.schema";
@@ -83,7 +83,7 @@ const SignInPage = () => {
      );
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
 
                <Seo
                     title={"Greska prilikom prijave"}
@@ -113,7 +113,7 @@ const SignInPage = () => {
                     </Stack>
                </Container>
 
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 };
 

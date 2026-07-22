@@ -1,7 +1,7 @@
 import { UIProvider } from '@/context/ui/ui.context';
 import { Box, Container, Grid, Stack, TextField, Typography, Button, FormControlLabel, Checkbox } from '@mui/material';
 import SearchBox from '@/components/search/search';
-import { ReCaptchaProvider } from 'next-recaptcha-v3';
+import ReCaptchaProviderWrapper from '@/components/common/recaptcha-provider';
 import { Formik, Form, Field } from 'formik';
 import { initialUserFormValues, IUserForm } from '@/interfaces/checkout/user-form-values.interface';
 import { userFormSchema } from '@/schemas/user-form.schema';
@@ -34,7 +34,7 @@ const RegisterPage = () => {
      };
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Seo title={'Registracija'} description={'Registracija korisnika'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ background: '#fff' }}>
                     <Stack>
@@ -98,7 +98,7 @@ const RegisterPage = () => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 };
 

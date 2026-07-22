@@ -6,7 +6,7 @@ import { Container, Stack, Typography, Button, Box } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 
-const PageNotFount = () => {
+const PageNotFound = () => {
 
      // ThemeProvider is applied globally in _app.tsx
 
@@ -14,7 +14,6 @@ const PageNotFount = () => {
           <>
                <Seo title={'Stranica nije pronađena'} description={'Stranica nije pronađena'} url={'https://www.apoteka-dar.rs/'} />
                <Container
-
                     maxWidth="xl"
                     sx={{
                          background: "#fff",
@@ -61,4 +60,4 @@ export async function getStaticProps({ locale }: any) {
 }
 
 
-export default PageNotFount
+export default PageNotFound

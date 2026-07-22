@@ -1,16 +1,13 @@
 import { ContactPageProps, ContactMap } from "@/components/contact/contact-map";
 import ContactForm from "@/components/contact/contact-form";
-import LoadingWheel from "@/components/loading/loading";
 import { UIProvider } from "@/context/ui/ui.context";
-import theme, { Colors } from "@/styles/theme";
 import { Container, Stack, Box, Typography, Link as MuiLink } from "@mui/material";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import SearchBox from "@/components/search/search";
-import AppDrawer from "@/components/navbar/drawer/drawer";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import { Seo } from "@/components/seo";
 
 const ContactPage = (props: ContactPageProps) => {
@@ -19,7 +16,7 @@ const ContactPage = (props: ContactPageProps) => {
      // ThemeProvider is applied globally in _app.tsx
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Seo title={'Kontakt forma'} description={'Kontakt forma'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
@@ -100,7 +97,7 @@ const ContactPage = (props: ContactPageProps) => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </ReCaptchaProvider >
+          </ReCaptchaProviderWrapper>
      )
 }
 

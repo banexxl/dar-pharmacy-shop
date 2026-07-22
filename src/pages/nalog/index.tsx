@@ -1,5 +1,5 @@
-import { getSession, useSession } from "next-auth/react";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import { useSession } from "next-auth/react";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import { Seo } from "@/components/seo";
 import { Box, Container, Stack, Typography, Paper } from "@mui/material";
 import { UIProvider } from "@/context/ui/ui.context";
@@ -13,19 +13,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 
 export default function ProtectedPage(props: any) {
-     const { data: session, status } = useSession();
-     console.log('session', session);
-
-     // Wait for session hydration to complete
-     if (status === 'loading') {
-          return <SpinningWheel></SpinningWheel>;
-     }
-
-     // If user is not authenticated, show error page
-     if (status === 'unauthenticated') {
-          return <ErrorPage error="ProtectedRoute" />;
-     }
-
      // Deserialize props data safely because SSR can return null values.
      const parsedUserData = props?.userData ? JSON.parse(props.userData) : null;
      const parsedUserOrders = props?.userOrders ? JSON.parse(props.userOrders) : null;
@@ -40,7 +27,7 @@ export default function ProtectedPage(props: any) {
           : null;
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Seo title={"DAR Profil"} description={"DAR profil"} url={"https://www.apoteka-dar.rs/"} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
@@ -164,8 +151,7 @@ export default function ProtectedPage(props: any) {
                          </UIProvider>
                     </Stack>
                </Container>
-
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 }
 
@@ -175,9 +161,6 @@ export async function getServerSideProps(context: any) {
           context.res,
           authOptions
      );
-
-     console.log('getServerSideProps Session', session);
-
      if (!session?.user?.email) {
           return {
                redirect: {

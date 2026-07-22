@@ -7,7 +7,7 @@ import { TabPanel } from '@/components/checkout/tab-panel'
 import Confirmation from '@/components/checkout/cart-confirmation/cart-confirmation'
 import SearchBox from '@/components/search/search'
 import { PaymentOptions } from '@/components/checkout/payment-options/payment-options-form'
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import UserInfoFormData from '@/components/checkout/userinfo/user-info-form-data'
 import { Seo } from '@/components/seo'
 import PaymentStrip from '@/components/payment-strip/payment-strip'
@@ -64,7 +64,7 @@ const Checkout = () => {
      }, [tabIndex]);
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID}`}></Script>
                <Script id="gtag-init" strategy="afterInteractive">
                     {`
@@ -242,7 +242,7 @@ const Checkout = () => {
                     </Stack>
                </Container>
 
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      )
 }
 

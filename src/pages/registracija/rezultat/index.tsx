@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UIProvider } from '@/context/ui/ui.context';
 import { Box, Container, Stack, Typography, Button } from '@mui/material';
 import SearchBox from '@/components/search/search';
-import { ReCaptchaProvider } from 'next-recaptcha-v3';
+import ReCaptchaProviderWrapper from '@/components/common/recaptcha-provider';
 import { Seo } from '@/components/seo';
 
 const RegisterPage = () => {
@@ -26,7 +26,7 @@ const RegisterPage = () => {
      }, []);
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Seo title={'Registracija'} description={'Registracija korisnika'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ background: '#fff' }}>
                     <Stack>
@@ -41,7 +41,7 @@ const RegisterPage = () => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 };
 

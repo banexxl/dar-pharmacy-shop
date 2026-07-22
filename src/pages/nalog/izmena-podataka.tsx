@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { UIProvider } from '@/context/ui/ui.context';
 import { useRouter } from 'next/router';
-import { ReCaptchaProvider } from 'next-recaptcha-v3';
+import ReCaptchaProviderWrapper from '@/components/common/recaptcha-provider';
 import { Seo } from '@/components/seo';
 import { useSession } from 'next-auth/react';
 import SearchBox from '@/components/search/search';
@@ -63,7 +63,7 @@ const UserUpdatePage = () => {
      };
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
                <Seo title={'Izmena podataka'} description={'Izmena korisničkih podataka'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
                     <Stack>
@@ -104,7 +104,7 @@ const UserUpdatePage = () => {
                          </UIProvider>
                     </Stack>
                </Container>
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 };
 

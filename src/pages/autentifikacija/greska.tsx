@@ -2,7 +2,7 @@ import { UIProvider } from "@/context/ui/ui.context";
 import { Button, Container, Stack, Box, Typography } from "@mui/material";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import SearchBox from "@/components/search/search";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import Link from "next/link";
 import { Seo } from "@/components/seo";
 
@@ -28,7 +28,7 @@ const ErrorPage = (props: any) => {
      };
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
 
                <Seo title={'Greska prilikom prijave'} description={'Greska prilikom prijave'} url={'https://www.apoteka-dar.rs/'} />
                <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
@@ -64,7 +64,7 @@ const ErrorPage = (props: any) => {
                     </Stack>
                </Container>
 
-          </ReCaptchaProvider>
+          </ReCaptchaProviderWrapper>
      );
 }
 

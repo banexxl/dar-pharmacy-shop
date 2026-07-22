@@ -2,7 +2,7 @@ import { UIProvider } from "@/context/ui/ui.context";
 import { Button, Container, Stack, TextField, Box, Typography } from "@mui/material";
 // removed per-page ThemeProvider; using global provider
 import SearchBox from "@/components/search/search";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+import ReCaptchaProviderWrapper from "@/components/common/recaptcha-provider";
 import { signIn } from "next-auth/react";
 import { Seo } from "@/components/seo";
 
@@ -15,7 +15,7 @@ const SignInPage = () => {
      }
 
      return (
-          <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} useEnterprise>
+          <ReCaptchaProviderWrapper>
 
                <Seo title={'Greska prilikom verifikacije'} description={'Greska prilikom verifikacije'} url={'https://www.apoteka-dar.rs/'} />
                <Container
@@ -48,7 +48,7 @@ const SignInPage = () => {
                     </Stack>
                </Container>
 
-          </ReCaptchaProvider >
+          </ReCaptchaProviderWrapper>
      )
 }
 
