@@ -155,6 +155,7 @@ const Checkout = () => {
                                                        allowScrollButtonsMobile
                                                        orientation="horizontal"
                                                        sx={{
+                                                            display: { xs: 'none', md: 'flex' },
                                                             minHeight: 60,
                                                             '& .MuiTabs-indicator': {
                                                                  height: 3,
