@@ -119,6 +119,15 @@ export async function GET(request: Request) {
                     'Failed to delete unauthorized Auth user:',
                     deleteError
                );
+          } else {
+               console.log(
+                    'Deleted unauthorized Auth user:',
+                    session.user.id
+               );
+               return redirectToError(
+                    'unauthorized',
+                    'Vaš nalog nije registrovan. Molimo registrujte se prvo ili kontaktirajte podršku.'
+               );
           }
 
           if (

@@ -8,7 +8,7 @@ const PUBLIC_ROUTES = [
   '/proizvodi',
   '/proizvodi-proizvodjac-kategorija',
   '/autentifikacija',
-  '/auth',
+  '/greska',
   '/registracija',
   '/placanje',
   '/kontakt',
@@ -21,7 +21,7 @@ const PUBLIC_ROUTES = [
 const PROTECTED_PREFIXES = ['/nalog'];
 
 // Login routes — redirect away if already authenticated
-const LOGIN_ROUTES = ['/autentifikacija/prijava', '/auth/login'];
+const LOGIN_ROUTES = ['/autentifikacija/prijava'];
 
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
