@@ -1,116 +1,150 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+
 import { createServiceRoleClient } from '@/lib/supabase/service-role';
 import { checkIfCustomerExists } from '@/lib/auth/actions';
+import { createClient } from '@/lib/supabase/server';
 
-function normalizeEmail(v?: string | null) {
-     return (v ?? '').trim().toLowerCase();
+function normalizeEmail(value?: string | null) {
+     return (value ?? '').trim().toLowerCase();
 }
 
 export async function GET(request: Request) {
      const requestUrl = new URL(request.url);
      const cookieStore = await cookies();
 
-     const oauthError = requestUrl.searchParams.get('error');
-     const errorCode = requestUrl.searchParams.get('error_code');
-     const errorDescription =
-          requestUrl.searchParams.get('error_description');
+     const redirectToError = (
+          error: string,
+          description?: string
+     ) => {
+          const params = new URLSearchParams({ error });
 
-     if (oauthError) {
-          const params = new URLSearchParams({
-               error: oauthError,
-               error_code: errorCode ?? '',
-               error_description:
-                    errorDescription ?? 'OAuth authentication failed',
-          });
+          if (description) {
+               params.set('error_description', description);
+          }
 
           return NextResponse.redirect(
-               new URL(`/autentifikacija/greska?${params.toString()}`, requestUrl.origin)
+               new URL(
+                    `/autentifikacija/greska?${params.toString()}`,
+                    requestUrl.origin
+               )
+          );
+     };
+
+     const oauthError =
+          requestUrl.searchParams.get('error');
+
+     if (oauthError) {
+          return redirectToError(
+               oauthError,
+               requestUrl.searchParams.get(
+                    'error_description'
+               ) ?? 'OAuth authentication failed'
           );
      }
 
      const code = requestUrl.searchParams.get('code');
 
      if (!code) {
-          return NextResponse.redirect(
-               new URL('/autentifikacija/greska?error=no_code', requestUrl.origin)
+          return redirectToError('no_code');
+     }
+
+     const supabase = await createClient();
+
+     const {
+          data: { session },
+          error: exchangeError,
+     } = await supabase.auth.exchangeCodeForSession(
+          code
+     );
+
+     if (exchangeError) {
+          console.error(
+               'OAuth exchange failed:',
+               exchangeError
+          );
+
+          return redirectToError(
+               'exchange_failed',
+               exchangeError.message
           );
      }
-     const supabase = createServiceRoleClient();
-     const { error } =
-          await supabase.auth.exchangeCodeForSession(code);
 
-     if (error) {
-          console.error('OAuth exchange failed:', error);
-
-          return NextResponse.redirect(
-               new URL(
-                    `/autentifikacija/greska?error=exchange_failed&error_description=${encodeURIComponent(
-                         error.message
-                    )}`,
-                    requestUrl.origin
-               )
+     if (!session) {
+          return redirectToError(
+               'no_session',
+               'No session was created.'
           );
      }
 
-     // Retrieve the session after OAuth to get the user details
-     const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+     const email = normalizeEmail(session.user.email);
 
-     // If there's an error retrieving the session, log it and redirect to error page
-     if (sessionError) {
-          const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=${sessionError.message}`;
-          return NextResponse.redirect(redirectUrl);
+     if (!email) {
+          await supabase.auth.signOut();
+
+          return redirectToError(
+               'email_missing',
+               'Google nalog nije vratio email adresu.'
+          );
      }
 
-     // If no session is found, log it and redirect to error page
-     if (!sessionData.session) {
-          const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=No session found.`;
-          return NextResponse.redirect(redirectUrl);
-     }
+     const permission = await checkIfCustomerExists(email);
 
-     const email = normalizeEmail(sessionData.session.user.email);
-     if (email) {
-          const permission = await checkIfCustomerExists(email);
-          if (!permission.success) {
-               console.log('[autentifikacija/greska] permission denied', {
+     if (!permission.success) {
+          console.log(
+               '[OAuth callback] Permission denied',
+               {
                     email,
                     error: permission.error,
-               });
-
-               await supabase.auth.signOut();
-               const deleteResult = await supabase.auth.admin.deleteUser(sessionData.session.user.id);
-               console.log('[autentifikacija/greska] delete user result', deleteResult);
-               const allCookies = cookieStore.getAll();
-               allCookies.forEach(cookie => cookieStore.delete(cookie.name));
-
-               if (permission.error?.code === 'UserExists') {
-                    console.log('[autentifikacija/greska] redirect EmailInUse', {
-                         email,
-                         error: permission.error,
-                    });
-                    const errorDescription = encodeURIComponent(permission.error?.message || 'Ovaj email je već registrovan. Molimo prijavite se ili resetujte lozinku.');
-                    const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=email_in_use&error_description=${errorDescription}`;
-                    return NextResponse.redirect(redirectUrl);
                }
+          );
 
-               if (permission.error?.code === 'UserNotFound') {
-                    console.log('[autentifikacija/greska] redirect UserNotFound', {
-                         email,
-                         error: permission.error,
-                    });
-                    const errorDescription = encodeURIComponent('Vaš nalog nije pronađen. Molimo registrujte se prvo, ili kontaktirajte podršku.');
-                    const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=user_not_found&error_description=${errorDescription}`;
-                    return NextResponse.redirect(redirectUrl);
-               }
+          // Sign out using the session-aware SSR client.
+          await supabase.auth.signOut();
 
-               console.log('[autentifikacija/greska] redirect sign_in_required', {
-                    email,
-                    error: permission.error,
-               });
+          /*
+           * Use service role only for the admin operation.
+           * Consider whether you really want to delete the Auth user
+           * every time permission is rejected.
+           */
+          const adminClient = createServiceRoleClient();
 
-               const redirectUrl = `${requestUrl.origin}/auth/sign-in?message=sign_in_required`;
-               return NextResponse.redirect(redirectUrl);
+          const { error: deleteError } =
+               await adminClient.auth.admin.deleteUser(
+                    session.user.id
+               );
+
+          if (deleteError) {
+               console.error(
+                    'Failed to delete unauthorized Auth user:',
+                    deleteError
+               );
           }
+
+          if (
+               permission.error?.code === 'UserExists'
+          ) {
+               return redirectToError(
+                    'email_in_use',
+                    permission.error.message ||
+                    'Ovaj email je već registrovan. Molimo prijavite se ili resetujte lozinku.'
+               );
+          }
+
+          if (
+               permission.error?.code ===
+               'UserNotFound'
+          ) {
+               return redirectToError(
+                    'user_not_found',
+                    'Vaš nalog nije pronađen. Molimo registrujte se prvo ili kontaktirajte podršku.'
+               );
+          }
+
+          return redirectToError(
+               'sign_in_required',
+               permission.error?.message
+          );
      }
 
      return NextResponse.redirect(
