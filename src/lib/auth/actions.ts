@@ -4,6 +4,13 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
+export type ErrorType = {
+  code: string;
+  details: string;
+  hint?: string;
+  message?: string;
+}
+
 /**
  * Sign in with email magic link (OTP).
  * Sends a one-time login link to the user's email.
@@ -60,4 +67,49 @@ export async function signOutAction() {
   await supabase.auth.signOut();
   revalidatePath('/', 'layout');
   redirect('/');
+}
+
+export async function checkIfCustomerExists(email: string): Promise<{ success: boolean; error?: ErrorType }> {
+
+  try {
+    const supabase = await createClient();
+
+    const { data } = await supabase
+      .from('customers')
+      .select('email')
+      .eq('email', email)
+      .single();
+
+    if (data?.email) {
+      return {
+        success: true,
+        error: {
+          code: 'UserExists',
+          details: 'Customer already exists',
+          message: 'Customer already exists',
+        },
+      };
+    }
+
+    return {
+      success: false,
+      error: {
+        code: 'UserNotFound',
+        details: 'Customer not found',
+        message: 'Customer not found',
+        hint: 'Please contact support.',
+      },
+    };
+
+  } catch (error) {
+    return {
+      success: false,
+      error: {
+        code: 'ServerError',
+        details: 'An error occurred while checking user permission',
+        message: 'An error occurred while checking user permission',
+        hint: 'Please try again later.',
+      },
+    };
+  }
 }
