@@ -22,7 +22,7 @@ export async function signInWithEmail(email: string) {
   const { error } = await supabase.auth.signInWithOtp({
     email: email.trim().toLowerCase(),
     options: {
-      emailRedirectTo: `${siteUrl}/auth/callback`,
+      emailRedirectTo: `${siteUrl}/autentifikacija/provera`,
     },
   });
 
@@ -44,7 +44,7 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${siteUrl}/auth/callback`,
+      redirectTo: `${siteUrl}/autentifikacija/provera`,
     },
   });
 

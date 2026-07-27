@@ -25,7 +25,7 @@ export async function GET(request: Request) {
           });
 
           return NextResponse.redirect(
-               new URL(`/auth/greska?${params.toString()}`, requestUrl.origin)
+               new URL(`/autentifikacija/greska?${params.toString()}`, requestUrl.origin)
           );
      }
 
@@ -33,7 +33,7 @@ export async function GET(request: Request) {
 
      if (!code) {
           return NextResponse.redirect(
-               new URL('/auth/greska?error=no_code', requestUrl.origin)
+               new URL('/autentifikacija/greska?error=no_code', requestUrl.origin)
           );
      }
      const supabase = createServiceRoleClient();
@@ -45,7 +45,7 @@ export async function GET(request: Request) {
 
           return NextResponse.redirect(
                new URL(
-                    `/auth/greska?error=exchange_failed&error_description=${encodeURIComponent(
+                    `/autentifikacija/greska?error=exchange_failed&error_description=${encodeURIComponent(
                          error.message
                     )}`,
                     requestUrl.origin
@@ -58,13 +58,13 @@ export async function GET(request: Request) {
 
      // If there's an error retrieving the session, log it and redirect to error page
      if (sessionError) {
-          const redirectUrl = `${requestUrl.origin}/auth/greska?error=${sessionError.message}`;
+          const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=${sessionError.message}`;
           return NextResponse.redirect(redirectUrl);
      }
 
      // If no session is found, log it and redirect to error page
      if (!sessionData.session) {
-          const redirectUrl = `${requestUrl.origin}/auth/greska?error=No session found.`;
+          const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=No session found.`;
           return NextResponse.redirect(redirectUrl);
      }
 
@@ -72,38 +72,38 @@ export async function GET(request: Request) {
      if (email) {
           const permission = await checkIfCustomerExists(email);
           if (!permission.success) {
-               console.log('[auth/callback] permission denied', {
+               console.log('[autentifikacija/greska] permission denied', {
                     email,
                     error: permission.error,
                });
 
                await supabase.auth.signOut();
                const deleteResult = await supabase.auth.admin.deleteUser(sessionData.session.user.id);
-               console.log('[auth/callback] delete user result', deleteResult);
+               console.log('[autentifikacija/greska] delete user result', deleteResult);
                const allCookies = cookieStore.getAll();
                allCookies.forEach(cookie => cookieStore.delete(cookie.name));
 
                if (permission.error?.code === 'UserExists') {
-                    console.log('[auth/callback] redirect EmailInUse', {
+                    console.log('[autentifikacija/greska] redirect EmailInUse', {
                          email,
                          error: permission.error,
                     });
                     const errorDescription = encodeURIComponent(permission.error?.message || 'Ovaj email je već registrovan. Molimo prijavite se ili resetujte lozinku.');
-                    const redirectUrl = `${requestUrl.origin}/auth/greska?error=email_in_use&error_description=${errorDescription}`;
+                    const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=email_in_use&error_description=${errorDescription}`;
                     return NextResponse.redirect(redirectUrl);
                }
 
                if (permission.error?.code === 'UserNotFound') {
-                    console.log('[auth/callback] redirect UserNotFound', {
+                    console.log('[autentifikacija/greska] redirect UserNotFound', {
                          email,
                          error: permission.error,
                     });
                     const errorDescription = encodeURIComponent('Vaš nalog nije pronađen. Molimo registrujte se prvo, ili kontaktirajte podršku.');
-                    const redirectUrl = `${requestUrl.origin}/auth/greska?error=user_not_found&error_description=${errorDescription}`;
+                    const redirectUrl = `${requestUrl.origin}/autentifikacija/greska?error=user_not_found&error_description=${errorDescription}`;
                     return NextResponse.redirect(redirectUrl);
                }
 
-               console.log('[auth/callback] redirect sign_in_required', {
+               console.log('[autentifikacija/greska] redirect sign_in_required', {
                     email,
                     error: permission.error,
                });
