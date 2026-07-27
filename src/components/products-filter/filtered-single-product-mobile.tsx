@@ -12,13 +12,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import FilteredProductMeta from "./filtered-products-meta";
 import Link from "next/link";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 import { SocialShare } from "../social/socials-share";
 
 type FilteredSingleProductMobileProps = {
-     product: IProduct;
+     product: Product;
      isScreenToMedium: boolean;
 }
 
@@ -28,7 +28,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
      const [showOptions, setShowOptions] = useState(false);
      const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
      const wishListState = useSelector(wishListSelectorState)
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
      const [isVisible, setVisible] = useState(false)
      const domRef = useRef<HTMLElement | null>(null)
      const observerRef = useRef<IntersectionObserver | null>(null);
@@ -102,7 +102,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          <CardMedia
                               component="img"
                               className="FilteredProductImage"
-                              image={product.imageURL}
+                              image={product.image_url}
                               alt="Product"
                               sx={{
                                    height: 200,
@@ -132,7 +132,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                          >
                               {!isInWishlist ? (
                                    <FavoriteBorderIcon
-                                        id={`wishlist-icon-${product._id}`}
+                                        id={`wishlist-icon-${product.id}`}
                                         sx={{
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -143,7 +143,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                                    />
                               ) : (
                                    <FavoriteIcon
-                                        id={`wishlist-icon-${product._id}`}
+                                        id={`wishlist-icon-${product.id}`}
                                         sx={{
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -170,7 +170,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                     <SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug} flexDirection="column" />
                )}
                {
-                    product.availableStock > 0 ?
+                    product.available_stock > 0 ?
                          (
                               <Button
                                    className="MobileAddToCart"
@@ -178,7 +178,7 @@ export default function FilteredSingleProductMobile({ product, isScreenToMedium 
                                    variant="contained"
                                    fullWidth
                               >
-                                   {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                                   {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                               </Button>
                          )
                          :

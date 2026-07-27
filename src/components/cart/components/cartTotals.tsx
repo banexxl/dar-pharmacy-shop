@@ -4,7 +4,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Box, Button, Divider, LinearProgress, Typography } from '@mui/material'
 import theme, { Colors } from '@/styles/theme'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 interface ICartTotalsProps {
      onClose: () => void

@@ -14,7 +14,7 @@ import WishList from "../../wishlist/wishlist"
 import Cart from "../../cart/cart"
 import LoginRegister from "../../login/login"
 import Link from "next/link"
-import { useSession } from "next-auth/react"
+import { useAuth } from "@/lib/auth/hooks"
 import { useSelector } from "react-redux"
 import { cartTotalSelector } from "@/store/cart/cart.selector"
 import { motion } from "framer-motion"
@@ -40,7 +40,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
      const [LoginDialog, showLoginDialog, closeLoginDialog] =
           useDialogModal(LoginRegister)
 
-     const { data: session } = useSession()
+     const { isAuthenticated } = useAuth()
 
      const variants = {
           open: {
@@ -253,7 +253,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                         },
                                    }}>
                                         {
-                                             session ? 'Profil' : 'Prijava'
+                                             isAuthenticated ? 'Profil' : 'Prijava'
                                         }
                                    </ListItemText>
                               </ListItemButton>
@@ -263,7 +263,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                               my: 1
                          }} />
                          {
-                              !session &&
+                              !isAuthenticated &&
                               <motion.li
                                    variants={variants}
                                    whileHover={{ scale: 1.02 }}

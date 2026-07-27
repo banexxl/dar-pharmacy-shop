@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import SearchIcon from '@mui/icons-material/Search';
 import { AccordionPanels } from './all-categories'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type CategoryNode = {
      id: string;

@@ -9,12 +9,12 @@ import { Colors } from "@/styles/theme";
 
 
 interface IProps {
-     _id: string;
+     id: string;
      count: number;
      children: React.ReactNode
 }
 
-const ProductCounter: FC<IProps> = ({ _id, count }) => {
+const ProductCounter: FC<IProps> = ({ id, count }) => {
 
      const dispatch = useDispatch()
 
@@ -26,7 +26,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                          background: `${Colors.primary.lighter}`,
                          width: '20px'
                     }}
-                    onClick={() => dispatch(decrement(_id))}
+                    onClick={() => dispatch(decrement(id))}
                     disabled={count <= 1 ? true : false}
                >
                     <RemoveIcon />
@@ -46,7 +46,7 @@ const ProductCounter: FC<IProps> = ({ _id, count }) => {
                          background: `${Colors.primary.lighter}`,
                          width: '20px'
                     }}
-                    onClick={() => dispatch(increment(_id))}
+                    onClick={() => dispatch(increment(id))}
                     disabled={count >= 100 ? true : false}
                >
                     <AddIcon />

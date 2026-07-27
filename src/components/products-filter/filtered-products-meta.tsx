@@ -13,7 +13,7 @@ export default function FilteredProductMeta({ product, isScreenToMedium }: any) 
                     {parseFloat(product.price?.toString() || '0').toFixed(2)} RSD
                </Typography>
                <Typography variant={isScreenToMedium ? "caption" : "body2"} textAlign='center' sx={{ color: Colors.neutral[600], mt: 0.5 }}>
-                    Pakovanje: {product.quantity + " " + product.quantityUnit}
+                    Pakovanje: {product.quantity + " " + product.quantity_unit}
                </Typography>
           </Box>
      );

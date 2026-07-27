@@ -1,12 +1,12 @@
 import { Card, CardContent, CardActions, CardMedia, Typography, Box, Chip, IconButton, useMediaQuery, useTheme, Tooltip } from '@mui/material';
 import Button from '@/components/button';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '@/store/cart/cart.slice';
 import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.slice';
 import { Colors } from '@/styles/theme';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -15,7 +15,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export type ProductCardProps = {
-  product: IProduct;
+  product: Product;
   showImage?: boolean;
   showTitle?: boolean;
   showManufacturer?: boolean;
@@ -42,15 +42,15 @@ export default function ProductCard({
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const price = Number(product.price);
-  const discountAmount = Number(product.discountAmount);
-  const hasDiscount = !!product.discount && !isNaN(discountAmount) && discountAmount > 0;
-  const discounted: number = hasDiscount ? Math.max(price - discountAmount, 0) : price;
+  const discount_amount = Number(product.discount_amount);
+  const hasDiscount = !!product.discount && !isNaN(discount_amount) && discount_amount > 0;
+  const discounted: number = hasDiscount ? Math.max(price - discount_amount, 0) : price;
 
   const handleDetails = async () => {
     await router.push(`/proizvod/${product.slug}`);
   };
 
-  const isInWishlist = !!wishListState?.some((item: IProduct) => item._id === product._id);
+  const isInWishlist = !!wishListState?.some((item: Product) => item.id === product.id);
 
   const handleAddToWishList = async () => {
     if (isInWishlist) {
@@ -88,7 +88,7 @@ export default function ProductCard({
         <Link href={`/proizvod/${product.slug}`} passHref>
           <CardMedia
             component="img"
-            image={product.imageURL}
+            image={product.image_url}
             alt={product.name}
             sx={{
               height: compact ? 160 : 200,
@@ -165,9 +165,9 @@ export default function ProductCard({
                   </IconButton>
                 </span>
               </Tooltip>
-              <Tooltip title={product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}>
+              <Tooltip title={product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}>
                 <span>
-                  <IconButton color="primary" onClick={handleAddToCart} disabled={product.availableStock <= 0} size="small">
+                  <IconButton color="primary" onClick={handleAddToCart} disabled={product.available_stock <= 0} size="small">
                     <AddShoppingCartIcon />
                   </IconButton>
                 </span>
@@ -200,11 +200,11 @@ export default function ProductCard({
                   variant="contained"
                   color="primary"
                   size="small"
-                  disabled={product.availableStock <= 0}
+                  disabled={product.available_stock <= 0}
                   onClick={handleAddToCart}
                   sx={{ minWidth: 0, px: 2, width: '100%' }}
                 >
-                  {product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
+                  {product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
                 </Button>
               </Box>
             </>

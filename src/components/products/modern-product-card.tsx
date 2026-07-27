@@ -29,14 +29,14 @@ import { addToWishList, removeFromWishList } from '@/store/wishlist/wishlist.sli
 import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
 import Link from 'next/link';
 import Image from 'mui-image';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import { formatCurrency } from '@/utils/currency-formatter';
 import toast from 'react-hot-toast';
 
 interface ModernProductCardProps {
-     product: IProduct;
+     product: Product;
      loading?: boolean;
-     onQuickView?: (product: IProduct) => void;
+     onQuickView?: (product: Product) => void;
 }
 
 export default function ModernProductCard({
@@ -51,7 +51,7 @@ export default function ModernProductCard({
 
      const dispatch = useDispatch();
      const wishListState = useSelector(wishListSelectorState);
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
 
      // Intersection Observer for animations
      useEffect(() => {
@@ -81,7 +81,7 @@ export default function ModernProductCard({
 
      const handleWishlistToggle = () => {
           if (isInWishlist) {
-               dispatch(removeFromWishList(product._id));
+               dispatch(removeFromWishList(product.id));
                toast.success('Uklonjen iz liste želja');
           } else {
                dispatch(addToWishList(product));
@@ -95,8 +95,8 @@ export default function ModernProductCard({
           }
      };
 
-     const discountPercentage = product.discountAmount
-          ? Math.round(((product.price - product.discountAmount) / product.price) * 100)
+     const discountPercentage = product.discount_amount
+          ? Math.round(((product.price - product.discount_amount) / product.price) * 100)
           : 0;
 
      if (loading) {
@@ -232,7 +232,7 @@ export default function ModernProductCard({
                          >
                               <Box
                                    component="img"
-                                   src={product.imageURL}
+                                   src={product.image_url}
                                    alt={product.name}
                                    loading="lazy"
                                    onLoad={() => setImageLoaded(true)}
@@ -302,7 +302,7 @@ export default function ModernProductCard({
 
                          {/* Price */}
                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                              {product.discountAmount ? (
+                              {product.discount_amount ? (
                                    <>
                                         <Typography
                                              variant="h6"
@@ -312,7 +312,7 @@ export default function ModernProductCard({
                                                   color: 'error.main',
                                              }}
                                         >
-                                             {formatCurrency(product.discountAmount)}
+                                             {formatCurrency(product.discount_amount)}
                                         </Typography>
                                         <Typography
                                              variant="body2"
@@ -341,8 +341,8 @@ export default function ModernProductCard({
 
                          {/* Stock Status */}
                          <Chip
-                              label={product.availableStock > 0 ? 'Na stanju' : 'Nema na stanju'}
-                              color={product.availableStock > 0 ? 'success' : 'error'}
+                              label={product.available_stock > 0 ? 'Na stanju' : 'Nema na stanju'}
+                              color={product.available_stock > 0 ? 'success' : 'error'}
                               variant="outlined"
                               size="small"
                               sx={{ mb: 2 }}
@@ -353,7 +353,7 @@ export default function ModernProductCard({
                          <Button
                               variant="contained"
                               onClick={handleAddToCart}
-                              disabled={product.availableStock === 0}
+                              disabled={product.available_stock === 0}
                               startIcon={<AddShoppingCart />}
                               sx={{
                                    flex: 1,
@@ -361,11 +361,11 @@ export default function ModernProductCard({
                                    py: 1.5,
                                    fontWeight: 600,
                                    textTransform: 'none',
-                                   background: product.availableStock > 0
+                                   background: product.available_stock > 0
                                         ? 'linear-gradient(135deg, #1E40AF 0%, #2563EB 100%)'
                                         : undefined,
                                    '&:hover': {
-                                        background: product.availableStock > 0
+                                        background: product.available_stock > 0
                                              ? 'linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)'
                                              : undefined,
                                         transform: 'translateY(-1px)',
@@ -374,7 +374,7 @@ export default function ModernProductCard({
                                    transition: 'all 0.2s ease',
                               }}
                          >
-                              {product.availableStock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
+                              {product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
                          </Button>
                     </CardActions>
                </Card>

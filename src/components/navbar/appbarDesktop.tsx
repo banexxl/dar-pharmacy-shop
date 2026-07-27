@@ -5,7 +5,7 @@ import { useUIContext } from "../../context/ui/ui.context";
 import { useEffect, useRef, useState } from "react";
 import { Colors } from "@/styles/theme";
 import SvgIcon from "../svg/svg-icon";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function AppbarDesktop({ isScreenToMedium }: any) {
 

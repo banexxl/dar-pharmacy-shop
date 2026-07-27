@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Typography, Box, Container, useTheme, useMediaQuery } from '@mui/material';
 import Button from '@/components/button';
 import { Colors } from '@/styles/theme';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function Parallax() {
      const theme = useTheme();

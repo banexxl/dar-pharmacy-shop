@@ -8,8 +8,8 @@ export const cartTotalSelector = createSelector([cartSelector], (cartState: ICar
 );
 export const cartTotalPriceSelector = createSelector([cartSelector], (cartState: ICartItem[]) => {
      const total = cartState.reduce((total: number, item: ICartItem) => {
-          const { price, discountAmount, count } = item; // Use `count` instead of `quantity`
-          const discountedPrice = discountAmount ? price - (price * discountAmount) / 100 : price;
+          const { price, discount_amount, count } = item; // Use `count` instead of `quantity`
+          const discountedPrice = discount_amount ? price - (price * discount_amount) / 100 : price;
           const itemTotal = discountedPrice * count;
           return total + itemTotal;
      }, 0);

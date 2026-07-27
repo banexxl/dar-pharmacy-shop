@@ -1,7 +1,7 @@
 import { JSX } from "react";
-import IProduct from "../product/product.interface";
+import Product from "../product/product.interface";
 
-export default interface IWishlistItem extends IProduct {
+export default interface IWishlistItem extends Product {
 
 }
 

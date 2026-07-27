@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 import ProductMeta from "../products/products-meta";
 import useDialogModal from "@/hooks/useDialogModal";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -34,7 +34,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart)
      const dispatch = useDispatch()
      const wishListState = useSelector(wishListSelectorState)
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
      const callCartAlert = () => {
           toast.success("Proizvod je dodat u korpu", {
                position: "top-center",
@@ -62,9 +62,9 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
 
      const localStorage: any = useLocalStorage('persist:root', {})
      const localStorageReducers: any = localStorage[0]
-     const localStorageWishList: IProduct[] = JSON.parse(localStorageReducers.wishListReducer)
-     const wishListProductID = localStorageWishList.find((el: IProduct) => {
-          return el._id == product._id
+     const localStorageWishList: Product[] = JSON.parse(localStorageReducers.wishListReducer)
+     const wishListProductID = localStorageWishList.find((el: Product) => {
+          return el.id == product.id
      })
 
      return (
@@ -97,7 +97,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               <Box
                                    component="img"
                                    className="ProductImageDropdown"
-                                   src={product.imageURL}
+                                   src={product.image_url}
                                    alt="Product"
                                    sx={{
                                         width: '100%',
@@ -109,12 +109,12 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                          </Box>
                          <Box className="ProductDetailInfoWrapper">
                               <ProductMeta product={product} />
-                              <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
+                              <Typography textAlign='center'>Šifra: {product.id.slice(-8)}</Typography>
                               {
-                                   product.availableStock == 0 ?
+                                   product.available_stock == 0 ?
                                         <Typography textAlign='center' sx={{ fontWeight: 'bold' }}>Nema na stanju!</Typography>
                                         :
-                                        <Typography textAlign='center'>Dostupno: {product.availableStock} na stanju</Typography>
+                                        <Typography textAlign='center'>Dostupno: {product.available_stock} na stanju</Typography>
                               }
                               <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                                    Opis
@@ -142,7 +142,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               >
                                    <Button
                                         onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}>
-                                        {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                                        {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                                    </Button>
                                    <Button onClick={showCartDialog} startIcon={<ShoppingCartIcon />} />
                               </Box>
@@ -153,7 +153,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                               >
                                    {!isInWishlist ? (
                                         <FavoriteBorderIcon
-                                             id={`wishlist-icon-${product._id}`}
+                                             id={`wishlist-icon-${product.id}`}
                                              sx={{
                                                   cursor: 'pointer',
                                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -162,7 +162,7 @@ const ProductDetail: FC<IProductDetailProps> = ({ open, onClose, product }) => {
                                         />
                                    ) : (
                                         <FavoriteIcon
-                                             id={`wishlist-icon-${product._id}`}
+                                             id={`wishlist-icon-${product.id}`}
                                              sx={{
                                                   cursor: 'pointer',
                                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },

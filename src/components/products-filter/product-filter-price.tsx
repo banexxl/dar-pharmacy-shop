@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Slider, Typography, Grid, Box, Button } from '@mui/material';
 import { Colors } from '@/styles/theme';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 
 interface PriceFilterProps {
-     products: IProduct[];
+     products: Product[];
      onPriceFilterChange: (minPrice: any, maxPrice: any) => void;
 }
 

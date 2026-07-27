@@ -13,12 +13,12 @@ import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.sli
 import { SocialShare } from "../social/socials-share";
 import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 
 type SingleProductDesktopProps = {
-     product: IProduct;
+     product: Product;
      isScreenToMedium: boolean;
 }
 
@@ -34,7 +34,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
      const dispatch = useDispatch();
      const [showShareOptions, setShowShareOptions] = useState(false);
      const wishListState = useSelector(wishListSelectorState)
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
 
 
      const handleClickOutside = (event: any) => {
@@ -113,7 +113,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
           <Box className="Product" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={domRef}>
                <Box className="FilteredProductImageContainer">
                     <Link rel='canonical' href={'/proizvod/' + product.slug}>
-                         <Box component="img" src={product.imageURL} alt={product.name} className="ProductImage" sx={{
+                         <Box component="img" src={product.image_url} alt={product.name} className="ProductImage" sx={{
                               width: '100%',
                               height: 300,
                               objectFit: 'contain',
@@ -139,7 +139,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                               >
                                    {!isInWishlist ? (
                                         <FavoriteBorderIcon
-                                             id={`wishlist-icon-${product._id}`}
+                                             id={`wishlist-icon-${product.id}`}
                                              sx={{
                                                   cursor: 'pointer',
                                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -149,7 +149,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                                         />
                                    ) : (
                                         <FavoriteIcon
-                                             id={`wishlist-icon-${product._id}`}
+                                             id={`wishlist-icon-${product.id}`}
                                              sx={{
                                                   cursor: 'pointer',
                                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -186,7 +186,7 @@ export default function SingleProductDesktop({ product, isScreenToMedium }: Sing
                               dispatch(addToCart(product));
                          }}
                          sx={{ display: showOptions ? 'flex' : 'none' }}>
-                         {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                         {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                     </Button>
                )}
 

@@ -4,7 +4,7 @@ import { Alert, Box, Button, Tooltip, Typography, useMediaQuery, useTheme, Conta
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import React, { useEffect, useRef, useState } from 'react'
 import Cart from "../cart/cart";
 import { addToCart } from '@/store/cart/cart.slice'
@@ -20,7 +20,7 @@ import toast from 'react-hot-toast';
 import { wishListSelectorState } from '@/store/wishlist/wishlist-selector';
 import { SocialShare } from '../social/socials-share';
 
-function ProductDetails(product: IProduct) {
+function ProductDetails(product: Product) {
 
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"));
@@ -34,7 +34,7 @@ function ProductDetails(product: IProduct) {
      const domRef = useRef<HTMLElement | null>(null)
      const observerRef = useRef<IntersectionObserver | null>(null);
 
-     const mediaItems = (product.mediaURLs ?? []).map(url => ({ type: 'image' as const, src: url, alt: product.name }));
+     const mediaItems = (product.media_urls ?? []).map(url => ({ type: 'image' as const, src: url, alt: product.name }));
 
      useEffect(() => {
           observerRef.current = new IntersectionObserver(
@@ -105,9 +105,9 @@ function ProductDetails(product: IProduct) {
           })
      }
 
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
-     const wishListProductID = wishListState.find((el: IProduct) => el._id === product._id) ?? null;
-     const showSticker = product.discount && product.discountAmount! > 0;
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
+     const wishListProductID = wishListState.find((el: Product) => el.id === product.id) ?? null;
+     const showSticker = product.discount && product.discount_amount! > 0;
 
      const formattedDescription = (product.description ?? '').replace(/([,.])/g, "$1 ");
      const formattedInstructions = (product.instructions ?? '').replace(/([,.])/g, "$1 ");
@@ -127,7 +127,7 @@ function ProductDetails(product: IProduct) {
                          mx: 'auto',
                     }}>
                     <Image
-                         src={product.imageURL}
+                         src={product.image_url}
                          alt="Product image"
                          width={800}
                          height={800}
@@ -158,19 +158,19 @@ function ProductDetails(product: IProduct) {
                               }}
                          >
                               <Typography variant="caption" fontWeight="bold" color={Colors.primary.lighter}>
-                                   -{product.discountAmount}% popusta
+                                   -{product.discount_amount}% popusta
                               </Typography>
                          </Box>
                     )}
                </Box>
                <Box className="ProductDetailInfoWrapper" sx={{ width: '100%', maxWidth: 900, mx: 'auto' }}>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
-                    <Typography textAlign='center'>Šifra: {product._id.slice(-8)}</Typography>
+                    <Typography textAlign='center'>Šifra: {product.id.slice(-8)}</Typography>
                     {
-                         product.availableStock == 0 ?
+                         product.available_stock == 0 ?
                               <Typography textAlign='center' sx={{ fontWeight: 800, color: Colors.error.main }}>Nema na stanju!</Typography>
                               :
-                              <Typography textAlign='center' sx={{ color: Colors.neutral[700] }}>Dostupno: {product.availableStock} na stanju</Typography>
+                              <Typography textAlign='center' sx={{ color: Colors.neutral[700] }}>Dostupno: {product.available_stock} na stanju</Typography>
                     }
                     <Typography variant="h4" sx={{ fontWeight: 700, color: Colors.primary.main, mt: 3, textAlign: 'center' }}>
                          Opis
@@ -200,9 +200,9 @@ function ProductDetails(product: IProduct) {
                               variant="contained"
                               color="primary"
                               onClick={() => { dispatch(addToCart(product)); callCartAlert(); }}
-                              disabled={product.availableStock <= 0}
+                              disabled={product.available_stock <= 0}
                          >
-                              {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                              {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                          </Button>
                          <Button variant="outlined" color="primary" onClick={showCartDialog} startIcon={<ShoppingCartIcon />} >
                               Korpa
@@ -211,7 +211,7 @@ function ProductDetails(product: IProduct) {
                     <Box display="flex" alignItems="center" justifyContent="center" sx={{ m: 4, color: Colors.primary.main, gap: 2 }}>
                          {!isInWishlist ? (
                               <FavoriteBorderIcon
-                                   id={`wishlist-icon-${product._id}`}
+                                   id={`wishlist-icon-${product.id}`}
                                    sx={{
                                         cursor: 'pointer',
                                         fontSize: 28,
@@ -221,7 +221,7 @@ function ProductDetails(product: IProduct) {
                               />
                          ) : (
                               <FavoriteIcon
-                                   id={`wishlist-icon-${product._id}`}
+                                   id={`wishlist-icon-${product.id}`}
                                    sx={{
                                         cursor: 'pointer',
                                         fontSize: 28,

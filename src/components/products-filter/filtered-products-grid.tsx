@@ -6,7 +6,7 @@ import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Colors } from '@/styles/theme';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, MenuItem, Select, Switch, RadioGroup, Radio, FormControl, FormLabel } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import SortIcon from '@mui/icons-material/Sort';
@@ -15,7 +15,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import ProductsAllCategories from './products-categories';
 
 type FilteredProductsGridProps = {
-  data: IProduct[];
+  data: Product[];
   onShowNext: () => void;
   onShowPrevious: () => void;
   currentPage: number;
@@ -88,7 +88,7 @@ export default function FilteredProductsGrid({
           </Box>
         ) : (
           data.map((product) => (
-            <Grid key={product._id} size={{ xs: 12, sm: 6, md: 4 }} display="flex" flexDirection={'column'} alignItems="center">
+            <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }} display="flex" flexDirection={'column'} alignItems="center">
               <ProductCard product={product} />
             </Grid>
           ))

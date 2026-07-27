@@ -10,7 +10,7 @@ import { ReCaptcha } from 'next-recaptcha-v3';
 import { clearCart } from '@/store/cart/cart.slice';
 import { clearUserForm } from '@/store/checkout/user-info-form.slice';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/lib/auth/hooks';
 import toast from 'react-hot-toast';
 import { ConfirmationData, Order, PaymentMethod } from '@/schemas/order';
 import ICartItem from '@/interfaces/cart/cart.interface';
@@ -26,7 +26,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
      const [paymentOption, setPaymentOption] = useState<PaymentMethod>('cash-on-delivery')
      const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
      const [loading, setLoading] = useState<boolean>(false)
-     const session = useSession()
+     const { isAuthenticated } = useAuth()
      const router = useRouter()
      const [totalItemPriceState, setTotalItemPriceState] = useState<number>(useSelector(cartTotalPriceSelector))
      const [userFormSelectorState, setUserFormSelectorState] = useState(useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
@@ -113,7 +113,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                         <Link rel='canonical' href='http://www.postexpress.rs/struktura/lat/cenovnik/cenovnik-unutrasnji-saobracaj.asp' target='_blank'>OVDE!</Link>
                                    </Typography>
                                    {
-                                        session.status === 'unauthenticated' && (
+                                        !isAuthenticated && (
                                              <Box>
                                                   <Typography variant="body1" sx={{ textAlign: 'left', mb: '20px' }}>
                                                        Ako ste uneli validan email, biće vam poslat email sa potvrdom porudžbenice.
@@ -154,25 +154,25 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                             Promise.all([
                                                                  SendCheckoutConfirmationEmailToAdmin({
                                                                       email: 'maja@apoteka-dar.rs',
-                                                                      customerEmail: userFormSelectorState.email.toLowerCase(),
+                                                                      customer_email: userFormSelectorState.email.toLowerCase(),
                                                                       subject: 'Porudžbenica',
-                                                                      name: userFormSelectorState.name,
+                                                                      name: userFormSelectorState.full_name,
                                                                       title: 'Potvrda porudžbenice',
-                                                                      streetAddress: userFormSelectorState.streetAddress,
+                                                                      street_address: userFormSelectorState.street_address,
                                                                       city: userFormSelectorState.city,
                                                                       country: userFormSelectorState.country,
-                                                                      phoneNumber: userFormSelectorState.phoneNumber,
+                                                                      phone_number: userFormSelectorState.phone_number,
                                                                       order: order
                                                                  }),
                                                                  SendCheckoutConfirmationEmailToUser({
                                                                       email: userFormSelectorState.email.toLowerCase(),
                                                                       subject: 'Porudžbenica',
-                                                                      name: userFormSelectorState.name,
+                                                                      name: userFormSelectorState.full_name,
                                                                       title: 'Potvrda porudžbenice',
-                                                                      streetAddress: userFormSelectorState.streetAddress,
+                                                                      street_address: userFormSelectorState.street_address,
                                                                       city: userFormSelectorState.city,
                                                                       country: userFormSelectorState.country,
-                                                                      phoneNumber: userFormSelectorState.phoneNumber,
+                                                                      phone_number: userFormSelectorState.phone_number,
                                                                       order: order
                                                                  })
                                                             ])
@@ -181,20 +181,15 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                            const confirmationData: ConfirmationData = {
                                                                                 userForm: userFormSelectorState,
                                                                                 order: {
-                                                                                     orderNumber: order?.orderNumber,
-                                                                                     authorizationCode: '/',
-                                                                                     paymentStatus: order?.paymentStatus,
-                                                                                     statusCode: '00',
-                                                                                     transactionNumber: 'Plaćanje pouzećem',
-                                                                                     transactionDate: new Date(),
+                                                                                     order_number: order?.order_number,
+                                                                                     payment_status: order?.payment_status,
+                                                                                     transaction_number: 'Plaćanje pouzećem',
                                                                                      total: totalItemPriceState,
-                                                                                     referenceId: 'Plaćanje pouzećem',
-                                                                                     createdAt: new Date(),
+                                                                                     created_at: new Date().toISOString(),
                                                                                      customer: userFormSelectorState,
                                                                                      items: cart,
-                                                                                     paymentMethod: paymentOption,
-                                                                                     orderStatus: 'pending',
-                                                                                     logs: []
+                                                                                     payment_method: paymentOption,
+                                                                                     order_status: 'pending',
                                                                                 },
                                                                                 deliveryDate: '3-5 radnih dana',
                                                                            };

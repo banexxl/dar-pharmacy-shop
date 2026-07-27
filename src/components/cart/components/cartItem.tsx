@@ -15,11 +15,11 @@ const CartItem = (props: ICartItem & { onClose?: () => void }) => {
 
      return (
           <>
-               <TableRow key={props._id} className="StyledProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
+               <TableRow key={props.id} className="StyledProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
                     {/* Product Image */}
                     <TableCell component="th" scope="row" className="StyledProductCell" sx={{ width: { xs: 72, md: 88 } }}>
                          <Link rel='canonical' href={`/proizvod/${props.slug}`} onClick={props.onClose}>
-                              <Box component="img" src={props.imageURL} className="CartProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
+                              <Box component="img" src={props.image_url} className="CartProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
                          </Link>
                     </TableCell>
 
@@ -33,20 +33,20 @@ const CartItem = (props: ICartItem & { onClose?: () => void }) => {
                     {/* Quantity and Unit */}
                     <TableCell className="StyledProductCell">
                          <Typography className="StyledProductName">
-                              {props.quantity} {props.quantityUnit}
+                              {props.quantity} {props.quantity_unit}
                          </Typography>
                     </TableCell>
 
                     {/* Product ID (last 8 characters) */}
                     <TableCell className="StyledProductCell">
                          <Typography className="StyledProductName">
-                              {props._id.toString().slice(-8).toUpperCase()}
+                              {props.id.toString().slice(-8).toUpperCase()}
                          </Typography>
                     </TableCell>
 
                     {/* Product Counter */}
                     <TableCell className="StyledProductCell">
-                         <Counter _id={props._id} count={props.count}>
+                         <Counter id={props.id} count={props.count}>
                               {props.count}
                          </Counter>
                     </TableCell>
@@ -59,10 +59,10 @@ const CartItem = (props: ICartItem & { onClose?: () => void }) => {
                     </TableCell>
 
                     {/* Discount Percentage and Discounted Price */}
-                    {props.discount && props.discountAmount! > 0 ? (
+                    {props.discount && props.discount_amount! > 0 ? (
                          <TableCell className="StyledProductCell">
                               <Typography className="StyledProductName" sx={{ color: Colors.primary.main, fontWeight: 'bold' }}>
-                                   (-{props.discountAmount}%) {((props.price - (props.price * (props.discountAmount! / 100))) * props.count).toFixed(2)} RSD
+                                   (-{props.discount_amount}%) {((props.price - (props.price * (props.discount_amount! / 100))) * props.count).toFixed(2)} RSD
                               </Typography>
                          </TableCell>
                     ) : (
@@ -80,7 +80,7 @@ const CartItem = (props: ICartItem & { onClose?: () => void }) => {
                               sx={{ backgroundColor: 'transparent' }}
                               onClick={() => {
                                    toast.success("Proizvod je uklonjen iz korpe", { position: "top-center", duration: 1500 })
-                                   dispatch(removeAllSingleItems(props._id))
+                                   dispatch(removeAllSingleItems(props.id))
                               }}
                          >
                               <DeleteIcon />

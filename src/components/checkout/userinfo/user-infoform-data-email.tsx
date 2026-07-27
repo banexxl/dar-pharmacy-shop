@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 import { Grid, TextField, FormControlLabel, Typography, Tooltip } from '@mui/material';
 import { useFormikContext, Field } from 'formik';
 import { IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/lib/auth/hooks';
 import theme from '@/styles/theme';
 import { Checkbox } from '@mui/material';
 
 const EmailAndAccountCreation: React.FC = () => {
 
      const { values, errors, touched, handleChange, setFieldValue, validateField } = useFormikContext<IUserForm>();
-     const { data: session } = useSession();
+     const { user } = useAuth();
 
-     // Set the email value from the session if it exists
+     // Set the email value from the auth user if it exists
      useEffect(() => {
-          if (session?.user?.email && values.email !== session.user.email) {
-               setFieldValue('email', session.user.email);
+          if (user?.email && values.email !== user.email) {
+               setFieldValue('email', user.email);
           }
-     }, [session, values.email, setFieldValue]);
+     }, [user, values.email, setFieldValue]);
 
      // Function to handle the email change and validation
      const handleEmailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -26,7 +26,7 @@ const EmailAndAccountCreation: React.FC = () => {
           if (fieldName === 'email') {
                validateField('email').then(() => {
                     if (errors.email && fieldValue !== '') {
-                         setFieldValue('shouldCreateAccount', false);
+                         setFieldValue('should_create_account', false);
                     }
                });
           }
@@ -38,7 +38,7 @@ const EmailAndAccountCreation: React.FC = () => {
                     <Field
                          as={TextField}
                          value={values.email.toLowerCase()}
-                         disabled={!!session?.user?.email}
+                         disabled={!!user?.email}
                          label="Email"
                          name="email"
                          variant="outlined"
@@ -50,8 +50,8 @@ const EmailAndAccountCreation: React.FC = () => {
                     />
                </Grid>
 
-               {/* Only show the checkbox if the session is not present */}
-               {!session?.user?.email && (
+               {/* Only show the checkbox if the user is not authenticated */}
+               {!user?.email && (
                     <Grid size={{ xs: 12, sm: 6 }} sx={{ minWidth: 0 }}>
                          <Tooltip title={errors.email ? errors.email : ''} >
                               <FormControlLabel
@@ -66,9 +66,9 @@ const EmailAndAccountCreation: React.FC = () => {
                                    }}
                                    control={
                                         <Checkbox
-                                             checked={!!errors.email ? false : values.shouldCreateAccount}
+                                             checked={!!errors.email ? false : values.should_create_account}
                                              onChange={handleChange}
-                                             name="shouldCreateAccount"
+                                             name="should_create_account"
                                              sx={{
                                                   '& .MuiSvgIcon-root': {
                                                        color: errors.email ? theme.palette.grey[400] : theme.palette.primary.main,

@@ -1,15 +1,14 @@
-import { Order } from "@/schemas/order"
-import ICartItem from "../cart/cart.interface"
+import { Order } from '@/schemas/order';
 
 export interface EmailData {
-     email: string,
-     customerEmail?: string,
-     subject: string,
-     name?: string,
-     title?: string
-     streetAddress?: string,
-     city?: string,
-     country?: string,
-     phoneNumber?: string
-     order: Order
+     email: string;
+     customer_email?: string;
+     subject: string;
+     name?: string;
+     title?: string;
+     street_address?: string;
+     city?: string;
+     country?: string;
+     phone_number?: string;
+     order: Order;
 }

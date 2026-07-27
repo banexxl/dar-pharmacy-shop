@@ -3,54 +3,57 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: ICartItem[] = [];
 
+/**
+ * Helper to get the product identifier.
+ * Supports both new `id` (Supabase) and legacy `id` (MongoDB persisted carts).
+ */
+function getItemId(item: any): string {
+     return item.id || item.id;
+}
+
 const cartSlice = createSlice({
      name: "cart",
      initialState,
      reducers: {
           addToCart(state, { payload }) {
-               const { _id } = payload;
-               const existingItem = state.find((item: ICartItem) => item._id === _id);
+               const itemId = getItemId(payload);
+               const existingItem = state.find((item: ICartItem) => getItemId(item) === itemId);
 
                if (existingItem) {
-                    // Use .map() to create a new state array with updated item
                     return state.map((item: ICartItem) =>
-                         item._id === _id
+                         getItemId(item) === itemId
                               ? { ...item, count: item.count + 1 }
                               : item
                     );
                } else {
-                    // Return a new array with the new item added
                     return [
                          ...state,
                          {
                               ...payload,
+                              id: itemId, // Normalize to `id`
                               count: 1,
                          },
                     ];
                }
           },
           increment(state, { payload }) {
-               // Use .map() to create a new state array with incremented count
                return state.map((item: ICartItem) =>
-                    item._id === payload
+                    getItemId(item) === payload
                          ? { ...item, count: item.count + 1 }
                          : item
                );
           },
           decrement(state, { payload }) {
-               // Use .map() to create a new state array with decremented count
                return state.map((item: ICartItem) =>
-                    item._id === payload
+                    getItemId(item) === payload
                          ? { ...item, count: item.count - 1 }
                          : item
                );
           },
           removeAllSingleItems(state, { payload }) {
-               // Use .filter() to create a new state array without the removed item
-               return state.filter((item: ICartItem) => item._id !== payload);
+               return state.filter((item: ICartItem) => getItemId(item) !== payload);
           },
           clearCart() {
-               // Return a new empty array to clear the cart
                return [];
           },
      },

@@ -13,7 +13,7 @@ import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.sli
 import theme, { Colors } from "@/styles/theme";
 import Link from "next/link";
 import { SocialShare } from "../social/socials-share";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 
@@ -40,7 +40,7 @@ function useIsInViewport(ref: any) {
 }
 
 type SingleProductMobileProps = {
-     product: IProduct;
+     product: Product;
      isScreenToMedium: boolean;
 }
 
@@ -50,7 +50,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
      const [showOptions, setShowOptions] = useState(false);
      const [openShareOption, setOpenShareOptions] = useState<boolean>(false);
      const wishListState = useSelector(wishListSelectorState)
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
 
 
      const productRef = useRef<HTMLElement | null>(null)
@@ -99,7 +99,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                <Box className="Product" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={productRef}>
                     <Box className="FilteredProductImageContainer">
                          <Link rel='canonical' href={'/proizvod/' + product.slug}>
-                              <Box component="img" src={product.imageURL} alt={product.name} className="ProductImage" />
+                              <Box component="img" src={product.image_url} alt={product.name} className="ProductImage" />
                          </Link>
                     </Box>
                     <ProductMeta product={product} isScreenToMedium={isScreenToMedium} />
@@ -117,7 +117,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                               >
                                    {!isInWishlist ? (
                                         <FavoriteBorderIcon
-                                             id={`wishlist-icon-${product._id}`}
+                                             id={`wishlist-icon-${product.id}`}
                                              sx={{
                                                   cursor: 'pointer',
                                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -126,7 +126,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                                         />
                                    ) : (
                                         <FavoriteIcon
-                                             id={`wishlist-icon-${product._id}`}
+                                             id={`wishlist-icon-${product.id}`}
                                              sx={{
                                                   cursor: 'pointer',
                                                   ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -151,7 +151,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                          < SocialShare shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug} flexDirection="column" />
                     )}
                     {
-                         product.availableStock > 0 ?
+                         product.available_stock > 0 ?
                               (
                                    <Button
                                         className="MobileAddToCart"
@@ -159,7 +159,7 @@ export default function SingleProductMobile({ product, isScreenToMedium }: Singl
                                         variant="contained"
                                         fullWidth
                                    >
-                                        {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                                        {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                                    </Button>
                               )
                               :

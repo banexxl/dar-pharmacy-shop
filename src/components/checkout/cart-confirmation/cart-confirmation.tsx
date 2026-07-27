@@ -61,15 +61,15 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     >
                          {cart.map((cartItem: ICartItem) => {
                               const baseTotal = (cartItem.count * cartItem.price).toFixed(2)
-                              const hasDiscount = cartItem.discount && (cartItem.discountAmount ?? 0) > 0
+                              const hasDiscount = cartItem.discount && (cartItem.discount_amount ?? 0) > 0
                               const discountedTotal = (
-                                   (cartItem.price - cartItem.price * ((cartItem.discountAmount ?? 0) / 100)) *
+                                   (cartItem.price - cartItem.price * ((cartItem.discount_amount ?? 0) / 100)) *
                                    cartItem.count
                               ).toFixed(2)
 
                               return (
                                    <Box
-                                        key={cartItem._id}
+                                        key={cartItem.id}
                                         sx={{
                                              border: `1px solid ${Colors.primary.light}`,
                                              borderRadius: 2,
@@ -81,7 +81,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                              <Link rel='canonical' href={`/proizvod/${cartItem.slug}`}>
                                                   <Box
                                                        component='img'
-                                                       src={cartItem.imageURL}
+                                                       src={cartItem.image_url}
                                                        alt={cartItem.name}
                                                        sx={{
                                                             width: 64,
@@ -110,7 +110,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                             mt: 0.25,
                                                        }}
                                                   >
-                                                       Kod: {cartItem._id.toString().slice(-8).toUpperCase()}
+                                                       Kod: {cartItem.id.toString().slice(-8).toUpperCase()}
                                                   </Typography>
                                              </Box>
 
@@ -120,7 +120,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                             position: 'top-center',
                                                             duration: 1500,
                                                        })
-                                                       dispatch(removeAllSingleItems(cartItem._id))
+                                                       dispatch(removeAllSingleItems(cartItem.id))
                                                   }}
                                                   sx={{ color: Colors.primary.main }}
                                              >
@@ -142,7 +142,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                        Pakovanje
                                                   </Typography>
                                                   <Typography sx={{ color: Colors.primary.main, fontSize: '0.82rem', fontWeight: 600 }}>
-                                                       {cartItem.quantity} {cartItem.quantityUnit}
+                                                       {cartItem.quantity} {cartItem.quantity_unit}
                                                   </Typography>
                                              </Box>
 
@@ -150,7 +150,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                   <Typography sx={{ color: Colors.primary.dark, fontSize: '0.82rem' }}>
                                                        Količina
                                                   </Typography>
-                                                  <Counter _id={cartItem._id} count={cartItem.count}>
+                                                  <Counter id={cartItem.id} count={cartItem.count}>
                                                        {cartItem.count}
                                                   </Counter>
                                              </Box>
@@ -176,7 +176,7 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                                                        }}
                                                   >
                                                        {hasDiscount
-                                                            ? `(-${cartItem.discountAmount}%) ${discountedTotal} RSD`
+                                                            ? `(-${cartItem.discount_amount}%) ${discountedTotal} RSD`
                                                             : `${baseTotal} RSD`}
                                                   </Typography>
                                              </Box>
@@ -207,13 +207,13 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                               </TableHead>
                               <TableBody className="StyledTableBody">
                                    {cart.map((cartItem: ICartItem) => (
-                                        <CartItem discount={cartItem.discount} key={cartItem._id} count={cartItem.count} _id={cartItem._id}
-                                             name={cartItem.name} description={cartItem.description} category={cartItem.category}
-                                             availableStock={cartItem.availableStock} ingredients={cartItem.ingredients}
-                                             discountAmount={cartItem.discountAmount}
+                                        <CartItem discount={cartItem.discount} key={cartItem.id} count={cartItem.count} id={cartItem.id}
+                                             name={cartItem.name} description={cartItem.description} main_category={cartItem.main_category}
+                                             available_stock={cartItem.available_stock} ingredients={cartItem.ingredients}
+                                             discount_amount={cartItem.discount_amount}
                                              instructions={cartItem.instructions} quantity={cartItem.quantity}
-                                             warning={cartItem.warning} imageURL={cartItem.imageURL} price={cartItem.price}
-                                             quantityUnit={cartItem.quantityUnit} mediaURLs={[]} slug={cartItem.slug} />
+                                             warning={cartItem.warning} image_url={cartItem.image_url} price={cartItem.price}
+                                             quantity_unit={cartItem.quantity_unit} media_urls={[]} slug={cartItem.slug} mid_category={cartItem.mid_category ? cartItem.mid_category : ''} sub_category={null} manufacturer_id={null} new_arrival={false} best_seller={false} is_active={false} promoting={false} promotion_text={null} display_on_home={false} created_at={''} updated_at={''} />
                                    ))}
                               </TableBody>
                          </Table>

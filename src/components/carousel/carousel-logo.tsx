@@ -1,4 +1,4 @@
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { CarouselManufacturerImage } from './carousel-image-loader';
 import { Box, Tooltip, Typography, useMediaQuery } from '@mui/material';
@@ -9,7 +9,7 @@ import { useTheme } from "@mui/system"
 import { Colors } from '@/styles/theme';
 
 type CarouselProps = {
-     products?: IProduct[];
+     products?: Product[];
      manufacturers?: { url: string, name: string, value: string }[];
 }
 const CarouselLogo = (props: CarouselProps) => {
@@ -62,8 +62,8 @@ const CarouselLogo = (props: CarouselProps) => {
                                    </Box>
                               ))
                               :
-                              props.products?.map((product: IProduct) => (
-                                   <Box className="CarouselImgBox" key={product._id} sx={{ px: 1 }}>
+                              props.products?.map((product: Product) => (
+                                   <Box className="CarouselImgBox" key={product.id} sx={{ px: 1 }}>
                                         <ProductCard product={product} showDescription={false} compact />
                                    </Box>
                               ))

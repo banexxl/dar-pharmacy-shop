@@ -1,10 +1,10 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import ProductCard from '@/components/product-card/product-card';
 
-type Props = { products: IProduct[] };
+type Props = { products: Product[] };
 
 const CarouselPresentationContainer = ({ products }: Props) => {
   const theme = useTheme();
@@ -29,7 +29,7 @@ const CarouselPresentationContainer = ({ products }: Props) => {
         transitionDuration={500}
       >
         {products.map((product) => (
-          <Box key={product._id} sx={{ px: 1 }}>
+          <Box key={product.id} sx={{ px: 1 }}>
             <ProductCard product={product} showDescription={false} compact />
           </Box>
         ))}

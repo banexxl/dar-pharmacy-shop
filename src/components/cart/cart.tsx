@@ -94,16 +94,16 @@ export default function Cart({ open, onClose }: ICartProps) {
                                         >
                                              {cart.map((cartItem: ICartItem) => {
                                                   const baseTotal = (cartItem.count * cartItem.price).toFixed(2);
-                                                  const hasDiscount = cartItem.discount && (cartItem.discountAmount ?? 0) > 0;
+                                                  const hasDiscount = cartItem.discount && (cartItem.discount_amount ?? 0) > 0;
                                                   const discountedTotal = (
                                                        (cartItem.price -
-                                                            cartItem.price * ((cartItem.discountAmount ?? 0) / 100)) *
+                                                            cartItem.price * ((cartItem.discount_amount ?? 0) / 100)) *
                                                        cartItem.count
                                                   ).toFixed(2);
 
                                                   return (
                                                        <Box
-                                                            key={cartItem._id}
+                                                            key={cartItem.id}
                                                             sx={{
                                                                  border: `1px solid ${Colors.primary.light}`,
                                                                  borderRadius: 2,
@@ -119,7 +119,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                  >
                                                                       <Box
                                                                            component="img"
-                                                                           src={cartItem.imageURL}
+                                                                           src={cartItem.image_url}
                                                                            alt={cartItem.name}
                                                                            sx={{
                                                                                 width: 64,
@@ -148,7 +148,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                                 mt: 0.25,
                                                                            }}
                                                                       >
-                                                                           Kod: {cartItem._id.toString().slice(-8).toUpperCase()}
+                                                                           Kod: {cartItem.id.toString().slice(-8).toUpperCase()}
                                                                       </Typography>
                                                                  </Box>
 
@@ -158,7 +158,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                                 position: "top-center",
                                                                                 duration: 1500,
                                                                            });
-                                                                           dispatch(removeAllSingleItems(cartItem._id));
+                                                                           dispatch(removeAllSingleItems(cartItem.id));
                                                                       }}
                                                                       sx={{ color: Colors.primary.main }}
                                                                  >
@@ -180,7 +180,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                            Pakovanje
                                                                       </Typography>
                                                                       <Typography sx={{ color: Colors.primary.main, fontSize: "0.82rem", fontWeight: 600 }}>
-                                                                           {cartItem.quantity} {cartItem.quantityUnit}
+                                                                           {cartItem.quantity} {cartItem.quantity_unit}
                                                                       </Typography>
                                                                  </Box>
 
@@ -188,7 +188,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                       <Typography sx={{ color: Colors.primary.dark, fontSize: "0.82rem" }}>
                                                                            Količina
                                                                       </Typography>
-                                                                      <Counter _id={cartItem._id} count={cartItem.count}>
+                                                                      <Counter id={cartItem.id} count={cartItem.count}>
                                                                            {cartItem.count}
                                                                       </Counter>
                                                                  </Box>
@@ -216,7 +216,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                                            }}
                                                                       >
                                                                            {hasDiscount
-                                                                                ? `(-${cartItem.discountAmount}%) ${discountedTotal} RSD`
+                                                                                ? `(-${cartItem.discount_amount}%) ${discountedTotal} RSD`
                                                                                 : `${baseTotal} RSD`}
                                                                       </Typography>
                                                                  </Box>
@@ -247,7 +247,7 @@ export default function Cart({ open, onClose }: ICartProps) {
                                                   </TableHead>
                                                   <TableBody>
                                                        {cart.map((cartItem: ICartItem) => (
-                                                            <CartItem key={cartItem._id} {...cartItem} onClose={() => onClose()} />
+                                                            <CartItem key={cartItem.id} {...cartItem} onClose={() => onClose()} />
                                                        ))}
                                                   </TableBody>
                                              </Table>

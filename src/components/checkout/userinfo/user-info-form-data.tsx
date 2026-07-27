@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Button, Container, Grid, TextField, Tooltip, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/lib/auth/hooks';
 import { ThemeProvider } from '@mui/system';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
@@ -21,28 +21,26 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
      const [CartDialog] = useDialogModal(Cart);
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const userFormSelector = useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer);
-     const session = useSession();
+     const { isAuthenticated } = useAuth();
      const dispatch = useDispatch();
 
      const initialUserFormValues: IUserForm = {
-          name: userFormSelector.name,
-          streetAddress: userFormSelector.streetAddress,
-          phoneNumber: userFormSelector.phoneNumber,
-          city: userFormSelector.city,
-          provinceState: userFormSelector.provinceState,
-          country: userFormSelector.country,
-          zipPostalCode: userFormSelector.zipPostalCode,
-          image: userFormSelector.image,
-          email: userFormSelector.email,
-          shouldCreateAccount: false,
-          emailVerified: null
+          full_name: userFormSelector.full_name || userFormSelector.name || '',
+          street_address: userFormSelector.street_address || userFormSelector.street_address || '',
+          phone_number: userFormSelector.phone_number || userFormSelector.phone_number || '',
+          city: userFormSelector.city || '',
+          province_state: userFormSelector.province_state || userFormSelector.province_state || '',
+          country: userFormSelector.country || '',
+          zip_postal_code: userFormSelector.zip_postal_code || userFormSelector.zip_postal_code || '',
+          email: userFormSelector.email || '',
+          should_create_account: false,
      };
 
      const handleSubmit = (values: any) => {
           dispatch(submitUserForm(values));
           props.tabIndex === 0 ? props.setTab?.(1) : null;
 
-          if (values.shouldCreateAccount) {
+          if (values.should_create_account) {
                try {
                     fetch('/api/register', {
                          method: 'POST',
@@ -94,13 +92,13 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              <Field
                                                   as={TextField}
                                                   label="Ime i prezime"
-                                                  name="name"
-                                                  value={formik.values.name}
-                                                  onChange={formik.handleChange('name')}
-                                                  onBlur={() => formik.setFieldTouched('name', true)}
+                                                  name="full_name"
+                                                  value={formik.values.full_name}
+                                                  onChange={formik.handleChange('full_name')}
+                                                  onBlur={() => formik.setFieldTouched('full_name', true)}
                                                   variant="outlined"
-                                                  error={formik.touched.name && !!formik.errors.name}
-                                                  helperText={formik.touched.name && formik.errors.name}
+                                                  error={formik.touched.full_name && !!formik.errors.full_name}
+                                                  helperText={formik.touched.full_name && formik.errors.full_name}
                                                   fullWidth
                                              />
                                         </Grid>
@@ -109,13 +107,13 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              <Field
                                                   as={TextField}
                                                   label="Broj telefona"
-                                                  name="phoneNumber"
-                                                  value={formik.values.phoneNumber}
-                                                  onChange={formik.handleChange('phoneNumber')}
-                                                  onBlur={() => formik.setFieldTouched('phoneNumber', true)}
+                                                  name="phone_number"
+                                                  value={formik.values.phone_number}
+                                                  onChange={formik.handleChange('phone_number')}
+                                                  onBlur={() => formik.setFieldTouched('phone_number', true)}
                                                   variant="outlined"
-                                                  error={formik.touched.phoneNumber && !!formik.errors.phoneNumber}
-                                                  helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
+                                                  error={formik.touched.phone_number && !!formik.errors.phone_number}
+                                                  helperText={formik.touched.phone_number && formik.errors.phone_number}
                                                   fullWidth
                                              />
                                         </Grid>
@@ -124,13 +122,13 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              <Field
                                                   as={TextField}
                                                   label="Adresa"
-                                                  name="streetAddress"
-                                                  value={formik.values.streetAddress}
-                                                  onChange={formik.handleChange('streetAddress')}
-                                                  onBlur={() => formik.setFieldTouched('streetAddress', true)}
+                                                  name="street_address"
+                                                  value={formik.values.street_address}
+                                                  onChange={formik.handleChange('street_address')}
+                                                  onBlur={() => formik.setFieldTouched('street_address', true)}
                                                   variant="outlined"
-                                                  error={formik.touched.streetAddress && !!formik.errors.streetAddress}
-                                                  helperText={formik.touched.streetAddress && formik.errors.streetAddress}
+                                                  error={formik.touched.street_address && !!formik.errors.street_address}
+                                                  helperText={formik.touched.street_address && formik.errors.street_address}
                                                   fullWidth
                                              />
                                         </Grid>
@@ -154,13 +152,13 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              <Field
                                                   as={TextField}
                                                   label="Region"
-                                                  name="provinceState"
-                                                  value={formik.values.provinceState}
-                                                  onChange={formik.handleChange('provinceState')}
-                                                  onBlur={() => formik.setFieldTouched('provinceState', true)}
+                                                  name="province_state"
+                                                  value={formik.values.province_state}
+                                                  onChange={formik.handleChange('province_state')}
+                                                  onBlur={() => formik.setFieldTouched('province_state', true)}
                                                   variant="outlined"
-                                                  error={formik.touched.provinceState && !!formik.errors.provinceState}
-                                                  helperText={formik.touched.provinceState && formik.errors.provinceState}
+                                                  error={formik.touched.province_state && !!formik.errors.province_state}
+                                                  helperText={formik.touched.province_state && formik.errors.province_state}
                                                   fullWidth
                                              />
                                         </Grid>
@@ -184,13 +182,13 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                              <Field
                                                   as={TextField}
                                                   label="Poštanski broj"
-                                                  name="zipPostalCode"
-                                                  value={formik.values.zipPostalCode}
-                                                  onChange={formik.handleChange('zipPostalCode')}
-                                                  onBlur={() => formik.setFieldTouched('zipPostalCode', true)}
+                                                  name="zip_postal_code"
+                                                  value={formik.values.zip_postal_code}
+                                                  onChange={formik.handleChange('zip_postal_code')}
+                                                  onBlur={() => formik.setFieldTouched('zip_postal_code', true)}
                                                   variant="outlined"
-                                                  error={formik.touched.zipPostalCode && !!formik.errors.zipPostalCode}
-                                                  helperText={formik.touched.zipPostalCode && formik.errors.zipPostalCode}
+                                                  error={formik.touched.zip_postal_code && !!formik.errors.zip_postal_code}
+                                                  helperText={formik.touched.zip_postal_code && formik.errors.zip_postal_code}
                                                   fullWidth
                                              />
                                         </Grid>
@@ -232,7 +230,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                                  disabled={
                                                                       cart.length === 0 ||
                                                                       (
-                                                                           session.status === 'authenticated'
+                                                                           isAuthenticated
                                                                                 ? Object.keys(formik.errors).some(
                                                                                      (key) =>
                                                                                           key !== 'email' &&

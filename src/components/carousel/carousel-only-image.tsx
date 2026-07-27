@@ -1,4 +1,4 @@
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import ProductCard from '@/components/product-card/product-card';
@@ -8,7 +8,7 @@ import { useTheme } from "@mui/system"
 import { Colors } from '@/styles/theme';
 
 type CarouselProps = {
-     products?: IProduct[];
+     products?: Product[];
      manufacturers?: { url: string, name: string, value: string }[];
 }
 const CarouselOnlyImageProduct = (props: CarouselProps) => {
@@ -63,8 +63,8 @@ const CarouselOnlyImageProduct = (props: CarouselProps) => {
                     removeArrowOnDeviceType={["tablet", "mobile"]}
                     dotListClass="custom-dot-list-style"
                >
-                    {props.products?.map((product: IProduct) => (
-                         <Box className="CarouselOnlyImgBox" key={product._id} sx={{ px: 1 }}>
+                    {props.products?.map((product: Product) => (
+                         <Box className="CarouselOnlyImgBox" key={product.id} sx={{ px: 1 }}>
                               <ProductCard product={product} showDescription={false} showManufacturer={false} compact />
                          </Box>
                     ))}

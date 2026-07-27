@@ -62,14 +62,22 @@ export default function WishList({ open, onClose }: any) {
                                    </TableHead>
                                    <TableBody className="WishlistTableBody">
                                         {wishlist.map((wishListItem: IWishlistItem) => (
-                                             <WishlistItem discount={wishListItem.discount} key={wishListItem._id} _id={wishListItem._id}
-                                                  name={wishListItem.name} description={wishListItem.description} category={wishListItem.category}
-                                                  availableStock={wishListItem.availableStock} ingredients={wishListItem.ingredients}
+                                             <WishlistItem discount={wishListItem.discount} key={wishListItem.id} id={wishListItem.id}
+                                                  name={wishListItem.name} description={wishListItem.description} main_category={wishListItem.main_category}
+                                                  available_stock={wishListItem.available_stock} ingredients={wishListItem.ingredients}
                                                   instructions={wishListItem.instructions} quantity={wishListItem.quantity}
-                                                  warning={wishListItem.warning} imageURL={wishListItem.imageURL}
-                                                  price={wishListItem.price} quantityUnit={wishListItem.quantityUnit}
-                                                  mediaURLs={[]} slug={wishListItem.slug} discountAmount={wishListItem.discountAmount}
-                                                  promotionText={wishListItem.promotionText} manufacturer={wishListItem.manufacturer} onClose={onClose} />
+                                                  warning={wishListItem.warning} image_url={wishListItem.image_url}
+                                                  price={wishListItem.price} quantity_unit={wishListItem.quantity_unit}
+                                                  media_urls={[]} slug={wishListItem.slug} discount_amount={wishListItem.discount_amount}
+                                                  promotion_text={wishListItem.promotion_text} manufacturer={wishListItem.manufacturer} onClose={onClose}
+                                                  mid_category={wishListItem.mid_category} sub_category={wishListItem.sub_category}
+                                                  manufacturer_id={wishListItem.manufacturer_id}
+                                                  new_arrival={false}
+                                                  best_seller={false}
+                                                  is_active={false}
+                                                  promoting={false}
+                                                  display_on_home={false}
+                                                  created_at={""} updated_at={""} />
                                         ))}
                                    </TableBody>
                               </Table>

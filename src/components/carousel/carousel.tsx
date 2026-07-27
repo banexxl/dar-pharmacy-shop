@@ -1,4 +1,4 @@
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
@@ -43,8 +43,8 @@ const ProductCarousel = (props: any) => {
                     containerClass=""
                     itemClass=""
                >
-                    {props.products.map((product: IProduct) => (
-                         <Box key={product._id} sx={{ px: 1 }}>
+                    {props.products.map((product: Product) => (
+                         <Box key={product.id} sx={{ px: 1 }}>
                               <ProductCard product={product} showDescription={false} compact />
                          </Box>
                     ))}

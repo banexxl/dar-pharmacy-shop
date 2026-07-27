@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { Colors } from "@/styles/theme";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 
 type ProductMetaProps = {
-     product: IProduct;
+     product: Product;
      isScreenToMedium?: boolean;
 }
 
@@ -40,7 +40,7 @@ export default function ProductMeta({ product, isScreenToMedium }: ProductMetaPr
                                         </Typography>
                                    </Typography>
                                    <Typography variant={isScreenToMedium ? 'h6' : 'h5'} sx={{ color: Colors.primary.dark, fontWeight: 800 }}>
-                                        {calculateDiscountedPrice(product.price, product.discountAmount)} RSD
+                                        {calculateDiscountedPrice(product.price, product.discount_amount ? product.discount_amount : 0)} RSD
                                    </Typography>
                               </Box>
                          ) : (
@@ -51,7 +51,7 @@ export default function ProductMeta({ product, isScreenToMedium }: ProductMetaPr
                     }
                </Box>
                <Typography variant='body2' textAlign='center' sx={{ color: Colors.neutral[600] }}>
-                    Pakovanje: {product.quantity + " " + product.quantityUnit}
+                    Pakovanje: {product.quantity + " " + product.quantity_unit}
                </Typography>
           </Box>
      );

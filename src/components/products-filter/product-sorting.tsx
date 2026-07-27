@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { Select, MenuItem, FormControl, InputLabel, Grid, List, ListItem, ListItemText } from '@mui/material';
-import IProduct from '@/interfaces/product/product.interface';
+import Product from '@/interfaces/product/product.interface';
 
 interface ProductSortingProps {
-     products: IProduct[];
+     products: Product[];
 }
 
 const ProductSortingComponent: React.FC<ProductSortingProps> = ({ products }) => {
-     const [sortBy, setSortBy] = useState<keyof IProduct>('name'); // Default sorting by 'name'
+     const [sortBy, setSortBy] = useState<keyof Product>('name'); // Default sorting by 'name'
      const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc'); // Default sorting order is ascending
 
      const handleSortChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-          setSortBy(event.target.value as keyof IProduct);
+          setSortBy(event.target.value as keyof Product);
      };
 
      const handleOrderChange = (event: React.ChangeEvent<{ value: unknown }>) => {
           setSortOrder(event.target.value as 'asc' | 'desc');
      };
 
-     const sortProducts = (products: IProduct[], sortBy: keyof IProduct, sortOrder: 'asc' | 'desc') => {
+     const sortProducts = (products: Product[], sortBy: keyof Product, sortOrder: 'asc' | 'desc') => {
           return [...products].sort((a, b) => {
                const aValue = a[sortBy];
                const bValue = b[sortBy];

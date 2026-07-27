@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useUIContext } from "../../context/ui/ui.context";
 import { KeyboardEvent, useRef, useState } from "react";
 import Image from "next/image";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 import { Colors } from "@/styles/theme";
 import { addToCart } from "@/store/cart/cart.slice";
 import { useDispatch } from "react-redux";
@@ -149,8 +149,8 @@ export default function SearchBox() {
                                                   paddingTop: '20px',
                                                   paddingBottom: '20px',
                                              }}>
-                                                  {searchResults.data.map((product: IProduct, index) => (
-                                                       <Box key={product._id}>
+                                                  {searchResults.data.map((product: Product, index) => (
+                                                       <Box key={product.id}>
                                                             <ListItem
                                                                  sx={{
                                                                       display: 'flex',
@@ -187,9 +187,9 @@ export default function SearchBox() {
                                                                                      });
                                                                                      dispatch(addToCart(product));
                                                                                 }}
-                                                                                disabled={product.availableStock <= 0}
+                                                                                disabled={product.available_stock <= 0}
                                                                            >
-                                                                                {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                                                                                {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                                                                            </Button>
                                                                       </Box>
                                                                       <Box
@@ -204,7 +204,7 @@ export default function SearchBox() {
                                                                            }}
                                                                       >
                                                                            <Image
-                                                                                src={product.imageURL}
+                                                                                src={product.image_url}
                                                                                 alt="DAR proizvodi"
                                                                                 height={100}
                                                                                 width={100}

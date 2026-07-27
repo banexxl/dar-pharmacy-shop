@@ -12,13 +12,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cart/cart.slice";
 import { addToWishList, removeFromWishList } from "@/store/wishlist/wishlist.slice";
 import Link from "next/link";
-import IProduct from "@/interfaces/product/product.interface";
+import Product from "@/interfaces/product/product.interface";
 import toast from "react-hot-toast";
 import { wishListSelectorState } from "@/store/wishlist/wishlist-selector";
 import { SocialShare } from "../social/socials-share";
 
 type FilteredSingleProductDesktopProps = {
-     product: IProduct;
+     product: Product;
      isScreenToMedium: boolean;
 }
 
@@ -33,7 +33,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
      const ref = useRef<HTMLDivElement | null>(null);
      const wishListState = useSelector(wishListSelectorState)
      const [showShareOptions, setShowShareOptions] = useState(false);
-     const isInWishlist = wishListState.some((item: IProduct) => item._id === product._id);
+     const isInWishlist = wishListState.some((item: Product) => item.id === product.id);
 
      const handleClickOutside = (event: any) => {
           if (ref.current && !ref.current.contains(event.target)) {
@@ -114,7 +114,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          <CardMedia
                               component="img"
                               className="FilteredProductImage"
-                              image={product.imageURL}
+                              image={product.image_url}
                               alt="Product"
                               sx={{
                                    height: 220,
@@ -134,9 +134,9 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                               callCartAlert();
                               dispatch(addToCart(product));
                          }}
-                         disabled={product.availableStock <= 0}
+                         disabled={product.available_stock <= 0}
                     >
-                         {product.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                         {product.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                     </Button>
                )}
                <Box className="FilteredProductActionsWrapper">
@@ -154,7 +154,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                          >
                               {!isInWishlist ? (
                                    <FavoriteBorderIcon
-                                        id={`wishlist-icon-${product._id}`}
+                                        id={`wishlist-icon-${product.id}`}
                                         sx={{
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
@@ -165,7 +165,7 @@ export default function FilteredSingleProductDesktop({ product, isScreenToMedium
                                    />
                               ) : (
                                    <FavoriteIcon
-                                        id={`wishlist-icon-${product._id}`}
+                                        id={`wishlist-icon-${product.id}`}
                                         sx={{
                                              cursor: 'pointer',
                                              ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },

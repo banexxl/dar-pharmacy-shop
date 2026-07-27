@@ -10,7 +10,7 @@ const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
  */
 export function slugToTitle(slug: string): string {
   if (!slug) return '';
-  
+
   return slug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -22,15 +22,15 @@ export function slugToTitle(slug: string): string {
  */
 export function generateCategoryTitle(categoryName: string, subCategory?: string, subSubCategory?: string): string {
   let title = categoryName;
-  
+
   if (subCategory) {
     title = `${subCategory} - ${categoryName}`;
   }
-  
+
   if (subSubCategory) {
     title = `${subSubCategory} - ${subCategory} - ${categoryName}`;
   }
-  
+
   return `${title} | Apoteka DAR Kragujevac`;
 }
 
@@ -38,21 +38,21 @@ export function generateCategoryTitle(categoryName: string, subCategory?: string
  * Generates SEO-friendly description for category pages
  */
 export function generateCategoryDescription(
-  categoryName: string, 
+  categoryName: string,
   productCount: number,
   subCategory?: string,
   subSubCategory?: string
 ): string {
   let categoryPath = categoryName;
-  
+
   if (subCategory) {
     categoryPath = `${subCategory} u kategoriji ${categoryName}`;
   }
-  
+
   if (subSubCategory) {
     categoryPath = `${subSubCategory} u kategoriji ${subCategory} - ${categoryName}`;
   }
-  
+
   return `Kupite ${categoryPath.toLowerCase()} u Apoteci DAR Kragujevac. ${productCount > 0 ? `Pronađite ${productCount} ${productCount === 1 ? 'proizvod' : productCount < 5 ? 'proizvoda' : 'proizvoda'} ` : ''}prirodnih proizvoda za zdravlje i lepotu. Besplatna dostava za narudžbine preko 3000 RSD.`;
 }
 
@@ -88,7 +88,7 @@ export function buildCanonicalUrl(...pathSegments: string[]): string {
     .filter(segment => segment && segment.trim())
     .map(segment => segment.trim().replace(/^\/+|\/+$/g, ''))
     .join('/');
-  
+
   return `${BASE_URL}/${path}`;
 }
 
@@ -98,18 +98,18 @@ export function buildCanonicalUrl(...pathSegments: string[]): string {
 export function generateProductStructuredData(product: {
   name: string;
   description: string;
-  imageURL: string;
+  image_url: string;
   price: number;
   slug: string;
   manufacturer?: string;
-  availableStock: number;
+  available_stock: number;
   category?: string;
 }) {
   // Ensure image URL is absolute
-  const imageUrl = product.imageURL 
-    ? (product.imageURL.startsWith('http') ? product.imageURL : `${BASE_URL}${product.imageURL}`)
+  const imageUrl = product.image_url
+    ? (product.image_url.startsWith('http') ? product.image_url : `${BASE_URL}${product.image_url}`)
     : `${BASE_URL}/images/home-page/apotekaDar.jpg`;
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -125,8 +125,8 @@ export function generateProductStructuredData(product: {
       url: `${BASE_URL}/proizvod/${product.slug}`,
       priceCurrency: 'RSD',
       price: product.price,
-      availability: product.availableStock > 0 
-        ? 'https://schema.org/InStock' 
+      availability: product.available_stock > 0
+        ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
       itemCondition: 'https://schema.org/NewCondition'
     },

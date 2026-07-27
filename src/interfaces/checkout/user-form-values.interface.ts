@@ -1,51 +1,44 @@
-import { FormikContextType, FormikErrors, FormikTouched } from "formik";
+import { FormikContextType, FormikErrors, FormikTouched } from 'formik';
 
 export interface IUserForm {
-     name: string;
-     streetAddress: string;
-     phoneNumber: string;
+     full_name: string;
+     street_address: string;
+     phone_number: string;
      city: string;
-     provinceState?: string;
+     province_state?: string;
      country: string;
-     zipPostalCode: string;
+     zip_postal_code: string;
      email: string;
-     // password?: string;
-     // repeatPassword?: string;
-     shouldCreateAccount?: boolean;
-     emailVerified?: Date | null;
-     image?: string;
-     gender?: 'male' | 'female'
+     should_create_account?: boolean;
+     gender?: 'male' | 'female';
 }
 
 export interface IEmailForm {
-     email: string
+     email: string;
 }
 
 export const initialEmailFormValues: IEmailForm = {
-     email: ''
-}
+     email: '',
+};
 
 export const initialUserFormValues: IUserForm = {
-     name: '',
-     streetAddress: '',
-     phoneNumber: '',
+     full_name: '',
+     street_address: '',
+     phone_number: '',
      city: '',
-     provinceState: '',
+     province_state: '',
      country: '',
-     zipPostalCode: '',
+     zip_postal_code: '',
      email: '',
-     // password: '',
-     // repeatPassword: '',
-     shouldCreateAccount: false,
-     emailVerified: null
+     should_create_account: false,
 };
 
 export interface IUserFormProps {
      isLoading?: boolean;
-     tabIndex?: number
-     setTab?: (tabIndex: number) => number
-     formName: string
-     errors?: FormikErrors<IUserForm>
-     touched?: FormikTouched<IUserForm>
-     formik?: FormikContextType<IUserForm>
+     tabIndex?: number;
+     setTab?: (tabIndex: number) => number;
+     formName: string;
+     errors?: FormikErrors<IUserForm>;
+     touched?: FormikTouched<IUserForm>;
+     formik?: FormikContextType<IUserForm>;
 }

@@ -20,28 +20,28 @@ const WishlistItem = (props: IWishlistItem & { onClose?: () => void }) => {
      };
 
      return (
-          <TableRow key={props._id} className="WishlistProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
+          <TableRow key={props.id} className="WishlistProductRow" sx={{ '& td': { py: { xs: 0.5, md: 1.5 }, px: { xs: 1, md: 2 } } }}>
                <TableCell component="th" scope="row" className="WishlistProductCell" sx={{ width: { xs: 72, md: 88 } }}>
                     <Link rel='canonical' href={`/proizvod/${props.slug}`} onClick={props.onClose}>
-                         <Box component="img" src={props.imageURL} className="WishlistProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
+                         <Box component="img" src={props.image_url} className="WishlistProductImage" sx={{ width: { xs: 56, md: 72 }, height: { xs: 56, md: 72 }, objectFit: 'contain', display: 'block' }} />
                     </Link>
                </TableCell>
                <TableCell className="WishlistProductName">
                     {props.name}
                </TableCell>
                <TableCell className="WishListProductDetails">
-                    Količina: {props.quantity} {' '} {props.quantityUnit}
+                    Količina: {props.quantity} {' '} {props.quantity_unit}
                </TableCell>
                <TableCell align="left" className="WishListProductDetails">
-                    Šifra: {props._id.toString().slice(-8).toUpperCase()}
+                    Šifra: {props.id.toString().slice(-8).toUpperCase()}
                </TableCell>
                <TableCell align="left" className="WishListProductDetails">
                     Cena: {parseFloat(props.price.toString()).toFixed(2)} rsd
                </TableCell>
                <TableCell align="center" className="WishListProductDetails">
                     <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
-                         <Button size="small" variant="contained" color="primary" onClick={handleAddToCart} disabled={props.availableStock <= 0}>
-                              {props.availableStock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
+                         <Button size="small" variant="contained" color="primary" onClick={handleAddToCart} disabled={props.available_stock <= 0}>
+                              {props.available_stock <= 0 ? "Nema na stanju" : "Dodaj u korpu"}
                          </Button>
                          <Button size="small" variant="outlined" color="primary" onClick={handleRemove}>
                               Obriši
