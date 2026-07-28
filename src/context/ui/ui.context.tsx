@@ -1,7 +1,6 @@
 import Animate from "@/components/animate/animate";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/navbar/navbar";
-import { Box } from "@mui/material";
 import { createContext, useContext, useState } from "react";
 
 
