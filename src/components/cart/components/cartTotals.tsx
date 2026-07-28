@@ -122,7 +122,10 @@ function CartTotals({ onClose }: ICartTotalsProps) {
                          </Button>
                          <Button
                               disabled={parseFloat(totalItemPrice) === 450}
-                              onClick={() => router.push('/placanje')}
+                              onClick={() => {
+                                   onClose()
+                                   router.push('/placanje')
+                              }}
                               sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}
                          >
                               KREIRAJ PORUDŽBENICU
