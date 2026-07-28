@@ -9,7 +9,6 @@ export interface ICustomer {
      country: string;
      zip_postal_code: string;
      email: string;
-     gender?: 'male' | 'female';
      is_banned?: boolean;
      banned_until?: string | null;
 }

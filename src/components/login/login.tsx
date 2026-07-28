@@ -114,19 +114,21 @@ export default function LoginRegister({ open, onClose }: any) {
                                    gap: 2,
                               }}
                          >
-                              <Image
-                                   src={
-                                        user?.user_metadata?.avatar_url
-                                             ? user.user_metadata.avatar_url
-                                             : userData?.gender === 'female'
-                                                  ? '/images/avatars/avatar-neha-punita.png'
-                                                  : '/images/avatars/avatar-marcus-finn.png'
-                                   }
-                                   alt="Avatar"
-                                   width={96}
-                                   height={96}
-                                   style={{ borderRadius: 24 }}
-                              />
+                              {
+                                   user?.user_metadata?.avatar_url && user?.user_metadata?.avatar_url.trim() !== '' ? (
+                                        <Image
+                                             src={user.user_metadata.avatar_url}
+                                             alt="Avatar"
+                                             width={96}
+                                             height={96}
+                                             style={{ borderRadius: 24 }}
+                                        />
+                                   ) : (
+                                        <IconButton sx={{ color: 'text.primary' }}>
+                                             <PersonIcon />
+                                        </IconButton>
+                                   )
+                              }
                               <Box
                                    sx={{
                                         display: 'grid',
@@ -150,7 +152,7 @@ export default function LoginRegister({ open, onClose }: any) {
                                         {userData?.city || ''}
                                    </Typography>
                               </Box>
-                              <Link rel="canonical" href="/nalog">
+                              <Link rel="canonical" href="/nalog" onClick={onClose} style={{ textDecoration: 'none' }}>
                                    <Typography
                                         sx={{
                                              mt: 1,

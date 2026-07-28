@@ -10,7 +10,6 @@ export interface IUserForm {
      zip_postal_code: string;
      email: string;
      should_create_account?: boolean;
-     gender?: 'male' | 'female';
 }
 
 export interface IEmailForm {

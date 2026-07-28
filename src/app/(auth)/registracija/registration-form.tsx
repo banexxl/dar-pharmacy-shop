@@ -47,6 +47,17 @@ const registrationSchema = object().shape({
         return true;
       }
     }),
+  password: string()
+    .required('Ovo polje je obavezno')
+    .min(6, 'Ovo polje je prekratko, min 6 karaktera')
+    .max(25, 'Ovo polje je predugačko, max 25 karaktera')
+    .matches(/[A-Z]/, 'Lozinka mora sadržati najmanje jedno veliko slovo')
+    .matches(/[a-z]/, 'Lozinka mora sadržati najmanje jedno malo slovo')
+    .matches(/[0-9]/, 'Lozinka mora sadržati najmanje jedan broj')
+    .matches(
+      /[^A-Za-z0-9]/,
+      'Lozinka mora sadržati najmanje jedan specijalni karakter'
+    )
 });
 
 const initialValues: RegisterFormData = {
@@ -58,6 +69,7 @@ const initialValues: RegisterFormData = {
   country: '',
   zip_postal_code: '',
   email: '',
+  password: ''
 };
 
 export function RegistrationForm() {
@@ -126,10 +138,15 @@ export function RegistrationForm() {
                 error={formik.touched.zip_postal_code && !!formik.errors.zip_postal_code}
                 helperText={formik.touched.zip_postal_code && formik.errors.zip_postal_code} />
             </Grid>
-            <Grid size={{ xs: 12 }}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <Field as={TextField} label="Email" name="email" fullWidth variant="outlined"
                 error={formik.touched.email && !!formik.errors.email}
                 helperText={formik.touched.email && formik.errors.email} />
+            </Grid>
+            <Grid size={{ xs: 12 }}>
+              <Field as={TextField} label="Lozinka" name="password" type="password" fullWidth variant="outlined"
+                error={formik.touched.password && !!formik.errors.password}
+                helperText={formik.touched.password && formik.errors.password} />
             </Grid>
             <Grid size={{ xs: 12 }} sx={{ textAlign: 'center' }}>
               <Button type="reset" variant="outlined" sx={{ mr: 2 }} onClick={() => formik.resetForm()}>

@@ -32,7 +32,6 @@ export interface Database {
           zip_postal_code: string;
           email: string;
           avatar: string | null;
-          gender: string | null;
           is_banned: boolean;
           banned_until: string | null;
           created_at: string;
@@ -50,7 +49,6 @@ export interface Database {
           zip_postal_code: string;
           email: string;
           avatar?: string | null;
-          gender?: string | null;
           is_banned?: boolean;
           banned_until?: string | null;
           created_at?: string;
@@ -68,7 +66,6 @@ export interface Database {
           zip_postal_code?: string;
           email?: string;
           avatar?: string | null;
-          gender?: string | null;
           is_banned?: boolean;
           banned_until?: string | null;
           created_at?: string;

@@ -30,7 +30,6 @@ export async function POST(request: NextRequest) {
     province_state: customer.province_state,
     country: customer.country,
     zip_postal_code: customer.zip_postal_code,
-    gender: customer.gender,
     full_name: customer.full_name
   });
 }

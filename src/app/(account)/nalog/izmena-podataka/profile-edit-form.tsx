@@ -56,7 +56,6 @@ export function ProfileEditForm({ customer }: ProfileEditFormProps) {
     province_state: customer?.province_state || '',
     country: customer?.country || '',
     zip_postal_code: customer?.zip_postal_code || '',
-    gender: customer?.gender || 'male',
   };
 
   const handleSubmit = async (values: ProfileUpdateData) => {
@@ -162,17 +161,6 @@ export function ProfileEditForm({ customer }: ProfileEditFormProps) {
               disabled
               fullWidth
             />
-            <FormControl>
-              <RadioGroup
-                row
-                name="gender"
-                value={formik.values.gender || 'male'}
-                onChange={formik.handleChange('gender')}
-              >
-                <FormControlLabel value="male" control={<Radio />} label="Muški" />
-                <FormControlLabel value="female" control={<Radio />} label="Ženski" />
-              </RadioGroup>
-            </FormControl>
             <Stack direction="row" spacing={2} sx={{ justifyContent: 'center', mt: 2 }}>
               <Button
                 type="reset"

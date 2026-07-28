@@ -17,7 +17,7 @@ export function ProfileEditWrapper({ children }: { children: React.ReactNode }) 
       >
         <Typography
           variant="h4"
-          sx={{ mb: 3, fontWeight: 700, textAlign: 'center' }}
+          sx={{ mb: 3, fontWeight: 700, textAlign: 'center', color: 'primary.main' }}
         >
           Izmena korisničkih podataka
         </Typography>

@@ -10,7 +10,6 @@ export interface ProfileUpdateData {
   province_state?: string;
   country: string;
   zip_postal_code: string;
-  gender?: string;
 }
 
 export interface ProfileUpdateResult {
@@ -52,7 +51,6 @@ export async function updateProfile(
       province_state: data.province_state?.trim() || null,
       country: data.country.trim(),
       zip_postal_code: data.zip_postal_code.trim(),
-      gender: data.gender || null,
     })
     .eq('user_id', user.id);
 
