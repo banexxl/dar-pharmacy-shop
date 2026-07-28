@@ -2,13 +2,23 @@
 
 import { Container, Box, Typography, Paper, Button } from '@mui/material';
 import { LogoutButton } from './logout-button';
+import { useAuth } from '@/hooks/useAuth';
 
 interface ProfileClientProps {
-  customer: any;
   orders: any[];
 }
 
-export function ProfileClient({ customer, orders }: ProfileClientProps) {
+export function ProfileClient({ orders }: ProfileClientProps) {
+
+  const {
+    session,
+    user,
+    customer,
+    loading,
+    isAuthenticated,
+    signOut
+  } = useAuth();
+
   return (
     <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
       <Box

@@ -8,9 +8,9 @@ import { IContactForm, initialContactFormValues } from '@/interfaces/contact/con
 import { contactFormSchema } from '@/schemas/contact-form';
 import { SendContactEmail } from '@/services/email/send-email';
 import Link from 'next/link';
-import { ReCaptcha, useReCaptcha } from "next-recaptcha-v3";
+import { ReCaptcha, ReCaptchaProvider, useReCaptcha } from "next-recaptcha-v3";
 
-const ContactForm = () => {
+const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
 
      const { executeRecaptcha, loaded } = useReCaptcha();
      const [token, setToken] = useState<string>('');
@@ -45,134 +45,138 @@ const ContactForm = () => {
           })
      }
 
-
-
      return (
           <DynamicThemeProvider theme={theme}>
-               {/* <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}> */}
-               <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema}>
-                    {
-                         formik => (
-                              <Form style={{
-                                   width: '100%',
-                                   maxWidth: '760px',
-                                   margin: '0 auto 24px',
-                                   display: 'flex',
-                                   flexDirection: 'column',
-                                   alignItems: 'stretch',
-                                   gap: '16px',
-                                   padding: '24px',
-                                   background: '#ffffff',
-                                   borderRadius: '12px',
-                                   boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
-                              }}>
-                                   <Typography variant="h5" component="legend" gutterBottom className="ContactTitle">
-                                        Kontakt forma
-                                   </Typography>
+               <ReCaptchaProvider reCaptchaKey={recaptchaKey}>
+                    <Formik initialValues={initialContactFormValues} onSubmit={(values: IContactForm) => handleSubmit(values)} validationSchema={contactFormSchema}>
+                         {
+                              formik => (
+                                   <Form style={{
+                                        width: '100%',
+                                        maxWidth: '760px',
+                                        margin: '0 auto 24px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'stretch',
+                                        gap: '16px',
+                                        padding: '24px',
+                                        background: '#ffffff',
+                                        borderRadius: '12px',
+                                        boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
+                                   }}>
+                                        <Typography variant="h5" component="legend" gutterBottom className="ContactTitle">
+                                             Kontakt forma
+                                        </Typography>
 
-                                   <Typography>
-                                        Ako ste u potrazi za <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
-                                        Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
-                                        Slobodno nas kontaktirajte!
-                                   </Typography>
-                                   <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, width: '100%' }}>
+                                        <Typography>
+                                             Ako ste u potrazi za <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
+                                             Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
+                                             Slobodno nas kontaktirajte!
+                                        </Typography>
+                                        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, width: '100%' }}>
+                                             <TextField
+                                                  value={formik.values.name}
+                                                  label={"Ime"}
+                                                  name={'name'}
+                                                  variant="outlined"
+                                                  onChange={formik.handleChange('name')}
+                                                  error={formik.touched.name && !!formik.errors.name}
+                                                  helperText={formik.touched.name && formik.errors.name}
+                                                  fullWidth
+                                             />
+                                             <TextField
+                                                  value={formik.values.email}
+                                                  onChange={formik.handleChange('email')}
+                                                  label={"Email"}
+                                                  name={'email'}
+                                                  variant="outlined"
+                                                  error={formik.touched?.email && !!formik.errors?.email}
+                                                  helperText={formik.touched?.email && formik.errors?.email}
+                                                  fullWidth
+                                             />
+                                        </Box>
+
                                         <TextField
-                                             value={formik.values.name}
-                                             label={"Ime"}
-                                             name={'name'}
+                                             value={formik.values.message}
+                                             onChange={formik.handleChange('message')}
+                                             label={"Poruka"}
+                                             name={'message'}
                                              variant="outlined"
-                                             onChange={formik.handleChange('name')}
-                                             error={formik.touched.name && !!formik.errors.name}
-                                             helperText={formik.touched.name && formik.errors.name}
+                                             error={formik.touched?.message && !!formik.errors?.message}
+                                             helperText={formik.touched?.message && formik.errors?.message}
                                              fullWidth
+                                             multiline
+                                             minRows={5}
                                         />
-                                        <TextField
-                                             value={formik.values.email}
-                                             onChange={formik.handleChange('email')}
-                                             label={"Email"}
-                                             name={'email'}
-                                             variant="outlined"
-                                             error={formik.touched?.email && !!formik.errors?.email}
-                                             helperText={formik.touched?.email && formik.errors?.email}
-                                             fullWidth
-                                        />
-                                   </Box>
-
-                                   <TextField
-                                        value={formik.values.message}
-                                        onChange={formik.handleChange('message')}
-                                        label={"Poruka"}
-                                        name={'message'}
-                                        variant="outlined"
-                                        error={formik.touched?.message && !!formik.errors?.message}
-                                        helperText={formik.touched?.message && formik.errors?.message}
-                                        fullWidth
-                                        multiline
-                                        minRows={5}
-                                   />
 
 
 
-                                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                        <FormControlLabel
-                                             sx={{ width: '100%', maxWidth: 680, alignSelf: 'center', marginBottom: '10px' }}
-                                             control={
-                                                  <Checkbox
-                                                       checked={formik.values.dataProcessConsent}
-                                                       onChange={formik.handleChange('dataProcessConsent')}
-                                                       name={'dataProcessConsent'}
-                                                       color="primary"
-                                                  />
-                                             }
-                                              label={<Typography sx={{ textAlign: 'center' }}>
-                                                  Saglasan/saglasna sam sa obradom mojih podataka o ličnosti navedenih za potrebe savetovanja, za vreme potrebno da se pitanje obradi i da se na njega odgovori. Više informacija možete naći na linku: <br />
-                                                   <Typography sx={{ color: Colors.link, display: 'inline' }}>
-                                                       <Link rel='canonical' href="/informacije/politika-privatnosti">
-                                                            Politika privatnosti.
-                                                       </Link>
-                                                  </Typography>
-                                             </Typography>}
-                                        />
-                                        {formik.touched.dataProcessConsent && formik.errors.dataProcessConsent && (
-                                             <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.dataProcessConsent}</FormHelperText>
-                                        )}
-
-                                        <FormControlLabel
-                                             sx={{ width: '100%', maxWidth: 680, alignSelf: 'center', marginBottom: '10px' }}
-                                             control={
-                                                  <Checkbox
-                                                       checked={formik.values.questionSubmissionConsent}
-                                                       onChange={formik.handleChange('questionSubmissionConsent')}
-                                                       name={'questionSubmissionConsent'}
-                                                       color="primary"
-                                                  />
-                                             }
-                                             label={
-                                                  <Typography sx={{ textAlign: 'center' }}>
-                                                       Postavljanjem pitanja potvrđujem da sam pročitao i da sam saglasan sa: <br />
+                                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                             <FormControlLabel
+                                                  sx={{ width: '100%', maxWidth: 680, alignSelf: 'center', marginBottom: '10px' }}
+                                                  control={
+                                                       <Checkbox
+                                                            checked={formik.values.dataProcessConsent}
+                                                            onChange={formik.handleChange('dataProcessConsent')}
+                                                            name={'dataProcessConsent'}
+                                                            color="primary"
+                                                       />
+                                                  }
+                                                  label={<Typography sx={{ textAlign: 'center' }}>
+                                                       Saglasan/saglasna sam sa obradom mojih podataka o ličnosti navedenih za potrebe savetovanja, za vreme potrebno da se pitanje obradi i da se na njega odgovori. Više informacija možete naći na linku: <br />
                                                        <Typography sx={{ color: Colors.link, display: 'inline' }}>
                                                             <Link rel='canonical' href="/informacije/politika-privatnosti">
-                                                                 Pravilima i uslovima korišćenja usluge: Pitajte farmaceuta.
+                                                                 Politika privatnosti.
                                                             </Link>
                                                        </Typography>
-                                                  </Typography>
-                                             }
-                                        />
-                                        {formik.touched.questionSubmissionConsent && formik.errors.questionSubmissionConsent && (
-                                             <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.questionSubmissionConsent}</FormHelperText>
-                                        )}
-                                   </Box>
-                                   <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
-                                   <Button type='submit'
-                                        fullWidth={isScreenToMedium}
-                                        sx={{ alignSelf: { xs: 'stretch', sm: 'flex-end' }, mt: 1, color: Colors.secondary[50], backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
-                                        disabled={submitEnabled && Object.keys(formik.errors).length > 0 && loaded}>
-                                        Pošalji poruku
-                                   </Button>
-                              </Form>
-                         )
-                    }
-               </Formik>
+                                                  </Typography>}
+                                             />
+                                             {formik.touched.dataProcessConsent && formik.errors.dataProcessConsent && (
+                                                  <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.dataProcessConsent}</FormHelperText>
+                                             )}
+
+                                             <FormControlLabel
+                                                  sx={{ width: '100%', maxWidth: 680, alignSelf: 'center', marginBottom: '10px' }}
+                                                  control={
+                                                       <Checkbox
+                                                            checked={formik.values.questionSubmissionConsent}
+                                                            onChange={formik.handleChange('questionSubmissionConsent')}
+                                                            name={'questionSubmissionConsent'}
+                                                            color="primary"
+                                                       />
+                                                  }
+                                                  label={
+                                                       <Typography sx={{ textAlign: 'center' }}>
+                                                            Postavljanjem pitanja potvrđujem da sam pročitao i da sam saglasan sa: <br />
+                                                            <Typography sx={{ color: Colors.link, display: 'inline' }}>
+                                                                 <Link rel='canonical' href="/informacije/politika-privatnosti">
+                                                                      Pravilima i uslovima korišćenja usluge: Pitajte farmaceuta.
+                                                                 </Link>
+                                                            </Typography>
+                                                       </Typography>
+                                                  }
+                                             />
+                                             {formik.touched.questionSubmissionConsent && formik.errors.questionSubmissionConsent && (
+                                                  <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.questionSubmissionConsent}</FormHelperText>
+                                             )}
+                                        </Box>
+                                        <ReCaptcha onValidate={(test) => {
+                                             setSubmitEnabled(true)
+                                        }} action={'form_submit'} reCaptchaKey={recaptchaKey} />
+                                        <Button type='submit'
+                                             fullWidth={isScreenToMedium}
+                                             sx={{ alignSelf: { xs: 'stretch', sm: 'flex-end' }, mt: 1, color: Colors.secondary[50], backgroundColor: Colors.primary.main, ':hover': { color: Colors.primary.main } }}
+                                             disabled={!submitEnabled || Object.keys(formik.errors).length > 0 || loaded}>
+                                             Pošalji poruku
+                                        </Button>
+                                        <Typography>
+                                             {Object.keys(formik.errors)}
+                                        </Typography>
+                                   </Form>
+                              )
+                         }
+                    </Formik>
+               </ReCaptchaProvider>
           </DynamicThemeProvider >
      );
 };

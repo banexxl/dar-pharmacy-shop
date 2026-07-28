@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
     customer,
     paymentMethod: paymentOption === 'credit-card' ? 'credit-card' : 'cash-on-delivery',
   });
+  console.log('result', result);
 
   if (result.success) {
     return NextResponse.json({

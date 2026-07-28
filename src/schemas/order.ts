@@ -11,7 +11,7 @@ export type PaymentStatus = 'pending' | 'successful' | 'failed' | 'refunded';
 export type Order = {
      id?: string;
      order_number: string;
-     customer_id?: string;
+     customer_id: string;
      total: number;
      created_at: string;
      updated_at?: string;

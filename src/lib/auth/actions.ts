@@ -113,3 +113,43 @@ export async function checkIfCustomerExists(email: string): Promise<{ success: b
     };
   }
 }
+
+export async function getUserFromEmail(email: string): Promise<{ success: boolean; user?: any; error?: ErrorType }> {
+  try {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+      .from('customers')
+      .select('*')
+      .eq('email', email)
+      .single();
+
+
+    const { error: authError } = await supabase.auth.admin.getUserById(data?.user_id!);
+
+    if (error || authError) {
+      return {
+        success: false,
+        error: {
+          code: 'UserNotFound',
+          details: 'Customer not found in auth',
+          message: 'Customer not found in auth',
+        },
+      };
+    }
+    return {
+      success: true,
+      user: data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: {
+        code: 'ServerError',
+        details: 'An error occurred while fetching the user',
+        message: 'An error occurred while fetching the user',
+        hint: 'Please try again later.',
+      },
+    };
+  }
+}

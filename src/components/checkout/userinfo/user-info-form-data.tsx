@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Button, Container, Grid, TextField, Tooltip, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth } from '@/lib/auth/hooks';
 import { ThemeProvider } from '@mui/system';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
 import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
@@ -14,6 +13,7 @@ import useDialogModal from '@/hooks/useDialogModal';
 import EmailAndAccountCreation from './user-infoform-data-email'; // Import the new component
 import { Box } from '@mui/system';
 import toast from 'react-hot-toast';
+import { useAuth } from '@/hooks/useAuth';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 

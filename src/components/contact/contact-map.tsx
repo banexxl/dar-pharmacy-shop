@@ -1,82 +1,73 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Loader } from "@googlemaps/js-api-loader"
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { Loader } from '@googlemaps/js-api-loader';
 import Box from '@mui/material/Box';
 
-export type ContactPageProps = {
-     mapApiKey: string
-}
+export type ContactMapProps = {
+     mapApiKey: string;
+};
 
-export const ContactMap = (props: ContactPageProps) => {
+const POSITION = {
+     lat: 44.01262879017728,
+     lng: 20.912097948648388,
+};
 
-     //const mapContainer = useRef(null);
-     //const map = useRef<maplibregl.Map>();
-     const [lat, setLat] = useState(44.01262879017728)
-     const [lng, setLng] = useState(20.912097948648388)
-     //const [currentLocation, setCurrentLocation] = useState<GeolocationPosition>()
-
-     //GOOGLE MAPS
+export const ContactMap = ({ mapApiKey }: ContactMapProps) => {
      const mapRef = useRef<HTMLDivElement>(null);
 
      useEffect(() => {
+          if (!mapRef.current || !mapApiKey) return;
+
           const loader = new Loader({
-               apiKey: props.mapApiKey,
+               apiKey: mapApiKey,
                version: 'weekly',
           });
 
-          loader.load().then(() => {
-               const map = new google.maps.Map(mapRef.current!, {
-                    center: { lat, lng },
-                    zoom: 14,
+          let map: google.maps.Map | undefined;
+
+          loader
+               .load()
+               .then(() => {
+                    if (!mapRef.current) return;
+
+                    map = new google.maps.Map(mapRef.current, {
+                         center: POSITION,
+                         zoom: 14,
+                    });
+
+                    new google.maps.Marker({
+                         position: POSITION,
+                         map,
+                         title: 'Our location',
+                    });
+               })
+               .catch((error) => {
+                    console.error('Failed to load Google Maps:', error);
                });
 
-               new google.maps.Marker({
-                    position: { lat, lng },
-                    map,
-               });
-          });
-     }, [lat, lng, props.mapApiKey]);
-
-
-     ///////////////////////////////////////////////
-     // const options = {
-     //           enableHighAccuracy: true,
-     //           timeout: 5000,
-     //           maximumAge: 0
-     // };
-
-     // function success(pos: GeolocationPosition) {
-     //           setCurrentLocation(pos)
-     // }
-
-     // function error(err: any) {
-     //           console.warn(`ERROR(${err.code}): ${err.message}`);
-     // }
-
-     // navigator.geolocation.getCurrentPosition(success, error, options);
-
-     // useEffect(() => {
-     //           if (map.current) return; //stops map from intializing more than once
-     //           map.current = new maplibregl.Map({
-     //                     container: mapContainer.current!,
-     //                     style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${props.mapApiKey}`,
-     //                     center: [lng, lat],
-     //                     zoom: 18,
-     //                     maplibreLogo: false,
-     //           });
-
-     //           map.current.addControl(new maplibregl.NavigationControl({ showZoom: true, showCompass: true }), 'top-left');
-     //           new maplibregl.Marker({ color: Colors.primary })
-     //                     .setLngLat([20.912097948648388, 44.01262879017728])
-     //                     .addTo(map.current)
-
-     //           return () => {
-     //                     map.current?.remove;
-     //           }
-     // });
+          return () => {
+               if (map) {
+                    google.maps.event.clearInstanceListeners(map);
+               }
+          };
+     }, [mapApiKey]);
 
      return (
-
-          <Box ref={mapRef} sx={{ borderRadius: '10px', width: { md: '400px', xs: '80%' }, height: { md: '300px', xs: '200px' } }} />
-
-     )
-}
+          <Box
+               ref={mapRef}
+               sx={{
+                    borderRadius: '10px',
+                    overflow: 'hidden',
+                    width: {
+                         xs: '80%',
+                         md: '400px',
+                    },
+                    height: {
+                         xs: '200px',
+                         md: '300px',
+                    },
+               }}
+          />
+     );
+};

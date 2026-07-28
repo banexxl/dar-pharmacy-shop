@@ -6,37 +6,21 @@ import { useMediaQuery } from '@mui/material'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IConfirmationProps } from '@/interfaces/checkout/confirmation.interface'
 import Link from 'next/link'
 import theme, { Colors } from '@/styles/theme'
-import { ReCaptcha, useReCaptcha } from 'next-recaptcha-v3'
 import Counter from '@/utils/counter'
 import { removeAllSingleItems } from '@/store/cart/cart.slice'
 import toast from 'react-hot-toast'
 
-export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConfirmationProps) => {
+export const Confirmation: FunctionComponent<IConfirmationProps & { captchaValidated: boolean }> = (props: IConfirmationProps & { captchaValidated: boolean }) => {
 
      const cart = useSelector((state: any) => state.persistReduce.cartSliceReducer)
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down('md'))
      const totalItemPrice: any = useSelector(cartTotalPriceSelector)
      const dispatch = useDispatch()
-
-
-     const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
-     const { executeRecaptcha, loaded } = useReCaptcha();
-     const [token, setToken] = useState<string>('');
-
-     useEffect(() => {
-          if (loaded) {
-               const generateToken = async () => {
-                    const newToken = await executeRecaptcha("form_submit");
-                    setToken(newToken);
-               };
-               generateToken();
-          }
-     }, [loaded, executeRecaptcha]);
 
      const handleBack = () => {
           props.tabIndex === 1 ? props.setTab?.(props.tabIndex - 1) : null
@@ -237,7 +221,12 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                     <Button className="CheckoutNextPrevButton" type='submit' sx={{ maxWidth: '100px', width: { xs: '100%', sm: 'auto' } }} startIcon={<NavigateBeforeIcon />} onClick={() => handleBack()}>
                          Nazad
                     </Button>
-                    <Button className="CheckoutNextPrevButton" onClick={() => handleNext()} sx={{ maxWidth: '100px', width: { xs: '100%', sm: 'auto' } }} endIcon={<NavigateNextIcon />} disabled={!submitEnabled}>
+                    <Button
+                         className="CheckoutNextPrevButton"
+                         onClick={() => handleNext()}
+                         sx={{ maxWidth: '100px', width: { xs: '100%', sm: 'auto' } }}
+                         endIcon={<NavigateNextIcon />}
+                         disabled={!props.captchaValidated}>
                          Dalje
                     </Button>
                </Box>
@@ -247,7 +236,6 @@ export const Confirmation: FunctionComponent<IConfirmationProps> = (props: IConf
                <Typography sx={{ color: Colors.primary.main, fontSize: '1.3rem', textAlign: 'justify', mt: '10px', mb: '30px', maxWidth: '500px' }}>
                     Ako je neki od proizvoda na promociji (npr. kupi 2 dobiješ 3, ili na 3 kutije dobiješ 10% popusta, itd.), popust će biti obračunat prilikom slanja paketa(ne prilikom kreiranja PORUDŽBENICE).
                </Typography>
-               <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
           </Container>
      )
 }

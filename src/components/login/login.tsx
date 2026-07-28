@@ -21,9 +21,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import SlideTransition from '@/hooks/use-slide-transition';
-import { useAuth } from '@/lib/auth/hooks';
 import { Colors } from '@/styles/theme';
 import LoadingWheel from '../loading/loading';
+import { useAuth } from '@/hooks/useAuth';
 
 const AVATAR_OPTIONS = [
      '/images/avatars/male.png',

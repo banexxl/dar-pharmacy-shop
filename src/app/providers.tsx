@@ -10,6 +10,7 @@ import { Analytics } from '@vercel/analytics/react';
 import theme from '@/styles/theme';
 import store from '@/store/store';
 import { useEffect, useState } from 'react';
+import { AuthProvider } from '@/context/session/session.context';
 
 const persistor = typeof window !== 'undefined' ? persistStore(store) : null;
 
@@ -23,16 +24,18 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ReduxProvider store={store}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {hydrated && persistor ? (
-          <PersistGate persistor={persistor} loading={children}>
-            {children}
-          </PersistGate>
-        ) : (
-          children
-        )}
-        <Toaster />
-        <Analytics />
+        <AuthProvider>
+          <CssBaseline />
+          {hydrated && persistor ? (
+            <PersistGate persistor={persistor} loading={children}>
+              {children}
+            </PersistGate>
+          ) : (
+            children
+          )}
+          <Toaster />
+          <Analytics />
+        </AuthProvider>
       </ThemeProvider>
     </ReduxProvider>
   );

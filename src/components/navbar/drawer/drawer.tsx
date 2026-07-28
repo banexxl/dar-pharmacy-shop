@@ -14,10 +14,10 @@ import WishList from "../../wishlist/wishlist"
 import Cart from "../../cart/cart"
 import LoginRegister from "../../login/login"
 import Link from "next/link"
-import { useAuth } from "@/lib/auth/hooks"
 import { useSelector } from "react-redux"
 import { cartTotalSelector } from "@/store/cart/cart.selector"
 import { motion } from "framer-motion"
+import { useAuth } from "@/hooks/useAuth"
 
 const MiddleDivider = styled((props) => (
      <Divider variant="middle" {...props} />

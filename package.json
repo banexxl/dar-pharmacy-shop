@@ -35,7 +35,6 @@
     "@reduxjs/toolkit": "^2.11.1",
     "@supabase/ssr": "^0.12.3",
     "@supabase/supabase-js": "^2.110.8",
-    "@types/googlemaps": "^3.43.3",
     "@types/node": "18.11.18",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
@@ -64,6 +63,7 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.65.3",
     "@types/mui-image": "^1.0.5",
     "@types/nodemailer": "^6.4.7",
     "@types/numeral": "^2.0.5",

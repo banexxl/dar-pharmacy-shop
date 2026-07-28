@@ -1,37 +1,35 @@
 import { Box, Button, CircularProgress, Container, FormControlLabel, Link, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material';
-import React, { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import theme from '@/styles/theme';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartTotalPriceSelector } from '@/store/cart/cart.selector';
 import { SendCheckoutConfirmationEmailToAdmin, SendCheckoutConfirmationEmailToUser } from '@/services/email/send-email';
-import { ReCaptcha } from 'next-recaptcha-v3';
 import { clearCart } from '@/store/cart/cart.slice';
 import { clearUserForm } from '@/store/checkout/user-info-form.slice';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/lib/auth/hooks';
 import toast from 'react-hot-toast';
 import { ConfirmationData, Order, PaymentMethod } from '@/schemas/order';
-import ICartItem from '@/interfaces/cart/cart.interface';
+import { useAuth } from '@/hooks/useAuth';
 
 interface PaymentOptionsProps {
      setTab: (tabIndex: number) => number;
      formName: string;
      tabIndex: number;
+     captchaValidated: boolean;
 }
 
 export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: PaymentOptionsProps) => {
-
      const [paymentOption, setPaymentOption] = useState<PaymentMethod>('cash-on-delivery')
-     const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
      const [loading, setLoading] = useState<boolean>(false)
      const { isAuthenticated } = useAuth()
      const router = useRouter()
-     const [totalItemPriceState, setTotalItemPriceState] = useState<number>(useSelector(cartTotalPriceSelector))
-     const [userFormSelectorState, setUserFormSelectorState] = useState(useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
-     const [cart, setCart] = useState<ICartItem[]>(useSelector((state: any) => state.persistReduce.cartSliceReducer))
+     const totalItemPriceState = (useSelector(cartTotalPriceSelector))
+     const userFormSelectorState = (useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
+     const cart = (useSelector((state: any) => state.persistReduce.cartSliceReducer))
      const dispatch = useDispatch()
+     const session = useAuth();
 
      const handleBack = () => {
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
@@ -142,7 +140,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                         </Button>
                                         <Button
                                              className="CheckoutNextPrevButton"
-                                             disabled={totalItemPriceState === 0 || !submitEnabled || loading}
+                                             disabled={totalItemPriceState === 0 || loading || props.captchaValidated == false}
                                              onClick={async () => {
                                                   setLoading(true);
 
@@ -190,6 +188,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                                      items: cart,
                                                                                      payment_method: paymentOption,
                                                                                      order_status: 'pending',
+                                                                                     customer_id: session.customer?.id!
                                                                                 },
                                                                                 deliveryDate: '3-5 radnih dana',
                                                                            };
@@ -207,7 +206,6 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                       }
                                                                  })
                                                                  .catch((error) => {
-                                                                      console.error('Error while sending confirmation emails:', error);
                                                                       toast.error('Došlo je do greške prilikom slanja email-a!');
                                                                  });
 
@@ -232,7 +230,6 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                               </Box>
                     }
                </Container>
-               <ReCaptcha onValidate={() => { setSubmitEnabled(true) }} action={'form_submit'} reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
           </ThemeProvider >
      );
 };
