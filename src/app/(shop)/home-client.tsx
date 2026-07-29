@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { Container, Typography, Box, Button, Modal, Paper } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 import { Colors } from '@/styles/theme';
 
 const Products = lazy(() => import('@/components/products/products-grid'));
@@ -50,26 +50,6 @@ export function HomePageClient(props: HomePageClientProps) {
     promotionProduct,
     promotionProducts,
   } = props;
-
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const hasSeenModal = localStorage.getItem('hasSeenModal');
-    if (!hasSeenModal || hasSeenModal !== 'true') {
-      setOpen(true);
-      localStorage.setItem('hasSeenModal', 'true');
-    }
-
-    const handleBeforeUnload = () => {
-      localStorage.removeItem('hasSeenModal');
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
-
-  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -198,24 +178,6 @@ export function HomePageClient(props: HomePageClientProps) {
         <Chatbot />
         <SearchBox />
       </Suspense>
-
-      <Modal open={open} onClose={handleClose}>
-        <Paper
-          sx={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            textAlign: 'center',
-            padding: '10px',
-          }}
-        >
-          <Typography sx={{ fontSize: '1rem' }}>
-            Ovaj sajt korišćenjem kolačića obezbeđuje bolje korisničko iskustvo.
-          </Typography>
-          <Button onClick={handleClose}>Prihvati sve</Button>
-        </Paper>
-      </Modal>
     </>
   );
 }
