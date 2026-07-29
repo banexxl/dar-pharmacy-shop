@@ -60,6 +60,64 @@ export async function signInWithGoogle() {
 }
 
 /**
+ * Sign in with email and password.
+ */
+export async function signInWithPassword(email: string, password: string) {
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.trim().toLowerCase(),
+    password,
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath('/', 'layout');
+  return { success: true };
+}
+
+/**
+ * Send a password reset email.
+ */
+export async function resetPassword(email: string) {
+  const supabase = await createClient();
+  const siteUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+  const { error } = await supabase.auth.resetPasswordForEmail(
+    email.trim().toLowerCase(),
+    {
+      redirectTo: `${siteUrl}/autentifikacija/reset-lozinke`,
+    }
+  );
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { success: true };
+}
+
+/**
+ * Update user password (used after clicking reset link).
+ */
+export async function updatePassword(newPassword: string) {
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password: newPassword,
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath('/', 'layout');
+  return { success: true };
+}
+
+/**
  * Sign out the current user.
  */
 export async function signOutAction() {
