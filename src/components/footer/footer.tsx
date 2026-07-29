@@ -23,6 +23,7 @@ import {
      initialSubscribeEmailFormValues,
 } from "@/interfaces/subscribe/subscription-interface";
 import toast from "react-hot-toast";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Footer() {
      const [WishListDialog, showWishListDialog, closeWishListDialog] =
@@ -30,6 +31,7 @@ export default function Footer() {
      const [CartDialog, showCartDialog, closeCartDialog] = useDialogModal(Cart);
      const [LoginDialog, showLoginDialog, closeLoginDialog] =
           useDialogModal(LoginRegister);
+     const { isAuthenticated } = useAuth();
      const currentYear = new Date().getFullYear();
 
      const handleSubmit = async (data: ISubscribeEmailForm): Promise<boolean> => {
@@ -285,17 +287,19 @@ export default function Footer() {
                                              Nalog
                                         </Typography>
                                         <Box sx={{ display: "grid", gap: 1 }}>
-                                             <Typography
-                                                  component="p"
-                                                  onClick={showLoginDialog}
-                                                  sx={{
-                                                       color: Colors.white,
-                                                       cursor: "pointer",
-                                                       width: "fit-content",
-                                                  }}
-                                             >
-                                                  Prijava
-                                             </Typography>
+                                             {!isAuthenticated && (
+                                                  <Typography
+                                                       component="p"
+                                                       onClick={showLoginDialog}
+                                                       sx={{
+                                                            color: Colors.white,
+                                                            cursor: "pointer",
+                                                            width: "fit-content",
+                                                       }}
+                                                  >
+                                                       Prijava
+                                                  </Typography>
+                                             )}
                                              <Link
                                                   href="/nalog"
                                                   style={{ color: Colors.white, textDecoration: "none" }}
