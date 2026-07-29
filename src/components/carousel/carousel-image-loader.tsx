@@ -34,6 +34,8 @@ export const CarouselProductImage = (props: ProductImage) => {
                          borderRadius: '20px',
                          objectPosition: "center",
                          zIndex: '1000',
+                         width: 'auto',
+                         height: 'auto',
                     }}
                />
           </Box>
@@ -55,6 +57,8 @@ export const CarouselManufacturerImage = (props: ProductImage) => {
                          borderRadius: '20px',
                          maxWidth: '100%',
                          maxHeight: '150px',
+                         width: 'auto',
+                         height: 'auto',
                          objectPosition: "center",
                          zIndex: '1000'
                     }}
