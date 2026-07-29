@@ -42,7 +42,7 @@ export default function Footer() {
                });
                return false;
           } else {
-               return await fetch("/api/email/subscribe-user-api", {
+               return await fetch("/api/email/subscribe", {
                     method: "POST",
                     body: JSON.stringify(data),
                     headers: {

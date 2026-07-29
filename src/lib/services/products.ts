@@ -312,3 +312,18 @@ export async function getAllProductSlugs(): Promise<string[]> {
   }
   return (data ?? []).map((p) => p.slug);
 }
+
+export async function getTopNSellingProducts(n: number): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('is_active', true)
+    .eq('best_seller', true)
+    .limit(n);
+
+  if (error) {
+    console.error('getTopNSellingProducts error:', error.message);
+    return [];
+  }
+  return data ?? [];
+}
