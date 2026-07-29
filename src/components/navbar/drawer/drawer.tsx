@@ -18,6 +18,7 @@ import { useSelector } from "react-redux"
 import { cartTotalSelector } from "@/store/cart/cart.selector"
 import { motion } from "framer-motion"
 import { useAuth } from "@/hooks/useAuth"
+import { useRouter } from "next/navigation"
 
 const MiddleDivider = styled((props) => (
      <Divider variant="middle" {...props} />
@@ -41,6 +42,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
           useDialogModal(LoginRegister)
 
      const { isAuthenticated } = useAuth()
+     const router = useRouter()
 
      const variants = {
           open: {
@@ -89,7 +91,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton sx={{
+                              <ListItemButton onClick={() => { setDrawerOpen(false); router.push('/'); }} sx={{
                                    borderRadius: 2,
                                    mb: 1,
                                    py: 1.5,
@@ -102,22 +104,15 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    <ListItemIcon sx={{ minWidth: 36 }}>
                                         <HomeIcon sx={{ color: Colors.primary.light }} />
                                    </ListItemIcon>
-                                   <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
+                                   <ListItemText sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
                                              fontWeight: 600,
                                              fontSize: '1.1rem',
-                                             '& a': {
-                                                  color: 'inherit',
-                                                  textDecoration: 'none',
-                                             }
                                         },
                                    }}>
-                                        <Link rel='canonical' href={'/'}>
-                                             Početna
-                                        </Link>
+                                        Početna
                                    </ListItemText>
-
                               </ListItemButton>
                          </motion.li>
                          <MiddleDivider sx={{
@@ -193,7 +188,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                          >
-                              <ListItemButton sx={{
+                              <ListItemButton onClick={() => { setDrawerOpen(false); router.push('/kontakt'); }} sx={{
                                    borderRadius: 2,
                                    mb: 1,
                                    py: 1.5,
@@ -206,20 +201,14 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
                                         <ContactSupportIcon sx={{ color: Colors.primary.light }} />
                                    </ListItemIcon>
-                                   <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
+                                   <ListItemText sx={{
                                         '& .MuiTypography-root': {
                                              color: Colors.neutral[100],
                                              fontWeight: 600,
                                              fontSize: '1rem',
-                                             '& a': {
-                                                  color: 'inherit',
-                                                  textDecoration: 'none',
-                                             }
                                         },
                                    }}>
-                                        <Link rel='canonical' href={'/kontakt'}>
-                                             Pitajte nas...
-                                        </Link>
+                                        Pitajte nas...
                                    </ListItemText>
                               </ListItemButton>
                          </motion.li>
@@ -269,7 +258,7 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                    whileHover={{ scale: 1.02 }}
                                    whileTap={{ scale: 0.98 }}
                               >
-                                   <ListItemButton sx={{
+                                   <ListItemButton onClick={() => { setDrawerOpen(false); router.push('/registracija'); }} sx={{
                                         borderRadius: 2,
                                         mb: 1,
                                         py: 1.5,
@@ -282,20 +271,14 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                         <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
                                              <AppRegistrationIcon sx={{ color: Colors.primary.light }} />
                                         </ListItemIcon>
-                                        <ListItemText onClick={() => { setDrawerOpen(false) }} sx={{
+                                        <ListItemText sx={{
                                              '& .MuiTypography-root': {
                                                   color: Colors.neutral[100],
                                                   fontWeight: 600,
                                                   fontSize: '1rem',
-                                                  '& a': {
-                                                       color: 'inherit',
-                                                       textDecoration: 'none',
-                                                  }
                                              },
                                         }}>
-                                             <Link rel='canonical' href={'/registracija'}>
-                                                  Registracija
-                                             </Link>
+                                             Registracija
                                         </ListItemText>
                                    </ListItemButton>
                               </motion.li>

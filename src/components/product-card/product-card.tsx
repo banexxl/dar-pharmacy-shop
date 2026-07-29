@@ -13,6 +13,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export type ProductCardProps = {
   product: Product;
@@ -40,6 +42,7 @@ export default function ProductCard({
   const wishListState = useSelector(wishListSelectorState);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [navigating, setNavigating] = useState(false);
 
   const price = Number(product.price);
   const discount_amount = Number(product.discount_amount);
@@ -47,7 +50,8 @@ export default function ProductCard({
   const discounted: number = hasDiscount ? Math.max(price - discount_amount, 0) : price;
 
   const handleDetails = async () => {
-    await router.push(`/proizvod/${product.slug}`);
+    setNavigating(true);
+    router.push(`/proizvod/${product.slug}`);
   };
 
   const isInWishlist = !!wishListState?.some((item: Product) => item.id === product.id);
@@ -82,10 +86,28 @@ export default function ProductCard({
       border: `1px solid ${Colors.neutral[200]}`,
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'stretch'
+      alignItems: 'stretch',
+      position: 'relative',
     }}>
+      {navigating && (
+        <Box sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'rgba(255,255,255,0.7)',
+          zIndex: 20,
+          borderRadius: 2,
+        }}>
+          <CircularProgress size={44} sx={{ color: Colors.primary.main }} />
+        </Box>
+      )}
       {showImage && (
-        <Link href={`/proizvod/${product.slug}`} passHref>
+        <Link href={`/proizvod/${product.slug}`} passHref onClick={() => setNavigating(true)}>
           <CardMedia
             component="img"
             image={product.image_url}
