@@ -106,7 +106,7 @@ export async function registerCustomer(
       email,
       password: formData.password,
       options: {
-        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/autentifikacija/provera`,
+        emailRedirectTo: `${process.env.BASE_URL}/autentifikacija/provera`,
         data: {
           full_name:
             formData.full_name.trim(),

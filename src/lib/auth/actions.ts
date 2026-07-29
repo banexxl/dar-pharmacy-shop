@@ -17,7 +17,7 @@ export type ErrorType = {
  */
 export async function signInWithEmail(email: string) {
   const supabase = await createClient();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.BASE_URL || 'http://localhost:3000';
 
   const { error } = await supabase.auth.signInWithOtp({
     email: email.trim().toLowerCase(),
@@ -39,7 +39,7 @@ export async function signInWithEmail(email: string) {
  */
 export async function signInWithGoogle() {
   const supabase = await createClient();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.BASE_URL || 'http://localhost:3000';
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',

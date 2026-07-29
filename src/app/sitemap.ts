@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getAllActiveProducts, getAllMainCategories } from '@/lib/services/products';
 import { getAllManufacturerNames } from '@/lib/services/manufacturers';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getAllActiveProducts();
