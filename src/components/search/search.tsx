@@ -37,7 +37,7 @@ export default function SearchBox() {
 
           try {
                if (/\S/.test(searchQuery)) {
-                    await fetch('/api/search/product-search-api', {
+                    await fetch('/api/search/', {
                          method: 'POST',
                          body: searchQuery,
                          headers: {
