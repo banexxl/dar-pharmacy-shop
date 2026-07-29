@@ -30,38 +30,8 @@ function ProductDetails(product: Product) {
      const [isCarouselOpen, setCarouselOpen] = useState(false);
      const [carouselIndex, setCarouselIndex] = useState(0);
      const [showShareOptions, setShowShareOptions] = useState(false);
-     const [isVisible, setVisible] = useState(false)
-     const domRef = useRef<HTMLElement | null>(null)
-     const observerRef = useRef<IntersectionObserver | null>(null);
 
      const mediaItems = (product.media_urls ?? []).map(url => ({ type: 'image' as const, src: url, alt: product.name }));
-
-     useEffect(() => {
-          observerRef.current = new IntersectionObserver(
-               (entries) => {
-                    entries.forEach((entry) => {
-                         if (entry.isIntersecting) {
-                              setShowShareOptions(true);
-                         } else {
-                              setShowShareOptions(false);
-                         }
-                    });
-               },
-               { threshold: 1 } // Set your desired threshold value
-          );
-
-          const currentRef = domRef.current;
-
-
-          if (currentRef && observerRef.current) {
-               observerRef.current.observe(currentRef);
-          }
-          return () => {
-               if (currentRef && observerRef.current) {
-                    observerRef.current.unobserve(currentRef);
-               }
-          };
-     }, []);
 
      const handleOpenCarousel = (index: number) => {
           setCarouselIndex(index);
@@ -208,14 +178,26 @@ function ProductDetails(product: Product) {
                               Korpa
                          </Button>
                     </Box>
-                    <Box display="flex" alignItems="center" justifyContent="center" sx={{ m: 4, color: Colors.primary.main, gap: 2 }}>
+                    <Box
+                         display="flex"
+                         alignItems="center"
+                         justifyContent="center"
+                         sx={{
+                              m: 4,
+                              minHeight: 96,
+                              color: Colors.primary.main,
+                              gap: 2,
+                         }}
+                    >
                          {!isInWishlist ? (
                               <FavoriteBorderIcon
                                    id={`wishlist-icon-${product.id}`}
                                    sx={{
                                         cursor: 'pointer',
                                         fontSize: 28,
-                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                        '&:hover': {
+                                             filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})`,
+                                        },
                                    }}
                                    onClick={handleAddToWishlist}
                               />
@@ -225,34 +207,61 @@ function ProductDetails(product: Product) {
                                    sx={{
                                         cursor: 'pointer',
                                         fontSize: 28,
-                                        ':hover': { filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})` },
+                                        '&:hover': {
+                                             filter: `drop-shadow(3px 5px 2px ${Colors.primary.main})`,
+                                        },
                                    }}
                                    onClick={handleRemoveFromWishlist}
                               />
                          )}
-                         <InstagramIcon sx={{ cursor: 'pointer', color: Colors.primary.main, fontSize: 28 }} onClick={() => window.open('https://instagram.com/apoteka_dar')} />
-                         <Button
-                              sx={{ width: '30px', height: '30px', backgroundColor: 'transparent', }}
-                              onClick={() => setShowShareOptions(!showShareOptions)}
-                         >
-                              <Tooltip placement="left" title={"Podeli"}>
-                                   <ShareIcon color="primary" sx={{ fontSize: 28 }} />
-                              </Tooltip>
-                         </Button>
-                         {
-                              showShareOptions && (
-                                   <Box onMouseLeave={() => setShowShareOptions(false)} sx={{ transform: 'translate(-100px, -80px)' }}>
-                                        <SocialShare
-                                             shareURL={`https://apoteka-dar.rs/proizvod/` + product.slug}
-                                             flexDirection="row"
-                                             sx={{
-                                                  mt: '100px',
-                                                  display: showShareOptions ? 'flex' : 'none',
-                                             }}
+
+                         <InstagramIcon
+                              aria-label="Otvori Instagram"
+                              sx={{
+                                   cursor: 'pointer',
+                                   color: Colors.primary.main,
+                                   fontSize: 28,
+                              }}
+                              onClick={() =>
+                                   window.open(
+                                        'https://instagram.com/apoteka_dar',
+                                        '_blank',
+                                        'noopener,noreferrer'
+                                   )
+                              }
+                         />
+
+                         {!showShareOptions ? (
+                              <Tooltip placement="top" title="Podeli">
+                                   <Button
+                                        aria-label="Prikaži opcije za deljenje"
+                                        onClick={() => setShowShareOptions(true)}
+                                        sx={{
+                                             width: 40,
+                                             minWidth: 40,
+                                             height: 40,
+                                             p: 0,
+                                             bgcolor: 'transparent',
+                                        }}
+                                   >
+                                        <ShareIcon
+                                             color="primary"
+                                             sx={{ fontSize: 28 }}
                                         />
-                                   </Box>
-                              )
-                         }
+                                   </Button>
+                              </Tooltip>
+                         ) : (
+                              <Box
+                                   onMouseLeave={() => setShowShareOptions(false)}
+                                   sx={{
+                                        display: 'inline-flex',
+                                   }}
+                              >
+                                   <SocialShare
+                                        shareURL={`https://apoteka-dar.rs/proizvod/${product.slug}`}
+                                   />
+                              </Box>
+                         )}
                     </Box>
                </Box>
                <CartDialog />

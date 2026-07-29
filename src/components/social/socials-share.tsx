@@ -1,131 +1,117 @@
-import Stack from '@mui/material/Stack';
+'use client';
+
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { alpha } from '@mui/material/styles';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import { alpha, type SxProps, type Theme } from '@mui/material/styles';
+
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+} from 'next-share';
+import { FaViber } from 'react-icons/fa';
 
 import Iconify from 'src/components/iconify';
-import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton, ViberShareButton } from 'next-share';
-import { FaViber } from 'react-icons/fa';
 import { Colors } from '@/styles/theme';
 
-// ----------------------------------------------------------------------
-
-type ShareProps = {
+type SocialShareProps = {
   shareURL: string;
-  flexDirection: 'row' | 'column';
-  sx?: object;
+  sx?: SxProps<Theme>;
 };
 
-export const SocialShare = ({ shareURL, flexDirection, sx }: ShareProps) => {
+const shareButtonSx: SxProps<Theme> = {
+  width: 40,
+  minWidth: 40,
+  height: 40,
+  p: 0,
+  color: Colors.primary.main,
+  borderColor: Colors.primary.main,
+  bgcolor: 'background.paper',
+  '&:hover': {
+    borderColor: Colors.primary.main,
+    bgcolor: alpha(Colors.primary.main, 0.08),
+  },
+};
+
+export const SocialShare = ({
+  shareURL,
+  sx,
+}: SocialShareProps) => {
   return (
-    <Stack sx={{ width: '300px', position: 'absolute', ...sx }}>
-      {/* <Typography variant="subtitle2" sx={{ mt: 0.75, mr: 1.5, color: theme.palette.text.primary }}>
-        Share:
-      </Typography> */}
+    <Box
+      sx={[
+        {
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 40px)',
+          gridTemplateRows: 'repeat(2, 40px)',
+          gap: 1,
+          p: 1,
+          borderRadius: 1.5,
+          bgcolor: 'background.paper',
+          boxShadow: 3,
+          boxSizing: 'border-box',
+        },
+        ...(Array.isArray(sx) ? sx : sx ? [sx] : []),
+      ]}
+    >
+      <FacebookShareButton
+        url={shareURL}
+        quote="Apoteka DAR"
+        hashtag="#apotekadar"
+      >
+        <Button
+          aria-label="Podeli na Facebook-u"
+          size="small"
+          variant="outlined"
+          sx={shareButtonSx}
+        >
+          <Iconify icon="carbon:logo-facebook" />
+        </Button>
+      </FacebookShareButton>
 
-      <Stack direction={flexDirection} alignItems="center" flexWrap="wrap">
-        <FacebookShareButton
-          url={shareURL}
-          quote={'Apoteka DAR'}
-          hashtag={'#apotekadar'}
+      <TwitterShareButton
+        url={shareURL}
+        title="Apoteka DAR"
+      >
+        <Button
+          aria-label="Podeli na Twitter-u"
+          size="small"
+          variant="outlined"
+          sx={shareButtonSx}
         >
-          <Button
-            key={'fb'}
-            variant="outlined"
-            startIcon={<Iconify icon={'carbon:logo-facebook'} />}
-            sx={{
-              color: Colors.primary.main,
-              borderColor: Colors.primary.main,
-              '&:hover': {
-                borderColor: Colors.primary.main,
-                bgcolor: alpha(Colors.primary.main, 0.08),
-              },
-            }}
-          />
-        </FacebookShareButton>
-        <TwitterShareButton
-          url={shareURL}
-          title={'Apoteka DAR'}
-        >
-          <Button
-            key={'tw'}
-            size="small"
-            variant="outlined"
-            startIcon={<Iconify icon={'carbon:logo-twitter'} />}
-            sx={{
-              m: 0.5,
-              flexShrink: 0,
-              color: Colors.primary.main,
-              borderColor: Colors.primary.main,
-              '&:hover': {
-                borderColor: Colors.primary.main,
-                bgcolor: alpha(Colors.primary.main, 0.08),
-              },
-            }}
-          />
-        </TwitterShareButton>
-        <LinkedinShareButton url={shareURL}>
-          <Button
-            key={'li'}
-            size="small"
-            variant="outlined"
-            startIcon={<Iconify icon={'carbon:logo-linkedin'} />}
-            sx={{
-              m: 0.5,
-              flexShrink: 0,
-              color: Colors.primary.main,
-              borderColor: Colors.primary.main,
-              '&:hover': {
-                borderColor: Colors.primary.main,
-                bgcolor: alpha(Colors.primary.main, 0.08),
-              },
-            }}
-          />
-        </LinkedinShareButton>
-        <ViberShareButton
-          url={shareURL}
-          title={'Apoteka DAR'}
-        >
-          <Button
-            key={'vb'}
-            size="small"
-            variant="outlined"
-            startIcon={<FaViber />}
-            sx={{
-              m: 0.5,
-              flexShrink: 0,
-              color: Colors.primary.main,
-              borderColor: Colors.primary.main,
-              '&:hover': {
-                borderColor: Colors.primary.main,
-                bgcolor: alpha(Colors.primary.main, 0.08),
-              },
-            }}
-          />
+          <Iconify icon="carbon:logo-twitter" />
+        </Button>
+      </TwitterShareButton>
 
-        </ViberShareButton>
-        <EmailShareButton
-          url={shareURL}
-          subject={'Apoteka DAR'}
+      <ViberShareButton
+        url={shareURL}
+        title="Apoteka DAR"
+      >
+        <Button
+          aria-label="Podeli putem Vibera"
+          size="small"
+          variant="outlined"
+          sx={shareButtonSx}
         >
-          <Button
-            key={'em'}
-            size="small"
-            variant="outlined"
-            startIcon={<AlternateEmailIcon sx={{ color: Colors.primary.main }} />}
-            sx={{
-              m: 0.5,
-              flexShrink: 0,
-              color: Colors.primary.main,
-              borderColor: Colors.primary.main,
-              '&:hover': {
-                borderColor: Colors.primary.main,
-                bgcolor: alpha(Colors.primary.main, 0.08),
-              },
-            }}
-          />
-        </EmailShareButton>
-      </Stack>
-    </Stack>
+          <FaViber />
+        </Button>
+      </ViberShareButton>
+
+      <EmailShareButton
+        url={shareURL}
+        subject="Apoteka DAR"
+      >
+        <Button
+          aria-label="Podeli putem email-a"
+          size="small"
+          variant="outlined"
+          sx={shareButtonSx}
+        >
+          <AlternateEmailIcon fontSize="small" />
+        </Button>
+      </EmailShareButton>
+    </Box>
   );
-}
+};
