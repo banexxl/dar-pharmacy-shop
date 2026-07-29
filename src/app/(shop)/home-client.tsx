@@ -107,7 +107,7 @@ export function HomePageClient(props: HomePageClientProps) {
                     Popularno
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'rgba(55, 65, 81, 0.8)', maxWidth: 600, mx: 'auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
-                    Iskoristite posebne cene i uštedite na omiljenim proizvodima
+                    Proizvodi koji su trenutno najtraženiji među našim kupcima
                   </Typography>
                 </Box>
                 <ProductCard product={promotionProduct} />
