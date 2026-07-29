@@ -27,7 +27,7 @@ export default async function ProfilePage() {
 
   let orders: any[] = [];
   if (customer) {
-    const { data: ordersData } = await supabase
+    const { data: ordersData, error } = await supabase
       .from('orders')
       .select(`
         id,
@@ -42,11 +42,12 @@ export default async function ProfilePage() {
           name,
           count,
           unit_price,
-          final_unit_price,
+          final_unit_price
         )
       `)
       .eq('customer_id', customer.id)
       .order('created_at', { ascending: false });
+    console.log('ordersData', error);
 
     orders = ordersData ?? [];
   }
