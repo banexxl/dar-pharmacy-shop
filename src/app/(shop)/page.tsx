@@ -5,6 +5,7 @@ import {
   getProductsForHomePage,
   getNewArrivals,
   getPromotionProducts,
+  getTopNSellingProducts,
 } from '@/lib/services/products';
 import { getAllManufacturerLogos } from '@/lib/services/manufacturers';
 import { HomePageClient } from './home-client';
@@ -27,6 +28,7 @@ export default async function HomePage() {
     manufacturersLogos,
     homePageProducts,
     newProducts,
+    popularProducts,
     promotionProducts,
   ] = await Promise.all([
     getRandomProductsByManufacturer('fitaky', 10),
@@ -35,6 +37,7 @@ export default async function HomePage() {
     getAllManufacturerLogos(),
     getProductsForHomePage(),
     getNewArrivals(),
+    getTopNSellingProducts(10),
     getPromotionProducts(),
   ]);
 
@@ -43,8 +46,7 @@ export default async function HomePage() {
     ...productsFromManufacturerFitaky,
   ];
   const dataForGrid = [...homePageProducts].slice(0, 16);
-  const promotionProduct =
-    promotionProducts.length > 0 ? promotionProducts[0] : null;
+  const promotionProduct = promotionProducts.length > 0 ? promotionProducts[0] : null;
 
   return (
     <HomePageClient
@@ -54,6 +56,7 @@ export default async function HomePage() {
       manufacturers={JSON.parse(JSON.stringify(manufacturersLogos))}
       productsOnDiscount={JSON.parse(JSON.stringify(productsOnDiscount))}
       promotionProduct={JSON.parse(JSON.stringify(promotionProduct))}
+      popularProducts={JSON.parse(JSON.stringify(popularProducts))}
       promotionProducts={JSON.parse(JSON.stringify(promotionProducts))}
     />
   );

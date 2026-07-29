@@ -4,6 +4,8 @@ import { useEffect, useState, lazy, Suspense } from 'react';
 import { Container, Typography, Box, Skeleton, Grid } from '@mui/material';
 import { Colors } from '@/styles/theme';
 import Products from '@/components/products/products-grid';
+import Product from '@/interfaces/product/product.interface';
+import { Manufacturer } from '@/lib/supabase/types';
 
 const Promotions = lazy(() => import('@/components/promotions/promotions'));
 const SearchBox = lazy(() => import('@/components/search/search'));
@@ -49,13 +51,14 @@ function ProductsSkeleton() {
 }
 
 interface HomePageClientProps {
-  dataForProductCarousel: any[];
-  dataForGrid: any[];
-  dataForNewProducts: any[];
-  manufacturers: any[];
-  productsOnDiscount: any[];
+  dataForProductCarousel: Product[];
+  dataForGrid: Product[];
+  dataForNewProducts: Product[];
+  manufacturers: Manufacturer[];
+  productsOnDiscount: Product[];
   promotionProduct: any;
-  promotionProducts: any[];
+  popularProducts: Product[];
+  promotionProducts: Product[];
 }
 
 export function HomePageClient(props: HomePageClientProps) {
@@ -66,6 +69,7 @@ export function HomePageClient(props: HomePageClientProps) {
     manufacturers,
     productsOnDiscount,
     promotionProduct,
+    popularProducts,
     promotionProducts,
   } = props;
 
@@ -110,7 +114,7 @@ export function HomePageClient(props: HomePageClientProps) {
                     Proizvodi koji su trenutno najtraženiji među našim kupcima
                   </Typography>
                 </Box>
-                <ProductCard product={promotionProduct} />
+                {popularProducts.length > 0 ? <Products data={popularProducts} /> : <ProductsSkeleton />}
                 <Box sx={{ mt: 6 }}>
                   <CarouselOnlyImageProduct products={dataForProductCarousel} />
                 </Box>
