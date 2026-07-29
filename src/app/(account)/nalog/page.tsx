@@ -47,8 +47,6 @@ export default async function ProfilePage() {
       `)
       .eq('customer_id', customer.id)
       .order('created_at', { ascending: false });
-    console.log('ordersData', error);
-
     orders = ordersData ?? [];
   }
 
