@@ -91,11 +91,10 @@ function EmailPasswordForm() {
 
       if (result.error) {
         toast.error(result.error);
+        setLoading(false);
       } else {
-        toast.success('Link za reset lozinke je poslat na Vaš email.');
+        router.push('/autentifikacija/reset-lozinke/zahtev-poslat');
       }
-
-      setLoading(false);
     },
   });
 
