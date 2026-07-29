@@ -15,18 +15,7 @@ import type {
 } from '@supabase/supabase-js';
 
 import { createClient } from '@/lib/supabase/browser';
-import { Database } from '@/lib/supabase/types';
-
-export type Customer =
-     Database['public']['Tables']['customers']['Row'];
-
-export type CustomerUpdate =
-     Database['public']['Tables']['customers']['Update'];
-
-export type EditableCustomerFields = Omit<
-     CustomerUpdate,
-     'id' | 'user_id' | 'created_at' | 'updated_at'
->;
+import { Customer } from '@/schemas/customer';
 
 type OperationResult = {
      success: boolean;
@@ -41,7 +30,7 @@ type AuthContextValue = {
      isAuthenticated: boolean;
      refreshCustomer: () => Promise<void>;
      updateCustomer: (
-          values: EditableCustomerFields
+          values: Customer
      ) => Promise<OperationResult>;
      signOut: () => Promise<OperationResult>;
 };
@@ -78,7 +67,7 @@ export function AuthProvider({
                     .from('customers')
                     .select('*')
                     .eq('user_id', userId)
-                    .maybeSingle();
+                    .single();
 
                if (error) {
                     console.error(
@@ -107,7 +96,7 @@ export function AuthProvider({
 
      const updateCustomer = useCallback(
           async (
-               values: EditableCustomerFields
+               values: Customer
           ): Promise<OperationResult> => {
                if (!user?.id) {
                     return {
@@ -116,7 +105,7 @@ export function AuthProvider({
                     };
                }
 
-               const updatePayload: CustomerUpdate = {
+               const updatePayload: Customer = {
                     ...values,
                     updated_at: new Date().toISOString(),
                };

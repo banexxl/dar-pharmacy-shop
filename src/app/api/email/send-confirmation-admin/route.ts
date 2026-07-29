@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { transporter } from '@/services/email/email-config';
+import { EmailData } from '@/interfaces/email/email-to-fields.interface';
 
 export async function POST(request: NextRequest) {
-  const data = await request.json();
+  const data: EmailData = await request.json();
 
   if (!data || !data.email) {
     return NextResponse.json({ message: 'Bad request', status: 400 }, { status: 400 });
@@ -22,10 +23,10 @@ export async function POST(request: NextRequest) {
         <div style="font-family: sans-serif; padding: 20px;">
           <h2>Nova porudžbenica</h2>
           <p><strong>Kupac:</strong> ${data.name}</p>
-          <p><strong>Email:</strong> ${data.customerEmail}</p>
+          <p><strong>Email:</strong> ${data.customer_email}</p>
           <p><strong>Telefon:</strong> ${data.phone_number}</p>
           <p><strong>Adresa:</strong> ${data.street_address}, ${data.city}, ${data.country}</p>
-          <p><strong>Broj porudžbine:</strong> ${data.order?.orderNumber || 'N/A'}</p>
+          <p><strong>Broj porudžbine:</strong> ${data.order?.order_number || 'N/A'}</p>
           <p><strong>Ukupno:</strong> ${data.order?.total?.toFixed(2) || 0} RSD</p>
           <h3>Stavke:</h3>
           <ul>${itemsList}</ul>

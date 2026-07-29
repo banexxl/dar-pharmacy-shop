@@ -24,6 +24,7 @@ import SlideTransition from '@/hooks/use-slide-transition';
 import { Colors } from '@/styles/theme';
 import LoadingWheel from '../loading/loading';
 import { useAuth } from '@/hooks/useAuth';
+import { Customer } from '@/schemas/customer';
 
 const AVATAR_OPTIONS = [
      '/images/avatars/male.png',
@@ -33,18 +34,6 @@ const AVATAR_OPTIONS = [
 type LoginRegisterProps = {
      open: boolean;
      onClose: () => void;
-};
-
-type Customer = {
-     id: string;
-     user_id: string | null;
-     full_name?: string | null;
-     name?: string | null;
-     email: string;
-     phone_number?: string | null;
-     street_address?: string | null;
-     city?: string | null;
-     avatar?: string | null;
 };
 
 export default function LoginRegister({
@@ -186,10 +175,8 @@ export default function LoginRegister({
                     .eq('user_id', user.id)
                     .select('avatar')
                     .single();
-               console.log('data', data);
 
                if (error) {
-                    console.log('Error updating avatar:', error);
                     throw error;
                }
 
@@ -412,9 +399,7 @@ export default function LoginRegister({
                                         <PersonIcon fontSize="small" />
 
                                         <Typography>
-                                             {userData?.full_name ||
-                                                  userData?.name ||
-                                                  'Nije dostupno'}
+                                             {userData?.full_name || 'Nije dostupno'}
                                         </Typography>
 
                                         <AlternateEmailIcon fontSize="small" />

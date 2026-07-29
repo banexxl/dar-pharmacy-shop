@@ -43,7 +43,6 @@ export default async function ProfilePage() {
           count,
           unit_price,
           final_unit_price,
-          line_total
         )
       `)
       .eq('customer_id', customer.id)

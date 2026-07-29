@@ -1,5 +1,6 @@
 import { createServiceRoleClient } from '@/lib/supabase/service-role';
-import type { OrderInsert, OrderItemInsert, Product } from '@/lib/supabase/types';
+import type { Order, OrderInsert, OrderItemInsert, Product } from '@/lib/supabase/types';
+import { Customer } from '@/schemas/customer';
 
 const supabase = createServiceRoleClient();
 
@@ -13,20 +14,9 @@ export interface CartItem {
   discount_amount?: number;
 }
 
-export interface CustomerFormData {
-  name: string;
-  email: string;
-  phone_number: string;
-  street_address: string;
-  city: string;
-  province_state?: string;
-  country: string;
-  zip_postal_code: string;
-}
-
 export interface CreateOrderInput {
   cart: CartItem[];
-  customer: CustomerFormData;
+  customer: Customer;
   paymentMethod: 'cash-on-delivery' | 'credit-card';
   userId?: string; // auth.uid() if logged in, undefined for guest
 }
@@ -34,8 +24,7 @@ export interface CreateOrderInput {
 export interface CreateOrderResult {
   success: boolean;
   error?: string;
-  orderNumber?: string;
-  total?: number;
+  order?: Order
 }
 
 /**
@@ -121,8 +110,6 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
         discount: product.discount,
         discount_amount: discount_amount,
         final_unit_price: finalUnitPrice,
-        line_total: lineTotal,
-        product_snapshot: product as any, // Full product snapshot for historical record
       };
     }
   );
@@ -145,7 +132,7 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
   const randomPart = Math.floor(Math.random() * 10000)
     .toString()
     .padStart(4, '0');
-  const orderNumber = `${datePart}-${randomPart}`;
+  const orderNumber = `${datePart}-ID-${randomPart}`;
 
   // 6. Insert order
   const orderData: OrderInsert = {
@@ -154,14 +141,14 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
     payment_method: paymentMethod,
     payment_status: 'pending',
     order_status: 'pending',
-    transaction_number: paymentMethod === 'cash-on-delivery' ? 'pouzecem' : null,
+    transaction_number: paymentMethod === 'cash-on-delivery' ? 'cash-on-delivery' : '',
     total,
   };
 
   const { data: insertedOrder, error: orderError } = await supabase
     .from('orders')
     .insert(orderData)
-    .select('id, order_number')
+    .select('*')
     .single();
 
   if (orderError || !insertedOrder) {
@@ -188,8 +175,7 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 
   return {
     success: true,
-    orderNumber: insertedOrder.order_number,
-    total,
+    order: insertedOrder,
   };
 }
 
@@ -215,4 +201,20 @@ export async function getOrdersByUserId(userId: string) {
     .order('created_at', { ascending: false });
 
   return orders ?? [];
+}
+
+export async function getOrderById(orderId: string) {
+  const { data: order, error } = await supabase
+    .from('orders')
+    .select(`
+      *,
+      order_items (*)
+    `)
+    .eq('id', orderId)
+    .single();
+
+  if (error) {
+    console.error('Error fetching order by ID:', error.message);
+  }
+  return order ?? null;
 }

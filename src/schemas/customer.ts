@@ -1,5 +1,23 @@
 import { bool, object, string } from 'yup';
 
+export interface Customer {
+     id: string;
+     user_id: string;
+     full_name: string;
+     phone_number: string;
+     street_address: string;
+     city: string;
+     province_state: string | null;
+     country: string;
+     avatar: string | null;
+     zip_postal_code: string;
+     email: string;
+     is_banned?: boolean;
+     banned_until?: string | null;
+     created_at: string;
+     updated_at: string;
+}
+
 export const customerFormSchema = () => {
      return object().shape({
           full_name: string()

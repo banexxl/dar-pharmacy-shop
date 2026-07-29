@@ -4,8 +4,8 @@ import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from '@mui/system';
 import { clearUserForm, submitUserForm } from '@/store/checkout/user-info-form.slice';
-import { IUserFormProps, IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
-import { userFormSchema } from '@/schemas/user-form.schema';
+import { IUserFormProps } from '../../../interfaces/checkout/user-form-values.interface';
+import { customerFormSchema } from '@/schemas/user-form.schema';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Cart from '@/components/cart/cart';
@@ -14,6 +14,7 @@ import EmailAndAccountCreation from './user-infoform-data-email'; // Import the 
 import { Box } from '@mui/system';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/hooks/useAuth';
+import { Customer } from '@/schemas/customer';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
@@ -24,7 +25,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
      const { isAuthenticated } = useAuth();
      const dispatch = useDispatch();
 
-     const initialUserFormValues: IUserForm = {
+     const initialUserFormValues: Customer = {
           full_name: userFormSelector.full_name || userFormSelector.name || '',
           street_address: userFormSelector.street_address || userFormSelector.street_address || '',
           phone_number: userFormSelector.phone_number || userFormSelector.phone_number || '',
@@ -33,7 +34,11 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           country: userFormSelector.country || '',
           zip_postal_code: userFormSelector.zip_postal_code || userFormSelector.zip_postal_code || '',
           email: userFormSelector.email || '',
-          should_create_account: false,
+          id: userFormSelector.id || '',
+          user_id: userFormSelector.user_id || '',
+          avatar: userFormSelector.avatar || null,
+          created_at: userFormSelector.created_at || '',
+          updated_at: userFormSelector.updated_at || ''
      };
 
      const handleSubmit = (values: any) => {
@@ -74,7 +79,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                          validateOnMount
                          initialValues={initialUserFormValues}
                          onSubmit={handleSubmit}
-                         validationSchema={userFormSchema}
+                         validationSchema={customerFormSchema}
                     >
                          {formik => (
                               <Form>
@@ -234,14 +239,14 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
                                                                                 ? Object.keys(formik.errors).some(
                                                                                      (key) =>
                                                                                           key !== 'email' &&
-                                                                                          formik.errors[key as keyof IUserForm] !== undefined
+                                                                                          formik.errors[key as keyof Customer] !== undefined
                                                                                 )
                                                                                 : (formik.errors.email !== 'Ovaj email je već registrovan!' &&
                                                                                      formik.errors.email !== undefined) ||
                                                                                 Object.keys(formik.errors).some(
                                                                                      (key) =>
                                                                                           key !== 'email' &&
-                                                                                          formik.errors[key as keyof IUserForm] !== undefined
+                                                                                          formik.errors[key as keyof Customer] !== undefined
                                                                                 )
                                                                       )
                                                                  }

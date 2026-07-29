@@ -15,9 +15,10 @@ declare global {
   }
 }
 
-export function OrderConfirmationClient() {
+export function OrderConfirmationClient({ orderData }: { orderData: any }) {
   const [orderConfirmationData, setOrderConfirmationData] = useState<ConfirmationData | null>(null);
   const router = useRouter();
+  console.log('orderData', orderData);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -72,7 +73,7 @@ gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID}');`}
               Porudžbina je kreirana!
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-              Broj porudžbine: <strong>#{order?.order_number || 'N/A'}</strong>
+              Broj porudžbine: <strong>#{orderData?.order_number || 'N/A'}</strong>
             </Typography>
           </Box>
 

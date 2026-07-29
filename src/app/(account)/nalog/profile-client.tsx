@@ -3,9 +3,12 @@
 import { Container, Box, Typography, Paper, Button } from '@mui/material';
 import { LogoutButton } from './logout-button';
 import { useAuth } from '@/hooks/useAuth';
+import { Order } from '@/schemas/order';
+import { Customer } from '@/lib/supabase/types';
 
 interface ProfileClientProps {
-  orders: any[];
+  orders: Order[];
+  customer: Customer | null
 }
 
 export function ProfileClient({ orders }: ProfileClientProps) {

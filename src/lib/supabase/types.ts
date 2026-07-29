@@ -22,7 +22,7 @@ export interface Database {
       customers: {
         Row: {
           id: string;
-          user_id: string | null;
+          user_id: string;
           full_name: string;
           phone_number: string;
           street_address: string;
@@ -261,8 +261,6 @@ export interface Database {
           discount: boolean;
           discount_amount: number | null;
           final_unit_price: number;
-          line_total: number;
-          product_snapshot: Json | null;
           created_at: string;
         };
         Insert: {
@@ -288,8 +286,6 @@ export interface Database {
           discount?: boolean;
           discount_amount?: number | null;
           final_unit_price: number;
-          line_total: number;
-          product_snapshot?: Json | null;
           created_at?: string;
         };
         Update: {
@@ -315,8 +311,6 @@ export interface Database {
           discount?: boolean;
           discount_amount?: number | null;
           final_unit_price?: number;
-          line_total?: number;
-          product_snapshot?: Json | null;
           created_at?: string;
         };
         Relationships: [

@@ -1,26 +1,7 @@
+import { Customer } from '@/schemas/customer';
 import { FormikContextType, FormikErrors, FormikTouched } from 'formik';
 
-export interface IUserForm {
-     full_name: string;
-     street_address: string;
-     phone_number: string;
-     city: string;
-     province_state?: string;
-     country: string;
-     zip_postal_code: string;
-     email: string;
-     should_create_account?: boolean;
-}
-
-export interface IEmailForm {
-     email: string;
-}
-
-export const initialEmailFormValues: IEmailForm = {
-     email: '',
-};
-
-export const initialUserFormValues: IUserForm = {
+export const initialUserFormValues: Customer = {
      full_name: '',
      street_address: '',
      phone_number: '',
@@ -29,7 +10,11 @@ export const initialUserFormValues: IUserForm = {
      country: '',
      zip_postal_code: '',
      email: '',
-     should_create_account: false,
+     id: '',
+     user_id: '',
+     avatar: null,
+     created_at: '',
+     updated_at: ''
 };
 
 export interface IUserFormProps {
@@ -37,7 +22,7 @@ export interface IUserFormProps {
      tabIndex?: number;
      setTab?: (tabIndex: number) => number;
      formName: string;
-     errors?: FormikErrors<IUserForm>;
-     touched?: FormikTouched<IUserForm>;
-     formik?: FormikContextType<IUserForm>;
+     errors?: FormikErrors<Customer>;
+     touched?: FormikTouched<Customer>;
+     formik?: FormikContextType<Customer>;
 }

@@ -91,14 +91,6 @@ export async function GET(request: Request) {
      const permission = await checkIfCustomerExists(email);
 
      if (!permission.success) {
-          console.log(
-               '[OAuth callback] Permission denied',
-               {
-                    email,
-                    error: permission.error,
-               }
-          );
-
           // Sign out using the session-aware SSR client.
           await supabase.auth.signOut();
 
@@ -120,10 +112,6 @@ export async function GET(request: Request) {
                     deleteError
                );
           } else {
-               console.log(
-                    'Deleted unauthorized Auth user:',
-                    session.user.id
-               );
                return redirectToError(
                     'unauthorized',
                     'Vaš nalog nije registrovan. Molimo registrujte se prvo ili kontaktirajte podršku.'

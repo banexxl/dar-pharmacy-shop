@@ -14,7 +14,7 @@ import {
   Paper,
   Chip,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ReCaptcha, ReCaptchaProvider } from 'next-recaptcha-v3';
 import { TabPanel } from '@/components/checkout/tab-panel';
 import Confirmation from '@/components/checkout/cart-confirmation/cart-confirmation';
@@ -53,6 +53,10 @@ function CheckoutContent() {
   const isScreenToMedium = useMediaQuery(
     theme.breakpoints.down('md')
   );
+
+  const handleCaptchaValidate = useCallback((token: string) => {
+    setCaptchaToken(token || '');
+  }, []);
 
   const steps = [
     'Adresa za dostavu',
@@ -317,7 +321,7 @@ function CheckoutContent() {
                           ? 'checkout_confirmation'
                           : 'checkout_payment'
                       }
-                      onValidate={(token) => { setCaptchaToken(token || ''); }}
+                      onValidate={handleCaptchaValidate}
                     />
                   )}
                 </Box>

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createOrder, type CartItem, type CustomerFormData } from '@/lib/services/orders';
+import { createOrder, type CartItem } from '@/lib/services/orders';
+import { Customer } from '@/schemas/customer';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -18,15 +19,20 @@ export async function POST(request: NextRequest) {
     discount_amount: item.discount_amount || item.discount_amount,
   }));
 
-  const customer: CustomerFormData = {
-    name: userFormSelectorState?.name || '',
+  const customer: Customer = {
+    full_name: userFormSelectorState?.full_name || '',
     email: userFormSelectorState?.email || '',
-    phone_number: userFormSelectorState?.phone_number || userFormSelectorState?.phone_number || '',
-    street_address: userFormSelectorState?.street_address || userFormSelectorState?.street_address || '',
+    phone_number: userFormSelectorState?.phone_number || '',
+    street_address: userFormSelectorState?.street_address || '',
     city: userFormSelectorState?.city || '',
-    province_state: userFormSelectorState?.province_state || userFormSelectorState?.province_state || '',
+    province_state: userFormSelectorState?.province_state || null,
     country: userFormSelectorState?.country || '',
-    zip_postal_code: userFormSelectorState?.zip_postal_code || userFormSelectorState?.zip_postal_code || '',
+    zip_postal_code: userFormSelectorState?.zip_postal_code || '',
+    id: userFormSelectorState?.id || '',
+    user_id: userFormSelectorState?.user_id || '',
+    avatar: null,
+    created_at: '',
+    updated_at: ''
   };
 
   const result = await createOrder({
@@ -34,17 +40,17 @@ export async function POST(request: NextRequest) {
     customer,
     paymentMethod: paymentOption === 'credit-card' ? 'credit-card' : 'cash-on-delivery',
   });
-  console.log('result', result);
 
   if (result.success) {
     return NextResponse.json({
       success: true,
       order: {
-        orderNumber: result.orderNumber,
-        total: result.total,
-        paymentStatus: 'pending',
-        orderStatus: 'pending',
-        createdAt: new Date().toISOString(),
+        id: result.order?.id,
+        order_number: result.order?.order_number,
+        total: result.order?.total,
+        payment_status: 'pending',
+        order_status: 'pending',
+        created_at: new Date().toISOString(),
         customer: userFormSelectorState,
         items: cart,
         paymentMethod: paymentOption,

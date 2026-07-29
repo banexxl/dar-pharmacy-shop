@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { transporter } from '@/services/email/email-config';
+import { EmailData } from '@/interfaces/email/email-to-fields.interface';
 
 export async function POST(request: NextRequest) {
-  const data = await request.json();
+  const data: EmailData = await request.json();
 
   if (!data || !data.email) {
     return NextResponse.json({ message: 'Bad request', status: 400 }, { status: 400 });
@@ -13,6 +14,7 @@ export async function POST(request: NextRequest) {
     const itemsList = orderItems.map((item: any) =>
       `<li>${item.name} x${item.count} - ${(item.price * item.count).toFixed(2)} RSD</li>`
     ).join('');
+    console.log('data', data);
 
     const mailOptions = {
       from: process.env.EMAIL_FROM,

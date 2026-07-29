@@ -35,7 +35,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
      };
 
-     const onOrderCashOnDelivery = async (): Promise<{ success: boolean; error?: string, order: Order }> => {
+     const onOrderCashOnDelivery = async (): Promise<{ success: boolean; error?: string, order: Order | null }> => {
           try {
                const response = await fetch('/api/orders', {
                     method: 'POST',
@@ -46,13 +46,13 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
 
                if (!response.ok) {
                     toast.error('Greška prilikom kreiranja porudžbine. Pokušajte ponovo.');
-                    return responseData
+                    return { success: false, error: 'Greška prilikom kreiranja porudžbine. Pokušajte ponovo.', order: null };
                }
 
                return responseData
           } catch (error) {
                console.error('Error creating order:', error);
-               return { success: false, error: 'Greška prilikom kreiranja porudžbine. Pokušajte ponovo.', order: {} as Order };
+               return { success: false, error: 'Greška prilikom kreiranja porudžbine. Pokušajte ponovo.', order: null };
           }
      };
 
@@ -146,7 +146,6 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
 
                                                   try {
                                                        const { success, error, order } = await onOrderCashOnDelivery(); // Step 1: Try to create the order
-
                                                        if (success) {
                                                             // Step 2: Send confirmation emails
                                                             Promise.all([
@@ -160,7 +159,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                       city: userFormSelectorState.city,
                                                                       country: userFormSelectorState.country,
                                                                       phone_number: userFormSelectorState.phone_number,
-                                                                      order: order
+                                                                      order: order!,
                                                                  }),
                                                                  SendCheckoutConfirmationEmailToUser({
                                                                       email: userFormSelectorState.email.toLowerCase(),
@@ -171,7 +170,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                       city: userFormSelectorState.city,
                                                                       country: userFormSelectorState.country,
                                                                       phone_number: userFormSelectorState.phone_number,
-                                                                      order: order
+                                                                      order: order!
                                                                  })
                                                             ])
                                                                  .then(([adminEmailResult, userEmailResult]) => {
@@ -179,8 +178,8 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                            const confirmationData: ConfirmationData = {
                                                                                 userForm: userFormSelectorState,
                                                                                 order: {
-                                                                                     order_number: order?.order_number,
-                                                                                     payment_status: order?.payment_status,
+                                                                                     order_number: order?.order_number!,
+                                                                                     payment_status: order?.payment_status!,
                                                                                      transaction_number: 'Plaćanje pouzećem',
                                                                                      total: totalItemPriceState,
                                                                                      created_at: new Date().toISOString(),
@@ -200,7 +199,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                                 dispatch(clearCart());
                                                                                 dispatch(clearUserForm());
                                                                            }, 2000);
-                                                                           router.push('/placanje/pouzecem');
+
                                                                       } else {
                                                                            toast.error('Greška prilikom slanja email-a!');
                                                                       }
@@ -208,15 +207,12 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                  .catch((error) => {
                                                                       toast.error('Došlo je do greške prilikom slanja email-a!');
                                                                  });
-
-
+                                                            router.push(`/placanje/pouzecem?order=${order?.id}`);
                                                        } else {
-                                                            console.error("Failed to create order.");
-                                                            // Optionally show toast or UI message here
+                                                            toast.error('Došlo je do greške prilikom kreiranja porudžbine. Pokušajte ponovo ili nas kontaktirajte.');
                                                        }
                                                   } catch (error) {
-                                                       console.error("Unexpected error:", error);
-                                                       // Optionally show toast or UI message here
+                                                       toast.error('Došlo je do greške prilikom kreiranja porudžbine. Pokušajte ponovo ili nas kontaktirajte.');
                                                   } finally {
                                                        setLoading(false);
                                                   }
