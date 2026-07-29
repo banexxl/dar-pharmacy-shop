@@ -4,7 +4,7 @@ import { Customer } from '@/schemas/customer';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { cart, userFormSelectorState, totalItemPriceState, paymentOption } = body;
+  const { cart, userFormSelectorState, totalItemPriceState, paymentOption, userId, customerId } = body;
 
   if (!cart || !Array.isArray(cart) || cart.length === 0) {
     return NextResponse.json({ success: false, error: 'Korpa je prazna.' }, { status: 400 });
@@ -39,6 +39,8 @@ export async function POST(request: NextRequest) {
     cart: cartItems,
     customer,
     paymentMethod: paymentOption === 'credit-card' ? 'credit-card' : 'cash-on-delivery',
+    userId: userId || undefined,
+    customerId: customerId || undefined,
   });
 
   if (result.success) {

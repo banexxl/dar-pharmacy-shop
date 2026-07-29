@@ -23,13 +23,12 @@ interface PaymentOptionsProps {
 export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: PaymentOptionsProps) => {
      const [paymentOption, setPaymentOption] = useState<PaymentMethod>('cash-on-delivery')
      const [loading, setLoading] = useState<boolean>(false)
-     const { isAuthenticated } = useAuth()
+     const { isAuthenticated, user, customer } = useAuth()
      const router = useRouter()
      const totalItemPriceState = (useSelector(cartTotalPriceSelector))
      const userFormSelectorState = (useSelector((state: any) => state.persistReduce.userInfoFormSliceReducer))
      const cart = (useSelector((state: any) => state.persistReduce.cartSliceReducer))
      const dispatch = useDispatch()
-     const session = useAuth();
 
      const handleBack = () => {
           props.tabIndex === 2 ? props.setTab?.(props.tabIndex - 1) : null
@@ -40,7 +39,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                const response = await fetch('/api/orders', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ cart, userFormSelectorState, totalItemPriceState, paymentOption })
+                    body: JSON.stringify({ cart, userFormSelectorState, totalItemPriceState, paymentOption, userId: user?.id, customerId: customer?.id })
                });
                const responseData = await response.json();
 
@@ -187,7 +186,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                                      items: cart,
                                                                                      payment_method: paymentOption,
                                                                                      order_status: 'pending',
-                                                                                     customer_id: session.customer?.id!
+                                                                                     customer_id: customer?.id
                                                                                 },
                                                                                 deliveryDate: '3-5 radnih dana',
                                                                            };

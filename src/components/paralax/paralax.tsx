@@ -10,6 +10,7 @@ export default function Parallax() {
      const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
      const router = useRouter();
      const [bgOffset, setBgOffset] = useState(0);
+     const [btnLoading, setBtnLoading] = useState(false);
 
      useEffect(() => {
           const onScroll = () => setBgOffset(window.scrollY * 0.2);
@@ -100,11 +101,13 @@ export default function Parallax() {
                               variant="contained"
                               size="large"
                               sx={{ mt: 4 }}
+                              disabled={btnLoading}
                               onClick={async () => {
-                                   await router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika');
+                                   setBtnLoading(true);
+                                   router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika');
                               }}
                          >
-                              Pogledajte ponudu
+                              {btnLoading ? 'Učitavanje...' : 'Pogledajte ponudu'}
                          </Button>
                     </Box>
                </Container>

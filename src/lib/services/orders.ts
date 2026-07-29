@@ -19,6 +19,7 @@ export interface CreateOrderInput {
   customer: Customer;
   paymentMethod: 'cash-on-delivery' | 'credit-card';
   userId?: string; // auth.uid() if logged in, undefined for guest
+  customerId?: string; // customers.id if already known from client
 }
 
 export interface CreateOrderResult {
@@ -116,7 +117,19 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 
   // 4. Resolve customer_id
   let customerId: string | null = null;
-  if (userId) {
+
+  // If customerId provided from client, validate it belongs to this user
+  if (input.customerId && userId) {
+    const { data: validCustomer } = await supabase
+      .from('customers')
+      .select('id')
+      .eq('id', input.customerId)
+      .eq('user_id', userId)
+      .single();
+
+    customerId = validCustomer?.id ?? null;
+  } else if (userId) {
+    // Fallback: look up customer by user_id
     const { data: existingCustomer } = await supabase
       .from('customers')
       .select('id')

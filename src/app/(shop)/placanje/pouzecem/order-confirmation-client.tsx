@@ -16,6 +16,7 @@ declare global {
 }
 
 export function OrderConfirmationClient({ orderData }: { orderData: any }) {
+  const [loading, setLoading] = useState(true);
   const [orderConfirmationData, setOrderConfirmationData] = useState<ConfirmationData | null>(null);
   const router = useRouter();
   useEffect(() => {
@@ -24,6 +25,7 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
       const raw = localStorage.getItem('orderConfirmationData');
       if (raw) setOrderConfirmationData(JSON.parse(raw) as ConfirmationData);
     } catch { }
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -44,6 +46,15 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
   const userForm = orderConfirmationData?.userForm;
   const orderItems = Array.isArray(order?.items) ? order.items : [];
   const totalAmount = orderItems.reduce((acc: number, item: ICartItem) => acc + item.price * item.count, 0);
+  console.log('orderConfirmationData', orderConfirmationData);
+
+  if (loading) {
+    return (
+      <Container maxWidth="sm" sx={{ py: 10, textAlign: 'center' }}>
+        <CircularProgress />
+      </Container>
+    );
+  }
 
   if (!orderConfirmationData) {
     return (
