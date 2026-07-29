@@ -68,8 +68,8 @@ const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
                                              Kontakt forma
                                         </Typography>
 
-                                        <Typography>
-                                             Ako ste u potrazi za <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
+                                        <Typography component="div">
+                                             Ako ste u potrazi za <Typography component="span" sx={{ fontWeight: 'bold', display: 'inline' }}>deficitarnim</Typography> lekovima, možemo vam pomoći.<br />
                                              Takođe smo tu da rešimo bilo kakve nedoumice vezane za naše proizvode.<br /><br />
                                              Slobodno nas kontaktirajte!
                                         </Typography>
@@ -122,14 +122,14 @@ const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
                                                             color="primary"
                                                        />
                                                   }
-                                                  label={<Typography sx={{ textAlign: 'center' }}>
+                                                  label={<Box component="span" sx={{ textAlign: 'center' }}>
                                                        Saglasan/saglasna sam sa obradom mojih podataka o ličnosti navedenih za potrebe savetovanja, za vreme potrebno da se pitanje obradi i da se na njega odgovori. Više informacija možete naći na linku: <br />
-                                                       <Typography sx={{ color: Colors.link, display: 'inline' }}>
+                                                       <span style={{ color: Colors.link }}>
                                                             <Link rel='canonical' href="/informacije/politika-privatnosti">
                                                                  Politika privatnosti.
                                                             </Link>
-                                                       </Typography>
-                                                  </Typography>}
+                                                       </span>
+                                                  </Box>}
                                              />
                                              {formik.touched.dataProcessConsent && formik.errors.dataProcessConsent && (
                                                   <FormHelperText sx={{ marginBottom: '30px' }} error>{formik.errors.dataProcessConsent}</FormHelperText>
@@ -146,14 +146,14 @@ const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
                                                        />
                                                   }
                                                   label={
-                                                       <Typography sx={{ textAlign: 'center' }}>
+                                                       <Box component="span" sx={{ textAlign: 'center' }}>
                                                             Postavljanjem pitanja potvrđujem da sam pročitao i da sam saglasan sa: <br />
-                                                            <Typography sx={{ color: Colors.link, display: 'inline' }}>
+                                                            <span style={{ color: Colors.link }}>
                                                                  <Link rel='canonical' href="/informacije/politika-privatnosti">
                                                                       Pravilima i uslovima korišćenja usluge: Pitajte farmaceuta.
                                                                  </Link>
-                                                            </Typography>
-                                                       </Typography>
+                                                            </span>
+                                                       </Box>
                                                   }
                                              />
                                              {formik.touched.questionSubmissionConsent && formik.errors.questionSubmissionConsent && (

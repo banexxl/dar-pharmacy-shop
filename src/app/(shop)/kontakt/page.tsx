@@ -11,8 +11,9 @@ import SearchBox from '@/components/search/search';
 
 export default function ContactPage() {
 
-  const mapApiKey = process.env.GOOGLE_MAPS_API_KEY!
-  const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
+  const mapApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
+
+  const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
 
   return (
     <Container maxWidth="xl" sx={{ background: '#fff', py: { xs: 4, md: 6 } }}>

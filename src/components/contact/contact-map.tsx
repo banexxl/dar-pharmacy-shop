@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
-import Box from '@mui/material/Box';
+import { Box, CircularProgress } from '@mui/material';
+import { Colors } from '@/styles/theme';
 
 export type ContactMapProps = {
      mapApiKey: string;
@@ -15,59 +16,81 @@ const POSITION = {
 
 export const ContactMap = ({ mapApiKey }: ContactMapProps) => {
      const mapRef = useRef<HTMLDivElement>(null);
+     const [loading, setLoading] = useState(true);
+     const [error, setError] = useState<string | null>(null);
 
      useEffect(() => {
-          if (!mapRef.current || !mapApiKey) return;
+          if (!mapRef.current || !mapApiKey) {
+               setLoading(false);
+               setError('API ključ nije dostupan.');
+               return;
+          }
 
           const loader = new Loader({
                apiKey: mapApiKey,
                version: 'weekly',
           });
 
-          let map: google.maps.Map | undefined;
-
-          loader
-               .load()
-               .then(() => {
+          loader.importLibrary('maps')
+               .then(({ Map }) => {
                     if (!mapRef.current) return;
 
-                    map = new google.maps.Map(mapRef.current, {
+                    const map = new Map(mapRef.current, {
                          center: POSITION,
-                         zoom: 14,
+                         zoom: 15,
+                         mapId: 'apoteka-dar-map',
                     });
 
-                    new google.maps.Marker({
-                         position: POSITION,
-                         map,
-                         title: 'Our location',
-                    });
+                    // Use AdvancedMarkerElement if available, fallback to Marker
+                    loader.importLibrary('marker')
+                         .then(({ AdvancedMarkerElement }) => {
+                              new AdvancedMarkerElement({
+                                   position: POSITION,
+                                   map,
+                                   title: 'Apoteka DAR',
+                              });
+                         })
+                         .catch(() => {
+                              // Fallback to legacy Marker
+                              new google.maps.Marker({
+                                   position: POSITION,
+                                   map,
+                                   title: 'Apoteka DAR',
+                              });
+                         });
+
+                    setLoading(false);
                })
-               .catch((error) => {
-                    console.error('Failed to load Google Maps:', error);
+               .catch((err) => {
+                    console.error('Failed to load Google Maps:', err);
+                    setError('Mapa nije dostupna.');
+                    setLoading(false);
                });
-
-          return () => {
-               if (map) {
-                    google.maps.event.clearInstanceListeners(map);
-               }
-          };
      }, [mapApiKey]);
 
      return (
           <Box
-               ref={mapRef}
                sx={{
+                    position: 'relative',
                     borderRadius: '10px',
                     overflow: 'hidden',
-                    width: {
-                         xs: '80%',
-                         md: '400px',
-                    },
-                    height: {
-                         xs: '200px',
-                         md: '300px',
-                    },
+                    width: '100%',
+                    height: { xs: '300px', md: '100%' },
+                    minHeight: { xs: 250, md: 400 },
+                    bgcolor: Colors.neutral[100],
                }}
-          />
+          >
+               {loading && (
+                    <Box sx={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1 }}>
+                         <CircularProgress sx={{ color: Colors.primary.main }} />
+                    </Box>
+               )}
+               {error && !loading && (
+                    <Box sx={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                         <Box sx={{ textAlign: 'center', color: Colors.neutral[600] }}>{error}</Box>
+                    </Box>
+               )}
+               <Box ref={mapRef} sx={{ width: '100%', height: '100%' }} />
+          </Box>
      );
 };
