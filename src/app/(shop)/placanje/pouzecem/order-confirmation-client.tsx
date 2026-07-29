@@ -18,8 +18,6 @@ declare global {
 export function OrderConfirmationClient({ orderData }: { orderData: any }) {
   const [orderConfirmationData, setOrderConfirmationData] = useState<ConfirmationData | null>(null);
   const router = useRouter();
-  console.log('orderData', orderData);
-
   useEffect(() => {
     if (typeof window === 'undefined') return;
     try {

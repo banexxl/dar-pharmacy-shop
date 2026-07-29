@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { Grid, TextField, FormControlLabel, Typography, Tooltip } from '@mui/material';
 import { useFormikContext, Field } from 'formik';
-import { IUserForm } from '../../../interfaces/checkout/user-form-values.interface';
 import theme from '@/styles/theme';
 import { Checkbox } from '@mui/material';
 import { useAuth } from '@/hooks/useAuth';
+import { Customer } from '@/schemas/customer';
 
 const EmailAndAccountCreation: React.FC = () => {
 
-     const { values, errors, touched, handleChange, setFieldValue, validateField } = useFormikContext<IUserForm>();
+     const { values, errors, touched, handleChange, setFieldValue, validateField } = useFormikContext<Customer & { should_create_account: boolean }>();
      const { user } = useAuth();
 
      // Set the email value from the auth user if it exists

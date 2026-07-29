@@ -14,8 +14,6 @@ export async function POST(request: NextRequest) {
     const itemsList = orderItems.map((item: any) =>
       `<li>${item.name} x${item.count} - ${(item.price * item.count).toFixed(2)} RSD</li>`
     ).join('');
-    console.log('data', data);
-
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: data.email,

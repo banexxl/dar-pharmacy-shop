@@ -12,8 +12,6 @@ import SearchBox from '@/components/search/search';
 export default function ContactPage() {
 
   const mapApiKey = process.env.GOOGLE_MAPS_API_KEY!
-  console.log('mapApiKey', mapApiKey);
-
   const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
 
   return (
