@@ -1,4 +1,4 @@
-import { getProductBySlug } from '@/lib/services/products';
+import { getProductBySlug, getRelatedProducts } from '@/lib/services/products';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ProductDetailClient } from './product-detail-client';
@@ -35,5 +35,16 @@ export default async function ProductDetailPage({ params }: Props) {
     notFound();
   }
 
-  return <ProductDetailClient product={JSON.parse(JSON.stringify(product))} />;
+  const relatedProducts = await getRelatedProducts(
+    product.main_category,
+    product.id,
+    10
+  );
+
+  return (
+    <ProductDetailClient
+      product={JSON.parse(JSON.stringify(product))}
+      relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
+    />
+  );
 }

@@ -327,3 +327,23 @@ export async function getTopNSellingProducts(n: number): Promise<Product[]> {
   }
   return data ?? [];
 }
+
+export async function getRelatedProducts(
+  mainCategory: string,
+  excludeProductId: string,
+  limit: number = 10
+): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('is_active', true)
+    .ilike('main_category', mainCategory)
+    .neq('id', excludeProductId)
+    .limit(limit);
+
+  if (error) {
+    console.error('getRelatedProducts error:', error.message);
+    return [];
+  }
+  return data ?? [];
+}
