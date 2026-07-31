@@ -23,10 +23,25 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
     if (typeof window === 'undefined') return;
     try {
       const raw = localStorage.getItem('orderConfirmationData');
-      if (raw) setOrderConfirmationData(JSON.parse(raw) as ConfirmationData);
+      if (raw) {
+        setOrderConfirmationData(JSON.parse(raw) as ConfirmationData);
+      } else if (orderData) {
+        // Fallback: build confirmation data from server-fetched order
+        setOrderConfirmationData({
+          order: orderData,
+          userForm: {
+            full_name: orderData.full_name ?? '',
+            street_address: orderData.street_address ?? '',
+            city: orderData.city ?? '',
+            phone_number: orderData.phone_number ?? '',
+            email: orderData.email ?? '',
+          },
+          deliveryDate: orderData.delivery_date ?? '',
+        } as ConfirmationData);
+      }
     } catch { }
     setLoading(false);
-  }, []);
+  }, [orderData]);
 
   useEffect(() => {
     if (!orderConfirmationData) return;
@@ -46,7 +61,6 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
   const userForm = orderConfirmationData?.userForm;
   const orderItems = Array.isArray(order?.items) ? order.items : [];
   const totalAmount = orderItems.reduce((acc: number, item: ICartItem) => acc + item.price * item.count, 0);
-  console.log('orderConfirmationData', orderConfirmationData);
 
   if (loading) {
     return (

@@ -147,7 +147,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                        const { success, error, order } = await onOrderCashOnDelivery(); // Step 1: Try to create the order
                                                        if (success) {
                                                             // Step 2: Send confirmation emails
-                                                            Promise.all([
+                                                            await Promise.all([
                                                                  SendCheckoutConfirmationEmailToAdmin({
                                                                       email: 'maja@apoteka-dar.rs',
                                                                       customer_email: userFormSelectorState.email.toLowerCase(),
@@ -174,31 +174,7 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                             ])
                                                                  .then(([adminEmailResult, userEmailResult]) => {
                                                                       if (adminEmailResult.status === 200 && userEmailResult.status === 200) {
-                                                                           const confirmationData: ConfirmationData = {
-                                                                                userForm: userFormSelectorState,
-                                                                                order: {
-                                                                                     order_number: order?.order_number!,
-                                                                                     payment_status: order?.payment_status!,
-                                                                                     transaction_number: 'Plaćanje pouzećem',
-                                                                                     total: totalItemPriceState,
-                                                                                     created_at: new Date().toISOString(),
-                                                                                     customer: userFormSelectorState,
-                                                                                     items: cart,
-                                                                                     payment_method: paymentOption,
-                                                                                     order_status: 'pending',
-                                                                                     customer_id: customer?.id
-                                                                                },
-                                                                                deliveryDate: '3-5 radnih dana',
-                                                                           };
-
-                                                                           localStorage.setItem('orderConfirmationData', JSON.stringify(confirmationData));
-
                                                                            toast.success('Porudžbina uspešno kreirana!');
-                                                                           setTimeout(() => {
-                                                                                dispatch(clearCart());
-                                                                                dispatch(clearUserForm());
-                                                                           }, 2000);
-
                                                                       } else {
                                                                            toast.error('Greška prilikom slanja email-a!');
                                                                       }
@@ -206,6 +182,29 @@ export const PaymentOptions: FunctionComponent<PaymentOptionsProps> = (props: Pa
                                                                  .catch((error) => {
                                                                       toast.error('Došlo je do greške prilikom slanja email-a!');
                                                                  });
+
+                                                            const confirmationData: ConfirmationData = {
+                                                                 userForm: userFormSelectorState,
+                                                                 order: {
+                                                                      order_number: order?.order_number!,
+                                                                      payment_status: order?.payment_status!,
+                                                                      transaction_number: 'Plaćanje pouzećem',
+                                                                      total: totalItemPriceState,
+                                                                      created_at: new Date().toISOString(),
+                                                                      customer: userFormSelectorState,
+                                                                      items: cart,
+                                                                      payment_method: paymentOption,
+                                                                      order_status: 'pending',
+                                                                      customer_id: customer?.id
+                                                                 },
+                                                                 deliveryDate: '3-5 radnih dana',
+                                                            };
+
+                                                            localStorage.setItem('orderConfirmationData', JSON.stringify(confirmationData));
+
+                                                            dispatch(clearCart());
+                                                            dispatch(clearUserForm());
+
                                                             router.push(`/placanje/pouzecem?order=${order?.id}`);
                                                        } else {
                                                             toast.error('Došlo je do greške prilikom kreiranja porudžbine. Pokušajte ponovo ili nas kontaktirajte.');
