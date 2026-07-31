@@ -15,6 +15,7 @@ import { Box } from '@mui/system';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/hooks/useAuth';
 import { Customer } from '@/schemas/customer';
+import { registerCustomer } from '@/lib/auth/register-action';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 
@@ -25,7 +26,7 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
      const { isAuthenticated } = useAuth();
      const dispatch = useDispatch();
 
-     const initialUserFormValues: Customer = {
+     const initialUserFormValues: Customer & { should_create_account: boolean; password: string } = {
           full_name: userFormSelector.full_name || userFormSelector.name || '',
           street_address: userFormSelector.street_address || userFormSelector.street_address || '',
           phone_number: userFormSelector.phone_number || userFormSelector.phone_number || '',
@@ -38,37 +39,44 @@ const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormPro
           user_id: userFormSelector.user_id || '',
           avatar: userFormSelector.avatar || null,
           created_at: userFormSelector.created_at || '',
-          updated_at: userFormSelector.updated_at || ''
+          updated_at: userFormSelector.updated_at || '',
+          should_create_account: false,
+          password: '',
      };
 
      const handleSubmit = (values: any) => {
           dispatch(submitUserForm(values));
           props.tabIndex === 0 ? props.setTab?.(1) : null;
 
-          if (values.should_create_account) {
-               try {
-                    fetch('/api/register', {
-                         method: 'POST',
-                         headers: {
-                              'Content-Type': 'application/json',
-                         },
-                         body: JSON.stringify(values),
-                    }).then(response => {
-                         if (response.status === 409) {
-                              toast.error('Ovaj email je ve  registrovan! Molimo Vas da unesete drugi email, ili nastavite kao gost!', {
-                                   position: 'top-center',
-                                   duration: 3000
-                              });
-                         } else if (response.status === 200) {
-                              toast.success('Poslat Vam je email za verifikaciju! Molimo Vas da proverite Vaš inbox, i potvrdite Vaš email!', {
-                                   position: 'top-center',
-                                   duration: 3000
-                              });
-                         }
-                    });
-               } catch (error) {
-                    console.error('Error:', error);
-               }
+          if (values.should_create_account && values.password) {
+               registerCustomer({
+                    full_name: values.full_name,
+                    street_address: values.street_address,
+                    phone_number: values.phone_number,
+                    city: values.city,
+                    province_state: values.province_state || '',
+                    country: values.country,
+                    zip_postal_code: values.zip_postal_code,
+                    email: values.email,
+                    password: values.password,
+               }).then((result) => {
+                    if (result.status === 'success') {
+                         toast.success('Poslat Vam je email za verifikaciju! Molimo Vas da proverite Vaš inbox i potvrdite Vaš email.', {
+                              position: 'top-center',
+                              duration: 5000,
+                         });
+                    } else if (result.status === 'exists') {
+                         toast.error('Ovaj email je već registrovan! Molimo Vas da unesete drugi email, ili nastavite kao gost.', {
+                              position: 'top-center',
+                              duration: 3000,
+                         });
+                    } else {
+                         toast.error(result.message || 'Greška pri registraciji. Pokušajte ponovo.', {
+                              position: 'top-center',
+                              duration: 3000,
+                         });
+                    }
+               });
           }
      };
 

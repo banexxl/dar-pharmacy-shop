@@ -55,5 +55,18 @@ export const customerFormSchema = () => {
                ),
 
           should_create_account: bool(),
+
+          password: string().when('should_create_account', {
+               is: true,
+               then: (schema) =>
+                    schema
+                         .required('Lozinka je obavezna')
+                         .min(8, 'Lozinka mora imati najmanje 8 karaktera')
+                         .matches(/[a-z]/, 'Mora sadržati bar jedno malo slovo')
+                         .matches(/[A-Z]/, 'Mora sadržati bar jedno veliko slovo')
+                         .matches(/[0-9]/, 'Mora sadržati bar jedan broj')
+                         .matches(/[^a-zA-Z0-9]/, 'Mora sadržati bar jedan specijalni karakter'),
+               otherwise: (schema) => schema.notRequired(),
+          }),
      });
 };
