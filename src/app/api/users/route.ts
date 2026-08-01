@@ -1,4 +1,5 @@
 import { createServiceRoleClient } from '@/services/supabase/service-role';
+import { createClient } from '@/services/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -32,4 +33,23 @@ export async function POST(request: NextRequest) {
     zip_postal_code: customer.zip_postal_code,
     full_name: customer.full_name
   });
+}
+
+export async function DELETE() {
+  const supabase = await createClient();
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
+  }
+
+  const admin = createServiceRoleClient();
+  const { error } = await admin.auth.admin.deleteUser(user.id);
+
+  if (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
+
+  await supabase.auth.signOut();
+  return NextResponse.json({ message: 'Account deleted' });
 }

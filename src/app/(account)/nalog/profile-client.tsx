@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Container, Box, Typography, Paper, Button, TextField, Stack, Chip } from '@mui/material';
+import { Container, Box, Typography, Paper, Button, TextField, Stack, Chip, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, CircularProgress } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import ClearIcon from '@mui/icons-material/Clear';
+import { useRouter } from 'next/navigation';
 import { LogoutButton } from './logout-button';
 
 interface ProfileClientProps {
@@ -12,6 +13,27 @@ interface ProfileClientProps {
 }
 
 export function ProfileClient({ customer, orders }: ProfileClientProps) {
+  const router = useRouter();
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  const handleDeleteAccount = async () => {
+    setDeleting(true);
+    try {
+      const res = await fetch('/api/users', { method: 'DELETE' });
+      if (!res.ok) {
+        const { message } = await res.json();
+        alert(message ?? 'Greška pri brisanju naloga.');
+        return;
+      }
+      router.push('/');
+      router.refresh();
+    } finally {
+      setDeleting(false);
+      setDeleteDialogOpen(false);
+    }
+  };
+
   // Filters
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
@@ -97,7 +119,36 @@ export function ProfileClient({ customer, orders }: ProfileClientProps) {
             </>
           )}
           <LogoutButton />
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => setDeleteDialogOpen(true)}
+            sx={{ mt: 1 }}
+          >
+            Obriši nalog
+          </Button>
         </Box>
+
+        <Dialog open={deleteDialogOpen} onClose={() => !deleting && setDeleteDialogOpen(false)}>
+          <DialogTitle>Obriši nalog</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Da li ste sigurni da želite da obrišete nalog? Ova akcija je nepovratna.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setDeleteDialogOpen(false)} disabled={deleting}>Otkaži</Button>
+            <Button
+              color="error"
+              variant="contained"
+              onClick={handleDeleteAccount}
+              disabled={deleting}
+              startIcon={deleting ? <CircularProgress size={16} color="inherit" /> : null}
+            >
+              {deleting ? 'Brisanje...' : 'Obriši'}
+            </Button>
+          </DialogActions>
+        </Dialog>
 
         {/* Orders */}
         <Box
