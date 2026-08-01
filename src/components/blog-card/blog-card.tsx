@@ -18,8 +18,16 @@ function BlogCard({ post }: BlogCardProps) {
           { day: 'numeric', month: 'long', year: 'numeric' }
      );
 
+     const handleClick = () => {
+          fetch('/api/blog/views', {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({ slug: post.slug }),
+          }).catch(() => { });
+     };
+
      return (
-          <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
+          <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }} onClick={handleClick}>
                <Box
                     sx={{
                          display: 'flex',
