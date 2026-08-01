@@ -71,7 +71,7 @@ export default function LoginRegister({
 
           try {
                setAvatarLoading(true);
-               const supabase = (await import('@/lib/supabase/browser')).createClient();
+               const supabase = (await import('@/services/supabase/browser')).createClient();
 
                const { error } = await supabase
                     .from('customers')
@@ -92,7 +92,7 @@ export default function LoginRegister({
 
      const handleSignOut = async () => {
           try {
-               const supabase = (await import('@/lib/supabase/browser')).createClient();
+               const supabase = (await import('@/services/supabase/browser')).createClient();
                await supabase.auth.signOut();
                onClose?.();
                router.push('/');

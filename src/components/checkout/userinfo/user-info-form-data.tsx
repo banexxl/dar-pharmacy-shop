@@ -15,7 +15,7 @@ import { Box } from '@mui/system';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/hooks/useAuth';
 import { Customer } from '@/schemas/customer';
-import { registerCustomer } from '@/lib/auth/register-action';
+import { registerCustomer } from '@/services/auth/register-action';
 
 const UserInfoFormData: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
 

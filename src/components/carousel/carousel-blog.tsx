@@ -26,25 +26,7 @@ const CarouselBlog = (props: any) => {
 
      return (
           <Box className="StyledCarouselLogoBox">
-               <Carousel
-                    responsive={responsive}
-                    swipeable={true}
-                    draggable={false}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={3000}
-                    keyBoardControl={true}
-                    customTransition=""
-                    transitionDuration={500}
-                    containerClass=""
-                    itemClass=""
-               >
-                    {/* {
-                                                  props.manufacturers.map((logo: any) => ( */}
-                    <BlogCard />
-                    {/* ))
-                                        } */}
-               </Carousel>
+
           </Box>
      );
 }

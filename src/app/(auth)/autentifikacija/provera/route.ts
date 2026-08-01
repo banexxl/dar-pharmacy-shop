@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
-import { createServiceRoleClient } from '@/lib/supabase/service-role';
-import { checkIfCustomerExists } from '@/lib/auth/actions';
-import { createClient } from '@/lib/supabase/server';
+import { createServiceRoleClient } from '@/services/supabase/service-role';
+import { checkIfCustomerExists } from '@/services/auth/actions';
+import { createClient } from '@/services/supabase/server';
 
 function normalizeEmail(value?: string | null) {
      return (value ?? '').trim().toLowerCase();

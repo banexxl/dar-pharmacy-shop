@@ -1,5 +1,5 @@
+import { createClient } from '@/services/supabase/server';
 import { redirect } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
 
 /**
  * Account layout — protects all /nalog routes server-side.

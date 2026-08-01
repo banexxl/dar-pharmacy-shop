@@ -6,6 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import PersonIcon from "@mui/icons-material/Person"
 import ContactSupportIcon from "@mui/icons-material/ContactSupport"
+import ArticleIcon from "@mui/icons-material/Article"
 import { Colors } from "../../../styles/theme"
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration"
 import Actions from "../actions"
@@ -209,6 +210,39 @@ export default function AppDrawer({ isScreenToMedium }: any) {
                                         },
                                    }}>
                                         Pitajte nas...
+                                   </ListItemText>
+                              </ListItemButton>
+                         </motion.li>
+                         <MiddleDivider sx={{
+                              borderColor: 'rgba(255, 255, 255, 0.2)',
+                              my: 1
+                         }} />
+                         <motion.li
+                              variants={variants}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                         >
+                              <ListItemButton onClick={() => { setDrawerOpen(false); router.push('/blog'); }} sx={{
+                                   borderRadius: 2,
+                                   mb: 1,
+                                   py: 1.5,
+                                   '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        transform: 'translateX(4px)',
+                                   },
+                                   transition: 'all 0.3s ease',
+                              }}>
+                                   <ListItemIcon sx={{ minWidth: 36, color: Colors.neutral[100] }}>
+                                        <ArticleIcon sx={{ color: Colors.primary.light }} />
+                                   </ListItemIcon>
+                                   <ListItemText sx={{
+                                        '& .MuiTypography-root': {
+                                             color: Colors.neutral[100],
+                                             fontWeight: 600,
+                                             fontSize: '1rem',
+                                        },
+                                   }}>
+                                        Blog
                                    </ListItemText>
                               </ListItemButton>
                          </motion.li>

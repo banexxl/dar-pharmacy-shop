@@ -14,8 +14,8 @@ import type {
      User,
 } from '@supabase/supabase-js';
 
-import { createClient } from '@/lib/supabase/browser';
 import { Customer } from '@/schemas/customer';
+import { createClient } from '@/services/supabase/browser';
 
 type OperationResult = {
      success: boolean;

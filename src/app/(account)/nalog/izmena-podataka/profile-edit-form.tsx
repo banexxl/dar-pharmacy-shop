@@ -13,8 +13,8 @@ import {
 import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
 import toast from 'react-hot-toast';
-import { updateProfile, type ProfileUpdateData } from '@/lib/auth/profile-action';
-import type { Customer } from '@/lib/supabase/types';
+import { updateProfile, type ProfileUpdateData } from '@/services/auth/profile-action';
+import type { Customer } from '@/services/supabase/types';
 
 const profileSchema = object().shape({
   full_name: string()

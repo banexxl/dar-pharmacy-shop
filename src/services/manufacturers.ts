@@ -1,5 +1,5 @@
-import { createServiceRoleClient } from '@/lib/supabase/service-role';
-import type { Manufacturer } from '@/lib/supabase/types';
+import { createServiceRoleClient } from "./supabase/service-role";
+import { Manufacturer } from "./supabase/types";
 
 const supabase = createServiceRoleClient();
 

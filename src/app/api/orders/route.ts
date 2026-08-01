@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createOrder, type CartItem } from '@/lib/services/orders';
+import { createOrder, type CartItem } from '@/services/orders';
 import { Customer } from '@/schemas/customer';
 
 export async function POST(request: NextRequest) {

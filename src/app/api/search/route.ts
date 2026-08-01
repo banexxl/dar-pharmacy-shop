@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { searchProducts } from '@/lib/services/products';
+import { searchProducts } from '@/services/products';
 
 export async function POST(request: NextRequest) {
   const body = await request.text();

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { OrderConfirmationClient } from './order-confirmation-client';
-import { getOrderById } from '@/lib/services/orders';
+import { getOrderById } from '@/services/orders';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {

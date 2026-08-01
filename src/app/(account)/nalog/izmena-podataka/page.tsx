@@ -1,8 +1,8 @@
-import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ProfileEditWrapper } from './profile-edit-wrapper';
 import { ProfileEditForm } from './profile-edit-form';
+import { createClient } from '@/services/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Izmena podataka',

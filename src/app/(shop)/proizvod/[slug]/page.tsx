@@ -1,4 +1,4 @@
-import { getProductBySlug, getRelatedProducts } from '@/lib/services/products';
+import { getProductBySlug, getRelatedProducts } from '@/services/products';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ProductDetailClient } from './product-detail-client';

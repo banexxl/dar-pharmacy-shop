@@ -234,6 +234,12 @@ export default function Footer() {
                                                   Početna
                                              </Link>
                                              <Link
+                                                  href="/blog"
+                                                  style={{ color: Colors.white, textDecoration: "none" }}
+                                             >
+                                                  Blog
+                                             </Link>
+                                             <Link
                                                   href="/kontakt"
                                                   style={{ color: Colors.white, textDecoration: "none" }}
                                              >

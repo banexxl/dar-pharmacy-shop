@@ -25,7 +25,7 @@ import {
   signInWithGoogle,
   signInWithPassword,
   resetPassword,
-} from '@/lib/auth/actions';
+} from '@/services/auth/actions';
 
 // ─── Validation Schemas ────────────────────────────────────────────────────────
 

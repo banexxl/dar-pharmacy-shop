@@ -6,8 +6,8 @@ import {
   getNewArrivals,
   getPromotionProducts,
   getTopNSellingProducts,
-} from '@/lib/services/products';
-import { getAllManufacturerLogos } from '@/lib/services/manufacturers';
+} from '@/services/products';
+import { getAllManufacturerLogos } from '@/services/manufacturers';
 import { HomePageClient } from './home-client';
 
 export const metadata: Metadata = {

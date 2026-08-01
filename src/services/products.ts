@@ -1,10 +1,11 @@
-import { createServiceRoleClient } from '@/lib/supabase/service-role';
-import type { Product, Manufacturer } from '@/lib/supabase/types';
 
 /**
  * Supabase product service — replaces MongoDB ProductsServices.
  * Uses service-role client for build-time/server-side data fetching.
  */
+
+import { createServiceRoleClient } from "./supabase/service-role";
+import { Product } from "./supabase/types";
 
 const supabase = createServiceRoleClient();
 

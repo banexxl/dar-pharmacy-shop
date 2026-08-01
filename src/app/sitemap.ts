@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { getAllActiveProducts, getAllMainCategories } from '@/lib/services/products';
-import { getAllManufacturerNames } from '@/lib/services/manufacturers';
+import { getAllActiveProducts, getAllMainCategories } from '@/services/products';
+import { getAllManufacturerNames } from '@/services/manufacturers';
 
 const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
 

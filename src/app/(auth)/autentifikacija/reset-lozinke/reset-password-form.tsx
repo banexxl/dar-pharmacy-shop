@@ -17,7 +17,7 @@ import toast from 'react-hot-toast';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { updatePassword } from '@/lib/auth/actions';
+import { updatePassword } from '@/services/auth/actions';
 
 const resetPasswordSchema = yup.object({
   password: yup

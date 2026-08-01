@@ -10,7 +10,7 @@ import {
   registerCustomer,
   checkEmailAvailability,
   type RegisterFormData,
-} from '@/lib/auth/register-action';
+} from '@/services/auth/register-action';
 
 const registrationSchema = object().shape({
   full_name: string()

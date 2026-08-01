@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { Container, Typography, Box, Skeleton, Grid } from '@mui/material';
+import { Container, Typography, Box, Skeleton, Grid, Button } from '@mui/material';
 import { Colors } from '@/styles/theme';
 import Products from '@/components/products/products-grid';
 import Product from '@/interfaces/product/product.interface';
-import { Manufacturer } from '@/lib/supabase/types';
+import { Manufacturer } from '@/services/supabase/types';
+import Link from 'next/link';
 
 const Promotions = lazy(() => import('@/components/promotions/promotions'));
 const SearchBox = lazy(() => import('@/components/search/search'));
@@ -154,6 +155,79 @@ export function HomePageClient(props: HomePageClientProps) {
                   </Typography>
                 </Box>
                 <CarouselLogo manufacturers={manufacturers} />
+              </Container>
+            </Box>
+          </LoadOnView>
+
+          {/* Blog CTA Section */}
+          <LoadOnView fallback={<Box sx={{ minHeight: 200 }} />}>
+            <Box
+              sx={{
+                width: '100%',
+                py: { xs: 5, md: 8 },
+                background: `linear-gradient(135deg, ${Colors.primary[50]} 0%, ${Colors.neutral[50]} 50%, ${Colors.secondary[50]} 100%)`,
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: -40,
+                  right: -40,
+                  width: 160,
+                  height: 160,
+                  borderRadius: '50%',
+                  bgcolor: Colors.primary[100],
+                  opacity: 0.3,
+                }}
+              />
+              <Box
+                sx={{
+                  position: 'absolute',
+                  bottom: -30,
+                  left: -30,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  bgcolor: Colors.secondary[100],
+                  opacity: 0.3,
+                }}
+              />
+              <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, fontWeight: 700, color: Colors.primary.main, mb: 2, letterSpacing: '-0.01em' }}>
+                    Naš Blog
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'rgba(55, 65, 81, 0.8)', maxWidth: 600, mx: 'auto', fontSize: '1.1rem', lineHeight: 1.6, mb: 4 }}>
+                    Pročitajte korisne savete o zdravlju, prirodnim preparatima, ishrani i lepoti
+                  </Typography>
+                  <Link href="/blog" style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      sx={{
+                        bgcolor: Colors.primary.main,
+                        color: '#fff',
+                        px: 4,
+                        py: 1.5,
+                        borderRadius: '12px',
+                        fontWeight: 600,
+                        fontSize: '1rem',
+                        textTransform: 'none',
+                        boxShadow: `0 8px 24px ${Colors.primary.main}40`,
+                        '&:hover': {
+                          bgcolor: Colors.primary.dark,
+                          transform: 'translateY(-2px)',
+                          boxShadow: `0 12px 32px ${Colors.primary.main}50`,
+                        },
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      Poseti blog
+                    </Button>
+                  </Link>
+                </Box>
               </Container>
             </Box>
           </LoadOnView>

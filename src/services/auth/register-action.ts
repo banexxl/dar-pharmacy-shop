@@ -1,7 +1,7 @@
 'use server';
 
-import { createServiceRoleClient } from '@/lib/supabase/service-role';
 import { createClient } from '../supabase/server';
+import { createServiceRoleClient } from '../supabase/service-role';
 
 export interface RegisterFormData {
   full_name: string;

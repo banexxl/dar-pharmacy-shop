@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@mui/material';
-import { createClient } from '@/lib/supabase/browser';
+import { createClient } from '@/services/supabase/browser';
 import { useRouter } from 'next/navigation';
 
 export function LogoutButton() {

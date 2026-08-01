@@ -1,4 +1,4 @@
-import { getProductsByMainCategoryAndManufacturer } from '@/lib/services/products';
+import { getProductsByMainCategoryAndManufacturer } from '@/services/products';
 import { notFound } from 'next/navigation';
 import { CategoryPageClient } from '../../../proizvodi/[mainCategory]/category-client';
 

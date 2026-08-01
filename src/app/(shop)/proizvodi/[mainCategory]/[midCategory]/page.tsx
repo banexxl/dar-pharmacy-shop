@@ -1,4 +1,4 @@
-import { getProductsByMainAndMidCategory } from '@/lib/services/products';
+import { getProductsByMainAndMidCategory } from '@/services/products';
 import { CategoryPageClient } from '../category-client';
 
 interface Props {

@@ -1,6 +1,6 @@
-import { createServiceRoleClient } from '@/lib/supabase/service-role';
-import type { Order, OrderInsert, OrderItemInsert, Product } from '@/lib/supabase/types';
 import { Customer } from '@/schemas/customer';
+import { createServiceRoleClient } from './supabase/service-role';
+import { Order, OrderInsert, OrderItemInsert, Product } from './supabase/types';
 
 const supabase = createServiceRoleClient();
 

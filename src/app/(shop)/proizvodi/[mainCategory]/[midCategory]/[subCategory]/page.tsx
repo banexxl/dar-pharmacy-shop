@@ -1,4 +1,4 @@
-import { getProductsByAllCategories } from '@/lib/services/products';
+import { getProductsByAllCategories } from '@/services/products';
 import { CategoryPageClient } from '../../category-client';
 
 interface Props {
