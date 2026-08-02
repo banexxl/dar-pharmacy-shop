@@ -6,6 +6,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useRouter } from 'next/navigation';
 import { LogoutButton } from './logout-button';
+import { createClient } from '@/services/supabase/browser';
 
 interface ProfileClientProps {
   customer: any;
@@ -26,6 +27,10 @@ export function ProfileClient({ customer, orders }: ProfileClientProps) {
         alert(message ?? 'Greška pri brisanju naloga.');
         return;
       }
+      // Sign out and clear local storage
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      localStorage.clear();
       router.push('/');
       router.refresh();
     } finally {

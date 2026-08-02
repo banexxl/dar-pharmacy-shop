@@ -11,8 +11,14 @@ import theme from '@/styles/theme';
 import store from '@/store/store';
 import { useEffect, useState } from 'react';
 import { AuthProvider } from '@/context/session/session.context';
+import { useCartWishlistSync } from '@/hooks/useCartWishlistSync';
 
 const persistor = typeof window !== 'undefined' ? persistStore(store) : null;
+
+function SyncManager() {
+  useCartWishlistSync();
+  return null;
+}
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
@@ -26,6 +32,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <CssBaseline />
+          <SyncManager />
           {hydrated && persistor ? (
             <PersistGate persistor={persistor} loading={children}>
               {children}

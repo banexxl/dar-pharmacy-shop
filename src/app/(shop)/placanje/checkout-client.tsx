@@ -130,8 +130,8 @@ function CheckoutContent() {
           <Box
             sx={{
               marginTop: isScreenToMedium
-                ? '100px'
-                : '150px',
+                ? '20px'
+                : '40px',
               pb: { xs: 4, md: 6 },
             }}
           >

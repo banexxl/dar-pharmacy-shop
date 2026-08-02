@@ -1,6 +1,8 @@
 import { createServiceRoleClient } from '@/services/supabase/service-role';
 import { createClient } from '@/services/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
+import { clearCartDB } from '@/services/customer-cart';
+import { clearWishlistDB } from '@/services/customer-wishlist';
 
 export async function POST(request: NextRequest) {
   const { email } = await request.json();
@@ -42,6 +44,10 @@ export async function DELETE() {
   if (!user) {
     return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
   }
+
+  // Clear user's cart and wishlist from DB
+  await clearCartDB(user.id);
+  await clearWishlistDB(user.id);
 
   const admin = createServiceRoleClient();
   const { error } = await admin.auth.admin.deleteUser(user.id);

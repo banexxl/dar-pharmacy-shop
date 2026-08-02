@@ -56,10 +56,13 @@ const cartSlice = createSlice({
           clearCart() {
                return [];
           },
+          setCart(_state: ICartItem[], { payload }: { payload: ICartItem[] }) {
+               return payload;
+          },
      },
 });
 
-export const { addToCart, increment, decrement, clearCart, removeAllSingleItems } = cartSlice.actions;
+export const { addToCart, increment, decrement, clearCart, removeAllSingleItems, setCart } = cartSlice.actions;
 const cartSliceReducer = cartSlice.reducer;
 
 export default cartSliceReducer;
