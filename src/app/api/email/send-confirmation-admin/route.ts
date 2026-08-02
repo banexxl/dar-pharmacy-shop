@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { transporter } from '@/services/email/email-config';
 import { EmailData } from '@/interfaces/email/email-to-fields.interface';
+import { logAction } from '@/services/logger';
 
 export async function POST(request: NextRequest) {
   const data: EmailData = await request.json();
 
   if (!data || !data.email) {
+    logAction({ action: 'email.send_admin_confirmation', success: false, method: 'POST', path: '/api/email/send-confirmation-admin', error_message: 'Bad request' });
     return NextResponse.json({ message: 'Bad request', status: 400 }, { status: 400 });
   }
 
@@ -35,9 +37,11 @@ export async function POST(request: NextRequest) {
     };
 
     await transporter.sendMail(mailOptions);
+    logAction({ action: 'email.send_admin_confirmation', success: true, email: data.customer_email || data.email, method: 'POST', path: '/api/email/send-confirmation-admin', metadata: { order_number: data.order?.order_number } });
     return NextResponse.json({ message: 'Email sent!', status: 200 });
   } catch (error) {
     console.error('Admin confirmation email error:', error);
+    logAction({ action: 'email.send_admin_confirmation', success: false, email: data.customer_email || data.email, method: 'POST', path: '/api/email/send-confirmation-admin', error_message: 'Failed to send email' });
     return NextResponse.json({ message: 'Failed', status: 500 }, { status: 500 });
   }
 }

@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { createServiceRoleClient } from '@/services/supabase/service-role';
 import { checkIfCustomerExists } from '@/services/auth/actions';
 import { createClient } from '@/services/supabase/server';
+import { logAction } from '@/services/logger';
 
 function normalizeEmail(value?: string | null) {
      return (value ?? '').trim().toLowerCase();
@@ -35,6 +36,7 @@ export async function GET(request: Request) {
           requestUrl.searchParams.get('error');
 
      if (oauthError) {
+          logAction({ action: 'auth.verification', success: false, method: 'GET', path: '/autentifikacija/provera', error_message: oauthError });
           return redirectToError(
                oauthError,
                requestUrl.searchParams.get(
@@ -46,6 +48,7 @@ export async function GET(request: Request) {
      const code = requestUrl.searchParams.get('code');
 
      if (!code) {
+          logAction({ action: 'auth.verification', success: false, method: 'GET', path: '/autentifikacija/provera', error_message: 'No code provided' });
           return redirectToError('no_code');
      }
 
@@ -63,7 +66,7 @@ export async function GET(request: Request) {
                'OAuth exchange failed:',
                exchangeError
           );
-
+          logAction({ action: 'auth.verification', success: false, method: 'GET', path: '/autentifikacija/provera', error_message: exchangeError.message });
           return redirectToError(
                'exchange_failed',
                exchangeError.message
@@ -71,6 +74,7 @@ export async function GET(request: Request) {
      }
 
      if (!session) {
+          logAction({ action: 'auth.verification', success: false, method: 'GET', path: '/autentifikacija/provera', error_message: 'No session created' });
           return redirectToError(
                'no_session',
                'No session was created.'
@@ -81,7 +85,7 @@ export async function GET(request: Request) {
 
      if (!email) {
           await supabase.auth.signOut();
-
+          logAction({ action: 'auth.verification', success: false, user_id: session.user.id, method: 'GET', path: '/autentifikacija/provera', error_message: 'Email missing from provider' });
           return redirectToError(
                'email_missing',
                'Google nalog nije vratio email adresu.'
@@ -91,14 +95,8 @@ export async function GET(request: Request) {
      const permission = await checkIfCustomerExists(email);
 
      if (!permission.success) {
-          // Sign out using the session-aware SSR client.
           await supabase.auth.signOut();
 
-          /*
-           * Use service role only for the admin operation.
-           * Consider whether you really want to delete the Auth user
-           * every time permission is rejected.
-           */
           const adminClient = createServiceRoleClient();
 
           const { error: deleteError } =
@@ -112,6 +110,7 @@ export async function GET(request: Request) {
                     deleteError
                );
           } else {
+               logAction({ action: 'auth.verification', success: false, user_id: session.user.id, email, method: 'GET', path: '/autentifikacija/provera', error_message: 'Unauthorized - not registered' });
                return redirectToError(
                     'unauthorized',
                     'Vaš nalog nije registrovan. Molimo registrujte se prvo ili kontaktirajte podršku.'
@@ -121,6 +120,7 @@ export async function GET(request: Request) {
           if (
                permission.error?.code === 'UserExists'
           ) {
+               logAction({ action: 'auth.verification', success: false, email, method: 'GET', path: '/autentifikacija/provera', error_message: 'Email already in use' });
                return redirectToError(
                     'email_in_use',
                     permission.error.message ||
@@ -132,18 +132,21 @@ export async function GET(request: Request) {
                permission.error?.code ===
                'UserNotFound'
           ) {
+               logAction({ action: 'auth.verification', success: false, email, method: 'GET', path: '/autentifikacija/provera', error_message: 'User not found' });
                return redirectToError(
                     'user_not_found',
                     'Vaš nalog nije pronađen. Molimo registrujte se prvo ili kontaktirajte podršku.'
                );
           }
 
+          logAction({ action: 'auth.verification', success: false, email, method: 'GET', path: '/autentifikacija/provera', error_message: permission.error?.message || 'Sign in required' });
           return redirectToError(
                'sign_in_required',
                permission.error?.message
           );
      }
 
+     logAction({ action: 'auth.verification', success: true, user_id: session.user.id, email, method: 'GET', path: '/autentifikacija/provera' });
      return NextResponse.redirect(
           new URL('/', requestUrl.origin)
      );
