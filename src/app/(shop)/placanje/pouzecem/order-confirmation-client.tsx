@@ -12,6 +12,7 @@ import type ICartItem from '@/interfaces/cart/cart.interface';
 declare global {
   interface Window {
     dataLayer: any[];
+    gtag: (...args: any[]) => void;
   }
 }
 
@@ -53,7 +54,34 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
     if (sessionStorage.getItem(dedupeKey)) return;
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'purchase_ads', value: total, currency: 'RSD', transaction_id: orderId });
+
+    // Push standard purchase event for GTM
+    window.dataLayer.push({
+      event: 'purchase',
+      ecommerce: {
+        transaction_id: orderId,
+        value: total,
+        currency: 'RSD',
+        items: (orderConfirmationData.order?.items || []).map((item: any, index: number) => ({
+          item_id: item.id,
+          item_name: item.name,
+          price: item.price,
+          quantity: item.count,
+          index,
+        })),
+      },
+    });
+
+    // Fire Google Ads conversion via gtag
+    if (typeof window.gtag === 'function' && process.env.NEXT_PUBLIC_GADS_CONVERSION_ID) {
+      window.gtag('event', 'conversion', {
+        send_to: process.env.NEXT_PUBLIC_GADS_CONVERSION_ID,
+        value: total,
+        currency: 'RSD',
+        transaction_id: orderId,
+      });
+    }
+
     sessionStorage.setItem(dedupeKey, '1');
   }, [orderConfirmationData]);
 
