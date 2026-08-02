@@ -2,6 +2,7 @@
 
 import { createClient } from '../supabase/server';
 import { createServiceRoleClient } from '../supabase/service-role';
+import { logAction } from '../logger';
 
 export interface RegisterFormData {
   full_name: string;
@@ -84,6 +85,7 @@ export async function registerCustomer(
     }
 
     if (existingCustomer?.user_id) {
+      logAction({ action: 'auth.register', success: false, email, error_message: 'User already exists' });
       return {
         status: 'exists',
         message:
@@ -228,6 +230,8 @@ export async function registerCustomer(
       }
     }
 
+    logAction({ action: 'auth.register', success: true, email, user_id: authUser.id });
+
     return {
       status: 'success',
       message:
@@ -238,6 +242,8 @@ export async function registerCustomer(
       'Registration unexpected error:',
       error
     );
+
+    logAction({ action: 'auth.register', success: false, email, error_message: 'Unexpected error' });
 
     return {
       status: 'fail',

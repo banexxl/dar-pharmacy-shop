@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createOrder, type CartItem } from '@/services/orders';
 import { Customer } from '@/schemas/customer';
+import { logAction } from '@/services/logger';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const { cart, userFormSelectorState, totalItemPriceState, paymentOption, userId, customerId } = body;
 
   if (!cart || !Array.isArray(cart) || cart.length === 0) {
+    logAction({ action: 'order.create', success: false, user_id: userId || null, method: 'POST', path: '/api/orders', error_message: 'Korpa je prazna.' });
     return NextResponse.json({ success: false, error: 'Korpa je prazna.' }, { status: 400 });
   }
 
@@ -44,6 +46,23 @@ export async function POST(request: NextRequest) {
   });
 
   if (result.success) {
+    logAction({
+      action: 'order.create',
+      success: true,
+      user_id: userId || null,
+      customer_id: customerId || null,
+      email: userFormSelectorState?.email || null,
+      method: 'POST',
+      path: '/api/orders',
+      metadata: {
+        order_id: result.order?.id,
+        order_number: result.order?.order_number,
+        total: result.order?.total,
+        payment_method: paymentOption,
+        items_count: cart.length,
+      },
+    });
+
     return NextResponse.json({
       success: true,
       order: {
@@ -59,6 +78,18 @@ export async function POST(request: NextRequest) {
       },
     });
   }
+
+  logAction({
+    action: 'order.create',
+    success: false,
+    user_id: userId || null,
+    customer_id: customerId || null,
+    email: userFormSelectorState?.email || null,
+    method: 'POST',
+    path: '/api/orders',
+    error_message: result.error || 'Order creation failed',
+    metadata: { items_count: cart.length, payment_method: paymentOption },
+  });
 
   return NextResponse.json({ success: false, error: result.error }, { status: 400 });
 }

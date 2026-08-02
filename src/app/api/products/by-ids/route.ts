@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServiceRoleClient } from '@/services/supabase/service-role';
+import { logAction } from '@/services/logger';
 
 export async function POST(request: NextRequest) {
   const { ids } = await request.json();
@@ -17,9 +18,10 @@ export async function POST(request: NextRequest) {
     .eq('is_active', true);
 
   if (error) {
-    console.error('Error fetching products by ids:', error.message);
+    logAction({ action: 'products.fetch_by_ids', success: false, method: 'POST', path: '/api/products/by-ids', error_message: error.message, metadata: { ids } });
     return NextResponse.json({ products: [] });
   }
 
+  logAction({ action: 'products.fetch_by_ids', success: true, method: 'POST', path: '/api/products/by-ids', metadata: { count: data?.length || 0 } });
   return NextResponse.json({ products: data || [] });
 }

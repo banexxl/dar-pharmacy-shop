@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createClient } from '../supabase/server';
+import { logAction } from '../logger';
 
 export type ErrorType = {
   code: string;
@@ -27,9 +28,11 @@ export async function signInWithEmail(email: string) {
   });
 
   if (error) {
+    logAction({ action: 'auth.signin_email', success: false, email: email.trim().toLowerCase(), error_message: error.message });
     return { error: error.message };
   }
 
+  logAction({ action: 'auth.signin_email', success: true, email: email.trim().toLowerCase() });
   return { success: true };
 }
 
@@ -49,13 +52,16 @@ export async function signInWithGoogle() {
   });
 
   if (error) {
+    logAction({ action: 'auth.signin_google', success: false, error_message: error.message });
     return { error: error.message };
   }
 
   if (data.url) {
+    logAction({ action: 'auth.signin_google', success: true });
     redirect(data.url);
   }
 
+  logAction({ action: 'auth.signin_google', success: false, error_message: 'No OAuth URL returned' });
   return { error: 'Nije moguće pokrenuti Google prijavu.' };
 }
 
@@ -71,9 +77,11 @@ export async function signInWithPassword(email: string, password: string) {
   });
 
   if (error) {
+    logAction({ action: 'auth.signin_password', success: false, email: email.trim().toLowerCase(), error_message: error.message });
     return { error: error.message };
   }
 
+  logAction({ action: 'auth.signin_password', success: true, email: email.trim().toLowerCase() });
   revalidatePath('/', 'layout');
   return { success: true };
 }
@@ -93,9 +101,11 @@ export async function resetPassword(email: string) {
   );
 
   if (error) {
+    logAction({ action: 'auth.reset_password', success: false, email: email.trim().toLowerCase(), error_message: error.message });
     return { error: error.message };
   }
 
+  logAction({ action: 'auth.reset_password', success: true, email: email.trim().toLowerCase() });
   return { success: true };
 }
 
@@ -123,6 +133,7 @@ export async function updatePassword(newPassword: string) {
 export async function signOutAction() {
   const supabase = await createClient();
   await supabase.auth.signOut();
+  logAction({ action: 'auth.signout', success: true });
   revalidatePath('/', 'layout');
   redirect('/');
 }
