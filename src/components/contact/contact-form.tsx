@@ -169,9 +169,6 @@ const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
                                              disabled={!submitEnabled || Object.keys(formik.errors).length > 0 || loaded}>
                                              Pošalji poruku
                                         </Button>
-                                        <Typography>
-                                             {Object.keys(formik.errors)}
-                                        </Typography>
                                    </Form>
                               )
                          }
