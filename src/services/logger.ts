@@ -1,5 +1,4 @@
 import { createServiceRoleClient } from './supabase/service-role';
-import { headers } from 'next/headers';
 
 const supabase = createServiceRoleClient();
 
@@ -24,10 +23,11 @@ export interface LogActionParams {
  */
 export async function logAction(params: LogActionParams): Promise<void> {
   try {
-    // Auto-resolve IP from headers
+    // Auto-resolve IP from headers (dynamic import to avoid top-level issues)
     let ip = params.ip_address ?? null;
     if (!ip) {
       try {
+        const { headers } = await import('next/headers');
         const hdrs = await headers();
         ip = hdrs.get('x-forwarded-for')?.split(',')[0]?.trim()
           || hdrs.get('x-real-ip')
@@ -56,7 +56,7 @@ export async function logAction(params: LogActionParams): Promise<void> {
               .select('id')
               .eq('user_id', userId)
               .single();
-            if (customer) customerId = customer.id;
+            if (customer) customerId = (customer as any).id;
           }
         }
       } catch { }
