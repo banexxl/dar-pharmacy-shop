@@ -9,12 +9,55 @@ import { contactFormSchema } from '@/schemas/contact-form';
 import { SendContactEmail } from '@/services/email/send-email';
 import Link from 'next/link';
 import { ReCaptcha, ReCaptchaProvider, useReCaptcha } from "next-recaptcha-v3";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
+
+function ContactSuccess() {
+     return (
+          <Box
+               sx={{
+                    width: '100%',
+                    maxWidth: '760px',
+                    margin: '0 auto 24px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 2.5,
+                    padding: { xs: '32px 24px', sm: '48px 40px' },
+                    background: '#ffffff',
+                    borderRadius: '16px',
+                    boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
+                    textAlign: 'center',
+               }}
+          >
+               <CheckCircleOutlineIcon sx={{ fontSize: 72, color: Colors.secondary.main }} />
+               <Typography variant="h5" sx={{ fontWeight: 700, color: Colors.neutral[800] }}>
+                    Poruka je uspešno poslata!
+               </Typography>
+               <Typography variant="body1" sx={{ color: Colors.neutral[600], maxWidth: 480, lineHeight: 1.7 }}>
+                    Hvala vam što ste nas kontaktirali. Odgovorićemo vam u najkraćem mogućem roku.
+               </Typography>
+               <Box sx={{ display: 'flex', gap: 3, mt: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: Colors.neutral[500] }}>
+                         <MarkEmailReadOutlinedIcon sx={{ fontSize: 20 }} />
+                         <Typography variant="body2">Email primljen</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: Colors.neutral[500] }}>
+                         <SupportAgentOutlinedIcon sx={{ fontSize: 20 }} />
+                         <Typography variant="body2">Odgovor u roku od 24h</Typography>
+                    </Box>
+               </Box>
+          </Box>
+     );
+}
 
 const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
 
      const { executeRecaptcha, loaded } = useReCaptcha();
      const [token, setToken] = useState<string>('');
      const [submitEnabled, setSubmitEnabled] = useState<boolean>(false)
+     const [submitted, setSubmitted] = useState<boolean>(false);
      const theme = useTheme();
      const isScreenToMedium = useMediaQuery(theme.breakpoints.down("md"))
 
@@ -35,14 +78,23 @@ const ContactForm = ({ recaptchaKey }: { recaptchaKey: string }) => {
 
 
      const handleSubmit = async (values: IContactForm) => {
-          SendContactEmail({
+          await SendContactEmail({
                email: values.email,
                name: values.name,
                message: values.message,
                dataProcessConsent: values.dataProcessConsent,
                questionSubmissionConsent: values.questionSubmissionConsent,
                token: token
-          })
+          });
+          setSubmitted(true);
+     }
+
+     if (submitted) {
+          return (
+               <DynamicThemeProvider theme={theme}>
+                    <ContactSuccess />
+               </DynamicThemeProvider>
+          );
      }
 
      return (
