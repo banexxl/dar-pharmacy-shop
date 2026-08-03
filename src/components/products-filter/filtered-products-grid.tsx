@@ -81,15 +81,15 @@ export default function FilteredProductsGrid({
         <Button color="primary" variant="outlined" startIcon={<SortIcon />} onClick={handleOpenSortDialog}>Sort</Button>
       </Box>
 
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={{ xs: 1, sm: 2 }} justifyContent="center">
         {data.length === 0 ? (
           <Box sx={{ margin: '30px', paddingTop: '50px', color: Colors.primary.main }}>
             <DoNotDisturbIcon />
           </Box>
         ) : (
           data.map((product) => (
-            <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }} display="flex" flexDirection={'column'} alignItems="center">
-              <ProductCard product={product} />
+            <Grid key={product.id} size={{ xs: 6, sm: 6, md: 4 }} display="flex" flexDirection={'column'} alignItems="center">
+              <ProductCard product={product} compact />
             </Grid>
           ))
         )}
