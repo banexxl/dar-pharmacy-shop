@@ -5,8 +5,10 @@ import { Container, Box, Typography, Paper, Button, TextField, Stack, Chip, Dial
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 import { LogoutButton } from './logout-button';
 import { createClient } from '@/services/supabase/browser';
+import { SendCancellationEmailToUser, SendCancellationEmailToAdmin } from '@/services/email/send-email';
 
 interface ProfileClientProps {
   customer: any;
@@ -17,6 +19,9 @@ export function ProfileClient({ customer, orders }: ProfileClientProps) {
   const router = useRouter();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
+  const [cancellingOrderId, setCancellingOrderId] = useState<string | null>(null);
+  const [cancelling, setCancelling] = useState(false);
 
   const handleDeleteAccount = async () => {
     setDeleting(true);
@@ -36,6 +41,62 @@ export function ProfileClient({ customer, orders }: ProfileClientProps) {
     } finally {
       setDeleting(false);
       setDeleteDialogOpen(false);
+    }
+  };
+
+  const handleCancelOrder = async () => {
+    if (!cancellingOrderId) return;
+    setCancelling(true);
+    try {
+      const res = await fetch('/api/orders/cancel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId: cancellingOrderId }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        toast.error(data.error || 'Greška pri otkazivanju porudžbine.');
+        return;
+      }
+
+      toast.success('Porudžbina je uspešno otkazana.');
+
+      // Send cancellation emails (fire and forget — don't block UI)
+      const cancelledOrder = orders.find((o) => o.id === cancellingOrderId);
+      if (cancelledOrder && customer) {
+        const items = Array.isArray(cancelledOrder.order_items)
+          ? cancelledOrder.order_items.map((item: any) => ({
+            name: item.name,
+            count: item.count,
+            price: item.final_unit_price || item.unit_price || 0,
+          }))
+          : [];
+
+        SendCancellationEmailToUser({
+          email: customer.email,
+          name: customer.full_name,
+          order_number: cancelledOrder.order_number,
+          total: cancelledOrder.total,
+          items,
+        }).catch(() => { });
+
+        SendCancellationEmailToAdmin({
+          customer_name: customer.full_name,
+          customer_email: customer.email,
+          customer_phone: customer.phone_number || '',
+          order_number: cancelledOrder.order_number,
+          total: cancelledOrder.total,
+          items,
+        }).catch(() => { });
+      }
+
+      router.refresh();
+    } finally {
+      setCancelling(false);
+      setCancelDialogOpen(false);
+      setCancellingOrderId(null);
     }
   };
 
@@ -266,19 +327,77 @@ export function ProfileClient({ customer, orders }: ProfileClientProps) {
                     <strong>Ukupan Iznos: </strong>
                     {typeof order.total === 'number' ? `${order.total.toFixed(2)} RSD` : 'Nije dostupno'}
                   </Typography>
-                  <Typography variant="body1"><strong>Status: </strong>{order.order_status || 'N/A'}</Typography>
+                  <Typography variant="body1">
+                    <strong>Status: </strong>
+                    <Chip
+                      label={
+                        order.order_status === 'pending' ? 'Na čekanju' :
+                          order.order_status === 'shipped' ? 'Poslato' :
+                            order.order_status === 'delivered' ? 'Dostavljeno' :
+                              order.order_status === 'cancelled' ? 'Otkazano' :
+                                order.order_status || 'N/A'
+                      }
+                      size="small"
+                      color={
+                        order.order_status === 'pending' ? 'warning' :
+                          order.order_status === 'shipped' ? 'info' :
+                            order.order_status === 'delivered' ? 'success' :
+                              order.order_status === 'cancelled' ? 'error' :
+                                'default'
+                      }
+                      sx={{ ml: 1 }}
+                    />
+                  </Typography>
                   <Typography variant="body2">
                     <strong>Stavke: </strong>
                     {Array.isArray(order.order_items) && order.order_items.length > 0
                       ? order.order_items.map((item: any) => `${item.name} x${item.count}`).join(', ')
                       : 'Nema stavki'}
                   </Typography>
+                  {order.order_status === 'pending' && (
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      size="small"
+                      sx={{ mt: 1.5 }}
+                      onClick={() => {
+                        setCancellingOrderId(order.id);
+                        setCancelDialogOpen(true);
+                      }}
+                    >
+                      Otkaži porudžbinu
+                    </Button>
+                  )}
                 </Paper>
               ))}
             </Box>
           )}
         </Box>
       </Box>
+
+      {/* Cancel Order Dialog */}
+      <Dialog open={cancelDialogOpen} onClose={() => !cancelling && setCancelDialogOpen(false)}>
+        <DialogTitle>Otkaži porudžbinu</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Da li ste sigurni da želite da otkažete ovu porudžbinu? Ova akcija se ne može poništiti.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => { setCancelDialogOpen(false); setCancellingOrderId(null); }} disabled={cancelling}>
+            Nazad
+          </Button>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={handleCancelOrder}
+            disabled={cancelling}
+            startIcon={cancelling ? <CircularProgress size={16} color="inherit" /> : null}
+          >
+            {cancelling ? 'Otkazivanje...' : 'Otkaži'}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }

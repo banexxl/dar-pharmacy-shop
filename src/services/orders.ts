@@ -231,3 +231,75 @@ export async function getOrderById(orderId: string) {
   }
   return order ?? null;
 }
+
+// ---------------------------------------------------------------------------
+// Order Cancellation
+// ---------------------------------------------------------------------------
+
+export interface CancelOrderResult {
+  success: boolean;
+  error?: string;
+}
+
+/**
+ * Cancel an order.
+ *
+ * Rules:
+ * - Only orders with order_status 'pending' can be cancelled.
+ * - The caller must own the order (verified via customer_id → user_id).
+ * - Sets order_status to 'cancelled' and payment_status to 'refunded' (or keeps 'pending' if never paid).
+ */
+export async function cancelOrder(
+  orderId: string,
+  userId: string
+): Promise<CancelOrderResult> {
+  // 1. Verify the order exists and belongs to this user
+  const { data: customer } = await supabase
+    .from('customers')
+    .select('id')
+    .eq('user_id', userId)
+    .single();
+
+  if (!customer) {
+    return { success: false, error: 'Korisnik nije pronađen.' };
+  }
+
+  const { data: order, error: orderError } = await supabase
+    .from('orders')
+    .select('id, order_status, payment_status, customer_id')
+    .eq('id', orderId)
+    .eq('customer_id', customer.id)
+    .single();
+
+  if (orderError || !order) {
+    return { success: false, error: 'Porudžbina nije pronađena.' };
+  }
+
+  // 2. Only pending orders can be cancelled
+  if (order.order_status !== 'pending') {
+    return {
+      success: false,
+      error: 'Samo porudžbine sa statusom "na čekanju" mogu biti otkazane.',
+    };
+  }
+
+  // 3. Update the order status
+  const newPaymentStatus =
+    order.payment_status === 'successful' ? 'refunded' : order.payment_status;
+
+  const { error: updateError } = await supabase
+    .from('orders')
+    .update({
+      order_status: 'cancelled',
+      payment_status: newPaymentStatus,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', orderId);
+
+  if (updateError) {
+    console.error('Cancel order failed:', updateError.message);
+    return { success: false, error: 'Greška pri otkazivanju porudžbine.' };
+  }
+
+  return { success: true };
+}
