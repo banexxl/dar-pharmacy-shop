@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Providers } from './providers';
 import { UIWrapper } from './ui-wrapper';
 import '@/globals.css';
+import Script from 'next/script';
+
+const GOOGLE_ADS_ID = 'AW-16815738281';
 
 export const metadata: Metadata = {
   title: {
@@ -29,6 +32,31 @@ export default function RootLayout({
 
   return (
     <html lang="sr">
+      <head>
+        <Script
+          id="google-ads-library"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="beforeInteractive"
+        />
+
+        <Script
+          id="google-ads-init"
+          strategy="beforeInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
+
+            window.gtag = gtag;
+
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `}
+        </Script>
+      </head>
       <body>
         <Providers>
           <UIWrapper>{children}</UIWrapper>

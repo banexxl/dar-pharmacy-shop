@@ -3,7 +3,6 @@
 import { Container, Typography, Box, Paper, Stack, Divider, Button, CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Script from 'next/script';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import type { ConfirmationData } from '@/schemas/order';
@@ -109,13 +108,6 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
 
   return (
     <>
-      <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID}`} />
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID}');`}
-      </Script>
       <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
         <Paper elevation={0} sx={{ p: { xs: 3, md: 4 }, borderRadius: 3, border: '1px solid #e0e0e0' }}>
           <Box sx={{ textAlign: 'center', mb: 4 }}>
