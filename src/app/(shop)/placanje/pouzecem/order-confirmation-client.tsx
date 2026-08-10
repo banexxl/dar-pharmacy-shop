@@ -73,9 +73,9 @@ export function OrderConfirmationClient({ orderData }: { orderData: any }) {
     });
 
     // Fire Google Ads conversion via gtag
-    if (typeof window.gtag === 'function' && process.env.NEXT_PUBLIC_GADS_CONVERSION_ID) {
+    if (typeof window.gtag === 'function' && process.env.NEXT_PUBLIC_GTM_ID) {
       window.gtag('event', 'conversion', {
-        send_to: process.env.NEXT_PUBLIC_GADS_CONVERSION_ID,
+        send_to: process.env.NEXT_PUBLIC_GTM_ID,
         value: total,
         currency: 'RSD',
         transaction_id: orderId,
