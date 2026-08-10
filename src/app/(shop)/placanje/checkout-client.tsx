@@ -27,12 +27,6 @@ import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import theme, { Colors } from '@/styles/theme';
 
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
-
 interface CheckoutClientProps {
   recaptchaKey: string;
 }

@@ -6,6 +6,14 @@ import Script from 'next/script';
 
 const GOOGLE_ADS_ID = 'AW-16815738281';
 
+
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export const metadata: Metadata = {
   title: {
     default: 'Apoteka DAR',
