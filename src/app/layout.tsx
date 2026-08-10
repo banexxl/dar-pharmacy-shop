@@ -1,54 +1,18 @@
-import type { Metadata } from 'next';
-import { Providers } from './providers';
-import { UIWrapper } from './ui-wrapper';
-import '@/globals.css';
+import CookieConsent from '@/components/cookie-consent/cookie-consent';
 import Script from 'next/script';
 
 const GOOGLE_ADS_ID = 'AW-16815738281';
 
-
-declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag?: (...args: any[]) => void;
-  }
-}
-
-export const metadata: Metadata = {
-  title: {
-    default: 'Apoteka DAR',
-    template: '%s | Apoteka DAR',
-  },
-  description: 'Priroda na dohvat ruke',
-  metadataBase: new URL(
-    process.env.BASE_URL || 'https://www.apoteka-dar.rs'
-  ),
-  verification: {
-    google: 'jGROhp_tsSx2SYotId-u_cUU1lUPleFTC5eEReOc_7E',
-  },
-  icons: {
-    icon: '/favicon.ico',
-  },
-};
-
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-
-
+}>) {
   return (
     <html lang="sr">
       <head>
         <Script
-          id="google-ads-library"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-          strategy="beforeInteractive"
-        />
-
-        <Script
-          id="google-ads-init"
+          id="google-consent-default"
           strategy="beforeInteractive"
         >
           {`
@@ -60,15 +24,52 @@ export default function RootLayout({
 
             window.gtag = gtag;
 
+            var googleConsent = 'denied';
+
+            try {
+              if (
+                window.localStorage.getItem(
+                  'cookie_consent'
+                ) === 'all'
+              ) {
+                googleConsent = 'granted';
+              }
+            } catch (error) {
+              googleConsent = 'denied';
+            }
+
+            gtag('consent', 'default', {
+              ad_storage: googleConsent,
+              analytics_storage: googleConsent,
+              ad_user_data: googleConsent,
+              ad_personalization: googleConsent,
+              wait_for_update: 500
+            });
+          `}
+        </Script>
+
+        <Script
+          id="google-ads-library"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="beforeInteractive"
+        />
+
+        <Script
+          id="google-ads-init"
+          strategy="beforeInteractive"
+        >
+          {`
             gtag('js', new Date());
+
             gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
       </head>
+
       <body>
-        <Providers>
-          <UIWrapper>{children}</UIWrapper>
-        </Providers>
+        {children}
+
+        <CookieConsent />
       </body>
     </html>
   );
