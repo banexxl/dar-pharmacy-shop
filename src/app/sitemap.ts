@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const manufacturerUrls: MetadataRoute.Sitemap = manufacturers
     .filter(Boolean)
     .map((m) => ({
-      url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${encodeURIComponent(m)}`,
+      url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${m}`,
       changeFrequency: 'weekly' as const,
       priority: 0.6,
     }));
