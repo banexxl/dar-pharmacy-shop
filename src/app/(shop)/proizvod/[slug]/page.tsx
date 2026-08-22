@@ -7,21 +7,45 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+const BASE_URL =
+  process.env.BASE_URL ?? 'https://www.apoteka-dar.rs';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return { title: 'Proizvod nije pronađen' };
 
-  const description = product.description
-    ? product.description.length > 160
-      ? product.description.substring(0, 157) + '...'
-      : product.description
-    : `Kupite ${product.name} u Apoteci DAR Kragujevac.`;
+  if (!product) {
+    return {
+      title: 'Proizvod nije pronađen | Apoteka DAR',
+    };
+  }
+
+  const description =
+    product.description?.slice(0, 157) + (product.description && product.description.length > 157 ? '...' : '') ||
+    `Kupite ${product.name} u Apoteci DAR Kragujevac.`;
+
+  const url = `${BASE_URL}/proizvod/${product.slug}`;
 
   return {
-    title: product.name,
+    title: `${product.name} | Apoteka DAR`,
     description,
+
+    alternates: {
+      canonical: url,
+    },
+
     openGraph: {
+      title: `${product.name} | Apoteka DAR`,
+      description,
+      url,
+      type: 'website',
+      images: product.image_url ? [{ url: product.image_url }] : [],
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | Apoteka DAR`,
+      description,
       images: product.image_url ? [product.image_url] : [],
     },
   };
@@ -45,6 +69,7 @@ export default async function ProductDetailPage({ params }: Props) {
     <ProductDetailClient
       product={JSON.parse(JSON.stringify(product))}
       relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
+      BASE_URL={BASE_URL}
     />
   );
 }
