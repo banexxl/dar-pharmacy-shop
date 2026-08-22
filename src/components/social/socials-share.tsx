@@ -12,8 +12,8 @@ import {
 } from 'next-share';
 import { FaViber } from 'react-icons/fa';
 
-import Iconify from 'src/components/iconify';
 import { Colors } from '@/styles/theme';
+import Iconify from '../iconify';
 
 type SocialShareProps = {
   shareURL: string;

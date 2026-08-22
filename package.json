@@ -46,7 +46,7 @@
     "next": "^16.3.0",
     "next-recaptcha-v3": "^1.4.1",
     "next-share": "^0.27.0",
-    "nodemailer": "^7.0.10",
+    "nodemailer": "^9.0.5",
     "numeral": "^2.0.6",
     "polished": "^4.2.2",
     "react": "^19.2.3",
@@ -59,15 +59,14 @@
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "server-only": "^0.0.1",
-    "uuid": "^10.0.0",
+    "uuid": "^14.0.2",
     "yup": "^1.0.2"
   },
   "devDependencies": {
     "@types/google.maps": "^3.65.3",
     "@types/mui-image": "^1.0.5",
-    "@types/nodemailer": "^6.4.7",
+    "@types/nodemailer": "^8.0.1",
     "@types/numeral": "^2.0.5",
-    "@types/uuid": "^10.0.0",
-    "typescript": "5.8.2"
+    "typescript": "^7.0.2"
   }
 }

@@ -31,40 +31,24 @@ export const ContactMap = ({ mapApiKey }: ContactMapProps) => {
                version: 'weekly',
           });
 
-          loader.importLibrary('maps')
-               .then(({ Map }) => {
-                    if (!mapRef.current) return;
-
-                    const map = new Map(mapRef.current, {
-                         center: POSITION,
-                         zoom: 15,
-                         mapId: 'apoteka-dar-map',
-                    });
-
-                    // Use AdvancedMarkerElement if available, fallback to Marker
-                    loader.importLibrary('marker')
-                         .then(({ AdvancedMarkerElement }) => {
-                              new AdvancedMarkerElement({
-                                   position: POSITION,
-                                   map,
-                                   title: 'Apoteka DAR',
-                              });
-                         })
-                         .catch(() => {
-                              // Fallback to legacy Marker
-                              new google.maps.Marker({
-                                   position: POSITION,
-                                   map,
-                                   title: 'Apoteka DAR',
-                              });
+          loader.importLibrary('marker')
+               .then(({ AdvancedMarkerElement, Marker }) => {
+                    if (AdvancedMarkerElement) {
+                         new AdvancedMarkerElement({
+                              position: POSITION,
+                              Map,
+                              title: 'Apoteka DAR',
                          });
-
-                    setLoading(false);
+                    } else if (Marker) {
+                         new Marker({
+                              position: POSITION,
+                              Map,
+                              title: 'Apoteka DAR',
+                         });
+                    }
                })
-               .catch((err) => {
-                    console.error('Failed to load Google Maps:', err);
-                    setError('Mapa nije dostupna.');
-                    setLoading(false);
+               .catch(() => {
+                    console.warn('Marker library failed to load');
                });
      }, [mapApiKey]);
 

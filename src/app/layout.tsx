@@ -1,5 +1,7 @@
 import CookieConsent from '@/components/cookie-consent/cookie-consent';
 import Script from 'next/script';
+import { Providers } from './providers';
+import { UIWrapper } from './ui-wrapper';
 
 const GOOGLE_ADS_ID = 'AW-16815738281';
 
@@ -67,8 +69,11 @@ export default function RootLayout({
       </head>
 
       <body>
-        {children}
-
+        <Providers>
+          <UIWrapper>
+            {children}
+          </UIWrapper>
+        </Providers>
         <CookieConsent />
       </body>
     </html>
