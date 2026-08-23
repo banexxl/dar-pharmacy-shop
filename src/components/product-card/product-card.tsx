@@ -114,6 +114,7 @@ export default function ProductCard({
             alt={product.name}
             sx={{
               height: compact ? 160 : 200,
+              width: '100%',
               objectFit: 'contain',
               p: 1,
               backgroundColor: Colors.neutral[50],
