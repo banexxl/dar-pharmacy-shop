@@ -43,6 +43,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       images: product.image_url ? [{ url: product.image_url }] : [],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | Apoteka DAR`,
+      description,
+      images: product.image_url ? [product.image_url] : [],
+    },
   };
 }
 

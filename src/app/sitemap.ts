@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllActiveProducts } from '@/services/products';
-import { getAllManufacturerNames, getAllManufacturerLogos } from '@/services/manufacturers';
+import { getAllManufacturerNames } from '@/services/manufacturers';
 import { getAllCategoryPaths, getAllMainCategories } from '@/services/categories';
 
 const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
@@ -43,7 +43,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (path.midCategory) url += `/${path.midCategory}`;
     if (path.subCategory) url += `/${path.subCategory}`;
 
-    // Deeper = slightly lower priority
     const priority = path.subCategory ? 0.6 : path.midCategory ? 0.65 : 0.7;
 
     return {
