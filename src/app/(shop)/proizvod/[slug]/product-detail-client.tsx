@@ -3,9 +3,8 @@
 import ProductDetails from '@/components/product-details/product-details';
 import SearchBox from '@/components/search/search';
 import RelatedProductsCarousel from '@/components/carousel/carousel-related-products';
-import { Container, Stack } from '@mui/material';
-import { Breadcrumbs, BreadcrumbItem } from '@/components/seo/breadcrumbs';
-import { JsonLd } from '@/components/seo/json-ld';
+import { Container, Stack, Box, Typography } from '@mui/material';
+import NextLink from 'next/link';
 
 interface CategoryLabels {
   mainLabel: string | null;
@@ -20,16 +19,13 @@ interface Props {
   manufacturerName?: string | null;
 }
 
-const BASE_URL = 'https://www.apoteka-dar.rs';
-
 export function ProductDetailClient({
   product,
   relatedProducts = [],
   categoryLabels,
-  manufacturerName,
 }: Props) {
   // Build breadcrumbs
-  const breadcrumbItems: BreadcrumbItem[] = [
+  const breadcrumbItems: { label: string; href?: string }[] = [
     { label: 'Početna', href: '/' },
   ];
 
@@ -56,50 +52,48 @@ export function ProductDetailClient({
 
   breadcrumbItems.push({ label: product.name });
 
-  // Build Product JSON-LD
-  const availability = product.available_stock > 0
-    ? 'https://schema.org/InStock'
-    : 'https://schema.org/OutOfStock';
-
-  const finalPrice = product.discount && product.discount_amount
-    ? product.price - product.discount_amount
-    : product.price;
-
-  const categoryPath = [
-    categoryLabels?.mainLabel,
-    categoryLabels?.midLabel,
-    categoryLabels?.subLabel,
-  ].filter(Boolean).join(' > ');
-
-  const productJsonLd: Record<string, unknown> = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    description: product.description || undefined,
-    image: product.image_url || undefined,
-    url: `${BASE_URL}/proizvod/${product.slug}`,
-    category: categoryPath || undefined,
-    offers: {
-      '@type': 'Offer',
-      price: finalPrice.toFixed(2),
-      priceCurrency: 'RSD',
-      availability,
-      url: `${BASE_URL}/proizvod/${product.slug}`,
-    },
-  };
-
-  if (manufacturerName) {
-    productJsonLd.brand = {
-      '@type': 'Brand',
-      name: manufacturerName,
-    };
-  }
-
   return (
     <Container maxWidth="xl" sx={{ background: '#fff' }}>
-      <JsonLd data={productJsonLd} />
       <Stack component="main">
-        <Breadcrumbs items={breadcrumbItems} />
+        {/* Breadcrumbs */}
+        <Box component="nav" aria-label="Breadcrumb" sx={{ mb: 2, mt: 2 }}>
+          <Box
+            component="ol"
+            itemScope
+            itemType="https://schema.org/BreadcrumbList"
+            sx={{ display: 'flex', flexWrap: 'wrap', listStyle: 'none', p: 0, m: 0, gap: 0.5, fontSize: '0.875rem' }}
+          >
+            {breadcrumbItems.map((item, index) => (
+              <Box
+                component="li"
+                key={index}
+                itemProp="itemListElement"
+                itemScope
+                itemType="https://schema.org/ListItem"
+                sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+              >
+                {item.href ? (
+                  <NextLink href={item.href} itemProp="item" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <Typography component="span" itemProp="name" sx={{ fontSize: '0.875rem', '&:hover': { textDecoration: 'underline' } }}>
+                      {item.label}
+                    </Typography>
+                  </NextLink>
+                ) : (
+                  <Typography component="span" itemProp="name" sx={{ fontSize: '0.875rem', fontWeight: 500, color: 'text.primary' }}>
+                    {item.label}
+                  </Typography>
+                )}
+                <meta itemProp="position" content={String(index + 1)} />
+                {index < breadcrumbItems.length - 1 && (
+                  <Typography component="span" aria-hidden="true" sx={{ mx: 0.5, color: 'text.secondary', fontSize: '0.875rem' }}>
+                    ›
+                  </Typography>
+                )}
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
         <ProductDetails {...product} />
         <RelatedProductsCarousel products={relatedProducts} />
         <SearchBox />

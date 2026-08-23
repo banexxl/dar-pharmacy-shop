@@ -67,7 +67,7 @@ export function AuthProvider({
                     .from('customers')
                     .select('*')
                     .eq('user_id', userId)
-                    .single();
+                    .maybeSingle();
 
                if (error) {
                     console.error(

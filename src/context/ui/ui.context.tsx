@@ -1,15 +1,15 @@
-import Animate from "@/components/animate/animate";
-import Footer from "@/components/footer/footer";
-import NavBar from "@/components/navbar/navbar";
+'use client';
+
 import { createContext, useContext, useState } from "react";
 
-
 export const UIContext = createContext<any>({});
-export const useUIContext = () => useContext(UIContext)
+export const useUIContext = () => useContext(UIContext);
 
-
-export const UIProvider = ({ children }: any) => {
-
+/**
+ * Lightweight UI state provider — context only, no layout rendering.
+ * Manages drawer, search box, and loading wheel visibility state.
+ */
+export const UIStateProvider = ({ children }: { children: React.ReactNode }) => {
      const [drawerOpen, setDrawerOpen] = useState(false);
      const [showSearchBox, setShowSearchBox] = useState(false);
      const [showLoadingWheel, setShowLoadingWheel] = useState('none');
@@ -22,11 +22,10 @@ export const UIProvider = ({ children }: any) => {
 
      return (
           <UIContext.Provider value={value}>
-               <NavBar />
-               <Animate>
-                    {children}
-               </Animate>
-               <Footer />
+               {children}
           </UIContext.Provider>
-     )
-}
+     );
+};
+
+// Keep legacy export name for backward compatibility during transition
+export const UIProvider = UIStateProvider;

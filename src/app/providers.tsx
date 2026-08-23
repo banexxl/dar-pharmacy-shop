@@ -11,7 +11,11 @@ import theme from '@/styles/theme';
 import store from '@/store/store';
 import { useEffect, useState } from 'react';
 import { AuthProvider } from '@/context/session/session.context';
+import { UIStateProvider } from '@/context/ui/ui.context';
 import { useCartWishlistSync } from '@/hooks/useCartWishlistSync';
+import NavBar from '@/components/navbar/navbar';
+import Footer from '@/components/footer/footer';
+import CookieConsent from '@/components/cookie-consent/cookie-consent';
 
 const persistor = typeof window !== 'undefined' ? persistStore(store) : null;
 
@@ -27,21 +31,32 @@ export function Providers({ children }: { children: React.ReactNode }) {
     setHydrated(true);
   }, []);
 
+  const content = (
+    <>
+      <NavBar />
+      <main>{children}</main>
+      <Footer />
+      <CookieConsent />
+    </>
+  );
+
   return (
     <ReduxProvider store={store}>
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <CssBaseline />
-          <SyncManager />
-          {hydrated && persistor ? (
-            <PersistGate persistor={persistor} loading={children}>
-              {children}
-            </PersistGate>
-          ) : (
-            children
-          )}
-          <Toaster />
-          <Analytics />
+          <UIStateProvider>
+            <CssBaseline />
+            <SyncManager />
+            {hydrated && persistor ? (
+              <PersistGate persistor={persistor} loading={content}>
+                {content}
+              </PersistGate>
+            ) : (
+              content
+            )}
+            <Toaster />
+            <Analytics />
+          </UIStateProvider>
         </AuthProvider>
       </ThemeProvider>
     </ReduxProvider>

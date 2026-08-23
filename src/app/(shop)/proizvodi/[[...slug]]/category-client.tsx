@@ -20,8 +20,6 @@ interface CategoryClientProps {
   level: 'all' | 'main' | 'mid' | 'sub';
 }
 
-const BASE_URL = 'https://www.apoteka-dar.rs';
-
 export function CategoryClient({
   products,
   mainCategory,
@@ -57,56 +55,8 @@ export function CategoryClient({
   // ─── Page heading (H1) ──────────────────────────────────────────────────────
   const pageTitle = subCategory?.label ?? midCategory?.label ?? mainCategory?.label ?? 'Svi proizvodi';
 
-  // ─── JSON-LD Structured Data ────────────────────────────────────────────────
-  let canonicalPath = '/proizvodi';
-  if (mainCategory) canonicalPath += `/${mainCategory.value}`;
-  if (midCategory) canonicalPath += `/${midCategory.value}`;
-  if (subCategory) canonicalPath += `/${subCategory.value}`;
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbItems.map((item, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: item.label,
-      ...(item.href ? { item: `${BASE_URL}${item.href}` } : {}),
-    })),
-  };
-
-  const collectionPageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: pageTitle,
-    description: `Proizvodi iz kategorije ${pageTitle} - Apoteka DAR`,
-    url: `${BASE_URL}${canonicalPath}`,
-    numberOfItems: products.length,
-    provider: { '@type': 'Organization', name: 'Apoteka DAR', url: BASE_URL },
-  };
-
-  const itemListJsonLd = products.length > 0
-    ? {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: `${pageTitle} - Proizvodi`,
-      numberOfItems: products.length,
-      itemListElement: products.slice(0, 10).map((p: any, i: number) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        url: `${BASE_URL}/proizvod/${p.slug}`,
-      })),
-    }
-    : null;
-
   return (
     <Container disableGutters maxWidth="lg" sx={{ background: '#fff' }}>
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageJsonLd) }} />
-      {itemListJsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
-      )}
-
       <Box component="main" sx={{ px: { xs: 2, md: 3 }, py: 2 }}>
         {/* Breadcrumbs */}
         <Box component="nav" aria-label="Breadcrumb" sx={{ mb: 2, mt: 1 }}>
@@ -154,7 +104,7 @@ export function CategoryClient({
 
         {/* Category description */}
         <Typography component="p" variant="body1" sx={{ mb: 3, color: 'text.secondary' }}>
-          Prirodni preparati iz kategorije <Typography component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>"{pageTitle}"</Typography>. Izaberite proizvode renomiranih proizvođača uz stručni savet farmaceuta.
+          Prirodni preparati iz kategorije <Typography component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>({pageTitle})</Typography>. Izaberite proizvode renomiranih proizvođača uz stručni savet farmaceuta.
         </Typography>
 
         {/* Products section — ProductsFilter includes its own accordion sidebar */}

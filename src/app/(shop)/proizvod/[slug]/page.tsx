@@ -80,12 +80,54 @@ export default async function ProductDetailPage({ params }: Props) {
     10
   );
 
+  // Build Product JSON-LD (server-side, no client warning)
+  const finalPrice = product.discount && product.discount_amount
+    ? product.price - product.discount_amount
+    : product.price;
+
+  const availability = product.available_stock > 0
+    ? 'https://schema.org/InStock'
+    : 'https://schema.org/OutOfStock';
+
+  const categoryPath = [
+    categoryLabels.mainLabel,
+    categoryLabels.midLabel,
+    categoryLabels.subLabel,
+  ].filter(Boolean).join(' > ');
+
+  const productJsonLd: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description || undefined,
+    image: product.image_url || undefined,
+    url: `${BASE_URL}/proizvod/${product.slug}`,
+    category: categoryPath || undefined,
+    offers: {
+      '@type': 'Offer',
+      price: finalPrice.toFixed(2),
+      priceCurrency: 'RSD',
+      availability,
+      url: `${BASE_URL}/proizvod/${product.slug}`,
+    },
+  };
+
+  if (manufacturerName) {
+    productJsonLd.brand = {
+      '@type': 'Brand',
+      name: manufacturerName,
+    };
+  }
+
   return (
-    <ProductDetailClient
-      product={JSON.parse(JSON.stringify(product))}
-      relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
-      categoryLabels={categoryLabels}
-      manufacturerName={manufacturerName}
-    />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+      <ProductDetailClient
+        product={JSON.parse(JSON.stringify(product))}
+        relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
+        categoryLabels={categoryLabels}
+        manufacturerName={manufacturerName}
+      />
+    </>
   );
 }

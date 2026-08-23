@@ -8,6 +8,8 @@ import Product from '@/interfaces/product/product.interface';
 import { Manufacturer } from '@/services/supabase/types';
 import Link from 'next/link';
 
+import Paralax from '@/components/paralax/paralax';
+
 const Promotions = lazy(() => import('@/components/promotions/promotions'));
 const SearchBox = lazy(() => import('@/components/search/search'));
 const ProductCarousel = lazy(() => import('@/components/carousel/carousel'));
@@ -29,7 +31,6 @@ const CarouselOnlyImageProduct = lazy(
 const CarouselPresentationContainer = lazy(
   () => import('@/components/carousel/carousel-presentation-container')
 );
-const Paralax = lazy(() => import('@/components/paralax/paralax'));
 const LoadOnView = lazy(() => import('@/components/common/load-on-view'));
 const Chatbot = lazy(() => import('@/chatbot/chatbot'));
 

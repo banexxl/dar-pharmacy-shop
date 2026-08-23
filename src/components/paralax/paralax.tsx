@@ -1,19 +1,26 @@
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { Typography, Box, Container, useTheme, useMediaQuery } from '@mui/material';
+'use client';
+
+import { useLayoutEffect, useRef, useState } from 'react';
+import { Typography, Box, Container } from '@mui/material';
 import Button from '@/components/button';
 import { Colors } from '@/styles/theme';
 import { useRouter } from 'next/navigation';
 
 export default function Parallax() {
-     const theme = useTheme();
-     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
      const router = useRouter();
-     const [bgOffset, setBgOffset] = useState(0);
      const [btnLoading, setBtnLoading] = useState(false);
+     const containerRef = useRef<HTMLDivElement>(null);
 
-     useEffect(() => {
-          const onScroll = () => setBgOffset(window.scrollY * 0.2);
+     // Use useLayoutEffect + direct DOM manipulation for parallax
+     // to avoid React re-renders on every scroll tick
+     useLayoutEffect(() => {
+          const bgEl = containerRef.current;
+          if (!bgEl) return;
+
+          const onScroll = () => {
+               bgEl.style.transform = `translateY(${window.scrollY * 0.2}px)`;
+          };
+
           window.addEventListener('scroll', onScroll, { passive: true });
           return () => window.removeEventListener('scroll', onScroll);
      }, []);
@@ -27,22 +34,28 @@ export default function Parallax() {
                     overflow: 'hidden',
                }}
           >
-               {/* Background image with subtle parallax translate */}
+               {/* Background image with parallax via ref (no re-renders) */}
                <Box
+                    ref={containerRef}
                     sx={{
                          position: 'absolute',
                          inset: 0,
-                         transform: `translateY(${bgOffset}px)`,
-                         transition: 'transform 0.05s linear',
                          willChange: 'transform',
+                         backgroundColor: '#2d4a3e',
                     }}
                >
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                          src="/images/home-page/image1.jpg"
                          alt="Apoteka DAR background"
-                         fill
-                         style={{ objectFit: 'cover' }}
-                         priority
+                         fetchPriority="high"
+                         decoding="async"
+                         style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              display: 'block',
+                         }}
                     />
                </Box>
 
@@ -55,13 +68,13 @@ export default function Parallax() {
                     }}
                />
 
-               {/* Foreground content */}
+               {/* Foreground content — responsive via sx, no useMediaQuery */}
                <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: { xs: 6, md: 10 } }}>
                     <Box sx={{ textAlign: 'center' }}>
                          <Typography
                               component="h1"
-                              variant={isMobile ? 'h3' : 'h1'}
                               sx={{
+                                   fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
                                    fontWeight: 800,
                                    color: Colors.white,
                                    textShadow: '0 2px 8px rgba(0,0,0,0.35)',
@@ -72,9 +85,10 @@ export default function Parallax() {
                          </Typography>
                          <Typography
                               component="h2"
-                              variant={isMobile ? 'h5' : 'h2'}
                               sx={{
                                    mt: 1,
+                                   fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
+                                   fontWeight: 600,
                                    color: Colors.white,
                                    opacity: 0.95,
                                    textShadow: '0 1px 6px rgba(0,0,0,0.3)',
@@ -83,8 +97,7 @@ export default function Parallax() {
                               Radosno srce je pola zdravlja
                          </Typography>
                          <Typography
-                              component="h3"
-                              variant="body1"
+                              component="p"
                               sx={{
                                    mt: 2,
                                    mx: 'auto',
@@ -102,7 +115,7 @@ export default function Parallax() {
                               size="large"
                               sx={{ mt: 4 }}
                               disabled={btnLoading}
-                              onClick={async () => {
+                              onClick={() => {
                                    setBtnLoading(true);
                                    router.push('/proizvodi-proizvodjac-kategorija/majana/prirodna-kozmetika');
                               }}

@@ -114,6 +114,84 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// ─── JSON-LD Builder (server-side only) ─────────────────────────────────────────
+function buildJsonLd(
+  mainCategory: any,
+  midCategory: any,
+  subCategory: any,
+  products: any[],
+  level: string
+) {
+  const pageTitle = subCategory?.label ?? midCategory?.label ?? mainCategory?.label ?? 'Svi proizvodi';
+
+  let canonicalPath = '/proizvodi';
+  if (mainCategory) canonicalPath += `/${mainCategory.value}`;
+  if (midCategory) canonicalPath += `/${midCategory.value}`;
+  if (subCategory) canonicalPath += `/${subCategory.value}`;
+
+  const breadcrumbItems: { label: string; href?: string }[] = [
+    { label: 'Početna', href: '/' },
+    { label: 'Proizvodi', href: level === 'all' ? undefined : '/proizvodi' },
+  ];
+  if (mainCategory) {
+    breadcrumbItems.push({
+      label: mainCategory.label,
+      href: midCategory || subCategory ? `/proizvodi/${mainCategory.value}` : undefined,
+    });
+  }
+  if (midCategory) {
+    breadcrumbItems.push({
+      label: midCategory.label,
+      href: subCategory ? `/proizvodi/${mainCategory.value}/${midCategory.value}` : undefined,
+    });
+  }
+  if (subCategory) {
+    breadcrumbItems.push({ label: subCategory.label });
+  }
+
+  const schemas: object[] = [];
+
+  // BreadcrumbList
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.label,
+      ...(item.href ? { item: `${BASE_URL}${item.href}` } : {}),
+    })),
+  });
+
+  // CollectionPage
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: pageTitle,
+    description: `Proizvodi iz kategorije ${pageTitle} - Apoteka DAR`,
+    url: `${BASE_URL}${canonicalPath}`,
+    numberOfItems: products.length,
+    provider: { '@type': 'Organization', name: 'Apoteka DAR', url: BASE_URL },
+  });
+
+  // ItemList
+  if (products.length > 0) {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: `${pageTitle} - Proizvodi`,
+      numberOfItems: products.length,
+      itemListElement: products.slice(0, 10).map((p: any, i: number) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${BASE_URL}/proizvod/${p.slug}`,
+      })),
+    });
+  }
+
+  return schemas;
+}
+
 // ─── Page Component ─────────────────────────────────────────────────────────────
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
@@ -130,15 +208,22 @@ export default async function CategoryPage({ params }: Props) {
       getAllMainCategories(),
     ]);
 
+    const jsonLdSchemas = buildJsonLd(null, null, null, products, 'all');
+
     return (
-      <CategoryClient
-        products={JSON.parse(JSON.stringify(products))}
-        mainCategory={null}
-        midCategory={null}
-        subCategory={null}
-        siblingCategories={JSON.parse(JSON.stringify(allMainCategories))}
-        level="all"
-      />
+      <>
+        {jsonLdSchemas.map((schema, i) => (
+          <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        ))}
+        <CategoryClient
+          products={JSON.parse(JSON.stringify(products))}
+          mainCategory={null}
+          midCategory={null}
+          subCategory={null}
+          siblingCategories={JSON.parse(JSON.stringify(allMainCategories))}
+          level="all"
+        />
+      </>
     );
   }
 
@@ -174,14 +259,27 @@ export default async function CategoryPage({ params }: Props) {
     siblingCategories = resolved.siblingMidCategories;
   }
 
+  const jsonLdSchemas = buildJsonLd(
+    resolved.mainCategory,
+    resolved.midCategory,
+    resolved.subCategory,
+    products,
+    level
+  );
+
   return (
-    <CategoryClient
-      products={JSON.parse(JSON.stringify(products))}
-      mainCategory={resolved.mainCategory ? JSON.parse(JSON.stringify(resolved.mainCategory)) : null}
-      midCategory={resolved.midCategory ? JSON.parse(JSON.stringify(resolved.midCategory)) : null}
-      subCategory={resolved.subCategory ? JSON.parse(JSON.stringify(resolved.subCategory)) : null}
-      siblingCategories={JSON.parse(JSON.stringify(siblingCategories))}
-      level={level}
-    />
+    <>
+      {jsonLdSchemas.map((schema, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
+      <CategoryClient
+        products={JSON.parse(JSON.stringify(products))}
+        mainCategory={resolved.mainCategory ? JSON.parse(JSON.stringify(resolved.mainCategory)) : null}
+        midCategory={resolved.midCategory ? JSON.parse(JSON.stringify(resolved.midCategory)) : null}
+        subCategory={resolved.subCategory ? JSON.parse(JSON.stringify(resolved.subCategory)) : null}
+        siblingCategories={JSON.parse(JSON.stringify(siblingCategories))}
+        level={level}
+      />
+    </>
   );
 }

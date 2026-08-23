@@ -1,9 +1,26 @@
-import CookieConsent from '@/components/cookie-consent/cookie-consent';
 import Script from 'next/script';
 import { Providers } from './providers';
-import { UIWrapper } from './ui-wrapper';
+import '@/globals.css';
+import type { Metadata } from 'next';
 
 const GOOGLE_ADS_ID = 'AW-16815738281';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Apoteka DAR',
+    template: '%s | Apoteka DAR',
+  },
+  description: 'Priroda na dohvat ruke',
+  metadataBase: new URL(
+    process.env.BASE_URL || 'https://www.apoteka-dar.rs'
+  ),
+  verification: {
+    google: 'jGROhp_tsSx2SYotId-u_cUU1lUPleFTC5eEReOc_7E',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -70,11 +87,8 @@ export default function RootLayout({
 
       <body>
         <Providers>
-          <UIWrapper>
-            {children}
-          </UIWrapper>
+          {children}
         </Providers>
-        <CookieConsent />
       </body>
     </html>
   );
