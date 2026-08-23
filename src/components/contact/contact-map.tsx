@@ -31,25 +31,41 @@ export const ContactMap = ({ mapApiKey }: ContactMapProps) => {
                version: 'weekly',
           });
 
-          loader.importLibrary('marker')
-               .then(({ AdvancedMarkerElement, Marker }) => {
-                    if (AdvancedMarkerElement) {
+          const initMap = async () => {
+               try {
+                    const { Map } = await loader.importLibrary('maps');
+
+                    const map = new Map(mapRef.current!, {
+                         center: POSITION,
+                         zoom: 16,
+                         mapId: 'dar-pharmacy-map',
+                    });
+
+                    try {
+                         const { AdvancedMarkerElement } = await loader.importLibrary('marker');
                          new AdvancedMarkerElement({
                               position: POSITION,
-                              Map,
+                              map,
                               title: 'Apoteka DAR',
                          });
-                    } else if (Marker) {
-                         new Marker({
+                    } catch {
+                         // Fallback to basic marker if advanced marker is unavailable
+                         new google.maps.Marker({
                               position: POSITION,
-                              Map,
+                              map,
                               title: 'Apoteka DAR',
                          });
                     }
-               })
-               .catch(() => {
-                    console.warn('Marker library failed to load');
-               });
+
+                    setLoading(false);
+               } catch (err) {
+                    console.error('Map failed to load:', err);
+                    setLoading(false);
+                    setError('Mapa nije dostupna.');
+               }
+          };
+
+          initMap();
      }, [mapApiKey]);
 
      return (
