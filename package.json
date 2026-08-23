@@ -68,5 +68,9 @@
     "@types/nodemailer": "^8.0.1",
     "@types/numeral": "^2.0.5",
     "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "core-js@3.49.0": true,
+    "maplibre-gl@2.4.0": true
   }
 }
