@@ -12,7 +12,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
 import { useUIContext } from "../../context/ui/ui.context";
-import { useEffect, useState, forwardRef, cloneElement, useRef } from "react";
+import { useEffect, useState, forwardRef, cloneElement, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import { Colors } from "@/styles/theme";
 import useDialogModal from "@/hooks/useDialogModal";
@@ -50,12 +50,11 @@ export default function AppbarMobile({ isScreenToMedium }: any) {
      const tickingRef = useRef(false);
      const THRESHOLD = 50; // px
 
-     useEffect(() => {
-          if (typeof window === "undefined") return;
-
-          // initialize state (handles refresh mid-scroll)
+     useLayoutEffect(() => {
+          // initialize synchronously before paint
           lastScrollYRef.current = window.scrollY || 0;
-          setIsScrolled(lastScrollYRef.current > THRESHOLD);
+          const initialScrolled = lastScrollYRef.current > THRESHOLD;
+          if (initialScrolled) setIsScrolled(true);
 
           const readAndUpdate = () => {
                const scrolled = lastScrollYRef.current > THRESHOLD;
