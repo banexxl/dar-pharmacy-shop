@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Container, Typography, Box, Skeleton, Grid, Button } from '@mui/material';
 import { Colors } from '@/styles/theme';
 import Products from '@/components/products/products-grid';
@@ -8,9 +8,9 @@ import Product from '@/interfaces/product/product.interface';
 import { Manufacturer } from '@/services/supabase/types';
 import Link from 'next/link';
 
-import Paralax from '@/components/paralax/paralax';
-
 const Promotions = lazy(() => import('@/components/promotions/promotions'));
+const LoadOnView = lazy(() => import('@/components/common/load-on-view'));
+const Chatbot = lazy(() => import('@/chatbot/chatbot'));
 const SearchBox = lazy(() => import('@/components/search/search'));
 const ProductCarousel = lazy(() => import('@/components/carousel/carousel'));
 const CarouselLogo = lazy(() => import('@/components/carousel/carousel-logo'));
@@ -31,8 +31,6 @@ const CarouselOnlyImageProduct = lazy(
 const CarouselPresentationContainer = lazy(
   () => import('@/components/carousel/carousel-presentation-container')
 );
-const LoadOnView = lazy(() => import('@/components/common/load-on-view'));
-const Chatbot = lazy(() => import('@/chatbot/chatbot'));
 
 function ProductsSkeleton() {
   return (
@@ -79,7 +77,6 @@ export function HomePageClient(props: HomePageClientProps) {
     <>
       <Suspense fallback={<Box sx={{ minHeight: 300 }} />}>
         <Box component="main" sx={{ width: '100vw', overflow: 'hidden' }}>
-          <Paralax />
 
           <LoadOnView fallback={<Box sx={{ minHeight: 300 }} />}>
             <Box sx={{ width: '100%' }}>
