@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import ProductsAllCategories from './products-categories';
 import FilteredProductsGrid from './filtered-products-grid';
@@ -104,51 +104,7 @@ function ProductsFilter({ filterObject, routerQuery }: any) {
                               <Typography variant="body1" sx={{ color: 'text.secondary', justifyContent: 'center', display: 'flex', paddingBottom: '50px' }}>
                                    Nije pronađen ni jedan proizvod!
                               </Typography>
-                         ) : (
-                              <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 5 }}>
-                                   <Breadcrumbs
-                                        sx={{
-                                             color: 'red',
-                                             '& a': {
-                                                  color: 'red',
-                                                  textDecoration: 'underline',
-                                                  fontFamily: 'monospace',
-                                             },
-                                        }}
-                                   >
-                                        {manufacturerURL && (
-                                             <Typography
-                                                  component="a"
-                                                  href={`/proizvodi-proizvodjac-kategorija/${manufacturerURL}`}
-                                                  sx={{
-                                                       fontSize: '1rem',
-                                                       fontStyle: 'italic',
-                                                       textDecoration: 'underline',
-                                                       color: 'red',
-                                                       fontFamily: 'monospace',
-                                                  }}
-                                             >
-                                                  {manufacturerURL}
-                                             </Typography>
-                                        )}
-                                        {mainCategory && (
-                                             <Typography
-                                                  component="a"
-                                                  href={`/proizvodi-proizvodjac-kategorija/${manufacturerURL}/${mainCategory}`}
-                                                  sx={{
-                                                       fontSize: '1rem',
-                                                       fontStyle: 'italic',
-                                                       textDecoration: 'underline',
-                                                       color: 'red',
-                                                       fontFamily: 'monospace',
-                                                  }}
-                                             >
-                                                  {mainCategory}
-                                             </Typography>
-                                        )}
-                                   </Breadcrumbs>
-                              </Box>
-                         )}
+                         ) : null}
                     </Box>
                     <FilteredProductsGrid
                          data={displayedProducts}

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Box, Collapse, InputAdornment, List, ListItemButton, ListItemText, TextField } from '@mui/material';
+import { Box, CircularProgress, Collapse, InputAdornment, List, ListItemButton, ListItemText, TextField } from '@mui/material';
 import { Colors } from '@/styles/theme';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import SearchIcon from '@mui/icons-material/Search';
-import { AccordionPanels } from './all-categories'
 import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 type CategoryNode = {
      id: string;
@@ -22,6 +22,7 @@ type CategoryTreeItemProps = {
      onToggle: (id: string) => void;
      onNavigate: (link?: string) => void;
      forceExpand: boolean;
+     currentPath: string;
 };
 
 type ProductsAllCategoriesProps = {
@@ -57,10 +58,12 @@ const CategoryTreeItem: React.FC<CategoryTreeItemProps> = ({
      onToggle,
      onNavigate,
      forceExpand,
+     currentPath,
 }) => {
      const children = Array.isArray(node.children) ? node.children : [];
      const hasChildren = children.length > 0;
      const isOpen = forceExpand || expandedIds.has(node.id);
+     const isActive = !hasChildren && node.link ? currentPath === node.link || currentPath === node.link.replace(/\/$/, '') : false;
 
      return (
           <>
@@ -91,8 +94,8 @@ const CategoryTreeItem: React.FC<CategoryTreeItemProps> = ({
                               <Typography
                                    sx={{
                                         fontSize: level === 0 ? '0.95rem' : '0.9rem',
-                                        fontWeight: hasChildren ? 600 : 500,
-                                        color: Colors.dark,
+                                        fontWeight: isActive ? 700 : hasChildren ? 600 : 500,
+                                        color: isActive ? Colors.primary.main : Colors.dark,
                                         lineHeight: 1.35,
                                         wordBreak: 'break-word',
                                    }}
@@ -115,6 +118,7 @@ const CategoryTreeItem: React.FC<CategoryTreeItemProps> = ({
                                         onToggle={onToggle}
                                         onNavigate={onNavigate}
                                         forceExpand={forceExpand}
+                                        currentPath={currentPath}
                                    />
                               ))}
                          </List>
@@ -124,12 +128,69 @@ const CategoryTreeItem: React.FC<CategoryTreeItemProps> = ({
      );
 };
 
+// Cache the fetched navigation data across re-renders (module-level singleton)
+let cachedPanels: CategoryNode[] | null = null;
+let fetchPromise: Promise<CategoryNode[]> | null = null;
+
+async function fetchCategoryPanels(): Promise<CategoryNode[]> {
+     if (cachedPanels) return cachedPanels;
+     if (fetchPromise) return fetchPromise;
+
+     fetchPromise = fetch('/api/navigation/categories')
+          .then((res) => {
+               if (!res.ok) throw new Error('Failed to fetch categories');
+               return res.json();
+          })
+          .then((data: CategoryNode[]) => {
+               cachedPanels = data;
+               return data;
+          })
+          .catch((err) => {
+               console.error('Category navigation fetch error:', err);
+               fetchPromise = null;
+               return [];
+          });
+
+     return fetchPromise;
+}
+
+const STORAGE_KEY = 'category-nav-expanded';
+
+function getPersistedExpandedIds(): Set<string> {
+     if (typeof window === 'undefined') return new Set();
+     try {
+          const stored = sessionStorage.getItem(STORAGE_KEY);
+          if (stored) return new Set(JSON.parse(stored));
+     } catch { }
+     return new Set();
+}
+
+function persistExpandedIds(ids: Set<string>) {
+     try {
+          sessionStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(ids)));
+     } catch { }
+}
+
 export default function ProductsAllCategories({ onCategoryNavigate }: ProductsAllCategoriesProps) {
      const router = useRouter();
+     const pathname = usePathname();
      const [searchTerm, setSearchTerm] = React.useState('');
-     const [expandedIds, setExpandedIds] = React.useState<Set<string>>(new Set());
+     const [expandedIds, setExpandedIds] = React.useState<Set<string>>(getPersistedExpandedIds);
+     const [categoryData, setCategoryData] = React.useState<CategoryNode[]>(cachedPanels || []);
+     const [loading, setLoading] = React.useState(!cachedPanels);
 
-     const categoryData = AccordionPanels as CategoryNode[];
+     React.useEffect(() => {
+          if (cachedPanels) {
+               setCategoryData(cachedPanels);
+               setLoading(false);
+               return;
+          }
+          fetchCategoryPanels().then((data) => {
+               setCategoryData(data);
+               setLoading(false);
+          });
+     }, []);
+
      const filteredCategories = React.useMemo(
           () => filterTree(categoryData, searchTerm),
           [categoryData, searchTerm]
@@ -145,6 +206,7 @@ export default function ProductsAllCategories({ onCategoryNavigate }: ProductsAl
                } else {
                     next.add(id);
                }
+               persistExpandedIds(next);
                return next;
           });
      };
@@ -200,7 +262,11 @@ export default function ProductsAllCategories({ onCategoryNavigate }: ProductsAl
                          },
                     }}
                >
-                    {filteredCategories.length === 0 ? (
+                    {loading ? (
+                         <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+                              <CircularProgress size={28} color="primary" />
+                         </Box>
+                    ) : filteredCategories.length === 0 ? (
                          <Typography sx={{ px: 1, py: 1.5, color: Colors.dim_grey, fontSize: '0.9rem' }}>
                               Nema rezultata za unetu kategoriju.
                          </Typography>
@@ -215,11 +281,12 @@ export default function ProductsAllCategories({ onCategoryNavigate }: ProductsAl
                                         onToggle={handleToggle}
                                         onNavigate={handleNavigate}
                                         forceExpand={hasSearch}
+                                        currentPath={pathname}
                                    />
                               ))}
                          </List>
                     )}
                </Box>
           </Box>
-     )
+     );
 }

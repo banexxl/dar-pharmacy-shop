@@ -328,6 +328,89 @@ export interface Database {
           }
         ];
       };
+      main_categories: {
+        Row: {
+          id: string;
+          label: string;
+          value: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          label: string;
+          value: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          label?: string;
+          value?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      mid_categories: {
+        Row: {
+          id: string;
+          label: string;
+          value: string;
+          main_category_id: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          label: string;
+          value: string;
+          main_category_id: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          label?: string;
+          value?: string;
+          main_category_id?: string;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'mid_categories_main_category_id_fkey';
+            columns: ['main_category_id'];
+            referencedRelation: 'main_categories';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
+      sub_categories: {
+        Row: {
+          id: string;
+          label: string;
+          value: string;
+          mid_category_id: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          label: string;
+          value: string;
+          mid_category_id: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          label?: string;
+          value?: string;
+          mid_category_id?: string;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'sub_categories_mid_category_id_fkey';
+            columns: ['mid_category_id'];
+            referencedRelation: 'mid_categories';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
@@ -351,3 +434,7 @@ export type OrderInsert = Database['public']['Tables']['orders']['Insert'];
 
 export type OrderItem = Database['public']['Tables']['order_items']['Row'];
 export type OrderItemInsert = Database['public']['Tables']['order_items']['Insert'];
+
+export type MainCategory = Database['public']['Tables']['main_categories']['Row'];
+export type MidCategory = Database['public']['Tables']['mid_categories']['Row'];
+export type SubCategory = Database['public']['Tables']['sub_categories']['Row'];
