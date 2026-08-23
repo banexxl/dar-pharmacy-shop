@@ -129,12 +129,12 @@ export default function ProductCard({
           <Chip size="small" color="error" label={`-${Math.round(((product.price - discounted) / product.price) * 100)}%`} sx={{ mb: 1 }} />
         )}
         {showTitle && (
-          <Link href={`/proizvod/${product.slug}`} passHref>
+          <Link href={`/proizvod/${product.slug}`} passHref style={{ textDecoration: 'none' }}>
             <Typography variant="subtitle1" sx={{
               fontWeight: 700,
               lineHeight: 1.3,
               mb: 0.5,
-              color: Colors.neutral[900],
+              color: Colors.primary.main,
               textAlign: 'center',
               display: '-webkit-box',
               WebkitLineClamp: 2,

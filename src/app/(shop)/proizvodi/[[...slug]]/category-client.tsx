@@ -154,7 +154,7 @@ export function CategoryClient({
 
         {/* Category description */}
         <Typography component="p" variant="body1" sx={{ mb: 3, color: 'text.secondary' }}>
-          Prirodni preparati iz kategorije {pageTitle}. Izaberite proizvode renomiranih proizvođača uz stručni savet farmaceuta.
+          Prirodni preparati iz kategorije <Typography component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>"{pageTitle}"</Typography>. Izaberite proizvode renomiranih proizvođača uz stručni savet farmaceuta.
         </Typography>
 
         {/* Products section — ProductsFilter includes its own accordion sidebar */}
