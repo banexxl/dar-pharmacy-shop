@@ -53,10 +53,10 @@ export function ProductDetailClient({
   breadcrumbItems.push({ label: product.name });
 
   return (
-    <Container maxWidth="xl" sx={{ background: '#fff' }}>
+    <Container maxWidth="xl" sx={{ background: '#fff', pt: { xs: 10, md: 14 } }}>
       <Stack component="main">
         {/* Breadcrumbs */}
-        <Box component="nav" aria-label="Breadcrumb" sx={{ mb: 2, mt: 2 }}>
+        <Box component="nav" aria-label="Breadcrumb" sx={{ mb: 2 }}>
           <Box
             component="ol"
             itemScope

@@ -28,11 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sr">
-      <head>
+    <html lang="sr" suppressHydrationWarning>
+      <body>
         <Script
           id="google-consent-default"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         >
           {`
             window.dataLayer = window.dataLayer || [];
@@ -70,12 +70,12 @@ export default function RootLayout({
         <Script
           id="google-ads-library"
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
 
         <Script
           id="google-ads-init"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         >
           {`
             gtag('js', new Date());
@@ -83,9 +83,7 @@ export default function RootLayout({
             gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
-      </head>
 
-      <body>
         <Providers>
           {children}
         </Providers>

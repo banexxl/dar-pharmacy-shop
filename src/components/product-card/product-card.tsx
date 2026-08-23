@@ -1,4 +1,4 @@
-import { Card, CardContent, CardActions, CardMedia, Typography, Box, Chip, IconButton, useMediaQuery, useTheme, Tooltip } from '@mui/material';
+import { Card, CardContent, CardActions, CardMedia, Typography, Box, Chip, IconButton, Tooltip } from '@mui/material';
 import Button from '@/components/button';
 import Product from '@/interfaces/product/product.interface';
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,8 +40,6 @@ export default function ProductCard({
   const dispatch = useDispatch();
   const router = useRouter();
   const wishListState = useSelector(wishListSelectorState);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [navigating, setNavigating] = useState(false);
 
   const price = Number(product.price);
@@ -172,66 +170,65 @@ export default function ProductCard({
         <CardActions
           sx={{ p: 2, pt: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, width: '100%' }}
         >
-          {isMobile ? (
+          {/* Mobile: icon buttons (hidden on sm+) */}
+          <Box sx={{ display: { xs: 'flex', sm: 'none' }, gap: 1, justifyContent: 'center', width: '100%' }}>
+            <Tooltip title="Detalji">
+              <span>
+                <IconButton color="primary" onClick={handleDetails} size="small">
+                  <VisibilityIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
+            <Tooltip title={isInWishlist ? 'Ukloni iz liste zelja' : 'Dodaj u listu zelja'}>
+              <span>
+                <IconButton color={isInWishlist ? 'error' : 'primary'} onClick={isInWishlist ? handleRemoveFromWishList : handleAddToWishList} size="small">
+                  {isInWishlist ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </IconButton>
+              </span>
+            </Tooltip>
+            <Tooltip title={product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}>
+              <span>
+                <IconButton color="primary" onClick={handleAddToCart} disabled={product.available_stock <= 0} size="small">
+                  <AddShoppingCartIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
+          </Box>
+          {/* Desktop: text buttons (hidden below sm) */}
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', gap: 1, alignItems: 'center', width: '100%' }}>
             <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
-              <Tooltip title="Detalji">
-                <span>
-                  <IconButton color="primary" onClick={handleDetails} size="small">
-                    <VisibilityIcon />
-                  </IconButton>
-                </span>
-              </Tooltip>
-              <Tooltip title={isInWishlist ? 'Ukloni iz liste zelja' : 'Dodaj u listu zelja'}>
-                <span>
-                  <IconButton color={isInWishlist ? 'error' : 'primary'} onClick={isInWishlist ? handleRemoveFromWishList : handleAddToWishList} size="small">
-                    {isInWishlist ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                  </IconButton>
-                </span>
-              </Tooltip>
-              <Tooltip title={product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}>
-                <span>
-                  <IconButton color="primary" onClick={handleAddToCart} disabled={product.available_stock <= 0} size="small">
-                    <AddShoppingCartIcon />
-                  </IconButton>
-                </span>
-              </Tooltip>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                onClick={handleDetails}
+                sx={{ minWidth: 0, px: 2 }}
+              >
+                Detalji
+              </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                onClick={isInWishlist ? handleRemoveFromWishList : handleAddToWishList}
+                sx={{ minWidth: 0, px: 2 }}
+              >
+                {isInWishlist ? 'Ukloni iz liste zelja' : 'Omiljeni'}
+              </Button>
             </Box>
-          ) : (
-            <>
-              <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  size="small"
-                  onClick={handleDetails}
-                  sx={{ minWidth: 0, px: 2 }}
-                >
-                  Detalji
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  size="small"
-                  onClick={isInWishlist ? handleRemoveFromWishList : handleAddToWishList}
-                  sx={{ minWidth: 0, px: 2 }}
-                >
-                  {isInWishlist ? 'Ukloni iz liste zelja' : 'Omiljeni'}
-                </Button>
-              </Box>
-              <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                  disabled={product.available_stock <= 0}
-                  onClick={handleAddToCart}
-                  sx={{ minWidth: 0, px: 2, width: '100%' }}
-                >
-                  {product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
-                </Button>
-              </Box>
-            </>
-          )}
+            <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', width: '100%' }}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                disabled={product.available_stock <= 0}
+                onClick={handleAddToCart}
+                sx={{ minWidth: 0, px: 2, width: '100%' }}
+              >
+                {product.available_stock > 0 ? 'Dodaj u korpu' : 'Nema na stanju'}
+              </Button>
+            </Box>
+          </Box>
         </CardActions>
       )}
     </Card>
