@@ -50,7 +50,8 @@ export const ContactMap = ({ mapApiKey }: ContactMapProps) => {
                          });
                     } catch {
                          // Fallback to basic marker if advanced marker is unavailable
-                         new google.maps.Marker({
+                         const { Marker } = await loader.importLibrary('marker') as any;
+                         new Marker({
                               position: POSITION,
                               map,
                               title: 'Apoteka DAR',
