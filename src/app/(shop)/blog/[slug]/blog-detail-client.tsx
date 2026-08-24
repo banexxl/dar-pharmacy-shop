@@ -213,7 +213,7 @@ export function BlogDetailClient({ blog, relatedBlogs }: BlogDetailClientProps) 
               fontWeight: 800,
               fontSize: { xs: '1.6rem', sm: '2rem', md: '2.4rem' },
               lineHeight: 1.3,
-              color: Colors.neutral[900],
+              color: Colors.primary.main,
               mb: 2.5,
               letterSpacing: '-0.02em',
             }}
