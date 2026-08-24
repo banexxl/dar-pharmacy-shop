@@ -12,17 +12,39 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
   const blog = await getBlogBySlug(slug);
 
   if (!blog) {
-    return { title: 'Blog post nije pronađen' };
+    return {
+      title: 'Blog post nije pronađen | Apoteka DAR',
+    };
   }
+
+  const url = `https://apoteka-dar.rs/blog/${blog.slug}`;
 
   return {
     title: `${blog.title} | Blog | Apoteka DAR`,
     description: blog.excerpt,
+
+    alternates: {
+      canonical: url,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
-      url: `https://apoteka-dar.rs/blog/${blog.slug}`,
-      images: [{ url: blog.cover_image }],
+      url,
+      type: 'article',
+      images: blog.cover_image ? [{ url: blog.cover_image }] : [],
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.excerpt,
+      images: blog.cover_image ? [blog.cover_image] : [],
     },
   };
 }
@@ -44,10 +66,44 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   const relatedBlogs = await getRelatedBlogs(slug, blog.category, 3);
 
+  const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: blog.title,
+  description: blog.excerpt,
+  image: blog.cover_image ? [blog.cover_image] : [],
+  datePublished: blog.published_at,
+  dateModified: blog.updated_at,
+  author: {
+    '@type': 'Organization',
+    name: 'Apoteka DAR',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Apoteka DAR',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://apoteka-dar.rs/logo.png',
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `https://apoteka-dar.rs/blog/${blog.slug}`,
+  },
+};
+
   return (
+    <>
+    <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(jsonLd),
+    }}
+  />
     <BlogDetailClient
       blog={JSON.parse(JSON.stringify(blog))}
       relatedBlogs={JSON.parse(JSON.stringify(relatedBlogs))}
     />
+    </>
   );
 }
