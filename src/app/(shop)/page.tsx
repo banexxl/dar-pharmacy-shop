@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: 'Početna',
   description: 'Priroda na dohvat ruke',
   openGraph: {
-    url: 'https://www.apoteka-dar.rs/',
+    url: 'https://apoteka-dar.rs/',
   },
 };
 

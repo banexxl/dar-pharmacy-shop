@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
-      url: `https://www.apoteka-dar.rs/blog/${blog.slug}`,
+      url: `https://apoteka-dar.rs/blog/${blog.slug}`,
       images: [{ url: blog.cover_image }],
     },
   };

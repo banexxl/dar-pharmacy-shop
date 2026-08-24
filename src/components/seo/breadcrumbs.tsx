@@ -14,7 +14,7 @@ interface BreadcrumbsProps {
   items: BreadcrumbItem[];
 }
 
-const BASE_URL = 'https://www.apoteka-dar.rs';
+const BASE_URL = 'https://apoteka-dar.rs';
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   // Build JSON-LD BreadcrumbList

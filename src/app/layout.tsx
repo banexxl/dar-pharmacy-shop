@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   description: 'Priroda na dohvat ruke',
   metadataBase: new URL(
-    process.env.BASE_URL || 'https://www.apoteka-dar.rs'
+    process.env.BASE_URL || 'https://apoteka-dar.rs'
   ),
   verification: {
     google: 'jGROhp_tsSx2SYotId-u_cUU1lUPleFTC5eEReOc_7E',

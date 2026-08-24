@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 type SeoProps = {
      title?: string;

@@ -3,7 +3,7 @@ import { getAllActiveProducts } from '@/services/products';
 import { getAllManufacturerNames } from '@/services/manufacturers';
 import { getAllCategoryPaths, getAllMainCategories } from '@/services/categories';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [products, categoryPaths, manufacturers, mainCategories] = await Promise.all([

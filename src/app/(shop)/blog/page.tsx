@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Pročitajte najnovije savete o zdravlju, lepoti, ishrani i prirodnim preparatima na blogu Apoteke DAR.',
   openGraph: {
-    url: 'https://www.apoteka-dar.rs/blog',
+    url: 'https://apoteka-dar.rs/blog',
   },
 };
 

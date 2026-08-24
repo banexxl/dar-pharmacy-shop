@@ -26,15 +26,15 @@ export default function UsloviKoriscenjaPage() {
             Apotekarska ustanova DAR Kragujevac vam omogućava korišćenje usluga i sadržaja svog portala koje je podložno niže navedenim Uslovima korišćenja. Korišćenjem bilo kog dela portala, smatra se da su korisnici upoznati sa ovim uslovima, kao i da prihvataju korišćenje sadržaja ovog portala isključivo za ličnu upotrebu i na sopstvenu odgovornost.
           </Typography>
           <Typography sx={{ textAlign: 'justify', padding: '20px 20px' }}>
-            Apotekarska ustanova DAR Kragujevac svoje cenjene potrošače koji robu kupuju putem internet sajta www.apoteka-dar.rs obaveštava:
+            Apotekarska ustanova DAR Kragujevac svoje cenjene potrošače koji robu kupuju putem internet sajta apoteka-dar.rs obaveštava:
           </Typography>
 
           <List sx={{ listStyleType: 'num', pl: 6 }}>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, padding: '0px 20px' }}>
-              <ListItemText><Typography textAlign="justify">da se prodaja robe putem internet sajta www.apoteka-dar.rs obavlja u okviru registrovane delatnosti zdravstvena ustanova Apotekarska ustanova DAR Kragujevac, Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac, MB: 66597784, PIB: 113127282, tel: 0640172227;</Typography></ListItemText>
+              <ListItemText><Typography textAlign="justify">da se prodaja robe putem internet sajta apoteka-dar.rs obavlja u okviru registrovane delatnosti zdravstvena ustanova Apotekarska ustanova DAR Kragujevac, Kralja Aleksandra I Karađorđevića 102, lokal 9, 34000 Kragujevac, MB: 66597784, PIB: 113127282, tel: 0640172227;</Typography></ListItemText>
             </ListItem>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, padding: '0px 20px' }}>
-              <ListItemText><Typography textAlign="justify">da roba koja se prodaje putem internet sajta www.apoteka-dar.rs poseduje svojstva potrebna za redovnu upotrebu te vrste robe u skladu sa njenom namenom koja je definisana u Deklaraciji;</Typography></ListItemText>
+              <ListItemText><Typography textAlign="justify">da roba koja se prodaje putem internet sajta apoteka-dar.rs poseduje svojstva potrebna za redovnu upotrebu te vrste robe u skladu sa njenom namenom koja je definisana u Deklaraciji;</Typography></ListItemText>
             </ListItem>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, padding: '0px 20px' }}>
               <ListItemText><Typography textAlign="justify">da se saobraznost robe ugovoru ISKLJUČIVO utvrđuje prema svojstvima i nameni robe kako je to definisano pripadajućom Deklaracijom;</Typography></ListItemText>
@@ -43,10 +43,10 @@ export default function UsloviKoriscenjaPage() {
               <ListItemText><Typography textAlign="justify">da je prodajna cena robe naznačena uz svaki artikal;</Typography></ListItemText>
             </ListItem>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, padding: '0px 20px' }}>
-              <ListItemText><Typography textAlign="justify">da se mogućnost kupovine robe uz posebne cenovne pogodnosti i/ili uz posebne prodajne podsticaje (akcijska prodaja), obavlja u skladu sa uslovima koji su objavljeni na internet sajtu www.apoteka-dar.rs;</Typography></ListItemText>
+              <ListItemText><Typography textAlign="justify">da se mogućnost kupovine robe uz posebne cenovne pogodnosti i/ili uz posebne prodajne podsticaje (akcijska prodaja), obavlja u skladu sa uslovima koji su objavljeni na internet sajtu apoteka-dar.rs;</Typography></ListItemText>
             </ListItem>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, padding: '0px 20px' }}>
-              <ListItemText><Typography textAlign="justify">da potrošač robu koju kupuje putem internet sajta www.apoteka-dar.rs može platiti pouzećem gotovinski u trenutku isporuke, platnom karticom, avansnom uplatom putem elektronskog bankarstva ili uplatom u pošti ili banci;</Typography></ListItemText>
+              <ListItemText><Typography textAlign="justify">da potrošač robu koju kupuje putem internet sajta apoteka-dar.rs može platiti pouzećem gotovinski u trenutku isporuke, platnom karticom, avansnom uplatom putem elektronskog bankarstva ili uplatom u pošti ili banci;</Typography></ListItemText>
             </ListItem>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.lighter, padding: '0px 20px' }}>
               <ListItemText><Typography textAlign="justify">da potrošač prilikom kreiranja narudžbenice pritiskom na taster POŠALJI NARUDŽBINU preuzima obavezu plaćanja naručene robe;</Typography></ListItemText>
@@ -70,7 +70,7 @@ export default function UsloviKoriscenjaPage() {
           <Typography textAlign="justify" padding="20px 20px">U slučaju vraćanja robe i povraćaja sredstava kupcu koji je prethodno platio nekom od platnih kartica, delimično ili u celosti, a bez obzira na razlog vraćanja, Apoteka DAR je u obavezi da povraćaj vrši isključivo preko VISA, EC/MC, Maestro, Amex i Dina metoda plaćanja.</Typography>
 
           <Typography textAlign="justify" padding="0px 20px" sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Informacije o dostavi</Typography>
-          <Typography textAlign="justify" padding="20px 20px">Internet prodavnica www.apoteka-dar.rs kojom upravlja zdravstvena ustanova Apotekarska ustanova DAR Kragujevac, ima potpisan ugovor sa više kurirskih službi putem kojih se vrši dostava na teritoriji Republike Srbije.</Typography>
+          <Typography textAlign="justify" padding="20px 20px">Internet prodavnica apoteka-dar.rs kojom upravlja zdravstvena ustanova Apotekarska ustanova DAR Kragujevac, ima potpisan ugovor sa više kurirskih službi putem kojih se vrši dostava na teritoriji Republike Srbije.</Typography>
 
           <Typography textAlign="justify" padding="0px 20px" sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Rokovi dostave</Typography>
           <Typography textAlign="justify" padding="20px 20px">Od trenutka potvrde narudžbine rok dostave je maksimalno 5 radnih dana. Uobičajeno vreme za dostavu je dva radna dana.</Typography>

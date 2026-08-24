@@ -55,7 +55,7 @@ export default function PolitikaPrivatnostiPage() {
           <Typography textAlign="justify" fontWeight="bold" padding="20px 20px">Svrha obrade podataka / pravni osnov:</Typography>
           <List sx={{ listStyleType: 'num', pl: 6 }}>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.main }} disablePadding>
-              <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem www.apoteka-dar.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke;</Typography>
+              <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>Za pružanje usluga: za isporuku robe koju ste kupili kod nas putem apoteka-dar.rs on-line prodavnice, potrebno je da imamo Vaše kontakt podatke;</Typography>
             </ListItem>
             <ListItem sx={{ display: 'list-item', fontStyle: 'italic', color: Colors.primary.main }} disablePadding>
               <Typography sx={{ fontWeight: 'bold', textAlign: 'left' }}>Izvršavanje zahteva - rešavanje reklamacija, primedbi: nastojimo da ih rešimo na odgovarajući način u skladu sa Zakonom;</Typography>
@@ -131,7 +131,7 @@ export default function PolitikaPrivatnostiPage() {
           </Typography>
 
           <Typography padding="20px" textAlign="justify">
-            Ova pravila o zaštiti ličnih podataka se odnose na internet stranicu www.apoteka-dar.rs i na obradu podataka od strane nas kao rukovaoca podataka: Apotekarska ustanova DAR, u Kragujevcu, poštanski broj 34000, u ulici Kralja Aleksandra I Karađorđevića 102, lokal 9.
+            Ova pravila o zaštiti ličnih podataka se odnose na internet stranicu apoteka-dar.rs i na obradu podataka od strane nas kao rukovaoca podataka: Apotekarska ustanova DAR, u Kragujevcu, poštanski broj 34000, u ulici Kralja Aleksandra I Karađorđevića 102, lokal 9.
           </Typography>
         </Box>
       </Stack>

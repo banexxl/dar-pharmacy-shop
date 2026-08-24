@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 export default function robots(): MetadataRoute.Robots {
   return {
