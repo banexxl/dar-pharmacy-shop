@@ -16,11 +16,11 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PersonIcon from '@mui/icons-material/Person';
 import ShareIcon from '@mui/icons-material/Share';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkIcon from '@mui/icons-material/Link';
 import Link from 'next/link';
 import { BlogPost, BLOG_CATEGORY_LABELS } from '@/interfaces/blog/blog.interface';
 import BlogCard from '@/components/blog-card/blog-card';
+import Iconify from '@/components/iconify/iconify';
 import { Colors } from '@/styles/theme';
 
 interface BlogDetailClientProps {
@@ -45,6 +45,34 @@ export function BlogDetailClient({ blog, relatedBlogs }: BlogDetailClientProps) 
   const handleShareFacebook = () => {
     window.open(
       `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      '_blank'
+    );
+  };
+
+  const handleShareX = () => {
+    window.open(
+      `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}`,
+      '_blank'
+    );
+  };
+
+  const handleShareWhatsApp = () => {
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(`${blog.title} ${shareUrl}`)}`,
+      '_blank'
+    );
+  };
+
+  const handleShareViber = () => {
+    window.open(
+      `viber://forward?text=${encodeURIComponent(`${blog.title} ${shareUrl}`)}`,
+      '_blank'
+    );
+  };
+
+  const handleShareTelegram = () => {
+    window.open(
+      `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}`,
       '_blank'
     );
   };
@@ -141,7 +169,27 @@ export function BlogDetailClient({ blog, relatedBlogs }: BlogDetailClientProps) 
             <Stack direction="row" spacing={0.5}>
               <Tooltip title="Podeli na Facebook">
                 <IconButton size="small" onClick={handleShareFacebook} sx={{ color: '#1877F2' }}>
-                  <FacebookIcon fontSize="small" />
+                  <Iconify icon="mdi:facebook" width={20} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Podeli na X">
+                <IconButton size="small" onClick={handleShareX} sx={{ color: '#000' }}>
+                  <Iconify icon="ri:twitter-x-fill" width={18} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Podeli na WhatsApp">
+                <IconButton size="small" onClick={handleShareWhatsApp} sx={{ color: '#25D366' }}>
+                  <Iconify icon="mdi:whatsapp" width={20} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Podeli na Viber">
+                <IconButton size="small" onClick={handleShareViber} sx={{ color: '#7360F2' }}>
+                  <Iconify icon="simple-icons:viber" width={18} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Podeli na Telegram">
+                <IconButton size="small" onClick={handleShareTelegram} sx={{ color: '#26A5E4' }}>
+                  <Iconify icon="mdi:telegram" width={20} />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Kopiraj link">
