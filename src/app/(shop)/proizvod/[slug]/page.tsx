@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ProductDetailClient } from './product-detail-client';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 interface Props {
   params: Promise<{ slug: string }>;

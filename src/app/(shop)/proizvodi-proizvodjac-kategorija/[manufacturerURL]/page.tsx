@@ -4,7 +4,7 @@ import { getProductsByManufacturer } from '@/services/products';
 import { getManufacturerByValue, getAllManufacturerNames } from '@/services/manufacturers';
 import { CategoryClient } from '../../proizvodi/[[...slug]]/category-client';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 interface Props {
   params: Promise<{ manufacturerURL: string }>;

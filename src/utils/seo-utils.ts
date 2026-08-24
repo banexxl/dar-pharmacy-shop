@@ -2,7 +2,7 @@
  * Utility functions for SEO optimization
  */
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 /**
  * Converts a slug (kebab-case) to a readable Serbian title

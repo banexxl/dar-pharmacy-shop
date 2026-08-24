@@ -14,7 +14,7 @@ import {
 } from '@/services/categories';
 import { CategoryClient } from './category-client';
 
-const BASE_URL = process.env.BASE_URL || 'https://www.apoteka-dar.rs';
+const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 interface Props {
   params: Promise<{ slug?: string[] }>;
