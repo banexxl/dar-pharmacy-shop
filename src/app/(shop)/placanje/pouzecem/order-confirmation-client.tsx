@@ -5,6 +5,11 @@ import {
   Button,
   CircularProgress,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   Paper,
   Stack,
@@ -12,8 +17,10 @@ import {
 } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import type ICartItem from '@/interfaces/cart/cart.interface';
 import type { ConfirmationData } from '@/schemas/order';
@@ -32,6 +39,9 @@ export function OrderConfirmationClient({
     orderConfirmationData,
     setOrderConfirmationData,
   ] = useState<ConfirmationData | null>(null);
+  const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
+  const [orderCancelled, setOrderCancelled] = useState(false);
 
   /*
    * Load the locally stored confirmation data.
@@ -199,11 +209,65 @@ export function OrderConfirmationClient({
     sessionStorage.setItem(adsDedupeKey, '1');
   }, [orderConfirmationData]);
 
+  const handleCancelOrder = async () => {
+    setCancelling(true);
+    try {
+      const id = (orderConfirmationData?.order as any)?.id ?? orderData?.id;
+      const res = await fetch('/api/orders/cancel-by-id', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId: id }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setOrderCancelled(true);
+        setCancelDialogOpen(false);
+        toast.success('Porudžbina je uspešno otkazana.', { position: 'top-center', duration: 3000 });
+
+        // Send cancellation emails (fire-and-forget)
+        const orderNumber = order?.order_number ?? '';
+        const customerName = userForm?.full_name ?? '';
+        const customerEmail = userForm?.email ?? '';
+
+        if (customerEmail) {
+          fetch('/api/email/send-cancellation-user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: customerEmail,
+              name: customerName,
+              order_number: orderNumber,
+            }),
+          }).catch(() => { });
+        }
+
+        fetch('/api/email/send-cancellation-admin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customer_name: customerName,
+            customer_email: customerEmail,
+            order_number: orderNumber,
+          }),
+        }).catch(() => { });
+      } else {
+        toast.error(data.error || 'Greška pri otkazivanju.', { position: 'top-center', duration: 3000 });
+      }
+    } catch {
+      toast.error('Greška pri otkazivanju porudžbine.', { position: 'top-center', duration: 3000 });
+    } finally {
+      setCancelling(false);
+      setCancelDialogOpen(false);
+    }
+  };
+
   const order =
     orderConfirmationData?.order as any;
 
   const userForm =
     orderConfirmationData?.userForm;
+
+  const orderStatus = orderCancelled ? 'cancelled' : (order?.order_status ?? 'pending');
 
   const orderItems: ICartItem[] = Array.isArray(
     order?.items
@@ -297,22 +361,38 @@ export function OrderConfirmationClient({
             mb: 4,
           }}
         >
-          <CheckCircleOutlineIcon
-            sx={{
-              fontSize: 64,
-              color: 'success.main',
-              mb: 2,
-            }}
-          />
+          {orderStatus === 'cancelled' ? (
+            <CancelOutlinedIcon
+              sx={{
+                fontSize: 64,
+                color: 'error.main',
+                mb: 2,
+              }}
+            />
+          ) : (
+            <CheckCircleOutlineIcon
+              sx={{
+                fontSize: 64,
+                color: 'success.main',
+                mb: 2,
+              }}
+            />
+          )}
 
           <Typography
             variant="h4"
             sx={{
               fontWeight: 700,
-              color: 'primary.main',
+              color: orderStatus === 'cancelled' ? 'error.main' : 'primary.main',
             }}
           >
-            Porudžbina je kreirana!
+            {orderStatus === 'cancelled'
+              ? 'Porudžbina je otkazana'
+              : orderStatus === 'completed'
+                ? 'Porudžbina je završena'
+                : orderStatus === 'shipped'
+                  ? 'Porudžbina je poslata'
+                  : 'Porudžbina je kreirana!'}
           </Typography>
 
           <Typography
@@ -459,6 +539,10 @@ export function OrderConfirmationClient({
           sx={{
             textAlign: 'center',
             mt: 4,
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 2,
+            flexWrap: 'wrap',
           }}
         >
           <Button
@@ -467,8 +551,48 @@ export function OrderConfirmationClient({
           >
             Nazad na početnu
           </Button>
+
+          {orderStatus === 'pending' && (
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => setCancelDialogOpen(true)}
+            >
+              Otkaži porudžbinu
+            </Button>
+          )}
         </Box>
       </Paper>
+
+      {/* Cancel confirmation dialog */}
+      <Dialog
+        open={cancelDialogOpen}
+        onClose={() => setCancelDialogOpen(false)}
+      >
+        <DialogTitle>Otkazivanje porudžbine</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Da li ste sigurni da želite da otkažete porudžbinu #{order?.order_number ?? ''}? Ova akcija se ne može poništiti.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => setCancelDialogOpen(false)}
+            disabled={cancelling}
+          >
+            Ne, zadrži
+          </Button>
+          <Button
+            onClick={handleCancelOrder}
+            color="error"
+            variant="contained"
+            disabled={cancelling}
+            startIcon={cancelling ? <CircularProgress size={16} color="inherit" /> : undefined}
+          >
+            {cancelling ? 'Otkazivanje...' : 'Da, otkaži'}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }

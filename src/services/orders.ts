@@ -156,6 +156,14 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
     order_status: 'pending',
     transaction_number: paymentMethod === 'cash-on-delivery' ? 'cash-on-delivery' : '',
     total,
+    full_name: customer.full_name || null,
+    phone_number: customer.phone_number || null,
+    email: customer.email || null,
+    street_address: customer.street_address || null,
+    city: customer.city || null,
+    province_state: customer.province_state || null,
+    country: customer.country || null,
+    zip_postal_code: customer.zip_postal_code || null,
   };
 
   const { data: insertedOrder, error: orderError } = await supabase
@@ -298,6 +306,52 @@ export async function cancelOrder(
 
   if (updateError) {
     console.error('Cancel order failed:', updateError.message);
+    return { success: false, error: 'Greška pri otkazivanju porudžbine.' };
+  }
+
+  return { success: true };
+}
+
+/**
+ * Cancel an order by ID (no auth required).
+ *
+ * This is used on the order confirmation page where the user has the order ID
+ * as proof of ownership (e.g. guest checkout). Only pending orders can be cancelled.
+ */
+export async function cancelOrderById(
+  orderId: string
+): Promise<CancelOrderResult> {
+  const { data: order, error: orderError } = await supabase
+    .from('orders')
+    .select('id, order_status, payment_status')
+    .eq('id', orderId)
+    .single();
+
+  if (orderError || !order) {
+    return { success: false, error: 'Porudžbina nije pronađena.' };
+  }
+
+  if (order.order_status !== 'pending') {
+    return {
+      success: false,
+      error: 'Samo porudžbine sa statusom "na čekanju" mogu biti otkazane.',
+    };
+  }
+
+  const newPaymentStatus =
+    order.payment_status === 'successful' ? 'refunded' : order.payment_status;
+
+  const { error: updateError } = await supabase
+    .from('orders')
+    .update({
+      order_status: 'cancelled',
+      payment_status: newPaymentStatus,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', orderId);
+
+  if (updateError) {
+    console.error('Cancel order by ID failed:', updateError.message);
     return { success: false, error: 'Greška pri otkazivanju porudžbine.' };
   }
 
