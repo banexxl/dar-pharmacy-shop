@@ -15,33 +15,47 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
-    '/', '/proizvodi', '/kontakt', '/placanje', '/registracija',
+    '/',
+    '/proizvodi',
+    '/kontakt',
+    '/placanje',
+    '/registracija',
     '/autentifikacija/prijava',
-    '/informacije/dar-savetnik', '/informacije/o-nama',
-    '/informacije/odustanak', '/informacije/politika-kolacica',
-    '/informacije/politika-privatnosti', '/informacije/reklamacije',
-    '/informacije/uslovi-koriscenja', '/informacije/isporuka-i-placanje',
+    '/informacije/dar-savetnik',
+    '/informacije/o-nama',
+    '/informacije/odustanak',
+    '/informacije/politika-kolacica',
+    '/informacije/politika-privatnosti',
+    '/informacije/reklamacije',
+    '/informacije/uslovi-koriscenja',
+    '/informacije/isporuka-i-placanje',
   ].map((path) => ({
     url: `${BASE_URL}${path}`,
     changeFrequency: 'daily' as const,
     priority: 0.7,
   }));
 
-  // Product detail pages
+  // Product pages
   const productUrls: MetadataRoute.Sitemap = products
     .filter((p) => p.slug)
     .map((p) => ({
-      url: `${BASE_URL}/proizvod/${p.slug}`,
+      url: `${BASE_URL}/proizvod/${encodeURIComponent(p.slug)}`,
       lastModified: p.updated_at ? new Date(p.updated_at) : undefined,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     }));
 
-  // All category combination pages (main, main/mid, main/mid/sub)
+  // Category pages
   const categoryUrls: MetadataRoute.Sitemap = categoryPaths.map((path) => {
-    let url = `${BASE_URL}/proizvodi/${path.mainCategory}`;
-    if (path.midCategory) url += `/${path.midCategory}`;
-    if (path.subCategory) url += `/${path.subCategory}`;
+    let url = `${BASE_URL}/proizvodi/${encodeURIComponent(path.mainCategory)}`;
+
+    if (path.midCategory) {
+      url += `/${encodeURIComponent(path.midCategory)}`;
+    }
+
+    if (path.subCategory) {
+      url += `/${encodeURIComponent(path.subCategory)}`;
+    }
 
     const priority = path.subCategory ? 0.6 : path.midCategory ? 0.65 : 0.7;
 
@@ -55,18 +69,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Manufacturer pages
   const manufacturerUrls: MetadataRoute.Sitemap = manufacturers
     .filter(Boolean)
-    .map((m) => ({
-      url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${m}`,
+    .map((manufacturer) => ({
+      url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${encodeURIComponent(manufacturer)}`,
       changeFrequency: 'weekly' as const,
       priority: 0.6,
     }));
 
-  // Manufacturer + main category combination pages
+  // Manufacturer + category pages
   const manufacturerCategoryUrls: MetadataRoute.Sitemap = [];
-  for (const mfr of manufacturers) {
-    for (const mainCat of mainCategories) {
+
+  for (const manufacturer of manufacturers) {
+    for (const mainCategory of mainCategories) {
       manufacturerCategoryUrls.push({
-        url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${mfr}/${mainCat.value}`,
+        url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${encodeURIComponent(manufacturer)}/${encodeURIComponent(mainCategory.value)}`,
         changeFrequency: 'weekly' as const,
         priority: 0.5,
       });
