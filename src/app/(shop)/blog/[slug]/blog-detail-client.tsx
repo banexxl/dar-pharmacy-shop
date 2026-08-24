@@ -19,7 +19,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkIcon from '@mui/icons-material/Link';
 import Link from 'next/link';
-import { BlogPost } from '@/interfaces/blog/blog.interface';
+import { BlogPost, BLOG_CATEGORY_LABELS } from '@/interfaces/blog/blog.interface';
 import BlogCard from '@/components/blog-card/blog-card';
 import { Colors } from '@/styles/theme';
 
@@ -128,7 +128,7 @@ export function BlogDetailClient({ blog, relatedBlogs }: BlogDetailClientProps) 
           {/* Category & Meta */}
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 3 }}>
             <Chip
-              label={blog.category}
+              label={BLOG_CATEGORY_LABELS[blog.category]}
               sx={{
                 bgcolor: Colors.primary[50],
                 color: Colors.primary.main,
@@ -279,7 +279,7 @@ export function BlogDetailClient({ blog, relatedBlogs }: BlogDetailClientProps) 
               variant="body1"
               sx={{ color: Colors.neutral[500], fontSize: '1rem' }}
             >
-              Pročitajte još iz kategorije {blog.category}
+              Pročitajte još iz kategorije {BLOG_CATEGORY_LABELS[blog.category]}
             </Typography>
           </Box>
           <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>

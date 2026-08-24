@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Box, Container, Typography, Chip, Grid, Stack, Button } from '@mui/material';
-import { BlogPost, BlogCategory, BLOG_CATEGORIES } from '@/interfaces/blog/blog.interface';
+import { BlogPost, BlogCategory, BLOG_CATEGORIES, BLOG_CATEGORY_LABELS } from '@/interfaces/blog/blog.interface';
 import BlogCard from '@/components/blog-card/blog-card';
 import { Colors } from '@/styles/theme';
 
@@ -127,7 +127,7 @@ export function BlogPageClient({ blogs }: BlogPageClientProps) {
             {BLOG_CATEGORIES.map((category) => (
               <Chip
                 key={category}
-                label={category}
+                label={BLOG_CATEGORY_LABELS[category]}
                 onClick={() => handleCategoryChange(category)}
                 sx={{
                   fontWeight: 600,

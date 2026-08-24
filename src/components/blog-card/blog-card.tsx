@@ -5,7 +5,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
-import { BlogPost } from '@/interfaces/blog/blog.interface';
+import { BlogPost, BLOG_CATEGORY_LABELS } from '@/interfaces/blog/blog.interface';
 import { Colors } from '@/styles/theme';
 
 interface BlogCardProps {
@@ -77,7 +77,7 @@ function BlogCard({ post }: BlogCardProps) {
                          />
                          {/* Category Badge */}
                          <Chip
-                              label={post.category}
+                              label={BLOG_CATEGORY_LABELS[post.category]}
                               size="small"
                               sx={{
                                    position: 'absolute',

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { marked } from 'marked';
 import { getBlogBySlug, getRelatedBlogs, getAllBlogs } from '@/services/blogs';
 import { BlogDetailClient } from './blog-detail-client';
 
@@ -66,44 +67,50 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   const relatedBlogs = await getRelatedBlogs(slug, blog.category, 3);
 
+  // Convert markdown content to HTML
+  const blogWithHtmlContent = {
+    ...blog,
+    content: await marked(blog.content),
+  };
+
   const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: blog.title,
-  description: blog.excerpt,
-  image: blog.cover_image ? [blog.cover_image] : [],
-  datePublished: blog.published_at,
-  dateModified: blog.updated_at,
-  author: {
-    '@type': 'Organization',
-    name: 'Apoteka DAR',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Apoteka DAR',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://apoteka-dar.rs/logo.png',
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: blog.title,
+    description: blog.excerpt,
+    image: blog.cover_image ? [blog.cover_image] : [],
+    datePublished: blog.published_at,
+    dateModified: blog.updated_at,
+    author: {
+      '@type': 'Organization',
+      name: 'Apoteka DAR',
     },
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': `https://apoteka-dar.rs/blog/${blog.slug}`,
-  },
-};
+    publisher: {
+      '@type': 'Organization',
+      name: 'Apoteka DAR',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://apoteka-dar.rs/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://apoteka-dar.rs/blog/${blog.slug}`,
+    },
+  };
 
   return (
     <>
-    <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(jsonLd),
-    }}
-  />
-    <BlogDetailClient
-      blog={JSON.parse(JSON.stringify(blog))}
-      relatedBlogs={JSON.parse(JSON.stringify(relatedBlogs))}
-    />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      <BlogDetailClient
+        blog={JSON.parse(JSON.stringify(blogWithHtmlContent))}
+        relatedBlogs={JSON.parse(JSON.stringify(relatedBlogs))}
+      />
     </>
   );
 }
