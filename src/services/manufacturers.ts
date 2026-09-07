@@ -20,18 +20,64 @@ export async function getAllManufacturerLogos(): Promise<Manufacturer[]> {
 }
 
 /**
- * Get all distinct manufacturer names.
+ * Get all manufacturer URL slugs (the `value` field, not the display `name`).
+ * Used for building manufacturer page URLs — `name` is not URL-safe
+ * (spaces, "&", punctuation) and does not match what `getManufacturerByValue` looks up.
  */
-export async function getAllManufacturerNames(): Promise<string[]> {
+export async function getAllManufacturerValues(): Promise<string[]> {
   const { data, error } = await supabase
     .from('manufacturers')
-    .select('name');
+    .select('value');
 
   if (error) {
-    console.error('getAllManufacturerNames error:', error.message);
+    console.error('getAllManufacturerValues error:', error.message);
     return [];
   }
-  return (data ?? []).map((m) => m.name);
+  return (data ?? []).map((m) => m.value);
+}
+
+/**
+ * Get all (manufacturer slug, main category slug) pairs that actually have
+ * at least one active product — used to build manufacturer+category URLs
+ * without generating thousands of empty/404 combinations.
+ */
+export async function getManufacturerCategoryPairs(): Promise<{ manufacturerValue: string; mainCategory: string }[]> {
+  const { data: products, error } = await supabase
+    .from('products')
+    .select('manufacturer_id, main_category')
+    .eq('is_active', true)
+    .not('manufacturer_id', 'is', null)
+    .not('main_category', 'is', null);
+
+  if (error) {
+    console.error('getManufacturerCategoryPairs error:', error.message);
+    return [];
+  }
+
+  const { data: manufacturers, error: mfrError } = await supabase
+    .from('manufacturers')
+    .select('id, value');
+
+  if (mfrError) {
+    console.error('getManufacturerCategoryPairs (manufacturers) error:', mfrError.message);
+    return [];
+  }
+
+  const idToValue = new Map((manufacturers ?? []).map((m) => [m.id, m.value]));
+  const seen = new Set<string>();
+  const pairs: { manufacturerValue: string; mainCategory: string }[] = [];
+
+  for (const p of products ?? []) {
+    const manufacturerValue = idToValue.get(p.manufacturer_id);
+    if (!manufacturerValue || !p.main_category) continue;
+
+    const key = `${manufacturerValue}/${p.main_category}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pairs.push({ manufacturerValue, mainCategory: p.main_category });
+  }
+
+  return pairs;
 }
 
 /**

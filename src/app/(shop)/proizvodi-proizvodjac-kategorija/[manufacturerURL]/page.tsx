@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getProductsByManufacturer } from '@/services/products';
-import { getManufacturerByValue, getAllManufacturerNames } from '@/services/manufacturers';
+import { getManufacturerByValue, getAllManufacturerValues } from '@/services/manufacturers';
 import { CategoryClient } from '../../proizvodi/[[...slug]]/category-client';
 
 const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
@@ -13,7 +13,7 @@ interface Props {
 export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const manufacturers = await getAllManufacturerNames();
+  const manufacturers = await getAllManufacturerValues();
   return manufacturers.map((m) => ({ manufacturerURL: m }));
 }
 

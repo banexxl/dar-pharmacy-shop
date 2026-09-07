@@ -1,17 +1,17 @@
 import type { MetadataRoute } from 'next';
 import { getAllActiveProducts } from '@/services/products';
-import { getAllManufacturerNames } from '@/services/manufacturers';
-import { getAllCategoryPaths, getAllMainCategories } from '@/services/categories';
+import { getAllManufacturerValues, getManufacturerCategoryPairs } from '@/services/manufacturers';
+import { getAllCategoryPaths } from '@/services/categories';
 import { getAllBlogs } from '@/services/blogs';
 
 const BASE_URL = process.env.BASE_URL || 'https://apoteka-dar.rs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [products, categoryPaths, manufacturers, mainCategories, blogs] = await Promise.all([
+  const [products, categoryPaths, manufacturers, manufacturerCategoryPairs, blogs] = await Promise.all([
     getAllActiveProducts(),
     getAllCategoryPaths(),
-    getAllManufacturerNames(),
-    getAllMainCategories(),
+    getAllManufacturerValues(),
+    getManufacturerCategoryPairs(),
     getAllBlogs(),
   ]);
 
@@ -77,18 +77,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
 
-  // Manufacturer + category pages
-  const manufacturerCategoryUrls: MetadataRoute.Sitemap = [];
-
-  for (const manufacturer of manufacturers) {
-    for (const mainCategory of mainCategories) {
-      manufacturerCategoryUrls.push({
-        url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${encodeURIComponent(manufacturer)}/${encodeURIComponent(mainCategory.value)}`,
-        changeFrequency: 'weekly' as const,
-        priority: 0.5,
-      });
-    }
-  }
+  // Manufacturer + category pages — only combinations that actually have products,
+  // instead of a blind cross-product of every manufacturer × every category
+  // (which mostly 404s and gets excluded by Google as noindex).
+  const manufacturerCategoryUrls: MetadataRoute.Sitemap = manufacturerCategoryPairs.map((pair) => ({
+    url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${encodeURIComponent(pair.manufacturerValue)}/${encodeURIComponent(pair.mainCategory)}`,
+    changeFrequency: 'weekly' as const,
+    priority: 0.5,
+  }));
 
   // Blog pages
   const blogListUrl: MetadataRoute.Sitemap = [
