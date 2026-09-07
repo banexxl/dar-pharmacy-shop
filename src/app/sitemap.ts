@@ -68,9 +68,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // Manufacturer pages
+  // Manufacturer pages — only manufacturers that have at least one active product
+  // (a manufacturer with none will 404, since the page calls notFound() on an empty result).
+  const manufacturersWithProducts = new Set(manufacturerCategoryPairs.map((p) => p.manufacturerValue));
   const manufacturerUrls: MetadataRoute.Sitemap = manufacturers
-    .filter(Boolean)
+    .filter((manufacturer) => Boolean(manufacturer) && manufacturersWithProducts.has(manufacturer))
     .map((manufacturer) => ({
       url: `${BASE_URL}/proizvodi-proizvodjac-kategorija/${encodeURIComponent(manufacturer)}`,
       changeFrequency: 'weekly' as const,

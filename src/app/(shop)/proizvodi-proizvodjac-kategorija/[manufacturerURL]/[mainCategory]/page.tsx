@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Stranica nije pronađena' };
   }
 
-  const url = `${BASE_URL}/proizvodi-proizvodjac-kategorija/${manufacturerURL}/${mainCategory}`;
+  const url = `${BASE_URL}/proizvodi-proizvodjac-kategorija/${manufacturer.value}/${mainCat.value}`;
 
   return {
     title: `${manufacturer.name} - ${mainCat.label} | Apoteka DAR`,

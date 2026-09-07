@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const label = manufacturer.name;
-  const url = `${BASE_URL}/proizvodi-proizvodjac-kategorija/${manufacturerURL}`;
+  const url = `${BASE_URL}/proizvodi-proizvodjac-kategorija/${manufacturer.value}`;
 
   return {
     title: `${label} | Apoteka DAR - Proizvodi po proizvođaču`,
