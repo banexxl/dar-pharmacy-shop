@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${BASE_URL}/proizvodi-proizvodjac-kategorija/${manufacturer.value}`;
 
   return {
-    title: `${label} | Apoteka DAR - Proizvodi po proizvođaču`,
+    title: `${label} - Proizvodi po proizvođaču`,
     description: `Svi proizvodi proizvođača ${label} dostupni u Apoteci DAR. Brza dostava širom Srbije.`,
     alternates: { canonical: url },
     openGraph: {

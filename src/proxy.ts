@@ -23,7 +23,92 @@ const PROTECTED_PREFIXES = ['/nalog'];
 // Login routes — redirect away if already authenticated
 const LOGIN_ROUTES = ['/autentifikacija/prijava'];
 
+const MANUFACTURER_PREFIX = '/proizvodi-proizvodjac-kategorija';
+
+/**
+ * Mirrors how `manufacturers.value` slugs are derived from `name`
+ * ("Laboratorie ACM, France" -> "laboratorie-acm-france", "Health & more" -> "health-and-more").
+ */
+function toSlug(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/đ/gi, 'dj')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/\./g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function safeDecode(segment: string): string {
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return segment;
+  }
+}
+
+/**
+ * Legacy manufacturer URLs used the display name ("/Now Foods/ruska-apoteka") and the old
+ * sitemap listed every manufacturer × category combination. Those pages end up calling
+ * notFound() after streaming has started, which Google sees as 200 + noindex.
+ * Permanently redirect them instead:
+ *  - name-based segments -> slug
+ *  - manufacturer + category with no active products -> manufacturer page
+ */
+async function getManufacturerRedirect(request: NextRequest): Promise<NextResponse | null> {
+  const { pathname } = request.nextUrl;
+  if (!pathname.startsWith(`${MANUFACTURER_PREFIX}/`)) return null;
+
+  const segments = pathname.slice(MANUFACTURER_PREFIX.length + 1).split('/').filter(Boolean);
+  if (segments.length === 0 || segments.length > 2) return null;
+
+  const [rawManufacturer, rawCategory] = segments;
+  const manufacturer = toSlug(safeDecode(rawManufacturer));
+  const category = rawCategory ? toSlug(safeDecode(rawCategory)) : undefined;
+  if (!manufacturer) return null;
+
+  let target = category
+    ? `${MANUFACTURER_PREFIX}/${manufacturer}/${category}`
+    : `${MANUFACTURER_PREFIX}/${manufacturer}`;
+
+  if (category) {
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+      { cookies: { getAll: () => [], setAll: () => { } } }
+    );
+
+    const { data: mfr } = await supabase
+      .from('manufacturers')
+      .select('id')
+      .eq('value', manufacturer)
+      .maybeSingle();
+
+    if (mfr) {
+      const { count, error } = await supabase
+        .from('products')
+        .select('id', { count: 'exact', head: true })
+        .eq('is_active', true)
+        .eq('manufacturer_id', mfr.id)
+        .eq('main_category', category);
+
+      if (!error && !count) target = `${MANUFACTURER_PREFIX}/${manufacturer}`;
+    }
+  }
+
+  if (target === pathname) return null;
+
+  const url = request.nextUrl.clone();
+  url.pathname = target;
+  return NextResponse.redirect(url, 308);
+}
+
 export async function proxy(request: NextRequest) {
+  const manufacturerRedirect = await getManufacturerRedirect(request);
+  if (manufacturerRedirect) return manufacturerRedirect;
+
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(

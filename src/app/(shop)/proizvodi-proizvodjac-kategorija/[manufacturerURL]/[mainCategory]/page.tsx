@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${BASE_URL}/proizvodi-proizvodjac-kategorija/${manufacturer.value}/${mainCat.value}`;
 
   return {
-    title: `${manufacturer.name} - ${mainCat.label} | Apoteka DAR`,
+    title: `${manufacturer.name} - ${mainCat.label}`,
     description: `Proizvodi proizvođača ${manufacturer.name} iz kategorije ${mainCat.label}. Kupujte online u Apoteci DAR.`,
     alternates: { canonical: url },
     openGraph: {
